@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import { Plane, Twitter, Instagram, Facebook, Github } from 'lucide-react';
 
 export const Footer = () => {
+  const handleScrollTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <footer className="bg-white dark:bg-dark-card border-t border-gray-100 dark:border-dark-border mt-auto transition-colors">
       <div className="container mx-auto px-4 max-w-7xl pt-16 pb-8">
@@ -10,7 +14,7 @@ export const Footer = () => {
           
           {/* Brand & Socials */}
           <div className="col-span-1 lg:col-span-1">
-            <Link to="/" className="flex items-center space-x-2 group outline-none mb-4 inline-flex">
+            <Link to="/" onClick={handleScrollTop} className="flex items-center space-x-2 group outline-none mb-4 inline-flex">
               <Plane className="w-6 h-6 text-blue-500 group-hover:text-blue-400 transition-colors duration-300" />
               <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">FlySava</span>
             </Link>
@@ -30,47 +34,47 @@ export const Footer = () => {
             <h3 className="font-bold text-gray-900 dark:text-white mb-4">Explore</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/" className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">
+                <Link to="/" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">
                   Flight Search
                 </Link>
               </li>
               <li>
-                <Link to="/destinations" className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">
+                <Link to="/destinations" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">
                   Destinations
                 </Link>
               </li>
               <li>
-                <Link to="/status" className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">
+                <Link to="/status" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">
                   Flight Tracker
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">
+                <Link to="/blog" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">
                   Blog
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Company Links - UPDATED ROUTING */}
+          {/* Company Links */}
           <div>
             <h3 className="font-bold text-gray-900 dark:text-white mb-4">Company</h3>
             <ul className="space-y-3">
-              <li><Link to="/about" className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">About Us</Link></li>
-              <li><Link to="/careers" className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Careers</Link></li>
-              <li><Link to="/press" className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Press & Media</Link></li>
-              <li><Link to="/contact" className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Contact</Link></li>
+              <li><Link to="/about" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">About Us</Link></li>
+              <li><Link to="/careers" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Careers</Link></li>
+              <li><Link to="/press" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Press & Media</Link></li>
+              <li><Link to="/faq" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Help Center / FAQ</Link></li>
+              <li><Link to="/contact" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Contact</Link></li>
             </ul>
           </div>
 
           {/* Legal Links */}
-          {/* Legal Links */}
           <div>
             <h3 className="font-bold text-gray-900 dark:text-white mb-4">Legal</h3>
             <ul className="space-y-3">
-              <li><Link to="/terms" className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Terms of Service</Link></li>
-              <li><Link to="/privacy" className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Privacy Policy</Link></li>
-              <li><Link to="/cookies" className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Cookie Policy</Link></li>
+              <li><Link to="/terms" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Terms of Service</Link></li>
+              <li><Link to="/privacy" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Privacy Policy</Link></li>
+              <li><Link to="/cookies" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Cookie Policy</Link></li>
             </ul>
           </div>
           

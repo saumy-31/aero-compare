@@ -25,10 +25,9 @@ export const TravelGuide = () => {
     );
   }
 
-  // The Magic Button Handler
+  // The Fixed Button Handler: Navigates cleanly to the root path without anchor jumps
   const handleFindFlights = () => {
-    // Navigate to Home, passing the airport code as a query param, and triggering the scroll hash
-    navigate(`/?dest=${destination.airportCode}#flight-search`);
+    navigate(`/?dest=${destination.airportCode}`);
   };
 
   return (

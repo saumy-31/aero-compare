@@ -5,20 +5,10 @@ import { FlightSearchForm } from '../components/flight/FlightSearchForm';
 export const Home = () => {
   const location = useLocation();
 
-  // Smooth Scroll Effect triggered by navigation from the Guide page
+  // Enforce scrolling to the very top immediately on route load
   useEffect(() => {
-    if (location.hash === '#flight-search') {
-      // setTimeout ensures the DOM is fully painted before attempting to scroll
-      setTimeout(() => {
-        const element = document.getElementById('flight-search');
-        if (element) {
-          // Adjust scroll alignment slightly to account for the fixed navbar
-          const y = element.getBoundingClientRect().top + window.scrollY - 80;
-          window.scrollTo({ top: y, behavior: 'smooth' });
-        }
-      }, 100);
-    }
-  }, [location]);
+    window.scrollTo(0, 0);
+  }, [location.pathname, location.search]);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-200">
@@ -45,8 +35,8 @@ export const Home = () => {
         </div>
       </div>
 
-      {/* Flight Search Section Wrapper with ID */}
-      <section id="flight-search" className="container mx-auto px-4 max-w-5xl -mt-20 relative z-20 pb-20">
+      {/* Flight Search Section Wrapper */}
+      <section className="container mx-auto px-4 max-w-5xl -mt-20 relative z-20 pb-20">
         <FlightSearchForm />
       </section>
 
