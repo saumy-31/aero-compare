@@ -1,20 +1,21 @@
 import React from 'react';
-
-// Providers & Layout
-import { AppProviders } from './context/AppProviders';
-import { MainLayout } from './components/layout/MainLayout';
-
-// Routes
+import { BrowserRouter } from 'react-router-dom';
+import { Navbar } from './components/layout/Navbar';
+import { Footer } from './components/layout/Footer';
 import { AppRoutes } from './routes/AppRoutes';
 
-function App() {
+export default function App() {
   return (
-    <AppProviders>
-      <MainLayout>
-        <AppRoutes />
-      </MainLayout>
-    </AppProviders>
+    <BrowserRouter>
+      <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-200">
+        <Navbar />
+        
+        <main className="flex-grow">
+          <AppRoutes />
+        </main>
+
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
-
-export default App;

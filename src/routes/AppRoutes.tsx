@@ -55,8 +55,7 @@ export const AppRoutes = () => {
       <Route path="/blog" element={<Blog />} />
       <Route path="/blog/:slug" element={<BlogPost />} />
 
-       {/* 404 Route */}
-      <Route path="*" element={<NotFound />} />
+    
       
       {/* Company Pages */}
       <Route path="/about" element={<About />} />
