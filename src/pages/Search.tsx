@@ -19,7 +19,6 @@ export const Search = () => {
   return (
     <div className="min-h-screen bg-[#071226] pt-32 pb-20">
       <div className="container mx-auto px-4 max-w-7xl">
-
         <div className="text-center mb-10">
           <h1 className="text-5xl font-black text-white mb-4">
             Search & Compare Flights
@@ -34,10 +33,7 @@ export const Search = () => {
           <div id="tpwl-search"></div>
         </div>
 
-        <div className="bg-white rounded-3xl shadow-2xl p-6 mt-8">
-          <div id="tpwl-tickets"></div>
-        </div>
-
+       <div id="tpwl-tickets" className="mt-8"></div>
       </div>
     </div>
   );
