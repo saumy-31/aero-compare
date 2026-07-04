@@ -27,7 +27,7 @@ export const FlightSearchForm = () => {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate(`/results?origin=${origin}&dest=${destination}&date=${departureDate}&pax=${passengers}`);
+    navigate('/search');
   };
 
   return (

@@ -15,8 +15,9 @@ import { NotFound } from '../pages/NotFound';
 import { Blog } from '../pages/Blog';
 import { BlogPost } from '../pages/BlogPost';
 
+
 // New Company Pages
-import { About } from '../pages/About';
+
 import { Careers } from '../pages/Careers';
 import { Press } from '../pages/Press';
 import { Contact } from '../pages/Contact';
@@ -25,6 +26,7 @@ import { Contact } from '../pages/Contact';
 import { Terms } from '../pages/Terms';
 import { Privacy } from '../pages/Privacy';
 import { Cookies } from '../pages/Cookies';
+import { Search } from '../pages/Search';
 
 
       
@@ -48,6 +50,7 @@ export const AppRoutes = () => {
       <Route path="/terms" element={<Terms />} />
       <Route path="/privacy" element={<Privacy />} />
       <Route path="/cookies" element={<Cookies />} />
+      <Route path="/search" element={<Search />} />
       
       {/* Destinations & Blog */}
       <Route path="/destinations" element={<Destinations />} />
@@ -58,7 +61,7 @@ export const AppRoutes = () => {
     
       
       {/* Company Pages */}
-      <Route path="/about" element={<About />} />
+      
       <Route path="/careers" element={<Careers />} />
       <Route path="/press" element={<Press />} />
       <Route path="/contact" element={<Contact />} />
