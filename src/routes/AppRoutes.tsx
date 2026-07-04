@@ -15,6 +15,8 @@ import { NotFound } from '../pages/NotFound';
 import { Blog } from '../pages/Blog';
 import { BlogPost } from '../pages/BlogPost';
 
+import { About } from '../pages/About';
+
 
 // New Company Pages
 
@@ -26,7 +28,7 @@ import { Contact } from '../pages/Contact';
 import { Terms } from '../pages/Terms';
 import { Privacy } from '../pages/Privacy';
 import { Cookies } from '../pages/Cookies';
-import { Search } from '../pages/Search';
+
 
 
       
@@ -50,7 +52,8 @@ export const AppRoutes = () => {
       <Route path="/terms" element={<Terms />} />
       <Route path="/privacy" element={<Privacy />} />
       <Route path="/cookies" element={<Cookies />} />
-      <Route path="/search" element={<Search />} />
+     
+     <Route path="/about" element={<About />} />
       
       {/* Destinations & Blog */}
       <Route path="/destinations" element={<Destinations />} />

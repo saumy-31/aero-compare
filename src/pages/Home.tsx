@@ -9,37 +9,23 @@ export const Home = () => {
     window.scrollTo(0, 0);
   }, [location.pathname, location.search]);
 
-  // Load Travelpayouts Widget
+  // Show results wrapper only when Travelpayouts loads results
   useEffect(() => {
-    const script = document.createElement('script');
-    script.async = true;
-    script.type = 'module';
-    script.src = 'https://tpwgts.com/wl_web/main.js?wl_id=209';
+    const interval = setInterval(() => {
+      const tickets = document.getElementById('tpwl-tickets');
+      const wrapper = document.getElementById('results-wrapper');
 
-    document.head.appendChild(script);
-
-    return () => {
-      if (document.head.contains(script)) {
-        document.head.removeChild(script);
+      if (
+        tickets &&
+        wrapper &&
+        tickets.innerHTML.trim().length > 0
+      ) {
+        wrapper.classList.remove('hidden');
+        clearInterval(interval);
       }
-    };
-  }, []);
+    }, 1000);
 
-  // Show results container after user interaction
-  useEffect(() => {
-    const handleClick = () => {
-      const results = document.getElementById('results-wrapper');
-
-      if (results) {
-        results.classList.remove('hidden');
-      }
-    };
-
-    document.addEventListener('click', handleClick);
-
-    return () => {
-      document.removeEventListener('click', handleClick);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -70,13 +56,15 @@ export const Home = () => {
       {/* TravelPayouts Widget */}
       <section className="container mx-auto px-4 max-w-7xl -mt-20 relative z-20 pb-32">
 
+        {/* Search Widget */}
         <div className="bg-white rounded-3xl shadow-2xl p-6">
           <div id="tpwl-search"></div>
         </div>
 
+        {/* Results Widget - Hidden Until Results Load */}
         <div
           id="results-wrapper"
-          className="bg-white rounded-3xl shadow-2xl p-6 mt-8 hidden"
+          className="hidden bg-white rounded-3xl shadow-2xl p-6 mt-8"
         >
           <div id="tpwl-tickets"></div>
         </div>
