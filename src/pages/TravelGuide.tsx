@@ -1,140 +1,146 @@
-import React, { useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { MapPin, Calendar, Wallet, CheckCircle2, Plane, ArrowLeft, Info, AlertTriangle } from 'lucide-react';
+import { MapPin, Calendar, Wallet, CheckCircle, Plane, ArrowLeft, Star } from 'lucide-react';
 import { MOCK_DESTINATIONS } from '../data/mockDestinations';
 
 export const TravelGuide = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  
+  const destination = MOCK_DESTINATIONS.find(d => d.id === id);
 
-  const destination = useMemo(() => MOCK_DESTINATIONS.find(d => d.id === id), [id]);
+  // Always scroll to top when opening a new guide
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   if (!destination) {
     return (
-      <div className="min-h-screen pt-32 pb-20 flex flex-col items-center justify-center dark:text-white">
-        <h1 className="text-3xl font-black mb-4">Destination Not Found</h1>
-        <button onClick={() => navigate('/destinations')} className="text-brand-500 font-bold hover:underline">Return to Explorer</button>
+      <div className="min-h-screen flex flex-col items-center justify-center dark:bg-dark-bg">
+        <h2 className="text-2xl font-bold dark:text-white mb-4">Destination not found</h2>
+        <button onClick={() => navigate('/destinations')} className="text-blue-500 hover:underline">
+          &larr; Back to Explore
+        </button>
       </div>
     );
   }
 
-  const handleSearchFlights = () => {
-    // Navigate to results page with destination airport code pre-filled
-    navigate(`/results?destination=${destination.airportCode}`);
+  // The Magic Button Handler
+  const handleFindFlights = () => {
+    // Navigate to Home, passing the airport code as a query param, and triggering the scroll hash
+    navigate(`/?dest=${destination.airportCode}#flight-search`);
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-dark-bg">
-      {/* Hero Banner */}
-      <div className="relative h-[50vh] min-h-[400px] w-full">
+    <div className="min-h-screen bg-gray-50 dark:bg-dark-bg pb-24">
+      
+      {/* Hero Image Section */}
+      <div className="relative h-[60vh] min-h-[400px] w-full">
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent z-10" />
         <img 
           src={destination.image} 
           alt={destination.city} 
           className="w-full h-full object-cover"
         />
+        
+        {/* Back Button */}
         <button 
-          onClick={() => navigate('/destinations')} 
-          className="absolute top-24 left-4 md:left-8 z-20 flex items-center text-sm font-bold text-white bg-black/30 hover:bg-black/50 backdrop-blur-md px-4 py-2 rounded-full transition"
+          onClick={() => navigate(-1)}
+          className="absolute top-24 left-6 z-20 flex items-center px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-xl text-white font-medium transition-colors"
         >
-          <ArrowLeft className="w-4 h-4 mr-2" /> Back
+          <ArrowLeft className="w-5 h-5 mr-2" /> Back
         </button>
-        <div className="absolute bottom-12 left-4 md:left-8 z-20 text-white">
-          <div className="flex items-center space-x-2 mb-3">
-            <span className="bg-brand-600 text-white text-xs font-bold px-3 py-1 rounded-full">{destination.tripType}</span>
-            <span className="bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/30">{destination.budget}</span>
+
+        <div className="absolute bottom-0 left-0 right-0 z-20 container mx-auto px-6 pb-12 max-w-5xl">
+          <div className="flex items-center text-blue-400 font-bold mb-3 tracking-wide uppercase text-sm">
+            <MapPin className="w-4 h-4 mr-1.5" /> {destination.country}
           </div>
-          <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-2">{destination.city}</h1>
-          <p className="text-xl md:text-2xl text-gray-200 flex items-center font-medium">
-            <MapPin className="w-6 h-6 mr-2 text-brand-400" /> {destination.country}
+          <h1 className="text-5xl md:text-7xl font-black text-white mb-4 tracking-tight">
+            {destination.city}
+          </h1>
+          <p className="text-xl text-gray-200 max-w-2xl font-medium leading-relaxed">
+            {destination.description}
           </p>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-12 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div className="container mx-auto px-6 max-w-5xl mt-12 grid grid-cols-1 lg:grid-cols-3 gap-12">
+        
+        {/* Left Column: Details */}
+        <div className="lg:col-span-2 space-y-12">
           
-          {/* Main Content Column */}
-          <div className="lg:col-span-2 space-y-10">
-            {/* Overview */}
-            <section className="bg-white dark:bg-dark-card p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-dark-border">
-              <h2 className="text-2xl font-black dark:text-white mb-4">Overview</h2>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
-                {destination.description}
-              </p>
-            </section>
-
-            {/* Quick Facts Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-white dark:bg-dark-card p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-dark-border flex items-start">
-                <Calendar className="w-8 h-8 text-brand-500 mr-4 flex-shrink-0" />
-                <div>
-                  <h3 className="font-bold dark:text-white mb-1">Best Time to Visit</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">{destination.bestSeason}</p>
-                </div>
-              </div>
-              <div className="bg-white dark:bg-dark-card p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-dark-border flex items-start">
-                <Wallet className="w-8 h-8 text-green-500 mr-4 flex-shrink-0" />
-                <div>
-                  <h3 className="font-bold dark:text-white mb-1">Estimated Budget</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">~${destination.dailyBudget} USD / day</p>
-                </div>
-              </div>
+          {/* Quick Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="bg-white dark:bg-dark-card p-5 rounded-2xl border border-gray-100 dark:border-dark-border shadow-sm">
+              <Calendar className="w-6 h-6 text-blue-500 mb-3" />
+              <div className="text-sm text-gray-500 mb-1">Best Season</div>
+              <div className="font-bold dark:text-white">{destination.bestSeason}</div>
             </div>
+            <div className="bg-white dark:bg-dark-card p-5 rounded-2xl border border-gray-100 dark:border-dark-border shadow-sm">
+              <Wallet className="w-6 h-6 text-green-500 mb-3" />
+              <div className="text-sm text-gray-500 mb-1">Daily Budget</div>
+              <div className="font-bold dark:text-white">${destination.dailyBudget} USD</div>
+            </div>
+            <div className="bg-white dark:bg-dark-card p-5 rounded-2xl border border-gray-100 dark:border-dark-border shadow-sm hidden md:block">
+              <Star className="w-6 h-6 text-purple-500 mb-3" />
+              <div className="text-sm text-gray-500 mb-1">Trip Style</div>
+              <div className="font-bold dark:text-white">{destination.tripType}</div>
+            </div>
+          </div>
 
-            {/* Attractions */}
-            <section className="bg-white dark:bg-dark-card p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-dark-border">
-              <h2 className="text-2xl font-black dark:text-white mb-6">Popular Attractions</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {destination.attractions.map((attraction, idx) => (
-                  <div key={idx} className="flex items-center p-4 bg-gray-50 dark:bg-slate-800/50 rounded-xl border border-gray-100 dark:border-gray-700">
-                    <CheckCircle2 className="w-5 h-5 text-brand-500 mr-3 flex-shrink-0" />
-                    <span className="font-medium dark:text-gray-200">{attraction}</span>
-                  </div>
-                ))}
-              </div>
-            </section>
+          {/* Attractions */}
+          <section>
+            <h2 className="text-2xl font-black dark:text-white mb-6">Top Attractions</h2>
+            <div className="space-y-3">
+              {destination.attractions.map((attraction, i) => (
+                <div key={i} className="flex items-center p-4 bg-white dark:bg-dark-card rounded-xl border border-gray-100 dark:border-dark-border shadow-sm">
+                  <CheckCircle className="w-5 h-5 text-blue-500 mr-4 flex-shrink-0" />
+                  <span className="font-semibold text-gray-800 dark:text-gray-200">{attraction}</span>
+                </div>
+              ))}
+            </div>
+          </section>
 
-            {/* Travel Tips */}
-            <section className="bg-white dark:bg-dark-card p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-dark-border">
-              <h2 className="text-2xl font-black dark:text-white mb-6">Essential Travel Tips</h2>
+          {/* Travel Tips */}
+          <section>
+            <h2 className="text-2xl font-black dark:text-white mb-6">Local Travel Tips</h2>
+            <div className="bg-blue-50 dark:bg-blue-500/10 p-6 rounded-2xl border border-blue-100 dark:border-blue-500/20">
               <ul className="space-y-4">
-                {destination.travelTips.map((tip, idx) => (
-                  <li key={idx} className="flex items-start">
-                    <Info className="w-5 h-5 text-gray-400 mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-600 dark:text-gray-300">{tip}</span>
+                {destination.travelTips.map((tip, i) => (
+                  <li key={i} className="flex items-start text-blue-900 dark:text-blue-100 font-medium">
+                    <span className="mr-3 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full flex-shrink-0" />
+                    {tip}
                   </li>
                 ))}
               </ul>
-            </section>
-          </div>
-
-          {/* Sidebar / CTA Column */}
-          <div className="lg:col-span-1 space-y-6">
-            <div className="bg-brand-600 rounded-3xl p-8 text-white shadow-xl shadow-brand-500/20 sticky top-28">
-              <div className="bg-brand-500/50 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border border-brand-400">
-                <Plane className="w-8 h-8 text-white" />
-              </div>
-              <h2 className="text-2xl font-black mb-2">Ready to visit {destination.city}?</h2>
-              <p className="text-brand-100 mb-8">
-                Compare prices from 100+ airlines and travel sites. The primary airport is <strong className="text-white">{destination.airportCode}</strong>.
-              </p>
-              
-              <button 
-                onClick={handleSearchFlights}
-                className="w-full bg-white text-brand-600 hover:bg-gray-50 font-black py-4 rounded-xl transition flex justify-center items-center text-lg"
-              >
-                Find Flights <Plane className="w-5 h-5 ml-2" />
-              </button>
-              
-              <p className="text-xs text-brand-200 mt-4 text-center flex items-center justify-center">
-                <AlertTriangle className="w-3 h-3 mr-1" />
-                Prices vary based on season and availability.
-              </p>
             </div>
-          </div>
+          </section>
 
         </div>
+
+        {/* Right Column: Sticky Booking Card */}
+        <div className="lg:col-span-1">
+          <div className="sticky top-28 bg-white dark:bg-dark-card rounded-3xl p-6 border border-gray-100 dark:border-dark-border shadow-xl shadow-gray-200/50 dark:shadow-none">
+            <h3 className="text-xl font-black dark:text-white mb-2">Ready to explore?</h3>
+            <p className="text-gray-500 text-sm mb-8">Search for the best flight deals to {destination.city} right now.</p>
+            
+            <div className="bg-gray-50 dark:bg-slate-800 rounded-2xl p-4 mb-6">
+              <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Destination Airport</div>
+              <div className="text-2xl font-black text-blue-600 dark:text-blue-400 flex items-center">
+                <Plane className="w-6 h-6 mr-2" />
+                {destination.airportCode}
+              </div>
+            </div>
+
+            <button 
+              onClick={handleFindFlights}
+              className="w-full flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-lg shadow-blue-500/30"
+            >
+              Find Flights <ArrowLeft className="w-5 h-5 ml-2 rotate-135" />
+            </button>
+          </div>
+        </div>
+
       </div>
     </div>
   );

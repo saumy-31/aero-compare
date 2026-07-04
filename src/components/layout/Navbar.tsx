@@ -1,85 +1,123 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Plane, Moon, Sun } from 'lucide-react';
-import { useAppStore } from '../../store/useAppStore';
+import { Plane, Menu, X } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export const Navbar = () => {
-  const { theme, setTheme } = useAppStore();
-  const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+// Core navigation routes
+  const navLinks = [
+    { name: 'Flights', path: '/' },
+    { name: 'Status', path: '/status' },
+    { name: 'Explore', path: '/destinations' },
+    { name: 'Blog', path: '/blog' }, // <--- Replaced Alerts with Blog
+  ];
+
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-
-    window.addEventListener('scroll', handleScroll);
-
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      document.body.style.overflow = 'unset';
     };
-  }, []);
+  }, [isMobileMenuOpen]);
 
-  // IMPORTANT: Put this AFTER all hooks
-  if (location.pathname === '/login') {
-    return null;
-  }
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-    document.documentElement.classList.toggle('dark', newTheme === 'dark');
-  };
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
 
   return (
-    <nav
-      className={`fixed w-full z-50 transition-all ${
-        scrolled
-          ? 'bg-white/90 dark:bg-dark-card/90 backdrop-blur shadow-sm'
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link
-          to="/"
-          className="flex items-center space-x-2 text-brand-600 dark:text-brand-500"
-        >
-          <Plane className="w-8 h-8" />
-          <span className="text-xl font-black">AeroCompare</span>
-        </Link>
-
-        <div className="hidden md:flex items-center space-x-6 text-sm font-medium">
-          <Link to="/" className="hover:text-brand-500 transition">
-  Flights
-</Link>
-
-          <Link to="/status" className="hover:text-brand-500 transition">
-            Status
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/70 backdrop-blur-md border-b border-white/10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* justify-between ensures the logo stays left and navigation stays right */}
+        <div className="flex items-center justify-between h-16">
+          
+          {/* Left: Logo Section */}
+          <Link 
+            to="/" 
+            className="flex items-center space-x-2.5 flex-shrink-0 group outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded-lg"
+          >
+            <Plane className="w-5 h-5 text-blue-500 group-hover:text-blue-400 transition-colors duration-300" />
+            <span className="text-xl font-bold text-white tracking-tight">FlySava</span>
           </Link>
 
-          <Link to="/destinations" className="hover:text-brand-500 transition">
-            Explore
-          </Link>
-
-          <div className="flex items-center space-x-4 border-l pl-4 dark:border-dark-border">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800"
-            >
-              {theme === 'dark' ? (
-                <Sun className="w-5 h-5" />
-              ) : (
-                <Moon className="w-5 h-5" />
-              )}
-            </button>
-
-            <Link
-              to="/login"
-              className="bg-brand-600 text-white px-5 py-2 rounded-lg font-bold hover:bg-brand-700 transition"
-            >
-              Sign In
-            </Link>
+          {/* Right: Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => {
+              const isActive = link.path === '/' 
+                ? location.pathname === '/' || location.pathname === '/results'
+                : location.pathname.startsWith(link.path);
+              
+              return (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className={`relative flex items-center h-16 text-sm font-semibold transition-colors duration-200 outline-none focus-visible:text-blue-400 ${
+                    isActive ? 'text-blue-500' : 'text-slate-300 hover:text-white'
+                  }`}
+                >
+                  {link.name}
+                  
+                  {isActive && (
+                    <motion.div
+                      layoutId="navbar-bottom-indicator"
+                      className="absolute bottom-0 left-0 right-0 h-[3px] bg-blue-500 rounded-t-full"
+                      initial={false}
+                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              );
+            })}
           </div>
+
+          {/* Right: Mobile Menu Toggle */}
+          <button
+            className="md:hidden p-2 -mr-2 text-slate-300 hover:text-white transition-colors outline-none rounded-lg focus-visible:ring-2 focus-visible:ring-blue-500/50"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Navigation Dropdown */}
+      <motion.div
+        initial={false}
+        animate={isMobileMenuOpen ? "open" : "closed"}
+        variants={{
+          open: { opacity: 1, height: 'auto', display: 'block' },
+          closed: { opacity: 0, height: 0, transitionEnd: { display: 'none' } }
+        }}
+        className="md:hidden overflow-hidden bg-slate-900/95 backdrop-blur-xl border-b border-white/10 shadow-2xl"
+      >
+        <div className="px-4 pt-2 pb-6 space-y-2">
+          {navLinks.map((link) => {
+            const isActive = link.path === '/' 
+              ? location.pathname === '/' || location.pathname === '/results'
+              : location.pathname.startsWith(link.path);
+            
+            return (
+              <Link
+                key={link.name}
+                to={link.path}
+                className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${
+                  isActive 
+                    ? 'text-blue-500 bg-blue-500/10' 
+                    : 'text-slate-300 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
+        </div>
+      </motion.div>
     </nav>
   );
 };
