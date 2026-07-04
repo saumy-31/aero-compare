@@ -1,0 +1,32 @@
+import { Airport } from '../types/flight.types';
+
+export const AIRPORTS: Airport[] = [
+  { code: 'DEL', city: 'New Delhi', country: 'India', name: 'Indira Gandhi International Airport' },
+  { code: 'BOM', city: 'Mumbai', country: 'India', name: 'Chhatrapati Shivaji Maharaj International Airport' },
+  { code: 'BLR', city: 'Bangalore', country: 'India', name: 'Kempegowda International Airport' },
+  { code: 'CCU', city: 'Kolkata', country: 'India', name: 'Netaji Subhas Chandra Bose International Airport' },
+  { code: 'MAA', city: 'Chennai', country: 'India', name: 'Chennai International Airport' },
+  { code: 'JFK', city: 'New York', country: 'USA', name: 'John F. Kennedy International Airport' },
+  { code: 'LAX', city: 'Los Angeles', country: 'USA', name: 'Los Angeles International Airport' },
+  { code: 'SFO', city: 'San Francisco', country: 'USA', name: 'San Francisco International Airport' },
+  { code: 'LHR', city: 'London', country: 'UK', name: 'Heathrow Airport' },
+  { code: 'CDG', city: 'Paris', country: 'France', name: 'Charles de Gaulle Airport' },
+  { code: 'FRA', city: 'Frankfurt', country: 'Germany', name: 'Frankfurt Airport' },
+  { code: 'AMS', city: 'Amsterdam', country: 'Netherlands', name: 'Amsterdam Airport Schiphol' },
+  { code: 'FCO', city: 'Rome', country: 'Italy', name: 'Leonardo da Vinci–Fiumicino Airport' },
+  { code: 'DXB', city: 'Dubai', country: 'UAE', name: 'Dubai International Airport' },
+  { code: 'AUH', city: 'Abu Dhabi', country: 'UAE', name: 'Zayed International Airport' },
+  { code: 'SIN', city: 'Singapore', country: 'Singapore', name: 'Changi Airport' },
+  { code: 'NRT', city: 'Tokyo', country: 'Japan', name: 'Narita International Airport' },
+  { code: 'HND', city: 'Tokyo', country: 'Japan', name: 'Haneda Airport' },
+  { code: 'ICN', city: 'Seoul', country: 'South Korea', name: 'Incheon International Airport' },
+  { code: 'HKG', city: 'Hong Kong', country: 'Hong Kong', name: 'Hong Kong International Airport' },
+  { code: 'BKK', city: 'Bangkok', country: 'Thailand', name: 'Suvarnabhumi Airport' },
+  { code: 'DPS', city: 'Bali', country: 'Indonesia', name: 'Ngurah Rai International Airport' },
+  { code: 'SYD', city: 'Sydney', country: 'Australia', name: 'Sydney Kingsford Smith Airport' },
+  { code: 'MEL', city: 'Melbourne', country: 'Australia', name: 'Melbourne Airport' },
+  { code: 'YYZ', city: 'Toronto', country: 'Canada', name: 'Toronto Pearson International Airport' },
+  { code: 'YVR', city: 'Vancouver', country: 'Canada', name: 'Vancouver International Airport' },
+  { code: 'IST', city: 'Istanbul', country: 'Turkey', name: 'Istanbul Airport' },
+  { code: 'NAV', city: 'Nevsehir', country: 'Turkey', name: 'Nevşehir Kapadokya Airport' }
+];
