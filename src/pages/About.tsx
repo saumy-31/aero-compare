@@ -129,7 +129,7 @@ export const About = () => {
           <div className="lg:w-1/2 w-full">
             <div className="relative h-[400px] rounded-3xl overflow-hidden shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1569154941061-e231b4732ef1?auto=format&fit=crop&w=800&q=80" 
+                src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=80" 
                 alt="Airplane tails at terminal" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />

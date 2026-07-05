@@ -9,23 +9,34 @@ export const Home = () => {
     window.scrollTo(0, 0);
   }, [location.pathname, location.search]);
 
-  // Show results wrapper only when Travelpayouts loads results
+  // Re-initialize TravelPayouts widget on mount
   useEffect(() => {
-    const interval = setInterval(() => {
-      const tickets = document.getElementById('tpwl-tickets');
-      const wrapper = document.getElementById('results-wrapper');
+    // 1. Remove any previously injected script to ensure a clean slate
+    const existingScript = document.getElementById('tpwl-script-reinit');
+    if (existingScript) {
+      existingScript.remove();
+    }
 
-      if (
-        tickets &&
-        wrapper &&
-        tickets.innerHTML.trim().length > 0
-      ) {
-        wrapper.classList.remove('hidden');
-        clearInterval(interval);
+    // 2. Dynamically inject the script so it executes after DOM containers are ready
+    const script = document.createElement("script");
+    script.id = "tpwl-script-reinit";
+    script.async = true;
+    script.type = "module";
+    script.src = "https://tpwgts.com/wl_web/main.js?wl_id=209";
+    script.setAttribute('data-noptimize', '1');
+    script.setAttribute('data-cfasync', 'false');
+    script.setAttribute('data-wpfc-render', 'false');
+    script.setAttribute('seraph-accel-crit', '1');
+    script.setAttribute('data-no-defer', '1');
+    
+    document.body.appendChild(script);
+
+    // 3. Cleanup script element when leaving the Home page
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
       }
-    }, 1000);
-
-    return () => clearInterval(interval);
+    };
   }, []);
 
   return (
@@ -42,13 +53,13 @@ export const Home = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/40 to-[#071226]" />
         </div>
 
-        <div className="container relative z-10 mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight drop-shadow-lg">
-            Where to next?
+        <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center">
+          <h1 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">
+            Compare & Book the <br/> <span className="text-brand-500">Best Flight Deals</span>
           </h1>
 
-          <p className="text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-medium drop-shadow-md">
-            Compare prices across hundreds of airlines and find the perfect flight for your next adventure.
+          <p className="text-lg text-gray-300 mb-10 max-w-2xl">
+            Search 100+ travel sites at once. Find the cheapest, fastest, and best value flights globally.
           </p>
         </div>
       </div>
@@ -62,12 +73,7 @@ export const Home = () => {
         </div>
 
         {/* Results Widget - Hidden Until Results Load */}
-        <div
-          id="results-wrapper"
-          className="hidden bg-white rounded-3xl shadow-2xl p-6 mt-8"
-        >
-          <div id="tpwl-tickets"></div>
-        </div>
+        <div id="tpwl-tickets"></div>
 
       </section>
 

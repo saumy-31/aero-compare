@@ -27,8 +27,19 @@ export const TravelGuide = () => {
 
   // The Fixed Button Handler: Navigates cleanly to the root path without anchor jumps
   const handleFindFlights = () => {
-    navigate(`/?dest=${destination.airportCode}`);
-  };
+  navigate('/');
+
+  setTimeout(() => {
+    const searchWidget = document.getElementById('tpwl-search');
+
+    if (searchWidget) {
+      searchWidget.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }
+  }, 500);
+};
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-dark-bg pb-24">

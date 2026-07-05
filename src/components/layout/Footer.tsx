@@ -19,7 +19,7 @@ export const Footer = () => {
               <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">FlySava</span>
             </Link>
             <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-6">
-              Your premium travel companion. Find the best flights, track statuses in real-time, and discover the world's most beautiful destinations.
+              Compare prices from hundreds of airlines and travel agencies to find the perfect flight for your next adventure.
             </p>
             <div className="flex items-center space-x-4 text-gray-400">
               <a href="#" className="hover:text-blue-500 transition-colors" aria-label="Twitter"><Twitter className="w-5 h-5" /></a>
@@ -63,7 +63,7 @@ export const Footer = () => {
               <li><Link to="/about" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">About Us</Link></li>
               <li><Link to="/careers" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Careers</Link></li>
               <li><Link to="/press" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Press & Media</Link></li>
-              <li><Link to="/faq" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Help Center / FAQ</Link></li>
+              
               <li><Link to="/contact" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Contact</Link></li>
             </ul>
           </div>
