@@ -11,31 +11,33 @@ export const Home = () => {
 
   // Re-initialize TravelPayouts widget on mount
   useEffect(() => {
-    // 1. Remove any previously injected script to ensure a clean slate
-    const existingScript = document.getElementById('tpwl-script-reinit');
-    if (existingScript) {
-      existingScript.remove();
-    }
+    const searchContainer = document.getElementById('tpwl-search');
+    const ticketsContainer = document.getElementById('tpwl-tickets');
 
-    // 2. Dynamically inject the script so it executes after DOM containers are ready
-    const script = document.createElement("script");
-    script.id = "tpwl-script-reinit";
+    // 1. Clear containers to prevent duplicate rendering attempts
+    if (searchContainer) searchContainer.innerHTML = '';
+    if (ticketsContainer) ticketsContainer.innerHTML = '';
+
+    // 2. Remove old script to prevent execution block
+    const oldScript = document.getElementById('tpwl-script');
+    if (oldScript) oldScript.remove();
+
+    // 3. Inject new script with a timestamp to bypass browser caching 
+    // and force a fresh execution of the module every time the component mounts.
+    const script = document.createElement('script');
+    script.id = 'tpwl-script';
     script.async = true;
-    script.type = "module";
-    script.src = "https://tpwgts.com/wl_web/main.js?wl_id=209";
-    script.setAttribute('data-noptimize', '1');
-    script.setAttribute('data-cfasync', 'false');
-    script.setAttribute('data-wpfc-render', 'false');
-    script.setAttribute('seraph-accel-crit', '1');
-    script.setAttribute('data-no-defer', '1');
-    
-    document.body.appendChild(script);
+    script.type = 'module';
+    script.src = `https://tpwgts.com/wl_web/main.js?wl_id=209&_t=${Date.now()}`;
 
-    // 3. Cleanup script element when leaving the Home page
+    document.head.appendChild(script);
+
+    // 4. Clean up completely on unmount
     return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
+      const scriptToRemove = document.getElementById('tpwl-script');
+      if (scriptToRemove) scriptToRemove.remove();
+      if (searchContainer) searchContainer.innerHTML = '';
+      if (ticketsContainer) ticketsContainer.innerHTML = '';
     };
   }, []);
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 // Existing Pages
 import { Home } from '../pages/Home';
@@ -17,9 +17,7 @@ import { BlogPost } from '../pages/BlogPost';
 
 import { About } from '../pages/About';
 
-
 // New Company Pages
-
 import { Careers } from '../pages/Careers';
 import { Press } from '../pages/Press';
 import { Contact } from '../pages/Contact';
@@ -29,17 +27,11 @@ import { Terms } from '../pages/Terms';
 import { Privacy } from '../pages/Privacy';
 import { Cookies } from '../pages/Cookies';
 
-
-
-      
-   
-      
-     
-  
-
 export const AppRoutes = () => {
+  const location = useLocation();
+
   return (
-    <Routes>
+    <Routes key={location.pathname}>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/results" element={<Results />} />
@@ -48,23 +40,20 @@ export const AppRoutes = () => {
       <Route path="/saved" element={<SavedFlights />} />
       <Route path="/status" element={<FlightStatus />} />
 
-         {/* Legal Pages */}
+      {/* Legal Pages */}
       <Route path="/terms" element={<Terms />} />
       <Route path="/privacy" element={<Privacy />} />
       <Route path="/cookies" element={<Cookies />} />
-     
-     <Route path="/about" element={<About />} />
+      
+      <Route path="/about" element={<About />} />
       
       {/* Destinations & Blog */}
       <Route path="/destinations" element={<Destinations />} />
       <Route path="/guide/:id" element={<TravelGuide />} />
       <Route path="/blog" element={<Blog />} />
       <Route path="/blog/:slug" element={<BlogPost />} />
-
-    
       
       {/* Company Pages */}
-      
       <Route path="/careers" element={<Careers />} />
       <Route path="/press" element={<Press />} />
       <Route path="/contact" element={<Contact />} />

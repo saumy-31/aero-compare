@@ -26,19 +26,9 @@ export const TravelGuide = () => {
   }
 
   // The Fixed Button Handler: Navigates cleanly to the root path without anchor jumps
-  const handleFindFlights = () => {
-  navigate('/');
-
-  setTimeout(() => {
-    const searchWidget = document.getElementById('tpwl-search');
-
-    if (searchWidget) {
-      searchWidget.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-      });
-    }
-  }, 500);
+  // Navigate to Flights page
+const handleFindFlights = () => {
+  window.location.href = '/';
 };
 
   return (
@@ -146,7 +136,7 @@ export const TravelGuide = () => {
               onClick={handleFindFlights}
               className="w-full flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-lg shadow-blue-500/30"
             >
-              Find Flights <ArrowLeft className="w-5 h-5 ml-2 rotate-135" />
+              Find Flights <Plane className="w-5 h-5 ml-2" />
             </button>
           </div>
         </div>
