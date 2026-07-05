@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Calendar, Clock, ArrowLeft, User, Facebook, Twitter, Link2, Mail, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Calendar, Clock, ArrowLeft, User, Mail, ChevronRight, ChevronLeft } from 'lucide-react';
 import { MOCK_BLOG_POSTS } from '../data/mockBlogPosts';
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 
 export const BlogPost = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const [copied, setCopied] = useState(false);
   
   // Newsletter State
   const [newsletterStatus, setNewsletterStatus] = useState<'success' | 'error' | null>(null);
@@ -31,12 +30,6 @@ export const BlogPost = () => {
       <h1 className="text-2xl font-bold">Article not found.</h1>
     </div>
   );
-
-  const copyLink = () => {
-    navigator.clipboard.writeText(window.location.href);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -143,24 +136,6 @@ export const BlogPost = () => {
             [&_details_p]:mt-4 [&_details_p]:mb-0 [&_details_p]:text-gray-400 [&_details_p]:text-base"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
-
-          {/* Tags & Share Footer */}
-          <div className="mt-20 pt-10 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div className="flex gap-3">
-              <span className="bg-[#0c1a33] px-5 py-2 rounded-full text-sm font-bold text-gray-400 border border-white/5 uppercase tracking-wider">Travel</span>
-              <span className="bg-[#0c1a33] px-5 py-2 rounded-full text-sm font-bold text-gray-400 border border-white/5 uppercase tracking-wider">{post.category}</span>
-            </div>
-            
-            <div className="flex items-center gap-4">
-              <span className="text-sm font-black uppercase tracking-wider text-gray-500 mr-2">Share</span>
-              <button className="w-12 h-12 rounded-full bg-[#0c1a33] hover:bg-blue-600 flex items-center justify-center transition-colors border border-white/5"><Twitter className="w-5 h-5" /></button>
-              <button className="w-12 h-12 rounded-full bg-[#0c1a33] hover:bg-blue-600 flex items-center justify-center transition-colors border border-white/5"><Facebook className="w-5 h-5" /></button>
-              <button onClick={copyLink} className="w-12 h-12 rounded-full bg-[#0c1a33] hover:bg-blue-600 flex items-center justify-center transition-colors border border-white/5 relative group">
-                <Link2 className="w-5 h-5" />
-                {copied && <span className="absolute -top-12 bg-white text-black text-xs font-bold px-3 py-1.5 rounded-lg shadow-xl">Link Copied!</span>}
-              </button>
-            </div>
-          </div>
 
           {/* Author Profile Card */}
           <div className="mt-16 bg-[#0c1a33] p-10 md:p-12 rounded-[2rem] border border-white/5 flex flex-col md:flex-row items-center md:items-start gap-10 shadow-2xl">

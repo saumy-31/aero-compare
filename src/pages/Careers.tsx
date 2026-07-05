@@ -23,6 +23,10 @@ export const Careers = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleExploreFlights = () => {
+    window.location.href = '/';
+  };
+
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
@@ -182,41 +186,64 @@ export const Careers = () => {
         </motion.div>
       </div>
 
+      {/* 5. BUILDING FOR THE FUTURE */}
+      <div className="bg-slate-900 py-24 border-y border-white/10 relative overflow-hidden">
+        {/* Subtle background texture */}
+        <div className="absolute inset-0 opacity-10 mix-blend-overlay">
+          <img 
+            src="https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=1920&q=80" 
+            alt="Abstract technology" 
+            className="w-full h-full object-cover"
+          />
+        </div>
 
+        <div className="container relative z-10 mx-auto px-4 max-w-5xl">
+          <motion.div 
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
+            className="bg-white/5 backdrop-blur-lg border border-white/10 p-10 md:p-16 rounded-[2.5rem] text-center shadow-2xl"
+          >
+            <div className="w-20 h-20 bg-blue-500/20 text-blue-400 rounded-full flex items-center justify-center mx-auto mb-8">
+              <Rocket className="w-10 h-10" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-6">Building for the Future</h2>
+            <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto font-medium">
+              While we are not currently hiring, FlySava continues to grow and evolve. As we expand our platform and services, future opportunities may become available. Our focus remains on refining our technology and building the ultimate tool for modern travelers.
+            </p>
+          </motion.div>
+        </div>
+      </div>
 
-      {/* 6. STAY CONNECTED CTA (UPDATED) */}
-      <div className="container mx-auto px-4 max-w-5xl py-24">
+      {/* 6. JOIN OUR TEAM CTA (MODERN REDESIGN) */}
+      <div className="container mx-auto px-4 max-w-4xl py-16 md:py-20">
         <motion.div 
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
-          className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[2.5rem] p-10 md:p-16 text-center shadow-2xl shadow-blue-500/20"
+          className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl p-8 md:p-12 text-center shadow-2xl shadow-blue-500/20"
         >
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-6">
-            Join Our Future Team
-          </h2>
-          <p className="text-lg md:text-xl text-blue-100 leading-relaxed max-w-3xl mx-auto mb-6 font-medium">
-            FlySava is continuously growing and exploring new opportunities. While we may not have open positions at the moment, we're always interested in connecting with talented individuals who are passionate about travel, technology, design, marketing, and customer experience.
-          </p>
-          <p className="text-lg text-blue-200 leading-relaxed max-w-2xl mx-auto mb-10 font-medium">
-            If you'd like to be considered for future opportunities, send your resume and a short introduction to:<br/>
-            <a href="mailto:careers@flysava.com" className="text-white font-bold hover:underline">careers@flysava.com</a>
-          </p>
-          <button 
-            onClick={() => {
-              navigate('/');
-              setTimeout(() => {
-                const searchWidget = document.getElementById('tpwl-search');
-                if (searchWidget) {
-                  searchWidget.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
-                  });
-                }
-              }, 300);
-            }}
-            className="inline-flex items-center px-8 py-4 bg-white text-gray-900 font-bold rounded-xl hover:bg-gray-50 transition-colors shadow-lg text-lg group"
-          >
-            Explore Flights <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-          </button>
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
+              Join Our Future Team
+            </h2>
+            
+            <p className="text-base md:text-lg text-blue-50 leading-relaxed mb-8">
+              We're always interested in connecting with talented people who are passionate about travel, technology, design, marketing, and customer experience.
+            </p>
+
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 mb-8 border border-white/10 shadow-inner">
+              <p className="text-xs md:text-sm uppercase tracking-widest text-blue-200 font-bold mb-2">
+                Send your resume and introduction to:
+              </p>
+              <a href="mailto:careers@flysava.com" className="text-xl md:text-2xl font-black text-white hover:text-blue-200 transition-colors">
+                careers@flysava.com
+              </a>
+            </div>
+
+            <button 
+              onClick={handleExploreFlights}
+              className="inline-flex items-center px-8 py-3.5 bg-white text-gray-900 font-bold rounded-xl hover:bg-gray-50 transition-colors shadow-lg text-base group"
+            >
+              Explore Flights <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
         </motion.div>
       </div>
 
