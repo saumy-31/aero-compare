@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Calendar, Clock, ArrowLeft, User, Share2, Facebook, Twitter, Link2, Mail, ChevronRight, ChevronLeft, MapPin } from 'lucide-react';
+import { Calendar, Clock, ArrowLeft, User, Facebook, Twitter, Link2, Mail, ChevronRight, ChevronLeft } from 'lucide-react';
 import { MOCK_BLOG_POSTS } from '../data/mockBlogPosts';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 
 export const BlogPost = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [copied, setCopied] = useState(false);
+  
+  // Newsletter State
+  const [newsletterStatus, setNewsletterStatus] = useState<'success' | 'error' | null>(null);
+  const [isSubmittingNewsletter, setIsSubmittingNewsletter] = useState(false);
   
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
@@ -32,6 +36,34 @@ export const BlogPost = () => {
     navigator.clipboard.writeText(window.location.href);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmittingNewsletter(true);
+    setNewsletterStatus(null);
+
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      // Use FormSubmit AJAX endpoint to prevent page redirection
+      const response = await fetch("https://formsubmit.co/ajax/contact@flysava.com", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        setNewsletterStatus('success');
+        e.currentTarget.reset();
+      } else {
+        setNewsletterStatus('error');
+      }
+    } catch (error) {
+      setNewsletterStatus('error');
+    } finally {
+      setIsSubmittingNewsletter(false);
+      setTimeout(() => setNewsletterStatus(null), 5000);
+    }
   };
 
   return (
@@ -89,42 +121,23 @@ export const BlogPost = () => {
             </div>
           </header>
 
-          {/* 
-            Article Body 
-            Utilizing complex Tailwind descendant selectors to style the raw HTML 
-            into a premium magazine format.
-          */}
           <article 
             className="prose prose-invert prose-lg md:prose-xl max-w-none
-            
-            /* Typography & Spacing */
             prose-p:text-gray-300 prose-p:leading-[1.8] prose-p:mb-8 prose-p:text-[1.1rem] md:prose-p:text-[1.15rem]
             prose-headings:text-white prose-headings:font-black prose-headings:tracking-tight
             [&_h2]:text-3xl md:[&_h2]:text-4xl [&_h2]:mt-16 [&_h2]:mb-8
             [&_h3]:text-2xl [&_h3]:mt-10 [&_h3]:mb-6
             prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-blue-300 transition-colors
             prose-strong:text-white prose-strong:font-bold
-            
-            /* Lists */
             prose-ul:text-gray-300 prose-ul:my-8 prose-li:my-3 prose-li:leading-[1.8]
-            
-            /* In-Article Images */
             [&_.in-article-img]:w-full [&_.in-article-img]:h-[300px] md:[&_.in-article-img]:h-[450px] [&_.in-article-img]:object-cover [&_.in-article-img]:rounded-[2rem] [&_.in-article-img]:my-16 [&_.in-article-img]:shadow-2xl [&_.in-article-img]:border [&_.in-article-img]:border-white/5
-            
-            /* Editorial Quote Block */
             [&_.editorial-quote]:border-l-4 [&_.editorial-quote]:border-blue-500 [&_.editorial-quote]:pl-8 md:[&_.editorial-quote]:pl-12 [&_.editorial-quote]:my-16 [&_.editorial-quote]:italic [&_.editorial-quote]:text-2xl md:[&_.editorial-quote]:text-3xl [&_.editorial-quote]:text-white [&_.editorial-quote]:font-serif [&_.editorial-quote]:leading-relaxed
-            
-            /* Custom Cards (Destination, Budget, Tips) */
             [&_.destination-card]:bg-[#0c1a33] [&_.destination-card]:p-8 md:[&_.destination-card]:p-10 [&_.destination-card]:rounded-[2rem] [&_.destination-card]:border [&_.destination-card]:border-white/10 [&_.destination-card]:my-12 [&_.destination-card]:shadow-xl
             [&_.destination-card_h3]:text-2xl [&_.destination-card_h3]:mt-0 [&_.destination-card_h3]:mb-6 [&_.destination-card_h3]:text-white
-            
             [&_.budget-card]:bg-gradient-to-br [&_.budget-card]:from-[#0c1a33] [&_.budget-card]:to-[#071226] [&_.budget-card]:p-8 md:[&_.budget-card]:p-10 [&_.budget-card]:rounded-[2rem] [&_.budget-card]:border [&_.budget-card]:border-green-500/20 [&_.budget-card]:my-12 [&_.budget-card]:shadow-2xl
             [&_.budget-card_h3]:text-2xl [&_.budget-card_h3]:mt-0 [&_.budget-card_h3]:mb-6 [&_.budget-card_h3]:text-green-400
-            
             [&_.flight-tips-card]:bg-blue-900/20 [&_.flight-tips-card]:p-8 md:[&_.flight-tips-card]:p-10 [&_.flight-tips-card]:rounded-[2rem] [&_.flight-tips-card]:border [&_.flight-tips-card]:border-blue-500/30 [&_.flight-tips-card]:my-12
             [&_.flight-tips-card_h3]:text-2xl [&_.flight-tips-card_h3]:mt-0 [&_.flight-tips-card_h3]:mb-4 [&_.flight-tips-card_h3]:text-blue-400
-            
-            /* FAQ Accordion Styling */
             [&_details]:bg-[#0c1a33] [&_details]:p-6 [&_details]:rounded-2xl [&_details]:mb-4 [&_details]:cursor-pointer [&_details]:border [&_details]:border-white/5 [&_details]:transition-all hover:[&_details]:border-blue-500/30
             [&_summary]:font-bold [&_summary]:text-lg md:[&_summary]:text-xl [&_summary]:text-white [&_summary]:outline-none [&_summary]:list-none [&_summary]:flex [&_summary]:justify-between [&_summary::-webkit-details-marker]:hidden
             [&_details_p]:mt-4 [&_details_p]:mb-0 [&_details_p]:text-gray-400 [&_details_p]:text-base"
@@ -196,10 +209,51 @@ export const BlogPost = () => {
               <Mail className="w-12 h-12 text-blue-400 mx-auto mb-6 relative z-10" />
               <h3 className="text-3xl font-black text-white mb-4 relative z-10">Fly Smarter.</h3>
               <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-8 relative z-10">Join 50,000+ travelers receiving our weekly flight hacks, mistake fares, and secret destination guides.</p>
-              <div className="space-y-4 relative z-10">
-                <input type="email" placeholder="Your email address" className="w-full bg-[#071226] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all" />
-                <button className="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-4 rounded-xl transition-colors shadow-lg shadow-blue-900/50 uppercase tracking-wide text-sm">Join the Club</button>
-              </div>
+              
+              <form onSubmit={handleSubscribe} className="space-y-4 relative z-10">
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_subject" value="New Newsletter Subscription" />
+                <input type="hidden" name="_template" value="table" />
+                
+                <input 
+                  type="email" 
+                  name="email"
+                  required
+                  placeholder="Your email address" 
+                  disabled={isSubmittingNewsletter}
+                  className="w-full bg-[#071226] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all disabled:opacity-50" 
+                />
+                <button 
+                  type="submit" 
+                  disabled={isSubmittingNewsletter}
+                  className="w-full flex items-center justify-center bg-blue-600 hover:bg-blue-500 text-white font-black py-4 rounded-xl transition-colors shadow-lg shadow-blue-900/50 uppercase tracking-wide text-sm disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {isSubmittingNewsletter ? 'Joining...' : 'Join the Club'}
+                </button>
+
+                <AnimatePresence>
+                  {newsletterStatus === 'success' && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -10 }} 
+                      animate={{ opacity: 1, y: 0 }} 
+                      exit={{ opacity: 0, height: 0 }} 
+                      className="text-green-400 text-sm font-bold mt-2"
+                    >
+                      Welcome to the club!
+                    </motion.div>
+                  )}
+                  {newsletterStatus === 'error' && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -10 }} 
+                      animate={{ opacity: 1, y: 0 }} 
+                      exit={{ opacity: 0, height: 0 }} 
+                      className="text-red-400 text-sm font-bold mt-2"
+                    >
+                      Oops! Something went wrong.
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </form>
             </div>
 
             {/* Quick Actions (Table of Contents proxy) */}

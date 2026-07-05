@@ -22,6 +22,20 @@ export const About = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleFindFlights = () => {
+    navigate('/');
+
+    setTimeout(() => {
+      const searchWidget = document.getElementById('tpwl-search');
+      if (searchWidget) {
+        searchWidget.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }
+    }, 300);
+  };
+
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
@@ -79,7 +93,7 @@ export const About = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            onClick={() => navigate('/')}
+            onClick={handleFindFlights}
             className="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors shadow-lg shadow-blue-500/30 text-lg"
           >
             Start Exploring Flights <ArrowRight className="w-5 h-5 ml-2" />
@@ -284,7 +298,7 @@ export const About = () => {
               Flysava is built around one idea: better travel decisions should be easier to make. Whether you are planning a short domestic trip, an international journey, or your next holiday, Flysava helps you explore your options and move one step closer to your destination.
             </p>
             <button 
-              onClick={() => navigate('/')}
+              onClick={handleFindFlights}
               className="inline-flex items-center px-8 py-4 bg-white text-gray-900 font-bold rounded-xl hover:bg-gray-100 transition-colors shadow-lg text-lg"
             >
               Start Your Journey <ArrowRight className="w-5 h-5 ml-2" />

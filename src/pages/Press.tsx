@@ -167,10 +167,10 @@ export const Press = () => {
               </div>
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Media Inquiries</h3>
               <a 
-                href="mailto:contact@flysava.com" 
+                href="mailto:business@flysava.com" 
                 className="block text-lg text-gray-600 dark:text-gray-300 mb-8 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
-                contact@flysava.com
+                business@flysava.com
               </a>
               <a 
                 href="mailto:contact@flysava.com"
