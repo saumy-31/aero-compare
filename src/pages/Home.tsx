@@ -1,28 +1,58 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+// --- GLOBAL BACK-BUTTON INTERCEPTOR ---
+// This runs once when the app loads. Because it sits outside the component, 
+// it remains active even when the user is on the About, Careers, or Blog pages.
+// When the user clicks the browser Back button, it catches the event and forces a hard reload.
+if (typeof window !== 'undefined' && !(window as any)._flightPageReloadListener) {
+  window.addEventListener('popstate', () => {
+    // If the user navigates back to the root Flights page, force a complete refresh
+    if (window.location.pathname === '/') {
+      window.location.reload();
+    }
+  });
+  // Prevent duplicate listeners during development hot-reloads
+  (window as any)._flightPageReloadListener = true; 
+}
+
 export const Home = () => {
   const location = useLocation();
 
-  // Scroll to top on page load
+  // 1. Catch Safari/iOS bfcache (Back-Forward Cache)
+  useEffect(() => {
+    const handlePageShow = (event: PageTransitionEvent) => {
+      // If the browser tries to restore the page from memory instead of requesting it, force a reload
+      if (event.persisted) {
+        window.location.reload();
+      }
+    };
+
+    window.addEventListener('pageshow', handlePageShow);
+    return () => {
+      window.removeEventListener('pageshow', handlePageShow);
+    };
+  }, []);
+
+  // 2. Scroll to top on page load
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname, location.search]);
 
-  // Re-initialize TravelPayouts widget on mount
+  // 3. Re-initialize TravelPayouts widget
   useEffect(() => {
     const searchContainer = document.getElementById('tpwl-search');
     const ticketsContainer = document.getElementById('tpwl-tickets');
 
-    // 1. Clear containers to prevent duplicate rendering attempts
+    // Clear containers to prevent duplicate rendering attempts
     if (searchContainer) searchContainer.innerHTML = '';
     if (ticketsContainer) ticketsContainer.innerHTML = '';
 
-    // 2. Remove old script to prevent execution block
+    // Remove old script to prevent execution block
     const oldScript = document.getElementById('tpwl-script');
     if (oldScript) oldScript.remove();
 
-    // 3. Inject new script with a timestamp to bypass browser caching 
+    // Inject new script with a timestamp to bypass browser caching 
     const script = document.createElement('script');
     script.id = 'tpwl-script';
     script.async = true;
@@ -32,7 +62,6 @@ export const Home = () => {
     document.head.appendChild(script);
 
     // --- ENHANCED AUTO-SCROLL LOGIC ---
-    // Use ResizeObserver to detect when actual results populate (height expands)
     let hasScrolledForCurrentSearch = false;
 
     const resizeObserver = new ResizeObserver((entries) => {
@@ -60,7 +89,7 @@ export const Home = () => {
     }
     // ----------------------------------
 
-    // 4. Clean up completely on unmount
+    // Clean up completely on unmount
     return () => {
       resizeObserver.disconnect();
       const scriptToRemove = document.getElementById('tpwl-script');
@@ -68,7 +97,7 @@ export const Home = () => {
       if (searchContainer) searchContainer.innerHTML = '';
       if (ticketsContainer) ticketsContainer.innerHTML = '';
     };
-  }, []);
+  }, [location.key]); 
 
   return (
     <div className="min-h-screen bg-[#071226] transition-colors duration-200">

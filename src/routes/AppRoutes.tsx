@@ -1,6 +1,8 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
+
+
 // Existing Pages
 import { Home } from '../pages/Home';
 import { Results } from '../pages/Results';
@@ -39,6 +41,13 @@ export const AppRoutes = () => {
       <Route path="/compare" element={<CompareFlights />} />
       <Route path="/saved" element={<SavedFlights />} />
       <Route path="/status" element={<FlightStatus />} />
+
+      {/* 2. Add key={location.key} to the Home route */}
+      <Route path="/" element={<Home key={location.key} />} />
+      
+      {/* Your other routes remain unchanged */}
+      <Route path="/about" element={<About />} />
+      <Route path="/careers" element={<Careers />} />
 
       {/* Legal Pages */}
       <Route path="/terms" element={<Terms />} />
