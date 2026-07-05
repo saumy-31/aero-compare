@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { AppRoutes } from './routes/AppRoutes';
+import { CookieConsent } from './components/layout/CookieConsent';
 
 export default function App() {
   return (
@@ -15,6 +16,9 @@ export default function App() {
         </main>
 
         <Footer />
+        
+        {/* Global Cookie Consent Banner */}
+        <CookieConsent />
       </div>
     </BrowserRouter>
   );
