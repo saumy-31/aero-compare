@@ -38,7 +38,7 @@ export const About = () => {
 
   const stats = [
     { icon: <Globe2 />, value: "100+", label: "Travel Sources" },
-    { icon: <MapPin />, value: "50+", label: "Destinations" },
+    { icon: <MapPin />, value: "200+", label: "Destinations" },
     { icon: <Clock />, value: "24/7", label: "Search Access" },
     { icon: <Plane />, value: "Global", label: "Coverage" },
   ];

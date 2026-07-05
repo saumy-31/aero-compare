@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Clock, MessageSquare, Send, ChevronDown } from 'lucide-react';
+import { Mail, Clock, Send, ChevronDown } from 'lucide-react';
 
 const faqs = [
   { id: "faq1", q: "What is Flysava?", a: "Flysava is a travel comparison website that helps users search and compare flight options from third-party travel providers. Our goal is to make it easier to find useful travel options quickly and clearly." },
@@ -77,11 +77,19 @@ export const Contact = () => {
           >
             <div className="bg-white dark:bg-dark-card p-8 rounded-3xl border border-gray-100 dark:border-dark-border shadow-xl shadow-gray-200/50 dark:shadow-none">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send us a message</h2>
-              <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
+              
+              <form action="https://formsubmit.co/contact@flysava.com" method="POST" className="space-y-5">
+                {/* FormSubmit Configuration Fields */}
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_subject" value="New FlySava Contact Form Submission" />
+                <input type="hidden" name="_template" value="table" />
+
                 <div>
                   <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
                   <input 
                     type="text" 
+                    name="name"
+                    required
                     className="w-full bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-900 dark:text-white transition-all"
                     placeholder="John Doe"
                   />
@@ -90,6 +98,8 @@ export const Contact = () => {
                   <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
                   <input 
                     type="email" 
+                    name="email"
+                    required
                     className="w-full bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-900 dark:text-white transition-all"
                     placeholder="john@example.com"
                   />
@@ -98,6 +108,8 @@ export const Contact = () => {
                   <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Subject</label>
                   <input 
                     type="text" 
+                    name="subject"
+                    required
                     className="w-full bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-900 dark:text-white transition-all"
                     placeholder="How can we help?"
                   />
@@ -105,6 +117,8 @@ export const Contact = () => {
                 <div>
                   <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Message</label>
                   <textarea 
+                    name="message"
+                    required
                     rows={4}
                     className="w-full bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-900 dark:text-white transition-all resize-none"
                     placeholder="Write your message here..."
@@ -129,22 +143,15 @@ export const Contact = () => {
             {/* Contact Information Blocks */}
             <div>
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Contact Information</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4">
                 <div className="flex items-center p-4 bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border shadow-sm">
                   <Mail className="w-6 h-6 text-blue-500 mr-4 flex-shrink-0" />
                   <div>
-                    <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mb-0.5">General Support</p>
-                    <a href="mailto:support@flysava.com" className="text-gray-900 dark:text-white font-medium hover:text-blue-500 transition-colors">support@flysava.com</a>
+                    <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mb-0.5">Contact Email</p>
+                    <a href="mailto:contact@flysava.com" className="text-gray-900 dark:text-white font-medium hover:text-blue-500 transition-colors">contact@flysava.com</a>
                   </div>
                 </div>
                 <div className="flex items-center p-4 bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border shadow-sm">
-                  <MessageSquare className="w-6 h-6 text-purple-500 mr-4 flex-shrink-0" />
-                  <div>
-                    <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mb-0.5">Business Inquiries</p>
-                    <a href="mailto:business@flysava.com" className="text-gray-900 dark:text-white font-medium hover:text-purple-500 transition-colors">business@flysava.com</a>
-                  </div>
-                </div>
-                <div className="flex items-center p-4 bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border shadow-sm sm:col-span-2">
                   <Clock className="w-6 h-6 text-green-500 mr-4 flex-shrink-0" />
                   <div>
                     <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mb-0.5">Response Time</p>

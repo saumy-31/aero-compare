@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Plane, Twitter, Instagram, Facebook, Github } from 'lucide-react';
+import { Plane, Instagram, Linkedin } from 'lucide-react';
 
 export const Footer = () => {
   const handleScrollTop = () => {
@@ -22,10 +22,28 @@ export const Footer = () => {
               Compare prices from hundreds of airlines and travel agencies to find the perfect flight for your next adventure.
             </p>
             <div className="flex items-center space-x-4 text-gray-400">
-              <a href="#" className="hover:text-blue-500 transition-colors" aria-label="Twitter"><Twitter className="w-5 h-5" /></a>
-              <a href="#" className="hover:text-blue-500 transition-colors" aria-label="Instagram"><Instagram className="w-5 h-5" /></a>
-              <a href="#" className="hover:text-blue-500 transition-colors" aria-label="Facebook"><Facebook className="w-5 h-5" /></a>
-              <a href="#" className="hover:text-blue-500 transition-colors" aria-label="Github"><Github className="w-5 h-5" /></a>
+              <a href="https://www.instagram.com/flysavaofficial/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors" aria-label="Instagram">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+  href="https://x.com/flysavaofficial"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hover:text-blue-500 transition-colors"
+  aria-label="X"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className="w-5 h-5"
+  >
+    <path d="M18.244 2H21.5l-7.11 8.13L22.75 22h-6.54l-5.12-6.69L5.24 22H2l7.61-8.7L1.5 2h6.7l4.63 6.1L18.244 2z"/>
+  </svg>
+</a>
+              <a href="#" className="hover:text-blue-500 transition-colors" aria-label="LinkedIn">
+                <Linkedin className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
@@ -50,7 +68,7 @@ export const Footer = () => {
               </li>
               <li>
                 <Link to="/blog" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">
-                  Blog
+                  Travel Guides
                 </Link>
               </li>
             </ul>

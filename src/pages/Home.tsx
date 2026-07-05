@@ -23,7 +23,6 @@ export const Home = () => {
     if (oldScript) oldScript.remove();
 
     // 3. Inject new script with a timestamp to bypass browser caching 
-    // and force a fresh execution of the module every time the component mounts.
     const script = document.createElement('script');
     script.id = 'tpwl-script';
     script.async = true;
@@ -32,8 +31,38 @@ export const Home = () => {
 
     document.head.appendChild(script);
 
+    // --- ENHANCED AUTO-SCROLL LOGIC ---
+    // Use ResizeObserver to detect when actual results populate (height expands)
+    let hasScrolledForCurrentSearch = false;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        const height = entry.contentRect.height;
+
+        // If height is massive (results loaded) and we haven't scrolled yet
+        if (height > 400 && !hasScrolledForCurrentSearch) {
+          // Scroll to the tickets container with a slight delay for smooth painting
+          setTimeout(() => {
+            ticketsContainer?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+          
+          hasScrolledForCurrentSearch = true; // Lock it so filtering doesn't cause jumpiness
+        } 
+        // If height drops (user started a new search and widget went back to loading state)
+        else if (height < 200) {
+          hasScrolledForCurrentSearch = false; // Reset the lock for the next search
+        }
+      }
+    });
+
+    if (ticketsContainer) {
+      resizeObserver.observe(ticketsContainer);
+    }
+    // ----------------------------------
+
     // 4. Clean up completely on unmount
     return () => {
+      resizeObserver.disconnect();
       const scriptToRemove = document.getElementById('tpwl-script');
       if (scriptToRemove) scriptToRemove.remove();
       if (searchContainer) searchContainer.innerHTML = '';

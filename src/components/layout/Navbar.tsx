@@ -11,7 +11,7 @@ export const Navbar = () => {
     { name: 'Flights', path: '/' },
     { name: 'Status', path: '/status' },
     { name: 'Explore', path: '/destinations' },
-    { name: 'Blog', path: '/blog' },
+    { name: 'Travel Guides', path: '/blog' },
   ];
 
   useEffect(() => {
