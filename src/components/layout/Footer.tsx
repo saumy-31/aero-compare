@@ -56,11 +56,11 @@ export const Footer = () => {
               Compare prices from hundreds of airlines and travel agencies to find the perfect flight for your next adventure.
             </p>
             <div className="flex items-center space-x-4 text-gray-400">
-              <a href="https://www.instagram.com/flysavaofficial/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors" aria-label="Instagram">
+              <a href=" https://www.instagram.com/getflysava/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors" aria-label="Instagram">
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="https://x.com/flysavaofficial"
+                href="https://www.x.com/getflysava/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-blue-500 transition-colors"
@@ -75,7 +75,7 @@ export const Footer = () => {
                   <path d="M18.244 2H21.5l-7.11 8.13L22.75 22h-6.54l-5.12-6.69L5.24 22H2l7.61-8.7L1.5 2h6.7l4.63 6.1L18.244 2z"/>
                 </svg>
               </a>
-              <a href="#" className="hover:text-blue-500 transition-colors" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/getflysava/" className="hover:text-blue-500 transition-colors" aria-label="LinkedIn">
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
