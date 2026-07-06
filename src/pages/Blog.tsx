@@ -52,13 +52,18 @@ export const Blog = () => {
           transition={{ delay: 0.2 }}
           className="relative max-w-3xl mx-auto mb-12"
         >
-          <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-500 w-6 h-6" />
+          {/* Fixed Search Icon Positioning */}
+          <div className="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
+            <Search className="w-5 h-5 text-gray-400" />
+          </div>
+          
+          {/* Fixed Input Padding */}
           <input 
             type="text" 
             placeholder="Search articles, destinations, or tips..." 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#0c1a33] text-white p-5 md:p-6 pl-16 rounded-full border border-white/10 focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500/20 transition-all text-lg shadow-2xl placeholder-gray-600"
+            className="w-full bg-[#0c1a33] text-white py-5 md:py-6 pr-6 pl-14 md:pl-16 rounded-full border border-white/10 focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500/20 transition-all text-lg shadow-2xl placeholder-gray-600"
           />
         </motion.div>
 
