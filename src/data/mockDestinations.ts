@@ -92,7 +92,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'osaka-jp', city: 'Osaka', country: 'Japan', airportCode: 'KIX', 
-    image: `https://images.unsplash.com/photo-1590559899731-a382839cecdf${cropParams}`,
+    image: `https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=1600&q=80`,
     description: 'A large port city and commercial center known for its modern architecture, nightlife and hearty street food.',
     budget: 'Moderate', tripType: 'City', bestSeason: 'September to November', dailyBudget: 110,
     attractions: [
@@ -114,7 +114,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'seoul-kr', city: 'Seoul', country: 'South Korea', airportCode: 'ICN', 
-    image: `https://images.unsplash.com/photo-1538681105587-85640961bf8b${cropParams}`,
+    image: `https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&w=1600&q=80`,
     description: 'A massive metropolis where modern skyscrapers, high-tech subways and pop culture meet Buddhist temples.',
     budget: 'Moderate', tripType: 'City', bestSeason: 'September to November', dailyBudget: 100,
     attractions: [
@@ -136,7 +136,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'singapore-sg', city: 'Singapore', country: 'Singapore', airportCode: 'SIN', 
-    image: `https://images.unsplash.com/photo-1525625299386-1ea8af095813${cropParams}`,
+    image: `https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=1600&q=80`,
     description: 'A global financial center with a tropical climate and multicultural population.',
     budget: 'Luxury', tripType: 'City', bestSeason: 'February to April', dailyBudget: 160,
     attractions: [
@@ -158,7 +158,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'bangkok-th', city: 'Bangkok', country: 'Thailand', airportCode: 'BKK', 
-    image: `https://images.unsplash.com/photo-1508009603885-50cf7cbf0076${cropParams}`,
+    image: `https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=1600&q=80`,
     description: 'Thailand’s capital is known for ornate shrines and vibrant street life.',
     budget: 'Budget', tripType: 'City', bestSeason: 'November to February', dailyBudget: 50,
     attractions: [
@@ -180,7 +180,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'phuket-th', city: 'Phuket', country: 'Thailand', airportCode: 'HKT', 
-    image: `https://images.unsplash.com/photo-1581793751508-30517f8b9115${cropParams}`,
+    image: `https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80`,
     description: 'A rainforested, mountainous island in the Andaman Sea, with some of Thailand’s most popular beaches.',
     budget: 'Budget', tripType: 'Beach', bestSeason: 'November to April', dailyBudget: 60,
     attractions: [
@@ -202,7 +202,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'kuala-lumpur-my', city: 'Kuala Lumpur', country: 'Malaysia', airportCode: 'KUL', 
-    image: `https://images.unsplash.com/photo-1596422846543-75c6fc198f07${cropParams}`,
+    image: `https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=1600&q=80`,
     description: 'The modern capital of Malaysia known for its iconic Petronas Twin Towers.',
     budget: 'Budget', tripType: 'City', bestSeason: 'May to July', dailyBudget: 55,
     attractions: [
@@ -224,7 +224,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'dubai-ae', city: 'Dubai', country: 'UAE', airportCode: 'DXB', 
-    image: `https://images.unsplash.com/photo-1512453979438-515cb62eb292${cropParams}`,
+    image: `https://images.unsplash.com/photo-1526495124232-a04e1849168c?auto=format&fit=crop&w=1600&q=80`,
     description: 'A city of skyscrapers, ports, and beaches, where big business takes place alongside sun-seeking tourism.',
     budget: 'Luxury', tripType: 'Luxury', bestSeason: 'November to March', dailyBudget: 250,
     attractions: [
@@ -246,7 +246,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'abu-dhabi-ae', city: 'Abu Dhabi', country: 'UAE', airportCode: 'AUH', 
-    image: `https://images.unsplash.com/photo-1512632578888-169bbbc64f33${cropParams}`,
+    image: `https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1600&q=80`,
     description: 'The capital of the UAE, focusing on cultural attractions, mega-malls, and luxury resorts.',
     budget: 'Luxury', tripType: 'Culture', bestSeason: 'November to March', dailyBudget: 200,
     attractions: [
@@ -268,7 +268,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'hong-kong-hk', city: 'Hong Kong', country: 'Hong Kong', airportCode: 'HKG', 
-    image: `https://images.unsplash.com/photo-1507525428034-b723cf961d3e${cropParams}`,
+    image: `https://res.klook.com/image/upload/fl_lossy.progressive,q_60/v1755071654/destination/rjgbib6j1mmzviy5gvi1.jpg`,
     description: 'A vibrant, densely populated urban center known for its skyline and deep natural harbor.',
     budget: 'Luxury', tripType: 'City', bestSeason: 'October to December', dailyBudget: 180,
     attractions: [
@@ -290,7 +290,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'maldives-mv', city: 'Maldives', country: 'Maldives', airportCode: 'MLE', 
-    image: `https://images.unsplash.com/photo-1514282401047-d79a71a590e8${cropParams}`,
+    image: `https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1600&q=80`,
     description: 'A tropical nation in the Indian Ocean composed of 26 ring-shaped atolls.',
     budget: 'Luxury', tripType: 'Beach', bestSeason: 'November to April', dailyBudget: 400,
     attractions: [
@@ -468,7 +468,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'milan-it', city: 'Milan', country: 'Italy', airportCode: 'MXP', 
-    image: `https://images.unsplash.com/photo-1533235651586-3f191b70c326${cropParams}`,
+    image: `https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=1600&q=80`,
     description: 'A metropolis in Italy\'s northern Lombardy region, is a global capital of fashion and design.',
     budget: 'Luxury', tripType: 'City', bestSeason: 'April to May', dailyBudget: 150,
     attractions: [
@@ -490,7 +490,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'barcelona-es', city: 'Barcelona', country: 'Spain', airportCode: 'BCN', 
-    image: `https://images.unsplash.com/photo-1583422409516-2895a77ef244${cropParams}`,
+    image: `https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1600&q=80`,
     description: 'The cosmopolitan capital of Spain’s Catalonia region, known for its art and architecture.',
     budget: 'Moderate', tripType: 'Culture', bestSeason: 'May to June', dailyBudget: 110,
     attractions: [
@@ -712,7 +712,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   // --- NORTH AMERICA ---
   {
     id: 'new-york-us', city: 'New York', country: 'USA', airportCode: 'JFK',
-    image: `https://images.unsplash.com/photo-1496442226224-f726719e73b2${cropParams}`,
+    image: `https://images.unsplash.com/photo-1534430480872-3498386e7856?auto=format&fit=crop&w=1600&q=80`,
     description: 'The city that never sleeps, known for its towering skyscrapers, Broadway shows, and Central Park.',
     budget: 'Luxury', tripType: 'City', bestSeason: 'September to November', dailyBudget: 200,
     attractions: [
@@ -734,7 +734,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'los-angeles-us', city: 'Los Angeles', country: 'USA', airportCode: 'LAX', 
-    image: `https://images.unsplash.com/photo-1518481612222-68bab828fd58${cropParams}`,
+    image: `https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?auto=format&fit=crop&w=1600&q=80`,
     description: 'The entertainment capital of the world, offering beaches, Hollywood glamour, and perfect weather.',
     budget: 'Moderate', tripType: 'City', bestSeason: 'March to May', dailyBudget: 140,
     attractions: [
@@ -756,7 +756,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'miami-us', city: 'Miami', country: 'USA', airportCode: 'MIA', 
-    image: `https://images.unsplash.com/photo-1514363990992-56c4b6851484${cropParams}`,
+    image: `https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?auto=format&fit=crop&w=1600&q=80`,
     description: 'An international city at Florida\'s southeastern tip, famous for its beaches and vibrant nightlife.',
     budget: 'Moderate', tripType: 'Beach', bestSeason: 'March to May', dailyBudget: 150,
     attractions: [
@@ -778,7 +778,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'las-vegas-us', city: 'Las Vegas', country: 'USA', airportCode: 'LAS', 
-    image: `https://images.unsplash.com/photo-1605810736005-9fa524fc2fb4${cropParams}`,
+    image: `https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?auto=format&fit=crop&w=1600&q=80`,
     description: 'The ultimate playground known for its vibrant nightlife, 24-hour casinos, and entertainment options.',
     budget: 'Moderate', tripType: 'City', bestSeason: 'March to May', dailyBudget: 130,
     attractions: [
@@ -912,7 +912,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'lima-pe', city: 'Lima', country: 'Peru', airportCode: 'LIM', 
-    image: `https://images.unsplash.com/photo-1527318041928-868ee3a4cc48${cropParams}`,
+    image: `https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&w=1600&q=80`,
     description: 'Peru\'s capital, a bustling metropolis and one of South America’s largest cities.',
     budget: 'Budget', tripType: 'Culture', bestSeason: 'December to April', dailyBudget: 45,
     attractions: [
@@ -1002,7 +1002,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'cairo-eg', city: 'Cairo', country: 'Egypt', airportCode: 'CAI', 
-    image: `https://images.unsplash.com/photo-1553603227-234b9b9a895b${cropParams}`,
+    image: `https://images.unsplash.com/photo-1572252009286-268acec5ca0a?auto=format&fit=crop&w=1600&q=80`,
     description: 'Egypt’s sprawling capital, set on the Nile River, known for its antiquities.',
     budget: 'Budget', tripType: 'Culture', bestSeason: 'October to April', dailyBudget: 40,
     attractions: [
@@ -1026,7 +1026,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   // --- OCEANIA ---
   {
     id: 'sydney-au', city: 'Sydney', country: 'Australia', airportCode: 'SYD', 
-    image: `https://images.unsplash.com/photo-1506973032731-59b96d764dce${cropParams}`,
+    image: `https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1600&q=80`,
     description: 'Capital of New South Wales and one of Australia\'s largest cities, best known for its harborfront Opera House.',
     budget: 'Luxury', tripType: 'City', bestSeason: 'September to November', dailyBudget: 150,
     attractions: [
@@ -1092,7 +1092,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'queenstown-nz', city: 'Queenstown', country: 'New Zealand', airportCode: 'ZQN', 
-    image: `https://images.unsplash.com/photo-1517594422361-5e18d04ec31f${cropParams}`,
+    image: `https://www.newzealand.com/assets/externally-managed-assets/tbd-assets/tbd-folder-10092946/img-1731461073-7951-258451-tbd-asset__ExtRewriteWyJwbmciLCJqcGciXQ_aWxvdmVrZWxseQo_CropResizeWzk0MCw1MzAsOTAsImpwZyJd.jpg${cropParams}`,
     description: 'A resort town in Otago in the south-west of New Zealand\'s South Island, known as the adventure capital.',
     budget: 'Luxury', tripType: 'Adventure', bestSeason: 'December to February', dailyBudget: 160,
     attractions: [
@@ -1138,7 +1138,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'reykjavik-is', city: 'Reykjavik', country: 'Iceland', airportCode: 'KEF', 
-    image: `https://images.unsplash.com/photo-1504829857797-cb23428f7004${cropParams}`,
+    image: `https://touristjourney.com/wp-content/uploads/2020/06/Reykjavik-City-Guide-1024x768.jpg${cropParams}`,
     description: 'The capital of Iceland, known for its striking landscape, volcanoes, and geothermal pools.',
     budget: 'Luxury', tripType: 'Nature', bestSeason: 'June to August', dailyBudget: 200,
     attractions: [
@@ -1160,7 +1160,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'lapland-fi', city: 'Lapland', country: 'Finland', airportCode: 'RVN', 
-    image: `https://images.unsplash.com/photo-1517299694464-9646b9c9f425${cropParams}`,
+    image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDYxC-40pGtj_XXE-2odBRnXoK-P39hoEXLOERfQpSHLEgjbn4FMI5ZkcQ&s=10${cropParams}`,
     description: 'Finland’s northernmost region, a sparsely populated area bordering Sweden, Norway, and Russia.',
     budget: 'Luxury', tripType: 'Nature', bestSeason: 'December to March', dailyBudget: 180,
     attractions: [
@@ -1182,7 +1182,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'petra-jo', city: 'Petra', country: 'Jordan', airportCode: 'AMM', 
-    image: `https://images.unsplash.com/photo-1571401834311-209a3dc8f643${cropParams}`,
+    image: `https://upload.wikimedia.org/wikipedia/commons/e/e8/Al_Deir_Petra.JPG${cropParams}`,
     description: 'A famous archaeological site in Jordan\'s southwestern desert, featuring rock-cut architecture.',
     budget: 'Moderate', tripType: 'Culture', bestSeason: 'March to May', dailyBudget: 80,
     attractions: [
@@ -1226,7 +1226,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'machu-picchu-pe', city: 'Machu Picchu', country: 'Peru', airportCode: 'CUZ', 
-    image: `https://images.unsplash.com/photo-1526392060635-c061dfa34138${cropParams}`,
+    image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREFPzcaV-IjUShaIaLfCjTMU93BM3qZzshyjNrgw1n8w5Ju9SSN4zpP5c&s=10${cropParams}`,
     description: 'An Incan citadel set high in the Andes Mountains in Peru, above the Urubamba River valley.',
     budget: 'Moderate', tripType: 'Adventure', bestSeason: 'May to October', dailyBudget: 100,
     attractions: [
@@ -1270,7 +1270,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'bora-bora-pf', city: 'Bora Bora', country: 'French Polynesia', airportCode: 'BOB', 
-    image: `https://images.unsplash.com/photo-1582967667825-992e5f58bc16${cropParams}`,
+    image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnIlVOHUwiCAA0D-ZGGHmh0s1gCkVUXOW0mroWCKTQ3cHN-Zc0LIMuGs8&s=10${cropParams}`,
     description: 'A small South Pacific island northwest of Tahiti in French Polynesia, surrounded by sand-fringed motus.',
     budget: 'Luxury', tripType: 'Luxury', bestSeason: 'May to October', dailyBudget: 500,
     attractions: [
@@ -1292,7 +1292,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'seychelles-sc', city: 'Seychelles', country: 'Seychelles', airportCode: 'SEZ', 
-    image: `https://images.unsplash.com/photo-1520612620556-9a25db9316d8${cropParams}`,
+    image: `https://cdn.conscious-explorer.com/keycdn/file/a51da0068065eaead885f44f4e029d36835038a5d42082201d17f28559b2d4b5/SJoUTslQaytZjQm0.webp${cropParams}`,
     description: 'An archipelago of 115 islands in the Indian Ocean, off East Africa.',
     budget: 'Luxury', tripType: 'Beach', bestSeason: 'April to May', dailyBudget: 250,
     attractions: [

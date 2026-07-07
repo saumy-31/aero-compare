@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Filter, Sun, Mountain, Building, Wallet, Compass, Search, ChevronDown, Diamond } from 'lucide-react';
 import { MOCK_DESTINATIONS } from '../data/mockDestinations';
@@ -7,10 +7,64 @@ import { SEO } from '../components/seo/SEO';
 
 export const Destinations = () => {
   const navigate = useNavigate();
-  const [activeType, setActiveType] = useState<string>('All');
-  const [budgetFilter, setBudgetFilter] = useState<string>('All');
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [visibleCount, setVisibleCount] = useState<number>(12);
+  const location = useLocation();
+  
+  // 1. Create a unique storage key tied to this specific router history entry
+  const stateKey = `explore_${location.key}`;
+
+  // 2. Initialize State directly from the location-specific storage
+  const [activeType, setActiveType] = useState<string>(() => 
+    sessionStorage.getItem(`${stateKey}_type`) || 'All'
+  );
+  const [budgetFilter, setBudgetFilter] = useState<string>(() => 
+    sessionStorage.getItem(`${stateKey}_budget`) || 'All'
+  );
+  const [searchQuery, setSearchQuery] = useState<string>(() => 
+    sessionStorage.getItem(`${stateKey}_search`) || ''
+  );
+  const [visibleCount, setVisibleCount] = useState<number>(() => {
+    const saved = sessionStorage.getItem(`${stateKey}_count`);
+    return saved ? parseInt(saved, 10) : 12;
+  });
+
+  // 3. Silently save state whenever it changes
+  useEffect(() => {
+    sessionStorage.setItem(`${stateKey}_type`, activeType);
+    sessionStorage.setItem(`${stateKey}_budget`, budgetFilter);
+    sessionStorage.setItem(`${stateKey}_search`, searchQuery);
+    sessionStorage.setItem(`${stateKey}_count`, visibleCount.toString());
+  }, [activeType, budgetFilter, searchQuery, visibleCount, stateKey]);
+
+  // 4. Handle Scroll Restoration flawlessly
+  useEffect(() => {
+    const savedScroll = sessionStorage.getItem(`${stateKey}_scroll`);
+    
+    if (savedScroll) {
+      // Small timeout ensures Framer Motion has rendered the expanded grid before scrolling
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          window.scrollTo({ top: parseInt(savedScroll, 10), behavior: 'instant' });
+        }, 50);
+      });
+    } else {
+      window.scrollTo(0, 0);
+    }
+
+    // Debounce scroll saving to maintain 60fps performance
+    let scrollTimeout: ReturnType<typeof setTimeout>;
+    const handleScroll = () => {
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        sessionStorage.setItem(`${stateKey}_scroll`, window.scrollY.toString());
+      }, 100);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+    };
+  }, [stateKey]);
 
   const categories = [
     { name: 'All', icon: <Compass className="w-4 h-4 mr-2" /> },
