@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MapPin, Calendar, Wallet, CheckCircle, Plane, ArrowLeft, Star, Clock, Sun } from 'lucide-react';
 import { MOCK_DESTINATIONS } from '../data/mockDestinations';
+import { SEO } from '../components/seo/SEO';
 
 export const TravelGuide = () => {
   const { id } = useParams<{ id: string }>();
@@ -16,160 +17,181 @@ export const TravelGuide = () => {
 
   if (!destination) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center dark:bg-dark-bg">
-        <h2 className="text-2xl font-bold dark:text-white mb-4">Destination not found</h2>
-        <button onClick={() => navigate('/destinations')} className="text-blue-500 hover:underline font-bold">
-          &larr; Back to Explore
-        </button>
-      </div>
+      <>
+        <SEO title="Destination Not Found | FlySava" description="Destination not found." preventIndex={true} />
+        <div className="min-h-screen flex flex-col items-center justify-center dark:bg-dark-bg">
+          <h2 className="text-2xl font-bold dark:text-white mb-4">Destination not found</h2>
+          <button onClick={() => navigate('/destinations')} className="text-blue-500 hover:underline font-bold">
+            &larr; Back to Explore
+          </button>
+        </div>
+      </>
     );
   }
 
-  // The Fixed Button Handler: Navigates cleanly to the root path without anchor jumps
   const handleFindFlights = () => {
     window.location.href = '/';
   };
 
+  const destinationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TouristDestination",
+    "name": destination.city,
+    "description": destination.description,
+    "image": destination.image,
+    "containedInPlace": {
+      "@type": "Country",
+      "name": destination.country
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-dark-bg pb-24 transition-colors duration-300">
-      
-      {/* Hero Image Section */}
-      <div className="relative h-[60vh] min-h-[400px] w-full">
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent z-10" />
-        <img 
-          src={destination.image} 
-          alt={destination.city} 
-          className="w-full h-full object-cover"
-        />
+    <>
+      <SEO 
+        title={`${destination.city} Travel Guide & Flights | FlySava`}
+        description={`Plan your trip to ${destination.city}. Read our complete travel guide, discover top attractions, and find cheap flights.`}
+        canonicalUrl={`/guide/${destination.id}`}
+        image={destination.image}
+        jsonLd={destinationJsonLd}
+        type="article"
+      />
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg pb-24 transition-colors duration-300">
         
-        {/* Back Button */}
-        <button 
-          onClick={() => navigate(-1)}
-          className="absolute top-24 left-6 z-20 flex items-center px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-xl text-white font-bold transition-colors"
-        >
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back
-        </button>
-
-        <div className="absolute bottom-0 left-0 right-0 z-20 container mx-auto px-6 pb-12 max-w-5xl">
-          <div className="flex items-center text-blue-400 font-bold mb-3 tracking-wide uppercase text-sm">
-            <MapPin className="w-4 h-4 mr-1.5" /> {destination.country}
-          </div>
-          <h1 className="text-5xl md:text-7xl font-black text-white mb-4 tracking-tight">
-            {destination.city}
-          </h1>
-          <p className="text-xl text-gray-200 max-w-2xl font-medium leading-relaxed">
-            {destination.description}
-          </p>
-        </div>
-      </div>
-
-      <div className="container mx-auto px-6 max-w-5xl mt-12 grid grid-cols-1 lg:grid-cols-3 gap-12">
-        
-        {/* Left Column: Details */}
-        <div className="lg:col-span-2 space-y-12">
+        {/* Hero Image Section */}
+        <div className="relative h-[60vh] min-h-[400px] w-full">
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent z-10" />
+          <img 
+            src={destination.image} 
+            alt={destination.city} 
+            className="w-full h-full object-cover"
+          />
           
-          {/* Quick Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <div className="bg-white dark:bg-dark-card p-6 rounded-3xl border border-gray-100 dark:border-dark-border shadow-sm">
-              <Calendar className="w-7 h-7 text-blue-500 mb-4" />
-              <div className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Best Season</div>
-              <div className="font-black text-lg text-gray-900 dark:text-white">{destination.bestSeason}</div>
+          <button 
+            onClick={() => navigate(-1)}
+            className="absolute top-24 left-6 z-20 flex items-center px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-xl text-white font-bold transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5 mr-2" /> Back
+          </button>
+
+          <div className="absolute bottom-0 left-0 right-0 z-20 container mx-auto px-6 pb-12 max-w-5xl">
+            <div className="flex items-center text-blue-400 font-bold mb-3 tracking-wide uppercase text-sm">
+              <MapPin className="w-4 h-4 mr-1.5" /> {destination.country}
             </div>
-            <div className="bg-white dark:bg-dark-card p-6 rounded-3xl border border-gray-100 dark:border-dark-border shadow-sm">
-              <Wallet className="w-7 h-7 text-green-500 mb-4" />
-              <div className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Daily Budget</div>
-              <div className="font-black text-lg text-gray-900 dark:text-white">${destination.dailyBudget} USD</div>
-            </div>
-            <div className="bg-white dark:bg-dark-card p-6 rounded-3xl border border-gray-100 dark:border-dark-border shadow-sm hidden md:block">
-              <Star className="w-7 h-7 text-purple-500 mb-4" />
-              <div className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Trip Style</div>
-              <div className="font-black text-lg text-gray-900 dark:text-white">{destination.tripType}</div>
-            </div>
+            <h1 className="text-5xl md:text-7xl font-black text-white mb-4 tracking-tight">
+              {destination.city}
+            </h1>
+            <p className="text-xl text-gray-200 max-w-2xl font-medium leading-relaxed">
+              {destination.description}
+            </p>
           </div>
-
-          {/* Attractions */}
-          <section>
-            <h2 className="text-3xl font-black text-gray-900 dark:text-white mb-6">Top Attractions</h2>
-            <div className="space-y-4">
-              {/* Mapping over the new object structure */}
-              {destination.attractions.map((attraction: any, i: number) => (
-                <div key={i} className="flex flex-col sm:flex-row sm:items-center justify-between p-5 bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border shadow-sm gap-4 hover:shadow-md transition-shadow">
-                  <div className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-blue-500 mr-4 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <span className="font-black text-gray-900 dark:text-white text-lg block mb-1.5">{attraction.name}</span>
-                      <div className="flex flex-wrap gap-4 text-sm font-medium text-gray-500 dark:text-gray-400">
-                        <span className="flex items-center"><Clock className="w-4 h-4 mr-1.5"/> {attraction.duration}</span>
-                        <span className="flex items-center"><Sun className="w-4 h-4 mr-1.5"/> {attraction.bestTime}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-gray-50 dark:bg-slate-800 px-4 py-2.5 rounded-xl text-sm font-bold text-gray-900 dark:text-white whitespace-nowrap self-start sm:self-auto border border-gray-100 dark:border-white/5">
-                    {attraction.entryFee}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Travel Tips */}
-          <section>
-            <h2 className="text-3xl font-black text-gray-900 dark:text-white mb-6">Local Travel Tips</h2>
-            <div className="bg-blue-50 dark:bg-blue-900/10 p-8 rounded-[2rem] border border-blue-100 dark:border-blue-500/20">
-              <ul className="space-y-5">
-                {destination.travelTips.map((tip, i) => {
-                  // Splits "Category: Description" to bold the category name
-                  const [title, ...rest] = tip.split(':');
-                  const description = rest.join(':');
-
-                  return (
-                    <li key={i} className="flex items-start text-blue-900 dark:text-blue-100 leading-relaxed">
-                      <span className="mr-4 mt-2 w-2 h-2 bg-blue-500 rounded-full flex-shrink-0" />
-                      <div>
-                        {description ? (
-                          <>
-                            <strong className="font-black text-blue-950 dark:text-white">{title}:</strong>
-                            <span className="font-medium text-blue-800 dark:text-blue-200">{description}</span>
-                          </>
-                        ) : (
-                          <span className="font-medium text-blue-800 dark:text-blue-200">{tip}</span>
-                        )}
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </section>
-
         </div>
 
-        {/* Right Column: Sticky Booking Card */}
-        <div className="lg:col-span-1">
-          <div className="sticky top-28 bg-white dark:bg-dark-card rounded-[2rem] p-8 border border-gray-100 dark:border-dark-border shadow-2xl shadow-gray-200/50 dark:shadow-none">
-            <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-3">Ready to explore?</h3>
-            <p className="text-gray-500 dark:text-gray-400 font-medium text-sm mb-8 leading-relaxed">
-              Search for the best flight deals to {destination.city} right now.
-            </p>
+        <div className="container mx-auto px-6 max-w-5xl mt-12 grid grid-cols-1 lg:grid-cols-3 gap-12">
+          
+          {/* Left Column: Details */}
+          <div className="lg:col-span-2 space-y-12">
             
-            <div className="bg-gray-50 dark:bg-slate-800/50 rounded-2xl p-5 mb-8 border border-gray-100 dark:border-white/5">
-              <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Destination Airport</div>
-              <div className="text-3xl font-black text-blue-600 dark:text-blue-400 flex items-center">
-                <Plane className="w-8 h-8 mr-3" />
-                {destination.airportCode}
+            {/* Quick Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-3xl border border-gray-100 dark:border-dark-border shadow-sm">
+                <Calendar className="w-7 h-7 text-blue-500 mb-4" />
+                <div className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Best Season</div>
+                <div className="font-black text-lg text-gray-900 dark:text-white">{destination.bestSeason}</div>
+              </div>
+              <div className="bg-white dark:bg-dark-card p-6 rounded-3xl border border-gray-100 dark:border-dark-border shadow-sm">
+                <Wallet className="w-7 h-7 text-green-500 mb-4" />
+                <div className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Daily Budget</div>
+                <div className="font-black text-lg text-gray-900 dark:text-white">${destination.dailyBudget} USD</div>
+              </div>
+              <div className="bg-white dark:bg-dark-card p-6 rounded-3xl border border-gray-100 dark:border-dark-border shadow-sm hidden md:block">
+                <Star className="w-7 h-7 text-purple-500 mb-4" />
+                <div className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Trip Style</div>
+                <div className="font-black text-lg text-gray-900 dark:text-white">{destination.tripType}</div>
               </div>
             </div>
 
-            <button 
-              onClick={handleFindFlights}
-              className="w-full flex items-center justify-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-lg shadow-blue-500/30"
-            >
-              Find Flights <Plane className="w-5 h-5 ml-2" />
-            </button>
-          </div>
-        </div>
+            {/* Attractions */}
+            <section>
+              <h2 className="text-3xl font-black text-gray-900 dark:text-white mb-6">Top Attractions</h2>
+              <div className="space-y-4">
+                {destination.attractions.map((attraction: any, i: number) => (
+                  <div key={i} className="flex flex-col sm:flex-row sm:items-center justify-between p-5 bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border shadow-sm gap-4 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <CheckCircle className="w-6 h-6 text-blue-500 mr-4 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <span className="font-black text-gray-900 dark:text-white text-lg block mb-1.5">{attraction.name}</span>
+                        <div className="flex flex-wrap gap-4 text-sm font-medium text-gray-500 dark:text-gray-400">
+                          <span className="flex items-center"><Clock className="w-4 h-4 mr-1.5"/> {attraction.duration}</span>
+                          <span className="flex items-center"><Sun className="w-4 h-4 mr-1.5"/> {attraction.bestTime}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-gray-50 dark:bg-slate-800 px-4 py-2.5 rounded-xl text-sm font-bold text-gray-900 dark:text-white whitespace-nowrap self-start sm:self-auto border border-gray-100 dark:border-white/5">
+                      {attraction.entryFee}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
 
+            {/* Travel Tips */}
+            <section>
+              <h2 className="text-3xl font-black text-gray-900 dark:text-white mb-6">Local Travel Tips</h2>
+              <div className="bg-blue-50 dark:bg-blue-900/10 p-8 rounded-[2rem] border border-blue-100 dark:border-blue-500/20">
+                <ul className="space-y-5">
+                  {destination.travelTips.map((tip, i) => {
+                    const [title, ...rest] = tip.split(':');
+                    const description = rest.join(':');
+
+                    return (
+                      <li key={i} className="flex items-start text-blue-900 dark:text-blue-100 leading-relaxed">
+                        <span className="mr-4 mt-2 w-2 h-2 bg-blue-500 rounded-full flex-shrink-0" />
+                        <div>
+                          {description ? (
+                            <>
+                              <strong className="font-black text-blue-950 dark:text-white">{title}:</strong>
+                              <span className="font-medium text-blue-800 dark:text-blue-200">{description}</span>
+                            </>
+                          ) : (
+                            <span className="font-medium text-blue-800 dark:text-blue-200">{tip}</span>
+                          )}
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </section>
+
+          </div>
+
+          {/* Right Column: Sticky Booking Card */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-28 bg-white dark:bg-dark-card rounded-[2rem] p-8 border border-gray-100 dark:border-dark-border shadow-2xl shadow-gray-200/50 dark:shadow-none">
+              <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-3">Ready to explore?</h3>
+              <p className="text-gray-500 dark:text-gray-400 font-medium text-sm mb-8 leading-relaxed">
+                Search for the best flight deals to {destination.city} right now.
+              </p>
+              
+              <div className="bg-gray-50 dark:bg-slate-800/50 rounded-2xl p-5 mb-8 border border-gray-100 dark:border-white/5">
+                <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Destination Airport</div>
+                <div className="text-3xl font-black text-blue-600 dark:text-blue-400 flex items-center">
+                  <Plane className="w-8 h-8 mr-3" />
+                  {destination.airportCode}
+                </div>
+              </div>
+
+              <button 
+                onClick={handleFindFlights}
+                className="w-full flex items-center justify-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-lg shadow-blue-500/30"
+              >
+                Find Flights <Plane className="w-5 h-5 ml-2" />
+              </button>
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
+    </>
   );
 };
