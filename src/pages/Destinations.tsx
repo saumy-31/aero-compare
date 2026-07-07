@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Filter, Sun, Mountain, Building, Wallet, Compass, Search, ChevronDown, Diamond } from 'lucide-react';
 import { MOCK_DESTINATIONS } from '../data/mockDestinations';
@@ -7,45 +7,48 @@ import { SEO } from '../components/seo/SEO';
 
 export const Destinations = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   
-  // 1. Create a unique storage key tied to this specific router history entry
-  const stateKey = `explore_${location.key}`;
-
-  // 2. Initialize State directly from the location-specific storage
+  // 1. Use static keys instead of location.key to bypass localhost HMR randomization
   const [activeType, setActiveType] = useState<string>(() => 
-    sessionStorage.getItem(`${stateKey}_type`) || 'All'
+    sessionStorage.getItem('explore_type') || 'All'
   );
   const [budgetFilter, setBudgetFilter] = useState<string>(() => 
-    sessionStorage.getItem(`${stateKey}_budget`) || 'All'
+    sessionStorage.getItem('explore_budget') || 'All'
   );
   const [searchQuery, setSearchQuery] = useState<string>(() => 
-    sessionStorage.getItem(`${stateKey}_search`) || ''
+    sessionStorage.getItem('explore_search') || ''
   );
   const [visibleCount, setVisibleCount] = useState<number>(() => {
-    const saved = sessionStorage.getItem(`${stateKey}_count`);
+    const saved = sessionStorage.getItem('explore_count');
     return saved ? parseInt(saved, 10) : 12;
   });
 
-  // 3. Silently save state whenever it changes
+  // 2. Silently save state whenever it changes
   useEffect(() => {
-    sessionStorage.setItem(`${stateKey}_type`, activeType);
-    sessionStorage.setItem(`${stateKey}_budget`, budgetFilter);
-    sessionStorage.setItem(`${stateKey}_search`, searchQuery);
-    sessionStorage.setItem(`${stateKey}_count`, visibleCount.toString());
-  }, [activeType, budgetFilter, searchQuery, visibleCount, stateKey]);
+    sessionStorage.setItem('explore_type', activeType);
+    sessionStorage.setItem('explore_budget', budgetFilter);
+    sessionStorage.setItem('explore_search', searchQuery);
+    sessionStorage.setItem('explore_count', visibleCount.toString());
+  }, [activeType, budgetFilter, searchQuery, visibleCount]);
 
-  // 4. Handle Scroll Restoration flawlessly
+  // 3. Suspense-Aware Scroll Restoration
   useEffect(() => {
-    const savedScroll = sessionStorage.getItem(`${stateKey}_scroll`);
+    const savedScroll = sessionStorage.getItem('explore_scroll');
     
     if (savedScroll) {
-      // Small timeout ensures Framer Motion has rendered the expanded grid before scrolling
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          window.scrollTo({ top: parseInt(savedScroll, 10), behavior: 'instant' });
-        }, 50);
-      });
+      const targetScroll = parseInt(savedScroll, 10);
+      
+      // Polling logic: Waits for <PageLoader/> to finish and grid to expand before scrolling
+      const checkAndScroll = setInterval(() => {
+        if (document.documentElement.scrollHeight >= (targetScroll + window.innerHeight * 0.5)) {
+          window.scrollTo({ top: targetScroll, behavior: 'instant' });
+          clearInterval(checkAndScroll);
+        }
+      }, 50);
+
+      // Failsafe to stop checking after 1 second
+      setTimeout(() => clearInterval(checkAndScroll), 1000);
+      
     } else {
       window.scrollTo(0, 0);
     }
@@ -55,7 +58,7 @@ export const Destinations = () => {
     const handleScroll = () => {
       if (scrollTimeout) clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
-        sessionStorage.setItem(`${stateKey}_scroll`, window.scrollY.toString());
+        sessionStorage.setItem('explore_scroll', window.scrollY.toString());
       }, 100);
     };
 
@@ -64,7 +67,7 @@ export const Destinations = () => {
       window.removeEventListener('scroll', handleScroll);
       if (scrollTimeout) clearTimeout(scrollTimeout);
     };
-  }, [stateKey]);
+  }, []);
 
   const categories = [
     { name: 'All', icon: <Compass className="w-4 h-4 mr-2" /> },

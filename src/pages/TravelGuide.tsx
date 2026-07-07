@@ -66,6 +66,7 @@ export const TravelGuide = () => {
             className="w-full h-full object-cover"
           />
           
+          {/* RESTORED: Uses navigate(-1) and says "Back" */}
           <button 
             onClick={() => navigate(-1)}
             className="absolute top-24 left-6 z-20 flex items-center px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-xl text-white font-bold transition-colors"

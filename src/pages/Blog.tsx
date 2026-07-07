@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation, useNavigationType } from 'react-router-dom';
 import { Search, Clock, User, TrendingUp, Sparkles } from 'lucide-react';
 import { MOCK_BLOG_POSTS } from '../data/mockBlogPosts';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -7,12 +7,60 @@ import { SEO } from '../components/seo/SEO';
 
 export const Blog = () => {
   const navigate = useNavigate();
-  const [filter, setFilter] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
+  const location = useLocation();
+  const navType = useNavigationType();
 
+  // Determine if we are returning from an article (via Back button OR the "All Guides" button)
+  const isReturning = navType === 'POP' || location.state?.fromPost === true;
+
+  // Initialize state from storage ONLY if returning
+  const [filter, setFilter] = useState(() => 
+    isReturning ? sessionStorage.getItem('flysava_blog_filter') || 'All' : 'All'
+  );
+  const [searchQuery, setSearchQuery] = useState(() => 
+    isReturning ? sessionStorage.getItem('flysava_blog_search') || '' : ''
+  );
+
+  // Silently save state whenever it changes
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    sessionStorage.setItem('flysava_blog_filter', filter);
+    sessionStorage.setItem('flysava_blog_search', searchQuery);
+  }, [filter, searchQuery]);
+
+  // Handle Scroll Restoration safely
+  useEffect(() => {
+    if (isReturning) {
+      const savedScroll = sessionStorage.getItem('flysava_blog_scroll');
+      if (savedScroll) {
+        // Slight delay ensures the grid renders the restored filters before scrolling
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            window.scrollTo({ top: parseInt(savedScroll, 10), behavior: 'instant' });
+          }, 50);
+        });
+      } else {
+        window.scrollTo(0, 0);
+      }
+    } else {
+      // Start fresh at the top if arriving from the Navbar
+      window.scrollTo(0, 0);
+    }
+
+    // Save scroll position efficiently as the user scrolls
+    let scrollTimeout: ReturnType<typeof setTimeout>;
+    const handleScroll = () => {
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        sessionStorage.setItem('flysava_blog_scroll', window.scrollY.toString());
+      }, 100);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+    };
+  }, [isReturning]);
 
   const categories = ['All', 'Destinations', 'City Guides', 'Travel Tips'];
 
