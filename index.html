@@ -1,14 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.PNG" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>aero-compare</title>
+    <title>FlySava</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FX092L0H7V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      // DISABLED automatic page_view to let React Router handle it without duplicates
+      gtag('config', 'G-FX092L0H7V', { send_page_view: false });
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    
   </body>
 </html>
