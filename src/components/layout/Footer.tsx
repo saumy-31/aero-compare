@@ -86,8 +86,8 @@ export const Footer = () => {
             <h3 className="font-bold text-gray-900 dark:text-white mb-4">Explore</h3>
             <ul className="space-y-3">
               <li>
-                {/* Replaced <Link> with <a> to force a full browser page refresh */}
-                <a href="/" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">
+                {/* FIX: Updated href from "/" to "/flights" for SEO internal linking */}
+                <a href="/flights" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">
                   Flight Search
                 </a>
               </li>

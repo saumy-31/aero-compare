@@ -9,6 +9,7 @@ const STATIC_PAGE_BASE_DATE = '2026-07-01';
 
 const STATIC_PAGES = [
   { route: '', changefreq: 'daily', priority: '1.0' },
+  { route: '/flights', changefreq: 'daily', priority: '1.0' }, // <-- NEW ENTRY
   { route: '/status', changefreq: 'hourly', priority: '0.9' },
   { route: '/destinations', changefreq: 'weekly', priority: '0.9' },
   { route: '/blog', changefreq: 'daily', priority: '0.8' },

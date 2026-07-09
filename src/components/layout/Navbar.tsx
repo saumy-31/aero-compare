@@ -7,8 +7,9 @@ export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  // 1. Updated the "Flights" path to point to the new dedicated SEO route
   const navLinks = [
-    { name: 'Flights', path: '/' },
+    { name: 'Flights', path: '/flights' },
     { name: 'Status', path: '/status' },
     { name: 'Explore', path: '/destinations' },
     { name: 'Travel Guides', path: '/blog' },
@@ -35,7 +36,7 @@ export const Navbar = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
 
-          {/* Logo */}
+          {/* Logo - Always points to Root Homepage */}
           <a
             href="/"
             className="flex items-center space-x-2.5 flex-shrink-0 group outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded-lg"
@@ -49,15 +50,17 @@ export const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => {
+              // 2. Updated active state logic to highlight the Flights tab on multiple related routes
               const isActive =
-                link.path === '/'
-                  ? location.pathname === '/' || location.pathname === '/results'
+                link.name === 'Flights'
+                  ? location.pathname === '/' || location.pathname === '/flights' || location.pathname === '/results'
                   : location.pathname.startsWith(link.path);
 
               return link.name === 'Flights' ? (
+                // Hard reload anchor tag specifically for the Flights search widget consistency
                 <a
                   key={link.name}
-                  href="/"
+                  href="/flights"
                   className={`relative flex items-center h-16 text-sm font-semibold transition-colors duration-200 ${
                     isActive
                       ? 'text-blue-500'
@@ -139,15 +142,16 @@ export const Navbar = () => {
       >
         <div className="px-4 pt-2 pb-6 space-y-2">
           {navLinks.map((link) => {
+            // 3. Apply the same active state logic to mobile
             const isActive =
-              link.path === '/'
-                ? location.pathname === '/' || location.pathname === '/results'
+              link.name === 'Flights'
+                ? location.pathname === '/' || location.pathname === '/flights' || location.pathname === '/results'
                 : location.pathname.startsWith(link.path);
 
             return link.name === 'Flights' ? (
               <a
                 key={link.name}
-                href="/"
+                href="/flights"
                 className={`block px-4 py-3 rounded-xl text-sm font-semibold ${
                   isActive
                     ? 'text-blue-500 bg-blue-500/10'

@@ -7,6 +7,9 @@ import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { CookieConsent } from './components/layout/CookieConsent';
 import { Analytics } from './components/seo/Analytics'; // <-- GA4 TRACKER IMPORT
+// Add this to your imports:
+
+const FlightsPage = lazy(() => import('./pages/FlightsPage').then(m => ({ default: m.FlightsPage })));
 
 // Core Pages (Lazy-loaded for SEO Performance)
 const Home = lazy(() => import('./pages/Home').then(m => ({ default: m.Home })));
@@ -51,6 +54,11 @@ const AppRoutes = () => {
         <Route path="/destinations/:id" element={<TravelGuide />} />
         <Route path="/explore/:id" element={<TravelGuide />} />
         <Route path="/guide/:id" element={<TravelGuide />} />
+
+        {/* Main Routes */}
+        <Route path="/" element={<Home />} />
+        <Route path="/flights" element={<FlightsPage />} /> {/* <-- NEW ROUTE */}
+        <Route path="/about" element={<About />} />
         
         {/* Blog & Dynamic Articles */}
         <Route path="/blog" element={<Blog />} />
