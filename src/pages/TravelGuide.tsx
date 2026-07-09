@@ -33,16 +33,44 @@ export const TravelGuide = () => {
     window.location.href = '/';
   };
 
+  // FIX: Enhanced JSON-LD with Graph and BreadcrumbList for Sitelink generation
   const destinationJsonLd = {
     "@context": "https://schema.org",
-    "@type": "TouristDestination",
-    "name": destination.city,
-    "description": destination.description,
-    "image": destination.image,
-    "containedInPlace": {
-      "@type": "Country",
-      "name": destination.country
-    }
+    "@graph": [
+      {
+        "@type": "TouristDestination",
+        "name": destination.city,
+        "description": destination.description,
+        "image": destination.image,
+        "containedInPlace": {
+          "@type": "Country",
+          "name": destination.country
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://flysava.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Explore Destinations",
+            "item": "https://flysava.com/destinations"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": destination.city,
+            "item": `https://flysava.com/guide/${destination.id}`
+          }
+        ]
+      }
+    ]
   };
 
   return (
@@ -66,7 +94,6 @@ export const TravelGuide = () => {
             className="w-full h-full object-cover"
           />
           
-          {/* RESTORED: Uses navigate(-1) and says "Back" */}
           <button 
             onClick={() => navigate(-1)}
             className="absolute top-24 left-6 z-20 flex items-center px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-xl text-white font-bold transition-colors"

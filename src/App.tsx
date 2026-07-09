@@ -6,13 +6,11 @@ import { HelmetProvider } from 'react-helmet-async';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { CookieConsent } from './components/layout/CookieConsent';
-import { Analytics } from './components/seo/Analytics'; // <-- GA4 TRACKER IMPORT
-// Add this to your imports:
-
-const FlightsPage = lazy(() => import('./pages/FlightsPage').then(m => ({ default: m.FlightsPage })));
+import { Analytics } from './components/seo/Analytics';
 
 // Core Pages (Lazy-loaded for SEO Performance)
 const Home = lazy(() => import('./pages/Home').then(m => ({ default: m.Home })));
+const FlightsPage = lazy(() => import('./pages/FlightsPage').then(m => ({ default: m.FlightsPage }))); // <-- ADDED LAZY IMPORT
 const About = lazy(() => import('./pages/About').then(m => ({ default: m.About })));
 const Careers = lazy(() => import('./pages/Careers').then(m => ({ default: m.Careers })));
 const Destinations = lazy(() => import('./pages/Destinations').then(m => ({ default: m.Destinations })));
@@ -45,20 +43,16 @@ const AppRoutes = () => {
       <Routes location={location} key={location.pathname}>
         {/* Main Routes */}
         <Route path="/" element={<Home />} />
+        <Route path="/flights" element={<FlightsPage />} /> {/* <-- ADDED DEDICATED FLIGHTS SEO ROUTE */}
         <Route path="/about" element={<About />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/status" element={<FlightStatus />} />
         
-        {/* Destinations & Dynamic Travel Guides (Restored) */}
+        {/* Destinations & Dynamic Travel Guides */}
         <Route path="/destinations" element={<Destinations />} />
         <Route path="/destinations/:id" element={<TravelGuide />} />
         <Route path="/explore/:id" element={<TravelGuide />} />
         <Route path="/guide/:id" element={<TravelGuide />} />
-
-        {/* Main Routes */}
-        <Route path="/" element={<Home />} />
-        <Route path="/flights" element={<FlightsPage />} /> {/* <-- NEW ROUTE */}
-        <Route path="/about" element={<About />} />
         
         {/* Blog & Dynamic Articles */}
         <Route path="/blog" element={<Blog />} />
@@ -82,7 +76,7 @@ const App = () => {
   return (
     <HelmetProvider>
       <Router>
-        <Analytics /> {/* <-- GA4 TRACKER MOUNTED HERE */}
+        <Analytics />
         <div className="flex flex-col min-h-screen bg-white dark:bg-dark-bg transition-colors duration-300">
           <Navbar />
           <main className="flex-grow">

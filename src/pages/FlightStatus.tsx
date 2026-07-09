@@ -29,6 +29,36 @@ export const FlightStatus = () => {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // --- SEO JSON-LD Structured Data ---
+  const statusJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "Live Flight Status Tracker | FlySava",
+        "description": "Track real-time flight status, departure and arrival times, delays, and terminal information for any global flight.",
+        "url": "https://flysava.com/status"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://flysava.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Flight Status",
+            "item": "https://flysava.com/status"
+          }
+        ]
+      }
+    ]
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
     inputRef.current?.focus();
@@ -118,6 +148,7 @@ export const FlightStatus = () => {
         title="Live Flight Status Tracker | FlySava"
         description="Track real-time flight status, departure and arrival times, delays, and terminal information for any global flight."
         canonicalUrl="/status"
+        jsonLd={statusJsonLd}
       />
 
       <div className="min-h-screen bg-gray-50 dark:bg-[#071226] pt-24 pb-16 transition-colors duration-300">

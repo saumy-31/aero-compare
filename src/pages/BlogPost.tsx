@@ -40,7 +40,6 @@ export const BlogPost = () => {
     const formData = new FormData(e.currentTarget);
 
     try {
-      // Use FormSubmit AJAX endpoint to prevent page redirection
       const response = await fetch("https://formsubmit.co/ajax/contact@flysava.com", {
         method: "POST",
         body: formData,
@@ -60,25 +59,58 @@ export const BlogPost = () => {
     }
   };
 
+  // FIX: Enhanced JSON-LD with Graph and BreadcrumbList for Sitelink generation
   const articleJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": post.title,
-    "image": post.image,
-    "author": {
-      "@type": "Person",
-      "name": post.author
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "FlySava",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://flysava.com/logo.png"
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": `https://flysava.com/blog/${post.slug}`
+        },
+        "headline": post.title,
+        "image": post.image,
+        "author": {
+          "@type": "Person",
+          "name": post.author
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "FlySava",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://flysava.com/logo.png"
+          }
+        },
+        "datePublished": post.publishedDate,
+        "dateModified": post.publishedDate, // Fallback if no specific updated date exists
+        "description": post.excerpt
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://flysava.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Travel Guides",
+            "item": "https://flysava.com/blog"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": post.title,
+            "item": `https://flysava.com/blog/${post.slug}`
+          }
+        ]
       }
-    },
-    "datePublished": post.publishedDate,
-    "description": post.excerpt
+    ]
   };
 
   return (
@@ -105,8 +137,6 @@ export const BlogPost = () => {
           <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
           
           <button 
-            // FIX IS HERE: We explicitly tell the router to pass { state: { fromPost: true } }
-            // This guarantees Blog.tsx knows to trigger its restoration logic
             onClick={() => navigate('/blog', { state: { fromPost: true } })} 
             className="absolute top-24 left-4 md:left-8 z-30 flex items-center px-5 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white font-bold transition-all border border-white/10 hover:scale-105"
           >
