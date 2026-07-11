@@ -2405,6 +2405,90 @@ export const MOCK_DESTINATIONS: Destination[] = [
   ]
 },
 {
+  id: 'madeira-pt',
+  city: 'Madeira',
+  country: 'Portugal',
+  airportCode: 'FNC',
+  image: `https://blog.avantidestinations.com/hubfs/Blog%20-%20Madeira%20Header%20(2).jpg${cropParams}`,
+  description: 'A breathtaking Portuguese island in the Atlantic, famous for dramatic cliffs, lush forests, scenic hiking trails, and year-round spring-like weather.',
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'April to October',
+  dailyBudget: 125,
+  attractions: [
+    { name: 'Cabo Girão Skywalk', duration: '1 hour', bestTime: 'Morning', entryFee: '€3' },
+    { name: 'Pico do Arieiro', duration: '3 hours', bestTime: 'Sunrise', entryFee: 'Free' },
+    { name: 'Funchal Old Town', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Monte Cable Car', duration: '1.5 hours', bestTime: 'Morning', entryFee: '€20' },
+    { name: 'Levada Walks', duration: '4 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Porto Moniz Natural Pools', duration: '3 hours', bestTime: 'Afternoon', entryFee: '€3' }
+  ],
+  travelTips: [
+    'Rent a car to explore the island freely.',
+    'Start mountain hikes early to avoid clouds.',
+    'Carry a light jacket as temperatures change quickly in higher elevations.',
+    'Book whale and dolphin watching tours in advance.',
+    'Wear hiking shoes for Levada trails.',
+    'Try the local Madeira wine and Espetada beef skewers.'
+  ]
+},
+{
+  id: 'kotor-me',
+  city: 'Kotor',
+  country: 'Montenegro',
+  airportCode: 'TIV',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5LmgBnHW3C92yU5oOpjAH1ZfJM4AmzEHxgnJ5WGckAQ&s=10${cropParams}`,
+  description: 'A stunning Adriatic coastal town known for its medieval old town, dramatic mountains, and beautiful bay.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'May to September',
+  dailyBudget: 110,
+  attractions: [
+    { name: 'Kotor Old Town', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'San Giovanni Fortress', duration: '2 hours', bestTime: 'Sunrise', entryFee: '€15' },
+    { name: 'Bay of Kotor Boat Tour', duration: '4 hours', bestTime: 'Morning', entryFee: '€30+' },
+    { name: 'Perast', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Our Lady of the Rocks', duration: '1 hour', bestTime: 'Afternoon', entryFee: '€5 Boat' },
+    { name: 'Kotor Marina', duration: '1 hour', bestTime: 'Evening', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Visit the fortress at sunrise to avoid crowds.',
+    'Wear comfortable shoes for steep stone streets.',
+    'Book boat tours in advance during summer.',
+    'Carry cash for small local restaurants.',
+    'Stay inside the Old Town for the best experience.',
+    'Avoid driving during peak tourist season.'
+  ]
+},
+{
+  id: 'nusa-penida-id',
+  city: 'Nusa Penida',
+  country: 'Indonesia',
+  airportCode: 'DPS',
+  image: `https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86${cropParams}`,
+  description: 'A breathtaking island off the coast of Bali, famous for dramatic cliffs, turquoise waters, pristine beaches, and incredible snorkeling with manta rays.',
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'April to October',
+  dailyBudget: 85,
+  attractions: [
+    { name: 'Kelingking Beach', duration: '2 hours', bestTime: 'Morning', entryFee: 'IDR 10,000' },
+    { name: 'Angel’s Billabong', duration: '1 hour', bestTime: 'Morning (Low Tide)', entryFee: 'Free' },
+    { name: 'Broken Beach (Pasih Uug)', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Crystal Bay', duration: '3 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Manta Point Snorkeling', duration: '4 hours', bestTime: 'Morning', entryFee: 'IDR 400,000+' },
+    { name: 'Diamond Beach', duration: '2 hours', bestTime: 'Sunrise', entryFee: 'IDR 35,000' }
+  ],
+  travelTips: [
+    'Rent a scooter only if you are confident riding on steep and uneven roads.',
+    'Book snorkeling tours early, especially during the dry season.',
+    'Carry cash since ATMs are limited across the island.',
+    'Wear sturdy footwear if hiking down to Kelingking or Diamond Beach.',
+    'Start your day early to avoid crowds at the main viewpoints.',
+    'Bring plenty of water and reef-safe sunscreen as facilities are limited.'
+  ]
+},
+{
   id: 'lake-bled-si',
   city: 'Lake Bled',
   country: 'Slovenia',
@@ -2460,6 +2544,398 @@ export const MOCK_DESTINATIONS: Destination[] = [
     'Cash is useful at small cafés and souvenir shops.'
   ]
 },
+{
+  id: 'tromso-no',
+  city: 'Tromsø',
+  country: 'Norway',
+  airportCode: 'TOS',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2dFsIknlMUrJYjKBOXQlL5-JnluSRLFAsjdmV0duzSRQ-o9KPlT3i3zI&s=10${cropParams}`,
+  description: 'A breathtaking Arctic city renowned for the Northern Lights, midnight sun, dramatic fjords, snowy mountains, and unforgettable winter adventures.',
+  budget: 'Luxury',
+  tripType: 'Adventure',
+  bestSeason: 'November to March',
+  dailyBudget: 190,
+  attractions: [
+    { name: 'Northern Lights Tour', duration: '5 hours', bestTime: '8:00 PM', entryFee: 'NOK 1,500+' },
+    { name: 'Fjellheisen Cable Car', duration: '2 hours', bestTime: 'Sunset', entryFee: 'NOK 495' },
+    { name: 'Arctic Cathedral', duration: '1 hour', bestTime: 'Morning', entryFee: 'NOK 80' },
+    { name: 'Polaria Arctic Experience', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'NOK 295' },
+    { name: 'Dog Sledding Adventure', duration: '4 hours', bestTime: 'Morning', entryFee: 'NOK 1,800+' },
+    { name: 'Tromsø Harbour', duration: '1 hour', bestTime: 'Evening', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Visit between November and March for the highest chance of seeing the Northern Lights.',
+    'Dress in thermal layers with insulated boots, gloves, and a warm hat.',
+    'Book Northern Lights tours several weeks in advance during peak season.',
+    'Weather changes quickly, so always carry waterproof outerwear.',
+    'Use the Tromsø Pass for discounts on museums and attractions.',
+    'Bring a tripod if you plan to photograph the Aurora Borealis.'
+  ]
+},
+{
+  id: 'muscat-om',
+  city: 'Muscat',
+  country: 'Oman',
+  airportCode: 'MCT',
+  image: `https://cdn.pixabay.com/photo/2021/01/30/12/31/sultan-qaboos-grand-mosque-5963726_640.jpg${cropParams}`,
+  description: 'Oman’s elegant capital blends Arabian heritage, pristine beaches, dramatic mountains, and magnificent mosques into one unforgettable destination.',
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'October to April',
+  dailyBudget: 120,
+  attractions: [
+    { name: 'Sultan Qaboos Grand Mosque', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Mutrah Souq', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Mutrah Corniche', duration: '1.5 hours', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'Royal Opera House Muscat', duration: '2 hours', bestTime: 'Evening', entryFee: 'OMR 3+' },
+    { name: 'Al Alam Palace', duration: '1 hour', bestTime: 'Morning', entryFee: 'Exterior Only' },
+    { name: 'Wadi Shab Day Trip', duration: 'Full Day', bestTime: '7:00 AM', entryFee: 'OMR 2 (Boat) + Tour Cost' }
+  ],
+  travelTips: [
+    'Dress modestly, especially when visiting mosques and cultural sites.',
+    'Visit the Grand Mosque before 11:00 AM as it is closed to non-Muslims later in the day.',
+    'Rent a car if you plan to explore wadis, mountains, or nearby coastal towns.',
+    'Carry sunscreen and plenty of water, even during winter months.',
+    'Try authentic Omani dishes such as Shuwa, Majboos, and Halwa.',
+    'Friday mornings are quieter as many attractions open later after prayers.'
+  ]
+},
+{
+  id: 'quebec-city-ca',
+  city: 'Québec City',
+  country: 'Canada',
+  airportCode: 'YQB',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPk6I1vWLS-ywUEK1t6FYXLOKdqrzMoW_AkHazfhr6tZIPI7lFmht6SY4&s=10${cropParams}`,
+  description: 'One of North America’s oldest cities, Québec City is renowned for its charming cobblestone streets, French heritage, historic architecture, and iconic Château Frontenac.',
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'June to October',
+  dailyBudget: 150,
+  attractions: [
+    { name: 'Old Québec (UNESCO World Heritage Site)', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Château Frontenac', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: 'CA$20 (Guided Tour)' },
+    { name: 'Montmorency Falls', duration: '2 hours', bestTime: 'Morning', entryFee: 'CA$9' },
+    { name: 'Terrasse Dufferin', duration: '1 hour', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'Petit-Champlain District', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Citadel of Québec', duration: '2 hours', bestTime: 'Morning', entryFee: 'CA$22' }
+  ],
+  travelTips: [
+    'Walk through Old Québec to fully experience the city’s European charm.',
+    'Visit during autumn for colorful foliage or winter for the famous Québec Winter Carnival.',
+    'Learn a few basic French phrases—locals appreciate the effort.',
+    'Wear comfortable shoes since many streets are steep and cobblestoned.',
+    'Book Château Frontenac tours in advance during peak travel season.',
+    'Try local specialties like poutine, maple treats, and tourtière.'
+  ]
+},
+{
+  id: 'uyuni-salt-flats-bo',
+  city: 'Uyuni Salt Flats',
+  country: 'Bolivia',
+  airportCode: 'UYU',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3Emin4KZi9B1uI3g26q51VMAsvbfsMUc2GrnZEp8CiRccr7QR9SxE_UU&s=10${cropParams}`,
+  description: 'The world’s largest salt flat, famous for its endless white landscape, breathtaking mirror reflections during the rainy season, colorful lagoons, and unforgettable stargazing.',
+  budget: 'Moderate',
+  tripType: 'Adventure',
+  bestSeason: 'December to April',
+  dailyBudget: 110,
+  attractions: [
+    { name: 'Salar de Uyuni Mirror Effect', duration: 'Half Day', bestTime: 'Sunrise', entryFee: 'Included in Tour' },
+    { name: 'Incahuasi Island', duration: '2 hours', bestTime: 'Morning', entryFee: 'BOB 30' },
+    { name: 'Train Cemetery', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Red Lagoon (Laguna Colorada)', duration: '3 hours', bestTime: 'Afternoon', entryFee: 'BOB 150 (Reserve Fee)' },
+    { name: 'Siloli Desert', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Included in Tour' },
+    { name: 'Stargazing Experience', duration: '2 hours', bestTime: 'Night', entryFee: 'Included in Overnight Tour' }
+  ],
+  travelTips: [
+    'Visit between December and April for the famous mirror reflection after rainfall.',
+    'Carry warm clothing as temperatures can drop below freezing at night.',
+    'Bring sunglasses and sunscreen because the salt reflects intense sunlight.',
+    'Book a multi-day 4x4 tour to experience nearby lagoons, deserts, and geysers.',
+    'Drink plenty of water and take time to acclimatize to the high altitude.',
+    'Protect your camera and electronics from salt and dust using waterproof bags.'
+  ]
+},
+{
+  id: 'patagonia-ar-cl',
+  city: 'Patagonia',
+  country: 'Argentina & Chile',
+  airportCode: 'FTE',
+  image: `https://www.shutterstock.com/image-photo/autumn-season-patagonia-mountains-south-260nw-2769274697.jpg${cropParams}`,
+  description: 'A legendary wilderness spanning southern Argentina and Chile, renowned for towering glaciers, rugged mountain peaks, turquoise lakes, and world-class hiking adventures.',
+  budget: 'Luxury',
+  tripType: 'Adventure',
+  bestSeason: 'November to March',
+  dailyBudget: 180,
+  attractions: [
+    { name: 'Torres del Paine National Park', duration: 'Full Day', bestTime: 'Early Morning', entryFee: 'CLP 35,000' },
+    { name: 'Perito Moreno Glacier', duration: '4 hours', bestTime: 'Morning', entryFee: 'ARS 45,000' },
+    { name: 'Mount Fitz Roy (Laguna de los Tres)', duration: 'Full Day', bestTime: 'Sunrise', entryFee: 'Free' },
+    { name: 'Grey Glacier Boat Tour', duration: '3 hours', bestTime: 'Afternoon', entryFee: '$120+' },
+    { name: 'Lake Pehoé', duration: '2 hours', bestTime: 'Sunset', entryFee: 'Included in Park Entry' },
+    { name: 'El Chaltén Village', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Visit between November and March for the best hiking conditions.',
+    'Pack waterproof clothing and multiple layers as weather changes rapidly.',
+    'Book accommodations and park permits several months in advance.',
+    'Carry enough food and water for long hikes since facilities are limited.',
+    'Wear sturdy hiking boots suitable for uneven mountain terrain.',
+    'Expect strong winds throughout the region, even during summer.'
+  ]
+},
+{
+  id: 'gili-islands-id',
+  city: 'Gili Islands',
+  country: 'Indonesia',
+  airportCode: 'LOP',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY8vjTUYqjX7YYPGmrhPNzDpHU3x-O7elTv2iW79fMIUVRnRSIAXNYAXVi&s=10${cropParams}`,
+  description: 'A stunning trio of tropical islands near Lombok, famous for crystal-clear waters, vibrant coral reefs, sea turtles, white-sand beaches, and a laid-back island atmosphere.',
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'April to October',
+  dailyBudget: 80,
+  attractions: [
+    { name: 'Gili Trawangan Beach', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Sea Turtle Snorkeling Tour', duration: '3 hours', bestTime: 'Morning', entryFee: 'IDR 250,000+' },
+    { name: 'Gili Air', duration: 'Half Day', bestTime: 'Afternoon', entryFee: 'Boat Fare' },
+    { name: 'Gili Meno Underwater Statues', duration: '2 hours', bestTime: 'Morning', entryFee: 'Included in Snorkeling Tour' },
+    { name: 'Sunset Swing', duration: '1 hour', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'Island Cycling', duration: '2 hours', bestTime: 'Evening', entryFee: 'IDR 75,000 (Bike Rental)' }
+  ],
+  travelTips: [
+    'There are no cars or motorbikes—walk, cycle, or use horse carts.',
+    'Book snorkeling trips early in the morning for the calmest waters.',
+    'Bring plenty of cash, as ATMs are limited and can run out of money.',
+    'Use reef-safe sunscreen to help protect the coral reefs.',
+    'Take a fast boat from Bali or Lombok and book tickets in advance during peak season.',
+    'Stay overnight to enjoy the islands after most day-trippers leave.'
+  ]
+},
+{
+  id: 'azores-pt',
+  city: 'Azores',
+  country: 'Portugal',
+  airportCode: 'PDL',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEkYhs8UT40ZfIPd8bCzyRhlzOaiaz3KjDBnNoqmwNI_g-rjpgM367Xd8&s=10${cropParams}`,
+  description: 'A spectacular Portuguese archipelago in the Atlantic Ocean, renowned for volcanic landscapes, crater lakes, whale watching, hot springs, and lush green scenery.',
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'May to September',
+  dailyBudget: 120,
+  attractions: [
+    { name: 'Sete Cidades Crater Lakes', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Lagoa do Fogo', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Terra Nostra Park & Hot Springs', duration: '3 hours', bestTime: 'Afternoon', entryFee: '€16' },
+    { name: 'Whale & Dolphin Watching Tour', duration: '4 hours', bestTime: 'Morning', entryFee: '€65+' },
+    { name: 'Ponta Delgada Historic Centre', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Furnas Geothermal Valley', duration: '3 hours', bestTime: 'Afternoon', entryFee: '€3' }
+  ],
+  travelTips: [
+    'Rent a car to explore the islands at your own pace.',
+    'Weather can change quickly, so pack waterproof clothing.',
+    'Book whale watching tours several days in advance.',
+    'Try the famous Cozido das Furnas, cooked using geothermal heat.',
+    'Visit viewpoints early in the morning for clearer skies.',
+    'Carry comfortable hiking shoes for volcanic trails.'
+  ]
+},
+{
+  id: 'chefchaouen-ma',
+  city: 'Chefchaouen',
+  country: 'Morocco',
+  airportCode: 'TTU',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3XDEmxD6VLEwNtrDeuntBC_Ear9NlsepvGbf7Xi7GiqHbqf0aS8l89kw&s=10${cropParams}`,
+  description: 'Known as the Blue Pearl of Morocco, Chefchaouen is a charming mountain town famous for its blue-painted streets, artisan markets, and relaxed atmosphere.',
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'March to May',
+  dailyBudget: 70,
+  attractions: [
+    { name: 'Blue Medina', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Kasbah Museum', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'MAD 60' },
+    { name: 'Plaza Uta el-Hammam', duration: '1 hour', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Spanish Mosque Viewpoint', duration: '2 hours', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'Ras El Maa Waterfall', duration: '1 hour', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Souk & Artisan Shops', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Visit early in the morning for crowd-free photos of the blue streets.',
+    'Wear comfortable shoes as the medina has steep cobblestone lanes.',
+    'Carry cash because many local shops do not accept cards.',
+    'Bargaining is common in the local markets.',
+    'Respect local customs by dressing modestly.',
+    'Stay overnight to experience the peaceful atmosphere after day-trippers leave.'
+  ]
+},
+{
+  id: 'el-nido-ph',
+  city: 'El Nido',
+  country: 'Philippines',
+  airportCode: 'ENI',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvr4j5YnYd8NUrcMsVttXiZBGuubhDpc4ljMov5ctb1OT3zaiXf4oJEM-E&s=10${cropParams}`,
+  description: 'A tropical paradise in Palawan renowned for its crystal-clear lagoons, dramatic limestone cliffs, hidden beaches, and world-class island hopping.',
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'November to May',
+  dailyBudget: 95,
+  attractions: [
+    { name: 'Big Lagoon', duration: '2 hours', bestTime: 'Morning', entryFee: '₱200 Eco-Tourism Fee' },
+    { name: 'Small Lagoon', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Included in Tour A' },
+    { name: 'Secret Lagoon', duration: '1 hour', bestTime: 'Morning', entryFee: 'Included in Tour A' },
+    { name: 'Nacpan Beach', duration: '3 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Taraw Cliff Viewpoint', duration: '2 hours', bestTime: 'Sunrise', entryFee: '₱400 (Guided)' },
+    { name: 'Island Hopping Tour A', duration: 'Full Day', bestTime: '8:30 AM', entryFee: '₱1,400+' }
+  ],
+  travelTips: [
+    'Book island hopping tours at least a day in advance during peak season.',
+    'Bring reef-safe sunscreen to help protect marine life.',
+    'Carry cash, as many small shops and restaurants do not accept cards.',
+    'Wear water shoes for rocky beaches and lagoon entrances.',
+    'Visit between November and May for the calmest sea conditions.',
+    'Pack a waterproof dry bag to protect your phone and camera during boat trips.'
+  ]
+},
+{
+  id: 'luang-prabang-la',
+  city: 'Luang Prabang',
+  country: 'Laos',
+  airportCode: 'LPQ',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEY5f--TCUepqkVGTZ0162mLOppxbe48JBsv-ly4cpn7zlxya-KT0LHAA&s=10${cropParams}`,
+  description: 'A UNESCO World Heritage city nestled between mountains and the Mekong River, celebrated for its golden temples, waterfalls, French colonial architecture, and peaceful atmosphere.',
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'November to February',
+  dailyBudget: 50,
+  attractions: [
+    { name: 'Kuang Si Waterfalls', duration: '3 hours', bestTime: 'Morning', entryFee: '40,000 LAK' },
+    { name: 'Mount Phousi', duration: '1.5 hours', bestTime: 'Sunset', entryFee: '30,000 LAK' },
+    { name: 'Wat Xieng Thong', duration: '1 hour', bestTime: 'Morning', entryFee: '30,000 LAK' },
+    { name: 'Royal Palace Museum', duration: '2 hours', bestTime: 'Morning', entryFee: '60,000 LAK' },
+    { name: 'Mekong River Sunset Cruise', duration: '2 hours', bestTime: 'Evening', entryFee: '$15+' },
+    { name: 'Night Market', duration: '2 hours', bestTime: '7:00 PM', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Wake up early to respectfully observe the traditional alms-giving ceremony.',
+    'Dress modestly when visiting temples by covering shoulders and knees.',
+    'Rent a bicycle to explore the town at a relaxed pace.',
+    'Carry cash, as many small cafés and shops do not accept cards.',
+    'Visit Kuang Si Waterfalls early in the morning to avoid crowds.',
+    'Try authentic Lao dishes such as Khao Soi and sticky rice.'
+  ]
+},
+{
+  id: 'alula-sa',
+  city: 'AlUla',
+  country: 'Saudi Arabia',
+  airportCode: 'ULH',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd1QVSRnni6wbMAqkbwH_7vN8pRpD4FY3dgw8njrnnU1wQiIUm5YAtI3o&s=10${cropParams}`,
+  description: 'A breathtaking desert oasis in northwestern Saudi Arabia, home to ancient Nabataean tombs, dramatic sandstone formations, and one of the Middle East’s most remarkable archaeological landscapes.',
+  budget: 'Luxury',
+  tripType: 'Culture',
+  bestSeason: 'October to March',
+  dailyBudget: 180,
+  attractions: [
+    { name: 'Hegra (Madain Saleh)', duration: '3 hours', bestTime: 'Morning', entryFee: 'SAR 95' },
+    { name: 'Elephant Rock (Jabal AlFil)', duration: '2 hours', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'AlUla Old Town', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Maraya Concert Hall', duration: '1 hour', bestTime: 'Afternoon', entryFee: 'Free (Exterior)' },
+    { name: 'Dadan Archaeological Site', duration: '2 hours', bestTime: 'Morning', entryFee: 'SAR 30' },
+    { name: 'AlUla Oasis Trail', duration: '2 hours', bestTime: 'Early Morning', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Visit between October and March for pleasant desert temperatures.',
+    'Book Hegra guided tours well in advance as visitor numbers are limited.',
+    'Rent a car or join guided tours since attractions are spread across the region.',
+    'Carry sunscreen, sunglasses, and plenty of water while exploring.',
+    'Stay until sunset to experience Elephant Rock illuminated at night.',
+    'Respect local customs by dressing modestly when visiting cultural and historical sites.'
+  ]
+},
+{
+  id: 'whistler-ca',
+  city: 'Whistler',
+  country: 'Canada',
+  airportCode: 'YVR',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyCejl71DmPD6nHb5JJYg4BPLM_hdgUqr18u6RXBuMKHatZWedQaaB9vI&s=10${cropParams}`,
+  description: 'Canada’s premier mountain resort destination, famous for world-class skiing, alpine hiking, scenic lakes, mountain biking, and breathtaking year-round outdoor adventures.',
+  budget: 'Luxury',
+  tripType: 'Adventure',
+  bestSeason: 'December to March',
+  dailyBudget: 190,
+  attractions: [
+    { name: 'Whistler Blackcomb', duration: 'Full Day', bestTime: 'Morning', entryFee: 'CA$189+' },
+    { name: 'Peak 2 Peak Gondola', duration: '2 hours', bestTime: 'Morning', entryFee: 'Included with Sightseeing Pass' },
+    { name: 'Lost Lake', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Whistler Village', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Brandywine Falls', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Scandinave Spa', duration: '3 hours', bestTime: 'Afternoon', entryFee: 'CA$120+' }
+  ],
+  travelTips: [
+    'Purchase lift tickets online in advance to save money.',
+    'Visit during summer for hiking and mountain biking or winter for skiing and snowboarding.',
+    'Pack layers as mountain weather can change quickly.',
+    'Use the free village shuttle to travel around Whistler.',
+    'Reserve spa treatments and popular restaurants well ahead during peak seasons.',
+    'Drive the Sea-to-Sky Highway from Vancouver for one of Canada’s most scenic road trips.'
+  ]
+},
+{
+  id: 'jeju-island-kr',
+  city: 'Jeju Island',
+  country: 'South Korea',
+  airportCode: 'CJU',
+  image: `https://media-gadventures.global.ssl.fastly.net/media-server/dynamic/blogs/posts/G-Adventures/2025/09/blog-jeju-island-korea-travel-guide-springtime-hiking.webp${cropParams}`,
+  description: 'South Korea’s largest volcanic island, renowned for dramatic coastlines, lava tubes, waterfalls, scenic hikes, and beautiful beaches.',
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'April to June',
+  dailyBudget: 115,
+  attractions: [
+    { name: 'Seongsan Ilchulbong (Sunrise Peak)', duration: '2 hours', bestTime: 'Sunrise', entryFee: '₩5,000' },
+    { name: 'Hallasan National Park', duration: '5-8 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Manjanggul Lava Tube', duration: '1.5 hours', bestTime: 'Morning', entryFee: '₩4,000' },
+    { name: 'Cheonjiyeon Waterfall', duration: '1 hour', bestTime: 'Afternoon', entryFee: '₩2,000' },
+    { name: 'Hamdeok Beach', duration: '3 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Jeju Olle Trail', duration: '2-4 hours', bestTime: 'Morning', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Rent a car to explore the island easily, as public transport can be slow.',
+    'Start your hike to Seongsan Ilchulbong before sunrise for spectacular views.',
+    'Carry comfortable hiking shoes if visiting Hallasan National Park.',
+    'Try Jeju black pork BBQ and fresh seafood specialties.',
+    'Visit during spring to enjoy cherry blossoms and mild weather.',
+    'Book accommodation early during weekends and holiday seasons.'
+  ]
+},
+{
+  id: 'siem-reap-kh',
+  city: 'Siem Reap',
+  country: 'Cambodia',
+  airportCode: 'SAI',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWoHz14bpRThRZdWLumIKdukHLE05cKiVrni37aKUtfJzK_OL8G1zn4VR9&s=10${cropParams}`,
+  description: 'Cambodia’s cultural heart and the gateway to Angkor Wat, offering ancient temples, vibrant markets, traditional performances, and unforgettable sunrises.',
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'November to February',
+  dailyBudget: 55,
+  attractions: [
+    { name: 'Angkor Wat', duration: '4 hours', bestTime: 'Sunrise', entryFee: '$37 (1-Day Pass)' },
+    { name: 'Bayon Temple', duration: '2 hours', bestTime: 'Morning', entryFee: 'Included with Angkor Pass' },
+    { name: 'Ta Prohm Temple', duration: '2 hours', bestTime: 'Morning', entryFee: 'Included with Angkor Pass' },
+    { name: 'Pub Street', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Phare Cambodian Circus', duration: '1.5 hours', bestTime: '8:00 PM', entryFee: '$18+' },
+    { name: 'Angkor National Museum', duration: '2 hours', bestTime: 'Afternoon', entryFee: '$12' }
+  ],
+  travelTips: [
+    'Buy your Angkor Pass online or the evening before to avoid morning queues.',
+    'Hire a tuk-tuk driver for the day to comfortably visit multiple temples.',
+    'Wear clothing that covers your shoulders and knees when entering temples.',
+    'Carry plenty of water, sunscreen, and a hat as temple visits involve lots of walking.',
+    'Start at Angkor Wat before sunrise to experience the iconic reflection and avoid crowds.',
+    'Carry US dollars or Cambodian Riel, as both are commonly accepted.'
+  ]
+},
   {
   id: 'lisbon-pt',
   city: 'Lisbon',
@@ -2486,6 +2962,34 @@ export const MOCK_DESTINATIONS: Destination[] = [
     'Language: English is widely spoken in tourist areas, but learning a few Portuguese phrases is helpful.',
     'Safety Advice: Watch your belongings on Tram 28 and in crowded tourist areas.',
     'Packing: Comfortable walking shoes are essential because Lisbon is built on steep hills.'
+  ]
+},
+{
+  id: 'lofoten-islands-no',
+  city: 'Lofoten Islands',
+  country: 'Norway',
+  airportCode: 'EVE',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLhPBTKomOqEDdeJiJNxDKw_WmtEVeNp20fuGRkDopPYSb4wPo3Zi9xFVv&s=10${cropParams}`,
+  description: 'A spectacular Arctic archipelago known for dramatic mountain peaks, colorful fishing villages, white-sand beaches, and some of the world’s best Northern Lights and Midnight Sun experiences.',
+  budget: 'Luxury',
+  tripType: 'Nature',
+  bestSeason: 'June to August',
+  dailyBudget: 210,
+  attractions: [
+    { name: 'Reine Village', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Reinebringen Hike', duration: '3 hours', bestTime: 'Sunrise', entryFee: 'Free' },
+    { name: 'Haukland Beach', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Nusfjord Fishing Village', duration: '2 hours', bestTime: 'Morning', entryFee: 'NOK 100' },
+    { name: 'Lofotr Viking Museum', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'NOK 250' },
+    { name: 'Northern Lights Safari', duration: '5 hours', bestTime: '8:00 PM (Winter)', entryFee: 'NOK 1,600+' }
+  ],
+  travelTips: [
+    'Rent a car to explore the islands, as public transport is limited.',
+    'Visit between June and August for the Midnight Sun or between September and March for the Northern Lights.',
+    'Weather changes rapidly, so pack waterproof and windproof clothing.',
+    'Book accommodation months in advance during peak summer season.',
+    'Carry hiking boots if planning mountain hikes like Reinebringen.',
+    'Respect nature by following marked trails and leaving no trace.'
   ]
 },
 {
