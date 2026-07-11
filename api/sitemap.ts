@@ -1,11 +1,8 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { MOCK_DESTINATIONS } from '../src/data/mockDestinations';
-import { MOCK_BLOG_POSTS } from '../src/data/mockBlogPosts';
 
 const BASE_URL = 'https://flysava.com';
 
-// FIX: Dynamically generate today's date (YYYY-MM-DD) instead of a hardcoded string.
-// This forces Googlebot to continuously re-fetch the child sitemaps to discover new routes.
+// Dynamically generate today's date (YYYY-MM-DD)
 const STATIC_PAGE_BASE_DATE = new Date().toISOString().split('T')[0];
 
 const STATIC_PAGES = [
@@ -23,7 +20,6 @@ const STATIC_PAGES = [
   { route: '/cookies', changefreq: 'yearly', priority: '0.3' }
 ];
 
-// Helper to reliably transform string formats like "July 08, 2026" into strict "2026-07-08" formats
 function parseDateToIso(dateStr: string | undefined): string {
   if (!dateStr) return STATIC_PAGE_BASE_DATE;
   
@@ -34,7 +30,7 @@ function parseDateToIso(dateStr: string | undefined): string {
 
   try {
     const cleanStr = dateStr.replace(',', '').toLowerCase().trim();
-    const parts = cleanStr.split(/\s+/); // [month, day, year]
+    const parts = cleanStr.split(/\s+/); 
     
     if (parts.length === 3) {
       const month = months[parts[0]] || '01';
@@ -52,12 +48,34 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const { type } = req.query;
 
-    // Configure headers for accurate indexing delivery and production-grade Edge Caching
     res.setHeader('Content-Type', 'text/xml; charset=utf-8');
-    res.setHeader('Cache-Control', 's-maxage=43200, stale-while-revalidate=3600'); // Cache 12 Hours
+    res.setHeader('Cache-Control', 's-maxage=43200, stale-while-revalidate=3600'); 
 
-    // CASE 1: Primary Index Map (Dynamically loaded when requesting /sitemap.xml)
+    // 1. FAULT-TOLERANT DYNAMIC IMPORTS
+    // We load the data safely at runtime. Adding .js helps Vercel's ESM resolver trace the files.
+    let mockDestinations: any[] = [];
+    let mockBlogPosts: any[] = [];
+
+    try {
+      const destModule = await import('../src/data/mockDestinations.js').catch(() => import('../src/data/mockDestinations'));
+      mockDestinations = destModule.MOCK_DESTINATIONS || [];
+    } catch (error) {
+      console.warn('Vercel Trace Warning: Could not bundle MOCK_DESTINATIONS into serverless function.');
+    }
+
+    try {
+      const blogModule = await import('../src/data/mockBlogPosts.js').catch(() => import('../src/data/mockBlogPosts'));
+      mockBlogPosts = blogModule.MOCK_BLOG_POSTS || [];
+    } catch (error) {
+      console.warn('Vercel Trace Warning: Could not bundle MOCK_BLOG_POSTS into serverless function.');
+    }
+
+    // CASE 1: Primary Index Map
     if (!type) {
+      const latestBlogDate = mockBlogPosts.length > 0 
+        ? parseDateToIso(mockBlogPosts[0]?.lastUpdated || mockBlogPosts[0]?.publishedDate)
+        : STATIC_PAGE_BASE_DATE;
+
       const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
@@ -70,7 +88,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   </sitemap>
   <sitemap>
     <loc>${BASE_URL}/sitemap-blog.xml</loc>
-    <lastmod>${parseDateToIso(MOCK_BLOG_POSTS[0]?.lastUpdated)}</lastmod>
+    <lastmod>${latestBlogDate}</lastmod>
   </sitemap>
 </sitemapindex>`;
       
@@ -92,11 +110,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // CASE 3: Live Destination Guides
     if (type === 'destinations') {
-      const validDestinations = MOCK_DESTINATIONS.filter(
-        dest => dest && dest.id && dest.city && dest.country && dest.budget && dest.description
-      );
-
-      const entries = validDestinations.map(dest => `
+      const entries = mockDestinations.filter(d => d && d.id).map(dest => `
   <url>
     <loc>${BASE_URL}/guide/${dest.id}</loc>
     <lastmod>${STATIC_PAGE_BASE_DATE}</lastmod>
@@ -109,7 +123,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // CASE 4: Live Blog Content Streams
     if (type === 'blog') {
-      const entries = MOCK_BLOG_POSTS.map(post => `
+      const entries = mockBlogPosts.filter(p => p && p.slug).map(post => `
   <url>
     <loc>${BASE_URL}/blog/${post.slug}</loc>
     <lastmod>${parseDateToIso(post.lastUpdated || post.publishedDate)}</lastmod>
