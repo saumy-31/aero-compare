@@ -4,12 +4,13 @@ import { MOCK_BLOG_POSTS } from '../src/data/mockBlogPosts';
 
 const BASE_URL = 'https://flysava.com';
 
-// Stable structural tracking date for core static marketing pages
-const STATIC_PAGE_BASE_DATE = '2026-07-01';
+// FIX: Dynamically generate today's date (YYYY-MM-DD) instead of a hardcoded string.
+// This forces Googlebot to continuously re-fetch the child sitemaps to discover new routes.
+const STATIC_PAGE_BASE_DATE = new Date().toISOString().split('T')[0];
 
 const STATIC_PAGES = [
   { route: '', changefreq: 'daily', priority: '1.0' },
-  { route: '/flights', changefreq: 'daily', priority: '1.0' }, // <-- NEW ENTRY
+  { route: '/flights', changefreq: 'daily', priority: '1.0' },
   { route: '/status', changefreq: 'hourly', priority: '0.9' },
   { route: '/destinations', changefreq: 'weekly', priority: '0.9' },
   { route: '/blog', changefreq: 'daily', priority: '0.8' },
@@ -89,7 +90,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(200).send(wrapInUrlSet(entries));
     }
 
-    // CASE 3: Live Destination Guides (Using canonical /guide/:id scheme found in your routing tree)
+    // CASE 3: Live Destination Guides
     if (type === 'destinations') {
       const validDestinations = MOCK_DESTINATIONS.filter(
         dest => dest && dest.id && dest.city && dest.country && dest.budget && dest.description
