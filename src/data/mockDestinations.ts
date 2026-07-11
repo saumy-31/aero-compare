@@ -246,7 +246,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
   },
   {
     id: 'abu-dhabi-ae', city: 'Abu Dhabi', country: 'UAE', airportCode: 'AUH', 
-    image: `https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1600&q=80`,
+    image: `https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/fb/0f/6d.jpg`,
     description: 'The capital of the UAE, focusing on cultural attractions, mega-malls, and luxury resorts.',
     budget: 'Luxury', tripType: 'Culture', bestSeason: 'November to March', dailyBudget: 200,
     attractions: [
@@ -288,6 +288,62 @@ export const MOCK_DESTINATIONS: Destination[] = [
       'Language: English is widely spoken, but having a translation app for traditional characters helps.'
     ]
   },
+  {
+  id: 'edinburgh-gb',
+  city: 'Edinburgh',
+  country: 'Scotland',
+  airportCode: 'EDI',
+  image: `https://images.unsplash.com/photo-1506377585622-bedcbb027afc${cropParams}`,
+  description: 'Scotland’s historic capital, filled with medieval streets, iconic castles, scenic hills, and world-famous festivals.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'May to September',
+  dailyBudget: 140,
+  attractions: [
+    { name: 'Edinburgh Castle', duration: '3 hours', bestTime: '9:30 AM', entryFee: '£19.50' },
+    { name: 'Royal Mile', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Arthur’s Seat', duration: '2 hours', bestTime: 'Sunrise', entryFee: 'Free' },
+    { name: 'Holyrood Palace', duration: '2 hours', bestTime: 'Afternoon', entryFee: '£20' },
+    { name: 'Victoria Street', duration: '1 hour', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'National Museum of Scotland', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Public Transportation: Lothian Buses are reliable and cover the city well.',
+    'Local Etiquette: Queue politely and respect quiet public spaces.',
+    'Money-Saving: Many museums and galleries offer free entry.',
+    'Weather: Conditions change quickly, so always carry a waterproof jacket.',
+    'Safety Advice: The city is safe, but be cautious on steep cobbled streets when wet.',
+    'Packing: Comfortable waterproof shoes are highly recommended.'
+  ]
+},
+{
+  id: 'dublin-ie',
+  city: 'Dublin',
+  country: 'Ireland',
+  airportCode: 'DUB',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOT5JDrqmiB6bVOgLEFP2C-JtA_X9eFjvwNb0P9hHOPre0b4omi_H_IKo&s=10${cropParams}`,
+  description: 'Ireland’s lively capital, famous for its historic pubs, literary heritage, Georgian architecture, and welcoming atmosphere.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'May to September',
+  dailyBudget: 145,
+  attractions: [
+    { name: 'Trinity College & Book of Kells', duration: '2 hours', bestTime: '9:00 AM', entryFee: '€25' },
+    { name: 'Guinness Storehouse', duration: '2.5 hours', bestTime: 'Afternoon', entryFee: '€30' },
+    { name: 'Temple Bar District', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Dublin Castle', duration: '1.5 hours', bestTime: 'Morning', entryFee: '€8' },
+    { name: 'St. Stephen’s Green', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Phoenix Park', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Public Transportation: Buy a Leap Visitor Card for unlimited travel.',
+    'Local Etiquette: Friendly conversations with locals are common.',
+    'Money-Saving: Many museums are free to visit.',
+    'Weather: Carry a rain jacket year-round.',
+    'Safety Advice: Temple Bar is safe but crowded at night.',
+    'Packing: Layered clothing works best due to changing weather.'
+  ]
+},
   {
     id: 'maldives-mv', city: 'Maldives', country: 'Maldives', airportCode: 'MLE', 
     image: `https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1600&q=80`,
@@ -445,6 +501,34 @@ export const MOCK_DESTINATIONS: Destination[] = [
     ]
   },
   {
+  id: 'stockholm-se',
+  city: 'Stockholm',
+  country: 'Sweden',
+  airportCode: 'ARN',
+  image: `https://images.unsplash.com/photo-1509356843151-3e7d96241e11${cropParams}`,
+  description: 'Sweden’s beautiful capital spread across islands, offering royal history, waterfront views, and Scandinavian culture.',
+  budget: 'Luxury',
+  tripType: 'City',
+  bestSeason: 'May to September',
+  dailyBudget: 170,
+  attractions: [
+    { name: 'Gamla Stan', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Vasa Museum', duration: '2 hours', bestTime: 'Morning', entryFee: 'SEK 190' },
+    { name: 'Royal Palace', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'SEK 200' },
+    { name: 'ABBA Museum', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'SEK 250' },
+    { name: 'Skansen Open-Air Museum', duration: '3 hours', bestTime: 'Morning', entryFee: 'SEK 285' },
+    { name: 'City Hall', duration: '1 hour', bestTime: 'Morning', entryFee: 'SEK 150' }
+  ],
+  travelTips: [
+    'Use an SL Travel Card.',
+    'Most places are cashless.',
+    'Summer has long daylight hours.',
+    'Book museums online.',
+    'Public transport is excellent.',
+    'Bring warm clothing outside summer.'
+  ]
+},
+  {
     id: 'venice-it', city: 'Venice', country: 'Italy', airportCode: 'VCE', 
     image: `https://images.unsplash.com/photo-1514890547357-a9ee288728e0${cropParams}`,
     description: 'Built on more than 100 small islands in a lagoon in the Adriatic Sea, with no roads, just canals.',
@@ -511,6 +595,34 @@ export const MOCK_DESTINATIONS: Destination[] = [
     ]
   },
   {
+  id: 'copenhagen-dk',
+  city: 'Copenhagen',
+  country: 'Denmark',
+  airportCode: 'CPH',
+  image: `https://images.unsplash.com/photo-1513622470522-26c3c8a854bc${cropParams}`,
+  description: 'A stylish Scandinavian capital known for colorful waterfronts, cycling culture, royal palaces, and modern design.',
+  budget: 'Luxury',
+  tripType: 'City',
+  bestSeason: 'May to August',
+  dailyBudget: 170,
+  attractions: [
+    { name: 'Nyhavn Harbor', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Tivoli Gardens', duration: '3 hours', bestTime: 'Afternoon', entryFee: 'DKK 165' },
+    { name: 'The Little Mermaid', duration: '30 mins', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Rosenborg Castle', duration: '2 hours', bestTime: 'Morning', entryFee: 'DKK 140' },
+    { name: 'Christiansborg Palace', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'DKK 175' },
+    { name: 'Strøget Shopping Street', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Rent a bicycle to explore the city like a local.',
+    'Use the Copenhagen Card for attractions and transport.',
+    'Tap water is safe and free.',
+    'Card payments are accepted almost everywhere.',
+    'Summer sunsets are very late.',
+    'Pack a windproof jacket even in summer.'
+  ]
+},
+  {
     id: 'madrid-es', city: 'Madrid', country: 'Spain', airportCode: 'MAD', 
     image: `https://images.unsplash.com/photo-1539037116277-4db20889f2d4${cropParams}`,
     description: 'Spain\'s central capital, a city of elegant boulevards and expansive, manicured parks.',
@@ -554,6 +666,146 @@ export const MOCK_DESTINATIONS: Destination[] = [
       'Currency: Many Dutch supermarkets (like Albert Heijn) do not accept Visa/Mastercard credit cards, only Maestro or Cash.'
     ]
   },
+  {
+  id: 'oslo-no',
+  city: 'Oslo',
+  country: 'Norway',
+  airportCode: 'OSL',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwuRftF8wx5edD45gduNy5d1JLCPhewo-M3zTHnAMMn4wUxHgCHX87bco&s=10${cropParams}`,
+  description: 'Norway’s modern capital surrounded by forests and fjords, offering museums, Viking history, and stunning waterfront views.',
+  budget: 'Luxury',
+  tripType: 'City',
+  bestSeason: 'June to August',
+  dailyBudget: 190,
+  attractions: [
+    { name: 'Oslo Opera House', duration: '1 hour', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'Vigeland Sculpture Park', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Akershus Fortress', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Fram Museum', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'NOK 180' },
+    { name: 'MUNCH Museum', duration: '2 hours', bestTime: 'Morning', entryFee: 'NOK 180' },
+    { name: 'Karl Johans Gate', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Buy an Oslo Pass.',
+    'Norway is almost cashless.',
+    'Public transport is punctual.',
+    'Bring waterproof clothing.',
+    'Restaurants are expensive.',
+    'Nature is easily accessible from downtown.'
+  ]
+},
+{
+  id: 'honolulu-us',
+  city: 'Honolulu',
+  country: 'USA',
+  airportCode: 'HNL',
+  image: `https://media-cldnry.s-nbcnews.com/image/upload/newscms/2018_27/1351353/oahu-hawaii-today-180706-tease.jpg${cropParams}`,
+  description: 'A tropical paradise combining world-famous beaches, volcanic landscapes, Hawaiian culture, and unforgettable sunsets.',
+  budget: 'Luxury',
+  tripType: 'Beach',
+  bestSeason: 'April to October',
+  dailyBudget: 230,
+  attractions: [
+    { name: 'Waikiki Beach', duration: 'Half Day', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Diamond Head', duration: '2 hours', bestTime: 'Sunrise', entryFee: '$5' },
+    { name: 'Pearl Harbor', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Hanauma Bay', duration: '4 hours', bestTime: 'Morning', entryFee: '$25' },
+    { name: 'North Shore', duration: 'Half Day', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Iolani Palace', duration: '2 hours', bestTime: 'Morning', entryFee: '$27' }
+  ],
+  travelTips: [
+    'Rent a car.',
+    'Use reef-safe sunscreen.',
+    'Respect local traditions.',
+    'Book Pearl Harbor tickets early.',
+    'Carry swimwear daily.',
+    'Sunrise hikes are worth it.'
+  ]
+},
+{
+  id: 'montreal-ca',
+  city: 'Montreal',
+  country: 'Canada',
+  airportCode: 'YUL',
+  image: `https://images.unsplash.com/photo-1519178614-68673b201f36${cropParams}`,
+  description: 'A vibrant French-speaking city known for festivals, historic streets, excellent food, and European charm.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'May to October',
+  dailyBudget: 145,
+  attractions: [
+    { name: 'Old Montreal', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Notre-Dame Basilica', duration: '1 hour', bestTime: 'Morning', entryFee: 'CA$16' },
+    { name: 'Mount Royal', duration: '2 hours', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'Jean-Talon Market', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Biodome', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'CA$25' },
+    { name: 'Old Port', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Metro is efficient.',
+    'Learn basic French greetings.',
+    'Try authentic poutine.',
+    'Summer hosts many festivals.',
+    'Carry a light jacket.',
+    'Many attractions are walkable.'
+  ]
+},
+{
+  id: 'santiago-cl',
+  city: 'Santiago',
+  country: 'Chile',
+  airportCode: 'SCL',
+  image: `https://i.natgeofe.com/n/424e1067-ad19-4e73-a091-78a3cf99f9f9/coverstory_chile_GettyImages-2018683965_ukHR.jpg${cropParams}`,
+  description: 'Chile’s modern capital surrounded by the Andes, offering vibrant culture, excellent food, nearby vineyards, and mountain adventures.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'September to April',
+  dailyBudget: 95,
+  attractions: [
+    { name: 'San Cristóbal Hill', duration: '2 hours', bestTime: 'Sunset', entryFee: 'CLP 5,000' },
+    { name: 'Plaza de Armas', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'La Moneda Palace', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Sky Costanera', duration: '1 hour', bestTime: 'Sunset', entryFee: 'CLP 18,000' },
+    { name: 'Bellavista', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Concha y Toro Winery', duration: 'Half Day', bestTime: 'Morning', entryFee: 'CLP 25,000' }
+  ],
+  travelTips: [
+    'Use the Metro.',
+    'Visit nearby vineyards.',
+    'Carry layers.',
+    'Book winery tours early.',
+    'Avoid rush hour traffic.',
+    'Mountain weather changes quickly.'
+  ]
+},
+{
+  id: 'budapest-hu',
+  city: 'Budapest',
+  country: 'Hungary',
+  airportCode: 'BUD',
+  image: `https://images.unsplash.com/photo-1549877452-9c387954fbc2${cropParams}`,
+  description: 'Hungary’s stunning capital, famous for thermal baths, grand architecture, riverside views, and vibrant nightlife.',
+  budget: 'Budget',
+  tripType: 'City',
+  bestSeason: 'April to October',
+  dailyBudget: 80,
+  attractions: [
+    { name: 'Parliament Building', duration: '2 hours', bestTime: 'Morning', entryFee: '€28' },
+    { name: 'Buda Castle', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Fisherman’s Bastion', duration: '1 hour', bestTime: 'Sunrise', entryFee: 'Free' },
+    { name: 'Széchenyi Thermal Bath', duration: '3 hours', bestTime: 'Afternoon', entryFee: '€32' },
+    { name: 'Chain Bridge', duration: '30 mins', bestTime: 'Night', entryFee: 'Free' },
+    { name: 'Heroes’ Square', duration: '45 mins', bestTime: 'Morning', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Use Budapest Card.',
+    'Public transport is cheap.',
+    'Try local goulash.',
+    'Carry some cash.',
+    'Visit thermal baths early.',
+    'Book Parliament tours ahead.'
+  ]
+},
   {
     id: 'prague-cz', city: 'Prague', country: 'Czech Republic', airportCode: 'PRG', 
     image: `https://images.unsplash.com/photo-1519677100203-a0e668c92439${cropParams}`,
@@ -687,6 +939,90 @@ export const MOCK_DESTINATIONS: Destination[] = [
     ]
   },
   {
+  id: 'beijing-cn',
+  city: 'Beijing',
+  country: 'China',
+  airportCode: 'PEK',
+  image: `https://images.unsplash.com/photo-1508804185872-d7badad00f7d${cropParams}`,
+  description: 'China’s historic capital, home to imperial palaces, the Great Wall, ancient temples, and rich cultural heritage.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'April to May',
+  dailyBudget: 110,
+  attractions: [
+    { name: 'Great Wall of China (Mutianyu)', duration: 'Half Day', bestTime: '8:00 AM', entryFee: '¥45' },
+    { name: 'Forbidden City', duration: '3 hours', bestTime: 'Morning', entryFee: '¥60' },
+    { name: 'Temple of Heaven', duration: '2 hours', bestTime: 'Morning', entryFee: '¥34' },
+    { name: 'Summer Palace', duration: '3 hours', bestTime: 'Afternoon', entryFee: '¥30' },
+    { name: 'Tiananmen Square', duration: '1 hour', bestTime: 'Sunrise', entryFee: 'Free' },
+    { name: 'Wangfujing Street', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Use the subway for fast travel.',
+    'Carry your passport.',
+    'Install Alipay or WeChat Pay.',
+    'Visit the Great Wall early.',
+    'Avoid major holidays.',
+    'Use translation apps.'
+  ]
+},
+{
+  id: 'colombo-lk',
+  city: 'Colombo',
+  country: 'Sri Lanka',
+  airportCode: 'CMB',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjn-b46ucBVlEVL5NIzPMJu9PSSVoc-OqUsa53KmsYQDEZ6zS_3EjLVWM&s=10${cropParams}`,
+  description: 'Sri Lanka’s vibrant capital blending colonial history, oceanfront views, bustling markets, and modern city life.',
+  budget: 'Budget',
+  tripType: 'City',
+  bestSeason: 'December to March',
+  dailyBudget: 55,
+  attractions: [
+    { name: 'Galle Face Green', duration: '2 hours', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'Gangaramaya Temple', duration: '1 hour', bestTime: 'Morning', entryFee: 'LKR 400' },
+    { name: 'Pettah Market', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Lotus Tower', duration: '1 hour', bestTime: 'Evening', entryFee: 'LKR 2000' },
+    { name: 'National Museum', duration: '2 hours', bestTime: 'Morning', entryFee: 'LKR 1500' },
+    { name: 'Independence Square', duration: '1 hour', bestTime: 'Evening', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Use PickMe instead of taxis.',
+    'Drink bottled water.',
+    'Carry small cash.',
+    'Dress modestly in temples.',
+    'Seafood is excellent.',
+    'Watch traffic while crossing roads.'
+  ]
+},
+  {
+  id: 'boston-us',
+  city: 'Boston',
+  country: 'USA',
+  airportCode: 'BOS',
+  image: `https://static.toiimg.com/thumb/45201205/.jpg?resizemode=4&width=800${cropParams}`,
+  description: 'A historic American city filled with colonial landmarks, universities, waterfront views, and vibrant neighborhoods.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'May to October',
+  dailyBudget: 170,
+  attractions: [
+    { name: 'Freedom Trail', duration: '4 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Boston Common', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Harvard University', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Fenway Park', duration: '2 hours', bestTime: 'Afternoon', entryFee: '$30+' },
+    { name: 'Quincy Market', duration: '2 hours', bestTime: 'Lunch', entryFee: 'Free' },
+    { name: 'Boston Harbor Cruise', duration: '2 hours', bestTime: 'Evening', entryFee: '$40+' }
+  ],
+  travelTips: [
+    'Walk the Freedom Trail.',
+    'Use the CharlieCard.',
+    'Seafood is a must-try.',
+    'Book baseball tickets early.',
+    'Carry layers in spring.',
+    'Most attractions are walkable.'
+  ]
+},
+  {
     id: 'istanbul-tr', city: 'Istanbul', country: 'Turkey', airportCode: 'IST', 
     image: `https://images.unsplash.com/photo-1524231757912-21f4fe3a7200${cropParams}`,
     description: 'A major city in Turkey that straddles Europe and Asia across the Bosphorus Strait.',
@@ -732,6 +1068,62 @@ export const MOCK_DESTINATIONS: Destination[] = [
       'Etiquette: Do not stop in the middle of the sidewalk to look at your phone. Pull over to the side.'
     ]
   },
+  {
+  id: 'hanoi-vn',
+  city: 'Hanoi',
+  country: 'Vietnam',
+  airportCode: 'HAN',
+  image: `https://images.unsplash.com/photo-1528127269322-539801943592${cropParams}`,
+  description: 'Vietnam’s charming capital, famous for its centuries-old architecture, vibrant Old Quarter, and incredible street food.',
+  budget: 'Budget',
+  tripType: 'City',
+  bestSeason: 'October to April',
+  dailyBudget: 45,
+  attractions: [
+    { name: 'Hoan Kiem Lake', duration: '1 hour', bestTime: 'Sunrise', entryFee: 'Free' },
+    { name: 'Old Quarter', duration: '3 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Temple of Literature', duration: '1.5 hours', bestTime: 'Morning', entryFee: '40,000 VND' },
+    { name: 'Ho Chi Minh Mausoleum', duration: '2 hours', bestTime: '8:00 AM', entryFee: 'Free' },
+    { name: 'Train Street', duration: '1 hour', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Water Puppet Theatre', duration: '1 hour', bestTime: 'Evening', entryFee: '100,000 VND' }
+  ],
+  travelTips: [
+    'Cross roads slowly and confidently.',
+    'Try authentic Pho and Bun Cha.',
+    'Carry small cash notes.',
+    'Use Grab instead of taxis.',
+    'Dress modestly at temples.',
+    'Visit during cooler months.'
+  ]
+},
+{
+  id: 'ho-chi-minh-vn',
+  city: 'Ho Chi Minh City',
+  country: 'Vietnam',
+  airportCode: 'SGN',
+  image: `https://images.unsplash.com/photo-1583417319070-4a69db38a482${cropParams}`,
+  description: 'Vietnam’s bustling economic hub, blending French colonial landmarks, lively markets, and modern skyscrapers.',
+  budget: 'Budget',
+  tripType: 'City',
+  bestSeason: 'December to April',
+  dailyBudget: 50,
+  attractions: [
+    { name: 'Ben Thanh Market', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'War Remnants Museum', duration: '2 hours', bestTime: 'Morning', entryFee: '40,000 VND' },
+    { name: 'Notre-Dame Cathedral', duration: '45 mins', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Saigon Skydeck', duration: '1 hour', bestTime: 'Sunset', entryFee: '200,000 VND' },
+    { name: 'Cu Chi Tunnels', duration: 'Half Day', bestTime: 'Morning', entryFee: '125,000 VND' },
+    { name: 'Nguyen Hue Walking Street', duration: '2 hours', bestTime: 'Night', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Use Grab for transport.',
+    'Carry cash.',
+    'Street food is safe at busy stalls.',
+    'Traffic is extremely busy.',
+    'Wear light clothing.',
+    'Keep valuables secure.'
+  ]
+},
   {
     id: 'los-angeles-us', city: 'Los Angeles', country: 'USA', airportCode: 'LAX', 
     image: `https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?auto=format&fit=crop&w=1600&q=80`,
@@ -979,6 +1371,34 @@ export const MOCK_DESTINATIONS: Destination[] = [
     ]
   },
   {
+  id: 'porto-pt',
+  city: 'Porto',
+  country: 'Portugal',
+  airportCode: 'OPO',
+  image: `https://images.unsplash.com/photo-1555881400-74d7acaacd8b${cropParams}`,
+  description: 'A charming riverside city famous for Port wine, colorful architecture, historic bridges, and scenic views along the Douro River.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'May to September',
+  dailyBudget: 100,
+  attractions: [
+    { name: 'Dom Luís I Bridge', duration: '1 hour', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'Ribeira District', duration: '3 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Livraria Lello', duration: '1 hour', bestTime: '9:00 AM', entryFee: '€10' },
+    { name: 'São Bento Station', duration: '30 mins', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Port Wine Cellars', duration: '2 hours', bestTime: 'Afternoon', entryFee: '€18' },
+    { name: 'Clérigos Tower', duration: '1 hour', bestTime: 'Morning', entryFee: '€8' }
+  ],
+  travelTips: [
+    'Public Transportation: The Andante Card works across metro, buses, and trains.',
+    'Local Etiquette: Dinner is usually served after 7:30 PM.',
+    'Money-Saving: Wine tastings often include discounts when booking online.',
+    'Language: English is spoken in most tourist areas.',
+    'Safety Advice: Porto is very safe, but stay alert near major attractions.',
+    'Packing: Bring a light jacket, even during summer evenings.'
+  ]
+},
+  {
     id: 'zanzibar-tz', city: 'Zanzibar', country: 'Tanzania', airportCode: 'ZNZ', 
     image: `https://images.unsplash.com/photo-1586861635167-e5223aadc9fe${cropParams}`,
     description: 'An archipelago off the coast of East Africa, known for pristine beaches and spice farms.',
@@ -1069,6 +1489,34 @@ export const MOCK_DESTINATIONS: Destination[] = [
     ]
   },
   {
+  id: 'krakow-pl',
+  city: 'Kraków',
+  country: 'Poland',
+  airportCode: 'KRK',
+  image: `https://images.unsplash.com/photo-1519197924294-4ba991a11128${cropParams}`,
+  description: 'One of Europe’s best-preserved medieval cities, filled with castles, churches, charming squares, and rich history.',
+  budget: 'Budget',
+  tripType: 'City',
+  bestSeason: 'May to September',
+  dailyBudget: 75,
+  attractions: [
+    { name: 'Wawel Castle', duration: '3 hours', bestTime: 'Morning', entryFee: 'PLN 49' },
+    { name: 'Main Market Square', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'St. Mary’s Basilica', duration: '1 hour', bestTime: 'Morning', entryFee: 'PLN 18' },
+    { name: 'Kazimierz District', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Schindler’s Factory', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'PLN 36' },
+    { name: 'Planty Park', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Use trams for city travel.',
+    'Many attractions are walkable.',
+    'Cash and cards are accepted.',
+    'Visit early during summer.',
+    'Book Auschwitz tours in advance.',
+    'Try authentic pierogi.'
+  ]
+},
+  {
     id: 'auckland-nz', city: 'Auckland', country: 'New Zealand', airportCode: 'AKL', 
     image: `https://images.unsplash.com/photo-1507699622108-4be3abd695ad${cropParams}`,
     description: 'Based around 2 large harbours, a major city in the north of New Zealand\'s North Island.',
@@ -1091,6 +1539,34 @@ export const MOCK_DESTINATIONS: Destination[] = [
     ]
   },
   {
+  id: 'orlando-us',
+  city: 'Orlando',
+  country: 'USA',
+  airportCode: 'MCO',
+  image: `https://hips.hearstapps.com/hmg-prod/images/lake-eola-aerial-1-64f06b7e8d9e3.jpg?crop=0.505xw:1.00xh;0,0&resize=640:*${cropParams}`,
+  description: 'The theme park capital of the world, offering unforgettable adventures, entertainment, shopping, and family attractions.',
+  budget: 'Luxury',
+  tripType: 'City',
+  bestSeason: 'October to April',
+  dailyBudget: 220,
+  attractions: [
+    { name: 'Magic Kingdom', duration: 'Full Day', bestTime: 'Opening Hours', entryFee: '$140+' },
+    { name: 'Universal Studios Florida', duration: 'Full Day', bestTime: 'Morning', entryFee: '$120+' },
+    { name: 'EPCOT', duration: 'Full Day', bestTime: 'Morning', entryFee: '$140+' },
+    { name: 'Disney Springs', duration: '3 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'ICON Park', duration: '2 hours', bestTime: 'Sunset', entryFee: '$30+' },
+    { name: 'SeaWorld Orlando', duration: 'Full Day', bestTime: 'Morning', entryFee: '$100+' }
+  ],
+  travelTips: [
+    'Arrive before park opening.',
+    'Use Genie+ or Express Pass.',
+    'Stay hydrated.',
+    'Wear comfortable shoes.',
+    'Book tickets online.',
+    'Summer afternoons often bring rain.'
+  ]
+},
+  {
     id: 'queenstown-nz', city: 'Queenstown', country: 'New Zealand', airportCode: 'ZQN', 
     image: `https://www.newzealand.com/assets/externally-managed-assets/tbd-assets/tbd-folder-10092946/img-1731461073-7951-258451-tbd-asset__ExtRewriteWyJwbmciLCJqcGciXQ_aWxvdmVrZWxseQo_CropResizeWzk0MCw1MzAsOTAsImpwZyJd.jpg${cropParams}`,
     description: 'A resort town in Otago in the south-west of New Zealand\'s South Island, known as the adventure capital.',
@@ -1112,6 +1588,34 @@ export const MOCK_DESTINATIONS: Destination[] = [
       'Water: The tap water is pristine glacial runoff. Do not buy bottled water.'
     ]
   },
+  {
+  id: 'washington-dc-us',
+  city: 'Washington, D.C.',
+  country: 'USA',
+  airportCode: 'IAD',
+  image: `https://images.unsplash.com/photo-1501466044931-62695aada8e9${cropParams}`,
+  description: 'The capital of the United States, home to iconic monuments, Smithsonian museums, and historic government landmarks.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'March to May',
+  dailyBudget: 165,
+  attractions: [
+    { name: 'National Mall', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Lincoln Memorial', duration: '1 hour', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'U.S. Capitol', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free (Reservation)' },
+    { name: 'Smithsonian Museums', duration: '4 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'White House Visitor Center', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Georgetown', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Metro is the best transport.',
+    'Most museums are free.',
+    'Wear walking shoes.',
+    'Book Capitol tours ahead.',
+    'Visit monuments at night.',
+    'Spring is the most beautiful season.'
+  ]
+},
 
   // --- UNIQUE / BUCKET LIST ---
   {
@@ -1159,6 +1663,62 @@ export const MOCK_DESTINATIONS: Destination[] = [
     ]
   },
   {
+  id: 'hoi-an-vn',
+  city: 'Hoi An',
+  country: 'Vietnam',
+  airportCode: 'DAD',
+  image: `https://images.unsplash.com/photo-1559592413-7cec4d0cae2b${cropParams}`,
+  description: 'A UNESCO-listed ancient town known for lantern-lit streets, riverside cafés, tailor shops, and timeless charm.',
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'February to April',
+  dailyBudget: 50,
+  attractions: [
+    { name: 'Ancient Town', duration: '3 hours', bestTime: 'Evening', entryFee: '120,000 VND' },
+    { name: 'Japanese Covered Bridge', duration: '30 mins', bestTime: 'Morning', entryFee: 'Included' },
+    { name: 'Night Market', duration: '2 hours', bestTime: 'Night', entryFee: 'Free' },
+    { name: 'An Bang Beach', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Basket Boat Tour', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: '150,000 VND' },
+    { name: 'Lantern Boat Ride', duration: '30 mins', bestTime: 'Night', entryFee: '150,000 VND' }
+  ],
+  travelTips: [
+    'Explore on foot.',
+    'Try Cao Lau noodles.',
+    'Visit after sunset.',
+    'Get custom clothes tailored.',
+    'Carry cash.',
+    'Cycle around the town.'
+  ]
+},
+  {
+  id: 'brussels-be',
+  city: 'Brussels',
+  country: 'Belgium',
+  airportCode: 'BRU',
+  image: `https://www.pelago.com/img/destinations/brussels/0720-0637_brussels.jpg${cropParams}`,
+  description: 'Belgium’s cosmopolitan capital, known for Grand Place, chocolates, waffles, beer, and European institutions.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'May to September',
+  dailyBudget: 125,
+  attractions: [
+    { name: 'Grand Place', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Atomium', duration: '2 hours', bestTime: 'Morning', entryFee: '€16' },
+    { name: 'Royal Palace', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Manneken Pis', duration: '30 mins', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Comic Strip Museum', duration: '2 hours', bestTime: 'Morning', entryFee: '€13' },
+    { name: 'Mont des Arts', duration: '1 hour', bestTime: 'Sunset', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Metro is the easiest way around.',
+    'Try Belgian fries and waffles.',
+    'Many museums are closed on Mondays.',
+    'Carry a reusable water bottle.',
+    'Keep an eye on belongings in busy stations.',
+    'English is widely spoken.'
+  ]
+},
+  {
     id: 'lapland-fi', city: 'Lapland', country: 'Finland', airportCode: 'RVN', 
     image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDYxC-40pGtj_XXE-2odBRnXoK-P39hoEXLOERfQpSHLEgjbn4FMI5ZkcQ&s=10${cropParams}`,
     description: 'Finland’s northernmost region, a sparsely populated area bordering Sweden, Norway, and Russia.',
@@ -1181,8 +1741,64 @@ export const MOCK_DESTINATIONS: Destination[] = [
     ]
   },
   {
+  id: 'chicago-us',
+  city: 'Chicago',
+  country: 'USA',
+  airportCode: 'ORD',
+  image: `https://images.unsplash.com/photo-1494522855154-9297ac14b55f${cropParams}`,
+  description: 'A world-famous city celebrated for architecture, deep-dish pizza, museums, and the scenic Lake Michigan waterfront.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'May to October',
+  dailyBudget: 170,
+  attractions: [
+    { name: 'Millennium Park', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Willis Tower Skydeck', duration: '2 hours', bestTime: 'Sunset', entryFee: '$36' },
+    { name: 'Navy Pier', duration: '3 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Art Institute of Chicago', duration: '3 hours', bestTime: 'Morning', entryFee: '$32' },
+    { name: 'Riverwalk', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: '360 Chicago', duration: '1 hour', bestTime: 'Sunset', entryFee: '$30' }
+  ],
+  travelTips: [
+    'Purchase a Ventra transit card.',
+    'Try authentic deep-dish pizza.',
+    'Lakefront is perfect for cycling.',
+    'Weather changes quickly.',
+    'Book observation decks online.',
+    'Winter temperatures can be extreme.'
+  ]
+},
+  {
+  id: 'split-hr',
+  city: 'Split',
+  country: 'Croatia',
+  airportCode: 'SPU',
+  image: `https://images.ctfassets.net/5dlg82ljiq56/1kLC7yXO6Du9rh18C5mdfz/8eb567c1e5d94d9a6850c3a8f3658d24/AdobeStock_320606199__2_.jpg?w=800&fm=webp&q=80${cropParams}`,
+  description: 'A beautiful Adriatic coastal city blending Roman history, beaches, lively promenades, and island-hopping adventures.',
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'May to September',
+  dailyBudget: 110,
+  attractions: [
+    { name: 'Diocletian’s Palace', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Riva Promenade', duration: '1 hour', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'Marjan Hill', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Bačvice Beach', duration: '3 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Cathedral of Saint Domnius', duration: '1 hour', bestTime: 'Morning', entryFee: '€10' },
+    { name: 'Blue Lagoon Boat Tour', duration: '6 hours', bestTime: 'Morning', entryFee: '€70+' }
+  ],
+  travelTips: [
+    'Book island tours early during summer.',
+    'Carry cash for local markets.',
+    'Wear sandals for pebble beaches.',
+    'Walk inside the Old Town.',
+    'Use ferries to visit nearby islands.',
+    'Sun protection is essential in summer.'
+  ]
+},
+  {
     id: 'petra-jo', city: 'Petra', country: 'Jordan', airportCode: 'AMM', 
-    image: `https://upload.wikimedia.org/wikipedia/commons/e/e8/Al_Deir_Petra.JPG${cropParams}`,
+    image: `https://www.travelawaits.com/wp-content/uploads/2021/04/6774bc9a0dad571855fb28138b8a46774bc.jpg${cropParams}`,
     description: 'A famous archaeological site in Jordan\'s southwestern desert, featuring rock-cut architecture.',
     budget: 'Moderate', tripType: 'Culture', bestSeason: 'March to May', dailyBudget: 80,
     attractions: [
@@ -1203,8 +1819,120 @@ export const MOCK_DESTINATIONS: Destination[] = [
     ]
   },
   {
+  id: 'shanghai-cn',
+  city: 'Shanghai',
+  country: 'China',
+  airportCode: 'PVG',
+  image: `https://static.independent.co.uk/2023/08/07/12/iStock-587787576%20shanghai.jpg${cropParams}`,
+  description: 'China’s largest city, known for futuristic skyscrapers, historic waterfronts, luxury shopping, and world-class dining.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'March to May',
+  dailyBudget: 120,
+  attractions: [
+    { name: 'The Bund', duration: '2 hours', bestTime: 'Night', entryFee: 'Free' },
+    { name: 'Shanghai Tower', duration: '2 hours', bestTime: 'Sunset', entryFee: '¥180' },
+    { name: 'Yu Garden', duration: '2 hours', bestTime: 'Morning', entryFee: '¥40' },
+    { name: 'Nanjing Road', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Oriental Pearl Tower', duration: '2 hours', bestTime: 'Morning', entryFee: '¥199' },
+    { name: 'French Concession', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Install Alipay.',
+    'Metro is excellent.',
+    'Carry passport.',
+    'VPN may be needed.',
+    'Use translation apps.',
+    'Avoid rush hour.'
+  ]
+},
+  {
+  id: 'kaohsiung-tw',
+  city: 'Kaohsiung',
+  country: 'Taiwan',
+  airportCode: 'KHH',
+  image: `https://wander-lush.org/wp-content/uploads/2020/03/6-Kaohsiung-Dragon-Tiger-Tower-Leung-Cho-Pan-CanvaPro.jpg${cropParams}`,
+  description: 'A sunny port city with waterfront parks, colorful temples, and a relaxed atmosphere.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'November to April',
+  dailyBudget: 80,
+  attractions: [
+    { name: 'Lotus Pond', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Pier-2 Art Center', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Love River', duration: '1 hour', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Liuhe Night Market', duration: '2 hours', bestTime: 'Night', entryFee: 'Free' },
+    { name: 'Fo Guang Shan', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Cijin Island', duration: 'Half Day', bestTime: 'Afternoon', entryFee: 'Ferry Fare' }
+  ],
+  travelTips: [
+    'Rent a bicycle.',
+    'Use MRT.',
+    'Visit Cijin by ferry.',
+    'Summer is hot.',
+    'Carry EasyCard.',
+    'Seafood is excellent.'
+  ]
+},
+{
+  id: 'cusco-pe',
+  city: 'Cusco',
+  country: 'Peru',
+  airportCode: 'CUZ',
+  image: `https://images.unsplash.com/photo-1526392060635-9d6019884377${cropParams}`,
+  description: 'A historic Andean city and the gateway to Machu Picchu, rich in Incan heritage and colonial architecture.',
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'May to September',
+  dailyBudget: 65,
+  attractions: [
+    { name: 'Plaza de Armas', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Sacsayhuamán', duration: '2 hours', bestTime: 'Morning', entryFee: '$20' },
+    { name: 'San Pedro Market', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Qorikancha Temple', duration: '2 hours', bestTime: 'Afternoon', entryFee: '$15' },
+    { name: 'Rainbow Mountain Tour', duration: 'Full Day', bestTime: 'Early Morning', entryFee: '$35+' },
+    { name: 'Machu Picchu Excursion', duration: 'Full Day', bestTime: 'Morning', entryFee: '$60+' }
+  ],
+  travelTips: [
+    'Acclimatize before hiking.',
+    'Drink coca tea.',
+    'Carry layers.',
+    'Book Machu Picchu early.',
+    'Stay hydrated.',
+    'Walk slowly due to altitude.'
+  ]
+},
+{
+  id: 'cartagena-co',
+  city: 'Cartagena',
+  country: 'Colombia',
+  airportCode: 'CTG',
+  image: `https://cdn.adventure-life.com/16/57/00/iStock-1148859878/1300x820.webp${cropParams}`,
+  description: 'A colorful Caribbean city famous for its colonial old town, historic walls, lively plazas, and tropical beaches.',
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'December to April',
+  dailyBudget: 85,
+  attractions: [
+    { name: 'Walled City', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Castillo San Felipe', duration: '2 hours', bestTime: 'Morning', entryFee: 'COP 35,000' },
+    { name: 'Getsemaní', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Rosario Islands', duration: 'Full Day', bestTime: 'Morning', entryFee: '$55+' },
+    { name: 'Clock Tower', duration: '30 mins', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Plaza Santo Domingo', duration: '1 hour', bestTime: 'Night', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Wear lightweight clothing.',
+    'Use bottled water.',
+    'Book island tours in advance.',
+    'Stay inside the Old City.',
+    'Use official taxis.',
+    'Carry sunscreen year-round.'
+  ]
+},
+  {
     id: 'banff-ca', city: 'Banff', country: 'Canada', airportCode: 'YYC', 
-    image: `https://images.unsplash.com/photo-1533588265089-22a450a8047f${cropParams}`,
+    image: `https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Moraine_Lake_17092005.jpg/1280px-Moraine_Lake_17092005.jpg${cropParams}`,
     description: 'A resort town within Banff National Park in Alberta, renowned for its mountainous surroundings and hot springs.',
     budget: 'Luxury', tripType: 'Nature', bestSeason: 'June to August', dailyBudget: 150,
     attractions: [
@@ -1247,6 +1975,62 @@ export const MOCK_DESTINATIONS: Destination[] = [
     ]
   },
   {
+  id: 'wellington-nz',
+  city: 'Wellington',
+  country: 'New Zealand',
+  airportCode: 'WLG',
+  image: `https://wellingtonnz.bynder.com/transform/a2babfe9-9456-4806-a2d6-629f381f00fd/Cable-Car-02${cropParams}`,
+  description: 'New Zealand’s compact capital offering waterfront walks, vibrant cafés, museums, and spectacular coastal scenery.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'December to March',
+  dailyBudget: 150,
+  attractions: [
+    { name: 'Te Papa Museum', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Mount Victoria Lookout', duration: '1 hour', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'Wellington Cable Car', duration: '1 hour', bestTime: 'Morning', entryFee: 'NZ$6' },
+    { name: 'Botanic Garden', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Oriental Bay', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Cuba Street', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Carry a windproof jacket.',
+    'Walk the waterfront.',
+    'Use the cable car.',
+    'Book ferry trips in advance.',
+    'Weather changes quickly.',
+    'Visit local cafés.'
+  ]
+},
+  {
+  id: 'medellin-co',
+  city: 'Medellín',
+  country: 'Colombia',
+  airportCode: 'MDE',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0EtIkF2ofYFNG0Bb2ZbzgAtYOPTo-XRxhlOp7C-RhP3mDxcG2s39SZ7Fc&s=10${cropParams}`,
+  description: 'Known as the City of Eternal Spring, Medellín offers pleasant weather, mountain views, modern transport, and vibrant culture.',
+  budget: 'Budget',
+  tripType: 'City',
+  bestSeason: 'December to March',
+  dailyBudget: 65,
+  attractions: [
+    { name: 'Comuna 13', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Plaza Botero', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Metrocable', duration: '1 hour', bestTime: 'Afternoon', entryFee: 'COP 3,750' },
+    { name: 'Jardín Botánico', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Parque Arví', duration: 'Half Day', bestTime: 'Morning', entryFee: 'Metro Fare' },
+    { name: 'El Poblado', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Use the Metro.',
+    'Stay in El Poblado.',
+    'Learn basic Spanish phrases.',
+    'Avoid displaying valuables.',
+    'Weather is pleasant year-round.',
+    'Use Uber or official taxis.'
+  ]
+},
+  {
     id: 'swiss-alps-ch', city: 'Swiss Alps', country: 'Switzerland', airportCode: 'ZRH', 
     image: `https://images.unsplash.com/photo-1464822759023-fed622ff2c3b${cropParams}`,
     description: 'The highest and most extensive mountain range system that lies entirely in Europe.',
@@ -1268,6 +2052,118 @@ export const MOCK_DESTINATIONS: Destination[] = [
       'Sundays: Supermarkets and shops close on Sundays. Stock up on hiking snacks on Saturday.'
     ]
   },
+  {
+  id: 'bruges-be',
+  city: 'Bruges',
+  country: 'Belgium',
+  airportCode: 'BRU',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG69CbP1MtlECmWH_Hu46AXM1nspJmZm0NB5vJ3CDqGCXCvz29FtnkQdsR&s=10${cropParams}`,
+  description: 'A fairy-tale medieval city with canals, cobbled streets, chocolate shops, and centuries-old architecture.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'April to October',
+  dailyBudget: 120,
+  attractions: [
+    { name: 'Market Square', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Belfry of Bruges', duration: '1.5 hours', bestTime: 'Morning', entryFee: '€15' },
+    { name: 'Canal Boat Tour', duration: '40 mins', bestTime: 'Afternoon', entryFee: '€15' },
+    { name: 'Church of Our Lady', duration: '1 hour', bestTime: 'Morning', entryFee: '€8' },
+    { name: 'Chocolate Museum', duration: '2 hours', bestTime: 'Afternoon', entryFee: '€14' },
+    { name: 'Minnewater Park', duration: '1 hour', bestTime: 'Sunset', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Explore on foot.',
+    'Try authentic Belgian waffles.',
+    'Book canal tours early.',
+    'Wear comfortable walking shoes.',
+    'Many shops close early.',
+    'Visit during weekdays for fewer crowds.'
+  ]
+},
+{
+  id: 'nairobi-ke',
+  city: 'Nairobi',
+  country: 'Kenya',
+  airportCode: 'NBO',
+  image: `https://www.saltholidays.com/wp-content/uploads/2026/06/NNP-Weekend-deal-for-Site-1.jpg${cropParams}`,
+  description: 'Kenya’s vibrant capital offering wildlife experiences, national parks, museums, and a gateway to African safaris.',
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'June to October',
+  dailyBudget: 95,
+  attractions: [
+    { name: 'Nairobi National Park', duration: 'Half Day', bestTime: 'Morning', entryFee: '$43' },
+    { name: 'Giraffe Centre', duration: '2 hours', bestTime: 'Morning', entryFee: '$15' },
+    { name: 'David Sheldrick Elephant Orphanage', duration: '2 hours', bestTime: '11:00 AM', entryFee: '$20' },
+    { name: 'Karen Blixen Museum', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: '$12' },
+    { name: 'Kazuri Beads Factory', duration: '1 hour', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Maasai Market', duration: '2 hours', bestTime: 'Weekend', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Book safaris ahead.',
+    'Use trusted taxis.',
+    'Carry cash for markets.',
+    'Respect wildlife.',
+    'Wear neutral-colored clothing on safaris.',
+    'Avoid walking alone late at night.'
+  ]
+},
+{
+  id: 'victoria-falls-zw',
+  city: 'Victoria Falls',
+  country: 'Zimbabwe',
+  airportCode: 'VFA',
+  image: `https://static.wixstatic.com/media/a5e6eb_107dcd6614ee42f995b323c3275345b6~mv2.jpg/v1/fill/w_1000,h_750,al_c,q_85,usm_0.66_1.00_0.01/a5e6eb_107dcd6614ee42f995b323c3275345b6~mv2.jpg${cropParams}`,
+  description: 'Home to one of the world’s largest waterfalls, offering breathtaking scenery, adventure sports, and unforgettable wildlife.',
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'May to August',
+  dailyBudget: 130,
+  attractions: [
+    { name: 'Victoria Falls National Park', duration: '3 hours', bestTime: 'Morning', entryFee: '$50' },
+    { name: 'Devil’s Pool', duration: '3 hours', bestTime: 'Dry Season', entryFee: '$120+' },
+    { name: 'Sunset Zambezi Cruise', duration: '2 hours', bestTime: 'Sunset', entryFee: '$60' },
+    { name: 'Helicopter Flight', duration: '30 mins', bestTime: 'Morning', entryFee: '$175+' },
+    { name: 'Victoria Falls Bridge', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Local Craft Market', duration: '1 hour', bestTime: 'Afternoon', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Carry a waterproof bag.',
+    'Visit during dry season for Devil’s Pool.',
+    'Wear waterproof shoes.',
+    'Book helicopter rides early.',
+    'Bring insect repellent.',
+    'Carry US dollars.'
+  ]
+},
+{
+  id: 'perth-au',
+  city: 'Perth',
+  country: 'Australia',
+  airportCode: 'PER',
+  image: `https://www.uwa.edu.au/seek-wisdom/-/media/project/uwa/uwa/seek-wisdom/perth-sunset---seekers-space-banner.jpg?w=1440&hash=52FCB4F1A26AA924A81D5F928EEE5F08${cropParams}`,
+  description: 'A sunny coastal city known for beautiful beaches, parks, nearby wineries, and relaxed Australian lifestyle.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'September to November',
+  dailyBudget: 165,
+  attractions: [
+    { name: 'Kings Park', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Cottesloe Beach', duration: '3 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Elizabeth Quay', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Rottnest Island', duration: 'Full Day', bestTime: 'Morning', entryFee: 'Ferry Fare' },
+    { name: 'Perth Mint', duration: '1 hour', bestTime: 'Morning', entryFee: 'A$25' },
+    { name: 'Swan Valley', duration: 'Half Day', bestTime: 'Afternoon', entryFee: 'Varies' }
+  ],
+  travelTips: [
+    'Use a SmartRider card.',
+    'Visit Rottnest Island early.',
+    'Carry sunscreen.',
+    'Drink plenty of water.',
+    'Rent a car for day trips.',
+    'Watch sunsets at Cottesloe Beach.'
+  ]
+},
   {
     id: 'bora-bora-pf', city: 'Bora Bora', country: 'French Polynesia', airportCode: 'BOB', 
     image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnIlVOHUwiCAA0D-ZGGHmh0s1gCkVUXOW0mroWCKTQ3cHN-Zc0LIMuGs8&s=10${cropParams}`,
@@ -1291,6 +2187,174 @@ export const MOCK_DESTINATIONS: Destination[] = [
     ]
   },
   {
+  id: 'da-nang-vn',
+  city: 'Da Nang',
+  country: 'Vietnam',
+  airportCode: 'DAD',
+  image: `https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/bltbf5d44d7fe2a8e65/6749bcc97db4a13268ec6f9b/iStock-1559571884-MOBILE-HEADER.jpg?fit=crop&auto=webp&quality=60&crop=smart&format=avif${cropParams}`,
+  description: 'A beautiful coastal city offering sandy beaches, mountain views, and easy access to central Vietnam’s cultural attractions.',
+  budget: 'Budget',
+  tripType: 'Beach',
+  bestSeason: 'February to August',
+  dailyBudget: 55,
+  attractions: [
+    { name: 'My Khe Beach', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Golden Bridge', duration: '3 hours', bestTime: 'Morning', entryFee: '900,000 VND' },
+    { name: 'Dragon Bridge', duration: '1 hour', bestTime: 'Night', entryFee: 'Free' },
+    { name: 'Marble Mountains', duration: '2 hours', bestTime: 'Morning', entryFee: '40,000 VND' },
+    { name: 'Ba Na Hills', duration: 'Full Day', bestTime: 'Morning', entryFee: '900,000 VND' },
+    { name: 'Han Market', duration: '1 hour', bestTime: 'Afternoon', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Rent a scooter if experienced.',
+    'Visit Golden Bridge early.',
+    'Seafood is excellent.',
+    'Bring sunscreen.',
+    'Stay near My Khe Beach.',
+    'Use Grab for short trips.'
+  ]
+},
+{
+  id: 'tbilisi-ge',
+  city: 'Tbilisi',
+  country: 'Georgia',
+  airportCode: 'TBS',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL8BTUuj3rW7GKYxfy0gqEMR52LqTTjxWDCKHKvOhlMK25o363ecrehAE5&s=10${cropParams}`,
+  description: 'Georgia’s charming capital known for colorful balconies, sulfur baths, ancient churches, and mountain scenery.',
+  budget: 'Budget',
+  tripType: 'City',
+  bestSeason: 'April to June',
+  dailyBudget: 60,
+  attractions: [
+    { name: 'Old Town', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Narikala Fortress', duration: '2 hours', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'Sulfur Baths', duration: '2 hours', bestTime: 'Evening', entryFee: '$15+' },
+    { name: 'Bridge of Peace', duration: '1 hour', bestTime: 'Night', entryFee: 'Free' },
+    { name: 'Mtatsminda Park', duration: '3 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Holy Trinity Cathedral', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Try Georgian cuisine.',
+    'Use Bolt instead of taxis.',
+    'Carry cash.',
+    'Wine is affordable.',
+    'Walk through Old Town.',
+    'Spring is the best season.'
+  ]
+},
+{
+  id: 'baku-az',
+  city: 'Baku',
+  country: 'Azerbaijan',
+  airportCode: 'GYD',
+  image: `https://www.grandroyaltours.in/uploads/package-images/11-11-2024_01-30-36_baku1.jpg${cropParams}`,
+  description: 'A modern Caspian Sea city combining futuristic architecture with a beautifully preserved medieval old town.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'April to June',
+  dailyBudget: 70,
+  attractions: [
+    { name: 'Flame Towers', duration: '1 hour', bestTime: 'Night', entryFee: 'Free' },
+    { name: 'Old City', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Heydar Aliyev Center', duration: '2 hours', bestTime: 'Afternoon', entryFee: '₼15' },
+    { name: 'Baku Boulevard', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Maiden Tower', duration: '1 hour', bestTime: 'Morning', entryFee: '₼15' },
+    { name: 'Highland Park', duration: '1 hour', bestTime: 'Sunset', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Use Bolt.',
+    'Carry local currency.',
+    'Dress modestly at religious sites.',
+    'Walk the waterfront.',
+    'Visit during spring.',
+    'Book museums online.'
+  ]
+},
+{
+  id: 'kathmandu-np',
+  city: 'Kathmandu',
+  country: 'Nepal',
+  airportCode: 'KTM',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiWmSrH8MyzH8zIK1XmYPTeueWo3i-DKCdyJbp9ZemW5Dx6S10_grxw3U&s=10${cropParams}`,
+  description: 'Nepal’s cultural capital featuring ancient temples, Himalayan views, colorful markets, and spiritual experiences.',
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'October to November',
+  dailyBudget: 45,
+  attractions: [
+    { name: 'Boudhanath Stupa', duration: '2 hours', bestTime: 'Morning', entryFee: 'NPR 400' },
+    { name: 'Swayambhunath Temple', duration: '2 hours', bestTime: 'Sunrise', entryFee: 'NPR 200' },
+    { name: 'Kathmandu Durbar Square', duration: '2 hours', bestTime: 'Morning', entryFee: 'NPR 1000' },
+    { name: 'Pashupatinath Temple', duration: '2 hours', bestTime: 'Evening', entryFee: 'NPR 1000' },
+    { name: 'Thamel', duration: '3 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Garden of Dreams', duration: '1 hour', bestTime: 'Afternoon', entryFee: 'NPR 400' }
+  ],
+  travelTips: [
+    'Drink bottled water.',
+    'Carry cash.',
+    'Wear modest clothing.',
+    'Use taxis with meters.',
+    'Prepare for high altitude if trekking.',
+    'Respect religious customs.'
+  ]
+},
+{
+  id: 'ella-lk',
+  city: 'Ella',
+  country: 'Sri Lanka',
+  airportCode: 'CMB',
+  image: `https://www.wanderlustchloe.com/wp-content/uploads/2024/09/things-to-do-in-ella-sri-lanka.jpg${cropParams}`,
+  description: 'A peaceful hill town surrounded by tea plantations, waterfalls, mountain views, and scenic train journeys.',
+  budget: 'Budget',
+  tripType: 'Nature',
+  bestSeason: 'January to April',
+  dailyBudget: 45,
+  attractions: [
+    { name: 'Nine Arch Bridge', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Little Adam’s Peak', duration: '2 hours', bestTime: 'Sunrise', entryFee: 'Free' },
+    { name: 'Ella Rock', duration: '4 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Ravana Falls', duration: '1 hour', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Tea Factory Tour', duration: '2 hours', bestTime: 'Morning', entryFee: 'LKR 1000' },
+    { name: 'Scenic Train Ride', duration: '4 hours', bestTime: 'Morning', entryFee: 'Varies' }
+  ],
+  travelTips: [
+    'Book train tickets early.',
+    'Carry hiking shoes.',
+    'Start hikes before sunrise.',
+    'Expect changing weather.',
+    'Cash is useful.',
+    'Stay at hillside hotels.'
+  ]
+},
+{
+  id: 'taipei-tw',
+  city: 'Taipei',
+  country: 'Taiwan',
+  airportCode: 'TPE',
+  image: `https://media.timeout.com/images/106402450/750/422/image.jpg${cropParams}`,
+  description: 'Taiwan’s modern capital, famous for Taipei 101, vibrant night markets, temples, and outstanding street food.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'October to April',
+  dailyBudget: 90,
+  attractions: [
+    { name: 'Taipei 101', duration: '2 hours', bestTime: 'Sunset', entryFee: 'NT$600' },
+    { name: 'Shilin Night Market', duration: '2 hours', bestTime: 'Night', entryFee: 'Free' },
+    { name: 'Chiang Kai-shek Memorial', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Longshan Temple', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Elephant Mountain', duration: '2 hours', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'National Palace Museum', duration: '3 hours', bestTime: 'Morning', entryFee: 'NT$350' }
+  ],
+  travelTips: [
+    'Buy an EasyCard.',
+    'Night markets are cash-friendly.',
+    'Metro is excellent.',
+    'Tap water should be boiled.',
+    'Typhoon season is summer.',
+    'Respect temple etiquette.'
+  ]
+},
+  {
     id: 'seychelles-sc', city: 'Seychelles', country: 'Seychelles', airportCode: 'SEZ', 
     image: `https://cdn.conscious-explorer.com/keycdn/file/a51da0068065eaead885f44f4e029d36835038a5d42082201d17f28559b2d4b5/SJoUTslQaytZjQm0.webp${cropParams}`,
     description: 'An archipelago of 115 islands in the Indian Ocean, off East Africa.',
@@ -1312,6 +2376,146 @@ export const MOCK_DESTINATIONS: Destination[] = [
       'Food: Try Creole cuisine. Takeaway stands on the street offer incredible grilled fish and curries for $5, compared to $50 at resorts.'
     ]
   },
+  {
+  id: 'dubrovnik-hr',
+  city: 'Dubrovnik',
+  country: 'Croatia',
+  airportCode: 'DBV',
+  image: `https://www.historyhit.com/app/uploads/bis-images/5156364/Dubrovnik-Cathedral-788x537.jpg?x64072${cropParams}`,
+  description: 'Croatia’s famous Adriatic city, known for medieval walls, crystal-clear waters, historic streets, and Game of Thrones filming locations.',
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'May to September',
+  dailyBudget: 120,
+  attractions: [
+    { name: 'City Walls', duration: '2 hours', bestTime: '8:00 AM', entryFee: '€35' },
+    { name: 'Old Town', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Lovrijenac Fortress', duration: '1 hour', bestTime: 'Morning', entryFee: 'Included with Walls' },
+    { name: 'Cable Car', duration: '1 hour', bestTime: 'Sunset', entryFee: '€30' },
+    { name: 'Lokrum Island', duration: '4 hours', bestTime: 'Morning', entryFee: '€27 (Ferry)' },
+    { name: 'Banje Beach', duration: '3 hours', bestTime: 'Afternoon', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Visit city walls early to avoid crowds.',
+    'Wear comfortable shoes on stone streets.',
+    'Carry sunscreen during summer.',
+    'Use ferries for island trips.',
+    'Book accommodations early in peak season.',
+    'Drink plenty of water while exploring.'
+  ]
+},
+{
+  id: 'lake-bled-si',
+  city: 'Lake Bled',
+  country: 'Slovenia',
+  airportCode: 'LJU',
+  image: `https://hips.hearstapps.com/hmg-prod/images/lake-bled-with-bled-island-in-winter-slovenia-royalty-free-image-1733846146.pjpeg?crop=0.668xw:1.00xh;0.208xw,0&resize=1200:*${cropParams}`,
+  description: 'Slovenia’s iconic alpine lake, famous for its emerald waters, charming island church, medieval castle, and breathtaking mountain scenery.',
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'May to September',
+  dailyBudget: 130,
+  attractions: [
+    { name: 'Lake Bled Island & Church', duration: '2 hours', bestTime: 'Morning', entryFee: '€18 (Pletna Boat)' },
+    { name: 'Bled Castle', duration: '2 hours', bestTime: 'Morning', entryFee: '€18' },
+    { name: 'Ojstrica Viewpoint', duration: '1.5 hours', bestTime: 'Sunrise', entryFee: 'Free' },
+    { name: 'Lake Bled Walking Trail', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Vintgar Gorge', duration: '2 hours', bestTime: 'Morning', entryFee: '€15' },
+    { name: 'Traditional Pletna Boat Ride', duration: '1 hour', bestTime: 'Afternoon', entryFee: '€18' }
+  ],
+  travelTips: [
+    'Visit Ojstrica Viewpoint at sunrise for the best panoramic photos.',
+    'Walk the entire lake loop—it takes about 90 minutes.',
+    'Try the famous Bled Cream Cake (Kremšnita).',
+    'Book accommodation early during summer weekends.',
+    'Bring a light jacket as evenings can be cool even in summer.',
+    'Use Ljubljana as a base if you are planning multiple day trips.'
+  ]
+},
+{
+  id: 'hallstatt-at',
+  city: 'Hallstatt',
+  country: 'Austria',
+  airportCode: 'SZG',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ06iKh9xikQ_5TrmEm61kJoqwpMucBfIMUT4n_70RW16aOQyxcxCo1gCNb&s=10${cropParams}`,
+  description: 'A picturesque lakeside village in the Austrian Alps, famous for its fairytale scenery, colorful houses, and breathtaking mountain views.',
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'May to October',
+  dailyBudget: 145,
+  attractions: [
+    { name: 'Hallstatt Skywalk', duration: '1.5 hours', bestTime: 'Morning', entryFee: '€22 (Funicular Included)' },
+    { name: 'Hallstatt Market Square', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Hallstatt Salt Mine', duration: '3 hours', bestTime: 'Morning', entryFee: '€40' },
+    { name: 'Lake Hallstatt Boat Ride', duration: '1 hour', bestTime: 'Afternoon', entryFee: '€18' },
+    { name: 'Bone House (Beinhaus)', duration: '30 mins', bestTime: 'Afternoon', entryFee: '€2' },
+    { name: 'Five Fingers Viewpoint', duration: '3 hours', bestTime: 'Sunset', entryFee: '€45 (Cable Car Included)' }
+  ],
+  travelTips: [
+    'Arrive before 9:00 AM to avoid tour bus crowds.',
+    'Purchase the Salzkammergut Card if visiting nearby attractions.',
+    'Stay overnight to experience Hallstatt after day-trippers leave.',
+    'Wear comfortable walking shoes as most streets are steep and cobblestoned.',
+    'Bring a light jacket even during summer because mornings can be chilly.',
+    'Cash is useful at small cafés and souvenir shops.'
+  ]
+},
+  {
+  id: 'lisbon-pt',
+  city: 'Lisbon',
+  country: 'Portugal',
+  airportCode: 'LIS',
+  image: `https://images.unsplash.com/photo-1513735492246-483525079686${cropParams}`,
+  description: 'Portugal’s vibrant capital, famous for its colorful streets, historic trams, and Atlantic views.',
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'April to June',
+  dailyBudget: 110,
+  attractions: [
+    { name: 'Belém Tower', duration: '1 hour', bestTime: '9:00 AM', entryFee: '€8' },
+    { name: 'Jerónimos Monastery', duration: '2 hours', bestTime: 'Morning', entryFee: '€12' },
+    { name: 'Alfama District', duration: '3 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Tram 28 Ride', duration: '1 hour', bestTime: 'Early Morning', entryFee: '€3.10' },
+    { name: 'Praça do Comércio', duration: '1 hour', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'Miradouro da Senhora do Monte', duration: '45 mins', bestTime: 'Sunset', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Public Transportation: Buy a Viva Viagem card for unlimited metro, tram, and bus travel.',
+    'Local Etiquette: Greeting with a friendly "Olá" is appreciated.',
+    'Money-Saving: Enjoy affordable "Prato do Dia" lunch specials at local restaurants.',
+    'Language: English is widely spoken in tourist areas, but learning a few Portuguese phrases is helpful.',
+    'Safety Advice: Watch your belongings on Tram 28 and in crowded tourist areas.',
+    'Packing: Comfortable walking shoes are essential because Lisbon is built on steep hills.'
+  ]
+},
+{
+  id: 'pokhara-np',
+  city: 'Pokhara',
+  country: 'Nepal',
+  airportCode: 'PKR',
+  image: `https://images.unsplash.com/photo-1605640840605-14ac1855827b${cropParams}`,
+  description: 'A stunning lakeside destination offering mountain views, adventure sports, and the gateway to the Annapurna region.',
+  budget: 'Budget',
+  tripType: 'Adventure',
+  bestSeason: 'October to April',
+  dailyBudget: 50,
+  attractions: [
+    { name: 'Phewa Lake', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Sarangkot', duration: '2 hours', bestTime: 'Sunrise', entryFee: 'Free' },
+    { name: 'World Peace Pagoda', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Davis Falls', duration: '1 hour', bestTime: 'Afternoon', entryFee: 'NPR 100' },
+    { name: 'Gupteshwor Cave', duration: '1 hour', bestTime: 'Afternoon', entryFee: 'NPR 100' },
+    { name: 'Paragliding', duration: '2 hours', bestTime: 'Morning', entryFee: '$90+' }
+  ],
+  travelTips: [
+    'Book adventure sports ahead.',
+    'Carry warm clothing.',
+    'Watch sunrise at Sarangkot.',
+    'Try local Nepali food.',
+    'Cash is preferred.',
+    'Stay near Lakeside.'
+  ]
+},
   {
     id: 'iceland-is', city: 'Iceland', country: 'Iceland', airportCode: 'KEF', 
     image: `https://images.unsplash.com/photo-1476610182048-b716b8518aae${cropParams}`,
