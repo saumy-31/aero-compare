@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Explicitly define the standard 48x48 fallback for Googlebot -->
+    <!-- Core Googlebot Requirement (Multiple of 48px) -->
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
-    
-    <!-- Google-preferred 192x192 multiple. Uses strict lowercase extension -->
+    <!-- Standard PNG Fallbacks -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
-    
-    <!-- Apple Touch Icon -->
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+    <!-- Apple Mobile Requirement -->
     <link rel="apple-touch-icon" href="/icon-192.png" />
     
     <link rel="manifest" href="/site.webmanifest" />
@@ -24,8 +24,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
-      // DISABLED automatic page_view to let React Router handle it without duplicates
       gtag('config', 'G-FX092L0H7V', { send_page_view: false });
     </script>
   </head>
