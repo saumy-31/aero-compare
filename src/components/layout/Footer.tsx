@@ -15,22 +15,33 @@ export const Footer = () => {
     setIsSubmitting(true);
     setStatus(null);
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    // CRITICAL FIX: Convert raw FormData into a plain JSON object
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
 
     try {
-      // Use FormSubmit AJAX endpoint to prevent page redirection
-      const response = await fetch("https://formsubmit.co/ajax/contact@flysava.com", {
+      const response = await fetch("https://formsubmit.co/ajax/careers@flysava.com", {
         method: "POST",
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json', // Tell FormSubmit we are sending JSON
+          'Accept': 'application/json'        // Tell FormSubmit we want JSON back
+        },
+        body: json, // Send the stringified JSON here
       });
 
       if (response.ok) {
         setStatus('success');
-        e.currentTarget.reset();
+        form.reset();
       } else {
+        const errorData = await response.json();
+        console.error("FormSubmit API Error:", errorData);
         setStatus('error');
       }
     } catch (error) {
+      console.error("Network or Syntax Error:", error);
       setStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -86,7 +97,6 @@ export const Footer = () => {
             <h3 className="font-bold text-gray-900 dark:text-white mb-4">Explore</h3>
             <ul className="space-y-3">
               <li>
-                {/* FIX: Updated href from "/" to "/flights" for SEO internal linking */}
                 <a href="/flights" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">
                   Flight Search
                 </a>

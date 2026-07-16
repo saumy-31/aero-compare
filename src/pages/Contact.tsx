@@ -18,19 +18,60 @@ const faqs = [
   { id: "faq12", q: "Can I trust third-party providers shown on Flysava?", a: "Flysava aims to work with trusted travel tools and providers, but each third-party provider operates independently. You should review their terms, reviews, cancellation policy, and privacy policy before booking." },
   { id: "faq13", q: "Does Flysava collect my personal information?", a: "Flysava may collect limited information such as IP address, device information, analytics data, contact form details, or email subscription details. Please read our Privacy Policy for more information." },
   { id: "faq14", q: "Does Flysava use cookies?", a: "Yes. Flysava may use cookies for essential website functions, analytics, performance, affiliate tracking, and third-party travel widgets. Please read our Cookie Policy for details." },
-  { id: "faq15", q: "How can I contact Flysava?", a: "You can contact us by email at contact@flysava.com." },
+  { id: "faq15", q: "How can I contact Flysava?", a: "You can contact us by email at careers@flysava.com." },
   { id: "faq16", q: "What should I check before booking a flight?", a: "Before booking, always confirm:\n• Final price\n• Baggage allowance\n• Cancellation and refund policy\n• Travel dates and times\n• Airport and terminal details\n• Visa and entry requirements\n• Airline rules and provider service fees" },
   { id: "faq17", q: "Does Flysava provide travel advice?", a: "Flysava may publish travel tips and guides for general information. Travel rules can change, so you should always verify important requirements with official government, airline, airport, or provider sources before traveling." }
 ];
 
 export const Contact = () => {
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
+  
+  // Added state for form submission handling
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<'success' | 'error' | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Helper to cleanly format bullet points inside FAQ answers
+  // Form submission handler (Identical to your working Footer setup)
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus(null);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    // Convert to JSON
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/careers@flysava.com", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json,
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        form.reset();
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setStatus(null), 5000);
+    }
+  };
+
   const formatAnswer = (text: string) => {
     return text.split('\n').map((line, i) => {
       if (line.trim().startsWith('•')) {
@@ -45,7 +86,6 @@ export const Contact = () => {
     });
   };
 
-  // Generate dynamic FAQPage JSON-LD using the existing faqs array
   const contactJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -69,7 +109,6 @@ export const Contact = () => {
       />
       <div className="min-h-screen bg-gray-50 dark:bg-dark-bg pt-24 pb-20 transition-colors">
         
-        {/* Hero */}
         <div className="container mx-auto px-4 max-w-4xl text-center mb-16">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -100,8 +139,8 @@ export const Contact = () => {
               <div className="bg-white dark:bg-dark-card p-8 rounded-3xl border border-gray-100 dark:border-dark-border shadow-xl shadow-gray-200/50 dark:shadow-none">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send us a message</h2>
                 
-                <form action="https://formsubmit.co/contact@flysava.com" method="POST" className="space-y-5">
-                  {/* FormSubmit Configuration Fields */}
+                {/* Replaced generic form action with our React handler */}
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <input type="hidden" name="_captcha" value="false" />
                   <input type="hidden" name="_subject" value="New FlySava Contact Form Submission" />
                   <input type="hidden" name="_template" value="table" />
@@ -112,7 +151,8 @@ export const Contact = () => {
                       type="text" 
                       name="name"
                       required
-                      className="w-full bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-900 dark:text-white transition-all"
+                      disabled={isSubmitting}
+                      className="w-full bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-900 dark:text-white transition-all disabled:opacity-60"
                       placeholder="John Doe"
                     />
                   </div>
@@ -122,7 +162,8 @@ export const Contact = () => {
                       type="email" 
                       name="email"
                       required
-                      className="w-full bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-900 dark:text-white transition-all"
+                      disabled={isSubmitting}
+                      className="w-full bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-900 dark:text-white transition-all disabled:opacity-60"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -132,7 +173,8 @@ export const Contact = () => {
                       type="text" 
                       name="subject"
                       required
-                      className="w-full bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-900 dark:text-white transition-all"
+                      disabled={isSubmitting}
+                      className="w-full bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-900 dark:text-white transition-all disabled:opacity-60"
                       placeholder="How can we help?"
                     />
                   </div>
@@ -142,16 +184,33 @@ export const Contact = () => {
                       name="message"
                       required
                       rows={4}
-                      className="w-full bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-900 dark:text-white transition-all resize-none"
+                      disabled={isSubmitting}
+                      className="w-full bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-900 dark:text-white transition-all resize-none disabled:opacity-60"
                       placeholder="Write your message here..."
                     ></textarea>
                   </div>
+                  
                   <button 
                     type="submit"
-                    className="w-full flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-colors shadow-lg shadow-blue-500/30"
+                    disabled={isSubmitting}
+                    className="w-full flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-colors shadow-lg shadow-blue-500/30 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    Send Message <Send className="w-4 h-4 ml-2" />
+                    {isSubmitting ? 'Sending...' : (
+                      <>Send Message <Send className="w-4 h-4 ml-2" /></>
+                    )}
                   </button>
+
+                  {/* Status Messages */}
+                  {status === 'success' && (
+                    <p className="text-green-600 dark:text-green-400 text-sm font-medium text-center mt-2">
+                      Thank you! Your message has been sent.
+                    </p>
+                  )}
+                  {status === 'error' && (
+                    <p className="text-red-600 dark:text-red-400 text-sm font-medium text-center mt-2">
+                      Oops! Something went wrong. Please try again.
+                    </p>
+                  )}
                 </form>
               </div>
             </motion.div>
