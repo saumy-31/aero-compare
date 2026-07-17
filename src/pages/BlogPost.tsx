@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Calendar, Clock, ArrowLeft, User, Mail, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Calendar, Clock, ArrowLeft, Mail, ChevronRight, ChevronLeft } from 'lucide-react';
 import { MOCK_BLOG_POSTS } from '../data/mockBlogPosts';
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import { SEO } from '../components/seo/SEO';
@@ -37,21 +37,32 @@ export const BlogPost = () => {
     setIsSubmittingNewsletter(true);
     setNewsletterStatus(null);
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    // Convert form data to a plain JSON object
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/contact@flysava.com", {
+      // Pointing directly to the requested email with JSON headers
+      const response = await fetch("https://formsubmit.co/ajax/carrers@flysava.com", {
         method: "POST",
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json,
       });
 
       if (response.ok) {
         setNewsletterStatus('success');
-        e.currentTarget.reset();
+        form.reset();
       } else {
         setNewsletterStatus('error');
       }
     } catch (error) {
+      console.error(error);
       setNewsletterStatus('error');
     } finally {
       setIsSubmittingNewsletter(false);
@@ -59,7 +70,7 @@ export const BlogPost = () => {
     }
   };
 
-  // FIX: Enhanced JSON-LD with Graph and BreadcrumbList for Sitelink generation
+  // Enhanced JSON-LD with Graph and BreadcrumbList for Sitelink generation
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
