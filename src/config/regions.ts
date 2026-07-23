@@ -12,8 +12,8 @@ export const DEFAULT_WL_ID = '209';
 // Map specific countries to their subdomains and Travelpayouts wl_ids
 export const REGIONS: Record<string, RegionConfig> = {
   IN: { countryCode: 'IN', subdomain: 'in', wl_id: '20140' },
-  US: { countryCode: 'US', subdomain: 'us', wl_id: 'XXXXX' }, // Replace with real US wl_id
-  UK: { countryCode: 'UK', subdomain: 'uk', wl_id: 'XXXXX' }, // Replace with real UK wl_id
+  US: { countryCode: 'US', subdomain: 'us', wl_id: '20144' }, // Replace with real US wl_id
+  UK: { countryCode: 'UK', subdomain: 'uk', wl_id: '20143' }, // Replace with real UK wl_id
   AU: { countryCode: 'AU', subdomain: 'au', wl_id: 'XXXXX' }, // Replace with real AU wl_id
   AE: { countryCode: 'AE', subdomain: 'ae', wl_id: 'XXXXX' }, // Replace with real AE wl_id
   CA: { countryCode: 'CA', subdomain: 'ca', wl_id: 'XXXXX' }, // Replace with real CA wl_id
