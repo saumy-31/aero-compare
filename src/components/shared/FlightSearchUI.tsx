@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { getWhiteLabelIdByHostname } from "../../config/regions";
 
 // --- GLOBAL BACK-BUTTON INTERCEPTOR ---
 if (typeof window !== 'undefined' && !(window as any)._flightPageReloadListener) {
@@ -42,11 +43,17 @@ export const FlightSearchUI = () => {
     const oldScript = document.getElementById('tpwl-script');
     if (oldScript) oldScript.remove();
 
+    // --- DYNAMIC REGION LOGIC START ---
+    const currentHostname = window.location.hostname;
+    // Change this back:
+const dynamicWlId = getWhiteLabelIdByHostname(currentHostname);
+    // --- DYNAMIC REGION LOGIC END ---
+
     const script = document.createElement('script');
     script.id = 'tpwl-script';
     script.async = true;
     script.type = 'module';
-    script.src = `https://tpwgts.com/wl_web/main.js?wl_id=209&_t=${Date.now()}`;
+    script.src = `https://tpwgts.com/wl_web/main.js?wl_id=${dynamicWlId}&_t=${Date.now()}`;
     document.head.appendChild(script);
 
     let hasScrolledForCurrentSearch = false;
