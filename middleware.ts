@@ -25,7 +25,7 @@ const country = request.headers.get('x-vercel-ip-country');
     const supportedRegions: Record<string, string> = {
       IN: 'in',
       US: 'us',
-      UK: 'uk',
+      GB: 'uk',
       AU: 'au',
       AE: 'ae',
       CA: 'ca',
