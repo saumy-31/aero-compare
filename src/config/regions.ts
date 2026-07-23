@@ -14,9 +14,9 @@ export const REGIONS: Record<string, RegionConfig> = {
   IN: { countryCode: 'IN', subdomain: 'in', wl_id: '20140' },
   US: { countryCode: 'US', subdomain: 'us', wl_id: '20144' }, // Replace with real US wl_id
   UK: { countryCode: 'UK', subdomain: 'uk', wl_id: '20143' }, // Replace with real UK wl_id
-  AU: { countryCode: 'AU', subdomain: 'au', wl_id: 'XXXXX' }, // Replace with real AU wl_id
+  AU: { countryCode: 'AU', subdomain: 'au', wl_id: '20147' }, // Replace with real AU wl_id
   AE: { countryCode: 'AE', subdomain: 'ae', wl_id: 'XXXXX' }, // Replace with real AE wl_id
-  CA: { countryCode: 'CA', subdomain: 'ca', wl_id: 'XXXXX' }, // Replace with real CA wl_id
+  CA: { countryCode: 'CA', subdomain: 'ca', wl_id: '20146' }, // Replace with real CA wl_id
 };
 
 /**
