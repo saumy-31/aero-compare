@@ -15,8 +15,15 @@ export const REGIONS: Record<string, RegionConfig> = {
   US: { countryCode: 'US', subdomain: 'us', wl_id: '20144' }, // Replace with real US wl_id
   UK: { countryCode: 'UK', subdomain: 'uk', wl_id: '20143' }, // Replace with real UK wl_id
   AU: { countryCode: 'AU', subdomain: 'au', wl_id: '20147' }, // Replace with real AU wl_id
-  AE: { countryCode: 'AE', subdomain: 'ae', wl_id: 'XXXXX' }, // Replace with real AE wl_id
-  CA: { countryCode: 'CA', subdomain: 'ca', wl_id: '20146' }, // Replace with real CA wl_id
+  AE: { countryCode: 'AE', subdomain: 'ae', wl_id: '20171' }, // Replace with real AE wl_id
+  CA: { countryCode: 'CA', subdomain: 'ca', wl_id: '20146' }, 
+  EU: { countryCode: 'EU', subdomain: 'eu', wl_id: '20169' }, // Europe Group
+  JP: { countryCode: 'JP', subdomain: 'jp', wl_id: '20170' }, // Japan
+  SG: { countryCode: 'SG', subdomain: 'sg', wl_id: '20172' }, // Singapore
+  NZ: { countryCode: 'NZ', subdomain: 'nz', wl_id: '20173' }, // New Zealand
+  ZA: { countryCode: 'ZA', subdomain: 'za', wl_id: '20174' }, // South Africa
+  NG: { countryCode: 'NG', subdomain: 'ng', wl_id: '20175' }, // Nigeria
+  // Replace with real CA wl_id
 };
 
 /**

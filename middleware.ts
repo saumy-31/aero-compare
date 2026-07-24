@@ -23,12 +23,39 @@ const country = request.headers.get('x-vercel-ip-country');
     // 3. Map of supported countries to their respective subdomains.
     // (Kept locally in the middleware to ensure lightning-fast Edge execution without external imports)
     const supportedRegions: Record<string, string> = {
-      IN: 'in',
-      US: 'us',
-      GB: 'uk',
-      AU: 'au',
-      AE: 'ae',
-      CA: 'ca',
+      IN: 'in', // India
+      US: 'us', // United States
+      GB: 'uk', // United Kingdom
+      JP: 'jp', // Japan
+      AE: 'ae', // UAE
+      SG: 'sg', // Singapore
+      NZ: 'nz', // New Zealand
+      ZA: 'za', // South Africa
+      NG: 'ng', // Nigeria
+      AU: 'au', // Australia
+      CA: 'ca', // Canada
+
+      // --- Eurozone Countries (All routing to 'eu') ---
+      AT: 'eu', // Austria
+      BE: 'eu', // Belgium
+      HR: 'eu', // Croatia
+      CY: 'eu', // Cyprus
+      EE: 'eu', // Estonia
+      FI: 'eu', // Finland
+      FR: 'eu', // France
+      DE: 'eu', // Germany
+      GR: 'eu', // Greece
+      IE: 'eu', // Ireland
+      IT: 'eu', // Italy
+      LV: 'eu', // Latvia
+      LT: 'eu', // Lithuania
+      LU: 'eu', // Luxembourg
+      MT: 'eu', // Malta
+      NL: 'eu', // Netherlands
+      PT: 'eu', // Portugal
+      SK: 'eu', // Slovakia
+      SI: 'eu', // Slovenia
+      ES: 'eu', // Spain
     };
 
     // 4. If the visitor's country is supported, redirect them safely
