@@ -95,8 +95,8 @@ export const BlogPost = () => {
           }
         },
         "datePublished": post.publishedDate,
-        "dateModified": post.publishedDate, // Fallback if no specific updated date exists
-        "description": post.excerpt
+        "dateModified": post.lastUpdated || post.publishedDate, 
+        "description": post.seoDescription || post.excerpt
       },
       {
         "@type": "BreadcrumbList",
@@ -127,8 +127,9 @@ export const BlogPost = () => {
   return (
     <>
       <SEO 
-        title={`${post.title} | FlySava`}
-        description={post.excerpt}
+        title={post.seoTitle || `${post.title} | FlySava`}
+        description={post.seoDescription || post.excerpt}
+        keywords={post.keywords}
         canonicalUrl={`/blog/${post.slug}`}
         image={post.image}
         jsonLd={articleJsonLd}

@@ -1,4 +1,20 @@
-export const MOCK_BLOG_POSTS = [
+export interface BlogPostType {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  readTime: string;
+  publishedDate: string;
+  lastUpdated: string;
+  author: string;
+  image: string;
+  content: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  keywords?: string[];
+}
+export const MOCK_BLOG_POSTS: BlogPostType[] = [
   {
     id: '1',
     slug: 'best-time-to-visit-bali-seasonal-guide',
@@ -158,75 +174,116 @@ export const MOCK_BLOG_POSTS = [
     `
   },
   {
-    id: '3',
-    slug: 'mastering-the-art-of-cheap-flights',
-    title: 'Cracking the Code: How to Find Insanely Cheap Flights in 2026',
-    excerpt: 'Stop relying on incognito mode myths. Learn the actual strategies, algorithms, and repositioning hacks travel experts use to slash airfare costs.',
-    category: 'Travel Tips',
-    readTime: '10 min read',
-    publishedDate: 'June 15, 2026',
-    lastUpdated: 'June 20, 2026',
-    author: 'David Chen',
-    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=80',
-    content: `
-      <p>The internet is overflowing with terrible, outdated advice regarding flight booking. If you are still clearing your cookies or browsing in "incognito mode" believing it will prevent airlines from tracking you and raising prices, you are fighting a ghost. Flight pricing is governed by highly complex, dynamic pricing algorithms based strictly on inventory, demand curves, and historical booking data—not your browser cache.</p>
-      
-      <p>To consistently find cheap flights in the modern era of travel, you need to stop acting like a standard consumer and start acting like a travel hacker. It requires flexibility, the right aggregator tools, and a fundamental understanding of how airline routing networks actually operate.</p>
-      
-      <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80" alt="Airport Departure Board" class="in-article-img" />
+  id: '3',
+  slug: 'how-to-book-flights-for-half-the-price',
+  title: 'How to Book Flights for Half the Price',
+  seoTitle: 'How to Book Flights for Half the Price | FlySava',
+  seoDescription: 'Learn proven strategies to save money on airfare with smart booking tips, flexible dates, and flight comparison techniques.',
+  keywords: ['cheap flights', 'flight booking', 'travel tips', 'airfare', 'FlySava'],
+  excerpt: 'Learn practical strategies to compare fares, choose the best booking window, and avoid common mistakes that make flights more expensive.',
+  category: 'Travel Tips',
+  readTime: '12 min read',
+  publishedDate: 'July 15, 2026',
+  lastUpdated: 'July 15, 2026',
+  author: 'FlySava Editorial Team',
+  image: 'https://images.unsplash.com/photo-1587019158091-1a103c5dd17f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNoZWFwJTIwZmxpZ2h0c3xlbnwwfHwwfHx8MA%3D%3D',
+  content: `
+    <p>Flight prices rarely stay the same for long. A fare you see in the morning may increase by evening, while another route could suddenly become much cheaper overnight. Although there is no secret formula that guarantees half-price airfare every time, understanding how airlines price tickets can dramatically improve your chances of finding a great deal.</p>
 
-      <h2>The Golden Rule: Destination Flexibility</h2>
-      <p>The single biggest mistake travelers make is deciding on a specific destination and a specific date (e.g., "I want to go to Rome from July 1st to July 10th"), and then checking the price. This guarantees you will pay whatever the airline algorithm dictates for that peak summer window.</p>
+    <p>Whether you're planning a weekend getaway, an international vacation, or a business trip, using the right booking strategy can help you save hundreds of dollars over the course of a year.</p>
 
-      <blockquote class="editorial-quote">
-        "To fly cheaply, you must invert the booking process. Let the cheap fare dictate the destination, rather than letting the destination dictate your budget."
-      </blockquote>
+    <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1600&q=80" alt="Traveler searching for cheap flights" class="in-article-img" />
 
-      <p>Utilize the "Explore" feature on Google Flights or Skyscanner's "Search Everywhere" tool. Input your home airport, leave the dates flexible (search by "a week in October"), and view the map. You might find that while flights to Rome are $1,200, a flight to Madrid during the exact same week is incredibly mispriced at $350. You go to Madrid.</p>
+    <h2>Compare Before You Book</h2>
 
-      <h2>The Power of the Repositioning Flight</h2>
-      <p>If you absolutely must get to a specific city, you need to understand the "repositioning" hack. Direct flights from regional airports to international hubs are exorbitantly expensive. If you want to fly from Austin, Texas to Paris, the itinerary might cost $1,400.</p>
-      
-      <p>Instead, break the trip in half. Look for the cheapest major hub flying into Europe (often New York, Boston, or Chicago). You might find a JFK to Paris flight for $400. Then, simply buy a separate domestic ticket from Austin to JFK for $150. By booking two separate tickets on two different airlines, you just saved $850. This requires leaving a healthy buffer (4+ hours) between flights, as the airlines are not obligated to rebook you if your first flight is delayed.</p>
+    <p>One of the biggest mistakes travelers make is booking directly from the first airline website they visit. Prices often differ between airlines and travel partners, and comparing multiple options gives you a much clearer picture of the best available fare.</p>
 
-      <div class="flight-tips-card">
-        <h3>🛠️ The Expert's Toolkit</h3>
-        <ul>
-          <li><strong>Google Flights:</strong> The undisputed king of search speed and calendar matrix viewing. Never book here, just use it to find the dates, then book direct with the airline.</li>
-          <li><strong>Going (formerly Scott's Cheap Flights):</strong> Subscribe to their premium email list. They have algorithms running 24/7 scanning for mistake fares and massive unannounced airline sales.</li>
-          <li><strong>FlightConnections.com:</strong> A visual map of every direct flight route in the world, essential for planning repositioning flights.</li>
-        </ul>
-      </div>
+    <blockquote class="editorial-quote">
+      "The cheapest flight isn't always found first. Spending just a few extra minutes comparing fares can often save far more than hours spent searching later."
+    </blockquote>
 
-      <h2>Understanding the Booking Window</h2>
-      <p>There is no "magic day" to book a flight. The old adage that Tuesday at midnight yields the cheapest fares is a complete myth. However, there is a "Goldilocks window" for booking.</p>
-      
-      <p>For domestic flights, booking 1 to 3 months in advance usually yields the best prices. For international travel, the sweet spot is 2 to 8 months out. If you book too early (11 months in advance), the airline algorithms haven't adjusted for demand yet and prices are kept artificially high. If you book too late (within 21 days of departure), the algorithm assumes you are a desperate business traveler and skyrockets the price.</p>
+    <p>A comparison platform allows you to evaluate airlines, schedules, baggage policies, and prices in one place instead of opening dozens of tabs.</p>
 
-      <div class="budget-card">
-        <h3>💳 The Reality of Basic Economy</h3>
-        <p>When you see a stunningly cheap fare to Europe on a legacy carrier (like Delta or British Airways), it is almost certainly a "Basic Economy" ticket. Be absolutely ruthless in calculating the hidden costs before celebrating.</p>
-        <p>Does the fare include a carry-on bag? (On some airlines, it doesn't). Does it include seat selection? If you are traveling with a partner, are you okay sitting 20 rows apart? If you have to pay $120 to check a bag each way, that "cheap" $300 ticket is actually a $540 ticket, and you might have been better off booking standard economy from the start.</p>
-      </div>
+    <div class="destination-card">
+      <h3>✈️ Smart Ways to Save</h3>
+      <ul>
+        <li><strong>Compare multiple airlines</strong> instead of booking the first result.</li>
+        <li><strong>Be flexible with travel dates</strong> whenever possible.</li>
+        <li><strong>Check nearby airports</strong> for lower fares.</li>
+        <li><strong>Book early for peak seasons</strong> like Christmas and summer holidays.</li>
+      </ul>
+    </div>
 
-      <h2>Frequently Asked Questions</h2>
-      <details class="faq-accordion">
-        <summary>Should I use third-party booking sites (OTAs) like Expedia or Kiwi?</summary>
-        <p>Use them strictly for research, but always book directly through the airline's official website. If you book through a third party and your flight is canceled, delayed, or you need a refund, the airline will refuse to help you and tell you to contact the third party, leading to endless customer service nightmares.</p>
-      </details>
-      <details class="faq-accordion">
-        <summary>What is a "Mistake Fare"?</summary>
-        <p>A mistake fare occurs when an airline accidentally publishes a ticket for the wrong price, often due to a currency conversion error or a human leaving off a zero (e.g., a $2,000 business class seat priced at $200). If you catch one and book it, the airline will usually (but not always) honor it. You must book these within hours before the airline notices.</p>
-      </details>
-      <details class="faq-accordion">
-        <summary>Does using a VPN to change my country lower prices?</summary>
-        <p>Very rarely. While it used to work occasionally for domestic flights within developing nations, modern airline algorithms are sophisticated enough that this "hack" is almost entirely obsolete for standard international travel.</p>
-      </details>
+    <h2>Timing Matters</h2>
 
-      <h2>Final Thoughts</h2>
-      <p>The days of walking into a travel agency and asking for a cheap ticket are over. The power is entirely in the hands of the traveler, provided you are willing to do the research. Embrace flexibility, use the right aggregators, protect yourself by booking direct, and the world becomes infinitely more accessible.</p>
-    `
-  },
+    <p>Airfare pricing changes constantly based on demand, remaining seat inventory, competition, and seasonality.</p>
+
+    <p>While there is no perfect day to book every flight, these general booking windows often provide better value:</p>
+
+    <ul>
+      <li>Domestic flights: 1–3 months before departure.</li>
+      <li>International flights: 2–6 months before departure.</li>
+      <li>Holiday travel: Start searching several months in advance.</li>
+    </ul>
+
+    <img src="https://img.magnific.com/free-vector/airport-departure-board_1284-4704.jpg?semt=ais_hybrid&w=740&q=80" alt="Airport departure board" class="in-article-img" />
+
+    <h2>Stay Flexible</h2>
+
+    <p>Flexibility is one of the easiest ways to reduce airfare costs. Flying one day earlier or later can sometimes result in significantly lower prices, especially on popular routes.</p>
+
+    <p>Early morning departures and midweek flights are often less expensive than Friday evening or Sunday return flights because demand tends to be lower.</p>
+
+    <div class="budget-card">
+      <h3>💰 Money-Saving Checklist</h3>
+
+      <p><strong>Before Booking</strong></p>
+
+      <p>✓ Compare multiple airlines</p>
+      <p>✓ Check nearby airports</p>
+      <p>✓ Compare different travel dates</p>
+      <p>✓ Review baggage policies</p>
+      <p>✓ Check total price before paying</p>
+    </div>
+
+    <h2>Avoid Common Booking Mistakes</h2>
+
+    <p>Many travelers spend more than necessary because they:</p>
+
+    <ul>
+      <li>Book at the last minute.</li>
+      <li>Ignore nearby airports.</li>
+      <li>Pay for baggage they don't need.</li>
+      <li>Don't compare multiple travel providers.</li>
+      <li>Travel only on fixed dates.</li>
+    </ul>
+
+    <p>A little planning often makes a much bigger difference than waiting for a mythical "perfect" booking day.</p>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq-accordion">
+      <summary>Is there a best day of the week to book flights?</summary>
+      <p>Not consistently. Airline prices change continuously based on demand, competition, and seat availability. Comparing prices over several days is generally more effective than relying on a specific weekday.</p>
+    </details>
+
+    <details class="faq-accordion">
+      <summary>Should I always book as early as possible?</summary>
+      <p>Not necessarily. Booking too early or too late can sometimes result in higher fares. The ideal booking window depends on your destination, season, and route.</p>
+    </details>
+
+    <details class="faq-accordion">
+      <summary>Are connecting flights always cheaper?</summary>
+      <p>No. While layovers can reduce the price, direct flights are sometimes equally competitive. Compare both options before making your decision.</p>
+    </details>
+
+    <h2>Final Thoughts</h2>
+
+    <p>Finding affordable flights isn't about luck—it's about making informed decisions. Comparing fares, staying flexible, booking within the right window, and understanding airline pricing can significantly reduce your travel costs.</p>
+
+    <p>Whether you're planning your next city break or an international adventure, taking a few extra minutes to compare your options can make a meaningful difference to your travel budget. FlySava helps you search smarter so you can spend less time worrying about airfare and more time planning your journey.</p>
+  `
+},
   {
     id: '4',
     slug: 'paris-beyond-the-eiffel-tower',
@@ -781,5 +838,186 @@ export const MOCK_BLOG_POSTS = [
         <p>When leaving Montreux towards Zweisimmen, sit on the right side for spectacular, sweeping views over Lake Geneva as the train climbs the mountain. From Interlaken to Lucerne, sit on the right side to view the plunging waterfalls of the Brünig Pass and the pristine lakes.</p>
       </details>
     `
-  }
+  },
+  {
+    id: '14',
+    slug: 'mastering-the-art-of-cheap-flights',
+    title: 'Cracking the Code: How to Find Insanely Cheap Flights in 2026',
+    excerpt: 'Stop relying on incognito mode myths. Learn the actual strategies, algorithms, and repositioning hacks travel experts use to slash airfare costs.',
+    category: 'Travel Tips',
+    readTime: '10 min read',
+    publishedDate: 'June 15, 2026',
+    lastUpdated: 'June 20, 2026',
+    author: 'David Chen',
+    image: 'https://www.sakurabox.com/cdn/shop/articles/JAL_Blog.jpg?v=1750825750',
+    content: `
+      <p>The internet is overflowing with terrible, outdated advice regarding flight booking. If you are still clearing your cookies or browsing in "incognito mode" believing it will prevent airlines from tracking you and raising prices, you are fighting a ghost. Flight pricing is governed by highly complex, dynamic pricing algorithms based strictly on inventory, demand curves, and historical booking data—not your browser cache.</p>
+      
+      <p>To consistently find cheap flights in the modern era of travel, you need to stop acting like a standard consumer and start acting like a travel hacker. It requires flexibility, the right aggregator tools, and a fundamental understanding of how airline routing networks actually operate.</p>
+      
+      <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80" alt="Airport Departure Board" class="in-article-img" />
+
+      <h2>The Golden Rule: Destination Flexibility</h2>
+      <p>The single biggest mistake travelers make is deciding on a specific destination and a specific date (e.g., "I want to go to Rome from July 1st to July 10th"), and then checking the price. This guarantees you will pay whatever the airline algorithm dictates for that peak summer window.</p>
+
+      <blockquote class="editorial-quote">
+        "To fly cheaply, you must invert the booking process. Let the cheap fare dictate the destination, rather than letting the destination dictate your budget."
+      </blockquote>
+
+      <p>Utilize the "Explore" feature on Google Flights or Skyscanner's "Search Everywhere" tool. Input your home airport, leave the dates flexible (search by "a week in October"), and view the map. You might find that while flights to Rome are $1,200, a flight to Madrid during the exact same week is incredibly mispriced at $350. You go to Madrid.</p>
+
+      <h2>The Power of the Repositioning Flight</h2>
+      <p>If you absolutely must get to a specific city, you need to understand the "repositioning" hack. Direct flights from regional airports to international hubs are exorbitantly expensive. If you want to fly from Austin, Texas to Paris, the itinerary might cost $1,400.</p>
+      
+      <p>Instead, break the trip in half. Look for the cheapest major hub flying into Europe (often New York, Boston, or Chicago). You might find a JFK to Paris flight for $400. Then, simply buy a separate domestic ticket from Austin to JFK for $150. By booking two separate tickets on two different airlines, you just saved $850. This requires leaving a healthy buffer (4+ hours) between flights, as the airlines are not obligated to rebook you if your first flight is delayed.</p>
+
+      <div class="flight-tips-card">
+        <h3>🛠️ The Expert's Toolkit</h3>
+        <ul>
+          <li><strong>Google Flights:</strong> The undisputed king of search speed and calendar matrix viewing. Never book here, just use it to find the dates, then book direct with the airline.</li>
+          <li><strong>Going (formerly Scott's Cheap Flights):</strong> Subscribe to their premium email list. They have algorithms running 24/7 scanning for mistake fares and massive unannounced airline sales.</li>
+          <li><strong>FlightConnections.com:</strong> A visual map of every direct flight route in the world, essential for planning repositioning flights.</li>
+        </ul>
+      </div>
+
+      <h2>Understanding the Booking Window</h2>
+      <p>There is no "magic day" to book a flight. The old adage that Tuesday at midnight yields the cheapest fares is a complete myth. However, there is a "Goldilocks window" for booking.</p>
+      
+      <p>For domestic flights, booking 1 to 3 months in advance usually yields the best prices. For international travel, the sweet spot is 2 to 8 months out. If you book too early (11 months in advance), the airline algorithms haven't adjusted for demand yet and prices are kept artificially high. If you book too late (within 21 days of departure), the algorithm assumes you are a desperate business traveler and skyrockets the price.</p>
+
+      <div class="budget-card">
+        <h3>💳 The Reality of Basic Economy</h3>
+        <p>When you see a stunningly cheap fare to Europe on a legacy carrier (like Delta or British Airways), it is almost certainly a "Basic Economy" ticket. Be absolutely ruthless in calculating the hidden costs before celebrating.</p>
+        <p>Does the fare include a carry-on bag? (On some airlines, it doesn't). Does it include seat selection? If you are traveling with a partner, are you okay sitting 20 rows apart? If you have to pay $120 to check a bag each way, that "cheap" $300 ticket is actually a $540 ticket, and you might have been better off booking standard economy from the start.</p>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <details class="faq-accordion">
+        <summary>Should I use third-party booking sites (OTAs) like Expedia or Kiwi?</summary>
+        <p>Use them strictly for research, but always book directly through the airline's official website. If you book through a third party and your flight is canceled, delayed, or you need a refund, the airline will refuse to help you and tell you to contact the third party, leading to endless customer service nightmares.</p>
+      </details>
+      <details class="faq-accordion">
+        <summary>What is a "Mistake Fare"?</summary>
+        <p>A mistake fare occurs when an airline accidentally publishes a ticket for the wrong price, often due to a currency conversion error or a human leaving off a zero (e.g., a $2,000 business class seat priced at $200). If you catch one and book it, the airline will usually (but not always) honor it. You must book these within hours before the airline notices.</p>
+      </details>
+      <details class="faq-accordion">
+        <summary>Does using a VPN to change my country lower prices?</summary>
+        <p>Very rarely. While it used to work occasionally for domestic flights within developing nations, modern airline algorithms are sophisticated enough that this "hack" is almost entirely obsolete for standard international travel.</p>
+      </details>
+
+      <h2>Final Thoughts</h2>
+      <p>The days of walking into a travel agency and asking for a cheap ticket are over. The power is entirely in the hands of the traveler, provided you are willing to do the research. Embrace flexibility, use the right aggregators, protect yourself by booking direct, and the world becomes infinitely more accessible.</p>
+    `
+  },
+  {
+  id: '15',
+  slug: 'best-websites-to-find-cheap-flights',
+  title: 'Best Websites to Find Cheap Flights in 2026',
+  excerpt: 'Discover the best flight search websites, learn their strengths and weaknesses, and find out how to compare fares smarter before booking your next trip.',
+  category: 'Travel Tips',
+  readTime: '14 min read',
+  publishedDate: 'July 18, 2026',
+  lastUpdated: 'July 18, 2026',
+  author: 'FlySava Editorial Team',
+  image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=80',
+  content: `
+    <p>Finding affordable airfare isn't just about luck—it's about knowing where to search. With hundreds of airlines and online travel agencies offering different fares, using the right flight comparison website can save both time and money.</p>
+
+    <p>Some platforms specialize in comparing airline prices, while others focus on flexible date searches, travel inspiration, or finding hidden deals. Understanding their strengths helps you choose the best tool for your trip.</p>
+
+    <img src="https://images.unsplash.com/photo-1529074963764-98f45c47344b?auto=format&fit=crop&w=1600&q=80" alt="Searching for cheap flights online" class="in-article-img" />
+
+    <h2>Why You Should Compare Flights</h2>
+
+    <p>No single website always has the cheapest fare. Airlines, travel agencies, and booking platforms often display different prices for the same flight because of promotions, partnerships, and inventory updates.</p>
+
+    <blockquote class="editorial-quote">
+      "The best travelers don't search harder—they search smarter by comparing multiple flight options before booking."
+    </blockquote>
+
+    <p>Comparing prices across different providers increases your chances of finding better fares, convenient schedules, and flexible booking options.</p>
+
+    <div class="destination-card">
+      <h3>🌍 Popular Flight Search Platforms</h3>
+      <ul>
+        <li><strong>FlySava</strong> – Compare flights from trusted airlines and travel partners.</li>
+        <li><strong>Google Flights</strong> – Excellent for flexible date searches and price trends.</li>
+        <li><strong>Skyscanner</strong> – Great for exploring destinations and comparing airlines.</li>
+        <li><strong>Kayak</strong> – Useful filters and price alerts.</li>
+        <li><strong>Momondo</strong> – Strong for discovering budget-friendly international fares.</li>
+        <li><strong>Expedia</strong> – Helpful when booking flights together with hotels or rental cars.</li>
+      </ul>
+    </div>
+
+    <h2>What Makes a Good Flight Search Website?</h2>
+
+    <p>The best platforms do more than simply display prices. They help travelers compare routes, airlines, baggage policies, departure times, and total trip costs.</p>
+
+    <p>Look for websites that provide:</p>
+
+    <ul>
+      <li>Comprehensive airline coverage</li>
+      <li>Transparent pricing</li>
+      <li>Flexible date searches</li>
+      <li>Fast search results</li>
+      <li>Reliable booking partners</li>
+      <li>Clear baggage information</li>
+    </ul>
+
+    <img src="https://videocdn.cdnpk.net/videos/3685e5ee-75ec-5776-b24a-77160aaad5c2/horizontal/thumbnails/large.jpg?semt=ais_hybrid&item_id=4538263&w=740&q=80" alt="Airport departures board" class="in-article-img" />
+
+    <h2>Tips for Finding Better Deals</h2>
+
+    <div class="budget-card">
+      <h3>💡 Booking Checklist</h3>
+
+      <p><strong>Before You Book</strong></p>
+
+      <p>✓ Compare multiple flight search websites.</p>
+      <p>✓ Search with flexible travel dates.</p>
+      <p>✓ Check nearby airports.</p>
+      <p>✓ Compare baggage policies.</p>
+      <p>✓ Review the final price before payment.</p>
+      <p>✓ Book early during peak travel seasons.</p>
+    </div>
+
+    <h2>Don't Focus Only on Price</h2>
+
+    <p>The cheapest ticket isn't always the best value. Consider:</p>
+
+    <ul>
+      <li>Total travel time</li>
+      <li>Layover duration</li>
+      <li>Baggage allowance</li>
+      <li>Refund and change policies</li>
+      <li>Airport location</li>
+      <li>Airline reputation</li>
+    </ul>
+
+    <p>Paying slightly more for a better itinerary can often save hours of travel time and unnecessary stress.</p>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq-accordion">
+      <summary>Which website always has the cheapest flights?</summary>
+      <p>There isn't one website that consistently offers the lowest price for every route. Comparing multiple trusted platforms usually provides the best results.</p>
+    </details>
+
+    <details class="faq-accordion">
+      <summary>Should I book directly with the airline?</summary>
+      <p>Depending on the fare, booking directly with the airline can offer more flexibility, while travel agencies may occasionally provide lower promotional prices. Compare both before booking.</p>
+    </details>
+
+    <details class="faq-accordion">
+      <summary>Why do flight prices differ between websites?</summary>
+      <p>Different booking partners, promotions, exchange rates, service fees, and fare availability can all affect the displayed price.</p>
+    </details>
+
+    <h2>Final Thoughts</h2>
+
+    <p>There is no single "best" website for every trip. The smartest approach is to compare flights across trusted platforms, review the complete itinerary, and consider more than just the headline price.</p>
+
+    <p>Whether you're planning a weekend getaway, a business trip, or an international vacation, comparing your options before booking can help you travel more confidently and often save money along the way. FlySava brings trusted travel partners together to make comparing flights faster, easier, and more transparent.</p>
+  `
+}
 ];

@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 interface SEOProps {
   title: string;
   description: string;
+  keywords?: string[]; // 1. Added optional keywords array
   canonicalUrl?: string;
   type?: string;
   image?: string;
@@ -14,6 +15,7 @@ interface SEOProps {
 export const SEO: React.FC<SEOProps> = ({
   title,
   description,
+  keywords, // 2. Destructured keywords
   canonicalUrl,
   type = 'website',
   image = 'https://flysava.com/og-default.jpg', // 1200x630 Default OG Image
@@ -28,6 +30,11 @@ export const SEO: React.FC<SEOProps> = ({
       {/* Standard Meta Tags */}
       <title>{title}</title>
       <meta name="description" content={description} />
+      
+      {/* 3. Conditionally render keywords only if they exist */}
+      {keywords && keywords.length > 0 && (
+        <meta name="keywords" content={keywords.join(', ')} />
+      )}
       
       {/* Robots */}
       {preventIndex ? (
