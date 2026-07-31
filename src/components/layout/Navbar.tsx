@@ -32,7 +32,7 @@ export const Navbar = () => {
   }, [location.pathname]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/70 backdrop-blur-md border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#071226] border-b border-white/10 shadow-lg">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
 
@@ -138,7 +138,7 @@ export const Navbar = () => {
             transitionEnd: { display: 'none' },
           },
         }}
-        className="md:hidden overflow-hidden bg-slate-900/95 backdrop-blur-xl border-b border-white/10 shadow-2xl"
+        className="md:hidden overflow-hidden bg-[#071226] border-b border-white/10 shadow-2xl"
       >
         <div className="px-4 pt-2 pb-6 space-y-2">
           {navLinks.map((link) => {
