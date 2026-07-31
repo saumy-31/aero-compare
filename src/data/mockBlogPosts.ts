@@ -2660,8 +2660,8 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
   excerpt: 'Planning a trip to the Maldives? Discover how many days you should spend depending on your travel style, budget, and the experiences you don’t want to miss.',
   category: 'Travel Tips',
   readTime: '8 min read',
-  publishedDate: 'August 08, 2026',
-  lastUpdated: 'August 08, 2026',
+  publishedDate: 'August 01, 2026',
+  lastUpdated: 'August 01, 2026',
   author: 'FlySava Editorial Team',
   image: 'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1600&q=80',
   seoTitle: 'How Many Days Should You Spend in the Maldives? | FlySava',
@@ -2760,6 +2760,409 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
     <p>If it's your first visit, <strong>5 days</strong> is the perfect amount of time to experience the Maldives. You'll have enough time to relax, enjoy the beaches, discover the underwater world, and create unforgettable memories. If your schedule allows, extending your trip to a full week provides an even more immersive island experience.</p>
 
     <p>Before booking your tropical getaway, compare flights with <strong>FlySava</strong> to explore trusted airlines and travel partners in one place. A little planning can help you find better fares, save money, and spend more time enjoying paradise.</p>
+  `
+},
+{
+  id: '23',
+  slug: 'how-much-does-a-trip-to-norway-actually-cost',
+  title: 'How Much Does a Trip to Norway Actually Cost?',
+  excerpt: 'Wondering how expensive Norway really is? Discover the average cost of flights, hotels, food, transportation, and activities, plus practical tips to save money on your trip.',
+  category: 'Travel Tips',
+  readTime: '8 min read',
+  publishedDate: 'August 01, 2026',
+  lastUpdated: 'August 01, 2026',
+  author: 'FlySava Editorial Team',
+  image: 'https://images.pexels.com/photos/32129214/pexels-photo-32129214.jpeg',
+  seoTitle: 'How Much Does a Trip to Norway Cost? | FlySava',
+  seoDescription: 'Planning a trip to Norway? Learn the real cost of flights, accommodation, food, transport, and attractions, plus expert tips to save money on your Norwegian adventure.',
+  keywords: [
+    'Norway travel cost',
+    'Norway budget guide',
+    'Norway trip cost',
+    'Norway travel expenses',
+    'Norway vacation budget',
+    'Cheap flights to Norway',
+    'FlySava'
+  ],
+  content: `
+    <p>Norway is one of Europe's most spectacular destinations, famous for its breathtaking fjords, Northern Lights, charming coastal villages, and dramatic mountain landscapes. While it's often considered an expensive country to visit, careful planning can make your dream trip far more affordable.</p>
+
+    <p>If you're wondering <strong>how much a trip to Norway actually costs</strong>, this guide breaks down everything from flights and hotels to food, transportation, and sightseeing.</p>
+
+    <img src="https://images.pexels.com/photos/35671454/pexels-photo-35671454.jpeg" alt="Beautiful fjords in Norway" class="in-article-img" />
+
+    <blockquote class="editorial-quote">
+      "Norway isn't the cheapest destination, but the incredible scenery, clean cities, and unforgettable experiences make every dollar worth it."
+    </blockquote>
+
+    <h2>Average Daily Budget</h2>
+
+    <div class="destination-card">
+      <h3>💰 Typical Daily Costs</h3>
+      <ul>
+        <li><strong>Budget Traveler:</strong> $90–150 per day</li>
+        <li><strong>Mid-Range Traveler:</strong> $180–300 per day</li>
+        <li><strong>Luxury Traveler:</strong> $400+ per day</li>
+      </ul>
+    </div>
+
+    <p>A 7-day trip typically costs between <strong>$700–1,100</strong> for budget travelers and <strong>$1,300–2,100</strong> for mid-range travelers, excluding flights.</p>
+
+    <h2>Flight Costs</h2>
+
+    <p>Airfare varies depending on where you're flying from and the season.</p>
+
+    <ul>
+      <li><strong>Europe:</strong> $60–250 round trip</li>
+      <li><strong>USA & Canada:</strong> $450–900</li>
+      <li><strong>India:</strong> $550–1,000</li>
+      <li><strong>Australia:</strong> $900–1,500</li>
+    </ul>
+
+    <p>Booking 2–4 months in advance usually helps secure better prices.</p>
+
+    <img src="https://images.pexels.com/photos/28981068/pexels-photo-28981068.jpeg" alt="Norwegian mountains and lake" class="in-article-img" />
+
+    <h2>Accommodation</h2>
+
+    <p>Hotels are usually the biggest travel expense.</p>
+
+    <ul>
+      <li>Hostel: <strong>$35–70/night</strong></li>
+      <li>Budget hotel: <strong>$90–160/night</strong></li>
+      <li>Mid-range hotel: <strong>$170–280/night</strong></li>
+      <li>Luxury hotel: <strong>$350+/night</strong></li>
+    </ul>
+
+    <div class="budget-card">
+      <h3>💡 Money-Saving Tip</h3>
+      <p>Travel during May, September, or October for lower hotel prices, fewer crowds, and excellent weather. Booking accommodation well in advance can also save a significant amount.</p>
+    </div>
+
+    <h2>Food & Drinks</h2>
+
+    <p>Dining out in Norway is expensive, but there are plenty of ways to save.</p>
+
+    <ul>
+      <li>Coffee: <strong>$4–6</strong></li>
+      <li>Fast food: <strong>$12–18</strong></li>
+      <li>Casual restaurant: <strong>$20–35</strong></li>
+      <li>Fine dining: <strong>$70+</strong></li>
+    </ul>
+
+    <p>Shopping at supermarkets and preparing a few meals yourself can greatly reduce your daily budget.</p>
+
+    <h2>Transportation</h2>
+
+    <p>Norway's trains, ferries, and buses are among the best in Europe.</p>
+
+    <ul>
+      <li>Public transport: <strong>$4–6</strong> per ride</li>
+      <li>Regional trains: <strong>$30–120</strong></li>
+      <li>Fjord ferries: <strong>$15–60</strong></li>
+      <li>Car rental: <strong>$70–140/day</strong></li>
+    </ul>
+
+    <img src="https://images.pexels.com/photos/37584929/pexels-photo-37584929.jpeg" alt="Norway road trip" class="in-article-img" />
+
+    <h2>Activities</h2>
+
+    <p>Many of Norway's best attractions are completely free, especially its hiking trails and scenic viewpoints.</p>
+
+    <div class="destination-card">
+      <h3>🏔️ Popular Experiences</h3>
+      <ul>
+        <li>Fjord Cruises</li>
+        <li>Northern Lights Tours</li>
+        <li>Glacier Hiking</li>
+        <li>Scenic Rail Journeys</li>
+        <li>National Parks</li>
+      </ul>
+    </div>
+
+    <h2>How to Save Money</h2>
+
+    <ul>
+      <li>Travel during the shoulder season.</li>
+      <li>Book flights several months early.</li>
+      <li>Stay in hostels or vacation rentals.</li>
+      <li>Use public transportation.</li>
+      <li>Take advantage of Norway's free hiking trails.</li>
+      <li>Compare airline prices before booking.</li>
+    </ul>
+
+    <h2>Find Affordable Flights</h2>
+
+    <p>Flights are often the biggest expense when planning a trip to Norway. Before booking, compare fares across hundreds of airlines and travel partners using <strong>FlySava</strong>. You'll be able to compare prices, baggage information, visa requirements, and final fares in one place, helping you book with confidence.</p>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq-accordion">
+      <summary>Is Norway expensive for tourists?</summary>
+      <p>Yes, Norway is one of Europe's more expensive countries, but careful planning and early bookings can significantly reduce costs.</p>
+    </details>
+
+    <details class="faq-accordion">
+      <summary>How much money do I need for one week in Norway?</summary>
+      <p>Budget travelers should expect around $700–1,100, while mid-range travelers typically spend $1,300–2,100 excluding flights.</p>
+    </details>
+
+    <details class="faq-accordion">
+      <summary>What's the cheapest time to visit Norway?</summary>
+      <p>May, September, and October generally offer lower prices while still providing excellent sightseeing opportunities.</p>
+    </details>
+
+    <details class="faq-accordion">
+      <summary>How can I save money on flights to Norway?</summary>
+      <p>Compare multiple airlines, book early, remain flexible with travel dates, and use FlySava to find the best available airfare.</p>
+    </details>
+
+    <h2>Final Thoughts</h2>
+
+    <p>Norway may not be the cheapest destination, but its spectacular natural beauty, world-class infrastructure, and unforgettable experiences make it one of Europe's best places to visit. With smart planning and by comparing flights through <strong>FlySava</strong>, you can enjoy an incredible Norwegian adventure without overspending.</p>
+  `
+},
+{
+  id: '24',
+  slug: 'first-time-in-canada-heres-where-you-should-go',
+  title: "First Time in Canada? Here's Where You Should Go",
+  excerpt: 'Planning your first trip to Canada? Discover the best cities, national parks, and must-visit destinations for an unforgettable Canadian adventure.',
+  category: 'Destinations',
+  readTime: '9 min read',
+  publishedDate: 'August 01, 2026',
+  lastUpdated: 'August 01, 2026',
+  author: 'FlySava Editorial Team',
+  image: 'https://images.pexels.com/photos/11819107/pexels-photo-11819107.jpeg',
+  seoTitle: "First Time in Canada? Here's Where You Should Go | FlySava",
+  seoDescription: 'Explore the best places to visit in Canada for first-time travelers, from Banff and Niagara Falls to Vancouver, Toronto, and Quebec City.',
+  keywords: [
+    'Canada travel guide',
+    'first time in Canada',
+    'best places to visit in Canada',
+    'Canada itinerary',
+    'Banff travel',
+    'Toronto travel guide',
+    'FlySava'
+  ],
+  content: `
+    <p>Canada is one of the world's most diverse travel destinations, offering everything from towering mountains and turquoise lakes to vibrant cities, charming towns, and incredible wildlife. If you're visiting for the first time, choosing where to go can feel overwhelming.</p>
+
+    <p>This guide covers the best destinations for first-time visitors, helping you plan an unforgettable Canadian adventure.</p>
+
+    <img src="https://images.pexels.com/photos/17928444/pexels-photo-17928444.jpeg" alt="Canadian Rockies" class="in-article-img" />
+
+    <blockquote class="editorial-quote">
+      "Canada isn't a country you simply visit—it's a place you'll want to return to again and again."
+    </blockquote>
+
+    <h2>1. Toronto</h2>
+
+    <p>Canada's largest city offers iconic attractions like the CN Tower, waterfront views, world-class museums, shopping districts, and diverse food from every corner of the world.</p>
+
+    <div class="destination-card">
+      <h3>🇨🇦 Highlights</h3>
+      <ul>
+        <li>CN Tower</li>
+        <li>Distillery District</li>
+        <li>Toronto Islands</li>
+        <li>Royal Ontario Museum</li>
+      </ul>
+    </div>
+
+    <h2>2. Niagara Falls</h2>
+
+    <p>Just a short drive from Toronto, Niagara Falls is one of the world's most famous natural wonders. Take a boat tour, enjoy scenic viewpoints, or explore nearby wineries.</p>
+
+    <img src="https://images.pexels.com/photos/34911227/pexels-photo-34911227.jpeg" alt="Niagara Falls" class="in-article-img" />
+
+    <h2>3. Banff National Park</h2>
+
+    <p>If you're visiting Canada for breathtaking scenery, Banff should be at the top of your list. Expect turquoise lakes, snow-capped mountains, wildlife, and unforgettable hiking trails.</p>
+
+    <div class="destination-card">
+      <h3>🏔️ Must-See Places</h3>
+      <ul>
+        <li>Lake Louise</li>
+        <li>Moraine Lake</li>
+        <li>Banff Gondola</li>
+        <li>Icefields Parkway</li>
+      </ul>
+    </div>
+
+    <h2>4. Vancouver</h2>
+
+    <p>Surrounded by mountains and the Pacific Ocean, Vancouver combines outdoor adventures with modern city life. Rent a bike around Stanley Park, explore Granville Island, or hike nearby trails.</p>
+
+    <h2>5. Quebec City</h2>
+
+    <p>With cobblestone streets, European-style architecture, and historic landmarks, Quebec City feels like stepping into France without leaving North America.</p>
+
+    <img src="https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=1600&q=80" alt="Quebec City" class="in-article-img" />
+
+    <div class="budget-card">
+      <h3>💡 Travel Tip</h3>
+      <p>If you're visiting multiple cities, consider booking open-jaw flights (arrive in one city and depart from another). This saves travel time and often reduces transportation costs.</p>
+    </div>
+
+    <h2>Best Time to Visit Canada</h2>
+
+    <ul>
+      <li><strong>June to September:</strong> Perfect for sightseeing, hiking, and road trips.</li>
+      <li><strong>October:</strong> Beautiful autumn colors.</li>
+      <li><strong>December to March:</strong> Ski season and winter adventures.</li>
+    </ul>
+
+    <h2>Finding Affordable Flights</h2>
+
+    <p>Flights are often the biggest part of your travel budget. Before booking, compare fares across hundreds of airlines and travel partners with <strong>FlySava</strong>. You'll also see baggage information, final pricing, and travel details in one place, helping you choose the best flight with confidence.</p>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq-accordion">
+      <summary>How many days should I spend in Canada?</summary>
+      <p>For first-time visitors, 10–14 days allows you to explore multiple cities and one or two national parks comfortably.</p>
+    </details>
+
+    <details class="faq-accordion">
+      <summary>Is Canada expensive to visit?</summary>
+      <p>Canada is generally more affordable than many Western European destinations, though accommodation and transportation vary depending on the city and season.</p>
+    </details>
+
+    <details class="faq-accordion">
+      <summary>Which city should I visit first?</summary>
+      <p>Toronto is an excellent starting point because of its international connections, attractions, and easy access to Niagara Falls.</p>
+    </details>
+
+    <details class="faq-accordion">
+      <summary>What's the best month to visit Canada?</summary>
+      <p>July and August offer the warmest weather, while September provides fewer crowds and beautiful scenery.</p>
+    </details>
+
+    <h2>Final Thoughts</h2>
+
+    <p>From the vibrant streets of Toronto and Vancouver to the breathtaking landscapes of Banff and the charm of Quebec City, Canada offers something for every traveler. Whether you're looking for nature, culture, food, or adventure, your first visit is guaranteed to leave you wanting more.</p>
+
+    <p>Before planning your Canadian adventure, compare flight prices with <strong>FlySava</strong> to find the best deals and start your journey with confidence.</p>
+  `
+},
+{
+  id: '25',
+  slug: 'hidden-tricks-airlines-dont-want-you-to-know-about-cheap-flights',
+  title: "Hidden Tricks Airlines Don't Want You to Know About Cheap Flights",
+  excerpt: "Want to pay less for flights? Discover practical booking tips that can help you find better fares, avoid unnecessary fees, and make smarter travel decisions.",
+  category: 'Flight Hacks',
+  readTime: '9 min read',
+  publishedDate: 'August 01, 2026',
+  lastUpdated: 'August 01, 2026',
+  author: 'FlySava Editorial Team',
+  image: 'https://images.pexels.com/photos/23848586/pexels-photo-23848586.jpeg',
+  seoTitle: "Hidden Tricks Airlines Don't Want You to Know About Cheap Flights | FlySava",
+  seoDescription: "Learn practical ways to save money on airfare, compare flights smarter, avoid extra fees, and book cheaper flights with confidence.",
+  keywords: [
+    'cheap flight tips',
+    'flight booking hacks',
+    'save money on flights',
+    'cheap airfare',
+    'best time to book flights',
+    'FlySava',
+    'travel tips'
+  ],
+  content: `
+    <p>Finding cheap flights isn't just about luck—it's about knowing where to look and when to book. While no single trick guarantees the lowest fare every time, there are proven strategies that can help you make better booking decisions and avoid paying more than necessary.</p>
+
+    <p>Here are some of the smartest ways travelers save money on flights.</p>
+
+    <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=80" alt="Airplane flying above the clouds" class="in-article-img" />
+
+    <blockquote class="editorial-quote">
+      "The cheapest flight isn't always the first one you see. Spending a few extra minutes comparing options can often save you a surprising amount."
+    </blockquote>
+
+    <h2>1. Compare Before You Book</h2>
+
+    <p>Airfares can vary across airlines and travel booking platforms. Instead of checking just one website, compare multiple options before making your decision.</p>
+
+    <div class="destination-card">
+      <h3>✈️ Smart Booking Checklist</h3>
+      <ul>
+        <li>Compare multiple airlines.</li>
+        <li>Check nearby airports.</li>
+        <li>Review baggage policies.</li>
+        <li>Compare the final price before booking.</li>
+      </ul>
+    </div>
+
+    <h2>2. Stay Flexible With Your Travel Dates</h2>
+
+    <p>Flying a day earlier or later can sometimes reduce your airfare significantly. If your schedule is flexible, compare several departure dates before booking.</p>
+
+    <h2>3. Book Early for Popular Seasons</h2>
+
+    <p>Holiday periods, summer vacations, and major festivals usually see higher demand. Booking several weeks or months in advance often provides more choices and better prices.</p>
+
+    <img src="https://images.pexels.com/photos/12717154/pexels-photo-12717154.jpeg" alt="Airport departure board" class="in-article-img" />
+
+    <h2>4. Don't Ignore Nearby Airports</h2>
+
+    <p>Flying into or out of an alternative airport may lower your total travel cost, especially if ground transportation is convenient.</p>
+
+    <h2>5. Watch Out for Extra Fees</h2>
+
+    <p>A low advertised fare doesn't always include everything. Before booking, check:</p>
+
+    <ul>
+      <li>Baggage allowance</li>
+      <li>Seat selection fees</li>
+      <li>Cancellation policies</li>
+      <li>Final checkout price</li>
+    </ul>
+
+    <div class="budget-card">
+      <h3>💡 Travel Tip</h3>
+      <p>Sometimes a slightly higher ticket price that includes baggage can end up costing less overall than a cheaper fare with multiple extra fees.</p>
+    </div>
+
+    <h2>6. Travel During the Shoulder Season</h2>
+
+    <p>Visiting destinations just before or after peak season often means lower flight prices, fewer crowds, and better hotel availability.</p>
+
+    <h2>7. Choose the Flight That Fits Your Trip</h2>
+
+    <p>The cheapest ticket isn't always the best value. Consider flight duration, layovers, baggage allowance, departure times, and overall convenience before making your final decision.</p>
+
+    <img src="https://images.pexels.com/photos/36842654/pexels-photo-36842654.jpeg" alt="Traveler at airport window" class="in-article-img" />
+
+    <h2>Find Better Flight Deals with FlySava</h2>
+
+    <p>Instead of visiting multiple travel websites one by one, <strong>FlySava</strong> lets you compare fares across 100+ travel sites in one search. You can also view baggage information, visa requirements where available, and transparent final pricing, making it easier to choose the flight that works best for your trip.</p>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq-accordion">
+      <summary>Is there a guaranteed way to always find the cheapest flight?</summary>
+      <p>No. Airfares change based on demand, availability, and other factors. Comparing options and staying flexible with travel dates can improve your chances of finding a better fare.</p>
+    </details>
+
+    <details class="faq-accordion">
+      <summary>Should I only choose the cheapest ticket?</summary>
+      <p>Not always. Consider baggage allowance, flight duration, layovers, and the total cost before making your decision.</p>
+    </details>
+
+    <details class="faq-accordion">
+      <summary>How far in advance should I book?</summary>
+      <p>For many trips, booking several weeks or months ahead provides more choices and often better prices, especially during busy travel seasons.</p>
+    </details>
+
+    <details class="faq-accordion">
+      <summary>How does FlySava help?</summary>
+      <p>FlySava compares fares across 100+ travel sites while also displaying baggage information, visa requirements, and final pricing to help you make an informed booking.</p>
+    </details>
+
+    <h2>Final Thoughts</h2>
+
+    <p>Saving money on flights isn't about secret tricks—it's about making informed choices. Comparing multiple airlines, booking at the right time, checking baggage policies, and understanding the final price can all help you get better value for your money.</p>
+
+    <p>Before booking your next flight, search with <strong>FlySava</strong> to compare fares, review travel information, and find the option that best suits your journey.</p>
   `
 },
 
