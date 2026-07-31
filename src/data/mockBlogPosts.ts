@@ -1989,4 +1989,183 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
 
   `
 },
+{
+  id: '22',
+  slug: '25-best-places-to-visit-in-italy',
+  title: '25 Best Places to Visit in Italy: Must-See Cities, Coastal Towns & Hidden Gems',
+  excerpt: 'Planning a trip to Italy? From the ancient monuments of Rome and Renaissance art in Florence to the cliffside villages of the Amalfi Coast and hidden cave towns in Puglia, explore the 25 best places to visit in Italy.',
+  category: 'Destinations',
+  readTime: '15 min read',
+  publishedDate: 'August 06, 2026',
+  lastUpdated: 'August 06, 2026',
+  author: 'FlySava Editorial Team',
+  image: 'https://images.pexels.com/photos/33008929/pexels-photo-33008929.jpeg',
+  seoTitle: '25 Best Places to Visit in Italy: Must-See Cities & Hidden Gems | FlySava',
+  seoDescription: 'Discover the 25 best places to visit in Italy. Plan your dream Italian vacation covering iconic cities, coastal villages, alpine retreats, and hidden gems with travel tips.',
+  keywords: [
+    'Italy travel guide',
+    'Best places to visit in Italy',
+    'Italy itinerary',
+    'Rome Florence Venice',
+    'Amalfi Coast',
+    'Italy hidden gems',
+    'FlySava'
+  ],
+  content: `
+
+<p>Italy is a country that effortlessly masterclasses the art of living well. One moment you are standing beneath centuries-old Roman architecture, the next you are savoring freshly made pasta overlooking pastel-colored cliffside harbors or sipping espresso in an alpine valley.</p>
+
+<p>Whether you are planning your first Italian getaway or looking to discover lesser-known corners of the country, Italy delivers on every front. This curated guide features the 25 best places to visit in Italy, categorized into historic cities, dramatic coastlines, serene lakes, and enchanting hidden gems.</p>
+
+<img src="https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=1600&q=80" alt="Colosseum in Rome Italy" class="in-article-img" />
+
+<blockquote class="editorial-quote">
+"Italy is a dream that keeps returning for the rest of your life. Every region offers its own distinct cuisine, dialect, architecture, and rhythm."
+</blockquote>
+
+<h2>Before You Go</h2>
+
+<div class="destination-card">
+<h3>🇮🇹 Quick Travel Information</h3>
+<ul>
+<li><strong>Best Time to Visit:</strong> April–June & September–October</li>
+<li><strong>Currency:</strong> Euro (EUR)</li>
+<li><strong>Primary Transport:</strong> Trenitalia & Italo High-Speed Trains</li>
+<li><strong>Ideal Gateways:</strong> Rome (FCO) or Milan (MXP)</li>
+<li><strong>Language:</strong> Italian</li>
+</ul>
+</div>
+
+<p>If you plan to visit multiple regions across northern and southern Italy, consider booking multi-city flights—landing in Rome and departing from Milan or Naples. Compare flight routes and prices on <strong>FlySava</strong> to find the best itinerary for your timeline.</p>
+
+<h2>1. The Iconic Cities: Culture, History & Style</h2>
+
+<p>Italy's historic centers contain some of the greatest artistic and architectural achievements in human history.</p>
+
+<ul>
+<li><strong>Rome:</strong> The Eternal City. Walk through centuries of history between the Colosseum, the Pantheon, the Roman Forum, and Vatican City.</li>
+<li><strong>Florence:</strong> The birthplace of the Renaissance. Home to Michelangelo's David, the Uffizi Gallery, and world-class leather artisans.</li>
+<li><strong>Venice:</strong> A floating masterpiece. Explore the winding canals, cross the Rialto Bridge, and take a Vaporetto along the Grand Canal at sunset.</li>
+<li><strong>Milan:</strong> Italy's fast-paced center for global fashion, design, and high finance. Don't miss the breathtaking rooftop views of the Duomo.</li>
+<li><strong>Naples:</strong> Gritty, energetic, and rich in soul. It is the undisputed birthplace of Neapolitan pizza and the gateway to Pompeii.</li>
+<li><strong>Bologna:</strong> Known as Italy's culinary capital. Famous for authentic tagliatelle al ragù, medieval towers, and vibrant portico-lined streets.</li>
+<li><strong>Verona:</strong> The romantic setting of Shakespeare's <em>Romeo and Juliet</em>, featuring a magnificently preserved Roman amphitheater.</li>
+<li><strong>Turin:</strong> An elegant northern gem known for baroque architecture, historic cafes, royal palaces, and views of the surrounding Alps.</li>
+</ul>
+
+<img src="https://images.unsplash.com/photo-1543429776-2782fc8e1acd?auto=format&fit=crop&w=1600&q=80" alt="Florence Duomo" class="in-article-img" />
+
+<h2>2. Coastal Dreams: Rivieras & Islands</h2>
+
+<p>From dramatic cliffs tumbling into turquoise waters to world-famous beach resorts, Italy boasts over 4,700 miles of stunning coastline.</p>
+
+<div class="budget-card">
+<h3>🚢 Coastal Transport Tip</h3>
+<p>Ferries are often faster and far more scenic than driving along narrow cliffside roads in regions like the Amalfi Coast or Cinque Terre during peak summer months.</p>
+</div>
+
+<ul>
+<li><strong>The Amalfi Coast:</strong> Pastel-tinted cliffside villages like Positano, Amalfi, and Ravello offering dramatic sea views and luxury boutiques.</li>
+<li><strong>Cinque Terre:</strong> Five colorful fishing villages connected by scenic coastal hiking trails and local trains along the Italian Riviera.</li>
+<li><strong>Capri:</strong> A glamorous island in the Bay of Naples known for the Blue Grotto cave, limestone sea stacks, and luxury shopping.</li>
+<li><strong>Portofino:</strong> A picturesque crescent harbor lined with pastel-painted villas, seafood trattorias, and super-yachts.</li>
+<li><strong>Sicily (Taormina & Palermo):</strong> A rich island blend of ancient Greek temples, lively street markets, and Mount Etna's volcanic landscapes.</li>
+<li><strong>Sardinia (Costa Smeralda):</strong> Home to blindingly white sand beaches and crystal-clear waters that rival the Caribbean.</li>
+<li><strong>Sorrento:</strong> Perched atop sea cliffs overlooking Mount Vesuvius, famous for limoncello and authentic southern Italian hospitality.</li>
+<li><strong>Polignano a Mare:</strong> A stunning beach town in Puglia perched on limestone cliffs above a turquoise Adriatic cove.</li>
+</ul>
+
+<img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1600&q=80" alt="Amalfi Coast Positano" class="in-article-img" />
+
+<h2>3. Lakes & Peaks: Alpine Escapes</h2>
+
+<p>Northern Italy offers crisp mountain air, glacial lakes, and world-renowned alpine scenery.</p>
+
+<ul>
+<li><strong>Lake Como:</strong> An elegant Y-shaped glacial lake surrounded by opulent villas, botanical gardens, and charming towns like Bellagio.</li>
+<li><strong>Lake Garda:</strong> Italy's largest lake, offering fjord-like mountain views in the north and olive groves and vineyards in the south.</li>
+<li><strong>The Dolomites:</strong> A UNESCO World Heritage mountain range offering legendary hiking trails in summer and premier ski resorts in winter.</li>
+<li><strong>Cortina d'Ampezzo:</strong> The "Queen of the Dolomites," celebrated for luxury alpine chalets, fine dining, and winter sports.</li>
+</ul>
+
+<img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=1600&q=80" alt="Dolomites Mountains Italy" class="in-article-img" />
+
+<h2>4. Countryside Charm & Hidden Gems</h2>
+
+<p>For a slower pace, venture beyond the major hubs into Italy's ancient villages and historic countryside.</p>
+
+<div class="destination-card">
+<h3>🏛️ Top Hidden Gem: Matera</h3>
+<p>Located in the southern Basilicata region, Matera is famous for its ancient <em>Sassi</em>—cave dwellings carved into limestone ravines that are now transformed into boutique hotels, galleries, and restaurants.</p>
+</div>
+
+<ul>
+<li><strong>Matera:</strong> One of the oldest continuously inhabited cities in the world, famed for its ancient cave structures.</li>
+<li><strong>Alberobello:</strong> A fairytale town in Puglia celebrated for its unique <em>trulli</em>—whitewashed stone huts with conical roofs.</li>
+<li><strong>Siena:</strong> Florence's medieval rival, home to the magnificent shell-shaped Piazza del Campo and the Palio horse race.</li>
+<li><strong>San Gimignano:</strong> A hilltop Tuscan town famous for its skyline of soaring 14th-century medieval towers.</li>
+<li><strong>Lucca:</strong> A peaceful Tuscan city fully encircled by Renaissance defensive walls that you can bike or walk along.</li>
+</ul>
+
+<img src="https://images.pexels.com/photos/4832350/pexels-photo-4832350.jpeg" alt="Tuscan Countryside" class="in-article-img" />
+
+<h2>Estimated Travel Budget</h2>
+
+<div class="budget-card">
+<h3>💶 Daily Cost Breakdown</h3>
+
+<p><strong>Budget Traveler:</strong> €70–€110/day (Hostels, local trattorias, regional trains)</p>
+
+<p><strong>Mid-Range Traveler:</strong> €150–€280/day (3–4 star hotels, high-speed rail, sit-down dinners)</p>
+
+<p><strong>Luxury Traveler:</strong> €450+/day (Boutique resorts, private transfers, fine dining)</p>
+
+<p>Prices vary significantly between northern and southern Italy, as well as between peak summer months and the shoulder season.</p>
+</div>
+
+<h2>Italian Culinary Specialties to Try</h2>
+
+<ul>
+<li><strong>Pizza Napoletana:</strong> Soft, chewy wood-fired pizza from Naples.</li>
+<li><strong>Tagliatelle al Ragù:</strong> Slow-cooked meat sauce paired with fresh egg pasta in Bologna.</li>
+<li><strong>Carbonara & Cacio e Pepe:</strong> Classic Roman pasta dishes made with pecorino cheese and guanciale.</li>
+<li><strong>Risotto alla Milanese:</strong> Creamy saffron-infused rice served in Milan.</li>
+<li><strong>Arancini:</strong> Deep-fried Sicilian rice balls stuffed with ragù or mozzarella.</li>
+<li><strong>Gelato:</strong> Artisanal Italian ice cream found in local <em>gelaterias</em> across the country.</li>
+</ul>
+
+<h2>Travel Tips for First-Timers</h2>
+
+<ul>
+<li><strong>Validate Train Tickets:</strong> Always validate physical regional train tickets at green machines before boarding to avoid fines.</li>
+<li><strong>Dress Code for Churches:</strong> Shoulders and knees must be covered when entering basilicas like St. Peter's or the Florence Duomo.</li>
+<li><strong>Book Key Attractions Early:</strong> Tickets for the Colosseum, Vatican Museums, Last Supper, and Uffizi Gallery sell out weeks in advance.</li>
+<li><strong>Embrace the Coperto:</strong> Most restaurants charge a small cover fee (€2–€4 per person) listed as <em>coperto</em> on the bill for bread and service.</li>
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+
+<details class="faq-accordion">
+<summary>How many days do I need for a first trip to Italy?</summary>
+<p>10 to 14 days is ideal for a first-time trip. This allows you to visit Rome, Florence, Venice, and either the Tuscan countryside or the Amalfi Coast without feeling rushed.</p>
+</details>
+
+<details class="faq-accordion">
+<summary>What is the best way to travel around Italy?</summary>
+<p>High-speed trains (Trenitalia and Italo) are the best way to travel between major cities like Rome, Florence, Venice, and Milan. Renting a car is recommended only if you are exploring rural regions like Tuscany, Umbria, or Puglia.</p>
+</details>
+
+<details class="faq-accordion">
+<summary>When is the cheapest time to fly to Italy?</summary>
+<p>The low season between November and February (excluding Christmas and New Year) offers the lowest flight fares and hotel rates, alongside fewer crowds at major tourist spots.</p>
+</details>
+
+<h2>Final Thoughts</h2>
+
+<p>Whether you choose to wander through ancient Roman ruins, gaze at Michelangelo's masterpieces, or relax along the cliffside harbors of Amalfi, Italy offers an endless array of unforgettable experiences.</p>
+
+<p>Before you begin planning, search and compare flights on <strong>FlySava</strong> to discover the best airfare deals, flexible routes, and airline choices for your Italian adventure.</p>
+
+  `
+}
 ];
