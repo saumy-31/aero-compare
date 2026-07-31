@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getWhiteLabelIdByHostname } from "../../config/regions";
-import { Check, Shield, Zap, Plane } from 'lucide-react';
+import { Globe, FileText, DollarSign, Luggage } from 'lucide-react';
 
 // --- GLOBAL BACK-BUTTON INTERCEPTOR ---
 if (typeof window !== 'undefined' && !(window as any)._flightPageReloadListener) {
@@ -119,26 +119,34 @@ export const FlightSearchUI = () => {
           <div id="tpwl-search"></div>
         </div>
         
-        {/* New Premium Trust Strip */}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-y-3 gap-x-6 text-[13px] md:text-sm font-medium text-slate-400">
-          <div className="flex items-center gap-1.5">
-            <Check className="w-4 h-4 text-brand-500" />
-            <span>Compare prices from 100+ travel sites</span>
+        {/* Benefit-Focused Feature Strip */}
+        <div className="mt-8 grid grid-cols-2 lg:flex lg:flex-row items-center justify-center gap-y-5 gap-x-4 text-[13px] md:text-sm font-medium text-slate-400">
+          <div className="flex items-center justify-center lg:justify-start gap-1.5 md:gap-2">
+            <Globe className="w-4 h-4 text-brand-500 shrink-0" />
+            <span className="text-center lg:text-left">Compare 100+ Travel Sites</span>
           </div>
-          <div className="hidden md:block w-1 h-1 rounded-full bg-slate-700/50"></div>
-          <div className="flex items-center gap-1.5">
-            <Zap className="w-4 h-4 text-brand-500" />
-            <span>Live fares</span>
+
+          <div className="hidden lg:block w-[1px] h-4 bg-slate-700/50 mx-2 xl:mx-4"></div>
+          
+          <div className="flex items-center justify-center lg:justify-start gap-1.5 md:gap-2">
+            <DollarSign className="w-4 h-4 text-brand-500 shrink-0" />
+            <span className="text-center lg:text-left">Final Price, No Hidden Fees</span>
           </div>
-          <div className="hidden md:block w-1 h-1 rounded-full bg-slate-700/50"></div>
-          <div className="flex items-center gap-1.5">
-            <Shield className="w-4 h-4 text-brand-500" />
-            <span>No booking fees</span>
+          
+          <div className="hidden lg:block w-[1px] h-4 bg-slate-700/50 mx-2 xl:mx-4"></div>
+          
+          <div className="flex items-center justify-center lg:justify-start gap-1.5 md:gap-2">
+            <FileText className="w-4 h-4 text-brand-500 shrink-0" />
+            <span className="text-center lg:text-left">Visa Requirements</span>
           </div>
-          <div className="hidden lg:block w-1 h-1 rounded-full bg-slate-700/50"></div>
-          <div className="flex items-center gap-1.5">
-            <Plane className="w-4 h-4 text-brand-500" />
-            <span>Trusted flight partners</span>
+          
+          
+          
+          <div className="hidden lg:block w-[1px] h-4 bg-slate-700/50 mx-2 xl:mx-4"></div>
+          
+          <div className="flex items-center justify-center lg:justify-start gap-1.5 md:gap-2">
+            <Luggage className="w-4 h-4 text-brand-500 shrink-0" />
+            <span className="text-center lg:text-left">Baggage Information</span>
           </div>
         </div>
 
