@@ -120,33 +120,31 @@ export const FlightSearchUI = () => {
         </div>
         
         {/* Benefit-Focused Feature Strip */}
-        <div className="mt-8 grid grid-cols-2 lg:flex lg:flex-row items-center justify-center gap-y-5 gap-x-4 text-[13px] md:text-sm font-medium text-slate-400">
-          <div className="flex items-center justify-center lg:justify-start gap-1.5 md:gap-2">
-            <Globe className="w-4 h-4 text-brand-500 shrink-0" />
-            <span className="text-center lg:text-left">Compare 100+ Travel Sites</span>
+        <div className="mt-8 py-5 md:py-6 px-3 grid grid-cols-2 lg:flex lg:flex-row items-center justify-center gap-y-6 gap-x-4 text-[13px] md:text-sm font-medium text-slate-300">
+          <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-start text-center lg:text-left gap-2 lg:gap-2">
+            <Globe className="w-[18px] h-[18px] md:w-4 md:h-4 text-brand-500 shrink-0" />
+            <span className="leading-snug max-w-[150px] lg:max-w-none">Compare 100+ Travel Sites</span>
           </div>
 
           <div className="hidden lg:block w-[1px] h-4 bg-slate-700/50 mx-2 xl:mx-4"></div>
           
-          <div className="flex items-center justify-center lg:justify-start gap-1.5 md:gap-2">
-            <DollarSign className="w-4 h-4 text-brand-500 shrink-0" />
-            <span className="text-center lg:text-left">Final Price, No Hidden Fees</span>
+          <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-start text-center lg:text-left gap-2 lg:gap-2">
+            <FileText className="w-[18px] h-[18px] md:w-4 md:h-4 text-brand-500 shrink-0" />
+            <span className="leading-snug max-w-[150px] lg:max-w-none">Visa Requirements</span>
           </div>
           
           <div className="hidden lg:block w-[1px] h-4 bg-slate-700/50 mx-2 xl:mx-4"></div>
           
-          <div className="flex items-center justify-center lg:justify-start gap-1.5 md:gap-2">
-            <FileText className="w-4 h-4 text-brand-500 shrink-0" />
-            <span className="text-center lg:text-left">Visa Requirements</span>
+          <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-start text-center lg:text-left gap-2 lg:gap-2">
+            <DollarSign className="w-[18px] h-[18px] md:w-4 md:h-4 text-brand-500 shrink-0" />
+            <span className="leading-snug max-w-[150px] lg:max-w-none">Final Price, No Hidden Fees</span>
           </div>
-          
-          
           
           <div className="hidden lg:block w-[1px] h-4 bg-slate-700/50 mx-2 xl:mx-4"></div>
           
-          <div className="flex items-center justify-center lg:justify-start gap-1.5 md:gap-2">
-            <Luggage className="w-4 h-4 text-brand-500 shrink-0" />
-            <span className="text-center lg:text-left">Baggage Information</span>
+          <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-start text-center lg:text-left gap-2 lg:gap-2">
+            <Luggage className="w-[18px] h-[18px] md:w-4 md:h-4 text-brand-500 shrink-0" />
+            <span className="leading-snug max-w-[150px] lg:max-w-none">Baggage Information</span>
           </div>
         </div>
 
