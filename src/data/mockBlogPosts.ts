@@ -26,6 +26,16 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
     lastUpdated: 'July 08, 2026',
     author: 'Elena Vance',
     image: 'https://images.pexels.com/photos/2166559/pexels-photo-2166559.jpeg',
+    seoTitle: "Best Time to Visit Bali: A Complete Seasonal Travel Guide",
+    seoDescription: "Discover the best time to visit Bali. We break down the dry season, wet season, and shoulder months to help you plan the perfect trip.",
+    keywords: [
+      'best time to visit Bali',
+      'Bali travel guide',
+      'Bali seasons',
+      'Bali weather',
+      'when to visit Bali',
+      'FlySava'
+    ],
     content: `
       <p>Bali, the undisputed Island of the Gods, captures the imagination with its dramatic volcanic landscapes, endless lush green rice paddies, and deeply spiritual temple ceremonies. But understanding the island's tropical climate is absolutely vital for a successful trip. The difference between a sun-soaked adventure in Seminyak and a rained-out week trapped in your Ubud villa lies entirely in the timing.</p>
       
@@ -99,6 +109,7 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
     `
   },
   {
+    
     id: '2',
     slug: 'tokyo-neon-metropolis-first-timer-guide',
     title: 'Navigating the Neon Metropolis: A First-Timer’s Guide to Tokyo',
@@ -109,6 +120,18 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
     lastUpdated: 'July 01, 2026',
     author: 'Kenji Sato',
     image: 'https://images.unsplash.com/photo-1513407030348-c983a97b98d8?auto=format&fit=crop&w=1600&q=80',
+    seoTitle: 'Tokyo First-Timer’s Guide: Navigating the Neon Metropolis | FlySava',
+    seoDescription: 'Conquer Tokyo with our ultimate first-timer guide covering transit tips, top neighborhoods, hidden ramen spots, and must-see landmarks.',
+    keywords: [
+      'Tokyo first timer guide',
+      'Tokyo travel guide',
+      'navigating Tokyo',
+      'Tokyo itinerary',
+      'Japan travel tips',
+      'FlySava'
+    ],
+    // Make sure your 'content: ...' field follows here!
+  
     content: `
       <p>Tokyo is an exhilarating, overwhelming, and beautifully contradictory metropolis. It is a place where neon-drenched skyscrapers stand shoulder-to-shoulder with tranquil Shinto shrines, and where centuries of profound tradition blend seamlessly into a hyper-futuristic reality. For a first-time visitor, stepping out of Shinjuku Station can feel like arriving on another planet.</p>
       
@@ -295,6 +318,16 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
     lastUpdated: 'June 10, 2026',
     author: 'Juliette Moreau',
     image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1600&q=80',
+    seoTitle: 'Hidden Paris Guide: Beyond the Eiffel Tower | FlySava',
+    seoDescription: 'Discover hidden Paris with our curated guide. Explore secret speakeasies, quiet courtyards, and local neighborhood bistros away from the crowds.',
+    keywords: [
+      'hidden Paris',
+      'Paris travel guide',
+      'secret spots in Paris',
+      'Paris off the beaten path',
+      'Paris neighborhoods',
+      'FlySava'
+    ],
     content: `
       <p>Paris is arguably the most romanticized city on Earth, which paradoxically makes it one of the easiest cities to get wrong. Millions of visitors flock to the French capital each year, spending their days standing in grueling lines at the Louvre and eating overpriced, mediocre croque monsieurs near the Eiffel Tower. But the true magic of Paris reveals itself only when you step away from the major monuments and disappear into its arrondissements.</p>
       
@@ -350,6 +383,16 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
     lastUpdated: 'May 25, 2026',
     author: 'Magnus Eriksson',
     image: 'https://images.unsplash.com/photo-1476610182048-b716b8518aae?auto=format&fit=crop&w=1600&q=80',
+    seoTitle: 'Ultimate Iceland Ring Road Itinerary & Route 1 Guide | FlySava',
+    seoDescription: 'Plan your epic Iceland road trip. Follow our ultimate Ring Road itinerary covering waterfalls, glaciers, hot springs, and practical driving tips.',
+    keywords: [
+      'Iceland Ring Road itinerary',
+      'Iceland Route 1 guide',
+      'Iceland road trip',
+      'chasing the midnight sun Iceland',
+      'Iceland travel guide',
+      'FlySava'
+    ],
     content: `
       <p>Iceland is not a destination; it is a geographic event. It is a raw, volatile, and breathtakingly beautiful island where the earth's tectonic plates literally tear apart beneath your feet. While many visitors limit themselves to the Golden Circle near Reykjavik, the only true way to comprehend the sheer scale of Iceland's majesty is to drive the Ring Road (Route 1).</p>
       
@@ -408,6 +451,16 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
     lastUpdated: 'May 02, 2026',
     author: 'Tariq Al-Fayed',
     image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1600&q=80',
+    seoTitle: 'Dubai on a Dime: Budget Travel Guide & Tips | FlySava',
+    seoDescription: 'Discover how to visit Dubai on a budget. Uncover affordable eats, free attractions, historic souks, and smart tips to experience the City of Gold cheaply.',
+    keywords: [
+      'Dubai on a budget',
+      'cheap Dubai travel guide',
+      'visit Dubai cheap',
+      'affordable Dubai trip',
+      'Dubai travel tips',
+      'FlySava'
+    ],
     content: `
       <p>Dubai projects an image of uncompromising, relentless luxury. The city's marketing is a continuous highlight reel of seven-star hotels, gold-dispensing ATMs, and man-made islands shaped like palm trees. Consequently, budget-conscious travelers often write off the emirate entirely. But behind the glittering facade of Downtown Dubai lies a remarkably accessible, deeply historic, and affordable city.</p>
       
@@ -466,6 +519,16 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
     lastUpdated: 'April 18, 2026',
     author: 'Sophia Kostas',
     image: 'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?auto=format&fit=crop&w=1600&q=80',
+    seoTitle: 'Santorini Travel Guide: Finding Tranquility & Hidden Gems | FlySava',
+    seoDescription: 'Discover authentic Santorini away from the crowds. Explore hidden vineyards, volcanic beaches, and quiet tavernas for a truly tranquil Greek island escape.',
+    keywords: [
+      'Santorini travel guide',
+      'quiet Santorini spots',
+      'Santorini away from crowds',
+      'Greece island hopping',
+      'Santorini hidden gems',
+      'FlySava'
+    ],
     content: `
       <p>Santorini is a victim of its own impossible beauty. The iconic image of whitewashed cycladic houses spilling down steep volcanic cliffs toward a sapphire-blue caldera is so famous it borders on cliché. Every summer, thousands of passengers disembark from cruise ships to cram into the narrow alleys of Oia, fighting for the exact same sunset selfie.</p>
       
@@ -516,6 +579,16 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
     lastUpdated: 'March 20, 2026',
     author: 'Liam O’Connor',
     image: 'https://images.unsplash.com/photo-1561134643-668f9057cce4?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    seoTitle: 'Banff National Park Travel Guide & Hiking Itinerary | FlySava',
+    seoDescription: 'Plan your trip to Banff National Park. Explore turquoise lakes, epic mountain hikes, wildlife viewing, and practical tips for the Canadian Rockies.',
+    keywords: [
+      'Banff National Park guide',
+      'Canadian Rockies itinerary',
+      'Banff hiking guide',
+      'visit Banff Canada',
+      'Banff travel tips',
+      'FlySava'
+    ],
     content: `
       <p>Banff National Park, nestled in the heart of the Canadian Rockies, is a landscape of impossible proportions. The mountains here don't gently roll; they thrust violently out of the earth in jagged, snow-capped peaks. The lakes aren't just blue; they are a brilliant, surreal, glowing turquoise, heavily saturated with glacial rock flour.</p>
       
@@ -569,6 +642,16 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
     lastUpdated: 'March 01, 2026',
     author: 'Marcus Vance',
     image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=1600&q=80',
+    seoTitle: 'New York City Food Guide: Best Eats Across All 5 Boroughs | FlySava',
+    seoDescription: 'Discover the ultimate NYC food guide. Explore local eats, historic pizzerias, authentic dumpling houses, and hidden culinary gems across New York’s 5 boroughs.',
+    keywords: [
+      'New York City food guide',
+      'NYC culinary journey',
+      'best places to eat in NYC',
+      'New York restaurants guide',
+      'NYC food tour',
+      'FlySava'
+    ],
     content: `
       <p>New York City is not a melting pot; it is a massive, simmering, incredibly diverse buffet. It is one of the only cities on earth where you can eat Michelin-starred French cuisine for lunch, authentic Tibetan momos for a snack, and historic coal-oven pizza for dinner, all without leaving the subway system.</p>
       
@@ -626,6 +709,16 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
     lastUpdated: 'January 12, 2026',
     author: 'Kenji Sato',
     image: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1600&q=80',
+    seoTitle: 'Kyoto Travel Guide: Temples, Teahouses & Tradition | FlySava',
+    seoDescription: 'Discover the magic of Kyoto with our expert cultural guide. Explore historic temples, bamboo groves, zen gardens, and traditional geisha districts.',
+    keywords: [
+      'Kyoto travel guide',
+      'Kyoto temples and shrines',
+      'traditional Kyoto itinerary',
+      'Gion district guide',
+      'Japan culture guide',
+      'FlySava'
+    ],
     content: `
       <p>While Tokyo points aggressively toward the future, Kyoto serves as the elegant, preserved soul of Japan's past. Spared from the heavy bombing of WWII, the city retains thousands of classical Buddhist temples, Shinto shrines, immaculate Zen rock gardens, and traditional wooden machiya houses.</p>
       
@@ -683,6 +776,16 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
     lastUpdated: 'December 10, 2025',
     author: 'Elena Vance',
     image: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1600&q=80',
+    seoTitle: 'Maldives Atoll Guide: How to Choose the Perfect Island & Resort | FlySava',
+    seoDescription: 'Planning a trip to the Maldives? Learn how to choose the right atoll and luxury resort based on your budget, diving interests, and travel style.',
+    keywords: [
+      'Maldives atoll guide',
+      'how to choose Maldives resort',
+      'Maldives luxury travel',
+      'best atolls in Maldives',
+      'Maldives vacation tips',
+      'FlySava'
+    ],
     content: `
       <p>The Maldives is the ultimate archetype of tropical luxury. It is a nation of coral atolls scattered across the Indian Ocean, characterized by impossibly clear turquoise waters, blindingly white sand, and iconic overwater bungalows. However, because each resort occupies its own private island, your choice of hotel completely defines your entire experience.</p>
       
@@ -738,6 +841,16 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
     lastUpdated: 'November 18, 2025',
     author: 'Tariq Al-Fayed',
     image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1600&q=80',
+    seoTitle: 'Cappadocia Travel Guide: Hot Air Balloons & Cave Hotels | FlySava',
+    seoDescription: 'Plan your trip to Cappadocia, Turkey. Discover the best hot air balloon rides, cave hotels, underground cities, and fairy chimney landscapes.',
+    keywords: [
+      'Cappadocia travel guide',
+      'Cappadocia hot air balloons',
+      'Turkey fairy chimneys',
+      'cave hotels Cappadocia',
+      'visit Cappadocia',
+      'FlySava'
+    ],
     content: `
       <p>Rising from the dusty plains of central Anatolia, Cappadocia is a geological oddity. Millions of years of volcanic ash deposition, followed by relentless wind and water erosion, have carved the landscape into a whimsical array of towering rock cones, affectionately known as "fairy chimneys."</p>
       
@@ -793,6 +906,16 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
     lastUpdated: 'October 25, 2025',
     author: 'Juliette Moreau',
     image: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=1600&q=80',
+    seoTitle: 'Switzerland GoldenPass Railway Guide & Scenic Train Tips | FlySava',
+    seoDescription: 'Experience Switzerland’s GoldenPass scenic railway. Discover the best routes, panoramic windows, alpine views, and train travel tips.',
+    keywords: [
+      'Switzerland Golden Pass train',
+      'Swiss scenic railway guide',
+      'GoldenPass Line route',
+      'Switzerland train travel',
+      'Swiss Alps railway',
+      'FlySava'
+    ],
     content: `
       <p>Switzerland is arguably the only country in the world where the public transportation system is a primary tourist attraction in itself. The Swiss Travel System is a masterpiece of precision engineering, seamlessly connecting high-speed trains, alpine funiculars, postal buses, and lake steamers into one unified, hyper-punctual network.</p>
       
@@ -850,6 +973,16 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
     lastUpdated: 'June 20, 2026',
     author: 'David Chen',
     image: 'https://www.sakurabox.com/cdn/shop/articles/JAL_Blog.jpg?v=1750825750',
+    seoTitle: 'How to Find Cheap Flights in 2026: Expert Airfare Hacks | FlySava',
+    seoDescription: 'Learn how to find cheap flights with expert travel strategies. Discover the best booking windows, flight comparison secrets, and airfare hacks for 2026.',
+    keywords: [
+      'how to find cheap flights',
+      'flight booking hacks',
+      'cheap airfare strategies',
+      'best time to book flights',
+      'save money on flights',
+      'FlySava'
+    ],
     content: `
       <p>The internet is overflowing with terrible, outdated advice regarding flight booking. If you are still clearing your cookies or browsing in "incognito mode" believing it will prevent airlines from tracking you and raising prices, you are fighting a ghost. Flight pricing is governed by highly complex, dynamic pricing algorithms based strictly on inventory, demand curves, and historical booking data—not your browser cache.</p>
       
@@ -910,17 +1043,26 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
     `
   },
   {
-  id: '15',
-  slug: 'best-websites-to-find-cheap-flights',
-  title: 'Best Websites to Find Cheap Flights in 2026',
-  excerpt: 'Discover the best flight search websites, learn their strengths and weaknesses, and find out how to compare fares smarter before booking your next trip.',
-  category: 'Travel Tips',
-  readTime: '14 min read',
-  publishedDate: 'July 18, 2026',
-  lastUpdated: 'July 18, 2026',
-  author: 'FlySava Editorial Team',
-  image: 'https://images.unsplash.com/photo-1488085061387-422e29b40080?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  content: `
+    id: '15',
+    slug: 'best-websites-to-find-cheap-flights',
+    title: 'Best Websites to Find Cheap Flights in 2026',
+    excerpt: 'Discover the best flight search websites, learn their strengths and weaknesses, and find out how to compare fares smarter before booking your next trip.',
+    category: 'Travel Tips',
+    readTime: '14 min read',
+    publishedDate: 'July 18, 2026',
+    lastUpdated: 'July 18, 2026',
+    author: 'FlySava Editorial Team',
+    image: 'https://images.unsplash.com/photo-1488085061387-422e29b40080?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    seoTitle: 'Best Websites to Find Cheap Flights in 2026 | FlySava',
+    seoDescription: 'Discover the best flight search engines and comparison sites of 2026. Compare pros, cons, and expert tips to secure the cheapest airfare online.',
+    keywords: [
+      'best websites to find cheap flights',
+      'best flight search engines 2026',
+      'compare cheap airfare sites',
+      'best flight booking websites',
+      'FlySava'
+    ],
+    content: `
     <p>Finding affordable airfare isn't just about luck—it's about knowing where to search. With hundreds of airlines and online travel agencies offering different fares, using the right flight comparison website can save both time and money.</p>
 
     <p>Some platforms specialize in comparing airline prices, while others focus on flexible date searches, travel inspiration, or finding hidden deals. Understanding their strengths helps you choose the best tool for your trip.</p>
@@ -1255,17 +1397,27 @@ export const MOCK_BLOG_POSTS: BlogPostType[] = [
     `
   },
   {
-  id: '17',
-  slug: 'ultimate-italy-travel-guide-everything-you-need-to-know-before-you-go',
-  title: 'The Ultimate Italy Travel Guide: Everything You Need to Know Before You Go',
-  excerpt: 'From Rome’s ancient landmarks to the Amalfi Coast’s dramatic cliffs, discover the best time to visit, budgeting tips, transportation, food, and everything you need to plan the perfect Italian adventure.',
-  category: 'Destinations',
-  readTime: '18 min read',
-  publishedDate: 'August 02, 2026',
-  lastUpdated: 'August 02, 2026',
-  author: 'Marco Bellini',
-  image: 'https://images.unsplash.com/photo-1525874684015-58379d421a52?auto=format&fit=crop&w=1600&q=80',
-  content: `
+    id: '17',
+    slug: 'ultimate-italy-travel-guide-everything-you-need-to-know-before-you-go',
+    title: 'The Ultimate Italy Travel Guide: Everything You Need to Know Before You Go',
+    excerpt: 'From Rome’s ancient landmarks to the Amalfi Coast’s dramatic cliffs, discover the best time to visit, budgeting tips, transportation, food, and everything you need to plan the perfect Italian adventure.',
+    category: 'Destinations',
+    readTime: '18 min read',
+    publishedDate: 'August 02, 2026',
+    lastUpdated: 'August 02, 2026',
+    author: 'Marco Bellini',
+    image: 'https://images.unsplash.com/photo-1525874684015-58379d421a52?auto=format&fit=crop&w=1600&q=80',
+    seoTitle: 'Ultimate Italy Travel Guide: Tips & Itinerary Before You Go | FlySava',
+    seoDescription: 'Plan the ultimate trip to Italy with our comprehensive travel guide covering Rome, Amalfi Coast, transport, budget tips, food, and best times to visit.',
+    keywords: [
+      'Italy travel guide',
+      'ultimate Italy itinerary',
+      'planning a trip to Italy',
+      'Italy travel tips',
+      'best time to visit Italy',
+      'FlySava'
+    ],
+    content: `
     <p>Italy is one of those rare destinations that feels both timeless and endlessly exciting. Every region tells a different story—from the ruins of Ancient Rome and the Renaissance masterpieces of Florence to the romantic canals of Venice and the sun-drenched villages of the Amalfi Coast. Whether you're planning your very first visit or returning for another unforgettable journey, Italy rewards slow exploration, incredible food, and spontaneous discoveries.</p>
 
     <p>This guide covers everything you need to know before visiting Italy, including the best time to travel, budgeting, transportation, must-see destinations, local customs, safety tips, and practical advice to help you make the most of your adventure.</p>
