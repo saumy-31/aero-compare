@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getWhiteLabelIdByHostname } from "../../config/regions";
+import { Check, Shield, Zap, Plane } from 'lucide-react';
 
 // --- GLOBAL BACK-BUTTON INTERCEPTOR ---
 if (typeof window !== 'undefined' && !(window as any)._flightPageReloadListener) {
@@ -45,8 +46,7 @@ export const FlightSearchUI = () => {
 
     // --- DYNAMIC REGION LOGIC START ---
     const currentHostname = window.location.hostname;
-    // Change this back:
-const dynamicWlId = getWhiteLabelIdByHostname(currentHostname);
+    const dynamicWlId = getWhiteLabelIdByHostname(currentHostname);
     // --- DYNAMIC REGION LOGIC END ---
 
     const script = document.createElement('script');
@@ -86,33 +86,64 @@ const dynamicWlId = getWhiteLabelIdByHostname(currentHostname);
 
   return (
     <div className="min-h-screen bg-[#071226] transition-colors duration-200">
-      {/* Hero Section */}
-      <div className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-900">
+      {/* Hero Section - Increased height (pt/pb) for more breathing room */}
+      <div className="relative pt-28 md:pt-32 lg:pt-36 pb-24 lg:pb-32 overflow-hidden bg-slate-900">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=2000"
             alt="Hero Background"
-            className="w-full h-full object-cover opacity-40"
+            className="w-full h-full object-cover object-center md:object-[center_25%] opacity-50"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/40 to-[#071226]" />
+          {/* Slightly darkened overlay for maximum typography contrast */}
+          <div className="absolute inset-0 bg-black/55" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_center,rgba(255,255,255,0.04)_0%,rgba(7,18,38,0.75)_50%,rgba(7,18,38,1)_100%)]" />
         </div>
 
         <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center">
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">
+          {/* Increased margin-bottom to physically separate heading and subtitle */}
+          <h1 className="text-3xl md:text-5xl lg:text-[3.5rem] font-black text-white mb-6 tracking-tight leading-[1.1] drop-shadow-lg">
             Compare & Book the <br/> <span className="text-brand-500">Best Flight Deals</span>
           </h1>
-          <p className="text-lg text-gray-300 mb-10 max-w-2xl">
+          {/* Added margin-bottom to ensure clearance from the overlapping search widget */}
+          <p className="text-base md:text-lg text-slate-300 max-w-2xl font-medium drop-shadow-md leading-relaxed mb-4">
             Search 100+ travel sites at once. Find the cheapest, fastest, and best value flights globally.
           </p>
         </div>
       </div>
 
-      {/* TravelPayouts Widget */}
-      <section className="container mx-auto px-4 max-w-7xl -mt-20 relative z-20 pb-32">
-        <div className="bg-white rounded-3xl shadow-2xl p-6">
+      {/* Search & Trust Section - Less aggressive negative margin (-mt-24) to balance the layout */}
+      <section className="container mx-auto px-4 max-w-7xl -mt-16 md:-mt-20 lg:-mt-24 relative z-20 pb-16 lg:pb-20">
+        
+        {/* Softer shadow, premium padding, subtle border */}
+        <div className="bg-white rounded-[2rem] shadow-[0_40px_100px_-15px_rgba(0,0,0,0.08)] border border-slate-200/50 p-6 md:p-8 lg:p-10">
           <div id="tpwl-search"></div>
         </div>
-        <div id="tpwl-tickets"></div>
+        
+        {/* New Premium Trust Strip */}
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-y-3 gap-x-6 text-[13px] md:text-sm font-medium text-slate-400">
+          <div className="flex items-center gap-1.5">
+            <Check className="w-4 h-4 text-brand-500" />
+            <span>Compare prices from 100+ travel sites</span>
+          </div>
+          <div className="hidden md:block w-1 h-1 rounded-full bg-slate-700/50"></div>
+          <div className="flex items-center gap-1.5">
+            <Zap className="w-4 h-4 text-brand-500" />
+            <span>Live fares</span>
+          </div>
+          <div className="hidden md:block w-1 h-1 rounded-full bg-slate-700/50"></div>
+          <div className="flex items-center gap-1.5">
+            <Shield className="w-4 h-4 text-brand-500" />
+            <span>No booking fees</span>
+          </div>
+          <div className="hidden lg:block w-1 h-1 rounded-full bg-slate-700/50"></div>
+          <div className="flex items-center gap-1.5">
+            <Plane className="w-4 h-4 text-brand-500" />
+            <span>Trusted flight partners</span>
+          </div>
+        </div>
+
+        {/* Ticket results container */}
+        <div id="tpwl-tickets" className="mt-10 md:mt-12"></div>
       </section>
     </div>
   );
