@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Import your blog posts data source dynamically
-import { MOCK_BLOG_POSTS } from './src/data/mockBlogPosts.js';
+import { MOCK_BLOG_POSTS } from './src/data/mockBlogPosts.ts';
 
 const DOMAIN = 'https://flysava.com';
 
