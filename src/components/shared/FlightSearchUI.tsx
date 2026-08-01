@@ -119,30 +119,54 @@ export const FlightSearchUI = () => {
           <div id="tpwl-search"></div>
         </div>
         
-        {/* New Premium Trust Strip */}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-y-3 gap-x-6 text-[13px] md:text-sm font-medium text-slate-400">
+        {/* Desktop Trust Strip (md and above) */}
+        <div className="hidden md:flex mt-6 lg:mt-8 items-center justify-center gap-x-6 text-sm font-medium text-slate-400">
           <div className="flex items-center gap-1.5">
-            <Globe className="w-[18px] h-[18px] md:w-4 md:h-4 text-brand-500 shrink-0" />
+            <Globe className="w-4 h-4 text-brand-500 shrink-0" />
             <span>Compare 100+ Travel Sites</span>
           </div>
-          <div className="hidden lg:block w-1 h-1 rounded-full bg-slate-700/50"></div>
+          <div className="w-1 h-1 rounded-full bg-slate-700/50"></div>
           <div className="flex items-center gap-1.5">
-            <Luggage className="w-[18px] h-[18px] md:w-4 md:h-4 text-brand-500 shrink-0" />
+            <Luggage className="w-4 h-4 text-brand-500 shrink-0" />
             <span>Baggage Info</span>
           </div>
-
-          <div className="hidden md:block w-1 h-1 rounded-full bg-slate-700/50"></div>
+          <div className="w-1 h-1 rounded-full bg-slate-700/50"></div>
           <div className="flex items-center gap-1.5">
-            <FileText className="w-[18px] h-[18px] md:w-4 md:h-4 text-brand-500 shrink-0" />
+            <FileText className="w-4 h-4 text-brand-500 shrink-0" />
             <span>Visa Requirements</span>
           </div>
-
-          <div className="hidden md:block w-1 h-1 rounded-full bg-slate-700/50"></div>
+          <div className="w-1 h-1 rounded-full bg-slate-700/50"></div>
           <div className="flex items-center gap-1.5">
-            <DollarSign className="w-[18px] h-[18px] md:w-4 md:h-4 text-brand-500 shrink-0" />
+            <DollarSign className="w-4 h-4 text-brand-500 shrink-0" />
             <span>Final Price, No Hidden Fees</span>
           </div>
+        </div>
+
+        {/* Mobile Trust Strip (below md) */}
+        <div className="md:hidden mt-6 flex flex-col items-center justify-center gap-3 text-[13px] font-medium text-slate-400">
+          {/* Row 1 */}
+          <div className="flex items-center justify-center gap-1.5">
+            <Globe className="w-4 h-4 text-brand-500 shrink-0" />
+            <span>Compare 100+ Travel Sites</span>
+          </div>
           
+          {/* Row 2 */}
+          <div className="flex items-center justify-center gap-6">
+            <div className="flex items-center gap-1.5">
+              <Luggage className="w-4 h-4 text-brand-500 shrink-0" />
+              <span>Baggage Info</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <FileText className="w-4 h-4 text-brand-500 shrink-0" />
+              <span>Visa Requirements</span>
+            </div>
+          </div>
+
+          {/* Row 3 */}
+          <div className="flex items-center justify-center gap-1.5">
+            <DollarSign className="w-4 h-4 text-brand-500 shrink-0" />
+            <span>Final Price, No Hidden Fees</span>
+          </div>
         </div>
 
         {/* Ticket results container */}
