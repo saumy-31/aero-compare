@@ -3041,5 +3041,650 @@ export const MOCK_DESTINATIONS: Destination[] = [
       'Budget Food: Hot dogs (Pylsur) from gas stations are the unofficial national dish and one of the only cheap meals available.',
       'Midnight Sun: In June/July, it never gets dark. Bring a sleep mask, and utilize the night to visit famous waterfalls completely alone.'
     ]
-  }
+  },
+  {
+  id: 'mexico-city-mx',
+  city: 'Mexico City',
+  country: 'Mexico',
+  airportCode: 'MEX',
+  image: `https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?auto=format&fit=crop&w=1600&q=80${cropParams}`,
+  description: 'A vibrant metropolis blending deep indigenous history, colonial architecture, a world-class culinary scene, and iconic museums.',
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'March to May',
+  dailyBudget: 75,
+  attractions: [
+    { name: 'Teotihuacan Pyramids', duration: '4 hours', bestTime: 'Morning', entryFee: '~$5 (95 MXN)' },
+    { name: 'Frida Kahlo Museum (Casa Azul)', duration: '2 hours', bestTime: 'Morning', entryFee: '~$16 (320 MXN)' },
+    { name: 'National Museum of Anthropology', duration: '3 hours', bestTime: 'Morning', entryFee: '~$5 (95 MXN)' },
+    { name: 'Zócalo & Metropolitan Cathedral', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Chapultepec Castle', duration: '2 hours', bestTime: 'Afternoon', entryFee: '~$5 (95 MXN)' },
+    { name: 'Palacio de Bellas Artes', duration: '1.5 hours', bestTime: 'Evening', entryFee: '~$5 (90 MXN)' }
+  ],
+  travelTips: [
+    'Book tickets for the Frida Kahlo Museum online well in advance, as they sell out quickly.',
+    'Use Uber or DiDi for safe, reliable, and affordable transportation around the city.',
+    'Arrive at Teotihuacan right when it opens to beat both the afternoon heat and the heavy crowds.',
+    'Take it easy on your first day to acclimate to the city\'s high altitude (7,350 feet / 2,240 meters).',
+    'Carry small bills in Mexican Pesos (MXN) for street food vendors, markets, and tipping.',
+    'Do not drink the tap water; always opt for bottled or securely filtered water.'
+  ]
+},
+{
+  id: 'sal-cv',
+  city: 'Sal',
+  country: 'Cape Verde',
+  airportCode: 'SID',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDGPalVZfVNuiUMnYCZ0QTBXpIgF_akNfqGf2gUqm1YttPQa4Ou1Zxygc&s=10${cropParams}`,
+  description: 'A sun-drenched island off the coast of West Africa, famous for its sweeping white-sand beaches, vibrant Creole culture, and world-class kite surfing.',
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'November to June',
+  dailyBudget: 85,
+  attractions: [
+    { name: 'Santa Maria Beach', duration: 'Half day', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Pedra de Lume Salt Crater', duration: '2 hours', bestTime: 'Afternoon', entryFee: '~$6 (600 CVE)' },
+    { name: 'Buracona (The Blue Eye)', duration: '1.5 hours', bestTime: 'Midday (11 AM - 1 PM)', entryFee: '~$3 (300 CVE)' },
+    { name: 'Kite Beach', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Shark Bay', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free (Shoe rental ~$2)' },
+    { name: 'Viveiro Botanical Garden', duration: '1.5 hours', bestTime: 'Late Afternoon', entryFee: '~$5 (500 CVE)' }
+  ],
+  travelTips: [
+    'Pay your Airport Security Tax (TSA) online before arrival to skip the queues at the airport.',
+    'The Euro is widely accepted across the islands alongside the local Cape Verdean Escudo (CVE).',
+    'November to March brings strong trade winds, making it the perfect season to watch or try kite surfing.',
+    'Rent a 4x4 or book an off-road island tour to explore the rugged volcanic landscapes safely.',
+    'Try "Cachupa," the national dish—a hearty slow-cooked stew made with corn, beans, and fish or meat.',
+    'The sun is extremely intense near the equator; pack reef-safe sunscreen and a hat.'
+  ]
+},
+{
+  id: 'sofia-bg',
+  city: 'Sofia',
+  country: 'Bulgaria',
+  airportCode: 'SOF',
+  image: `https://images.pexels.com/photos/12499969/pexels-photo-12499969.jpeg${cropParams}`,
+  description: 'A captivating blend of ancient Roman ruins, grand Soviet-era architecture, and a lively modern café culture, all nestled at the foot of Vitosha Mountain.',
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'May to September',
+  dailyBudget: 50,
+  attractions: [
+    { name: 'St. Alexander Nevsky Cathedral', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free (Crypt ~$3)' },
+    { name: 'Serdica Archaeological Complex', duration: '1 hour', bestTime: 'Anytime', entryFee: 'Free' },
+    { name: 'Vitosha Mountain', duration: 'Half day', bestTime: 'Morning', entryFee: 'Free (Gondola ~$10)' },
+    { name: 'Boyana Church (UNESCO)', duration: '1 hour', bestTime: 'Afternoon', entryFee: '~$5 (10 BGN)' },
+    { name: 'Vitosha Boulevard', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'National Historical Museum', duration: '2 hours', bestTime: 'Afternoon', entryFee: '~$6 (12 BGN)' }
+  ],
+  travelTips: [
+    'The local currency is the Bulgarian Lev (BGN). While cards are widely used, carry cash for small bakeries and markets.',
+    'Be aware of Bulgarian head gestures: traditionally, nodding means "no" and shaking your head means "yes," which can be confusing!',
+    'Use the clean, affordable, and highly efficient Sofia Metro to travel directly from the airport to the city center.',
+    'Join a free walking tour on your first day; it is one of the best ways to understand the city\'s complex Roman, Ottoman, and Soviet history.',
+    'Try Banitsa (a flaky pastry filled with white cheese) paired with Ayran (a yogurt drink) for a classic local breakfast.',
+    'Vitosha Mountain is accessible via public transport, offering excellent hiking in the summer and affordable skiing in the winter.'
+  ]
+},
+{
+  id: 'lombok-id',
+  city: 'Lombok',
+  country: 'Indonesia',
+  airportCode: 'LOP',
+  image: `https://images.pexels.com/photos/38675673/pexels-photo-38675673.jpeg${cropParams}`,
+  description: 'Often described as Bali decades ago, this island paradise boasts pristine beaches, legendary surf breaks, and the towering volcanic peak of Mount Rinjani.',
+  budget: 'Budget',
+  tripType: 'Adventure',
+  bestSeason: 'May to September',
+  dailyBudget: 45,
+  attractions: [
+    { name: 'Gili Islands (Day Trip)', duration: 'Full day', bestTime: 'Morning', entryFee: 'Boat ticket ~$10-$15' },
+    { name: 'Tiu Kelep & Sendang Gile Waterfalls', duration: '3 hours', bestTime: 'Morning', entryFee: '~$1 (10,000 IDR)' },
+    { name: 'Tanjung Aan Beach', duration: 'Half day', bestTime: 'Afternoon', entryFee: 'Parking ~$1' },
+    { name: 'Mount Rinjani National Park', duration: '2-3 Days (Trek)', bestTime: 'Early Morning', entryFee: '~$10/day (Plus guide)' },
+    { name: 'Sade Traditional Sasak Village', duration: '1 hour', bestTime: 'Afternoon', entryFee: 'Donation based' },
+    { name: 'Pink Beach (Tangsi)', duration: 'Half day', bestTime: 'Morning', entryFee: '~$3 (50,000 IDR)' }
+  ],
+  travelTips: [
+    'Renting a scooter is the best way to explore the southern beaches, but drive cautiously as rural roads can be unpaved or poorly lit.',
+    'Unlike neighboring Bali, which is predominantly Hindu, Lombok is predominantly Muslim. Dress modestly when away from the main tourist beaches.',
+    'If you plan to hike Mount Rinjani, you must hire a certified local guide. Book well in advance during the dry season.',
+    'While fast boats from Bali are popular, flying directly into Lombok International Airport (LOP) is often faster and avoids rough sea conditions.',
+    'Carry plenty of cash in Indonesian Rupiah (IDR). ATMs are easy to find in Senggigi and Kuta, but rare in remote villages.',
+    'Try Ayam Taliwang, Lombok’s famous spicy grilled chicken, usually served with water spinach and rice.'
+  ]
+},
+{
+  id: 'yerevan-am',
+  city: 'Yerevan',
+  country: 'Armenia',
+  airportCode: 'EVN',
+  image: `https://images.pexels.com/photos/16206879/pexels-photo-16206879.jpeg${cropParams}`,
+  description: 'Known as the "Pink City" for its volcanic tuff architecture, one of the world’s oldest continuously inhabited cities offers a rich tapestry of ancient history, vibrant cafe culture, and stunning views of Mount Ararat.',
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'May to June, September to October',
+  dailyBudget: 45,
+  attractions: [
+    { name: 'The Cascade Complex', duration: '2 hours', bestTime: 'Sunset', entryFee: 'Free (Museum ~$4)' },
+    { name: 'Republic Square', duration: '1.5 hours', bestTime: 'Evening (For fountains)', entryFee: 'Free' },
+    { name: 'Tsitsernakaberd Memorial', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Garni Temple & Geghard', duration: 'Half day', bestTime: 'Morning', entryFee: '~$4 (1500 AMD)' },
+    { name: 'Matenadaran (Manuscript Museum)', duration: '1.5 hours', bestTime: 'Morning', entryFee: '~$4 (1500 AMD)' },
+    { name: 'Vernissage Market', duration: '2 hours', bestTime: 'Weekend mornings', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'The local currency is the Armenian Dram (AMD). While cards are widely accepted in Yerevan cafes, carry cash for markets and regional day trips.',
+    'Download the GG or Yandex Go apps for cheap, safe, and reliable taxi rides both within the city and to nearby attractions.',
+    'Yerevan has a massive evening culture. Locals stay out late enjoying the cafes, wine bars, and the singing fountains at Republic Square.',
+    'Do not miss trying Khorovats (Armenian BBQ), fresh Lavash (traditional flatbread), and the locally produced pomegranate wine.',
+    'Take a short day trip to Khor Virap Monastery for the most iconic, unobstructed views of Mount Ararat just across the Turkish border.',
+    'The city is incredibly safe for tourists, even late at night, making it perfect for evening strolls through its many parks.'
+  ]
+},
+{
+  id: 'tirana-al',
+  city: 'Tirana',
+  country: 'Albania',
+  airportCode: 'TIA',
+  image: `https://images.pexels.com/photos/19597740/pexels-photo-19597740.jpeg${cropParams}`,
+  description: 'A colorful, rapidly changing capital blending Ottoman history, Soviet-era relics, and a thriving café culture, serving as the perfect gateway to the Albanian Riviera and the Accursed Mountains.',
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'May to October',
+  dailyBudget: 40,
+  attractions: [
+    { name: 'Skanderbeg Square', duration: '1 hour', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'BUNK\'ART 1', duration: '2 hours', bestTime: 'Morning', entryFee: '~$5 (500 ALL)' },
+    { name: 'Dajti Ekspres (Cable Car)', duration: 'Half day', bestTime: 'Afternoon', entryFee: '~$12 (1200 ALL)' },
+    { name: 'Pyramid of Tirana', duration: '1 hour', bestTime: 'Anytime', entryFee: 'Free' },
+    { name: 'Berat (Day Trip)', duration: 'Full day', bestTime: 'Early Morning', entryFee: 'Bus ~$5' },
+    { name: 'Grand Park of Tirana', duration: '2 hours', bestTime: 'Late Afternoon', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'The local currency is the Albanian Lek (ALL). Cash is king here, so always carry enough for meals, small purchases, and transport.',
+    'Public transport between cities relies heavily on "furgons" (minibuses). They often do not have strict schedules and simply leave when they are full.',
+    'Café culture is a massive part of daily life. Do as the locals do and take time to slowly enjoy an espresso or macchiato.',
+    'Tap water in Albania is generally not recommended for drinking; stick to bottled or securely filtered water.',
+    'Try Tavë Kosi, the beloved national dish consisting of baked lamb and rice served under a thick, savory yogurt sauce.',
+    'Tirana is highly walkable, but if you need a ride, negotiate taxi fares before getting in or use local apps like Speed Taxi.'
+  ]
+},
+{
+  id: 'brasov-ro',
+  city: 'Brașov (Transylvania)',
+  country: 'Romania',
+  airportCode: 'GHV',
+  image: `https://images.pexels.com/photos/34069343/pexels-photo-34069343.jpeg${cropParams}`,
+  description: 'Nestled in the Carpathian Mountains, this enchanting region is famous for its perfectly preserved medieval towns, imposing Gothic architecture, towering castles, and the enduring legend of Dracula.',
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'May to October',
+  dailyBudget: 55,
+  attractions: [
+    { name: 'Bran Castle (Dracula\'s Castle)', duration: '2 hours', bestTime: 'Morning', entryFee: '~$13 (60 RON)' },
+    { name: 'The Black Church (Biserica Neagră)', duration: '1 hour', bestTime: 'Morning', entryFee: '~$5 (20 RON)' },
+    { name: 'Mount Tâmpa Cable Car', duration: '2 hours', bestTime: 'Late Afternoon', entryFee: '~$6 (30 RON)' },
+    { name: 'Peleș Castle (Sinaia)', duration: '3 hours', bestTime: 'Morning', entryFee: '~$11 (50 RON)' },
+    { name: 'Sighișoara Citadel (Day Trip)', duration: 'Half day', bestTime: 'Anytime', entryFee: 'Free (Clock Tower ~$4)' },
+    { name: 'Council Square (Piața Sfatului)', duration: '1.5 hours', bestTime: 'Evening', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'The local currency is the Romanian Leu (RON). Cards are widely accepted in cities, but carry cash for smaller villages and rural markets.',
+    'Romania has a very extensive and affordable train network (CFR Călători), making it the most scenic way to travel between Transylvanian towns.',
+    'If you plan to visit Bran Castle and Peleș Castle on the same day, start early to beat the massive tour bus crowds and summer traffic.',
+    'Transylvania is home to Europe\'s largest population of brown bears. If you go hiking in the Carpathians, stick to marked trails and consider joining a guided bear-watching tour.',
+    'Try traditional Romanian dishes like Sarmale (cabbage rolls) and Papanași (a delicious fried dough pastry topped with sour cream and jam).',
+    'While Brașov has a new regional airport (GHV), many international travelers still find it cheaper to fly into Bucharest (OTP) and take a 2.5-hour scenic train ride into Transylvania.'
+  ]
+},
+{
+  id: 'la-paz-bo',
+  city: 'La Paz',
+  country: 'Bolivia',
+  airportCode: 'LPB',
+  image: `https://images.pexels.com/photos/34780015/pexels-photo-34780015.jpeg${cropParams}`,
+  description: 'Set high in the Andes Mountains, this dizzying, high-altitude city blends rich indigenous Aymara culture, dramatic cable car commutes, and serves as the gateway to the surreal Uyuni Salt Flats.',
+  budget: 'Budget',
+  tripType: 'Adventure',
+  bestSeason: 'May to October',
+  dailyBudget: 40,
+  attractions: [
+    { name: 'Mi Teleférico (Cable Car System)', duration: '2 hours', bestTime: 'Sunset', entryFee: '~$0.50 (3 BOB) per ride' },
+    { name: 'The Witches\' Market (Mercado de las Brujas)', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Salar de Uyuni (Multi-day Tour)', duration: '3 Days', bestTime: 'Morning', entryFee: '~$150 - $250' },
+    { name: 'Death Road (Yungas Road) Cycling', duration: 'Full day', bestTime: 'Early Morning', entryFee: '~$60 - $100' },
+    { name: 'Valle de la Luna (Moon Valley)', duration: '2 hours', bestTime: 'Morning', entryFee: '~$2 (15 BOB)' },
+    { name: 'Tiwanaku Ruins (Day Trip)', duration: 'Half day', bestTime: 'Morning', entryFee: '~$15 (100 BOB)' }
+  ],
+  travelTips: [
+    'La Paz sits at an extreme altitude of over 3,500 meters (11,500 feet). Take it very easy for the first few days, stay hydrated, and try local coca tea to prevent altitude sickness.',
+    'The local currency is the Boliviano (BOB). Always carry small bills and coins, as breaking large notes in markets or with taxi drivers is often difficult.',
+    'Mi Teleférico is not just the most efficient public transport in the city; it is also the best and cheapest way to get incredible panoramic views of La Paz and Mount Illimani.',
+    'When booking a Salar de Uyuni tour, do not just choose the cheapest option. Read reviews carefully to ensure the company has a good safety record and well-maintained 4x4 vehicles.',
+    'Try a "Salteña" for a mid-morning snack—a delicious baked empanada filled with meat, potatoes, peas, and a sweet, hearty broth.',
+    'Overnight buses are the most common way to travel to places like Uyuni or Sucre. Always pay a little extra for a "Cama" (lie-flat bed) seat to survive the bumpy roads in comfort.'
+  ]
+},
+{
+  id: 'nassau-bs',
+  city: 'Nassau',
+  country: 'Bahamas',
+  airportCode: 'NAS',
+  image: `https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=1600&q=80${cropParams}`,
+  description: 'A tropical paradise famous for its crystal-clear turquoise waters, pristine white-sand beaches, vibrant coral reefs, and the legendary swimming pigs of the Exumas.',
+  budget: 'Luxury',
+  tripType: 'Beach',
+  bestSeason: 'December to April',
+  dailyBudget: 150,
+  attractions: [
+    { name: 'Pig Beach (Exuma Day Trip)', duration: 'Full day', bestTime: 'Morning', entryFee: '~$150+ (Boat Tour)' },
+    { name: 'Atlantis Paradise Island Waterpark', duration: 'Full day', bestTime: 'Morning', entryFee: '~$135' },
+    { name: 'Cable Beach', duration: 'Half day', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Queen\'s Staircase', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Blue Lagoon Island', duration: 'Half day', bestTime: 'Morning', entryFee: '~$90 (Ferry & Beach Access)' },
+    { name: 'Clifton Heritage National Park', duration: '2 hours', bestTime: 'Afternoon', entryFee: '~$15' }
+  ],
+  travelTips: [
+    'The Bahamian Dollar (BSD) is pegged 1:1 with the US Dollar. USD is accepted everywhere, so there is no need to exchange currency if you have US cash.',
+    'Taxis are generally unmetered. Always negotiate and agree on the final fare with the driver before getting into the vehicle.',
+    'Food and drinks can be very expensive since most goods are imported. Consider booking accommodation with breakfast included or stopping at a local grocery store.',
+    'A 15% gratuity is often automatically added to restaurant bills and hotel invoices. Check your receipt carefully before leaving an additional tip.',
+    'To see the famous swimming pigs, you need to book a boat tour to the Exumas from Nassau. It is a full-day excursion, so plan your itinerary accordingly.',
+    'Hurricane season officially runs from June through November. If traveling during this time, purchasing comprehensive travel insurance is highly recommended.'
+  ]
+},
+{
+  id: 'siargao-ph',
+  city: 'Siargao',
+  country: 'Philippines',
+  airportCode: 'IAO',
+  image: `https://images.unsplash.com/photo-1565565915331-293fd8113954?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+  description: 'Known as the Surfing Capital of the Philippines, this tear-drop shaped island offers a laid-back vibe, endless palm tree forests, pristine rock pools, and world-class waves.',
+  budget: 'Moderate',
+  tripType: 'Adventure',
+  bestSeason: 'March to October',
+  dailyBudget: 55,
+  attractions: [
+    { name: 'Cloud 9 Surfing Area', duration: '2 hours', bestTime: 'Sunrise', entryFee: '~$1 (50 PHP)' },
+    { name: 'Magpupungko Rock Pools', duration: '2 hours', bestTime: 'Low Tide Only', entryFee: '~$1 (50 PHP)' },
+    { name: 'Sugba Lagoon', duration: 'Half day', bestTime: 'Morning', entryFee: '~$30 (1500 PHP Tour)' },
+    { name: 'Tri-Island Hopping (Naked, Daku, Guyam)', duration: 'Full day', bestTime: 'Morning', entryFee: '~$30 (1500 PHP Tour)' },
+    { name: 'Maasin River Rope Swing', duration: '1 hour', bestTime: 'Afternoon', entryFee: '~$0.50 (20 PHP)' },
+    { name: 'Coconut Tree View Deck', duration: '30 mins', bestTime: 'Sunset', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Timing is everything for Magpupungko Rock Pools. You must visit during low tide to see and swim in the pools safely; check local tide charts daily.',
+    'Cash is absolutely essential. While more places are accepting Gcash or cards, ATMs on the island frequently run out of money, so bring plenty of Philippine Pesos (PHP).',
+    'Renting a scooter (often fitted with a surfboard rack) is the standard and most scenic way to explore the island at your own pace.',
+    'You do not need to be a pro to surf at Cloud 9. There are plenty of beginner breaks (like Jacking Horse) and local instructors offering affordable hourly lessons right on the beach.',
+    'Mobile data and Wi-Fi can be notoriously unreliable across the island. Download your maps and travel documents offline before arriving.',
+    'Do not leave without experiencing a "Boodle Fight"—a traditional Filipino feast served on banana leaves where you eat with your hands.'
+  ]
+},
+{
+  id: 'busan-kr',
+  city: 'Busan',
+  country: 'South Korea',
+  airportCode: 'PUS',
+  image: `https://images.unsplash.com/photo-1591520284162-8e64eceebacf?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+  description: 'South Korea’s vibrant coastal metropolis, offering a striking mix of mountainous landscapes, stunning beaches, historic seaside temples, and the country’s largest seafood market.',
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'September to November, April to May',
+  dailyBudget: 70,
+  attractions: [
+    { name: 'Gamcheon Culture Village', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Haedong Yonggungsa Temple', duration: '1.5 hours', bestTime: 'Early Morning', entryFee: 'Free' },
+    { name: 'Haeundae Beach & Blueline Park', duration: '3 hours', bestTime: 'Afternoon', entryFee: 'Free (Sky Capsule ~$25)' },
+    { name: 'Jagalchi Fish Market', duration: '1.5 hours', bestTime: 'Lunchtime', entryFee: 'Free' },
+    { name: 'Gwangalli Beach & Diamond Bridge', duration: '1.5 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Taejongdae Resort Park', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free (Danubi Train ~$3)' }
+  ],
+  travelTips: [
+    'Purchase a T-money or Cashbee card at any convenience store for seamless access to buses and the extensive subway network.',
+    'Busan is geographically very spread out. Factor in 45-60 minutes of transit time when traveling between major hubs like Haeundae and Gamcheon.',
+    'Haedong Yonggungsa is unique because it is built directly on a rocky coastline, unlike most Korean temples nestled in mountains. Arrive early to beat the heavy crowds.',
+    'For a unique culinary experience, buy fresh live seafood on the ground floor of Jagalchi Market and take it upstairs to be cooked for a small seating fee.',
+    'The KTX bullet train from Seoul takes just 2.5 hours, making Busan an incredibly easy addition to any South Korean itinerary.',
+    'While credit cards are accepted almost everywhere, keep some Korean Won (KRW) handy for street food stalls at the lively BIFF Square or Haeundae Market.'
+  ]
+},
+{
+  id: 'incheon-kr',
+  city: 'Incheon',
+  country: 'South Korea',
+  airportCode: 'ICN',
+  image: `https://images.unsplash.com/photo-1446733993804-c62a351c7239?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+  description: 'A dynamic coastal metropolis that blends the ultra-modern architecture of Songdo Smart City with the rich history of Korea’s only official Chinatown and the retro charm of Wolmido.',
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'September to November, April to May',
+  dailyBudget: 65,
+  attractions: [
+    { name: 'Songdo Central Park', duration: '2 hours', bestTime: 'Late Afternoon', entryFee: 'Free (Boat rentals ~$25)' },
+    { name: 'Incheon Chinatown', duration: '2 hours', bestTime: 'Lunchtime', entryFee: 'Free' },
+    { name: 'Wolmido Theme Park', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free entry (Pay per ride)' },
+    { name: 'Jayu (Freedom) Park', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Soraepogu Traditional Fish Market', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'G-Tower Observatory', duration: '1 hour', bestTime: 'Sunset', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'If you have a long layover at Incheon International Airport (ICN), you might be eligible for the airport\'s official free transit tours rather than navigating the city alone.',
+    'Incheon is seamlessly connected to Seoul via the subway system. You can use the same T-money transit card for buses and trains in both cities.',
+    'Do not leave Chinatown without trying Jajangmyeon (black bean noodles), a beloved Korean-Chinese dish that actually originated right here in Incheon.',
+    'Songdo Central Park was inspired by New York City’s Central Park. The best way to explore its futuristic surroundings is by renting a bicycle.',
+    'Wolmido Island is famous for its vintage seaside amusement park. It is a popular date spot for locals and offers great views of the West Sea.',
+    'Head to the 33rd floor of the G-Tower in Songdo right before sunset for spectacular, free 360-degree views of the futuristic skyline and the Incheon Bridge.'
+  ]
+},
+{
+  id: 'gyeongju-kr',
+  city: 'Gyeongju',
+  country: 'South Korea',
+  airportCode: 'PUS',
+  image: `https://images.unsplash.com/photo-1600449546699-9b7620a6365d?q=80&w=436&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+  description: 'Often referred to as a "museum without walls," the ancient capital of the Silla Kingdom is a treasure trove of rolling grassy royal tombs, magnificent Buddhist temples, and historic ruins.',
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'March to May, September to November',
+  dailyBudget: 60,
+  attractions: [
+    { name: 'Bulguksa Temple (UNESCO)', duration: '2 hours', bestTime: 'Morning', entryFee: '~$5 (6,000 KRW)' },
+    { name: 'Seokguram Grotto', duration: '1.5 hours', bestTime: 'Morning', entryFee: '~$5 (6,000 KRW)' },
+    { name: 'Donggung Palace and Wolji Pond', duration: '1.5 hours', bestTime: 'Evening (Illuminated)', entryFee: '~$2.50 (3,000 KRW)' },
+    { name: 'Daereungwon Tomb Complex', duration: '2 hours', bestTime: 'Afternoon', entryFee: '~$2.50 (3,000 KRW)' },
+    { name: 'Cheomseongdae Observatory', duration: '1 hour', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'Hwangridan-gil', duration: '2 hours', bestTime: 'Lunchtime', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Gyeongju is incredibly flat and bike-friendly. Renting a bicycle is the best and most popular way to hop between the central historical sites.',
+    'Gyeongju does not have its own airport. The most efficient way to arrive is by taking the KTX high-speed train directly to Singyeongju Station.',
+    'Do not visit Donggung Palace and Wolji Pond during the day. Wait until nightfall when the traditional pavilions reflect beautifully on the water.',
+    'Bulguksa Temple and Seokguram Grotto are located on a mountain outside the main city center. You can easily reach them by taking local Bus 10 or 11.',
+    'Try "Hwangnam-ppang" (Gyeongju Bread), a famous local pastry filled with dense, sweet red bean paste that makes for a great souvenir.',
+    'Hwangridan-gil is the city’s trendiest street, where traditional Hanok buildings have been transformed into chic cafes, photo studios, and modern eateries.'
+  ]
+},
+{
+  id: 'denver-us',
+  city: 'Denver',
+  country: 'United States',
+  airportCode: 'DEN',
+  image: `https://images.unsplash.com/photo-1602800458591-eddda28a498b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+  description: 'Known as the Mile High City, Denver offers a seamless blend of outdoor adventure, a thriving craft brewery culture, and stunning Rocky Mountain vistas.',
+  budget: 'Moderate',
+  tripType: 'Adventure',
+  bestSeason: 'May to October',
+  dailyBudget: 120,
+  attractions: [
+    { name: 'Red Rocks Park & Amphitheatre', duration: 'Half day', bestTime: 'Morning', entryFee: 'Free (Concerts vary)' },
+    { name: 'Denver Botanic Gardens', duration: '2 hours', bestTime: 'Morning', entryFee: '~$15' },
+    { name: 'Denver Art Museum', duration: '2 hours', bestTime: 'Afternoon', entryFee: '~$20' },
+    { name: 'Union Station & LoDo', duration: '1.5 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'RiNo Art District', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Rocky Mountain National Park (Day Trip)', duration: 'Full day', bestTime: 'Early Morning', entryFee: '~$30 per vehicle' }
+  ],
+  travelTips: [
+    'Denver sits at exactly 5,280 feet above sea level. Drink plenty of water and pace yourself with alcohol, as the altitude can affect you faster than at sea level.',
+    'Denver International Airport (DEN) is located quite far from downtown. The RTD A-Line train is the most efficient and affordable way to travel directly to Union Station.',
+    'The city boasts a massive craft beer culture. Head to the River North Art District (RiNo) to easily walk between some of the state\'s best independent breweries and street art murals.',
+    'Weather changes rapidly in Colorado. Always dress in layers, as you can experience intense sunshine, rain, and a significant temperature drop all in the same afternoon.',
+    'If you plan to visit Rocky Mountain National Park between May and October, you must book a timed-entry permit online well in advance, or you will be turned away at the gate.',
+    'Renting a car is essential if you want to explore the mountains, but if you are just staying in the city center, rely on walking, rideshares, or the free MallRide bus to avoid high parking fees.'
+  ]
+},
+{
+  id: 'pyongyang-kp',
+  city: 'Pyongyang',
+  country: 'North Korea',
+  airportCode: 'FNJ',
+  image: `https://images.unsplash.com/photo-1601733969381-9fb824a94084?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+  description: 'A highly secretive and tightly controlled capital city, characterized by grand socialist monuments, massive public squares, and a strictly guided travel experience.',
+  budget: 'Luxury',
+  tripType: 'Culture',
+  bestSeason: 'April to May, September to October',
+  dailyBudget: 250,
+  attractions: [
+    { name: 'Kim Il-sung Square', duration: '1 hour', bestTime: 'Morning', entryFee: 'Included in Tour' },
+    { name: 'Mansudae Grand Monument', duration: '1 hour', bestTime: 'Morning', entryFee: 'Included (Flowers ~$5)' },
+    { name: 'Juche Tower', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: '~$5 for elevator' },
+    { name: 'Victorious Fatherland Liberation War Museum', duration: '2 hours', bestTime: 'Morning', entryFee: 'Included in Tour' },
+    { name: 'Pyongyang Metro', duration: '1 hour', bestTime: 'Anytime', entryFee: 'Included in Tour' },
+    { name: 'Arch of Triumph', duration: '30 mins', bestTime: 'Afternoon', entryFee: 'Included in Tour' }
+  ],
+  travelTips: [
+    'Independent travel is strictly prohibited. You can only visit North Korea by booking an organized tour through a government-approved travel agency.',
+    'Photography is heavily restricted. You must explicitly ask your government guides for permission before taking any photos, and cropping images of the leaders is forbidden.',
+    'There is no access to the global internet, and foreign credit cards or ATMs will not work. You must bring all the cash you need in Euros or Chinese Yuan.',
+    'Showing absolute respect to the country’s leaders is mandatory. Any perceived disrespect or rule-breaking can result in severe legal consequences and detention.',
+    'US and South Korean citizens are currently barred from entering as tourists. Other nationalities must check their home country’s travel advisories, which almost universally advise against all travel to North Korea.',
+    'Your itinerary will be rigidly set in advance, and you are not allowed to leave your hotel or interact with locals without your official guides present.'
+  ]
+},
+{
+  id: 'new-orleans-us',
+  city: 'New Orleans',
+  country: 'United States',
+  airportCode: 'MSY',
+  image: `https://images.unsplash.com/photo-1646508262290-a617e1c042a0?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+  description: 'A vibrant melting pot of French, African, and American cultures, famous for its round-the-clock nightlife, historic French Quarter, live jazz, and incredible Creole cuisine.',
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'February to May',
+  dailyBudget: 130,
+  attractions: [
+    { name: 'French Quarter & Jackson Square', duration: 'Half day', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'The National WWII Museum', duration: '4 hours', bestTime: 'Morning', entryFee: '~$35' },
+    { name: 'Frenchmen Street (Live Music)', duration: '3 hours', bestTime: 'Evening', entryFee: 'Free (Drink minimums)' },
+    { name: 'Garden District & Magazine Street', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'St. Louis Cemetery No. 1 Tour', duration: '1.5 hours', bestTime: 'Morning', entryFee: '~$25 (Guide required)' },
+    { name: 'Swamp & Bayou Airboat Tour', duration: 'Half day', bestTime: 'Morning', entryFee: '~$50 - $75' }
+  ],
+  travelTips: [
+    'The famous St. Louis Cemetery No. 1 cannot be explored independently; you are required by law to book a licensed tour guide to enter.',
+    'While Bourbon Street is iconic for partying, locals and music lovers prefer Frenchmen Street for authentic live jazz, brass bands, and art markets.',
+    'Do not leave without trying the local staples: hot beignets from Cafe du Monde, a hearty bowl of gumbo, and a classic shrimp Po\'boy.',
+    'The historic St. Charles Streetcar is only $1.25 per ride and is the most charming way to travel from the downtown area to the stunning mansions of the Garden District.',
+    'Summers (July to September) are intensely hot, humid, and prone to heavy rain and hurricanes. Spring is ideal for weather and festivals like Mardi Gras and Jazz Fest.',
+    'While the main tourist corridors are heavily policed and generally safe, petty crime is common. Stick to well-lit streets and take a ride-share if traveling late at night.'
+  ]
+},
+{
+  id: 'nashville-us',
+  city: 'Nashville',
+  country: 'United States',
+  airportCode: 'BNA',
+  image: `https://images.unsplash.com/photo-1556033681-83abea291a96?q=80&w=964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+  description: 'Known as Music City, Nashville is the vibrant heart of country music, famous for its neon-lit honky-tonks, historic recording studios, and legendary Southern hot chicken.',
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'April to October',
+  dailyBudget: 140,
+  attractions: [
+    { name: 'Broadway Honky Tonks', duration: '3 hours', bestTime: 'Evening', entryFee: 'Free (Tip the band)' },
+    { name: 'Country Music Hall of Fame', duration: '2.5 hours', bestTime: 'Morning', entryFee: '~$28' },
+    { name: 'Grand Ole Opry', duration: '2.5 hours', bestTime: 'Evening', entryFee: '~$45+' },
+    { name: 'Ryman Auditorium', duration: '1.5 hours', bestTime: 'Morning', entryFee: '~$26 (Self-guided)' },
+    { name: 'The Parthenon & Centennial Park', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: '~$10' },
+    { name: 'RCA Studio B Tour', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: '~$50 (Combo ticket)' }
+  ],
+  travelTips: [
+    'Broadway bars rarely have a cover charge, but it is highly expected to bring cash and tip the live musicians who play day and night.',
+    'You must try authentic Nashville Hot Chicken at spots like Prince\'s or Hattie B\'s, but beware—the spice levels are significantly hotter than standard buffalo wings.',
+    'Book your tickets for the Grand Ole Opry and Ryman Auditorium well in advance, as popular shows frequently sell out.',
+    'While the downtown Broadway area is highly walkable, you will need to rely on rideshares or a rental car to explore trendy neighborhoods like East Nashville or The Gulch.',
+    'If you want to hear legendary songwriters perform in intimate venues like The Bluebird Cafe, you need to secure reservations exactly when they drop online weeks ahead of time.',
+    'Summer months are intensely hot and humid with frequent afternoon thunderstorms, so dress in light layers and stay hydrated.'
+  ]
+},
+{
+  id: 'austin-us',
+  city: 'Austin, Texas',
+  country: 'United States',
+  airportCode: 'AUS',
+  image: `https://images.unsplash.com/photo-1531218150217-54595bc2b934?auto=format&fit=crop&w=1600&q=80${cropParams}`,
+  description: 'Known as the Live Music Capital of the World, Austin offers a vibrant mix of legendary music venues, world-class barbecue, and beautiful outdoor spaces.',
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'September to November, March to May',
+  dailyBudget: 130,
+  attractions: [
+    { name: 'Texas State Capitol', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Barton Springs Pool', duration: '2 hours', bestTime: 'Afternoon', entryFee: '~$5' },
+    { name: 'Congress Avenue Bridge Bats', duration: '1 hour', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'South Congress Avenue (SoCo)', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Zilker Park & Lady Bird Lake', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free (Rentals ~$20)' },
+    { name: 'Sixth Street Live Music', duration: '3 hours', bestTime: 'Evening', entryFee: 'Free (Drink minimums/Covers)' }
+  ],
+  travelTips: [
+    'Austin-Bergstrom International Airport (AUS) is the city\'s primary travel hub and is located just 7.5 miles from downtown.',
+    'With an annual passenger traffic of over 20 million, AUS ranks as the third busiest airport in Texas.',
+    'If you want to travel longer distances without a car, the Capital Metro (CapMetro) system operates an extensive network of buses and a commuter rail.',
+    'Do not miss the famous Congress Avenue bridge bats, which emerge at sunset from March to early November.',
+    'Summer months are intensely hot; plan your outdoor activities like hiking or paddleboarding for the early morning.',
+    'Skip the chain restaurants and try local staples: authentic Texas brisket and morning breakfast tacos.'
+  ]
+},
+{
+  id: 'srinagar-in',
+  city: 'Srinagar',
+  country: 'India',
+  airportCode: 'SXR',
+  image: `https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1600&q=80${cropParams}`,
+  description: 'The summer capital of Jammu & Kashmir, famous for its serene Dal Lake, traditional houseboats, terraced Mughal gardens, and vibrant local handicrafts.',
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'April to October',
+  dailyBudget: 55,
+  attractions: [
+    { name: 'Dal Lake Shikara Ride', duration: '2 hours', bestTime: 'Sunset', entryFee: '~$8 - $10 (Per boat)' },
+    { name: 'Mughal Gardens (Shalimar & Nishat Bagh)', duration: '2 hours', bestTime: 'Morning', entryFee: '~$0.50 (24 INR)' },
+    { name: 'Shankaracharya Temple', duration: '1.5 hours', bestTime: 'Early Morning', entryFee: 'Free' },
+    { name: 'Pari Mahal', duration: '1 hour', bestTime: 'Late Afternoon', entryFee: '~$0.50 (24 INR)' },
+    { name: 'Hazratbal Shrine', duration: '1 hour', bestTime: 'Anytime', entryFee: 'Free' },
+    { name: 'Floating Vegetable Market', duration: '1.5 hours', bestTime: '5:00 AM', entryFee: 'Shikara cost only' }
+  ],
+  travelTips: [
+    'Security at Srinagar Airport (SXR) is extremely strict. Arrive at least 3 hours before your flight and be prepared for multiple baggage checks.',
+    'For a truly authentic experience, book at least one night on a traditional wooden houseboat on Dal or the quieter Nigeen Lake.',
+    'Wake up before dawn and hire a Shikara to witness the bustling, centuries-old floating vegetable market on Dal Lake.',
+    'Try local Kashmiri cuisine, specifically the rich multi-course "Wazwan" feast, and warm up with "Kahwa," a traditional saffron-infused green tea.',
+    'Pre-paid taxis and auto-rickshaws are the best way to get around; standard ride-sharing apps like Uber or Ola do not operate here.',
+    'Pre-paid SIM cards from outside Jammu & Kashmir will not work due to security regulations. You will need a post-paid connection or rely on hotel Wi-Fi.'
+  ]
+},
+{
+  id: 'udaipur-in',
+  city: 'Udaipur',
+  country: 'India',
+  airportCode: 'UDR',
+  image: `https://images.unsplash.com/photo-1589901164570-f9de6556e1c1?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+  description: 'Known as the "City of Lakes" and the "Venice of the East," this romantic Rajasthani city is crowned by grand palaces, shimmering waters, and narrow streets filled with artisan shops.',
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'October to March',
+  dailyBudget: 50,
+  attractions: [
+    { name: 'City Palace', duration: '3 hours', bestTime: 'Morning', entryFee: '~$4 (300 INR)' },
+    { name: 'Lake Pichola Boat Ride', duration: '1 hour', bestTime: 'Sunset', entryFee: '~$6 - $10 (400-800 INR)' },
+    { name: 'Jag Mandir', duration: '1 hour', bestTime: 'Late Afternoon', entryFee: 'Included in boat ticket' },
+    { name: 'Bagore Ki Haveli Dharohar Dance Show', duration: '1 hour', bestTime: '7:00 PM', entryFee: '~$2 (100 INR)' },
+    { name: 'Saheliyon Ki Bari', duration: '1 hour', bestTime: 'Morning', entryFee: '~$0.50 (50 INR)' },
+    { name: 'Sajjangarh (Monsoon Palace)', duration: '2 hours', bestTime: 'Sunset', entryFee: '~$4 (300 INR)' }
+  ],
+  travelTips: [
+    'The streets in the old city around Lake Pichola are extremely narrow and steep. Rely on walking or small auto-rickshaws rather than renting a car.',
+    'The Dharohar folk dance show at Bagore Ki Haveli is spectacular, but tickets sell out fast. Buy them at the ticket counter by 5:30 PM.',
+    'A sunset boat ride on Lake Pichola offers the most magical views of the City Palace and the iconic Taj Lake Palace hotel.',
+    'Try the local Rajasthani staple, "Dal Baati Churma," and explore the street food scene for Kachoris and Malpua.',
+    'Udaipur is famous for miniature paintings, silver jewelry, and leather journals. Always politely bargain at local markets like Hathi Pol.',
+    'Summers (April to June) are scorching hot and the lakes can sometimes dry up entirely; plan your visit during the cooler winter months.'
+  ]
+},
+{
+  id: 'delhi-in',
+  city: 'New Delhi',
+  country: 'India',
+  airportCode: 'DEL',
+  image: `https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=1600&q=80${cropParams}`,
+  description: 'India’s bustling capital seamlessly blends centuries of magnificent Mughal history, grand colonial architecture, and a chaotic, vibrant street food scene.',
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'October to March',
+  dailyBudget: 45,
+  attractions: [
+    { name: 'Red Fort (Lal Qila)', duration: '2 hours', bestTime: 'Morning', entryFee: '~$7 (600 INR)' },
+    { name: 'Qutub Minar', duration: '2 hours', bestTime: 'Afternoon', entryFee: '~$7 (600 INR)' },
+    { name: 'Humayun\'s Tomb', duration: '2 hours', bestTime: 'Late Afternoon', entryFee: '~$7 (600 INR)' },
+    { name: 'India Gate & Rajpath', duration: '1 hour', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Chandni Chowk & Jama Masjid', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free (Camera fee ~$4)' },
+    { name: 'Lotus Temple', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'The highly efficient, air-conditioned Delhi Metro is the absolute best way to navigate the city and avoid the notorious surface-level traffic jams.',
+    'Use apps like Uber, Ola, or BluSmart for taxis and auto-rickshaws to avoid haggling and overcharging from street drivers.',
+    'Old Delhi’s Chandni Chowk is a sensory overload. Hire a cycle-rickshaw to navigate the incredibly crowded, narrow alleys safely.',
+    'Delhi is India’s street food capital. Try Chole Bhature, Golgappe, and Aloo Tikki, but stick to busy stalls or reputed spots like Haldiram’s to avoid "Delhi Belly."',
+    'Dress modestly (covering shoulders and knees) when visiting religious sites like Jama Masjid, Gurudwara Bangla Sahib, or the Lotus Temple.',
+    'Air quality becomes severely hazardous during November and December due to crop burning and winter fog. Pack high-quality N95 masks if visiting then.'
+  ]
+},
+{
+  id: 'bangalore-in',
+  city: 'Bangalore (Bengaluru)',
+  country: 'India',
+  airportCode: 'BLR',
+  image: `https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1600&q=80${cropParams}`,
+  description: 'Known as the Silicon Valley of India, Bengaluru offers a unique mix of lush green parks, historic royal palaces, vibrant craft breweries, and famously pleasant year-round weather.',
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'October to February',
+  dailyBudget: 55,
+  attractions: [
+    { name: 'Lalbagh Botanical Garden', duration: '2 hours', bestTime: 'Early Morning', entryFee: '~$0.50 (30 INR)' },
+    { name: 'Bangalore Palace', duration: '2 hours', bestTime: 'Morning', entryFee: '~$3 (250 INR)' },
+    { name: 'Cubbon Park', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Commercial Street', duration: '2 hours', bestTime: 'Late Afternoon', entryFee: 'Free' },
+    { name: 'Vidhana Soudha', duration: '30 mins', bestTime: 'Evening (Illuminated)', entryFee: 'Free (Outside view only)' },
+    { name: 'Nandi Hills (Day Trip)', duration: 'Half day', bestTime: 'Sunrise', entryFee: '~$0.50 (30 INR)' }
+  ],
+  travelTips: [
+    'Traffic in Bangalore is notoriously congested. Use the Namma Metro system whenever possible to cross the city efficiently.',
+    'Kempegowda International Airport (BLR) is located quite far from the city center. Factor in 1.5 to 2 hours of travel time using the very reliable Vayu Vajra airport buses or a prepaid taxi.',
+    'The city has arguably the best craft beer scene in India. Check out the massive microbreweries in neighborhoods like Indiranagar, Koramangala, and JP Nagar.',
+    'Start your day at a traditional "Darshini" (local eatery) with a hot filter coffee, crispy Masala Dosa, and fluffy Idlis.',
+    'The weather is famously unpredictable. Always carry a light jacket and an umbrella, as sudden afternoon showers are common even outside the monsoon season.',
+    'Use ride-hailing apps like Uber, Ola, or Rapido (for two-wheeler taxis), but be prepared for occasional driver cancellations during peak hours.'
+  ]
+},
+{
+  id: 'rishikesh-in',
+  city: 'Rishikesh, Uttarakhand',
+  country: 'India',
+  airportCode: 'DED',
+  image: `https://images.unsplash.com/photo-1605640840428-59c46ceee842?auto=format&fit=crop&w=1600&q=80${cropParams}`,
+  description: 'Nestled in the Himalayan foothills along the sacred Ganges River, the "Yoga Capital of the World" offers a perfect blend of spiritual ashrams and thrilling white-water adventure.',
+  budget: 'Budget',
+  tripType: 'Adventure',
+  bestSeason: 'September to November, February to April',
+  dailyBudget: 40,
+  attractions: [
+    { name: 'Laxman Jhula & Ram Jhula', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Parmarth Niketan Ganga Aarti', duration: '1.5 hours', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'White Water Rafting (Shivpuri)', duration: 'Half day', bestTime: 'Morning', entryFee: '~$12 - $18 (1000-1500 INR)' },
+    { name: 'The Beatles Ashram (Chaurasi Kutia)', duration: '2 hours', bestTime: 'Afternoon', entryFee: '~$7 (600 INR)' },
+    { name: 'Neer Garh Waterfall', duration: '2 hours', bestTime: 'Morning', entryFee: '~$0.50 (50 INR)' },
+    { name: 'Triveni Ghat', duration: '1 hour', bestTime: 'Evening', entryFee: 'Free' }
+  ],
+  travelTips: [
+    'Rishikesh is a strictly vegetarian and alcohol-free city due to its holy status. Do not expect to find meat or booze anywhere within the city limits.',
+    'The closest airport is Jolly Grant Airport (DED) in Dehradun, which is about a 45-minute taxi ride away from the main hub of Rishikesh.',
+    'Renting a scooter is the most popular way to navigate the narrow, hilly roads between the main areas of Tapovan, Laxman Jhula, and Swarg Ashram.',
+    'Arrive at Parmarth Niketan or Triveni Ghat at least 45 minutes before sunset to secure a good viewing spot for the mesmerizing daily Ganga Aarti ceremony.',
+    'Avoid visiting during the heavy monsoon season (July to August), as river rafting is suspended and landslides are common on mountain roads.',
+    'Dressing modestly (covering shoulders and knees) is highly recommended, especially when visiting temples, ashrams, and wandering the local streets.'
+  ]
+},
+
 ];

@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Allow: /*.png$
-Allow: /*.ico$
 
 Sitemap: https://flysava.com/sitemap.xml
