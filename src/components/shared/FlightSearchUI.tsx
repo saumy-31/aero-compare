@@ -189,14 +189,16 @@ export const FlightSearchUI = () => {
 
   setActiveTab(tab.id);
 }}
-                  className={`flex items-center justify-center gap-2 px-3 sm:px-5 py-2.5 rounded-xl text-xs font-black transition-all duration-200 cursor-pointer whitespace-nowrap ${
-                    isActive
-                      ? 'bg-[#2563EB] text-white shadow-md shadow-blue-600/25 scale-[1.02]'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                  }`}
+                 className={`flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-5 py-2.5 rounded-xl transition-all duration-200 whitespace-nowrap ${
+  isActive
+    ? 'bg-[#2563EB] text-white shadow-md shadow-blue-600/25 scale-[1.02]'
+    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+}`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-[#2563EB]'}`} /> 
-                  <span className="text-[11px] sm:text-xs">{tab.label}</span>
+                  <Icon size={16} className={`flex-shrink-0 min-w-[16px] min-h-[16px] ${isActive ? 'text-white' : 'text-[#2563EB]'
+  }`}
+/>
+                  <span className="text-[10px] sm:text-xs font-bold">{tab.label}</span>
                 </button>
               );
             })}
@@ -204,14 +206,35 @@ export const FlightSearchUI = () => {
         </div>
 
         {/* SEARCH FORM */}
-        <div className="bg-white rounded-[24px] border border-[#E5E7EB] p-4 sm:p-6 shadow-[0_20px_60px_rgba(0,0,0,0.06)] min-h-[160px]">
-          {activeTab === 'flights' && (
-            <div id="tpwl-search" className="w-full min-h-[140px]"></div>
-          )}
-          {activeTab === 'hotels' && <HotelSearchWidget />}
-          {activeTab === 'transfers' && <AirportTransferWidget />}
-          {activeTab === 'esim' && <EsimWidget />}
-        </div>
+       <div
+  className={`relative rounded-[24px] border border-[#E5E7EB] shadow-[0_20px_60px_rgba(0,0,0,0.06)] overflow-visible ${
+    activeTab === "flights"
+      ? "bg-white p-4 sm:p-6"
+      : "bg-[#F8FAFC]"
+  }`}
+>
+  {activeTab === "flights" && (
+    <div id="tpwl-search" className="w-full min-h-[140px]" />
+  )}
+
+  {activeTab === "hotels" && (
+    <div className="p-2 sm:p-3">
+      <HotelSearchWidget />
+    </div>
+  )}
+
+  {activeTab === "transfers" && (
+    <div className="p-2 sm:p-3">
+      <AirportTransferWidget />
+    </div>
+  )}
+
+  {activeTab === "esim" && (
+    <div className="p-2 sm:p-3">
+      <EsimWidget />
+    </div>
+  )}
+</div>
 
         {/* FLIGHT RESULTS CONTAINER */}
         {activeTab === 'flights' && (

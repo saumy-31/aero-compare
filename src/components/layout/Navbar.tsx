@@ -46,21 +46,18 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-16 sm:h-20">
 
           {/* Brand Logo */}
-          <a
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              if (typeof window !== 'undefined') {
-                window.location.href = '/';
-              }
-            }}
-            className="flex items-center space-x-2.5 flex-shrink-0 group outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded-lg cursor-pointer"
-          >
-            <Plane className="w-5 h-5 text-blue-500 group-hover:text-blue-400 transition-colors duration-300" />
-            <span className="text-xl font-bold text-slate-900 tracking-tight">
-              Fly<span className="text-blue-600">Sava</span>
-            </span>
-          </a>
+          <Link
+  to="/"
+  className="flex items-center gap-2.5 flex-shrink-0 group outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded-lg"
+>
+  <div className="w-9 h-9 rounded-xl bg-[#2563EB] text-white flex items-center justify-center shadow-md shadow-blue-600/20 group-hover:scale-105 transition-transform duration-200">
+    <Plane className="w-5 h-5" />
+  </div>
+
+  <span className="text-xl font-bold tracking-tight text-slate-900">
+    Fly<span className="text-[#2563EB]">Sava</span>
+  </span>
+</Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1 bg-slate-100/80 p-1.5 rounded-full border border-slate-200/60">

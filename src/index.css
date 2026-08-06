@@ -58,4 +58,8 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  #hotel-search-widget .separator {
+  margin: 0 !important;
+}
 }

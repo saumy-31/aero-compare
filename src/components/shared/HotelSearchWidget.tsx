@@ -76,13 +76,12 @@ export const HotelSearchWidget: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full pt-2 pb-4 flex items-center justify-center">
-      {/* Target container for the LiteAPI SDK */}
-      <div 
-        id="hotel-search-widget" 
-        ref={widgetContainerRef} 
-        className="w-full"
-      ></div>
-    </div>
-  );
+  <div className="w-full">
+    <div
+      id="hotel-search-widget"
+      ref={widgetContainerRef}
+      className="w-full"
+    />
+  </div>
+);
 };

@@ -13,9 +13,10 @@ export const AirportTransferWidget: React.FC = () => {
     // Clear previous widget elements on tab switch to prevent duplicates
     container.innerHTML = '';
 
-    // Create the script element
+    // Create the TravelPayouts widget script
     const script = document.createElement('script');
-    script.src = 'https://tpwgts.com/content?currency=USD&trs=418605&shmarker=633257&locale=en&powered_by=false&transfer_options_limit=10&transfer_options=MCR&disable_currency_selector=true&hide_form_extras=false&hide_external_links=true&campaign_id=1&promo_id=3879';
+    script.src =
+      'https://tpwgts.com/content?trs=418605&shmarker=633257&locale=en&powered_by=false&border_radius=5&plain=true&show_logo=false&color_background=%23FFFFFF&color_button=%232563EB&promo_id=4362&campaign_id=143';
     script.async = true;
     script.charset = 'utf-8';
 
