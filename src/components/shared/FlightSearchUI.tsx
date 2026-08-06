@@ -6,10 +6,12 @@ import { EsimWidget } from './EsimWidget';
 import { getWhiteLabelIdByHostname } from "../../config/regions";
 import { Sparkles, Plane, Building, Car, Smartphone } from 'lucide-react';
 
+// Ambient declarations for browser globals and DOM types in TS compiler
 declare const window: any;
 declare const document: any;
 declare const setTimeout: (callback: () => void, ms?: number) => any;
 declare const clearTimeout: (timeoutId: any) => void;
+declare var MutationObserver: any;
 
 export const FlightSearchUI = () => {
   const location = useLocation();
@@ -49,64 +51,91 @@ export const FlightSearchUI = () => {
     },
   };
 
-  // Force page reload when clicking the Flights button
-  const handleTabClick = (tabId: 'flights' | 'hotels' | 'transfers' | 'esim') => {
-    if (tabId === 'flights') {
-      if (typeof window !== 'undefined') {
-        window.location.href = '/';
-      }
-    } else {
-      setActiveTab(tabId);
+ useEffect(() => {
+  if (activeTab !== 'flights') return;
+
+  let resizeObserverInstance: ResizeObserver | null = null;
+  let timer: ReturnType<typeof setTimeout> | null = null;
+
+  timer = setTimeout(() => {
+    const searchContainer = document.getElementById('tpwl-search');
+    const ticketsContainer = document.getElementById('tpwl-tickets');
+
+    if (!searchContainer) return;
+
+    // Clear previous widget
+    searchContainer.innerHTML = '';
+    if (ticketsContainer) ticketsContainer.innerHTML = '';
+
+    // Remove previous script
+    const oldScript = document.getElementById('tpwl-script');
+    if (oldScript) oldScript.remove();
+
+    // Dynamic WhiteLabel
+    const currentHostname = window.location.hostname;
+    const dynamicWlId = getWhiteLabelIdByHostname(currentHostname);
+
+    // Inject widget
+    const script = document.createElement('script');
+    script.id = 'tpwl-script';
+    script.async = true;
+    script.type = 'module';
+    script.src = `https://tpwgts.com/wl_web/main.js?wl_id=${dynamicWlId}&_t=${Date.now()}`;
+
+    document.head.appendChild(script);
+
+    // Auto-scroll when results appear
+    let hasScrolledForCurrentSearch = false;
+
+    if (ticketsContainer && typeof ResizeObserver !== 'undefined') {
+      resizeObserverInstance = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          const height = entry.contentRect.height;
+
+          if (height > 400 && !hasScrolledForCurrentSearch) {
+            setTimeout(() => {
+              ticketsContainer.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+              });
+            }, 100);
+
+            hasScrolledForCurrentSearch = true;
+          } else if (height < 200) {
+            hasScrolledForCurrentSearch = false;
+          }
+        }
+      });
+
+      resizeObserverInstance.observe(ticketsContainer);
     }
+  }, 50);
+
+  return () => {
+    if (timer) clearTimeout(timer);
+
+    if (resizeObserverInstance) {
+      resizeObserverInstance.disconnect();
+    }
+
+    const script = document.getElementById('tpwl-script');
+    if (script) script.remove();
+
+    const searchContainer = document.getElementById('tpwl-search');
+    const ticketsContainer = document.getElementById('tpwl-tickets');
+
+    if (searchContainer) searchContainer.innerHTML = '';
+    if (ticketsContainer) ticketsContainer.innerHTML = '';
   };
-
-  useEffect(() => {
-    if (activeTab !== 'flights') return;
-
-    let isMounted = true;
-
-    const initializeWidget = () => {
-      const searchContainer = document.getElementById('tpwl-search');
-      if (!searchContainer || !isMounted) return;
-
-      const currentHostname = typeof window !== 'undefined' ? window.location.hostname : 'localhost';
-      const dynamicWlId = getWhiteLabelIdByHostname(currentHostname);
-
-      const existingScript = document.getElementById('tpwl-main-script');
-      if (existingScript) {
-        existingScript.remove();
-      }
-
-      searchContainer.innerHTML = '';
-      const ticketsContainer = document.getElementById('tpwl-tickets');
-      if (ticketsContainer) ticketsContainer.innerHTML = '';
-
-      const script = document.createElement('script');
-      script.id = 'tpwl-main-script';
-      script.async = true;
-      script.type = 'module';
-      script.src = `https://tpwgts.com/wl_web/main.js?wl_id=${dynamicWlId}`;
-
-      document.head.appendChild(script);
-    };
-
-    const timer = setTimeout(initializeWidget, 100);
-
-    return () => {
-      isMounted = false;
-      clearTimeout(timer);
-    };
-  }, [activeTab]);
+}, [activeTab, location.key]);
 
   const currentHero = heroContent[activeTab];
 
   return (
     <div className="pt-16 sm:pt-20 pb-8 font-sans bg-[#F8FAFC]">
       
-      {/* ================= 1. HERO HEADER ================= */}
+      {/* HERO HEADER */}
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
-        
-        {/* DESKTOP HERO */}
         <div className="hidden sm:flex relative rounded-[2rem] overflow-hidden bg-slate-950 min-h-[280px] items-center justify-center text-center p-8 shadow-xl border border-slate-200/50">
           <img 
             src={currentHero.image} 
@@ -128,7 +157,6 @@ export const FlightSearchUI = () => {
           </div>
         </div>
 
-        {/* MOBILE COMPACT HEADER */}
         <div className="sm:hidden pt-4 pb-2 text-center space-y-1.5">
           <div className="inline-flex items-center gap-1 px-3 py-0.5 rounded-full text-[10px] font-black uppercase tracking-widest bg-blue-50 text-[#2563EB] border border-blue-200/60">
             <Sparkles className="w-3 h-3 text-[#2563EB]" /> FlySava Smart Engine
@@ -137,13 +165,10 @@ export const FlightSearchUI = () => {
             {currentHero.headline}
           </h1>
         </div>
-
       </div>
 
-      {/* ================= 2. SERVICE SELECTOR & WIDGET ================= */}
+      {/* SERVICE SELECTOR & SEARCH WIDGET */}
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 sm:-mt-10 relative z-30 pt-3">
-        
-        {/* Switcher Bar */}
         <div className="flex items-center justify-center mb-4">
           <div className="bg-white/95 backdrop-blur-xl border border-[#E5E7EB] p-1.5 rounded-2xl shadow-lg shadow-slate-900/5 grid grid-cols-4 sm:flex gap-1 w-full sm:w-auto">
             {tabs.map((tab) => {
@@ -154,7 +179,16 @@ export const FlightSearchUI = () => {
                 <button
                   key={tab.id}
                   type="button"
-                  onClick={() => handleTabClick(tab.id)}
+                  onClick={() => {
+  // If switching back to Flights, reload once
+  if (tab.id === 'flights' && activeTab !== 'flights') {
+    sessionStorage.setItem('reload-flight-widget', '1');
+    window.location.reload();
+    return;
+  }
+
+  setActiveTab(tab.id);
+}}
                   className={`flex items-center justify-center gap-2 px-3 sm:px-5 py-2.5 rounded-xl text-xs font-black transition-all duration-200 cursor-pointer whitespace-nowrap ${
                     isActive
                       ? 'bg-[#2563EB] text-white shadow-md shadow-blue-600/25 scale-[1.02]'
@@ -169,7 +203,7 @@ export const FlightSearchUI = () => {
           </div>
         </div>
 
-        {/* Widget Box Container */}
+        {/* SEARCH FORM */}
         <div className="bg-white rounded-[24px] border border-[#E5E7EB] p-4 sm:p-6 shadow-[0_20px_60px_rgba(0,0,0,0.06)] min-h-[160px]">
           {activeTab === 'flights' && (
             <div id="tpwl-search" className="w-full min-h-[140px]"></div>
@@ -179,9 +213,9 @@ export const FlightSearchUI = () => {
           {activeTab === 'esim' && <EsimWidget />}
         </div>
 
-        {/* Ticket Search Output Slot */}
+        {/* FLIGHT RESULTS CONTAINER */}
         {activeTab === 'flights' && (
-          <div id="tpwl-tickets" className="mt-8 max-w-[1280px] mx-auto"></div>
+          <div id="tpwl-tickets" className="mt-8 max-w-[1280px] mx-auto scroll-mt-28"></div>
         )}
 
       </div>
