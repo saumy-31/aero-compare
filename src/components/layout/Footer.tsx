@@ -1,204 +1,154 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Plane, Instagram, Linkedin } from 'lucide-react';
+import { Plane, Instagram, Twitter, Linkedin } from 'lucide-react';
 
 export const Footer = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState<'success' | 'error' | null>(null);
-
-  const handleScrollTop = () => {
-    window.scrollTo(0, 0);
-  };
-
-  const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setStatus(null);
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    
-    // CRITICAL FIX: Convert raw FormData into a plain JSON object
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
-
-    try {
-      const response = await fetch("https://formsubmit.co/ajax/careers@flysava.com", {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json', // Tell FormSubmit we are sending JSON
-          'Accept': 'application/json'        // Tell FormSubmit we want JSON back
-        },
-        body: json, // Send the stringified JSON here
-      });
-
-      if (response.ok) {
-        setStatus('success');
-        form.reset();
-      } else {
-        const errorData = await response.json();
-        console.error("FormSubmit API Error:", errorData);
-        setStatus('error');
-      }
-    } catch (error) {
-      console.error("Network or Syntax Error:", error);
-      setStatus('error');
-    } finally {
-      setIsSubmitting(false);
-      // Auto-hide status message after 5 seconds
-      setTimeout(() => setStatus(null), 5000);
-    }
-  };
-
   return (
-    <footer className="bg-white dark:bg-dark-card border-t border-gray-100 dark:border-dark-border mt-auto transition-colors">
-      <div className="container mx-auto px-4 max-w-7xl pt-16 pb-8">
+    <footer className="bg-gradient-to-b from-white to-[#F8FAFC] border-t border-[#E5E7EB] text-[#111827] font-sans pt-20 pb-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Main Footer Links & Info */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        {/* ================= TOP SECTION ================= */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-16">
           
-          {/* Brand & Socials */}
-          <div className="col-span-1 lg:col-span-1">
-            <Link to="/" onClick={handleScrollTop} className="flex items-center space-x-2 group outline-none mb-4 inline-flex">
-              <Plane className="w-6 h-6 text-blue-500 group-hover:text-blue-400 transition-colors duration-300" />
-              <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">FlySava</span>
+          {/* BRAND COLUMN */}
+          <div className="lg:col-span-5 space-y-5 max-w-[320px]">
+            <Link to="/" className="inline-flex items-center gap-2.5 group outline-none">
+              <div className="w-9 h-9 rounded-xl bg-[#2563EB] text-white flex items-center justify-center shadow-md shadow-blue-600/20 group-hover:scale-105 transition-transform duration-200">
+                <Plane className="w-5 h-5" />
+              </div>
+              <span className="text-xl font-bold tracking-tight text-slate-900">
+                Fly<span className="text-[#2563EB]">Sava</span>
+              </span>
             </Link>
-            <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-6">
-              Compare prices from hundreds of airlines and travel agencies to find the perfect flight for your next adventure.
+
+            <p className="text-[15px] text-slate-500 font-normal leading-relaxed">
+              Compare prices from hundreds of airlines with transparent pricing and zero hidden fees.
             </p>
-            <div className="flex items-center space-x-4 text-gray-400">
-              <a href=" https://www.instagram.com/getflysava/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors" aria-label="Instagram">
-                <Instagram className="w-5 h-5" />
-              </a>
+
+            {/* CIRCULAR SOCIAL BUTTONS */}
+            <div className="flex items-center gap-3 pt-1">
               <a
-                href="https://www.x.com/getflysava/"
+                href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-blue-500 transition-colors"
-                aria-label="X"
+                aria-label="Instagram"
+                className="w-10 h-10 rounded-full bg-white border border-[#E5E7EB] text-slate-600 hover:text-[#2563EB] flex items-center justify-center shadow-2xs hover:-translate-y-0.5 hover:scale-105 hover:border-blue-200 transition-all duration-200"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="w-5 h-5"
-                >
-                  <path d="M18.244 2H21.5l-7.11 8.13L22.75 22h-6.54l-5.12-6.69L5.24 22H2l7.61-8.7L1.5 2h6.7l4.63 6.1L18.244 2z"/>
-                </svg>
+                <Instagram className="w-4 h-4" />
               </a>
-              <a href="https://www.linkedin.com/company/getflysava/" className="hover:text-blue-500 transition-colors" aria-label="LinkedIn">
-                <Linkedin className="w-5 h-5" />
+              <a
+                href="https://x.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X (formerly Twitter)"
+                className="w-10 h-10 rounded-full bg-white border border-[#E5E7EB] text-slate-600 hover:text-[#2563EB] flex items-center justify-center shadow-2xs hover:-translate-y-0.5 hover:scale-105 hover:border-blue-200 transition-all duration-200"
+              >
+                <Twitter className="w-4 h-4" />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="w-10 h-10 rounded-full bg-white border border-[#E5E7EB] text-slate-600 hover:text-[#2563EB] flex items-center justify-center shadow-2xs hover:-translate-y-0.5 hover:scale-105 hover:border-blue-200 transition-all duration-200"
+              >
+                <Linkedin className="w-4 h-4" />
               </a>
             </div>
           </div>
 
-          {/* Explore Links */}
-          <div>
-            <h3 className="font-bold text-gray-900 dark:text-white mb-4">Explore</h3>
-            <ul className="space-y-3">
-              <li>
-                <a href="/flights" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">
-                  Flight Search
-                </a>
-              </li>
-              <li>
-                <Link to="/destinations" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">
-                  Destinations
-                </Link>
-              </li>
-              <li>
-                <Link to="/status" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">
-                  Flight Tracker
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">
-                  Travel Guides
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Company Links */}
-          <div>
-            <h3 className="font-bold text-gray-900 dark:text-white mb-4">Company</h3>
-            <ul className="space-y-3">
-              <li><Link to="/about" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">About Us</Link></li>
-              <li><Link to="/careers" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Careers</Link></li>
-              <li><Link to="/press" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Press & Media</Link></li>
-              
-              <li><Link to="/contact" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Contact</Link></li>
-            </ul>
-          </div>
-
-          {/* Legal Links */}
-          <div>
-            <h3 className="font-bold text-gray-900 dark:text-white mb-4">Legal</h3>
-            <ul className="space-y-3">
-              <li><Link to="/terms" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Terms of Service</Link></li>
-              <li><Link to="/privacy" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Privacy Policy</Link></li>
-              <li><Link to="/cookies" onClick={handleScrollTop} className="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors text-sm">Cookie Policy</Link></li>
-            </ul>
-          </div>
-          
-        </div>
-
-        {/* Newsletter Subscription Section - Premium Compact Design */}
-        <div className="py-8 border-t border-gray-100 dark:border-dark-border flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-          <div className="max-w-md">
-            <h3 className="text-base font-bold text-gray-900 dark:text-white tracking-tight mb-1">Stay Updated</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Get flight deals, travel tips, and destination guides delivered to your inbox.
-            </p>
-          </div>
-          
-          <div className="w-full lg:w-auto flex-grow max-w-md lg:ml-auto">
-            <form onSubmit={handleSubscribe} className="relative flex flex-col sm:flex-row gap-2 sm:gap-3">
-              {/* FormSubmit Configuration Fields */}
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_subject" value="New Footer Newsletter Subscription" />
-              <input type="hidden" name="_template" value="table" />
-              
-              <input 
-                type="email" 
-                name="email"
-                required
-                placeholder="Your email address" 
-                disabled={isSubmitting}
-                className="w-full bg-transparent border border-gray-200 dark:border-white/10 rounded-lg px-4 py-2.5 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all disabled:opacity-50 text-sm" 
-              />
-              <button 
-                type="submit" 
-                disabled={isSubmitting}
-                className="w-full sm:w-auto flex-shrink-0 flex items-center justify-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 px-6 rounded-lg transition-colors disabled:opacity-70 disabled:cursor-not-allowed whitespace-nowrap text-sm"
-              >
-                {isSubmitting ? 'Subscribing...' : 'Subscribe'}
-              </button>
-            </form>
+          {/* NAVIGATION COLUMNS */}
+          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-12">
             
-            {/* Status Messages */}
-            <div className="h-5 mt-1">
-              {status === 'success' && (
-                <p className="text-green-600 dark:text-green-400 text-xs font-medium transition-opacity">
-                  Thank you! You have successfully subscribed.
-                </p>
-              )}
-              {status === 'error' && (
-                <p className="text-red-600 dark:text-red-400 text-xs font-medium transition-opacity">
-                  Oops! Something went wrong. Please try again.
-                </p>
-              )}
+            {/* Explore Column */}
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-slate-900">Explore</h4>
+              <ul className="space-y-3 text-[15px] text-slate-600 font-normal">
+                <li>
+                  <Link to="/flights" className="inline-block hover:translate-x-[3px] hover:text-[#2563EB] transition-all duration-200">
+                    Flights
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/destinations" className="inline-block hover:translate-x-[3px] hover:text-[#2563EB] transition-all duration-200">
+                    Destinations
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/status" className="inline-block hover:translate-x-[3px] hover:text-[#2563EB] transition-all duration-200">
+                    Flight Status
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/blog" className="inline-block hover:translate-x-[3px] hover:text-[#2563EB] transition-all duration-200">
+                    Travel Guides
+                  </Link>
+                </li>
+              </ul>
             </div>
+
+            {/* Company Column */}
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-slate-900">Company</h4>
+              <ul className="space-y-3 text-[15px] text-slate-600 font-normal">
+                <li>
+                  <Link to="/about" className="inline-block hover:translate-x-[3px] hover:text-[#2563EB] transition-all duration-200">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/careers" className="inline-block hover:translate-x-[3px] hover:text-[#2563EB] transition-all duration-200">
+                    Careers
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/press" className="inline-block hover:translate-x-[3px] hover:text-[#2563EB] transition-all duration-200">
+                    Press
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="inline-block hover:translate-x-[3px] hover:text-[#2563EB] transition-all duration-200">
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Legal Column */}
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-slate-900">Legal</h4>
+              <ul className="space-y-3 text-[15px] text-slate-600 font-normal">
+                <li>
+                  <Link to="/privacy" className="inline-block hover:translate-x-[3px] hover:text-[#2563EB] transition-all duration-200">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/terms" className="inline-block hover:translate-x-[3px] hover:text-[#2563EB] transition-all duration-200">
+                    Terms of Service
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/cookies" className="inline-block hover:translate-x-[3px] hover:text-[#2563EB] transition-all duration-200">
+                    Cookie Policy
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
           </div>
+
         </div>
 
-        {/* Bottom Copyright Row */}
-        <div className="pt-6 border-t border-gray-100 dark:border-dark-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 text-sm">© {new Date().getFullYear()} FlySava. All rights reserved.</p>
-          <div className="flex space-x-6 text-sm text-gray-400">
-            <span>Made with precision for travelers.</span>
-          </div>
+        {/* ================= ELEGANT DIVIDER ================= */}
+        <div className="border-t border-[#E5E7EB]" />
+
+        {/* ================= BOTTOM BAR ================= */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-[13px] text-slate-500 font-normal">
+          <p>© 2026 FlySava. All rights reserved.</p>
+          <p>Made with precision for travellers worldwide.</p>
         </div>
+
       </div>
     </footer>
   );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Clock, Send, ChevronDown } from 'lucide-react';
+import { Mail, Clock, Send, ChevronDown, Sparkles, MessageSquare, HelpCircle } from 'lucide-react';
 import { SEO } from '../components/seo/SEO';
 
 const faqs = [
@@ -26,7 +26,7 @@ const faqs = [
 export const Contact = () => {
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
   
-  // Added state for form submission handling
+  // State for form submission handling
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<'success' | 'error' | null>(null);
 
@@ -34,7 +34,7 @@ export const Contact = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Form submission handler (Identical to your working Footer setup)
+  // Form submission handler
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -76,13 +76,13 @@ export const Contact = () => {
     return text.split('\n').map((line, i) => {
       if (line.trim().startsWith('•')) {
         return (
-          <div key={i} className="flex items-start ml-2 mt-1.5">
-            <span className="text-blue-500 mr-2 font-bold">•</span>
-            <span className="text-gray-600 dark:text-gray-300">{line.replace('•', '').trim()}</span>
+          <div key={i} className="flex items-start ml-1 mt-2">
+            <span className="text-blue-600 mr-2.5 font-bold">•</span>
+            <span className="text-slate-600 font-normal">{line.replace('•', '').trim()}</span>
           </div>
         );
       }
-      return <p key={i} className={i > 0 ? "mt-3" : ""}>{line}</p>;
+      return <p key={i} className={i > 0 ? "mt-3 text-slate-600 font-normal" : "text-slate-600 font-normal"}>{line}</p>;
     });
   };
 
@@ -107,28 +107,40 @@ export const Contact = () => {
         canonicalUrl="/contact"
         jsonLd={contactJsonLd}
       />
-      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg pt-24 pb-20 transition-colors">
+      <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900 pb-20">
         
-        <div className="container mx-auto px-4 max-w-4xl text-center mb-16">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-6 tracking-tight"
-          >
-            Contact Support
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto"
-          >
-            We're here to help. Send us a message or browse our frequently asked questions below.
-          </motion.p>
-        </div>
+        {/* HERO SECTION */}
+        <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-20 w-full bg-white border-b border-slate-200/80">
+          <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-600 border border-blue-200/80 mb-6 shadow-sm"
+            >
+              <Sparkles className="w-3.5 h-3.5" /> We're Here to Help
+            </motion.div>
 
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-4xl sm:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight"
+            >
+              Contact Support & <span className="text-blue-600">Help Center</span>
+            </motion.h1>
+
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed"
+            >
+              Have questions about flight searches or third-party bookings? Send us a message or browse our answers below.
+            </motion.p>
+          </div>
+        </section>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 lg:pt-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
             
             {/* Left Column: Contact Form (Sticky) */}
             <motion.div 
@@ -136,56 +148,66 @@ export const Contact = () => {
               animate={{ opacity: 1, x: 0 }}
               className="lg:col-span-5 h-fit lg:sticky lg:top-28"
             >
-              <div className="bg-white dark:bg-dark-card p-8 rounded-3xl border border-gray-100 dark:border-dark-border shadow-xl shadow-gray-200/50 dark:shadow-none">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send us a message</h2>
+              <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm">
+                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100">
+                    <MessageSquare className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h2 className="text-xl font-bold text-slate-900">Send Us a Message</h2>
+                    <p className="text-xs text-slate-500">We respond to inquiries in 24–48 hours</p>
+                  </div>
+                </div>
                 
-                {/* Replaced generic form action with our React handler */}
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   <input type="hidden" name="_captcha" value="false" />
                   <input type="hidden" name="_subject" value="New FlySava Contact Form Submission" />
                   <input type="hidden" name="_template" value="table" />
 
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Full Name</label>
                     <input 
                       type="text" 
                       name="name"
                       required
                       disabled={isSubmitting}
-                      className="w-full bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-900 dark:text-white transition-all disabled:opacity-60"
+                      className="w-full bg-[#F8FAFC] border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/10 text-slate-900 text-sm transition-all disabled:opacity-60"
                       placeholder="John Doe"
                     />
                   </div>
+
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Email Address</label>
                     <input 
                       type="email" 
                       name="email"
                       required
                       disabled={isSubmitting}
-                      className="w-full bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-900 dark:text-white transition-all disabled:opacity-60"
+                      className="w-full bg-[#F8FAFC] border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/10 text-slate-900 text-sm transition-all disabled:opacity-60"
                       placeholder="john@example.com"
                     />
                   </div>
+
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Subject</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Subject</label>
                     <input 
                       type="text" 
                       name="subject"
                       required
                       disabled={isSubmitting}
-                      className="w-full bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-900 dark:text-white transition-all disabled:opacity-60"
+                      className="w-full bg-[#F8FAFC] border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/10 text-slate-900 text-sm transition-all disabled:opacity-60"
                       placeholder="How can we help?"
                     />
                   </div>
+
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Message</label>
                     <textarea 
                       name="message"
                       required
                       rows={4}
                       disabled={isSubmitting}
-                      className="w-full bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-900 dark:text-white transition-all resize-none disabled:opacity-60"
+                      className="w-full bg-[#F8FAFC] border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/10 text-slate-900 text-sm transition-all resize-none disabled:opacity-60"
                       placeholder="Write your message here..."
                     ></textarea>
                   </div>
@@ -193,21 +215,21 @@ export const Contact = () => {
                   <button 
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-colors shadow-lg shadow-blue-500/30 disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="w-full flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl transition-all shadow-md shadow-blue-600/20 text-sm disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    {isSubmitting ? 'Sending...' : (
+                    {isSubmitting ? 'Sending Message...' : (
                       <>Send Message <Send className="w-4 h-4 ml-2" /></>
                     )}
                   </button>
 
                   {/* Status Messages */}
                   {status === 'success' && (
-                    <p className="text-green-600 dark:text-green-400 text-sm font-medium text-center mt-2">
-                      Thank you! Your message has been sent.
+                    <p className="text-emerald-600 text-xs font-semibold text-center mt-2">
+                      Thank you! Your message has been sent successfully.
                     </p>
                   )}
                   {status === 'error' && (
-                    <p className="text-red-600 dark:text-red-400 text-sm font-medium text-center mt-2">
+                    <p className="text-rose-600 text-xs font-semibold text-center mt-2">
                       Oops! Something went wrong. Please try again.
                     </p>
                   )}
@@ -219,24 +241,29 @@ export const Contact = () => {
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="lg:col-span-7 space-y-12"
+              className="lg:col-span-7 space-y-10"
             >
-              {/* Contact Information Blocks */}
+              {/* Contact Information Cards */}
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Contact Information</h2>
-                <div className="grid grid-cols-1 gap-4">
-                  <div className="flex items-center p-4 bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border shadow-sm">
-                    <Mail className="w-6 h-6 text-blue-500 mr-4 flex-shrink-0" />
+                <h2 className="text-xl font-extrabold text-slate-900 mb-4 tracking-tight">Direct Channels</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex items-center p-4 bg-white rounded-2xl border border-slate-200/80 shadow-sm">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mr-3.5 flex-shrink-0 border border-blue-100">
+                      <Mail className="w-5 h-5" />
+                    </div>
                     <div>
-                      <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mb-0.5">Contact Email</p>
-                      <a href="mailto:contact@flysava.com" className="text-gray-900 dark:text-white font-medium hover:text-blue-500 transition-colors">contact@flysava.com</a>
+                      <p className="text-[11px] text-slate-400 font-bold uppercase tracking-wider mb-0.5">Contact Email</p>
+                      <a href="mailto:contact@flysava.com" className="text-slate-900 font-bold text-sm hover:text-blue-600 transition-colors">contact@flysava.com</a>
                     </div>
                   </div>
-                  <div className="flex items-center p-4 bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border shadow-sm">
-                    <Clock className="w-6 h-6 text-green-500 mr-4 flex-shrink-0" />
+
+                  <div className="flex items-center p-4 bg-white rounded-2xl border border-slate-200/80 shadow-sm">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mr-3.5 flex-shrink-0 border border-emerald-100">
+                      <Clock className="w-5 h-5" />
+                    </div>
                     <div>
-                      <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mb-0.5">Response Time</p>
-                      <p className="text-gray-900 dark:text-white font-medium">We typically reply within 24–48 hours.</p>
+                      <p className="text-[11px] text-slate-400 font-bold uppercase tracking-wider mb-0.5">Response Window</p>
+                      <p className="text-slate-900 font-bold text-sm">24–48 Business Hours</p>
                     </div>
                   </div>
                 </div>
@@ -244,33 +271,40 @@ export const Contact = () => {
 
               {/* Accordion FAQ Section */}
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Frequently Asked Questions</h2>
+                <div className="flex items-center gap-2 mb-6 pb-2 border-b border-slate-200/80">
+                  <HelpCircle className="w-5 h-5 text-blue-600" />
+                  <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">Frequently Asked Questions</h2>
+                </div>
+
                 <div className="space-y-3">
                   {faqs.map((faq) => {
                     const isOpen = openFaqId === faq.id;
                     return (
                       <div 
                         key={faq.id} 
-                        className={`bg-white dark:bg-dark-card border ${isOpen ? 'border-blue-500 shadow-md' : 'border-gray-100 dark:border-dark-border shadow-sm'} rounded-2xl overflow-hidden transition-all`}
+                        className={`bg-white border transition-all duration-200 rounded-2xl overflow-hidden ${
+                          isOpen ? 'border-blue-600 shadow-md ring-2 ring-blue-600/10' : 'border-slate-200/80 shadow-sm hover:border-slate-300'
+                        }`}
                       >
                         <button
                           onClick={() => setOpenFaqId(isOpen ? null : faq.id)}
-                          className="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none"
+                          className="w-full text-left px-5 py-4 flex items-center justify-between focus:outline-none"
                         >
-                          <span className={`font-bold pr-4 transition-colors ${isOpen ? 'text-blue-600 dark:text-blue-400' : 'text-gray-900 dark:text-white'}`}>
+                          <span className={`font-bold text-sm sm:text-base pr-4 transition-colors ${isOpen ? 'text-blue-600' : 'text-slate-900'}`}>
                             {faq.q}
                           </span>
-                          <ChevronDown className={`w-5 h-5 transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180 text-blue-500' : 'text-gray-400'}`} />
+                          <ChevronDown className={`w-4 h-4 transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180 text-blue-600' : 'text-slate-400'}`} />
                         </button>
+
                         <AnimatePresence>
                           {isOpen && (
                             <motion.div
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: 'auto', opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.3, ease: 'easeInOut' }}
+                              transition={{ duration: 0.25, ease: 'easeInOut' }}
                             >
-                              <div className="px-6 pb-6 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-50 dark:border-gray-800/50 pt-4 mt-1">
+                              <div className="px-5 pb-5 text-sm leading-relaxed border-t border-slate-100 pt-3">
                                 {formatAnswer(faq.a)}
                               </div>
                             </motion.div>

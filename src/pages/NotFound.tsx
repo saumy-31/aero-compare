@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Map, ArrowLeft, Plane } from 'lucide-react';
+import { Map, ArrowLeft, Plane, Sparkles } from 'lucide-react';
 import { SEO } from '../components/seo/SEO';
 
 export const NotFound = () => {
@@ -17,37 +17,42 @@ export const NotFound = () => {
         preventIndex={true} 
       />
 
-      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg flex flex-col items-center justify-center px-4 transition-colors duration-200">
+      <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900 flex flex-col items-center justify-center px-4 pt-20 pb-16 transition-colors duration-200">
         <div className="max-w-md w-full text-center relative">
           
-          {/* Background Decorative Element */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-500/10 dark:bg-brand-900/20 rounded-full blur-3xl -z-10" />
+          {/* Background Decorative Ambient Blur */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
-          {/* Floating Icon */}
+          {/* Floating Icon Card */}
           <div className="relative mb-8 flex justify-center">
-            <div className="relative z-10 bg-white dark:bg-dark-card p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-dark-border inline-flex">
-              <Map className="w-16 h-16 text-brand-500" />
-              <Plane className="w-8 h-8 text-gray-400 absolute -top-4 -right-4 animate-bounce" />
+            <div className="relative z-10 bg-white p-6 rounded-3xl shadow-lg border border-slate-200/80 inline-flex">
+              <Map className="w-14 h-14 text-blue-600" />
+              <Plane className="w-7 h-7 text-slate-400 absolute -top-3 -right-3 animate-bounce transform -rotate-45" />
             </div>
           </div>
 
+          {/* Error Pill Badge */}
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-600 border border-blue-200/80 mb-4 shadow-sm">
+            <Sparkles className="w-3.5 h-3.5" /> 404 Destination Error
+          </div>
+
           {/* Text Content */}
-          <h1 className="text-7xl font-black text-gray-900 dark:text-white tracking-tight mb-4">
+          <h1 className="text-6xl sm:text-7xl font-extrabold text-slate-900 tracking-tight mb-3">
             404
           </h1>
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 mb-3 tracking-tight">
             Looks like you're off the radar
           </h2>
-          <p className="text-gray-500 dark:text-gray-400 mb-8 leading-relaxed">
+          <p className="text-slate-600 text-sm sm:text-base mb-8 leading-relaxed font-normal max-w-sm mx-auto">
             The page or flight route you are looking for doesn't exist, has been moved, or is temporarily unavailable.
           </p>
 
-          {/* Call to Action */}
+          {/* Call to Action Button */}
           <button
             onClick={() => navigate('/')}
-            className="w-full sm:w-auto inline-flex items-center justify-center bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 px-8 rounded-xl transition-all shadow-lg shadow-brand-500/30"
+            className="w-full sm:w-auto inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-8 rounded-2xl transition-all shadow-md shadow-blue-600/20 text-sm"
           >
-            <ArrowLeft className="w-5 h-5 mr-2" />
+            <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Homepage
           </button>
 

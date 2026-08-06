@@ -1,14 +1,20 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Shield, ArrowRight } from 'lucide-react';
+import { Shield, ArrowRight, Sparkles, Mail, CheckCircle2 } from 'lucide-react';
 import { SEO } from '../components/seo/SEO';
+
+// Explicit ambient declarations for VS Code editor stability
+declare const window: any;
+declare const document: any;
 
 export const Privacy = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+    }
   }, []);
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
@@ -32,7 +38,7 @@ export const Privacy = () => {
     { id: 'rights', title: '9. Your Privacy Rights' },
     { id: 'marketing', title: '10. Marketing' },
     { id: 'international', title: '11. International Transfers' },
-    { id: 'children', title: '12. Children\'s Privacy' },
+    { id: 'children', title: "12. Children's Privacy" },
     { id: 'external', title: '13. External Links' },
     { id: 'updates', title: '14. Updates' },
     { id: 'contact', title: '15. Contact' }
@@ -54,220 +60,207 @@ export const Privacy = () => {
         canonicalUrl="/privacy"
         jsonLd={privacyJsonLd}
       />
-      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg pt-24 pb-20 transition-colors">
+      
+      <div className="min-h-screen bg-[#EEF2F6] text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900 pb-20">
         
-        {/* Hero Section */}
-        <div className="container mx-auto px-4 max-w-4xl text-center mb-16">
-          <div className="w-16 h-16 bg-purple-50 dark:bg-purple-500/10 text-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <Shield className="w-8 h-8" />
-          </div>
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4 tracking-tight"
-          >
-            Privacy Policy
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-gray-500 dark:text-gray-400 mb-6"
-          >
-            How FlySava collects, uses, and protects your information.
-          </motion.p>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-sm font-bold text-gray-400 uppercase tracking-wider"
-          >
-            Last Updated: July 2026
-          </motion.p>
-        </div>
-
-        {/* Main Layout Grid */}
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        {/* ================= HERO HEADER ================= */}
+        <section className="pt-16 sm:pt-20 pb-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-[2.5rem] p-8 sm:p-12 text-center border border-slate-200/90 shadow-xl shadow-slate-900/5 relative overflow-hidden">
             
-            {/* Sticky Sidebar */}
-            <div className="hidden lg:block lg:col-span-4">
-              <div className="sticky top-28 bg-white dark:bg-dark-card p-6 rounded-3xl border border-gray-100 dark:border-dark-border shadow-sm">
-                <h3 className="font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wider text-sm">Contents</h3>
-                <nav className="space-y-2">
+            <div className="relative z-10 max-w-3xl mx-auto space-y-4">
+              
+              <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-bold bg-blue-50 text-blue-600 border border-blue-200/70 shadow-2xs">
+                <Shield className="w-3.5 h-3.5" /> Legal & Transparency
+              </div>
+
+              <h1 className="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight leading-[1.08]">
+                Privacy Policy
+              </h1>
+
+              <p className="text-slate-600 text-sm sm:text-base lg:text-lg font-normal leading-relaxed max-w-xl mx-auto">
+                How FlySava collects, uses, and protects your information when using our travel platform.
+              </p>
+
+              <div className="pt-2 text-xs font-bold text-slate-400 uppercase tracking-widest">
+                Last Updated: August 2026
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        {/* ================= MAIN LAYOUT ================= */}
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            {/* Sticky Navigation Sidebar */}
+            <aside className="hidden lg:block lg:col-span-4 lg:sticky lg:top-28">
+              <div className="bg-white p-6 rounded-[2rem] border border-slate-200/90 shadow-sm space-y-4">
+                
+                <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                  <h3 className="font-black text-slate-900 uppercase tracking-widest text-xs">
+                    Page Contents
+                  </h3>
+                  <Sparkles className="w-4 h-4 text-blue-600" />
+                </div>
+
+                <nav className="space-y-1 max-h-[70vh] overflow-y-auto pr-2 text-xs">
                   {sections.map((sec) => (
                     <a 
                       key={sec.id} 
                       href={`#${sec.id}`}
                       onClick={(e) => scrollToSection(e, sec.id)}
-                      className="block text-sm text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 font-medium transition-colors py-1"
+                      className="block px-3 py-2 rounded-xl text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 font-semibold transition-all duration-200"
                     >
                       {sec.title}
                     </a>
                   ))}
                 </nav>
-              </div>
-            </div>
 
-            {/* Content Area */}
-            <div className="lg:col-span-8 space-y-8">
-              <div className="bg-white dark:bg-dark-card rounded-3xl p-8 md:p-10 border border-gray-100 dark:border-dark-border shadow-sm space-y-12 text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
+              </div>
+            </aside>
+
+            {/* Legal Policy Document Body */}
+            <div className="lg:col-span-8 space-y-6">
+              
+              <div className="bg-white rounded-[2.5rem] p-8 sm:p-12 border border-slate-200/90 shadow-xl shadow-slate-900/5 space-y-10 text-slate-600 text-sm leading-relaxed">
                 
-                <section id="intro" className="scroll-mt-28">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">1. Introduction</h2>
-                  <p className="mb-4">This Privacy Policy explains how Flysava collects, uses, shares, and protects information when you visit or use flysava.com.</p>
+                <section id="intro" className="scroll-mt-28 space-y-3">
+                  <h2 className="text-xl font-black text-slate-900 tracking-tight">1. Introduction</h2>
+                  <p>This Privacy Policy explains how Flysava collects, uses, shares, and protects information when you visit or use flysava.com.</p>
                   <p>By using Flysava, you agree to the practices described in this Privacy Policy. If you do not agree, please do not use the website.</p>
                 </section>
 
-                <section id="info-collect" className="scroll-mt-28">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">2. Information We Collect</h2>
-                  <p className="mb-4">Flysava may collect personal and non-personal information depending on how you use the website.</p>
-                  <p className="mb-2 font-bold text-gray-900 dark:text-white">Personal information may include:</p>
-                  <ul className="list-disc pl-6 space-y-2 mb-6">
-                    <li>Name, if you submit it through a form</li>
-                    <li>Email address, if you contact us or subscribe to updates</li>
-                    <li>Contact details included in messages you send to us</li>
-                    <li>IP address</li>
-                    <li>Device and browser information</li>
-                  </ul>
-                  <p className="mb-2 font-bold text-gray-900 dark:text-white">Non-personal information may include:</p>
-                  <ul className="list-disc pl-6 space-y-2 mb-6">
-                    <li>Browser type and version</li>
-                    <li>Device type</li>
-                    <li>Operating system</li>
-                    <li>Pages visited</li>
-                    <li>Referring websites</li>
-                    <li>Date and time of visits</li>
-                    <li>General location information based on IP address</li>
-                    <li>Interactions with pages, links, widgets, and forms</li>
-                  </ul>
-                  <p>We may also use cookies, analytics tools, affiliate tracking, and third-party widgets to understand website performance and improve the user experience.</p>
-                </section>
+                <section id="info-collect" className="scroll-mt-28 space-y-3 pt-6 border-t border-slate-100">
+                  <h2 className="text-xl font-black text-slate-900 tracking-tight">2. Information We Collect</h2>
+                  <p>Flysava may collect personal and non-personal information depending on how you use the website.</p>
+                  
+                  <div className="space-y-2 pt-2">
+                    <p className="font-extrabold text-slate-900 uppercase tracking-wider text-xs">Personal information may include:</p>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-medium text-slate-700 pt-1">
+                      <li className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70"><CheckCircle2 className="w-3.5 h-3.5 text-blue-600" /> Name (via web forms)</li>
+                      <li className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70"><CheckCircle2 className="w-3.5 h-3.5 text-blue-600" /> Email address</li>
+                      <li className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70"><CheckCircle2 className="w-3.5 h-3.5 text-blue-600" /> Support inquiry details</li>
+                      <li className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70"><CheckCircle2 className="w-3.5 h-3.5 text-blue-600" /> IP address & Location</li>
+                    </ul>
+                  </div>
 
-                <section id="how-use" className="scroll-mt-28">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">3. How We Use Information</h2>
-                  <p className="mb-4">Flysava may use collected information to:</p>
-                  <ul className="list-disc pl-6 space-y-2 mb-4">
-                    <li>Provide and improve the website</li>
-                    <li>Display travel comparison tools and third-party widgets</li>
-                    <li>Understand how users interact with the website</li>
-                    <li>Improve page speed, design, content, and functionality</li>
-                    <li>Respond to messages or support requests</li>
-                    <li>Send updates if you choose to subscribe</li>
-                    <li>Monitor website security and prevent misuse</li>
-                    <li>Measure affiliate performance and website traffic</li>
-                    <li>Comply with legal obligations</li>
-                  </ul>
-                </section>
-
-                <section id="cookies" className="scroll-mt-28">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">4. Cookies and Tracking Technologies</h2>
-                  <p className="mb-4">Flysava may use cookies and similar technologies to support website functionality, analytics, personalization, affiliate tracking, and advertising measurement.</p>
-                  <p className="mb-4">Cookies may be placed by Flysava or by third-party services such as analytics providers, affiliate partners, travel widgets, advertising tools, or embedded content providers.</p>
-                  <p className="mb-4">You can manage or disable cookies through your browser settings. Some website features may not function properly if cookies are disabled.</p>
-                  <p>For more information, please read our Cookie Policy.</p>
-                </section>
-
-                <section id="third-party" className="scroll-mt-28">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">5. Third-Party Travel Tools and Affiliate Partners</h2>
-                  <p className="mb-4">Flysava may display travel search widgets, booking links, maps, advertisements, or comparison tools from third-party providers.</p>
-                  <p className="mb-4">When you interact with these tools or click through to a third-party website, those providers may collect information according to their own privacy policies. Flysava does not control the privacy practices of third-party websites.</p>
-                  <div className="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-500 p-6 rounded-r-2xl mb-4">
-                    <p className="font-medium text-purple-900 dark:text-purple-100">You should review the privacy policy and terms of any third-party provider before completing a booking or sharing personal information.</p>
+                  <div className="space-y-2 pt-4">
+                    <p className="font-extrabold text-slate-900 uppercase tracking-wider text-xs">Non-personal information may include:</p>
+                    <ul className="list-disc pl-5 space-y-1.5 text-xs text-slate-600 font-medium">
+                      <li>Browser type, version, and device type</li>
+                      <li>Operating system & referring URLs</li>
+                      <li>Pages visited, duration, and interaction with search widgets</li>
+                    </ul>
                   </div>
                 </section>
 
-                <section id="sharing" className="scroll-mt-28">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">6. Sharing of Information</h2>
-                  <p className="mb-4">Flysava may share information with:</p>
-                  <ul className="list-disc pl-6 space-y-2 mb-6">
-                    <li>Service providers that help operate, host, secure, or analyze the website</li>
-                    <li>Analytics providers that help us understand website performance</li>
-                    <li>Affiliate and travel partners when users interact with travel links or widgets</li>
-                    <li>Legal authorities if required by law or necessary to protect rights and safety</li>
-                    <li>Professional advisors, if needed for legal, accounting, or business purposes</li>
+                <section id="how-use" className="scroll-mt-28 space-y-3 pt-6 border-t border-slate-100">
+                  <h2 className="text-xl font-black text-slate-900 tracking-tight">3. How We Use Information</h2>
+                  <p>Flysava uses collected information to:</p>
+                  <ul className="grid grid-cols-1 gap-2 text-xs font-semibold text-slate-700 pt-1">
+                    <li className="p-3 rounded-xl bg-slate-50 border border-slate-200/70">Provide, maintain, and enhance website comparison tools</li>
+                    <li className="p-3 rounded-xl bg-slate-50 border border-slate-200/70">Respond to customer service inquiries and support requests</li>
+                    <li className="p-3 rounded-xl bg-slate-50 border border-slate-200/70">Monitor security, prevent fraud, and comply with legal obligations</li>
                   </ul>
-                  <p className="font-bold text-gray-900 dark:text-white">Flysava does not sell your personal information for direct monetary payment.</p>
                 </section>
 
-                <section id="security" className="scroll-mt-28">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">7. Data Security</h2>
-                  <p className="mb-4">We use reasonable technical and organizational measures to protect information. These may include SSL encryption, secure hosting, access controls, and monitoring tools.</p>
-                  <p>However, no method of internet transmission or electronic storage is completely secure. We cannot guarantee absolute security of information transmitted through the website.</p>
+                <section id="cookies" className="scroll-mt-28 space-y-3 pt-6 border-t border-slate-100">
+                  <h2 className="text-xl font-black text-slate-900 tracking-tight">4. Cookies and Tracking Technologies</h2>
+                  <p>Flysava may use cookies and similar technologies to support website functionality, analytics, personalization, affiliate tracking, and advertising measurement.</p>
+                  <p>You can manage or disable cookies through your browser settings. Some website features may not function properly if cookies are disabled.</p>
                 </section>
 
-                <section id="retention" className="scroll-mt-28">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">8. Data Retention</h2>
-                  <p className="mb-4">Flysava keeps personal information only for as long as reasonably necessary for the purposes described in this Privacy Policy, unless a longer retention period is required or permitted by law.</p>
-                  <p>Contact messages, analytics data, and subscription records may be retained for business, security, legal, or operational purposes.</p>
+                <section id="third-party" className="scroll-mt-28 space-y-3 pt-6 border-t border-slate-100">
+                  <h2 className="text-xl font-black text-slate-900 tracking-tight">5. Third-Party Travel Tools & Affiliate Partners</h2>
+                  <p>Flysava displays flight search widgets, booking links, maps, and advertisements from third-party travel partners.</p>
+                  
+                  <div className="bg-blue-50/70 border-l-4 border-blue-600 p-4 rounded-r-2xl text-xs font-semibold text-slate-800 my-2">
+                    When you click through to a third-party partner, their individual privacy policy and terms govern your transaction.
+                  </div>
                 </section>
 
-                <section id="rights" className="scroll-mt-28">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">9. Your Privacy Rights</h2>
-                  <p className="mb-4">Depending on your country or region, you may have rights regarding your personal information, including the right to:</p>
-                  <ul className="list-disc pl-6 space-y-2 mb-6">
-                    <li>Request access to personal information</li>
-                    <li>Request correction of inaccurate information</li>
-                    <li>Request deletion of personal information</li>
-                    <li>Object to or restrict certain processing</li>
-                    <li>Withdraw consent where processing is based on consent</li>
-                    <li>Request a copy of your information</li>
-                    <li>Opt out of certain tracking or marketing communications</li>
-                  </ul>
-                  <p>To make a privacy request, contact us at contact@flysava.com. We may need to verify your identity before processing certain requests.</p>
+                <section id="sharing" className="scroll-mt-28 space-y-3 pt-6 border-t border-slate-100">
+                  <h2 className="text-xl font-black text-slate-900 tracking-tight">6. Sharing of Information</h2>
+                  <p>We share information strictly with hosting providers, analytics tools, and legal authorities if required by law.</p>
+                  <p className="font-extrabold text-slate-900 bg-slate-100 p-3 rounded-xl text-xs inline-block">
+                    Flysava does not sell your personal information for direct monetary payment.
+                  </p>
                 </section>
 
-                <section id="marketing" className="scroll-mt-28">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">10. Marketing Communications</h2>
-                  <p>If you subscribe to emails or updates from Flysava, we may send travel tips, website updates, or promotional content. You can unsubscribe at any time using the unsubscribe link in the email or by contacting us.</p>
+                <section id="security" className="scroll-mt-28 space-y-3 pt-6 border-t border-slate-100">
+                  <h2 className="text-xl font-black text-slate-900 tracking-tight">7. Data Security</h2>
+                  <p>We use SSL encryption and secure cloud infrastructure to protect data. However, no internet transmission is 100% secure, and absolute security cannot be guaranteed.</p>
                 </section>
 
-                <section id="international" className="scroll-mt-28">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">11. International Data Transfers</h2>
-                  <p className="mb-4">Because Flysava may use hosting, analytics, affiliate, and technology providers located in different countries, information may be processed outside your country of residence.</p>
-                  <p>Where required, we rely on appropriate safeguards and lawful transfer mechanisms to protect personal information.</p>
+                <section id="retention" className="scroll-mt-28 space-y-3 pt-6 border-t border-slate-100">
+                  <h2 className="text-xl font-black text-slate-900 tracking-tight">8. Data Retention</h2>
+                  <p>Personal information is retained only as long as necessary for the operational purposes outlined in this policy or required by law.</p>
                 </section>
 
-                <section id="children" className="scroll-mt-28">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">12. Children's Privacy</h2>
-                  <p className="mb-4">Flysava is not intended for children under 13 years old or the minimum legal age required in your country. We do not knowingly collect personal information from children.</p>
-                  <p>If you believe a child has provided personal information to Flysava, contact us and we will take appropriate steps to delete it.</p>
+                <section id="rights" className="scroll-mt-28 space-y-3 pt-6 border-t border-slate-100">
+                  <h2 className="text-xl font-black text-slate-900 tracking-tight">9. Your Privacy Rights</h2>
+                  <p>Depending on your region, you may request access to, correction of, or deletion of your personal data by contacting <a href="mailto:contact@flysava.com" className="text-blue-600 font-bold hover:underline">contact@flysava.com</a>.</p>
                 </section>
 
-                <section id="external" className="scroll-mt-28">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">13. External Links</h2>
-                  <p>Flysava may contain links to third-party websites. We are not responsible for the privacy practices, content, or security of those websites. You should review their policies before sharing information or completing a booking.</p>
+                <section id="marketing" className="scroll-mt-28 space-y-3 pt-6 border-t border-slate-100">
+                  <h2 className="text-xl font-black text-slate-900 tracking-tight">10. Marketing Communications</h2>
+                  <p>If you subscribe to updates, you may opt out at any time using the unsubscribe link provided in our emails.</p>
                 </section>
 
-                <section id="updates" className="scroll-mt-28">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">14. Updates to This Privacy Policy</h2>
-                  <p className="mb-4">We may update this Privacy Policy from time to time. The updated version will be posted on this page with a revised "Last updated" date.</p>
-                  <p>Your continued use of Flysava after updates are posted means you accept the revised Privacy Policy.</p>
+                <section id="international" className="scroll-mt-28 space-y-3 pt-6 border-t border-slate-100">
+                  <h2 className="text-xl font-black text-slate-900 tracking-tight">11. International Data Transfers</h2>
+                  <p>Data may be processed on secure servers located outside your home country with standard protective safeguards.</p>
                 </section>
 
-                <section id="contact" className="scroll-mt-28">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">15. Contact</h2>
-                  <p>For questions about this Privacy Policy or to make a privacy request, contact:</p>
-                  <p className="mt-4 font-bold text-gray-900 dark:text-white">Flysava<br/>Email: <a href="mailto:contact@flysava.com" className="text-blue-600 dark:text-blue-400 hover:underline">contact@flysava.com</a></p>
+                <section id="children" className="scroll-mt-28 space-y-3 pt-6 border-t border-slate-100">
+                  <h2 className="text-xl font-black text-slate-900 tracking-tight">12. Children's Privacy</h2>
+                  <p>Flysava is not intended for children under 13. We do not knowingly collect personal data from minors.</p>
                 </section>
-                
+
+                <section id="external" className="scroll-mt-28 space-y-3 pt-6 border-t border-slate-100">
+                  <h2 className="text-xl font-black text-slate-900 tracking-tight">13. External Links</h2>
+                  <p>We are not responsible for the privacy practices or content of third-party external sites linked from our platform.</p>
+                </section>
+
+                <section id="updates" className="scroll-mt-28 space-y-3 pt-6 border-t border-slate-100">
+                  <h2 className="text-xl font-black text-slate-900 tracking-tight">14. Updates to This Privacy Policy</h2>
+                  <p>This policy may be updated periodically. Your continued use of the site constitutes acceptance of updated terms.</p>
+                </section>
+
+                <section id="contact" className="scroll-mt-28 space-y-3 pt-6 border-t border-slate-100">
+                  <h2 className="text-xl font-black text-slate-900 tracking-tight">15. Contact Us</h2>
+                  <p>For questions or privacy requests, reach out to:</p>
+                  <div className="p-4 rounded-2xl bg-blue-50/70 border border-blue-200/60 font-bold text-slate-900 text-xs">
+                    Flysava Privacy Desk <br />
+                    Email: <a href="mailto:contact@flysava.com" className="text-blue-600 hover:underline">contact@flysava.com</a>
+                  </div>
+                </section>
+
               </div>
 
-              {/* Bottom Contact CTA */}
-              <div className="mt-12 bg-purple-600 rounded-3xl p-8 md:p-12 text-center shadow-xl shadow-purple-500/20">
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Questions about this policy?</h2>
-                <p className="text-purple-100 mb-8 text-lg">Contact us at: <a href="mailto:contact@flysava.com" className="font-bold underline hover:text-white">contact@flysava.com</a></p>
+              {/* Bottom Support CTA Box */}
+              <div className="bg-white rounded-[2.5rem] p-8 sm:p-10 text-center border border-blue-200/80 shadow-xl shadow-blue-600/5 space-y-4">
+                <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto border border-blue-100">
+                  <Mail className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-black text-slate-900 tracking-tight">Have Questions About This Policy?</h3>
+                <p className="text-xs text-slate-600 max-w-md mx-auto">Contact our privacy team anytime at contact@flysava.com</p>
                 <button 
+                  type="button"
                   onClick={() => navigate('/contact')}
-                  className="inline-flex items-center px-8 py-4 bg-white text-purple-600 font-bold rounded-xl hover:bg-gray-50 transition-colors shadow-lg"
+                  className="inline-flex items-center px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-black text-xs rounded-2xl transition-all shadow-md shadow-blue-600/25 cursor-pointer active:scale-95"
                 >
-                  Contact Support <ArrowRight className="w-5 h-5 ml-2" />
+                  Contact Support <ArrowRight className="w-4 h-4 ml-2" />
                 </button>
               </div>
 
             </div>
+
           </div>
-        </div>
+        </main>
+
       </div>
     </>
   );

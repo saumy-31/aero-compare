@@ -1,7 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Plane, Clock, AlertCircle, Terminal, DoorOpen } from 'lucide-react';
+import { Search, Plane, Clock, AlertCircle, Terminal, DoorOpen, Sparkles, ArrowRight } from 'lucide-react';
 import { SEO } from '../components/seo/SEO';
+
+// Explicit ambient declarations for VS Code editor
+declare const window: any;
+declare const fetch: any;
 
 // --- Strict TypeScript Interfaces ---
 interface AirportInfo {
@@ -26,8 +30,6 @@ export const FlightStatus = () => {
   const [flightData, setFlightData] = useState<FlightData | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-
-  const inputRef = useRef<HTMLInputElement>(null);
 
   // --- SEO JSON-LD Structured Data ---
   const statusJsonLd = {
@@ -60,8 +62,9 @@ export const FlightStatus = () => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    inputRef.current?.focus();
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+    }
   }, []);
 
   const handleSearch = async (e: React.FormEvent) => {
@@ -71,7 +74,7 @@ export const FlightStatus = () => {
 
     setIsLoading(true);
     setError(null);
-    setFlightData(null); // Clear old results
+    setFlightData(null);
 
     try {
       const response = await fetch(`/api/flight-status?flight=${encodeURIComponent(sanitized)}`);
@@ -93,7 +96,7 @@ export const FlightStatus = () => {
     }
   };
 
-  // Date Formatting: "6 July 2026"
+  // Date Formatting: "6 August 2026"
   const formatDate = (isoString: string) => {
     if (!isoString) return 'Not announced';
     const date = new Date(isoString);
@@ -107,36 +110,41 @@ export const FlightStatus = () => {
     return new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }).format(date);
   };
 
-  // Status Badge Colors
+  // Status Badge Colors (Minimal Light Theme)
   const getStatusConfig = (status: string) => {
     switch (status?.toLowerCase()) {
-      case 'active': return { label: 'Active', color: 'bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-400 border-green-200 dark:border-green-500/30' };
-      case 'scheduled': return { label: 'Scheduled', color: 'bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-400 border-blue-200 dark:border-blue-500/30' };
-      case 'delayed': return { label: 'Delayed', color: 'bg-orange-100 text-orange-700 dark:bg-orange-500/20 dark:text-orange-400 border-orange-200 dark:border-orange-500/30' };
-      case 'cancelled': return { label: 'Cancelled', color: 'bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-400 border-red-200 dark:border-red-500/30' };
-      case 'landed': return { label: 'Landed', color: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/30' };
-      default: return { label: status || 'Unknown', color: 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300 border-gray-200 dark:border-gray-700' };
+      case 'active': return { label: 'Active', color: 'bg-emerald-50 text-emerald-700 border-emerald-200/80' };
+      case 'scheduled': return { label: 'Scheduled', color: 'bg-blue-50 text-blue-700 border-blue-200/80' };
+      case 'delayed': return { label: 'Delayed', color: 'bg-amber-50 text-amber-700 border-amber-200/80' };
+      case 'cancelled': return { label: 'Cancelled', color: 'bg-rose-50 text-rose-700 border-rose-200/80' };
+      case 'landed': return { label: 'Landed', color: 'bg-teal-50 text-teal-700 border-teal-200/80' };
+      default: return { label: status || 'Unknown', color: 'bg-slate-100 text-slate-700 border-slate-200' };
     }
   };
 
   const SkeletonLoader = () => (
-    <div className="bg-white dark:bg-[#0c1a33] rounded-[2.5rem] border border-gray-200 dark:border-white/10 shadow-2xl p-6 md:p-10 w-full animate-pulse">
-      <div className="flex justify-between items-center border-b border-gray-100 dark:border-white/5 pb-6 mb-6">
+    <div className="bg-white rounded-[24px] border border-[#E5E7EB] shadow-2xs p-6 md:p-10 w-full animate-pulse space-y-8">
+      <div className="flex justify-between items-center border-b border-[#E5E7EB] pb-6">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 bg-gray-200 dark:bg-slate-800 rounded-full" />
-          <div className="w-32 h-6 bg-gray-200 dark:bg-slate-800 rounded-lg" />
+          <div className="w-12 h-12 bg-slate-100 rounded-2xl" />
+          <div className="space-y-2">
+            <div className="w-20 h-3 bg-slate-100 rounded-md" />
+            <div className="w-32 h-6 bg-slate-100 rounded-lg" />
+          </div>
         </div>
-        <div className="w-24 h-8 bg-gray-200 dark:bg-slate-800 rounded-full" />
+        <div className="w-24 h-7 bg-slate-100 rounded-full" />
       </div>
-      <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="w-full md:w-1/3 space-y-3">
-          <div className="w-16 h-4 bg-gray-200 dark:bg-slate-800 rounded-lg" />
-          <div className="w-24 h-10 bg-gray-200 dark:bg-slate-800 rounded-lg" />
+          <div className="w-16 h-3 bg-slate-100 rounded-md" />
+          <div className="w-24 h-10 bg-slate-100 rounded-lg" />
+          <div className="w-40 h-4 bg-slate-100 rounded-md" />
         </div>
-        <div className="hidden md:block w-1/3 h-0.5 bg-gray-200 dark:bg-slate-800" />
+        <div className="hidden md:block w-1/3 h-0.5 bg-slate-100" />
         <div className="w-full md:w-1/3 space-y-3 md:text-right flex flex-col md:items-end">
-          <div className="w-16 h-4 bg-gray-200 dark:bg-slate-800 rounded-lg" />
-          <div className="w-24 h-10 bg-gray-200 dark:bg-slate-800 rounded-lg" />
+          <div className="w-16 h-3 bg-slate-100 rounded-md" />
+          <div className="w-24 h-10 bg-slate-100 rounded-lg" />
+          <div className="w-40 h-4 bg-slate-100 rounded-md" />
         </div>
       </div>
     </div>
@@ -151,152 +159,178 @@ export const FlightStatus = () => {
         jsonLd={statusJsonLd}
       />
 
-      <div className="min-h-screen bg-gray-50 dark:bg-[#071226] pt-24 pb-16 transition-colors duration-300">
-        <div className="container mx-auto px-4 max-w-4xl">
+      <div className="min-h-screen bg-[#F8FAFC] text-[#111827] font-sans pt-20 sm:pt-24 pb-20 relative overflow-hidden selection:bg-blue-100 selection:text-blue-900">
+        
+        {/* Soft Ambient Radial Light Accent */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-gradient-to-b from-blue-100/50 via-indigo-50/20 to-transparent blur-3xl pointer-events-none -z-10" />
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
           
-          {/* Header & Search */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-6 tracking-tight">
+          {/* Header & Search Bar Section */}
+          <div className="text-center max-w-2xl mx-auto space-y-3 mb-10">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[11px] font-black uppercase tracking-widest bg-blue-50 text-[#2563EB] border border-blue-200/60 shadow-2xs">
+              <Sparkles className="w-3.5 h-3.5" /> Real-Time Telemetry
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-[1.1] text-slate-900">
               Live Flight Tracker
             </h1>
-            <p className="text-gray-500 dark:text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-              Track real-time flight status, departure and arrival times, and terminal information.
+
+            <p className="text-xs sm:text-sm text-slate-500 font-normal leading-relaxed max-w-md mx-auto">
+              Track live departure and arrival times, gate updates, terminal changes, and flight status worldwide.
             </p>
 
-            <form onSubmit={handleSearch} className="max-w-xl mx-auto relative flex shadow-2xl rounded-2xl group focus-within:ring-4 focus-within:ring-blue-500/20 transition-all">
-              <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                <Search className="h-6 w-6 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+            {/* Input Form Card */}
+            <form 
+              onSubmit={handleSearch} 
+              className="pt-4 max-w-lg mx-auto"
+            >
+              <div className="relative flex items-center bg-white border border-[#E5E7EB] rounded-2xl p-2 shadow-[0_20px_60px_rgba(0,0,0,0.06)] focus-within:border-[#2563EB] focus-within:ring-4 focus-within:ring-blue-500/10 transition-all duration-200">
+                <Search className="h-5 w-5 text-slate-400 ml-3 flex-shrink-0" />
+                <input
+                  type="text"
+                  value={flightNumber}
+                  onChange={(e: any) => setFlightNumber(e.target.value.toUpperCase())}
+                  placeholder="Enter flight number (e.g. AI101)"
+                  className="w-full bg-transparent px-3 py-2 text-slate-900 placeholder-slate-400 outline-none text-sm sm:text-base font-bold tracking-wider"
+                  disabled={isLoading}
+                />
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="px-6 py-3 bg-[#2563EB] hover:bg-blue-700 active:bg-blue-800 text-white font-black rounded-xl transition-all shadow-md shadow-blue-600/20 text-xs sm:text-sm cursor-pointer whitespace-nowrap flex-shrink-0 active:scale-95"
+                >
+                  {isLoading ? 'Searching...' : 'Search Flight'}
+                </button>
               </div>
-              <input
-                ref={inputRef}
-                type="text"
-                value={flightNumber}
-                onChange={(e) => setFlightNumber(e.target.value.toUpperCase())}
-                placeholder="e.g. AI101"
-                className="block w-full pl-14 pr-32 py-5 bg-white dark:bg-[#0c1a33] border border-gray-200 dark:border-white/10 rounded-2xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 text-lg font-black tracking-widest transition-all"
-                disabled={isLoading}
-              />
-              <button
-                type="submit"
-                disabled={isLoading || !flightNumber.trim()}
-                className="absolute right-2 top-2 bottom-2 px-8 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-colors disabled:opacity-50 flex items-center shadow-md"
-              >
-                Search
-              </button>
             </form>
           </div>
 
-          {/* Results Area */}
+          {/* Results Display Area */}
           <div className="max-w-3xl mx-auto">
             <AnimatePresence mode="wait">
               
+              {/* Error Alert */}
               {error && (
                 <motion.div
                   key="error"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  className="mb-8 bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/30 text-red-600 dark:text-red-400 p-5 rounded-2xl flex items-center gap-4 font-medium shadow-sm"
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  className="mb-8 bg-rose-50 border border-rose-200/80 text-rose-700 p-5 rounded-2xl flex items-center gap-3 text-xs sm:text-sm font-semibold shadow-2xs"
                 >
-                  <AlertCircle className="w-6 h-6 flex-shrink-0" />
+                  <AlertCircle className="w-5 h-5 text-rose-600 flex-shrink-0" />
                   <p>{error}</p>
                 </motion.div>
               )}
 
+              {/* Skeleton Loader */}
               {isLoading && (
                 <motion.div key="skeleton" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                   <SkeletonLoader />
                 </motion.div>
               )}
 
+              {/* Flight Result Card */}
               {flightData && !isLoading && !error && (
                 <motion.div
                   key="result"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-white dark:bg-[#0c1a33] rounded-[2.5rem] border border-gray-200 dark:border-white/10 shadow-2xl overflow-hidden"
+                  className="bg-white rounded-[24px] border border-[#E5E7EB] shadow-[0_20px_60px_rgba(0,0,0,0.06)] overflow-hidden"
                 >
-                  {/* Header Row */}
-                  <div className="bg-gray-50/50 dark:bg-slate-900/30 px-8 py-6 border-b border-gray-100 dark:border-white/5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                  {/* Flight Header Row */}
+                  <div className="bg-slate-50/60 px-6 sm:px-8 py-5 border-b border-[#E5E7EB] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center text-white font-black text-xl shadow-inner border-2 border-white/20">
-                        {flightData.airline?.name?.charAt(0) || <Plane className="w-6 h-6" />}
+                      <div className="w-11 h-11 rounded-2xl bg-[#2563EB] text-white flex items-center justify-center font-black text-base shadow-md shadow-blue-600/20">
+                        {flightData.airline?.name?.charAt(0) || <Plane className="w-5 h-5 transform -rotate-45" />}
                       </div>
                       <div>
-                        <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">{flightData.airline?.name || 'Unknown Airline'}</p>
-                        <h2 className="text-3xl font-black text-gray-900 dark:text-white tracking-tight">{flightData.flight?.iata || flightNumber}</h2>
+                        <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">{flightData.airline?.name || 'Unknown Airline'}</p>
+                        <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">{flightData.flight?.iata || flightNumber}</h2>
                       </div>
                     </div>
                     
-                    <div className={`px-4 py-2 rounded-full border text-sm font-black uppercase tracking-wider shadow-sm flex items-center ${getStatusConfig(flightData.flight_status).color}`}>
-                      <span className="w-2 h-2 rounded-full bg-current mr-2 animate-pulse" />
+                    <div className={`px-3.5 py-1 rounded-full border text-[11px] font-black uppercase tracking-wider shadow-2xs flex items-center ${getStatusConfig(flightData.flight_status).color}`}>
+                      <span className="w-1.5 h-1.5 rounded-full bg-current mr-2 animate-pulse" />
                       {getStatusConfig(flightData.flight_status).label}
                     </div>
                   </div>
 
                   {/* Main Flight Path Section */}
-                  <div className="p-8 md:p-12 relative flex flex-col md:flex-row justify-between items-center gap-8">
+                  <div className="p-6 sm:p-10 relative flex flex-col md:flex-row justify-between items-center gap-8">
                     
-                    {/* Departure */}
-                    <div className="w-full md:w-1/3 text-center md:text-left z-10">
-                      <p className="text-sm font-bold text-blue-500 mb-2 uppercase tracking-widest">Departure</p>
-                      <h3 className="text-5xl font-black text-gray-900 dark:text-white mb-2">{flightData.departure?.iata || '--'}</h3>
-                      <p className="text-gray-500 dark:text-gray-400 font-medium mb-4">{flightData.departure?.airport || 'Unknown Airport'}</p>
-                      <div className="inline-block bg-gray-50 dark:bg-[#071226] border border-gray-100 dark:border-white/5 rounded-xl px-4 py-2 text-left w-full md:w-auto">
-                        <span className="flex items-center text-xs font-bold text-gray-400 uppercase"><Clock className="w-3 h-3 mr-1"/> Scheduled</span>
-                        <span className="block text-xl font-black text-gray-900 dark:text-white">{formatTime(flightData.departure?.scheduled)}</span>
-                        <span className="block text-xs text-gray-500 dark:text-gray-400 mt-1">{formatDate(flightData.departure?.scheduled)}</span>
+                    {/* Departure Node */}
+                    <div className="w-full md:w-1/3 text-center md:text-left z-10 space-y-1">
+                      <span className="text-[10px] font-extrabold text-[#2563EB] uppercase tracking-widest block">Departure</span>
+                      <h3 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">{flightData.departure?.iata || '--'}</h3>
+                      <p className="text-slate-500 font-medium text-xs leading-snug line-clamp-1">{flightData.departure?.airport || 'Unknown Airport'}</p>
+                      
+                      <div className="pt-3">
+                        <div className="inline-block bg-slate-50 border border-[#E5E7EB] rounded-xl px-4 py-2.5 text-left w-full sm:w-auto">
+                          <span className="flex items-center text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">
+                            <Clock className="w-3 h-3 mr-1 text-slate-400" /> Scheduled
+                          </span>
+                          <span className="block text-base font-black text-slate-900">{formatTime(flightData.departure?.scheduled)}</span>
+                          <span className="block text-[11px] text-slate-500 mt-0.5">{formatDate(flightData.departure?.scheduled)}</span>
+                        </div>
                       </div>
                     </div>
 
-                    {/* Connectors */}
-                    <div className="hidden md:flex w-1/3 relative items-center justify-center px-4">
-                      <div className="absolute w-full h-0.5 border-t-2 border-dashed border-gray-200 dark:border-gray-700" />
-                      <div className="relative z-10 bg-white dark:bg-[#0c1a33] px-2 text-blue-500">
-                        <Plane className="w-8 h-8 rotate-90" />
+                    {/* Flight Path Connector */}
+                    <div className="hidden md:flex w-1/3 relative items-center justify-center px-2">
+                      <div className="absolute w-full h-[1px] border-t border-dashed border-slate-300" />
+                      <div className="relative z-10 bg-white p-2 rounded-full border border-[#E5E7EB] shadow-2xs text-[#2563EB]">
+                        <Plane className="w-4 h-4 rotate-90" />
                       </div>
                     </div>
-                    <div className="md:hidden flex flex-col items-center justify-center py-4 text-gray-300 dark:text-gray-700">
-                      <div className="h-8 border-l-2 border-dashed border-current mb-2" />
-                      <Plane className="w-6 h-6 text-blue-500 rotate-180" />
-                      <div className="h-8 border-l-2 border-dashed border-current mt-2" />
+                    
+                    <div className="md:hidden flex flex-col items-center justify-center py-1 text-slate-300">
+                      <div className="h-4 border-l border-dashed border-slate-300 mb-1" />
+                      <Plane className="w-4 h-4 text-[#2563EB] rotate-180" />
+                      <div className="h-4 border-l border-dashed border-slate-300 mt-1" />
                     </div>
 
-                    {/* Arrival */}
-                    <div className="w-full md:w-1/3 text-center md:text-right z-10">
-                      <p className="text-sm font-bold text-blue-500 mb-2 uppercase tracking-widest">Arrival</p>
-                      <h3 className="text-5xl font-black text-gray-900 dark:text-white mb-2">{flightData.arrival?.iata || '--'}</h3>
-                      <p className="text-gray-500 dark:text-gray-400 font-medium mb-4">{flightData.arrival?.airport || 'Unknown Airport'}</p>
-                      <div className="inline-block bg-gray-50 dark:bg-[#071226] border border-gray-100 dark:border-white/5 rounded-xl px-4 py-2 text-left md:text-right w-full md:w-auto">
-                        <span className="flex items-center md:justify-end text-xs font-bold text-gray-400 uppercase"><Clock className="w-3 h-3 mr-1"/> Estimated</span>
-                        <span className="block text-xl font-black text-gray-900 dark:text-white">{formatTime(flightData.arrival?.estimated || flightData.arrival?.scheduled)}</span>
-                        <span className="block text-xs text-gray-500 dark:text-gray-400 mt-1">{formatDate(flightData.arrival?.estimated || flightData.arrival?.scheduled)}</span>
+                    {/* Arrival Node */}
+                    <div className="w-full md:w-1/3 text-center md:text-right z-10 space-y-1">
+                      <span className="text-[10px] font-extrabold text-[#2563EB] uppercase tracking-widest block">Arrival</span>
+                      <h3 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">{flightData.arrival?.iata || '--'}</h3>
+                      <p className="text-slate-500 font-medium text-xs leading-snug line-clamp-1">{flightData.arrival?.airport || 'Unknown Airport'}</p>
+                      
+                      <div className="pt-3">
+                        <div className="inline-block bg-slate-50 border border-[#E5E7EB] rounded-xl px-4 py-2.5 text-left md:text-right w-full sm:w-auto">
+                          <span className="flex items-center md:justify-end text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">
+                            <Clock className="w-3 h-3 mr-1 text-slate-400" /> Estimated
+                          </span>
+                          <span className="block text-base font-black text-slate-900">{formatTime(flightData.arrival?.estimated || flightData.arrival?.scheduled)}</span>
+                          <span className="block text-[11px] text-slate-500 mt-0.5">{formatDate(flightData.arrival?.estimated || flightData.arrival?.scheduled)}</span>
+                        </div>
                       </div>
                     </div>
 
                   </div>
 
-                  {/* Terminals and Gates */}
-                  <div className="bg-blue-50/50 dark:bg-blue-900/10 border-t border-blue-100 dark:border-white/5 grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-blue-100 dark:divide-white/5">
-                    <div className="p-6 flex flex-col items-center justify-center text-center hover:bg-white dark:hover:bg-slate-800/50 transition-colors">
-                      <Terminal className="w-5 h-5 text-gray-400 mb-2" />
-                      <span className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">Dep Terminal</span>
-                      <span className="text-lg font-black text-gray-900 dark:text-white">{flightData.departure?.terminal || 'Not announced'}</span>
+                  {/* Terminals & Gates Grid */}
+                  <div className="bg-slate-50/70 border-t border-[#E5E7EB] grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-[#E5E7EB]">
+                    <div className="p-4 flex flex-col items-center justify-center text-center hover:bg-white transition-colors">
+                      <Terminal className="w-4 h-4 text-slate-400 mb-1" />
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">Dep Terminal</span>
+                      <span className="text-sm font-black text-slate-900">{flightData.departure?.terminal || 'Not announced'}</span>
                     </div>
-                    <div className="p-6 flex flex-col items-center justify-center text-center hover:bg-white dark:hover:bg-slate-800/50 transition-colors">
-                      <DoorOpen className="w-5 h-5 text-gray-400 mb-2" />
-                      <span className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">Dep Gate</span>
-                      <span className="text-lg font-black text-gray-900 dark:text-white">{flightData.departure?.gate || 'Not announced'}</span>
+                    <div className="p-4 flex flex-col items-center justify-center text-center hover:bg-white transition-colors">
+                      <DoorOpen className="w-4 h-4 text-slate-400 mb-1" />
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">Dep Gate</span>
+                      <span className="text-sm font-black text-slate-900">{flightData.departure?.gate || 'Not announced'}</span>
                     </div>
-                    <div className="p-6 flex flex-col items-center justify-center text-center hover:bg-white dark:hover:bg-slate-800/50 transition-colors">
-                      <Terminal className="w-5 h-5 text-gray-400 mb-2" />
-                      <span className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">Arr Terminal</span>
-                      <span className="text-lg font-black text-gray-900 dark:text-white">{flightData.arrival?.terminal || 'Not announced'}</span>
+                    <div className="p-4 flex flex-col items-center justify-center text-center hover:bg-white transition-colors">
+                      <Terminal className="w-4 h-4 text-slate-400 mb-1" />
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">Arr Terminal</span>
+                      <span className="text-sm font-black text-slate-900">{flightData.arrival?.terminal || 'Not announced'}</span>
                     </div>
-                    <div className="p-6 flex flex-col items-center justify-center text-center hover:bg-white dark:hover:bg-slate-800/50 transition-colors">
-                      <DoorOpen className="w-5 h-5 text-gray-400 mb-2" />
-                      <span className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">Arr Gate</span>
-                      <span className="text-lg font-black text-gray-900 dark:text-white">{flightData.arrival?.gate || 'Not announced'}</span>
+                    <div className="p-4 flex flex-col items-center justify-center text-center hover:bg-white transition-colors">
+                      <DoorOpen className="w-4 h-4 text-slate-400 mb-1" />
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">Arr Gate</span>
+                      <span className="text-sm font-black text-slate-900">{flightData.arrival?.gate || 'Not announced'}</span>
                     </div>
                   </div>
 
@@ -305,10 +339,10 @@ export const FlightStatus = () => {
             </AnimatePresence>
           </div>
 
-          {/* Disclaimer */}
-          <div className="mt-16 text-center border-t border-gray-200 dark:border-white/5 pt-8">
-            <p className="text-xs text-gray-400 dark:text-gray-500 font-medium leading-relaxed max-w-xl mx-auto">
-              Flight data is provided by third-party sources and may change. Please confirm final details directly with the airline or airport prior to your departure.
+          {/* Footer Disclaimer */}
+          <div className="mt-12 text-center border-t border-[#E5E7EB] pt-6">
+            <p className="text-[11px] text-slate-400 font-normal leading-relaxed max-w-lg mx-auto">
+              Flight data is provided by third-party aviation telemetry systems and may change rapidly. Please verify final gate assignments directly with your airline prior to departure.
             </p>
           </div>
 
