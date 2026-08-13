@@ -101,18 +101,18 @@ export const Navbar: React.FC = () => {
               </button>
 
               <a 
-                href="/" 
-                onClick={handleHomeClick} 
-                className="inline-flex items-center gap-2 group outline-none cursor-pointer"
-              >
-                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#2563EB] text-white flex items-center justify-center shadow-md shadow-blue-600/20 group-hover:scale-105 transition-transform duration-200">
-                  <Plane className="w-4 h-4 sm:w-5 sm:h-5" />
-                </div>
+  href="/" 
+  onClick={handleHomeClick} 
+  className="inline-flex items-center gap-2.5 group outline-none cursor-pointer"
+>
+  <div className="w-9 h-9 rounded-xl bg-[#2563EB] text-white flex items-center justify-center shadow-md shadow-blue-600/20 group-hover:scale-105 transition-transform duration-200">
+    <Plane className="w-5 h-5" />
+  </div>
 
-                <span className="text-lg sm:text-xl font-bold tracking-tight text-slate-900">
-                  Fly<span className="text-[#2563EB]">Sava</span>
-                </span>
-              </a>
+  <span className="text-xl font-bold tracking-tight text-slate-900">
+    Fly<span className="text-[#2563EB]">Sava</span>
+  </span>
+</a>
             </div>
 
             {/* CENTER: DESKTOP NAVIGATION PILL */}
