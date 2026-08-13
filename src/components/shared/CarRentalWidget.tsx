@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ShieldCheck } from 'lucide-react';
 
 const WIDGET_SRC =
@@ -11,15 +11,41 @@ const AutoEuropeLogo = () => (
     src="/auto-europe-logo.png"
     alt="Auto Europe logo" 
     title="Auto Europe"
+    loading="lazy"
+    decoding="async"
+    width="100"
+    height="20"
   />
 );
 
 export const CarRentalWidget: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isRendered = useRef<boolean>(false);
+  const [isVisible, setIsVisible] = useState(false);
 
+  // 1. Intersection Observer to defer script loading until visible
   useEffect(() => {
-    // Inject CSS height constraints for the widget iframe to prevent production clipping
+    const target = containerRef.current;
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
+
+  // 2. Inject CSS height constraints and Widget Script
+  useEffect(() => {
+    if (!isVisible) return;
+
     const styleId = 'car-widget-iframe-height-fix';
     let styleTag = document.getElementById(styleId) as HTMLStyleElement | null;
 
@@ -31,14 +57,14 @@ export const CarRentalWidget: React.FC = () => {
 
     styleTag.innerHTML = `
       #tpwl-car-widget-container {
-        min-height: 180px !important;
+        min-height: 220px !important;
         width: 100% !important;
         overflow: visible !important;
         display: block !important;
       }
       #tpwl-car-widget-container iframe {
         width: 100% !important;
-        min-height: 160px !important;
+        min-height: 200px !important;
         height: auto !important;
         border: none !important;
         overflow: visible !important;
@@ -46,10 +72,10 @@ export const CarRentalWidget: React.FC = () => {
       }
       @media (max-width: 640px) {
         #tpwl-car-widget-container {
-          min-height: 360px !important;
+          min-height: 380px !important;
         }
         #tpwl-car-widget-container iframe {
-          min-height: 340px !important;
+          min-height: 360px !important;
         }
       }
     `;
@@ -75,7 +101,7 @@ export const CarRentalWidget: React.FC = () => {
       }
       isRendered.current = false;
     };
-  }, []);
+  }, [isVisible]);
 
   return (
     <div className="w-full space-y-3.5 bg-transparent border-0 shadow-none overflow-visible">
@@ -83,8 +109,14 @@ export const CarRentalWidget: React.FC = () => {
       <div 
         id="tpwl-car-widget-container"
         ref={containerRef}
-        className="w-full min-h-[180px] sm:min-h-[160px] flex items-center justify-center bg-transparent p-0 border-0 shadow-none overflow-visible"
-      />
+        className="w-full min-h-[220px] sm:min-h-[200px] flex items-center justify-center bg-transparent p-0 border-0 shadow-none overflow-visible"
+      >
+        {!isVisible && (
+          <div className="w-full h-48 bg-slate-100/60 rounded-2xl animate-pulse flex items-center justify-center text-slate-400 text-xs font-semibold">
+            Loading Car Search Engine...
+          </div>
+        )}
+      </div>
 
       {/* ATTRIBUTION STRIP */}
       <div className="flex items-center justify-between px-1 text-xs text-slate-400 border-t border-slate-100 pt-3">

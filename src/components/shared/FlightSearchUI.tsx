@@ -1,8 +1,5 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, lazy, Suspense } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
-import { HotelSearchWidget } from './HotelSearchWidget';
-import { CarRentalWidget } from './CarRentalWidget';
-import { EsimWidget } from './EsimWidget';
 import { getWhiteLabelIdByHostname } from '../../config/regions';
 import { MOCK_BLOG_POSTS } from '../../data/mockBlogPosts';
 import { SEO } from '../seo/SEO';
@@ -14,10 +11,13 @@ import {
   Users, Briefcase, CheckCircle2, Clock
 } from 'lucide-react';
 
+// Code-split widget components to reduce initial JS payload
+const HotelSearchWidget = lazy(() => import('./HotelSearchWidget').then(m => ({ default: m.HotelSearchWidget })));
+const CarRentalWidget = lazy(() => import('./CarRentalWidget').then(m => ({ default: m.CarRentalWidget })));
+const EsimWidget = lazy(() => import('./EsimWidget').then(m => ({ default: m.EsimWidget })));
+
 declare const window: any;
 declare const document: any;
-declare const setTimeout: (callback: () => void, ms?: number) => any;
-declare const clearTimeout: (timeoutId: any) => void;
 
 interface FAQItem {
   question: string;
@@ -48,7 +48,7 @@ const flightFaqs: FAQItem[] = [
   }
 ];
 
-// Hotel FAQs with Clickable Manage Booking Link
+// Hotel FAQs
 const hotelFaqs: FAQItem[] = [
   {
     question: "How do I search hotel rates on FlySava?",
@@ -137,6 +137,13 @@ const esimFaqs: FAQItem[] = [
   }
 ];
 
+// Widget Loading Placeholder Skeleton
+const WidgetSkeleton = () => (
+  <div className="w-full h-32 bg-slate-100/70 rounded-2xl animate-pulse flex items-center justify-center text-slate-400 text-xs font-semibold">
+    Loading search options...
+  </div>
+);
+
 export const FlightSearchUI: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -163,7 +170,7 @@ export const FlightSearchUI: React.FC = () => {
     setSelectedTrustIndex(null);
   }, [activeTabFromUrl]);
 
-  // Unique SEO metadata per tab
+  // Dynamic SEO Metadata
   const currentServiceSeo = useMemo(() => {
     switch (activeTab) {
       case 'hotels':
@@ -257,25 +264,25 @@ export const FlightSearchUI: React.FC = () => {
       flights: {
         headlinePrefix: 'Compare flight deals from ',
         headlineHighlight: '100s of sites.',
-        topImage: 'https://images.pexels.com/photos/13342472/pexels-photo-13342472.jpeg',
+        topImage: 'https://images.pexels.com/photos/13342472/pexels-photo-13342472.jpeg?auto=format&fit=crop&w=600&q=75',
         topImageTag: 'TOP DEALS TODAY',
       },
       hotels: {
         headlinePrefix: 'Explore 2M+ hotel deals from ',
         headlineHighlight: 'top stays.',
-        topImage: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=800&auto=format&fit=crop',
+        topImage: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=75&w=600&auto=format&fit=crop',
         topImageTag: 'LUXURY RESORTS',
       },
       cars: {
         headlinePrefix: 'Search rental cars from ',
         headlineHighlight: 'leading suppliers.',
-        topImage: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop',
+        topImage: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=75&w=600&auto=format&fit=crop',
         topImageTag: 'HERTZ • AVIS • SIXT',
       },
       esim: {
         headlinePrefix: 'Instant travel eSIM data in ',
         headlineHighlight: '200+ countries.',
-        topImage: 'https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=80&w=800&auto=format&fit=crop',
+        topImage: 'https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=75&w=600&auto=format&fit=crop',
         topImageTag: 'INSTANT ACTIVATION',
       },
     }),
@@ -318,28 +325,28 @@ export const FlightSearchUI: React.FC = () => {
         city: 'Paris', 
         country: 'France', 
         priceUsd: '$160', 
-        image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&auto=format&fit=crop' 
+        image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&auto=format&fit=crop&q=75' 
       },
       { 
         id: 'tokyo', 
         city: 'Tokyo', 
         country: 'Japan', 
         priceUsd: '$150', 
-        image: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=1200&auto=format&fit=crop' 
+        image: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=600&auto=format&fit=crop&q=75' 
       },
       { 
         id: 'dubai', 
         city: 'Dubai', 
         country: 'UAE', 
         priceUsd: '$250', 
-        image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&auto=format&fit=crop' 
+        image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&auto=format&fit=crop&q=75' 
       },
       { 
         id: 'bali', 
         city: 'Bali', 
         country: 'Indonesia', 
         priceUsd: '$65', 
-        image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1200&auto=format&fit=crop' 
+        image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&auto=format&fit=crop&q=75' 
       },
     ];
   }, []);
@@ -351,45 +358,45 @@ export const FlightSearchUI: React.FC = () => {
         city: 'Maldives',
         country: 'Indian Ocean',
         description: 'Beach resorts & private villas',
-        image: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1200&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&auto=format&fit=crop&q=75',
       },
       {
         id: 'santorini',
         city: 'Santorini',
         country: 'Greece',
         description: 'Luxury stays & sunset views',
-        image: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1200&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&auto=format&fit=crop&q=75',
       },
       {
         id: 'singapore',
         city: 'Singapore',
         country: 'Southeast Asia',
         description: 'Premium city hotels',
-        image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1200&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&auto=format&fit=crop&q=75',
       },
       {
         id: 'swiss-alps-ch',
         city: 'Swiss Alps',
         country: 'Switzerland',
         description: 'Mountain resorts & scenic escapes',
-        image: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=1200&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=600&auto=format&fit=crop&q=75',
       },
     ];
   }, []);
 
   const vehicleCategories = [
-    { title: 'Economy', description: 'Best for city trips and fuel savings', icon: Car, badge: 'Best Value', highlight: 'Easy Parking', image: 'https://images.unsplash.com/photo-1590362891991-f776e747a588?w=800&auto=format&fit=crop' },
-    { title: 'SUV', description: 'More space for passengers and luggage', icon: Users, badge: 'Family Choice', highlight: 'Extra Legroom', image: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800&auto=format&fit=crop' },
-    { title: 'Luxury', description: 'Premium sedans and high-end rides', icon: Sparkles, badge: 'First Class', highlight: 'Top Comfort', image: 'https://images.unsplash.com/photo-1563720360172-67b8f3dce741?w=800&auto=format&fit=crop' },
-    { title: 'Van / Minivan', description: 'Ideal for groups and heavy baggage', icon: Briefcase, badge: 'Group Travel', highlight: '7+ Seaters', image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop' },
+    { title: 'Economy', description: 'Best for city trips and fuel savings', icon: Car, badge: 'Best Value', highlight: 'Easy Parking', image: 'https://images.unsplash.com/photo-1590362891991-f776e747a588?w=600&auto=format&fit=crop&q=75' },
+    { title: 'SUV', description: 'More space for passengers and luggage', icon: Users, badge: 'Family Choice', highlight: 'Extra Legroom', image: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&auto=format&fit=crop&q=75' },
+    { title: 'Luxury', description: 'Premium sedans and high-end rides', icon: Sparkles, badge: 'First Class', highlight: 'Top Comfort', image: 'https://images.unsplash.com/photo-1563720360172-67b8f3dce741?w=600&auto=format&fit=crop&q=75' },
+    { title: 'Van / Minivan', description: 'Ideal for groups and heavy baggage', icon: Briefcase, badge: 'Group Travel', highlight: '7+ Seaters', image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&auto=format&fit=crop&q=75' },
   ];
 
   const carDestinations = useMemo(() => {
     return [
-      { id: 'miami-us', city: 'Miami', country: 'Florida, USA', description: 'Coastal drives & city escapes', image: 'https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?auto=format&fit=crop&w=1600&q=80' },
-      { id: 'los-angeles-us', city: 'Los Angeles', country: 'California, USA', description: 'Road trips & California adventures', image: 'https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?auto=format&fit=crop&w=1600&q=80' },
-      { id: 'dubai', city: 'Dubai', country: 'UAE', description: 'Premium cars & desert drives', image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&auto=format&fit=crop' },
-      { id: 'rome', city: 'Rome', country: 'Italy', description: 'Scenic drives & Italian getaways', image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&auto=format&fit=crop' },
+      { id: 'miami-us', city: 'Miami', country: 'Florida, USA', description: 'Coastal drives & city escapes', image: 'https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?auto=format&fit=crop&w=600&q=75' },
+      { id: 'los-angeles-us', city: 'Los Angeles', country: 'California, USA', description: 'Road trips & California adventures', image: 'https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?auto=format&fit=crop&w=600&q=75' },
+      { id: 'dubai', city: 'Dubai', country: 'UAE', description: 'Premium cars & desert drives', image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&auto=format&fit=crop&q=75' },
+      { id: 'rome', city: 'Rome', country: 'Italy', description: 'Scenic drives & Italian getaways', image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&auto=format&fit=crop&q=75' },
     ];
   }, []);
 
@@ -407,19 +414,19 @@ export const FlightSearchUI: React.FC = () => {
       title: 'How to Choose the Right Hotel for Your Trip',
       slug: 'how-to-choose-the-right-hotel',
       readTime: '6 min read',
-      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80',
+      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=75',
     },
     {
       title: 'What to Check Before Booking a Hotel',
       slug: 'what-to-check-before-booking-a-hotel',
       readTime: '5 min read',
-      image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1600&q=80',
+      image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=600&q=75',
     },
     {
       title: 'Best Hotel Destinations for Your Next Trip',
       slug: 'best-hotel-destinations',
       readTime: '7 min read',
-      image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1600&q=80'
+      image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=600&q=75'
     }
   ];
 
@@ -428,19 +435,19 @@ export const FlightSearchUI: React.FC = () => {
       slug: 'how-to-use-an-esim-when-traveling-abroad',
       title: 'How to Use an eSIM When Traveling Abroad',
       readTime: '6 min read',
-      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80',
+      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=75',
     },
     {
       slug: 'how-to-save-mobile-data-while-traveling',
       title: 'How to Save Mobile Data While Traveling',
       readTime: '5 min read',
-      image: 'https://images.unsplash.com/photo-1521292270410-a8c4d716d518?auto=format&fit=crop&w=1600&q=80',
+      image: 'https://images.unsplash.com/photo-1521292270410-a8c4d716d518?auto=format&fit=crop&w=600&q=75',
     },
     {
       slug: 'esim-vs-physical-sim-for-travel',
       title: 'eSIM vs Physical SIM: Which Is Better for Travel?',
       readTime: '6 min read',
-      image: 'https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=1600&q=80',
+      image: 'https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=600&q=75',
     }
   ];
 
@@ -449,19 +456,19 @@ export const FlightSearchUI: React.FC = () => {
       title: 'How to Choose the Right Rental Car for Your Trip', 
       slug: 'how-to-choose-the-right-rental-car', 
       readTime: '3 min read', 
-      image: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&auto=format&fit=crop' 
+      image: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&auto=format&fit=crop&q=75' 
     },
     { 
       title: 'What to Check Before Picking Up Your Rental Car', 
       slug: 'what-to-check-before-picking-up-your-rental-car', 
       readTime: '4 min read', 
-      image: 'https://images.unsplash.com/photo-1485291571150-772bcfc10da5?w=800&auto=format&fit=crop' 
+      image: 'https://images.unsplash.com/photo-1485291571150-772bcfc10da5?w=600&auto=format&fit=crop&q=75' 
     },
     { 
       title: 'Best Destinations for a Road Trip', 
       slug: 'best-destinations-for-a-road-trip', 
       readTime: '5 min read', 
-      image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&auto=format&fit=crop' 
+      image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&auto=format&fit=crop&q=75' 
     },
   ];
 
@@ -528,7 +535,6 @@ export const FlightSearchUI: React.FC = () => {
 
       if (!searchContainer) return;
 
-      // Clear previous search instances
       searchContainer.innerHTML = '';
       if (ticketsContainer) ticketsContainer.innerHTML = '';
 
@@ -538,7 +544,6 @@ export const FlightSearchUI: React.FC = () => {
       const currentHostname = window.location.hostname;
       const dynamicWlId = getWhiteLabelIdByHostname(currentHostname);
 
-      // Inject Travelpayouts script
       const script = document.createElement('script');
       script.id = 'tpwl-script';
       script.async = true;
@@ -547,7 +552,6 @@ export const FlightSearchUI: React.FC = () => {
 
       document.head.appendChild(script);
 
-      // Smooth Auto-scroll to results container when search tickets load
       let hasScrolledForCurrentSearch = false;
 
       if (ticketsContainer && typeof ResizeObserver !== 'undefined') {
@@ -631,7 +635,6 @@ export const FlightSearchUI: React.FC = () => {
 
   return (
     <>
-      {/* Inject dynamic SEO per service tab */}
       <SEO 
         title={currentServiceSeo.title}
         description={currentServiceSeo.description}
@@ -650,58 +653,61 @@ export const FlightSearchUI: React.FC = () => {
           }
         `}</style>
 
-        {/* ================= 1. UNIFIED MOBILE HERO + SEARCH WIDGET ================= */}
+        {/* ================= 1. UNIFIED HERO + SEARCH WIDGET ================= */}
         <div className="max-w-[1360px] mx-auto px-2.5 sm:px-6 pt-2.5 sm:pt-6">
           <div className="bg-white rounded-2xl sm:rounded-[36px] border border-slate-200/80 shadow-[0_12px_40px_-12px_rgba(15,23,42,0.06)] p-4 sm:p-8 lg:p-8 space-y-3.5 sm:space-y-6 overflow-visible">
             
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-3.5 lg:gap-8 items-center">
               
-              {/* Standardized Heading & Service Tabs */}
+              {/* Heading & Service Tabs */}
               <div className="lg:col-span-7 flex flex-col items-center justify-center text-center lg:items-start lg:text-left space-y-3 sm:space-y-4">
                 <h1 className="text-xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-[1.15] text-center lg:text-left">
                   {currentHero.headlinePrefix}
                   <span className="text-blue-600 inline-block">{currentHero.headlineHighlight}</span>
                 </h1>
 
-                {/* Standardized Service Tabs */}
-                {/* BALANCED COMPACT TAB BUTTONS */}
-<div className="grid grid-cols-4 gap-1.5 sm:gap-3 max-w-md w-full pt-1">
-  {tabs.map((tab) => {
-    const Icon = tab.icon;
-    const isActive = activeTab === tab.id;
+                {/* Service Tabs */}
+                <div className="grid grid-cols-4 gap-1.5 sm:gap-3 max-w-md w-full pt-1">
+                  {tabs.map((tab) => {
+                    const Icon = tab.icon;
+                    const isActive = activeTab === tab.id;
 
-    return (
-      <button
-        key={tab.id}
-        type="button"
-        onClick={() => handleTabChange(tab.id)}
-        className={`relative group h-16 sm:h-20 rounded-[20px] sm:rounded-[22px] flex flex-col items-center justify-center text-center px-1 gap-1 transition-all duration-200 cursor-pointer select-none ${
-          isActive
-            ? 'bg-[#2563EB] text-white shadow-lg shadow-blue-600/30 ring-2 ring-blue-600/20 scale-[1.02]'
-            : 'bg-slate-50/90 border border-slate-200/80 text-slate-700 hover:bg-slate-100/80 hover:border-slate-300 hover:scale-[1.01]'
-        }`}
-      >
-        <div className={`p-1.5 sm:p-2 rounded-xl transition-all duration-200 flex items-center justify-center ${
-          isActive ? 'bg-white/20 text-white' : 'bg-white text-slate-700 border border-slate-200/60 group-hover:text-blue-600'
-        }`}>
-          <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
-        </div>
+                    return (
+                      <button
+                        key={tab.id}
+                        type="button"
+                        onClick={() => handleTabChange(tab.id)}
+                        className={`relative group h-16 sm:h-20 rounded-[20px] sm:rounded-[22px] flex flex-col items-center justify-center text-center px-1 gap-1 transition-all duration-200 cursor-pointer select-none ${
+                          isActive
+                            ? 'bg-[#2563EB] text-white shadow-lg shadow-blue-600/30 ring-2 ring-blue-600/20 scale-[1.02]'
+                            : 'bg-slate-50/90 border border-slate-200/80 text-slate-700 hover:bg-slate-100/80 hover:border-slate-300 hover:scale-[1.01]'
+                        }`}
+                      >
+                        <div className={`p-1.5 sm:p-2 rounded-xl transition-all duration-200 flex items-center justify-center ${
+                          isActive ? 'bg-white/20 text-white' : 'bg-white text-slate-700 border border-slate-200/60 group-hover:text-blue-600'
+                        }`}>
+                          <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                        </div>
 
-        <span className="tracking-tight font-black text-[10px] sm:text-xs leading-tight text-center w-full truncate">
-          {tab.label}
-        </span>
-      </button>
-    );
-  })}
-</div>
+                        <span className="tracking-tight font-black text-[10px] sm:text-xs leading-tight text-center w-full truncate">
+                          {tab.label}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
 
-              {/* Desktop Hero Image */}
+              {/* Desktop Hero Image - Optimised LCP with fetchpriority */}
               <div className="hidden lg:flex lg:col-span-5 flex-col">
                 <div className="relative h-48 lg:h-52 rounded-3xl overflow-hidden shadow-xs border border-slate-100 group cursor-pointer">
                   <img
                     src={currentHero.topImage}
                     alt="Top Deals"
+                    fetchPriority="high"
+                    decoding="async"
+                    width="600"
+                    height="208"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
@@ -718,7 +724,7 @@ export const FlightSearchUI: React.FC = () => {
 
             </div>
 
-            {/* DYNAMIC PER-TAB SNUG WIDGET VIEWPORT CONTAINER */}
+            {/* DYNAMIC PER-TAB WIDGET VIEWPORT CONTAINER */}
             <div 
               id={activeTab === 'cars' ? 'car-rental-widget' : undefined}
               className={`pt-2 sm:pt-3 relative overflow-visible w-full scroll-mt-24 ${
@@ -731,23 +737,25 @@ export const FlightSearchUI: React.FC = () => {
                 activeTab === 'esim' ? 'min-h-[90px]' : ''
               }`}
             >
-              {activeTab === 'flights' && <div id="tpwl-search" className="w-full min-h-[100px]" />}
-              {activeTab === 'hotels' && <HotelSearchWidget />}
-              {activeTab === 'cars' && <CarRentalWidget />}
-              {activeTab === 'esim' && <EsimWidget />}
+              <Suspense fallback={<WidgetSkeleton />}>
+                {activeTab === 'flights' && <div id="tpwl-search" className="w-full min-h-[100px]" />}
+                {activeTab === 'hotels' && <HotelSearchWidget />}
+                {activeTab === 'cars' && <CarRentalWidget />}
+                {activeTab === 'esim' && <EsimWidget />}
+              </Suspense>
             </div>
 
           </div>
         </div>
 
-        {/* ================= LIVE FLIGHT RESULTS CONTAINER ================= */}
+        {/* LIVE FLIGHT RESULTS CONTAINER */}
         {activeTab === 'flights' && (
           <div className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-6">
             <div id="tpwl-tickets" className="w-full scroll-mt-28" />
           </div>
         )}
 
-        {/* ================= 2. TRUST / BENEFITS STRIP ================= */}
+        {/* TRUST / BENEFITS STRIP */}
         <div className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-4 sm:mt-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
             {currentTrustHighlights.map((item, i) => {
@@ -799,7 +807,7 @@ export const FlightSearchUI: React.FC = () => {
           </div>
         </div>
 
-        {/* ================= 3A. FLIGHTS SECTION ================= */}
+        {/* FLIGHTS SECTION */}
         {activeTab === 'flights' && (
           <>
             <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-10 sm:mt-14 space-y-6">
@@ -813,7 +821,6 @@ export const FlightSearchUI: React.FC = () => {
                   </h2>
                 </div>
 
-                {/* Visible on Desktop Header */}
                 <button
                   type="button"
                   onClick={() => navigate('/destinations')}
@@ -824,7 +831,6 @@ export const FlightSearchUI: React.FC = () => {
                 </button>
               </div>
 
-              {/* Horizontal Scroll Cards with End-Card for "View All" */}
               <div className="flex overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-visible pb-2 sm:pb-0">
                 {popularDestinations.map((dest) => (
                   <div
@@ -835,6 +841,10 @@ export const FlightSearchUI: React.FC = () => {
                     <img
                       src={dest.image}
                       alt={dest.city}
+                      loading="lazy"
+                      decoding="async"
+                      width="600"
+                      height="320"
                       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-95"
                     />
 
@@ -874,7 +884,6 @@ export const FlightSearchUI: React.FC = () => {
                   </div>
                 ))}
 
-                {/* MOBILE END CARD: Popular Destinations */}
                 <div
                   onClick={() => navigate('/destinations')}
                   className="w-[50vw] sm:hidden shrink-0 snap-start h-80 rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
@@ -916,7 +925,7 @@ export const FlightSearchUI: React.FC = () => {
                     className="w-[82vw] shrink-0 snap-start sm:w-auto sm:shrink group flex flex-col bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden cursor-pointer"
                   >
                     <div className="relative h-48 overflow-hidden bg-slate-100 shrink-0">
-                      <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                      <img src={article.image} alt={article.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                       <div className="absolute top-4 left-4">
                         <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md text-[10px] font-black uppercase tracking-wider text-slate-800 border border-white/20 shadow-sm">
                           <Clock className="w-3 h-3 text-blue-600" /> {article.readTime}
@@ -933,7 +942,6 @@ export const FlightSearchUI: React.FC = () => {
                   </div>
                 ))}
 
-                {/* MOBILE END CARD: Flight Articles */}
                 <div
                   onClick={() => navigate('/blog')}
                   className="w-[50vw] sm:hidden shrink-0 snap-start self-stretch rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
@@ -953,7 +961,7 @@ export const FlightSearchUI: React.FC = () => {
           </>
         )}
 
-        {/* ================= 3B. HOTELS SECTION ================= */}
+        {/* HOTELS SECTION */}
         {activeTab === 'hotels' && (
           <>
             <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-10 sm:mt-14 space-y-6">
@@ -987,6 +995,10 @@ export const FlightSearchUI: React.FC = () => {
                     <img
                       src={stay.image}
                       alt={stay.city}
+                      loading="lazy"
+                      decoding="async"
+                      width="600"
+                      height="320"
                       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-95"
                     />
 
@@ -1026,7 +1038,6 @@ export const FlightSearchUI: React.FC = () => {
                   </div>
                 ))}
 
-                {/* MOBILE END CARD: Hotel Destinations */}
                 <div
                   onClick={() => navigate('/destinations')}
                   className="w-[50vw] sm:hidden shrink-0 snap-start h-80 rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
@@ -1068,7 +1079,7 @@ export const FlightSearchUI: React.FC = () => {
                     className="w-[82vw] shrink-0 snap-start sm:w-auto sm:shrink group flex flex-col bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden cursor-pointer"
                   >
                     <div className="relative h-48 overflow-hidden bg-slate-100 shrink-0">
-                      <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                      <img src={article.image} alt={article.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                       <div className="absolute top-4 left-4">
                         <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md text-[10px] font-black uppercase tracking-wider text-slate-800 border border-white/20 shadow-sm">
                           <Clock className="w-3 h-3 text-blue-600" /> {article.readTime}
@@ -1085,7 +1096,6 @@ export const FlightSearchUI: React.FC = () => {
                   </div>
                 ))}
 
-                {/* MOBILE END CARD: Hotel Guides */}
                 <div
                   onClick={() => navigate('/blog')}
                   className="w-[50vw] sm:hidden shrink-0 snap-start self-stretch rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
@@ -1105,7 +1115,7 @@ export const FlightSearchUI: React.FC = () => {
           </>
         )}
 
-        {/* ================= 3C. CARS SECTION ================= */}
+        {/* CARS SECTION */}
         {activeTab === 'cars' && (
           <>
             <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-10 sm:mt-14 space-y-6">
@@ -1122,7 +1132,7 @@ export const FlightSearchUI: React.FC = () => {
                     className="w-[82vw] shrink-0 snap-start sm:w-auto sm:shrink relative rounded-3xl bg-white border border-slate-200/80 shadow-2xs overflow-hidden flex flex-col hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg transition-all duration-300 cursor-pointer select-none group"
                   >
                     <div className="relative h-44 overflow-hidden bg-slate-100 shrink-0">
-                      <img src={cat.image} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" alt={cat.title} />
+                      <img src={cat.image} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" alt={cat.title} />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent" />
                       <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
                         <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-lg bg-white/20 backdrop-blur-md text-white border border-white/20 shadow-sm">
@@ -1180,6 +1190,10 @@ export const FlightSearchUI: React.FC = () => {
                     <img
                       src={dest.image}
                       alt={dest.city}
+                      loading="lazy"
+                      decoding="async"
+                      width="600"
+                      height="320"
                       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-95"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
@@ -1206,7 +1220,6 @@ export const FlightSearchUI: React.FC = () => {
                   </div>
                 ))}
 
-                {/* MOBILE END CARD: Car Destinations */}
                 <div
                   onClick={() => navigate('/destinations')}
                   className="w-[50vw] sm:hidden shrink-0 snap-start h-80 rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
@@ -1248,7 +1261,7 @@ export const FlightSearchUI: React.FC = () => {
                     className="w-[82vw] shrink-0 snap-start sm:w-auto sm:shrink group flex flex-col bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden cursor-pointer"
                   >
                     <div className="relative h-48 overflow-hidden bg-slate-100 shrink-0">
-                      <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                      <img src={article.image} alt={article.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                       <div className="absolute top-4 left-4">
                         <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md text-[10px] font-black uppercase tracking-wider text-slate-800 border border-white/20 shadow-sm">
                           <Clock className="w-3 h-3 text-blue-600" /> {article.readTime}
@@ -1265,7 +1278,6 @@ export const FlightSearchUI: React.FC = () => {
                   </div>
                 ))}
 
-                {/* MOBILE END CARD: Road Trip Articles */}
                 <div
                   onClick={() => navigate('/blog')}
                   className="w-[50vw] sm:hidden shrink-0 snap-start self-stretch rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
@@ -1285,7 +1297,7 @@ export const FlightSearchUI: React.FC = () => {
           </>
         )}
 
-        {/* ================= 3D. ESIM SECTION ================= */}
+        {/* ESIM SECTION */}
         {activeTab === 'esim' && (
           <>
             <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-10 sm:mt-14 space-y-4">
@@ -1369,7 +1381,7 @@ export const FlightSearchUI: React.FC = () => {
                     className="w-[82vw] shrink-0 snap-start sm:w-auto sm:shrink group flex flex-col bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden cursor-pointer"
                   >
                     <div className="relative h-48 overflow-hidden bg-slate-100 shrink-0">
-                      <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                      <img src={article.image} alt={article.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                       <div className="absolute top-4 left-4">
                         <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md text-[10px] font-black uppercase tracking-wider text-slate-800 border border-white/20 shadow-sm">
                           <Clock className="w-3 h-3 text-blue-600" /> {article.readTime}
@@ -1386,7 +1398,6 @@ export const FlightSearchUI: React.FC = () => {
                   </div>
                 ))}
 
-                {/* MOBILE END CARD: eSIM Guides */}
                 <div
                   onClick={() => navigate('/blog')}
                   className="w-[50vw] sm:hidden shrink-0 snap-start self-stretch rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
@@ -1406,7 +1417,7 @@ export const FlightSearchUI: React.FC = () => {
           </>
         )}
 
-        {/* ================= 4. CLEAN & COMPACT FAQ ACCORDION ================= */}
+        {/* FAQ ACCORDION */}
         <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-12 sm:mt-16">
           <div className="bg-white rounded-3xl border border-slate-200/80 shadow-2xs p-5 sm:p-7 max-w-4xl mx-auto space-y-5">
             
