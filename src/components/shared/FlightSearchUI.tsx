@@ -725,7 +725,7 @@ export const FlightSearchUI: React.FC = () => {
               } ${
                 activeTab === 'hotels' ? 'min-h-[70px]' : ''
               } ${
-                activeTab === 'cars' ? 'min-h-[380px] sm:min-h-[180px]' : ''
+                activeTab === 'cars' ? 'min-h-[280px] sm:min-h-[260px]' : ''
               } ${
                 activeTab === 'esim' ? 'min-h-[90px]' : ''
               }`}

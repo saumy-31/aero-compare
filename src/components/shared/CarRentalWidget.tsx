@@ -19,7 +19,7 @@ export const CarRentalWidget: React.FC = () => {
   const isRendered = useRef<boolean>(false);
 
   useEffect(() => {
-    // Inject global CSS rule forcing correct iframe height on production
+    // Inject CSS height constraints for the widget iframe
     const styleId = 'car-widget-iframe-height-fix';
     let styleTag = document.getElementById(styleId) as HTMLStyleElement | null;
 
@@ -34,6 +34,7 @@ export const CarRentalWidget: React.FC = () => {
         min-height: 280px !important;
         width: 100% !important;
         overflow: visible !important;
+        display: block !important;
       }
       #tpwl-car-widget-container iframe {
         width: 100% !important;
@@ -41,6 +42,7 @@ export const CarRentalWidget: React.FC = () => {
         height: auto !important;
         border: none !important;
         overflow: visible !important;
+        display: block !important;
       }
       @media (max-width: 640px) {
         #tpwl-car-widget-container {
