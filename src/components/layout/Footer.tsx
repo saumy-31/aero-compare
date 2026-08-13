@@ -138,6 +138,8 @@ export const Footer: React.FC = () => {
                 <li>
                   <a 
                     href={MANAGE_BOOKING_URL} 
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-block hover:text-[#2563EB] transition-colors"
                   >
                     Manage Booking

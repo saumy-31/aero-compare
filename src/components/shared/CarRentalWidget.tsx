@@ -19,6 +19,39 @@ export const CarRentalWidget: React.FC = () => {
   const isRendered = useRef<boolean>(false);
 
   useEffect(() => {
+    // Inject global CSS rule forcing correct iframe height on production
+    const styleId = 'car-widget-iframe-height-fix';
+    let styleTag = document.getElementById(styleId) as HTMLStyleElement | null;
+
+    if (!styleTag) {
+      styleTag = document.createElement('style');
+      styleTag.id = styleId;
+      document.head.appendChild(styleTag);
+    }
+
+    styleTag.innerHTML = `
+      #tpwl-car-widget-container {
+        min-height: 280px !important;
+        width: 100% !important;
+        overflow: visible !important;
+      }
+      #tpwl-car-widget-container iframe {
+        width: 100% !important;
+        min-height: 260px !important;
+        height: auto !important;
+        border: none !important;
+        overflow: visible !important;
+      }
+      @media (max-width: 640px) {
+        #tpwl-car-widget-container {
+          min-height: 480px !important;
+        }
+        #tpwl-car-widget-container iframe {
+          min-height: 460px !important;
+        }
+      }
+    `;
+
     if (isRendered.current) return;
 
     const container = containerRef.current;
@@ -30,73 +63,6 @@ export const CarRentalWidget: React.FC = () => {
     script.async = true;
     script.src = WIDGET_SRC;
     script.charset = 'utf-8';
-
-    const cleanIframeStyles = () => {
-      const iframe = container.querySelector('iframe');
-      if (!iframe) return;
-
-      // Ensure iframe expands cleanly without scrollbars or overflow clipping
-      iframe.style.width = '100%';
-      iframe.style.border = 'none';
-      iframe.style.overflow = 'visible';
-
-      try {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
-        if (iframeDoc) {
-          const style = iframeDoc.createElement('style');
-          style.innerHTML = `
-            body, .widget-container, .main-container, div[class*="container"] {
-              background: transparent !important;
-              background-color: transparent !important;
-              border: none !important;
-              box-shadow: none !important;
-              padding: 0 !important;
-              margin: 0 !important;
-              width: 100% !important;
-              max-width: 100% !important;
-            }
-            .field, input, select, div[class*="field"], div[class*="input"] {
-              background-color: #f8fafc !important;
-              border: 1px solid #e2e8f0 !important;
-              border-radius: 12px !important;
-              font-size: 13px !important;
-              font-weight: 600 !important;
-            }
-            input:focus, select:focus {
-              background-color: #ffffff !important;
-              border-color: #2563eb !important;
-              outline: none !important;
-            }
-            @media (max-width: 640px) {
-              .form-row, div[class*="row"] {
-                display: flex !important;
-                flex-wrap: wrap !important;
-                gap: 8px !important;
-              }
-              .field, div[class*="field"] {
-                margin-bottom: 8px !important;
-              }
-              button[type="submit"], input[type="submit"], .submit-btn {
-                border-radius: 12px !important;
-                height: 48px !important;
-                font-weight: 800 !important;
-                margin-top: 4px !important;
-                width: 100% !important;
-              }
-            }
-          `;
-          iframeDoc.head.appendChild(style);
-        }
-      } catch (e) {
-        // Cross-origin fallback
-      }
-    };
-
-    script.onload = () => {
-      setTimeout(cleanIframeStyles, 100);
-      setTimeout(cleanIframeStyles, 400);
-      setTimeout(cleanIframeStyles, 1000);
-    };
 
     container.appendChild(script);
     isRendered.current = true;
@@ -110,12 +76,12 @@ export const CarRentalWidget: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full space-y-3.5">
+    <div className="w-full space-y-3.5 bg-transparent border-0 shadow-none overflow-visible">
       {/* SEARCH WIDGET MOUNT CONTAINER */}
       <div 
         id="tpwl-car-widget-container"
         ref={containerRef}
-        className="w-full min-h-[140px] flex items-center justify-center bg-transparent p-0 border-0 shadow-none overflow-visible"
+        className="w-full min-h-[280px] sm:min-h-[260px] flex items-center justify-center bg-transparent p-0 border-0 shadow-none overflow-visible"
       />
 
       {/* ATTRIBUTION STRIP */}

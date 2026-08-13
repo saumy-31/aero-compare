@@ -665,16 +665,15 @@ export const FlightSearchUI: React.FC = () => {
             </div>
 
             {/* Standardized Search Widget Viewport */}
-            {/* NEW BORDERLESS & CLEAN WIDGET CONTAINER */}
-<div 
-  id={activeTab === 'cars' ? 'car-rental-widget' : undefined}
-  className="pt-3.5 sm:pt-4 relative overflow-visible min-h-[70px] w-full scroll-mt-24"
->
-  {activeTab === 'flights' && <div id="tpwl-search" className="w-full min-h-[70px]" />}
-  {activeTab === 'hotels' && <HotelSearchWidget />}
-  {activeTab === 'cars' && <CarRentalWidget />}
-  {activeTab === 'esim' && <EsimWidget />}
-</div>
+            <div 
+              id={activeTab === 'cars' ? 'car-rental-widget' : undefined}
+              className="pt-3.5 sm:pt-4 relative overflow-visible min-h-[280px] w-full scroll-mt-24"
+            >
+              {activeTab === 'flights' && <div id="tpwl-search" className="w-full min-h-[70px]" />}
+              {activeTab === 'hotels' && <HotelSearchWidget />}
+              {activeTab === 'cars' && <CarRentalWidget />}
+              {activeTab === 'esim' && <EsimWidget />}
+            </div>
 
           </div>
         </div>
@@ -731,7 +730,6 @@ export const FlightSearchUI: React.FC = () => {
           </div>
         </div>
 
-        {/* ================= 3A. FLIGHTS SECTION ================= */}
         {/* ================= 3A. FLIGHTS SECTION ================= */}
         {activeTab === 'flights' && (
           <>
@@ -807,7 +805,7 @@ export const FlightSearchUI: React.FC = () => {
                   </div>
                 ))}
 
-                {/* MOBILE END CARD: Displays when user scrolls to the end */}
+                {/* MOBILE END CARD: Popular Destinations */}
                 <div
                   onClick={() => navigate('/destinations')}
                   className="w-[50vw] sm:hidden shrink-0 snap-start h-80 rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
@@ -841,14 +839,14 @@ export const FlightSearchUI: React.FC = () => {
                 </button>
               </div>
 
-              <div className="flex overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible pb-2 sm:pb-0">
+              <div className="flex items-stretch overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible pb-2 sm:pb-0">
                 {flightBlogArticles.map((article, idx) => (
                   <div 
                     key={idx} 
                     onClick={() => navigate(`/blog/${article.slug}`)} 
                     className="w-[82vw] shrink-0 snap-start sm:w-auto sm:shrink group flex flex-col bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden cursor-pointer"
                   >
-                    <div className="relative h-48 overflow-hidden bg-slate-100">
+                    <div className="relative h-48 overflow-hidden bg-slate-100 shrink-0">
                       <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                       <div className="absolute top-4 left-4">
                         <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md text-[10px] font-black uppercase tracking-wider text-slate-800 border border-white/20 shadow-sm">
@@ -866,10 +864,10 @@ export const FlightSearchUI: React.FC = () => {
                   </div>
                 ))}
 
-                {/* MOBILE END CARD: Articles */}
+                {/* MOBILE END CARD: Flight Articles */}
                 <div
                   onClick={() => navigate('/blog')}
-                  className="w-[50vw] sm:hidden shrink-0 snap-start h-full min-h-[220px] rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
+                  className="w-[50vw] sm:hidden shrink-0 snap-start self-stretch rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
                 >
                   <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3 shadow-md shadow-blue-600/20 group-hover:scale-110 transition-transform">
                     <ArrowRight className="w-6 h-6" />
@@ -993,14 +991,14 @@ export const FlightSearchUI: React.FC = () => {
                 </button>
               </div>
 
-              <div className="flex overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible pb-2 sm:pb-0">
+              <div className="flex items-stretch overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible pb-2 sm:pb-0">
                 {hotelBlogArticles.map((article, idx) => (
                   <div 
                     key={idx} 
                     onClick={() => navigate(`/blog/${article.slug}`)} 
                     className="w-[82vw] shrink-0 snap-start sm:w-auto sm:shrink group flex flex-col bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden cursor-pointer"
                   >
-                    <div className="relative h-48 overflow-hidden bg-slate-100">
+                    <div className="relative h-48 overflow-hidden bg-slate-100 shrink-0">
                       <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                       <div className="absolute top-4 left-4">
                         <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md text-[10px] font-black uppercase tracking-wider text-slate-800 border border-white/20 shadow-sm">
@@ -1021,7 +1019,7 @@ export const FlightSearchUI: React.FC = () => {
                 {/* MOBILE END CARD: Hotel Guides */}
                 <div
                   onClick={() => navigate('/blog')}
-                  className="w-[50vw] sm:hidden shrink-0 snap-start h-full min-h-[220px] rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
+                  className="w-[50vw] sm:hidden shrink-0 snap-start self-stretch rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
                 >
                   <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3 shadow-md shadow-blue-600/20 group-hover:scale-110 transition-transform">
                     <ArrowRight className="w-6 h-6" />
@@ -1173,14 +1171,14 @@ export const FlightSearchUI: React.FC = () => {
                 </button>
               </div>
 
-              <div className="flex overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible pb-2 sm:pb-0">
+              <div className="flex items-stretch overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible pb-2 sm:pb-0">
                 {roadTripArticles.map((article, idx) => (
                   <div 
                     key={idx} 
                     onClick={() => navigate(`/blog/${article.slug}`)} 
                     className="w-[82vw] shrink-0 snap-start sm:w-auto sm:shrink group flex flex-col bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden cursor-pointer"
                   >
-                    <div className="relative h-48 overflow-hidden bg-slate-100">
+                    <div className="relative h-48 overflow-hidden bg-slate-100 shrink-0">
                       <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                       <div className="absolute top-4 left-4">
                         <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md text-[10px] font-black uppercase tracking-wider text-slate-800 border border-white/20 shadow-sm">
@@ -1201,7 +1199,7 @@ export const FlightSearchUI: React.FC = () => {
                 {/* MOBILE END CARD: Road Trip Articles */}
                 <div
                   onClick={() => navigate('/blog')}
-                  className="w-[50vw] sm:hidden shrink-0 snap-start h-full min-h-[220px] rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
+                  className="w-[50vw] sm:hidden shrink-0 snap-start self-stretch rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
                 >
                   <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3 shadow-md shadow-blue-600/20 group-hover:scale-110 transition-transform">
                     <ArrowRight className="w-6 h-6" />
@@ -1294,14 +1292,14 @@ export const FlightSearchUI: React.FC = () => {
                 </button>
               </div>
 
-              <div className="flex overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible pb-2 sm:pb-0">
+              <div className="flex items-stretch overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible pb-2 sm:pb-0">
                 {esimBlogArticles.map((article, idx) => (
                   <div 
                     key={idx} 
                     onClick={() => navigate(`/blog/${article.slug}`)} 
                     className="w-[82vw] shrink-0 snap-start sm:w-auto sm:shrink group flex flex-col bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden cursor-pointer"
                   >
-                    <div className="relative h-48 overflow-hidden bg-slate-100">
+                    <div className="relative h-48 overflow-hidden bg-slate-100 shrink-0">
                       <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                       <div className="absolute top-4 left-4">
                         <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md text-[10px] font-black uppercase tracking-wider text-slate-800 border border-white/20 shadow-sm">
@@ -1322,7 +1320,7 @@ export const FlightSearchUI: React.FC = () => {
                 {/* MOBILE END CARD: eSIM Guides */}
                 <div
                   onClick={() => navigate('/blog')}
-                  className="w-[50vw] sm:hidden shrink-0 snap-start h-full min-h-[220px] rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
+                  className="w-[50vw] sm:hidden shrink-0 snap-start self-stretch rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
                 >
                   <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3 shadow-md shadow-blue-600/20 group-hover:scale-110 transition-transform">
                     <ArrowRight className="w-6 h-6" />

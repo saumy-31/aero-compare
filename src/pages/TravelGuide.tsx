@@ -243,37 +243,38 @@ export const TravelGuide: React.FC = () => {
         </section>
 
         {/* STICKY SUB-NAV */}
-        <div className="sticky top-20 z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6">
-          <div className="bg-white/95 backdrop-blur-xl border border-slate-200/80 rounded-2xl p-1.5 shadow-xs flex items-center gap-1 max-w-md">
-            <button
-              type="button"
-              onClick={() => scrollToSection('guide-overview', 'overview')}
-              className={`flex-1 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
-                activeTab === 'overview' ? 'bg-[#2563EB] text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              Overview
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollToSection('guide-attractions', 'attractions')}
-              className={`flex-1 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
-                activeTab === 'attractions' ? 'bg-[#2563EB] text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              Attractions
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollToSection('guide-tips', 'tips')}
-              className={`flex-1 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
-                activeTab === 'tips' ? 'bg-[#2563EB] text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              Essential Tips
-            </button>
-          </div>
-        </div>
+        {/* TO THIS CLEAN, NON-FLOATING BLOCK */}
+<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6">
+  <div className="bg-white border border-slate-200/80 rounded-2xl p-1.5 shadow-xs flex items-center gap-1 max-w-md">
+    <button
+      type="button"
+      onClick={() => scrollToSection('guide-overview', 'overview')}
+      className={`flex-1 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
+        activeTab === 'overview' ? 'bg-[#2563EB] text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+      }`}
+    >
+      Overview
+    </button>
+    <button
+      type="button"
+      onClick={() => scrollToSection('guide-attractions', 'attractions')}
+      className={`flex-1 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
+        activeTab === 'attractions' ? 'bg-[#2563EB] text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+      }`}
+    >
+      Attractions
+    </button>
+    <button
+      type="button"
+      onClick={() => scrollToSection('guide-tips', 'tips')}
+      className={`flex-1 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
+        activeTab === 'tips' ? 'bg-[#2563EB] text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+      }`}
+    >
+      Essential Tips
+    </button>
+  </div>
+</div>
 
         {/* MAIN DESTINATION LAYOUT */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -315,19 +316,20 @@ export const TravelGuide: React.FC = () => {
               </div>
 
               {/* ATTRACTIONS (WITH RESPONSIVE MOBILE FIXES) */}
-              <section id="guide-attractions" className="scroll-mt-32 bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-2xs space-y-6">
+              {/* ATTRACTIONS REDESIGN */}
+              <section id="guide-attractions" className="scroll-mt-32 bg-white rounded-3xl p-5 sm:p-8 border border-slate-200/80 shadow-2xs space-y-6">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-4">
                   <div>
                     <span className="text-[10px] font-black text-[#2563EB] uppercase tracking-widest block">Must-See Spots</span>
-                    <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Top Attractions in {destination.city}</h2>
+                    <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-0.5">Top Attractions in {destination.city}</h2>
                   </div>
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#2563EB] flex items-center justify-center shrink-0 border border-blue-100">
+                  <div className="w-10 h-10 rounded-2xl bg-blue-50 text-[#2563EB] flex items-center justify-center shrink-0 border border-blue-100/80 shadow-2xs">
                     <Navigation className="w-5 h-5" />
                   </div>
                 </div>
 
                 {destination.attractions && destination.attractions.length > 0 ? (
-                  <div className="space-y-3">
+                  <div className="space-y-3.5">
                     {destination.attractions.map((attraction: any, i: number) => {
                       const name = typeof attraction === 'string' ? attraction : attraction.name;
                       const duration = typeof attraction === 'object' ? attraction.duration : null;
@@ -337,29 +339,30 @@ export const TravelGuide: React.FC = () => {
                       return (
                         <div 
                           key={i} 
-                          className="group flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-white hover:border-blue-200 hover:shadow-sm transition-all gap-3 sm:gap-4"
+                          className="group relative flex flex-col sm:flex-row sm:items-center justify-between p-4 sm:p-5 rounded-2xl bg-slate-50/90 border border-slate-200/70 hover:bg-white hover:border-blue-300 hover:shadow-md transition-all duration-300 gap-3 sm:gap-4"
                         >
-                          <div className="flex items-start gap-3.5 min-w-0">
-                            <div className="w-8 h-8 rounded-xl bg-[#2563EB] text-white font-black text-xs flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 shadow-2xs">
+                          {/* Left Details Group */}
+                          <div className="flex items-start gap-3.5 min-w-0 flex-1">
+                            <div className="w-8 h-8 rounded-xl bg-[#2563EB] text-white font-black text-xs flex items-center justify-center shrink-0 shadow-sm shadow-blue-600/20 mt-0.5 sm:mt-0">
                               {String(i + 1).padStart(2, '0')}
                             </div>
 
-                            <div className="space-y-1 min-w-0 flex-1">
-                              <h3 className="text-sm sm:text-base font-extrabold text-slate-900 group-hover:text-[#2563EB] transition-colors leading-snug">
+                            <div className="space-y-2 min-w-0 flex-1">
+                              <h3 className="text-base sm:text-lg font-black text-slate-900 group-hover:text-[#2563EB] transition-colors leading-snug">
                                 {name}
                               </h3>
                               
                               {(duration || bestTime) && (
-                                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-medium text-slate-500 pt-0.5">
+                                <div className="flex flex-wrap items-center gap-2">
                                   {duration && (
-                                    <span className="inline-flex items-center gap-1 shrink-0">
-                                      <Clock className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-50/80 text-blue-700 text-[11px] font-bold border border-blue-100/60">
+                                      <Clock className="w-3 h-3 text-blue-600 shrink-0" />
                                       <span>{duration}</span>
                                     </span>
                                   )}
                                   {bestTime && (
-                                    <span className="inline-flex items-center gap-1 shrink-0">
-                                      <Sun className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-50/80 text-amber-800 text-[11px] font-bold border border-amber-200/50">
+                                      <Sun className="w-3 h-3 text-amber-500 shrink-0" />
                                       <span>{bestTime}</span>
                                     </span>
                                   )}
@@ -368,9 +371,13 @@ export const TravelGuide: React.FC = () => {
                             </div>
                           </div>
 
+                          {/* Right Price Pill */}
                           {cost && (
-                            <div className="pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-200/60 flex items-center justify-start sm:justify-end shrink-0">
-                              <span className="inline-block px-3 py-1.5 rounded-xl bg-white sm:bg-slate-100/80 border border-slate-200/80 text-xs font-black text-slate-900 tracking-tight shadow-2xs break-words max-w-full">
+                            <div className="pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-200/60 flex items-center justify-between sm:justify-end shrink-0 gap-2">
+                              <span className="text-[10px] sm:hidden font-extrabold text-slate-400 uppercase tracking-wider">
+                                Entry
+                              </span>
+                              <span className="inline-flex items-center px-3.5 py-1.5 rounded-xl bg-white border border-slate-200/90 text-xs font-black text-slate-900 shadow-2xs group-hover:border-blue-200 group-hover:bg-blue-50/30 transition-all">
                                 {cost}
                               </span>
                             </div>

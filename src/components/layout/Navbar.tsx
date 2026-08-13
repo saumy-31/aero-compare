@@ -141,17 +141,20 @@ export const Navbar: React.FC = () => {
                   );
                 }
 
-                if (link.isExternal) {
-                  return (
-                    <a
-                      key={link.name}
-                      href={link.path}
-                      className="relative flex items-center px-5 py-2 text-xs font-semibold tracking-wide uppercase rounded-full transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-white/60 cursor-pointer"
-                    >
-                      {link.name}
-                    </a>
-                  );
-                }
+                {/* DESKTOP NAV LINK - EXTERNAL */}
+if (link.isExternal) {
+  return (
+    <a
+      key={link.name}
+      href={link.path}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="relative flex items-center px-5 py-2 text-xs font-semibold tracking-wide uppercase rounded-full transition-all duration-200 text-slate-600 hover:text-slate-900 hover:bg-white/60 cursor-pointer"
+    >
+      {link.name}
+    </a>
+  );
+}
 
                 return (
                   <Link
@@ -271,19 +274,22 @@ export const Navbar: React.FC = () => {
                   {exploreLinks.map((item) => {
                     const Icon = item.icon;
 
-                    if (item.isExternal) {
-                      return (
-                        <a
-                          key={item.name}
-                          href={item.path}
-                          onClick={() => setIsSidebarOpen(false)}
-                          className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 text-xs font-bold text-slate-700 hover:text-blue-600 transition-colors"
-                        >
-                          <Icon className="w-4 h-4 text-slate-400" />
-                          <span>{item.name}</span>
-                        </a>
-                      );
-                    }
+                    {/* SIDEBAR DRAWER LINK - EXTERNAL */}
+if (item.isExternal) {
+  return (
+    <a
+      key={item.name}
+      href={item.path}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => setIsSidebarOpen(false)}
+      className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 text-xs font-bold text-slate-700 hover:text-blue-600 transition-colors"
+    >
+      <Icon className="w-4 h-4 text-slate-400" />
+      <span>{item.name}</span>
+    </a>
+  );
+}
 
                     return (
                       <Link
