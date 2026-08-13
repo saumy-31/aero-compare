@@ -268,7 +268,7 @@ export const FlightSearchUI: React.FC = () => {
       },
       cars: {
         headlinePrefix: 'Search rental cars from ',
-        headlineHighlight: 'suppliers.',
+        headlineHighlight: 'leading suppliers.',
         topImage: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop',
         topImageTag: 'HERTZ • AVIS • SIXT',
       },
@@ -652,52 +652,53 @@ export const FlightSearchUI: React.FC = () => {
 
         {/* ================= 1. UNIFIED MOBILE HERO + SEARCH WIDGET ================= */}
         <div className="max-w-[1360px] mx-auto px-2.5 sm:px-6 pt-2.5 sm:pt-6">
-          <div className="bg-white rounded-2xl sm:rounded-[36px] border border-slate-200/80 shadow-[0_12px_40px_-12px_rgba(15,23,42,0.06)] p-4 sm:p-8 lg:p-10 space-y-3.5 sm:space-y-8 overflow-visible">
+          <div className="bg-white rounded-2xl sm:rounded-[36px] border border-slate-200/80 shadow-[0_12px_40px_-12px_rgba(15,23,42,0.06)] p-4 sm:p-8 lg:p-8 space-y-3.5 sm:space-y-6 overflow-visible">
             
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-3.5 lg:gap-8 items-center">
               
               {/* Standardized Heading & Service Tabs */}
-              <div className="lg:col-span-7 flex flex-col items-center justify-center text-center lg:items-start lg:text-left space-y-3 sm:space-y-5">
-                <h1 className="text-xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-[1.12] text-center lg:text-left">
+              <div className="lg:col-span-7 flex flex-col items-center justify-center text-center lg:items-start lg:text-left space-y-3 sm:space-y-4">
+                <h1 className="text-xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-[1.15] text-center lg:text-left">
                   {currentHero.headlinePrefix}
                   <span className="text-blue-600 inline-block">{currentHero.headlineHighlight}</span>
                 </h1>
 
                 {/* Standardized Service Tabs */}
-                <div className="grid grid-cols-4 gap-1.5 sm:gap-3 max-w-md w-full pt-1">
-                  {tabs.map((tab) => {
-                    const Icon = tab.icon;
-                    const isActive = activeTab === tab.id;
+                {/* BALANCED COMPACT TAB BUTTONS */}
+<div className="grid grid-cols-4 gap-1.5 sm:gap-3 max-w-md w-full pt-1">
+  {tabs.map((tab) => {
+    const Icon = tab.icon;
+    const isActive = activeTab === tab.id;
 
-                    return (
-                      <button
-                        key={tab.id}
-                        type="button"
-                        onClick={() => handleTabChange(tab.id)}
-                        className={`relative group h-14 sm:h-20 rounded-[18px] sm:rounded-[22px] flex flex-col items-center justify-center text-center px-1 gap-1 transition-all duration-200 cursor-pointer select-none ${
-                          isActive
-                            ? 'bg-gradient-to-b from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-600/30 ring-2 ring-blue-600/20 scale-[1.02]'
-                            : 'bg-slate-50/90 border border-slate-200/80 text-slate-700 hover:bg-slate-100/80 hover:border-slate-300 hover:scale-[1.01]'
-                        }`}
-                      >
-                        <div className={`p-1 sm:p-2 rounded-xl transition-all duration-200 flex items-center justify-center ${
-                          isActive ? 'bg-white/15 text-white' : 'bg-white text-slate-700 border border-slate-200/60 group-hover:text-blue-600'
-                        }`}>
-                          <Icon className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
-                        </div>
+    return (
+      <button
+        key={tab.id}
+        type="button"
+        onClick={() => handleTabChange(tab.id)}
+        className={`relative group h-16 sm:h-20 rounded-[20px] sm:rounded-[22px] flex flex-col items-center justify-center text-center px-1 gap-1 transition-all duration-200 cursor-pointer select-none ${
+          isActive
+            ? 'bg-[#2563EB] text-white shadow-lg shadow-blue-600/30 ring-2 ring-blue-600/20 scale-[1.02]'
+            : 'bg-slate-50/90 border border-slate-200/80 text-slate-700 hover:bg-slate-100/80 hover:border-slate-300 hover:scale-[1.01]'
+        }`}
+      >
+        <div className={`p-1.5 sm:p-2 rounded-xl transition-all duration-200 flex items-center justify-center ${
+          isActive ? 'bg-white/20 text-white' : 'bg-white text-slate-700 border border-slate-200/60 group-hover:text-blue-600'
+        }`}>
+          <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+        </div>
 
-                        <span className="tracking-tight font-black text-[10px] sm:text-xs leading-tight text-center w-full truncate">
-                          {tab.label}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
+        <span className="tracking-tight font-black text-[10px] sm:text-xs leading-tight text-center w-full truncate">
+          {tab.label}
+        </span>
+      </button>
+    );
+  })}
+</div>
               </div>
 
               {/* Desktop Hero Image */}
               <div className="hidden lg:flex lg:col-span-5 flex-col">
-                <div className="relative h-56 lg:h-60 rounded-3xl overflow-hidden shadow-xs border border-slate-100 group cursor-pointer">
+                <div className="relative h-48 lg:h-52 rounded-3xl overflow-hidden shadow-xs border border-slate-100 group cursor-pointer">
                   <img
                     src={currentHero.topImage}
                     alt="Top Deals"
@@ -718,24 +719,23 @@ export const FlightSearchUI: React.FC = () => {
             </div>
 
             {/* DYNAMIC PER-TAB SNUG WIDGET VIEWPORT CONTAINER */}
-            {/* DYNAMIC PER-TAB WIDGET VIEWPORT CONTAINER */}
-<div 
-  id={activeTab === 'cars' ? 'car-rental-widget' : undefined}
-  className={`pt-3.5 sm:pt-4 relative overflow-visible w-full scroll-mt-24 ${
-    activeTab === 'flights' ? 'min-h-[100px]' : ''
-  } ${
-    activeTab === 'hotels' ? 'min-h-[70px]' : ''
-  } ${
-    activeTab === 'cars' ? 'min-h-[320px] sm:min-h-[220px]' : ''
-  } ${
-    activeTab === 'esim' ? 'min-h-[90px]' : ''
-  }`}
->
-  {activeTab === 'flights' && <div id="tpwl-search" className="w-full min-h-[100px]" />}
-  {activeTab === 'hotels' && <HotelSearchWidget />}
-  {activeTab === 'cars' && <CarRentalWidget />}
-  {activeTab === 'esim' && <EsimWidget />}
-</div>
+            <div 
+              id={activeTab === 'cars' ? 'car-rental-widget' : undefined}
+              className={`pt-2 sm:pt-3 relative overflow-visible w-full scroll-mt-24 ${
+                activeTab === 'flights' ? 'min-h-[100px]' : ''
+              } ${
+                activeTab === 'hotels' ? 'min-h-[70px]' : ''
+              } ${
+                activeTab === 'cars' ? 'min-h-[180px] sm:min-h-[160px]' : ''
+              } ${
+                activeTab === 'esim' ? 'min-h-[90px]' : ''
+              }`}
+            >
+              {activeTab === 'flights' && <div id="tpwl-search" className="w-full min-h-[100px]" />}
+              {activeTab === 'hotels' && <HotelSearchWidget />}
+              {activeTab === 'cars' && <CarRentalWidget />}
+              {activeTab === 'esim' && <EsimWidget />}
+            </div>
 
           </div>
         </div>
