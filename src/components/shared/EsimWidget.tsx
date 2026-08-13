@@ -2,10 +2,23 @@ import React, { useEffect, useRef } from 'react';
 import { ShieldCheck } from 'lucide-react';
 
 const esimWidgetStyles = `
+  #tp-esim-widget,
+  #tp-esim-widget * {
+    box-sizing: border-box !important;
+  }
+
   #tp-esim-widget {
-    width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
     font-family: inherit;
-    box-sizing: border-box;
+    overflow: visible !important;
+  }
+
+  #tp-esim-widget iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    border: none !important;
+    overflow: visible !important;
   }
 
   /* Main Form Row Container */
@@ -22,6 +35,7 @@ const esimWidgetStyles = `
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
+    max-width: 100% !important;
   }
 
   /* Input Field Styling */
@@ -136,21 +150,21 @@ export const EsimWidget: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full space-y-3.5">
+    <div className="w-full bg-transparent border-0 shadow-none p-0 overflow-visible">
       {/* 1. Live Search Widget Mount Point */}
-      <div className="w-full relative min-h-[50px] flex items-center justify-center overflow-hidden">
+      <div className="w-full relative min-h-[50px] flex items-center justify-center overflow-visible">
         <div
           id="tp-esim-widget"
           ref={containerRef}
-          className="w-full min-h-[50px]"
+          className="w-full min-h-[50px] overflow-visible"
         />
       </div>
 
       {/* 2. ATTRIBUTION STRIP */}
-      <div className="flex items-center justify-between px-1 text-xs text-slate-400 border-t border-slate-100 pt-3">
+      <div className="flex items-center justify-between px-1 text-xs text-slate-400 border-t border-slate-200/80 pt-3.5 mt-3">
         <div className="flex items-center gap-1.5 font-bold text-slate-700">
           <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
-          <span className="text-[11px] sm:text-xs">Official Partner Engine</span>
+          <span className="text-[11px] sm:text-xs">Official Partner</span>
         </div>
 
         <div className="flex items-center justify-end gap-2">

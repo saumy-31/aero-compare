@@ -8,7 +8,7 @@ const AutoEuropeLogo = () => (
   <img 
     itemProp="image" 
     className="site-logo h-4 sm:h-5 w-auto object-contain block" 
-    src="https://www.globalmediaserver.com/website/logos/gbr.jpg" 
+    src="/auto-europe-logo.png"
     alt="Auto Europe logo" 
     title="Auto Europe"
   />
@@ -34,6 +34,11 @@ export const CarRentalWidget: React.FC = () => {
     const cleanIframeStyles = () => {
       const iframe = container.querySelector('iframe');
       if (!iframe) return;
+
+      // Ensure iframe expands cleanly without scrollbars or overflow clipping
+      iframe.style.width = '100%';
+      iframe.style.border = 'none';
+      iframe.style.overflow = 'visible';
 
       try {
         const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
@@ -76,13 +81,14 @@ export const CarRentalWidget: React.FC = () => {
                 height: 48px !important;
                 font-weight: 800 !important;
                 margin-top: 4px !important;
+                width: 100% !important;
               }
             }
           `;
           iframeDoc.head.appendChild(style);
         }
       } catch (e) {
-        // Cross-origin fallback safety check
+        // Cross-origin fallback
       }
     };
 
@@ -105,18 +111,18 @@ export const CarRentalWidget: React.FC = () => {
 
   return (
     <div className="w-full space-y-3.5">
-      {/* SEARCH WIDGET MOUNT */}
+      {/* SEARCH WIDGET MOUNT CONTAINER */}
       <div 
         id="tpwl-car-widget-container"
         ref={containerRef}
-        className="w-full min-h-[120px] flex items-center justify-center bg-transparent p-0 border-0 shadow-none overflow-hidden"
+        className="w-full min-h-[140px] flex items-center justify-center bg-transparent p-0 border-0 shadow-none overflow-visible"
       />
 
       {/* ATTRIBUTION STRIP */}
       <div className="flex items-center justify-between px-1 text-xs text-slate-400 border-t border-slate-100 pt-3">
         <div className="flex items-center gap-1.5 font-bold text-slate-700">
           <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
-          <span className="text-[11px] sm:text-xs">Official Partner Search Engine</span>
+          <span className="text-[11px] sm:text-xs">Official Partner</span>
         </div>
 
         <div className="flex items-center justify-end gap-2">

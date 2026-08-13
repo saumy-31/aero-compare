@@ -128,20 +128,16 @@ export const Destinations: React.FC = () => {
 
       <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] font-sans pb-32 selection:bg-blue-600 selection:text-white">
         
-        {/* ================= 1. BRIGHT & VIBRANT HERO ================= */}
+        {/* HERO SECTION */}
         <header className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-10">
           <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-900 border border-slate-200/80 shadow-sm min-h-[280px] sm:min-h-[340px] flex flex-col justify-center items-center text-center p-6 sm:p-10">
-            
-            {/* Background Image */}
             <img 
               src={featuredDestination?.image || "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1600&auto=format&fit=crop"} 
               alt="Destinations Hero Background" 
               className="absolute inset-0 w-full h-full object-cover brightness-[0.85] contrast-[1.05]"
             />
-            {/* Lighter, Soft Ambient Gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/25 to-slate-950/70 z-10" />
 
-            {/* Content Header */}
             <div className="relative z-20 max-w-2xl space-y-3">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-white/20 text-white backdrop-blur-md border border-white/30 shadow-xs">
                 <Sparkles className="w-3 h-3 text-amber-300" /> Travel Directory
@@ -155,7 +151,6 @@ export const Destinations: React.FC = () => {
                 Find your next place to explore from our handpicked global escapes.
               </p>
 
-              {/* Crisp Search Input Bar */}
               <div className="pt-2 max-w-md mx-auto">
                 <div className="relative flex items-center bg-white border border-slate-200/80 rounded-2xl p-1 shadow-lg focus-within:border-blue-600 focus-within:ring-2 focus-within:ring-blue-600/20 transition-all">
                   <Search className="w-4 h-4 text-slate-400 ml-3 shrink-0" />
@@ -185,12 +180,12 @@ export const Destinations: React.FC = () => {
           </div>
         </header>
 
-        {/* ================= 2. CLEAN STICKY TOOLBAR ================= */}
-        <div className="sticky top-20 z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8">
-          <div className="bg-white/95 backdrop-blur-xl border border-slate-200/80 rounded-2xl p-2 shadow-xs flex flex-col sm:flex-row justify-between items-center gap-3">
+        {/* NON-STICKY SINGLE LINE FILTER TOOLBAR */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6">
+          <div className="bg-white border border-slate-200/80 rounded-2xl p-2 shadow-xs flex items-center justify-between gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             
-            {/* Category Pills */}
-            <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 scrollbar-none">
+            {/* All Category Pills + Tier Selector in ONE Horizontal Row */}
+            <div className="flex items-center gap-1.5 shrink-0">
               {categories.map((cat) => {
                 const isActive = activeType === cat.name;
                 return (
@@ -201,7 +196,7 @@ export const Destinations: React.FC = () => {
                       setActiveType(cat.name);
                       setVisibleCount(12);
                     }}
-                    className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer whitespace-nowrap select-none ${
+                    className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer whitespace-nowrap select-none ${
                       isActive
                         ? 'bg-[#2563EB] text-white shadow-sm shadow-blue-600/20'
                         : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
@@ -212,13 +207,10 @@ export const Destinations: React.FC = () => {
                   </button>
                 );
               })}
-            </div>
 
-            {/* Budget Selector */}
-            <div className="flex items-center gap-2 w-full sm:w-auto justify-end border-t sm:border-t-0 pt-2 sm:pt-0 border-slate-100">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest hidden sm:inline">Tier:</span>
-              <div className="flex items-center bg-slate-50 border border-slate-200/80 rounded-xl px-3 py-1.5">
-                <SlidersHorizontal className="w-3.5 h-3.5 text-slate-400 mr-2" />
+              {/* Tier Dropdown inline */}
+              <div className="flex items-center bg-slate-50 border border-slate-200/80 rounded-xl px-2.5 py-1.5 shrink-0 ml-1">
+                <SlidersHorizontal className="w-3.5 h-3.5 text-slate-400 mr-1.5" />
                 <select 
                   value={budgetFilter}
                   onChange={(e: any) => {
@@ -238,7 +230,7 @@ export const Destinations: React.FC = () => {
           </div>
         </div>
 
-        {/* ================= 3. BRIGHT EDITORIAL GRID ================= */}
+        {/* MAIN EDITORIAL GRID */}
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="mb-6 space-y-1">
@@ -265,7 +257,6 @@ export const Destinations: React.FC = () => {
                     onClick={() => navigate(`/destinations/${dest.id}`)}
                     className="group cursor-pointer rounded-3xl overflow-hidden bg-slate-900 border border-slate-200/80 shadow-2xs hover:shadow-xl transition-all duration-500 relative flex flex-col justify-end h-[240px] sm:h-[280px] p-5 hover:-translate-y-1"
                   >
-                    {/* Vibrant Image */}
                     <img 
                       src={dest.image} 
                       alt={dest.city} 
@@ -276,10 +267,8 @@ export const Destinations: React.FC = () => {
                       className="absolute inset-0 w-full h-full object-cover brightness-[0.88] contrast-[1.05] group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
 
-                    {/* Lighter Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/15 to-transparent z-10 pointer-events-none" />
 
-                    {/* Top Controls */}
                     <div className="absolute top-3.5 left-3.5 right-3.5 z-20 flex items-center justify-between">
                       <span className="bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest text-slate-900 shadow-2xs">
                         {dest.tripType || 'Escape'}
@@ -296,7 +285,6 @@ export const Destinations: React.FC = () => {
                       </button>
                     </div>
 
-                    {/* Bottom Details Overlay */}
                     <div className="relative z-20 space-y-0.5 text-white">
                       <span className="text-[10px] font-black uppercase tracking-wider text-blue-300 flex items-center gap-1 drop-shadow-xs">
                         <MapPin className="w-3 h-3" /> {dest.country}
@@ -319,7 +307,6 @@ export const Destinations: React.FC = () => {
             </AnimatePresence>
           </div>
 
-          {/* Load More Button */}
           {hasMore && (
             <div className="mt-12 flex justify-center">
               <button 
@@ -333,7 +320,6 @@ export const Destinations: React.FC = () => {
             </div>
           )}
 
-          {/* Empty Fallback State */}
           {filteredDestinations.length === 0 && (
             <div className="text-center py-16 bg-white rounded-3xl border border-slate-200/80 shadow-2xs">
               <Compass className="w-10 h-10 text-slate-300 mx-auto mb-3 animate-bounce" />

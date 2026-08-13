@@ -665,15 +665,16 @@ export const FlightSearchUI: React.FC = () => {
             </div>
 
             {/* Standardized Search Widget Viewport */}
-            <div 
-              id={activeTab === 'cars' ? 'car-rental-widget' : undefined}
-              className="pt-3.5 sm:pt-4 border-t border-slate-100 relative overflow-visible min-h-[70px] w-full scroll-mt-24"
-            >
-              {activeTab === 'flights' && <div id="tpwl-search" className="w-full min-h-[70px]" />}
-              {activeTab === 'hotels' && <HotelSearchWidget />}
-              {activeTab === 'cars' && <CarRentalWidget />}
-              {activeTab === 'esim' && <EsimWidget />}
-            </div>
+            {/* NEW BORDERLESS & CLEAN WIDGET CONTAINER */}
+<div 
+  id={activeTab === 'cars' ? 'car-rental-widget' : undefined}
+  className="pt-3.5 sm:pt-4 relative overflow-visible min-h-[70px] w-full scroll-mt-24"
+>
+  {activeTab === 'flights' && <div id="tpwl-search" className="w-full min-h-[70px]" />}
+  {activeTab === 'hotels' && <HotelSearchWidget />}
+  {activeTab === 'cars' && <CarRentalWidget />}
+  {activeTab === 'esim' && <EsimWidget />}
+</div>
 
           </div>
         </div>
@@ -731,6 +732,7 @@ export const FlightSearchUI: React.FC = () => {
         </div>
 
         {/* ================= 3A. FLIGHTS SECTION ================= */}
+        {/* ================= 3A. FLIGHTS SECTION ================= */}
         {activeTab === 'flights' && (
           <>
             <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-10 sm:mt-14 space-y-6">
@@ -744,16 +746,18 @@ export const FlightSearchUI: React.FC = () => {
                   </h2>
                 </div>
 
+                {/* Visible on Desktop Header */}
                 <button
                   type="button"
                   onClick={() => navigate('/destinations')}
-                  className="inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
+                  className="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
                 >
                   <span>View all destinations</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </div>
 
+              {/* Horizontal Scroll Cards with End-Card for "View All" */}
               <div className="flex overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-visible pb-2 sm:pb-0">
                 {popularDestinations.map((dest) => (
                   <div
@@ -802,6 +806,22 @@ export const FlightSearchUI: React.FC = () => {
                     </div>
                   </div>
                 ))}
+
+                {/* MOBILE END CARD: Displays when user scrolls to the end */}
+                <div
+                  onClick={() => navigate('/destinations')}
+                  className="w-[50vw] sm:hidden shrink-0 snap-start h-80 rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3 shadow-md shadow-blue-600/20 group-hover:scale-110 transition-transform">
+                    <ArrowRight className="w-6 h-6" />
+                  </div>
+                  <span className="text-sm font-black text-slate-900 leading-tight">
+                    View All
+                  </span>
+                  <span className="text-[11px] font-bold text-blue-600 mt-0.5">
+                    Destinations &rarr;
+                  </span>
+                </div>
               </div>
             </section>
 
@@ -814,7 +834,7 @@ export const FlightSearchUI: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => navigate('/blog')}
-                  className="inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
+                  className="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
                 >
                   <span>View all articles</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -845,6 +865,22 @@ export const FlightSearchUI: React.FC = () => {
                     </div>
                   </div>
                 ))}
+
+                {/* MOBILE END CARD: Articles */}
+                <div
+                  onClick={() => navigate('/blog')}
+                  className="w-[50vw] sm:hidden shrink-0 snap-start h-full min-h-[220px] rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3 shadow-md shadow-blue-600/20 group-hover:scale-110 transition-transform">
+                    <ArrowRight className="w-6 h-6" />
+                  </div>
+                  <span className="text-sm font-black text-slate-900 leading-tight">
+                    View All
+                  </span>
+                  <span className="text-[11px] font-bold text-blue-600 mt-0.5">
+                    Articles &rarr;
+                  </span>
+                </div>
               </div>
             </section>
           </>
@@ -867,7 +903,7 @@ export const FlightSearchUI: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => navigate('/destinations')}
-                  className="inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
+                  className="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
                 >
                   <span>Explore all destinations</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -922,6 +958,22 @@ export const FlightSearchUI: React.FC = () => {
                     </div>
                   </div>
                 ))}
+
+                {/* MOBILE END CARD: Hotel Destinations */}
+                <div
+                  onClick={() => navigate('/destinations')}
+                  className="w-[50vw] sm:hidden shrink-0 snap-start h-80 rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3 shadow-md shadow-blue-600/20 group-hover:scale-110 transition-transform">
+                    <ArrowRight className="w-6 h-6" />
+                  </div>
+                  <span className="text-sm font-black text-slate-900 leading-tight">
+                    View All
+                  </span>
+                  <span className="text-[11px] font-bold text-blue-600 mt-0.5">
+                    Destinations &rarr;
+                  </span>
+                </div>
               </div>
             </section>
 
@@ -934,7 +986,7 @@ export const FlightSearchUI: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => navigate('/blog')}
-                  className="inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
+                  className="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
                 >
                   <span>View all articles</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -965,6 +1017,22 @@ export const FlightSearchUI: React.FC = () => {
                     </div>
                   </div>
                 ))}
+
+                {/* MOBILE END CARD: Hotel Guides */}
+                <div
+                  onClick={() => navigate('/blog')}
+                  className="w-[50vw] sm:hidden shrink-0 snap-start h-full min-h-[220px] rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3 shadow-md shadow-blue-600/20 group-hover:scale-110 transition-transform">
+                    <ArrowRight className="w-6 h-6" />
+                  </div>
+                  <span className="text-sm font-black text-slate-900 leading-tight">
+                    View All
+                  </span>
+                  <span className="text-[11px] font-bold text-blue-600 mt-0.5">
+                    Articles &rarr;
+                  </span>
+                </div>
               </div>
             </section>
           </>
@@ -1028,7 +1096,7 @@ export const FlightSearchUI: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => navigate('/destinations')}
-                  className="inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
+                  className="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
                 >
                   <span>View all destinations</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -1070,13 +1138,39 @@ export const FlightSearchUI: React.FC = () => {
                     </div>
                   </div>
                 ))}
+
+                {/* MOBILE END CARD: Car Destinations */}
+                <div
+                  onClick={() => navigate('/destinations')}
+                  className="w-[50vw] sm:hidden shrink-0 snap-start h-80 rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3 shadow-md shadow-blue-600/20 group-hover:scale-110 transition-transform">
+                    <ArrowRight className="w-6 h-6" />
+                  </div>
+                  <span className="text-sm font-black text-slate-900 leading-tight">
+                    View All
+                  </span>
+                  <span className="text-[11px] font-bold text-blue-600 mt-0.5">
+                    Destinations &rarr;
+                  </span>
+                </div>
               </div>
             </section>
 
             <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-12 sm:mt-16 space-y-6">
-              <div className="border-b border-slate-200/60 pb-3">
-                <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">ROAD TRIP INSPIRATION</span>
-                <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-0.5">Make the journey part of the adventure</h2>
+              <div className="border-b border-slate-200/60 pb-3 flex items-end justify-between">
+                <div>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">ROAD TRIP INSPIRATION</span>
+                  <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-0.5">Make the journey part of the adventure</h2>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => navigate('/blog')}
+                  className="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
+                >
+                  <span>View all articles</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </button>
               </div>
 
               <div className="flex overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible pb-2 sm:pb-0">
@@ -1103,6 +1197,22 @@ export const FlightSearchUI: React.FC = () => {
                     </div>
                   </div>
                 ))}
+
+                {/* MOBILE END CARD: Road Trip Articles */}
+                <div
+                  onClick={() => navigate('/blog')}
+                  className="w-[50vw] sm:hidden shrink-0 snap-start h-full min-h-[220px] rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3 shadow-md shadow-blue-600/20 group-hover:scale-110 transition-transform">
+                    <ArrowRight className="w-6 h-6" />
+                  </div>
+                  <span className="text-sm font-black text-slate-900 leading-tight">
+                    View All
+                  </span>
+                  <span className="text-[11px] font-bold text-blue-600 mt-0.5">
+                    Articles &rarr;
+                  </span>
+                </div>
               </div>
             </section>
           </>
@@ -1177,7 +1287,7 @@ export const FlightSearchUI: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => navigate('/blog')}
-                  className="inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
+                  className="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
                 >
                   <span>View all articles</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -1208,6 +1318,22 @@ export const FlightSearchUI: React.FC = () => {
                     </div>
                   </div>
                 ))}
+
+                {/* MOBILE END CARD: eSIM Guides */}
+                <div
+                  onClick={() => navigate('/blog')}
+                  className="w-[50vw] sm:hidden shrink-0 snap-start h-full min-h-[220px] rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3 shadow-md shadow-blue-600/20 group-hover:scale-110 transition-transform">
+                    <ArrowRight className="w-6 h-6" />
+                  </div>
+                  <span className="text-sm font-black text-slate-900 leading-tight">
+                    View All
+                  </span>
+                  <span className="text-[11px] font-bold text-blue-600 mt-0.5">
+                    Articles &rarr;
+                  </span>
+                </div>
               </div>
             </section>
           </>

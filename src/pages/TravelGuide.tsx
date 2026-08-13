@@ -314,7 +314,7 @@ export const TravelGuide: React.FC = () => {
                 </div>
               </div>
 
-              {/* ATTRACTIONS */}
+              {/* ATTRACTIONS (WITH RESPONSIVE MOBILE FIXES) */}
               <section id="guide-attractions" className="scroll-mt-32 bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-2xs space-y-6">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-4">
                   <div>
@@ -328,43 +328,56 @@ export const TravelGuide: React.FC = () => {
 
                 {destination.attractions && destination.attractions.length > 0 ? (
                   <div className="space-y-3">
-                    {destination.attractions.map((attraction: any, i: number) => (
-                      <div 
-                        key={i} 
-                        className="group flex items-center justify-between p-4 rounded-xl bg-slate-50 border border-slate-200/80 hover:bg-white hover:border-blue-200 hover:shadow-sm transition-all gap-4"
-                      >
-                        <div className="flex items-center gap-3.5">
-                          <div className="w-7 h-7 rounded-lg bg-[#2563EB] text-white font-black text-xs flex items-center justify-center shrink-0 shadow-2xs">
-                            {String(i + 1).padStart(2, '0')}
-                          </div>
+                    {destination.attractions.map((attraction: any, i: number) => {
+                      const name = typeof attraction === 'string' ? attraction : attraction.name;
+                      const duration = typeof attraction === 'object' ? attraction.duration : null;
+                      const bestTime = typeof attraction === 'object' ? attraction.bestTime : null;
+                      const cost = typeof attraction === 'object' ? (attraction.cost || attraction.entryFee) : null;
 
-                          <div>
-                            <h3 className="text-sm font-extrabold text-slate-900 group-hover:text-[#2563EB] transition-colors">
-                              {typeof attraction === 'string' ? attraction : attraction.name}
-                            </h3>
-                            
-                            <div className="flex items-center gap-3 text-[11px] font-medium text-slate-500 mt-0.5">
-                              {attraction.duration && (
-                                <span className="flex items-center gap-1">
-                                  <Clock className="w-3 h-3 text-slate-400" /> {attraction.duration}
-                                </span>
-                              )}
-                              {attraction.bestTime && (
-                                <span className="flex items-center gap-1">
-                                  <Sun className="w-3 h-3 text-amber-500" /> {attraction.bestTime}
-                                </span>
+                      return (
+                        <div 
+                          key={i} 
+                          className="group flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-white hover:border-blue-200 hover:shadow-sm transition-all gap-3 sm:gap-4"
+                        >
+                          <div className="flex items-start gap-3.5 min-w-0">
+                            <div className="w-8 h-8 rounded-xl bg-[#2563EB] text-white font-black text-xs flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 shadow-2xs">
+                              {String(i + 1).padStart(2, '0')}
+                            </div>
+
+                            <div className="space-y-1 min-w-0 flex-1">
+                              <h3 className="text-sm sm:text-base font-extrabold text-slate-900 group-hover:text-[#2563EB] transition-colors leading-snug">
+                                {name}
+                              </h3>
+                              
+                              {(duration || bestTime) && (
+                                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-medium text-slate-500 pt-0.5">
+                                  {duration && (
+                                    <span className="inline-flex items-center gap-1 shrink-0">
+                                      <Clock className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                                      <span>{duration}</span>
+                                    </span>
+                                  )}
+                                  {bestTime && (
+                                    <span className="inline-flex items-center gap-1 shrink-0">
+                                      <Sun className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                                      <span>{bestTime}</span>
+                                    </span>
+                                  )}
+                                </div>
                               )}
                             </div>
                           </div>
-                        </div>
 
-                        {attraction.entryFee && (
-                          <span className="text-[11px] font-extrabold text-slate-700 bg-white border border-slate-200/80 px-3 py-1 rounded-lg shrink-0 whitespace-nowrap shadow-2xs">
-                            {attraction.entryFee}
-                          </span>
-                        )}
-                      </div>
-                    ))}
+                          {cost && (
+                            <div className="pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-200/60 flex items-center justify-start sm:justify-end shrink-0">
+                              <span className="inline-block px-3 py-1.5 rounded-xl bg-white sm:bg-slate-100/80 border border-slate-200/80 text-xs font-black text-slate-900 tracking-tight shadow-2xs break-words max-w-full">
+                                {cost}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 ) : (
                   <div className="p-6 text-center bg-slate-50 rounded-2xl border border-slate-200/60">
