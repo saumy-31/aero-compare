@@ -1,203 +1,146 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Clock, Calendar, Sparkles, ChevronRight, ChevronLeft } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Clock, Calendar, Sparkles, ArrowRight } from 'lucide-react';
+
+interface BlogPost {
+  id: string | number;
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  image: string;
+  publishedDate: string;
+  readTime: string;
+}
 
 interface EditorialHeroProps {
-  posts: any[];
+  posts: BlogPost[];
 }
 
 export const EditorialHero: React.FC<EditorialHeroProps> = ({ posts }) => {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
 
-  // Derived state perfectly controls the pause logic without conflicting events
-  const isPaused = isHovered || isDragging;
-
-  const nextSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev === posts.length - 1 ? 0 : prev + 1));
-  }, [posts.length]);
-
-  const prevSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev === 0 ? posts.length - 1 : prev - 1));
-  }, [posts.length]);
-
-  // Refined Autoplay Logic
   useEffect(() => {
-    // 1. Pause immediately if the user is hovering or dragging
-    if (isPaused) return;
-
-    // 2. Start a fresh 3-second timer
+    if (!posts || posts.length === 0) return;
     const timer = setInterval(() => {
-      nextSlide();
-    }, 3000);
-
-    // 3. Cleanup function fires on unmount OR when dependencies change.
-    // Because `currentIndex` is a dependency, manually clicking prev/next/pagination
-    // perfectly clears the old timer and restarts a fresh 3-second interval.
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % posts.length);
+    }, 6000);
     return () => clearInterval(timer);
-  }, [isPaused, currentIndex, nextSlide]);
-
-  // Keyboard Arrow Support
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
-        prevSlide();
-      } else if (e.key === 'ArrowRight') {
-        nextSlide();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [nextSlide, prevSlide]);
-
-  // Fluid Swipe Gesture Handling
-  const handleDragEnd = (e: any, { offset }: any) => {
-    setIsDragging(false);
-    const swipeThreshold = 50;
-    if (offset.x < -swipeThreshold) {
-      nextSlide();
-    } else if (offset.x > swipeThreshold) {
-      prevSlide();
-    }
-  };
+  }, [posts]);
 
   if (!posts || posts.length === 0) return null;
 
   const currentPost = posts[currentIndex];
 
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % posts.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + posts.length) % posts.length);
+  };
+
   return (
-    <div 
-      className="relative w-full min-h-[55vh] flex flex-col overflow-hidden border-b border-white/5 bg-[#071226]"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <AnimatePresence initial={false}>
-        <motion.div
-          key={currentIndex}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.8}
-          onDragStart={() => setIsDragging(true)}
-          onDragEnd={handleDragEnd}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ opacity: { duration: 0.8 }, x: { type: "spring", stiffness: 300, damping: 30 } }}
-          className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing z-0"
-        >
-          {/* Cinematic Background Image */}
-          <motion.img 
-            src={currentPost.image} 
-            alt={currentPost.title} 
-            initial={{ scale: 1.05 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 6, ease: "easeOut" }}
-            className="absolute inset-0 w-full h-full object-cover object-[center_40%] md:object-center"
-          />
-          
-          {/* Lighter Gradients to reveal more photography */}
-          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#071226]/70 via-[#071226]/30 md:via-[#071226]/10 to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#071226] via-transparent to-transparent z-10 pointer-events-none opacity-30" />
-        </motion.div>
-      </AnimatePresence>
+    // REMOVED pt-2 sm:pt-4 PADDING FOR A TIGHT, SEAMLESS LAYOUT
+    <section className="w-full max-w-[1360px] mx-auto px-1.5 sm:px-6">
+      {/* CONTAINED EDITORIAL HERO CANVAS */}
+      <div className="relative rounded-2xl sm:rounded-[32px] overflow-hidden bg-slate-900 border border-slate-200/80 shadow-[0_12px_40px_-12px_rgba(15,23,42,0.15)] min-h-[420px] sm:min-h-[480px] lg:min-h-[520px] flex flex-col justify-end p-6 sm:p-12 lg:p-16">
+        
+        {/* Brightened Background Image */}
+        <img
+          key={currentPost.id}
+          src={currentPost.image || "https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1600&auto=format&fit=crop"}
+          alt={currentPost.title}
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.88] contrast-[1.05] transition-all duration-700 ease-out"
+        />
+        
+        {/* Lightened, Ambient Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent z-10" />
 
-      {/* Editorial Content Container */}
-      <div className="relative z-20 container mx-auto px-4 max-w-7xl flex-grow flex flex-col justify-center pointer-events-none pt-12 pb-4">
-        <div className="max-w-sm md:max-w-md text-left pointer-events-auto md:pl-16 lg:pl-0">
-          
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="inline-flex items-center bg-blue-600/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-4 md:mb-5 shadow-lg border border-blue-400/30">
-                <Sparkles className="w-3 h-3 mr-1.5 text-white" />
-                Featured Story
-              </div>
-
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 leading-[1.15] tracking-tight drop-shadow-2xl hover:text-blue-400 transition-colors duration-300">
-                {currentPost.title}
-              </h2>
-
-              <p className="text-base md:text-lg text-gray-200 mb-5 line-clamp-2 leading-relaxed font-medium drop-shadow-lg">
-                {currentPost.excerpt}
-              </p>
-
-              <div className="flex flex-wrap items-center gap-4 md:gap-6 text-[10px] md:text-xs font-bold uppercase tracking-wider text-gray-300 mb-6 md:mb-8">
-                <span className="text-blue-400">{currentPost.category}</span>
-                <span className="flex items-center border-l border-white/20 pl-4 md:pl-6">
-                  <Calendar className="w-3 h-3 md:w-4 md:h-4 mr-2 text-blue-500" />
-                  {currentPost.publishedDate}
-                </span>
-                <span className="flex items-center border-l border-white/20 pl-4 md:pl-6">
-                  <Clock className="w-3 h-3 md:w-4 md:h-4 mr-2 text-blue-500" />
-                  {currentPost.readTime}
-                </span>
-              </div>
-
-              <button 
-                className="flex items-center bg-white hover:bg-gray-100 text-[#071226] px-6 py-3 rounded-xl font-black uppercase tracking-widest text-xs transition-all hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  navigate(`/blog/${currentPost.slug}`);
-                }}
-              >
-                Read Article <ChevronRight className="w-4 h-4 ml-1.5" />
-              </button>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </div>
-
-      {/* Pagination */}
-      <div className="relative z-30 w-full pb-6 md:pb-8 flex justify-start container mx-auto px-4 max-w-7xl pointer-events-none mt-auto">
-        <div className="md:pl-16 lg:pl-0 flex gap-2">
-          {posts.map((_, index) => (
+        {/* Carousel Navigation Arrows */}
+        {posts.length > 1 && (
+          <div className="absolute inset-x-4 sm:inset-x-8 top-1/2 -translate-y-1/2 z-20 flex items-center justify-between pointer-events-none">
             <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className="h-1.5 w-10 md:w-12 bg-white/20 rounded-full overflow-hidden pointer-events-auto cursor-pointer transition-all hover:bg-white/40"
-              aria-label={`Go to slide ${index + 1}`}
+              type="button"
+              onClick={handlePrev}
+              className="p-2.5 sm:p-3 rounded-full bg-slate-900/50 hover:bg-white text-white hover:text-slate-900 backdrop-blur-md border border-white/20 transition-all cursor-pointer pointer-events-auto shadow-md active:scale-95"
+              aria-label="Previous Slide"
             >
-              {index === currentIndex && (
-                <motion.div
-                  initial={{ width: "0%" }}
-                  animate={{ width: isPaused ? "auto" : "100%" }}
-                  transition={{ duration: 3, ease: "linear" }}
-                  className="h-full bg-white rounded-full"
-                />
-              )}
-              {index < currentIndex && (
-                <div className="h-full w-full bg-white/70 rounded-full" />
-              )}
+              <ChevronLeft className="w-5 h-5" />
             </button>
-          ))}
-        </div>
-      </div>
+            <button
+              type="button"
+              onClick={handleNext}
+              className="p-2.5 sm:p-3 rounded-full bg-slate-900/50 hover:bg-white text-white hover:text-slate-900 backdrop-blur-md border border-white/20 transition-all cursor-pointer pointer-events-auto shadow-md active:scale-95"
+              aria-label="Next Slide"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+        )}
 
-      {/* Always Visible Glassmorphic Navigation Arrows (Desktop Only) */}
-      <div className="absolute inset-y-0 right-4 md:right-8 z-30 flex items-center pointer-events-none hidden md:flex">
-        <button 
-          onClick={nextSlide}
-          className="p-3 md:p-4 rounded-full bg-white/20 hover:bg-white/40 border border-white/30 text-white backdrop-blur-md pointer-events-auto transition-all hover:scale-110 shadow-2xl opacity-70 hover:opacity-100"
-        >
-          <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
-        </button>
+        {/* Hero Content */}
+        <div className="relative z-20 max-w-3xl space-y-3.5 text-white">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-black uppercase tracking-wider bg-[#2563EB] text-white shadow-md shadow-blue-600/30">
+              <Sparkles className="w-3.5 h-3.5 text-amber-300" /> Featured Story
+            </span>
+            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider bg-white/20 text-white backdrop-blur-md border border-white/20">
+              {currentPost.category}
+            </span>
+          </div>
+
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.1] drop-shadow-sm">
+            {currentPost.title}
+          </h1>
+
+          <p className="text-slate-100 text-xs sm:text-base font-semibold leading-relaxed max-w-2xl line-clamp-2 opacity-95 drop-shadow-xs">
+            {currentPost.excerpt}
+          </p>
+
+          <div className="flex flex-wrap items-center gap-4 text-xs font-bold text-slate-200 pt-1">
+            <span className="flex items-center gap-1">
+              <Calendar className="w-3.5 h-3.5 text-blue-400" /> {currentPost.publishedDate}
+            </span>
+            <span className="flex items-center gap-1">
+              <Clock className="w-3.5 h-3.5 text-blue-400" /> {currentPost.readTime}
+            </span>
+          </div>
+
+          {/* Action CTA */}
+          <div className="pt-2">
+            <button
+              type="button"
+              onClick={() => navigate(`/blog/${currentPost.slug}`)}
+              className="px-6 py-3 rounded-2xl bg-white hover:bg-[#2563EB] text-slate-900 hover:text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-200 shadow-lg flex items-center gap-2 cursor-pointer active:scale-95 group"
+            >
+              <span>Read Article</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+
+          {/* Carousel Slide Indicators */}
+          {posts.length > 1 && (
+            <div className="flex items-center gap-1.5 pt-4">
+              {posts.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                    idx === currentIndex ? 'w-8 bg-blue-500' : 'w-2 bg-white/40 hover:bg-white/70'
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+
       </div>
-      <div className="absolute inset-y-0 left-4 md:left-8 z-30 flex items-center pointer-events-none hidden md:flex">
-        <button 
-          onClick={prevSlide}
-          className="p-3 md:p-4 rounded-full bg-white/20 hover:bg-white/40 border border-white/30 text-white backdrop-blur-md pointer-events-auto transition-all hover:scale-110 shadow-2xl opacity-70 hover:opacity-100"
-        >
-          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
-        </button>
-      </div>
-    </div>
+    </section>
   );
 };
+
+export default EditorialHero;

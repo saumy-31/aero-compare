@@ -4,10 +4,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "npx tsx generate-sitemap.js && vite build",
-    "preview": "vite preview"
-  },
+  "dev": "vite",
+  "build": "node scripts/generate-sitemap.cjs && tsc && vite build",
+  "preview": "vite preview"
+},
   "dependencies": {
     "@vercel/edge": "^1.3.1",
     "clsx": "^2.1.0",

@@ -63,38 +63,7 @@ export const Home = () => {
         {/* ================= 1. HERO + SEARCH ENGINE WIDGET ================= */}
         <FlightSearchUI />
 
-        {/* ================= 2. BENEFIT CARDS ROW ================= */}
-        <section className="pt-10 sm:pt-16 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-md mx-auto mb-8 sm:mb-10 space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-blue-50 text-[#2563EB] border border-blue-200/60 shadow-2xs">
-              <Sparkles className="w-3 h-3 text-[#2563EB]" /> Why Choose FlySava
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-              Smarter Airfare Search
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {benefits.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <div 
-                  key={i} 
-                  className="p-6 rounded-[24px] bg-white border border-[#E5E7EB] shadow-2xs hover:border-blue-500/70 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
-                >
-                  <div className="space-y-3">
-                    <div className="w-11 h-11 rounded-2xl bg-blue-50 text-[#2563EB] border border-blue-100/60 flex items-center justify-center shadow-2xs">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <h3 className="text-base font-black text-[#111827] tracking-tight">{item.title}</h3>
-                    <p className="text-xs text-slate-500 leading-relaxed font-medium">{item.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
+        
 
       </div>
     </>

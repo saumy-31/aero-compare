@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { SEO } from '../components/seo/SEO';
 import { EditorialHero } from '../components/blog/EditorialHero';
 
-export const Blog = () => {
+export const Blog: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const navType = useNavigationType();
@@ -59,13 +59,13 @@ export const Blog = () => {
   const categories = ['All', 'Destinations', 'City Guides', 'Travel Tips', 'Airline Reviews', 'Itineraries'];
   
   const destinationCollections = [
-    { name: 'Japan', image: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=800&auto=format&fit=crop' },
-    { name: 'Italy', image: 'https://images.unsplash.com/photo-1499678329028-101435549a4e?q=80&w=870&auto=format&fit=crop' },
-    { name: 'Thailand', image: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=800&auto=format&fit=crop' },
-    { name: 'Switzerland', image: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?q=80&w=800&auto=format&fit=crop' },
-    { name: 'Maldives', image: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=800&auto=format&fit=crop' },
-    { name: 'Norway', image: 'https://images.unsplash.com/photo-1504233529578-6d46baba6d34?q=80&w=874&auto=format&fit=crop' },
-    { name: 'Canada', image: 'https://images.unsplash.com/photo-1503614472-8c93d56e92ce?q=80&w=800&auto=format&fit=crop' }
+    { id: 'seoul-kr', name: 'Seoul', image: 'https://images.unsplash.com/photo-1538485399081-7191377e8241?q=80&w=800&auto=format&fit=crop' },
+    { id: 'tokyo-jp', name: 'Tokyo', image: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=800&auto=format&fit=crop' },
+    { id: 'paris-fr', name: 'Paris', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=800&auto=format&fit=crop' },
+    { id: 'dubai-uae', name: 'Dubai', image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop' },
+    { id: 'bali-id', name: 'Bali', image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=800&auto=format&fit=crop' },
+    { id: 'london-uk', name: 'London', image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=800&auto=format&fit=crop' },
+    { id: 'new-york-us', name: 'New York', image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=800&auto=format&fit=crop' }
   ];
 
   const filteredPosts = MOCK_BLOG_POSTS.filter(post => {
@@ -81,50 +81,41 @@ export const Blog = () => {
     MOCK_BLOG_POSTS.find(p => p.slug === 'paris-beyond-the-eiffel-tower') || MOCK_BLOG_POSTS[3]
   ].filter(Boolean);
 
-  // Layout View States
   const isDefaultView = filter === 'All' && searchQuery === '';
-  const isDestinationSearch = destinationCollections.some(d => d.name.toLowerCase() === searchQuery.toLowerCase());
 
   const latestPosts = filteredPosts.slice(0, 3);
   const trendingPosts = filteredPosts.slice(3, 5);
   const spotlightPost = filteredPosts.slice(5, 6)[0];
   const remainingPosts = isDefaultView ? filteredPosts.slice(6) : filteredPosts;
 
-  const blogJsonLd = {
+  // BreadcrumbList JSON-LD Schema
+  const blogIndexJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "Travel Guides & Tips | FlySava",
-    "description": "Expert insights, destination guides, and strategies to fly further for less.",
-    "url": "https://flysava.com/blog"
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://flysava.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://flysava.com/blog"
+      }
+    ]
   };
 
-  // Carousel & Scroll Refs
   const categoryScrollRef = useRef<HTMLDivElement>(null);
   const destScrollRef = useRef<HTMLDivElement>(null);
-  const destSectionRef = useRef<HTMLElement>(null);
   const resultsHeaderRef = useRef<HTMLDivElement>(null);
 
   const scrollToResults = () => {
     setTimeout(() => {
       resultsHeaderRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 400);
-  };
-
-  const handleDestinationClick = (destName: string) => {
-    if (searchQuery.toLowerCase() === destName.toLowerCase()) {
-      clearDestinationFilter();
-      return;
-    }
-    setSearchQuery(destName);
-    setFilter('All');
-    scrollToResults();
-  };
-
-  const clearDestinationFilter = () => {
-    setSearchQuery('');
-    setTimeout(() => {
-      destSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
   };
 
   const scrollCarousel = (ref: React.RefObject<HTMLDivElement>, direction: 'left' | 'right') => {
@@ -169,13 +160,14 @@ export const Blog = () => {
   return (
     <>
       <SEO 
-        title="Travel Guides & Tips | FlySava"
-        description="Expert insights, destination guides, and strategies to fly further for less. Discover hidden gems and ultimate travel hacks."
+        title="Travel Guides, Tips & Flight Insights | FlySava Blog"
+        description="Explore travel guides, flight booking tips, hotel advice, and eSIM guides to help plan your next trip."
         canonicalUrl="/blog"
-        jsonLd={blogJsonLd}
+        type="website"
+        jsonLd={blogIndexJsonLd}
       />
       
-      <div className="min-h-screen bg-[#F8FAFC] pt-16 pb-16 text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
+      <div className="min-h-screen bg-[#F8FAFC] pt-3 sm:pt-4 pb-16 text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
         
         {/* --- PREMIUM EDITORIAL HERO SLIDER --- */}
         <EditorialHero posts={sliderPosts} />
@@ -188,14 +180,14 @@ export const Blog = () => {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white p-3 rounded-3xl border border-slate-200/80 shadow-lg flex flex-col md:flex-row items-center justify-between gap-3"
             >
-              <div className="relative w-full md:w-5/12 shrink-0">
-                <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
+              <div className="relative w-full md:w-5/12 shrink-0 flex items-center">
+                <Search className="absolute left-4.5 text-slate-400 w-5 h-5 pointer-events-none z-10" />
                 <input 
                   type="text" 
-                  placeholder="Search destinations, guides..." 
+                  placeholder="Search articles, guides..." 
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-slate-50 text-slate-900 py-3.5 pr-5 pl-13 rounded-2xl border border-slate-200/80 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600/20 transition-all text-sm font-medium placeholder-slate-400"
+                  className="w-full bg-slate-50 text-slate-900 py-3.5 pr-4 pl-12 rounded-2xl border border-slate-200/80 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600/20 transition-all text-sm font-medium placeholder:text-slate-400"
                 />
               </div>
               
@@ -245,7 +237,6 @@ export const Blog = () => {
         {/* --- MAIN EDITORIAL CONTENT --- */}
         <div className="container mx-auto px-4 max-w-7xl">
           
-          {/* 1 & 2. LATEST STORIES & TRENDING */}
           <AnimatePresence mode="wait">
             {isDefaultView && (
               <motion.div key="top-editorial" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -281,6 +272,7 @@ export const Blog = () => {
                   </section>
                 )}
 
+                {/* TRENDING NOW SECTION */}
                 {trendingPosts.length > 0 && (
                   <section className="mb-20">
                     <div className="flex items-center gap-3 mb-8 border-b border-slate-200/80 pb-4">
@@ -295,14 +287,15 @@ export const Blog = () => {
                           className="group relative cursor-pointer rounded-3xl overflow-hidden h-[420px] md:h-[500px] shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-500 border border-slate-200/80"
                         >
                           <img src={post.image} alt={post.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
-                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/50 to-transparent" />
+                          
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
                           
                           <div className="absolute bottom-0 left-0 w-full p-8 sm:p-10 z-10 flex flex-col justify-end h-full">
                             <span className="inline-block px-3 py-1 bg-blue-600 text-white rounded-full text-[10px] font-bold uppercase tracking-wider mb-3 w-fit shadow-md">{post.category}</span>
-                            <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-3 leading-snug group-hover:text-blue-200 transition-colors">{post.title}</h3>
-                            <p className="text-slate-200 text-sm sm:text-base line-clamp-2 mb-6 font-normal leading-relaxed">{post.excerpt}</p>
+                            <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-3 leading-snug group-hover:text-blue-200 transition-colors drop-shadow-sm">{post.title}</h3>
+                            <p className="text-slate-100 text-sm sm:text-base line-clamp-2 mb-6 font-medium leading-relaxed drop-shadow-xs">{post.excerpt}</p>
                             
-                            <div className="flex items-center justify-between text-xs font-semibold text-slate-300 border-t border-white/20 pt-4">
+                            <div className="flex items-center justify-between text-xs font-semibold text-slate-200 border-t border-white/20 pt-4">
                               <span className="flex items-center"><Clock className="w-4 h-4 mr-2 text-blue-400" /> {post.readTime}</span>
                               <div className="flex items-center text-white font-bold">
                                 Read Article <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
@@ -318,12 +311,10 @@ export const Blog = () => {
             )}
           </AnimatePresence>
 
-          {/* 3. DESTINATION COLLECTIONS */}
           <AnimatePresence mode="wait">
-            {(isDefaultView || isDestinationSearch) && (
+            {isDefaultView && (
               <motion.section 
                 key="destinations"
-                ref={destSectionRef}
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                 className="mb-20 relative scroll-mt-32"
               >
@@ -343,35 +334,27 @@ export const Blog = () => {
                   className="flex overflow-x-auto gap-5 pb-4 -mx-4 px-4 md:mx-0 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] cursor-grab active:cursor-grabbing"
                   {...setupDragToScroll(destScrollRef)}
                 >
-                  {destinationCollections.map((dest) => {
-                    const isSelected = searchQuery.toLowerCase() === dest.name.toLowerCase();
-                    return (
-                      <button 
-                        key={dest.name}
-                        onClick={() => handleDestinationClick(dest.name)}
-                        className={`relative flex-shrink-0 w-40 md:w-52 h-56 md:h-64 rounded-2xl overflow-hidden group transition-all duration-300 select-none ${
-                          isSelected 
-                            ? 'ring-2 ring-blue-600 shadow-md scale-[1.02]' 
-                            : 'shadow-sm border border-slate-200/80 hover:-translate-y-1'
-                        }`}
-                      >
-                        <img src={dest.image} alt={dest.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out pointer-events-none" />
-                        <div className={`absolute inset-0 bg-gradient-to-t transition-colors duration-500 pointer-events-none ${isSelected ? 'from-slate-950/80 via-slate-900/30 to-transparent' : 'from-slate-950/80 via-slate-900/20 to-transparent group-hover:from-slate-950/90'}`} />
-                        <div className="absolute bottom-5 left-5 text-left pointer-events-none">
-                          <span className="block font-bold text-xl text-white mb-0.5 group-hover:-translate-y-0.5 transition-transform duration-300">{dest.name}</span>
-                          <span className={`text-[11px] font-bold uppercase tracking-wider transition-all duration-300 block ${isSelected ? 'text-blue-400 opacity-100' : 'text-blue-300 opacity-0 group-hover:opacity-100'}`}>
-                            {isSelected ? 'Selected' : 'Explore'}
-                          </span>
-                        </div>
-                      </button>
-                    );
-                  })}
+                  {destinationCollections.map((dest) => (
+                    <button 
+                      key={dest.id}
+                      onClick={() => navigate(`/destinations/${dest.id}`)}
+                      className="relative flex-shrink-0 w-40 md:w-52 h-56 md:h-64 rounded-2xl overflow-hidden group transition-all duration-300 select-none shadow-sm border border-slate-200/80 hover:-translate-y-1"
+                    >
+                      <img src={dest.image} alt={dest.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/20 to-transparent group-hover:from-slate-950/90 transition-colors duration-500 pointer-events-none" />
+                      <div className="absolute bottom-5 left-5 text-left pointer-events-none">
+                        <span className="block font-bold text-xl text-white mb-0.5 group-hover:-translate-y-0.5 transition-transform duration-300">{dest.name}</span>
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-blue-300 opacity-0 group-hover:opacity-100 transition-all duration-300 block">
+                          Explore Guide
+                        </span>
+                      </div>
+                    </button>
+                  ))}
                 </div>
               </motion.section>
             )}
           </AnimatePresence>
 
-          {/* 4. EDITOR'S SPOTLIGHT */}
           <AnimatePresence mode="wait">
             {isDefaultView && spotlightPost && (
               <motion.section 
@@ -411,7 +394,6 @@ export const Blog = () => {
             )}
           </AnimatePresence>
 
-          {/* 5. SEARCH / DESTINATION RESULTS HEADER */}
           <AnimatePresence mode="wait">
             {!isDefaultView && (
               <motion.div 
@@ -420,33 +402,14 @@ export const Blog = () => {
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                 className="mb-10 border-b border-slate-200/80 pb-6 mt-6 scroll-mt-32"
               >
-                {isDestinationSearch ? (
-                  <div className="flex flex-col items-start">
-                    <button 
-                      onClick={clearDestinationFilter}
-                      className="flex items-center text-blue-600 hover:text-blue-700 font-bold mb-4 transition-colors group bg-blue-50 hover:bg-blue-100 px-4 py-2 rounded-full text-xs"
-                    >
-                      <ChevronLeft className="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" />
-                      Back to All Destinations
-                    </button>
-                    <div className="flex flex-col md:flex-row md:items-end gap-2 md:gap-4">
-                      <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900">{searchQuery}</h2>
-                      <span className="text-slate-500 text-base font-normal mb-1">
-                        {filteredPosts.length} article{filteredPosts.length !== 1 ? 's' : ''} found
-                      </span>
-                    </div>
-                  </div>
-                ) : (
-                  <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900">
-                    {searchQuery ? `Results for "${searchQuery}"` : `${filter} Guides`}
-                    <span className="text-slate-500 ml-3 text-lg font-normal">({filteredPosts.length})</span>
-                  </h2>
-                )}
+                <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900">
+                  {searchQuery ? `Results for "${searchQuery}"` : `${filter} Articles`}
+                  <span className="text-slate-500 ml-3 text-lg font-normal">({filteredPosts.length})</span>
+                </h2>
               </motion.div>
             )}
           </AnimatePresence>
 
-          {/* 6. MORE STORIES GRID */}
           <section className="mb-20">
             {isDefaultView && (
               <div className="flex items-center gap-3 mb-8 border-b border-slate-200/80 pb-4">
@@ -504,7 +467,6 @@ export const Blog = () => {
             )}
           </section>
 
-          {/* 7. NEWSLETTER CTA */}
           {isDefaultView && (
             <section className="mb-12">
               <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 rounded-3xl p-8 sm:p-14 lg:p-16 overflow-hidden shadow-xl text-white">
@@ -524,7 +486,7 @@ export const Blog = () => {
                       placeholder="Enter your email address" 
                       className="bg-white/15 text-white placeholder-blue-200 px-5 py-3.5 rounded-2xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 w-full sm:w-2/3 text-sm transition-all shadow-sm"
                     />
-                    <button className="bg-white text-blue-600 hover:bg-blue-50 px-7 py-3.5 rounded-2xl font-bold text-xs uppercase tracking-wider transition-all shadow-md hover:scale-[1.02] w-full sm:w-1/3 whitespace-nowrap">
+                    <button className="bg-white text-blue-600 hover:bg-blue-50 px-7 py-3.5 rounded-2xl font-bold text-xs uppercase tracking-wider transition-all shadow-md hover:scale-[1.02] w-full sm:w-1/3 whitespace-nowrap cursor-pointer">
                       Subscribe
                     </button>
                   </div>
@@ -539,3 +501,5 @@ export const Blog = () => {
     </>
   );
 };
+
+export default Blog;

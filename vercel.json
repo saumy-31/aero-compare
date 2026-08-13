@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/explore/:id",
+      "destination": "/destinations/:id",
+      "permanent": true
+    },
+    {
+      "source": "/guide/:id",
+      "destination": "/destinations/:id",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/sitemap.xml",

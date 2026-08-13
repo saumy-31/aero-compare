@@ -1,18 +1,20 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { ShieldCheck, Compass, Zap, Globe } from 'lucide-react';
 
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { CookieConsent } from './components/layout/CookieConsent';
+import { EmailCaptureModal } from './components/layout/EmailCaptureModal';
+import { ScrollToTop } from './components/layout/ScrollToTop';
 import { Analytics } from './components/seo/Analytics';
 
-// Direct Eager Imports for Core Pages (Fixes Suspense Loading Lock)
+// Direct Eager Imports for Core Pages
 import { Home } from './pages/Home';
 import { FlightsPage } from './pages/FlightsPage';
 
-// Secondary Pages Lazy Loaded
+// Lazy Loaded Secondary Pages
 const About = lazy(() => import('./pages/About').then(m => ({ default: m.About })));
 const Careers = lazy(() => import('./pages/Careers').then(m => ({ default: m.Careers })));
 const Destinations = lazy(() => import('./pages/Destinations').then(m => ({ default: m.Destinations })));
@@ -70,18 +72,21 @@ export const TrustBar = () => {
 const AppRoutes = () => {
   return (
     <Suspense fallback={<PageLoader />}>
-      {/* Removed location and key props from Routes to stop re-triggering Suspense */}
       <Routes>
         <Route path="/" element={<Home />} />
+        
+        {/* Unified Search Engine Routes Sharing the Same Hero Box Shell */}
         <Route path="/flights" element={<FlightsPage />} />
+        <Route path="/hotels" element={<FlightsPage />} />
+        <Route path="/cars" element={<FlightsPage />} />
+        <Route path="/esim" element={<FlightsPage />} />
         
         <Route path="/about" element={<About />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/status" element={<FlightStatus />} />
         <Route path="/destinations" element={<Destinations />} />
         <Route path="/destinations/:id" element={<TravelGuide />} />
-        <Route path="/explore/:id" element={<TravelGuide />} />
-        <Route path="/guide/:id" element={<TravelGuide />} />
+        
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/contact" element={<Contact />} />
@@ -99,6 +104,8 @@ const App = () => {
   return (
     <HelmetProvider>
       <Router>
+        {/* Automatic Viewport Scroll-To-Top on Route Change */}
+        <ScrollToTop />
         <Analytics />
         <div className="flex flex-col min-h-screen bg-[#F8FAFC] text-slate-900 antialiased selection:bg-blue-100 selection:text-blue-900">
           <Navbar />
@@ -107,6 +114,7 @@ const App = () => {
           </main>
           <Footer />
           <CookieConsent />
+          <EmailCaptureModal />
         </div>
       </Router>
     </HelmetProvider>

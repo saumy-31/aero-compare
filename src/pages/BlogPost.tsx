@@ -5,8 +5,8 @@ import { MOCK_BLOG_POSTS } from '../data/mockBlogPosts';
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import { SEO } from '../components/seo/SEO';
 
-export const BlogPost = () => {
-  const { slug } = useParams();
+export const BlogPost: React.FC = () => {
+  const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   
   // Newsletter State
@@ -16,29 +16,45 @@ export const BlogPost = () => {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
-  const currentIndex = MOCK_BLOG_POSTS.findIndex(p => p.slug === slug);
-  const post = MOCK_BLOG_POSTS[currentIndex];
+  // Use the all-inclusive MOCK_BLOG_POSTS array
+ const allPosts = MOCK_BLOG_POSTS;
+
+  const currentIndex = allPosts.findIndex(p => p.slug === slug);
+  const post = allPosts[currentIndex];
   
-  const prevPost = currentIndex > 0 ? MOCK_BLOG_POSTS[currentIndex - 1] : null;
-  const nextPost = currentIndex < MOCK_BLOG_POSTS.length - 1 ? MOCK_BLOG_POSTS[currentIndex + 1] : null;
+  const prevPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+  const nextPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+
+  // ... rest of component
 
   useEffect(() => { 
     window.scrollTo(0, 0); 
   }, [slug]);
 
-  if (!post) return (
-    <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center text-slate-900 font-sans">
-      <div className="text-center p-8 bg-white rounded-3xl border border-[#E5E7EB] shadow-xl max-w-md">
-        <h1 className="text-2xl font-black mb-4">Article not found.</h1>
-        <button 
-          onClick={() => navigate('/blog')}
-          className="px-6 py-2.5 bg-[#2563EB] hover:bg-blue-700 text-white text-xs font-black rounded-xl transition-all shadow-md shadow-blue-600/20 cursor-pointer"
-        >
-          Return to Blog
-        </button>
-      </div>
-    </div>
-  );
+  // INVALID SLUG: Return noindex, nofollow and skip JSON-LD schema generation
+  if (!post) {
+    return (
+      <>
+        <SEO 
+          title="Article Not Found | FlySava Blog" 
+          description="The requested article could not be found." 
+          preventIndex={true} 
+        />
+        <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center text-slate-900 font-sans p-4">
+          <div className="text-center p-8 bg-white rounded-3xl border border-[#E5E7EB] shadow-xl max-w-md">
+            <h1 className="text-2xl font-black mb-4">Article not found.</h1>
+            <button 
+              type="button"
+              onClick={() => navigate('/blog')}
+              className="px-6 py-2.5 bg-[#2563EB] hover:bg-blue-700 text-white text-xs font-black rounded-xl transition-all shadow-md shadow-blue-600/20 cursor-pointer"
+            >
+              Return to Blog
+            </button>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -76,6 +92,13 @@ export const BlogPost = () => {
     }
   };
 
+  // Dynamic Date and Canonical Resolution
+  const publishedDate = post.publishedDate;
+  const modifiedDate = post.lastUpdated || post.publishedDate;
+  const canonicalUrl = `https://flysava.com/blog/${post.slug}`;
+  const authorName = post.author || "FlySava Editorial Team";
+
+  // Dynamic Article Schema combining BlogPosting and BreadcrumbList via @graph
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -83,25 +106,24 @@ export const BlogPost = () => {
         "@type": "BlogPosting",
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": `https://flysava.com/blog/${post.slug}`
+          "@id": canonicalUrl
         },
         "headline": post.title,
+        "description": post.seoDescription || post.excerpt,
+        "url": canonicalUrl,
         "image": post.image,
         "author": {
-          "@type": "Person",
-          "name": post.author
+          "@type": "Organization",
+          "name": authorName,
+          "url": "https://flysava.com"
         },
         "publisher": {
           "@type": "Organization",
           "name": "FlySava",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://flysava.com/logo.png"
-          }
+          "url": "https://flysava.com"
         },
-        "datePublished": post.publishedDate,
-        "dateModified": post.lastUpdated || post.publishedDate, 
-        "description": post.seoDescription || post.excerpt
+        ...(publishedDate && { "datePublished": publishedDate }),
+        ...(modifiedDate && { "dateModified": modifiedDate })
       },
       {
         "@type": "BreadcrumbList",
@@ -115,14 +137,14 @@ export const BlogPost = () => {
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Travel Guides",
+            "name": "Blog",
             "item": "https://flysava.com/blog"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": post.title,
-            "item": `https://flysava.com/blog/${post.slug}`
+            "item": canonicalUrl
           }
         ]
       }
@@ -132,14 +154,14 @@ export const BlogPost = () => {
   return (
     <>
       <SEO 
-        title={post.seoTitle || `${post.title} | FlySava`}
-        description={post.seoDescription || post.excerpt}
-        keywords={post.keywords}
-        canonicalUrl={`/blog/${post.slug}`}
-        image={post.image}
-        jsonLd={articleJsonLd}
-        type="article"
-      />
+  title={`${post.title} | FlySava Blog`}
+  description={post.seoDescription || post.excerpt}
+  canonicalUrl={`/blog/${post.slug}`}
+
+  image={post.image}
+  type="article"
+  jsonLd={articleJsonLd}
+/>
       
       <div className="min-h-screen bg-[#F8FAFC] text-[#111827] font-sans pb-24 relative selection:bg-blue-100 selection:text-blue-900">
         
@@ -159,6 +181,7 @@ export const BlogPost = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-[#F8FAFC] via-slate-950/40 to-slate-950/20 z-10" />
           
           <button 
+            type="button"
             onClick={() => navigate('/blog', { state: { fromPost: true } })} 
             className="absolute top-24 left-4 md:left-8 z-30 flex items-center px-4 py-2 bg-white/90 hover:bg-white backdrop-blur-md rounded-full text-slate-900 font-extrabold text-xs transition-all shadow-md hover:scale-105 cursor-pointer"
           >
@@ -191,14 +214,14 @@ export const BlogPost = () => {
                 <div className="flex flex-wrap items-center gap-6 text-slate-500 font-medium text-xs pt-2">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-black text-sm shadow-md shadow-blue-600/20">
-                      {post.author.charAt(0)}
+                      {authorName.charAt(0)}
                     </div>
                     <div>
-                      <span className="block text-slate-900 font-extrabold text-xs">By {post.author}</span>
+                      <span className="block text-slate-900 font-extrabold text-xs">By {authorName}</span>
                       <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">Editorial Team</span>
                     </div>
                   </div>
-                  <span className="flex items-center text-xs text-slate-500 font-semibold"><Calendar className="w-4 h-4 mr-1.5 text-[#2563EB]" /> {post.publishedDate}</span>
+                  <span className="flex items-center text-xs text-slate-500 font-semibold"><Calendar className="w-4 h-4 mr-1.5 text-[#2563EB]" /> {publishedDate}</span>
                   <span className="flex items-center text-xs text-slate-500 font-semibold"><Clock className="w-4 h-4 mr-1.5 text-[#2563EB]" /> {post.readTime}</span>
                 </div>
               </header>
@@ -239,15 +262,19 @@ export const BlogPost = () => {
               {/* Author Profile Banner */}
               <div className="mt-12 bg-slate-50 p-6 sm:p-8 rounded-2xl border border-[#E5E7EB] flex flex-col md:flex-row items-center md:items-start gap-5">
                 <div className="w-12 h-12 rounded-full bg-[#2563EB] flex items-center justify-center text-white font-black text-xl flex-shrink-0 shadow-md shadow-blue-600/20">
-                  {post.author.charAt(0)}
+                  {authorName.charAt(0)}
                 </div>
                 <div className="text-center md:text-left space-y-1">
                   <span className="text-[#2563EB] font-extrabold uppercase tracking-widest text-[10px] block">Written By</span>
-                  <h3 className="text-lg font-black text-slate-900">{post.author}</h3>
+                  <h3 className="text-lg font-black text-slate-900">{authorName}</h3>
                   <p className="text-slate-500 text-xs leading-relaxed max-w-lg">
                     Travel expert, flight hacker, and global nomad. Exploring the world to bring you the best strategies for affordable luxury and seamless adventures.
                   </p>
-                  <button onClick={() => navigate('/blog')} className="text-[#2563EB] font-bold hover:text-blue-700 text-xs border-b border-blue-600/40 pb-0.5 inline-flex items-center gap-1 cursor-pointer pt-2">
+                  <button 
+                    type="button"
+                    onClick={() => navigate('/blog')} 
+                    className="text-[#2563EB] font-bold hover:text-blue-700 text-xs border-b border-blue-600/40 pb-0.5 inline-flex items-center gap-1 cursor-pointer pt-2"
+                  >
                     View all articles <ArrowUpRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
@@ -361,3 +388,5 @@ export const BlogPost = () => {
     </>
   );
 };
+
+export default BlogPost;

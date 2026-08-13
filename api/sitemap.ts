@@ -2,27 +2,35 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 const BASE_URL = 'https://flysava.com';
 
-// Dynamically generate today's date (YYYY-MM-DD)
+// Fallback date (YYYY-MM-DD)
 const STATIC_PAGE_BASE_DATE = new Date().toISOString().split('T')[0];
 
 const STATIC_PAGES = [
   { route: '', changefreq: 'daily', priority: '1.0' },
-  { route: '/flights', changefreq: 'daily', priority: '1.0' },
-  { route: '/status', changefreq: 'hourly', priority: '0.9' },
-  { route: '/destinations', changefreq: 'weekly', priority: '0.9' },
+  { route: '/flights', changefreq: 'daily', priority: '0.9' },
+  { route: '/hotels', changefreq: 'daily', priority: '0.9' },
+  { route: '/cars', changefreq: 'daily', priority: '0.9' },
+  { route: '/esim', changefreq: 'daily', priority: '0.9' },
+  { route: '/destinations', changefreq: 'weekly', priority: '0.8' },
   { route: '/blog', changefreq: 'daily', priority: '0.8' },
-  { route: '/about', changefreq: 'monthly', priority: '0.6' },
-  { route: '/contact', changefreq: 'monthly', priority: '0.6' },
-  { route: '/press', changefreq: 'weekly', priority: '0.6' },
-  { route: '/careers', changefreq: 'weekly', priority: '0.5' },
-  { route: '/privacy', changefreq: 'yearly', priority: '0.3' },
-  { route: '/terms', changefreq: 'yearly', priority: '0.3' },
-  { route: '/cookies', changefreq: 'yearly', priority: '0.3' }
+  { route: '/status', changefreq: 'daily', priority: '0.7' },
+  { route: '/about', changefreq: 'monthly', priority: '0.5' },
+  { route: '/contact', changefreq: 'monthly', priority: '0.5' },
+  { route: '/careers', changefreq: 'monthly', priority: '0.4' },
+  { route: '/press', changefreq: 'monthly', priority: '0.4' },
+  { route: '/terms', changefreq: 'monthly', priority: '0.3' },
+  { route: '/privacy', changefreq: 'monthly', priority: '0.3' },
+  { route: '/cookies', changefreq: 'monthly', priority: '0.3' }
 ];
 
 function parseDateToIso(dateStr: string | undefined): string {
   if (!dateStr) return STATIC_PAGE_BASE_DATE;
   
+  // If date is already ISO format (YYYY-MM-DD), return directly
+  if (/^\d{4}-\d{2}-\d{2}/.test(dateStr)) {
+    return dateStr.split('T')[0];
+  }
+
   const months: Record<string, string> = {
     january: '01', february: '02', march: '03', april: '04', may: '05', june: '06',
     july: '07', august: '08', september: '09', october: '10', november: '11', december: '12'
@@ -51,8 +59,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     res.setHeader('Content-Type', 'text/xml; charset=utf-8');
     res.setHeader('Cache-Control', 's-maxage=43200, stale-while-revalidate=3600'); 
 
-    // 1. FAULT-TOLERANT DYNAMIC IMPORTS
-    // We load the data safely at runtime. Adding .js helps Vercel's ESM resolver trace the files.
+    // Runtime dynamic imports with fallback trace handling
     let mockDestinations: any[] = [];
     let mockBlogPosts: any[] = [];
 
@@ -60,17 +67,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const destModule = await import('../src/data/mockDestinations.js').catch(() => import('../src/data/mockDestinations'));
       mockDestinations = destModule.MOCK_DESTINATIONS || [];
     } catch (error) {
-      console.warn('Vercel Trace Warning: Could not bundle MOCK_DESTINATIONS into serverless function.');
+      console.warn('Vercel Trace Warning: Could not bundle MOCK_DESTINATIONS.');
     }
 
     try {
       const blogModule = await import('../src/data/mockBlogPosts.js').catch(() => import('../src/data/mockBlogPosts'));
-      mockBlogPosts = blogModule.MOCK_BLOG_POSTS || [];
+      const flightPosts = blogModule.MOCK_BLOG_POSTS || [];
+      
+
+      // Combine all post pools into a unified list
+      mockBlogPosts = [...flightPosts,];
     } catch (error) {
-      console.warn('Vercel Trace Warning: Could not bundle MOCK_BLOG_POSTS into serverless function.');
+      console.warn('Vercel Trace Warning: Could not bundle MOCK_BLOG_POSTS.');
     }
 
-    // CASE 1: Primary Index Map
+    // CASE 1: Primary Index Map (/sitemap.xml)
     if (!type) {
       const latestBlogDate = mockBlogPosts.length > 0 
         ? parseDateToIso(mockBlogPosts[0]?.lastUpdated || mockBlogPosts[0]?.publishedDate)
@@ -95,7 +106,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(200).send(indexXml.trim());
     }
 
-    // CASE 2: Static Standard Landing/Legal Sections
+    // CASE 2: Static Core Landing & Informational Pages (/sitemap-pages.xml)
     if (type === 'pages') {
       const entries = STATIC_PAGES.map(page => `
   <url>
@@ -108,27 +119,33 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(200).send(wrapInUrlSet(entries));
     }
 
-    // CASE 3: Live Destination Guides
+    // CASE 3: Canonical Destination Guides (/sitemap-destinations.xml)
     if (type === 'destinations') {
-      const entries = mockDestinations.filter(d => d && d.id).map(dest => `
+      const seenIds = new Set();
+      const entries = mockDestinations
+        .filter(d => d && d.id && !seenIds.has(d.id) && seenIds.add(d.id))
+        .map(dest => `
   <url>
-    <loc>${BASE_URL}/guide/${dest.id}</loc>
+    <loc>${BASE_URL}/destinations/${dest.id}</loc>
     <lastmod>${STATIC_PAGE_BASE_DATE}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>`).join('');
 
       return res.status(200).send(wrapInUrlSet(entries));
     }
 
-    // CASE 4: Live Blog Content Streams
+    // CASE 4: Live Blog Articles across all categories (/sitemap-blog.xml)
     if (type === 'blog') {
-      const entries = mockBlogPosts.filter(p => p && p.slug).map(post => `
+      const seenSlugs = new Set();
+      const entries = mockBlogPosts
+        .filter(p => p && p.slug && !seenSlugs.has(p.slug) && seenSlugs.add(p.slug))
+        .map(post => `
   <url>
     <loc>${BASE_URL}/blog/${post.slug}</loc>
     <lastmod>${parseDateToIso(post.lastUpdated || post.publishedDate)}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>`).join('');
 
       return res.status(200).send(wrapInUrlSet(entries));

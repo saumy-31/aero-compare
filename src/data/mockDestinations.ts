@@ -3687,4 +3687,53 @@ export const MOCK_DESTINATIONS: Destination[] = [
   ]
 },
 
+{
+  id: 'los-angeles-id',
+  city: 'Los Angeles',
+  country: 'USA',
+  airportCode: 'LAX',
+
+  image: `https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da${cropParams}`,
+
+  description: 'A sprawling Southern California city famous for Hollywood, sunny beaches, iconic attractions, diverse neighborhoods and scenic drives.',
+
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'March to May',
+  dailyBudget: 140,
+
+  attractions: [
+
+    { name: 'Santa Monica Pier', duration: '2-3 hours', bestTime: '5:00 PM (Sunset)', entryFee: 'Free' },
+
+    { name: 'Hollywood Walk of Fame', duration: '1-2 hours', bestTime: '10:00 AM', entryFee: 'Free' },
+
+    { name: 'Griffith Observatory', duration: '2-3 hours', bestTime: '5:00 PM (Sunset & city views)', entryFee: 'Free' },
+
+    { name: 'Getty Center', duration: '3-4 hours', bestTime: '10:00 AM', entryFee: 'Free (reservation may be required)' },
+
+    { name: 'Venice Beach', duration: '2-4 hours', bestTime: '4:00 PM (Beach & boardwalk)', entryFee: 'Free' },
+
+    { name: 'Universal Studios Hollywood', duration: 'Full Day', bestTime: '9:00 AM (Opening)', entryFee: 'Paid admission' }
+
+  ],
+
+  travelTips: [
+
+    'Transportation: Los Angeles is spread out, so a rental car can be useful for exploring multiple neighborhoods and attractions.',
+
+    'Traffic: Avoid peak rush hours when possible; travel times between attractions can vary significantly because of traffic.',
+
+    'Parking: Always check parking signs carefully, especially around beaches, downtown areas and residential neighborhoods.',
+
+    'Weather: Los Angeles generally has mild weather, but evenings can become cool, so carry a light jacket.',
+
+    'Neighborhoods: Explore different areas such as Santa Monica, Venice, Hollywood, Downtown LA and Beverly Hills to experience different sides of the city.',
+
+    'Best Food: Try Korean BBQ, tacos, In-N-Out Burger and the diverse food options across Los Angeles neighborhoods.'
+
+  ]
+
+},
+
 ];
