@@ -16,6 +16,8 @@ import {
 
 declare const window: any;
 declare const document: any;
+declare const setTimeout: (callback: () => void, ms?: number) => any;
+declare const clearTimeout: (timeoutId: any) => void;
 
 interface FAQItem {
   question: string;
@@ -161,7 +163,7 @@ export const FlightSearchUI: React.FC = () => {
     setSelectedTrustIndex(null);
   }, [activeTabFromUrl]);
 
-  // Unique, factual, and evergreen SEO metadata for each core service tab/route
+  // Unique SEO metadata per tab
   const currentServiceSeo = useMemo(() => {
     switch (activeTab) {
       case 'hotels':
@@ -513,20 +515,30 @@ export const FlightSearchUI: React.FC = () => {
     }
   ];
 
+  // Flight Script Loading + Live Tickets Results Container Mounting
   useEffect(() => {
     if (activeTab !== 'flights') return;
 
-    let timer = setTimeout(() => {
+    let resizeObserverInstance: any = null;
+    let timer: ReturnType<typeof setTimeout> | null = null;
+
+    timer = setTimeout(() => {
       const searchContainer = document.getElementById('tpwl-search');
+      const ticketsContainer = document.getElementById('tpwl-tickets');
+
       if (!searchContainer) return;
 
+      // Clear previous search instances
       searchContainer.innerHTML = '';
+      if (ticketsContainer) ticketsContainer.innerHTML = '';
+
       const oldScript = document.getElementById('tpwl-script');
       if (oldScript) oldScript.remove();
 
       const currentHostname = window.location.hostname;
       const dynamicWlId = getWhiteLabelIdByHostname(currentHostname);
 
+      // Inject Travelpayouts script
       const script = document.createElement('script');
       script.id = 'tpwl-script';
       script.async = true;
@@ -534,9 +546,50 @@ export const FlightSearchUI: React.FC = () => {
       script.src = `https://tpwgts.com/wl_web/main.js?wl_id=${dynamicWlId}&_t=${Date.now()}`;
 
       document.head.appendChild(script);
+
+      // Smooth Auto-scroll to results container when search tickets load
+      let hasScrolledForCurrentSearch = false;
+
+      if (ticketsContainer && typeof ResizeObserver !== 'undefined') {
+        resizeObserverInstance = new ResizeObserver((entries: any) => {
+          for (const entry of entries) {
+            const height = entry.contentRect.height;
+
+            if (height > 400 && !hasScrolledForCurrentSearch) {
+              setTimeout(() => {
+                ticketsContainer.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start',
+                });
+              }, 100);
+
+              hasScrolledForCurrentSearch = true;
+            } else if (height < 200) {
+              hasScrolledForCurrentSearch = false;
+            }
+          }
+        });
+
+        resizeObserverInstance.observe(ticketsContainer);
+      }
     }, 50);
 
-    return () => clearTimeout(timer);
+    return () => {
+      if (timer) clearTimeout(timer);
+
+      if (resizeObserverInstance) {
+        resizeObserverInstance.disconnect();
+      }
+
+      const script = document.getElementById('tpwl-script');
+      if (script) script.remove();
+
+      const searchContainer = document.getElementById('tpwl-search');
+      const ticketsContainer = document.getElementById('tpwl-tickets');
+
+      if (searchContainer) searchContainer.innerHTML = '';
+      if (ticketsContainer) ticketsContainer.innerHTML = '';
+    };
   }, [activeTab, location.key]);
 
   const currentHero = heroContent[activeTab];
@@ -664,12 +717,20 @@ export const FlightSearchUI: React.FC = () => {
 
             </div>
 
-            {/* Standardized Search Widget Viewport */}
+            {/* DYNAMIC PER-TAB SNUG WIDGET VIEWPORT CONTAINER */}
             <div 
               id={activeTab === 'cars' ? 'car-rental-widget' : undefined}
-              className="pt-3.5 sm:pt-4 relative overflow-visible min-h-[280px] w-full scroll-mt-24"
+              className={`pt-3.5 sm:pt-4 relative overflow-visible w-full scroll-mt-24 ${
+                activeTab === 'flights' ? 'min-h-[100px]' : ''
+              } ${
+                activeTab === 'hotels' ? 'min-h-[70px]' : ''
+              } ${
+                activeTab === 'cars' ? 'min-h-[380px] sm:min-h-[180px]' : ''
+              } ${
+                activeTab === 'esim' ? 'min-h-[90px]' : ''
+              }`}
             >
-              {activeTab === 'flights' && <div id="tpwl-search" className="w-full min-h-[70px]" />}
+              {activeTab === 'flights' && <div id="tpwl-search" className="w-full min-h-[100px]" />}
               {activeTab === 'hotels' && <HotelSearchWidget />}
               {activeTab === 'cars' && <CarRentalWidget />}
               {activeTab === 'esim' && <EsimWidget />}
@@ -677,6 +738,13 @@ export const FlightSearchUI: React.FC = () => {
 
           </div>
         </div>
+
+        {/* ================= LIVE FLIGHT RESULTS CONTAINER ================= */}
+        {activeTab === 'flights' && (
+          <div className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-6">
+            <div id="tpwl-tickets" className="w-full scroll-mt-28" />
+          </div>
+        )}
 
         {/* ================= 2. TRUST / BENEFITS STRIP ================= */}
         <div className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-4 sm:mt-6">
