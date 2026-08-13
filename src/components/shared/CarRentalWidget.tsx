@@ -19,7 +19,7 @@ export const CarRentalWidget: React.FC = () => {
   const isRendered = useRef<boolean>(false);
 
   useEffect(() => {
-    // Inject CSS height constraints for the widget iframe
+    // Inject CSS height constraints for the widget iframe to prevent production clipping
     const styleId = 'car-widget-iframe-height-fix';
     let styleTag = document.getElementById(styleId) as HTMLStyleElement | null;
 
@@ -31,14 +31,14 @@ export const CarRentalWidget: React.FC = () => {
 
     styleTag.innerHTML = `
       #tpwl-car-widget-container {
-        min-height: 280px !important;
+        min-height: 220px !important;
         width: 100% !important;
         overflow: visible !important;
         display: block !important;
       }
       #tpwl-car-widget-container iframe {
         width: 100% !important;
-        min-height: 260px !important;
+        min-height: 200px !important;
         height: auto !important;
         border: none !important;
         overflow: visible !important;
@@ -46,10 +46,10 @@ export const CarRentalWidget: React.FC = () => {
       }
       @media (max-width: 640px) {
         #tpwl-car-widget-container {
-          min-height: 480px !important;
+          min-height: 380px !important;
         }
         #tpwl-car-widget-container iframe {
-          min-height: 460px !important;
+          min-height: 360px !important;
         }
       }
     `;
@@ -83,7 +83,7 @@ export const CarRentalWidget: React.FC = () => {
       <div 
         id="tpwl-car-widget-container"
         ref={containerRef}
-        className="w-full min-h-[280px] sm:min-h-[260px] flex items-center justify-center bg-transparent p-0 border-0 shadow-none overflow-visible"
+        className="w-full min-h-[220px] sm:min-h-[200px] flex items-center justify-center bg-transparent p-0 border-0 shadow-none overflow-visible"
       />
 
       {/* ATTRIBUTION STRIP */}

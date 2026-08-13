@@ -652,7 +652,7 @@ export const FlightSearchUI: React.FC = () => {
 
         {/* ================= 1. UNIFIED MOBILE HERO + SEARCH WIDGET ================= */}
         <div className="max-w-[1360px] mx-auto px-2.5 sm:px-6 pt-2.5 sm:pt-6">
-          <div className="bg-white rounded-2xl sm:rounded-[36px] border border-slate-200/80 shadow-[0_12px_40px_-12px_rgba(15,23,42,0.06)] p-4 sm:p-8 lg:p-10 space-y-3.5 sm:space-y-8">
+          <div className="bg-white rounded-2xl sm:rounded-[36px] border border-slate-200/80 shadow-[0_12px_40px_-12px_rgba(15,23,42,0.06)] p-4 sm:p-8 lg:p-10 space-y-3.5 sm:space-y-8 overflow-visible">
             
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-3.5 lg:gap-8 items-center">
               
@@ -718,23 +718,24 @@ export const FlightSearchUI: React.FC = () => {
             </div>
 
             {/* DYNAMIC PER-TAB SNUG WIDGET VIEWPORT CONTAINER */}
-            <div 
-              id={activeTab === 'cars' ? 'car-rental-widget' : undefined}
-              className={`pt-3.5 sm:pt-4 relative overflow-visible w-full scroll-mt-24 ${
-                activeTab === 'flights' ? 'min-h-[100px]' : ''
-              } ${
-                activeTab === 'hotels' ? 'min-h-[70px]' : ''
-              } ${
-                activeTab === 'cars' ? 'min-h-[280px] sm:min-h-[260px]' : ''
-              } ${
-                activeTab === 'esim' ? 'min-h-[90px]' : ''
-              }`}
-            >
-              {activeTab === 'flights' && <div id="tpwl-search" className="w-full min-h-[100px]" />}
-              {activeTab === 'hotels' && <HotelSearchWidget />}
-              {activeTab === 'cars' && <CarRentalWidget />}
-              {activeTab === 'esim' && <EsimWidget />}
-            </div>
+            {/* DYNAMIC PER-TAB WIDGET VIEWPORT CONTAINER */}
+<div 
+  id={activeTab === 'cars' ? 'car-rental-widget' : undefined}
+  className={`pt-3.5 sm:pt-4 relative overflow-visible w-full scroll-mt-24 ${
+    activeTab === 'flights' ? 'min-h-[100px]' : ''
+  } ${
+    activeTab === 'hotels' ? 'min-h-[70px]' : ''
+  } ${
+    activeTab === 'cars' ? 'min-h-[320px] sm:min-h-[220px]' : ''
+  } ${
+    activeTab === 'esim' ? 'min-h-[90px]' : ''
+  }`}
+>
+  {activeTab === 'flights' && <div id="tpwl-search" className="w-full min-h-[100px]" />}
+  {activeTab === 'hotels' && <HotelSearchWidget />}
+  {activeTab === 'cars' && <CarRentalWidget />}
+  {activeTab === 'esim' && <EsimWidget />}
+</div>
 
           </div>
         </div>
