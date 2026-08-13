@@ -325,7 +325,7 @@ export const FlightSearchUI: React.FC = () => {
         city: 'Paris', 
         country: 'France', 
         priceUsd: '$160', 
-        image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&auto=format&fit=crop&q=75' 
+        image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80&auto=format&fit=crop'
       },
       { 
         id: 'tokyo', 
@@ -832,7 +832,7 @@ export const FlightSearchUI: React.FC = () => {
               </div>
 
               <div className="flex overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-visible pb-2 sm:pb-0">
-                {popularDestinations.map((dest) => (
+                {popularDestinations.map((dest, index) => (
                   <div
                     key={dest.id}
                     onClick={() => navigate(`/destinations/${dest.id}`)}
@@ -841,7 +841,7 @@ export const FlightSearchUI: React.FC = () => {
                     <img
                       src={dest.image}
                       alt={dest.city}
-                      loading="lazy"
+                      loading={index === 0 ? "eager" : "lazy"}
                       decoding="async"
                       width="600"
                       height="320"

@@ -59,13 +59,13 @@ export const Blog: React.FC = () => {
   const categories = ['All', 'Destinations', 'City Guides', 'Travel Tips', 'Airline Reviews', 'Itineraries'];
   
   const destinationCollections = [
-    { id: 'seoul-kr', name: 'Seoul', image: 'https://images.unsplash.com/photo-1538485399081-7191377e8241?q=80&w=800&auto=format&fit=crop' },
-    { id: 'tokyo-jp', name: 'Tokyo', image: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=800&auto=format&fit=crop' },
-    { id: 'paris-fr', name: 'Paris', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=800&auto=format&fit=crop' },
-    { id: 'dubai-uae', name: 'Dubai', image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop' },
-    { id: 'bali-id', name: 'Bali', image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=800&auto=format&fit=crop' },
-    { id: 'london-uk', name: 'London', image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=800&auto=format&fit=crop' },
-    { id: 'new-york-us', name: 'New York', image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=800&auto=format&fit=crop' }
+    { id: 'seoul-kr', name: 'Seoul', image: 'https://images.unsplash.com/photo-1538485399081-7191377e8241?w=400&q=75&auto=format&fit=crop' },
+    { id: 'tokyo-jp', name: 'Tokyo', image: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=400&q=75&auto=format&fit=crop' },
+    { id: 'paris-fr', name: 'Paris', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&q=75&auto=format&fit=crop' },
+    { id: 'dubai-uae', name: 'Dubai', image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=75&auto=format&fit=crop' },
+    { id: 'bali-id', name: 'Bali', image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&q=75&auto=format&fit=crop' },
+    { id: 'london-uk', name: 'London', image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&q=75&auto=format&fit=crop' },
+    { id: 'new-york-us', name: 'New York', image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=400&q=75&auto=format&fit=crop' }
   ];
 
   const filteredPosts = MOCK_BLOG_POSTS.filter(post => {
@@ -340,7 +340,7 @@ export const Blog: React.FC = () => {
                       onClick={() => navigate(`/destinations/${dest.id}`)}
                       className="relative flex-shrink-0 w-40 md:w-52 h-56 md:h-64 rounded-2xl overflow-hidden group transition-all duration-300 select-none shadow-sm border border-slate-200/80 hover:-translate-y-1"
                     >
-                      <img src={dest.image} alt={dest.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out pointer-events-none" />
+                      <img src={dest.image} alt={dest.name} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out pointer-events-none" />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/20 to-transparent group-hover:from-slate-950/90 transition-colors duration-500 pointer-events-none" />
                       <div className="absolute bottom-5 left-5 text-left pointer-events-none">
                         <span className="block font-bold text-xl text-white mb-0.5 group-hover:-translate-y-0.5 transition-transform duration-300">{dest.name}</span>
@@ -378,15 +378,15 @@ export const Blog: React.FC = () => {
                     <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors leading-snug">{spotlightPost.title}</h3>
                     <p className="text-slate-600 text-sm sm:text-base mb-8 leading-relaxed line-clamp-3">{spotlightPost.excerpt}</p>
                     <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
-                       <div className="flex items-center gap-3">
-                         <div className="w-10 h-10 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm">
-                            {spotlightPost.author.charAt(0)}
-                         </div>
-                         <div>
-                           <span className="block text-sm font-bold text-slate-900">{spotlightPost.author}</span>
-                           <span className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider">{spotlightPost.publishedDate}</span>
-                         </div>
-                       </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm">
+                             {spotlightPost.author.charAt(0)}
+                          </div>
+                          <div>
+                            <span className="block text-sm font-bold text-slate-900">{spotlightPost.author}</span>
+                            <span className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider">{spotlightPost.publishedDate}</span>
+                          </div>
+                        </div>
                     </div>
                   </div>
                 </article>

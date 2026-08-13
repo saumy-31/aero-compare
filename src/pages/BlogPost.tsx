@@ -17,15 +17,13 @@ export const BlogPost: React.FC = () => {
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   // Use the all-inclusive MOCK_BLOG_POSTS array
- const allPosts = MOCK_BLOG_POSTS;
+  const allPosts = MOCK_BLOG_POSTS;
 
   const currentIndex = allPosts.findIndex(p => p.slug === slug);
   const post = allPosts[currentIndex];
   
   const prevPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
   const nextPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
-
-  // ... rest of component
 
   useEffect(() => { 
     window.scrollTo(0, 0); 
@@ -154,14 +152,13 @@ export const BlogPost: React.FC = () => {
   return (
     <>
       <SEO 
-  title={`${post.title} | FlySava Blog`}
-  description={post.seoDescription || post.excerpt}
-  canonicalUrl={`/blog/${post.slug}`}
-
-  image={post.image}
-  type="article"
-  jsonLd={articleJsonLd}
-/>
+        title={`${post.title} | FlySava Blog`}
+        description={post.seoDescription || post.excerpt}
+        canonicalUrl={`/blog/${post.slug}`}
+        image={post.image}
+        type="article"
+        jsonLd={articleJsonLd}
+      />
       
       <div className="min-h-screen bg-[#F8FAFC] text-[#111827] font-sans pb-24 relative selection:bg-blue-100 selection:text-blue-900">
         
@@ -174,8 +171,13 @@ export const BlogPost: React.FC = () => {
         {/* Hero Cover Header */}
         <div className="h-[55vh] md:h-[65vh] w-full relative bg-slate-950 overflow-hidden">
           <img 
-            src={post.image} 
+            src={`${post.image}${post.image.includes('?') ? '&' : '?'}w=1200&q=80&auto=format&fit=crop`} 
             alt={post.title} 
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+            width="1200"
+            height="650"
             className="w-full h-full object-cover brightness-[0.88] contrast-[1.05]" 
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#F8FAFC] via-slate-950/40 to-slate-950/20 z-10" />
@@ -226,7 +228,7 @@ export const BlogPost: React.FC = () => {
                 </div>
               </header>
 
-              {/* Prose Article HTML Content with Forced Global Light Overrides */}
+              {/* Prose Article HTML Content */}
               <article 
                 className="prose prose-slate prose-lg max-w-none text-slate-700
                 prose-p:text-slate-600 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-base md:prose-p:text-lg
@@ -237,23 +239,18 @@ export const BlogPost: React.FC = () => {
                 prose-strong:text-slate-900 prose-strong:font-black
                 prose-ul:text-slate-600 prose-ul:my-6 prose-li:my-2 prose-li:leading-relaxed
 
-                /* FORCE ALL INLINE SPANS, STRONGS & PARAGRAPHS TO BE VISIBLE DARK TEXT */
                 [&_span]:!text-slate-800 [&_strong]:!text-slate-900 [&_b]:!text-slate-900 [&_p]:!text-slate-600 [&_li]:!text-slate-600
 
-                /* OVERRIDE IN-ARTICLE IMAGES */
                 [&_.in-article-img]:w-full [&_.in-article-img]:h-[280px] md:[&_.in-article-img]:h-[420px] [&_.in-article-img]:object-cover [&_.in-article-img]:rounded-2xl [&_.in-article-img]:my-8 [&_.in-article-img]:shadow-xs [&_.in-article-img]:border [&_.in-article-img]:border-[#E5E7EB]
 
-                /* OVERRIDE EDITORIAL QUOTES */
                 [&_.editorial-quote]:border-l-4 [&_.editorial-quote]:border-[#2563EB] [&_.editorial-quote]:pl-6 [&_.editorial-quote]:my-8 [&_.editorial-quote]:italic [&_.editorial-quote]:text-xl [&_.editorial-quote]:!text-slate-800 [&_.editorial-quote]:font-serif
 
-                /* OVERRIDE CUSTOM CALLOUT CARDS (TIPS, SEAT HACKS, ETC) */
                 [&_.flight-tips-card]:!bg-blue-50/90 [&_.flight-tips-card]:!border [&_.flight-tips-card]:!border-blue-200 [&_.flight-tips-card]:!p-6 [&_.flight-tips-card]:!rounded-2xl [&_.flight-tips-card]:!my-8 [&_.flight-tips-card_*]:!text-slate-800 [&_.flight-tips-card_h3]:!text-slate-900 [&_.flight-tips-card_p]:!text-slate-600
                 
                 [&_.destination-card]:!bg-slate-50 [&_.destination-card]:!border [&_.destination-card]:!border-[#E5E7EB] [&_.destination-card]:!p-6 [&_.destination-card]:!rounded-2xl [&_.destination-card]:!my-8 [&_.destination-card_*]:!text-slate-800 [&_.destination-card_h3]:!text-slate-900
                 
                 [&_.budget-card]:!bg-emerald-50/80 [&_.budget-card]:!border [&_.budget-card]:!border-emerald-200 [&_.budget-card]:!p-6 [&_.budget-card]:!rounded-2xl [&_.budget-card]:!my-8 [&_.budget-card_*]:!text-emerald-950 [&_.budget-card_h3]:!text-emerald-950
 
-                /* OVERRIDE DETAILS & ACCORDIONS */
                 [&_details]:!bg-slate-50 [&_details]:!p-4 [&_details]:!rounded-xl [&_details]:!mb-3 [&_details]:!border [&_details]:!border-[#E5E7EB] hover:[&_details]:!border-blue-300
                 [&_summary]:!font-extrabold [&_summary]:!text-base [&_summary]:!text-slate-900 [&_summary]:!outline-none [&_summary]:!cursor-pointer"
                 dangerouslySetInnerHTML={{ __html: post.content }}

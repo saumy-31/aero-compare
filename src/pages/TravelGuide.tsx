@@ -179,8 +179,13 @@ export const TravelGuide: React.FC = () => {
             
             {/* Background Image */}
             <img 
-              src={destination.image} 
+              src={`${destination.image}${destination.image.includes('?') ? '&' : '?'}auto=format&fit=crop&w=1000&q=80`} 
               alt={`${destination.city}, ${destination.country} Travel Guide`} 
+              fetchPriority="high"
+              loading="eager"
+              decoding="async"
+              width="1000"
+              height="460"
               className="absolute inset-0 w-full h-full object-cover brightness-[0.85] contrast-[1.05] scale-105 transition-transform duration-1000"
             />
             {/* Ambient Gradient */}
@@ -243,38 +248,37 @@ export const TravelGuide: React.FC = () => {
         </section>
 
         {/* STICKY SUB-NAV */}
-        {/* TO THIS CLEAN, NON-FLOATING BLOCK */}
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6">
-  <div className="bg-white border border-slate-200/80 rounded-2xl p-1.5 shadow-xs flex items-center gap-1 max-w-md">
-    <button
-      type="button"
-      onClick={() => scrollToSection('guide-overview', 'overview')}
-      className={`flex-1 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
-        activeTab === 'overview' ? 'bg-[#2563EB] text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
-      }`}
-    >
-      Overview
-    </button>
-    <button
-      type="button"
-      onClick={() => scrollToSection('guide-attractions', 'attractions')}
-      className={`flex-1 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
-        activeTab === 'attractions' ? 'bg-[#2563EB] text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
-      }`}
-    >
-      Attractions
-    </button>
-    <button
-      type="button"
-      onClick={() => scrollToSection('guide-tips', 'tips')}
-      className={`flex-1 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
-        activeTab === 'tips' ? 'bg-[#2563EB] text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
-      }`}
-    >
-      Essential Tips
-    </button>
-  </div>
-</div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6">
+          <div className="bg-white border border-slate-200/80 rounded-2xl p-1.5 shadow-xs flex items-center gap-1 max-w-md">
+            <button
+              type="button"
+              onClick={() => scrollToSection('guide-overview', 'overview')}
+              className={`flex-1 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
+                activeTab === 'overview' ? 'bg-[#2563EB] text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              Overview
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToSection('guide-attractions', 'attractions')}
+              className={`flex-1 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
+                activeTab === 'attractions' ? 'bg-[#2563EB] text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              Attractions
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToSection('guide-tips', 'tips')}
+              className={`flex-1 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
+                activeTab === 'tips' ? 'bg-[#2563EB] text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              Essential Tips
+            </button>
+          </div>
+        </div>
 
         {/* MAIN DESTINATION LAYOUT */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -315,8 +319,7 @@ export const TravelGuide: React.FC = () => {
                 </div>
               </div>
 
-              {/* ATTRACTIONS (WITH RESPONSIVE MOBILE FIXES) */}
-              {/* ATTRACTIONS REDESIGN */}
+              {/* ATTRACTIONS */}
               <section id="guide-attractions" className="scroll-mt-32 bg-white rounded-3xl p-5 sm:p-8 border border-slate-200/80 shadow-2xs space-y-6">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-4">
                   <div>
