@@ -161,7 +161,6 @@ export const FlightSearchUI: React.FC = () => {
     setSelectedTrustIndex(null);
   }, [activeTabFromUrl]);
 
-  // Unique, service-specific SEO metadata for each tab/route
   // Unique, factual, and evergreen SEO metadata for each core service tab/route
   const currentServiceSeo = useMemo(() => {
     switch (activeTab) {
@@ -690,28 +689,6 @@ export const FlightSearchUI: React.FC = () => {
                 <button
                   key={i}
                   type="button"
-<<<<<<< HEAD
-                  onClick={() => {
-  // If switching back to Flights, reload once
-  if (tab.id === 'flights' && activeTab !== 'flights') {
-    sessionStorage.setItem('reload-flight-widget', '1');
-    window.location.reload();
-    return;
-  }
-
-  setActiveTab(tab.id);
-}}
-                 className={`flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-5 py-2.5 rounded-xl transition-all duration-200 whitespace-nowrap ${
-  isActive
-    ? 'bg-[#2563EB] text-white shadow-md shadow-blue-600/25 scale-[1.02]'
-    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-}`}
-                >
-                  <Icon size={16} className={`flex-shrink-0 min-w-[16px] min-h-[16px] ${isActive ? 'text-white' : 'text-[#2563EB]'
-  }`}
-/>
-                  <span className="text-[10px] sm:text-xs font-bold">{tab.label}</span>
-=======
                   onClick={() =>
                     setSelectedTrustIndex(isSelected ? null : i)
                   }
@@ -747,49 +724,13 @@ export const FlightSearchUI: React.FC = () => {
                   <span className="text-xs font-black tracking-tight truncate">
                     {item.label}
                   </span>
->>>>>>> b7b219a (new redesign light mode)
                 </button>
               );
             })}
           </div>
         </div>
 
-<<<<<<< HEAD
-        {/* SEARCH FORM */}
-       <div
-  className={`relative rounded-[24px] border border-[#E5E7EB] shadow-[0_20px_60px_rgba(0,0,0,0.06)] overflow-visible ${
-    activeTab === "flights"
-      ? "bg-white p-4 sm:p-6"
-      : "bg-[#F8FAFC]"
-  }`}
->
-  {activeTab === "flights" && (
-    <div id="tpwl-search" className="w-full min-h-[140px]" />
-  )}
-
-  {activeTab === "hotels" && (
-    <div className="p-2 sm:p-3">
-      <HotelSearchWidget />
-    </div>
-  )}
-
-  {activeTab === "transfers" && (
-    <div className="p-2 sm:p-3">
-      <AirportTransferWidget />
-    </div>
-  )}
-
-  {activeTab === "esim" && (
-    <div className="p-2 sm:p-3">
-      <EsimWidget />
-    </div>
-  )}
-</div>
-
-        {/* FLIGHT RESULTS CONTAINER */}
-=======
         {/* ================= 3A. FLIGHTS SECTION ================= */}
->>>>>>> b7b219a (new redesign light mode)
         {activeTab === 'flights' && (
           <>
             <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-10 sm:mt-14 space-y-6">

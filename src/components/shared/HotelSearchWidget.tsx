@@ -287,17 +287,6 @@ export const HotelSearchWidget: React.FC = () => {
   }, []);
 
   return (
-<<<<<<< HEAD
-  <div className="w-full">
-    <div
-      id="hotel-search-widget"
-      ref={widgetContainerRef}
-      className="w-full"
-    />
-  </div>
-);
-};
-=======
     <div className="w-full">
       <div
         id="hotel-search-widget"
@@ -309,4 +298,3 @@ export const HotelSearchWidget: React.FC = () => {
 };
 
 export default HotelSearchWidget;
->>>>>>> b7b219a (new redesign light mode)
