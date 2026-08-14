@@ -2,12 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     
-    <!-- Preconnect Origins for Above-the-Fold Images & Flight Widget -->
-    <link rel="preconnect" href="https://images.unsplash.com" />
-    <link rel="preconnect" href="https://images.pexels.com" />
-    <link rel="preconnect" href="https://tpwgts.com" />
+    <!-- DNS-Prefetch & Preconnect for Above-the-Fold Images, Flight Widget & Analytics -->
+    <link rel="preconnect" href="https://tpwgts.com" crossorigin />
+    <link rel="dns-prefetch" href="https://tpwgts.com" />
+    
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    
+    <link rel="preconnect" href="https://images.pexels.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.pexels.com" />
+
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
     <!-- Core Googlebot Requirement (Multiple of 48px) -->
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -27,6 +35,7 @@
     <!-- SEO Protection: Canonical Tag -->
     <link rel="canonical" href="https://flysava.com" />
 
+    <!-- Google Analytics (Non-blocking) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FX092L0H7V"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -35,7 +44,7 @@
       gtag('config', 'G-FX092L0H7V', { send_page_view: false });
     </script>
   </head>
-  <body>
+  <body class="bg-[#F8FAFC] text-slate-900 antialiased selection:bg-blue-100 selection:text-blue-900">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
