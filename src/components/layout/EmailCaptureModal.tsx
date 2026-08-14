@@ -27,10 +27,10 @@ export const EmailCaptureModal: React.FC = () => {
 
     if (checkDismissedStatus()) return;
 
-    // 10-Second Delay Trigger
+    // 5-Second Delay Trigger
     const timer = setTimeout(() => {
       openModal();
-    }, 10000);
+    }, 5000);
 
     // Exit Intent Trigger
     const handleMouseLeave = (e: MouseEvent) => {
@@ -114,7 +114,7 @@ export const EmailCaptureModal: React.FC = () => {
       } else {
         throw new Error('Submission failed');
       }
-    } catch (err) {
+    } catch {
       // Fallback: Still grant success UX state if CORS/network is blocked
       setStatus('success');
       localStorage.setItem(LOCAL_STORAGE_KEY, 'subscribed');

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Plane, Instagram, Linkedin, Send, Check } from 'lucide-react';
+import { Plane, Instagram, Linkedin, Send, Check, Loader2, AlertCircle } from 'lucide-react';
 
 const MANAGE_BOOKING_URL = 'https://flysava.nuitee.link/manage-bookings?language=en&currency=INR&from=Lz9sYW5ndWFnZT1lbiZjdXJyZW5jeT1JTlI=';
 
@@ -15,6 +15,8 @@ export const Footer: React.FC = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleServiceClick = (e: React.MouseEvent, path: string) => {
     e.preventDefault();
@@ -28,18 +30,50 @@ export const Footer: React.FC = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   };
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const validateEmail = (emailStr: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailStr);
+  };
+
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !email.includes('@')) return;
+    setErrorMessage(null);
 
-    const mailtoUrl = `mailto:carrers@flysava.com?subject=Newsletter Subscription&body=Please add ${encodeURIComponent(email)} to the newsletter list.`;
-    window.location.href = mailtoUrl;
+    const trimmedEmail = email.trim();
+    if (!validateEmail(trimmedEmail)) {
+      setErrorMessage('Please enter a valid email address.');
+      return;
+    }
 
-    setSubscribed(true);
-    setTimeout(() => {
-      setEmail('');
-      setSubscribed(false);
-    }, 4000);
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/careers@flysava.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          email: trimmedEmail,
+          _subject: 'New FlySava Newsletter Subscription',
+          _template: 'table',
+        }),
+      });
+
+      if (response.ok) {
+        setSubscribed(true);
+        setEmail('');
+        setTimeout(() => {
+          setSubscribed(false);
+        }, 5000);
+      } else {
+        setErrorMessage('Unable to subscribe. Please try again.');
+      }
+    } catch {
+      setErrorMessage('Network error. Please check your connection.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -224,9 +258,9 @@ export const Footer: React.FC = () => {
             </p>
 
             {subscribed ? (
-              <div className="flex items-center gap-2 px-3 py-2.5 rounded-2xl bg-emerald-50 text-emerald-600 text-xs font-bold border border-emerald-200">
+              <div className="flex items-center gap-2 px-3 py-2.5 rounded-2xl bg-emerald-50 text-emerald-600 text-xs font-bold border border-emerald-200 animate-in fade-in duration-300">
                 <Check className="w-4 h-4 shrink-0" />
-                <span>Connecting to carrers@flysava.com...</span>
+                <span>Thank you for subscribing!</span>
               </div>
             ) : (
               <form onSubmit={handleSubscribe} className="space-y-2 pt-0.5">
@@ -234,19 +268,36 @@ export const Footer: React.FC = () => {
                   <input
                     type="email"
                     required
+                    disabled={isLoading}
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (errorMessage) setErrorMessage(null);
+                    }}
                     placeholder="Your email address"
-                    className="w-full bg-transparent px-3 text-[13px] font-normal text-slate-900 outline-none placeholder:text-slate-400 min-w-0"
+                    className="w-full bg-transparent px-3 text-[13px] font-normal text-slate-900 outline-none placeholder:text-slate-400 min-w-0 disabled:opacity-60"
                   />
                   <button
                     type="submit"
-                    className="h-8 px-3.5 bg-[#2563EB] hover:bg-blue-700 text-white rounded-xl font-extrabold text-[11px] flex items-center gap-1.5 transition-all shadow-xs shrink-0 cursor-pointer active:scale-95"
+                    disabled={isLoading}
+                    className="h-8 px-3.5 bg-[#2563EB] hover:bg-blue-700 disabled:bg-blue-400 text-white rounded-xl font-extrabold text-[11px] flex items-center gap-1.5 transition-all shadow-xs shrink-0 cursor-pointer active:scale-95 disabled:cursor-not-allowed"
                   >
-                    <span>Join</span>
-                    <Send className="w-3 h-3" />
+                    {isLoading ? (
+                      <Loader2 className="w-3 h-3 animate-spin" />
+                    ) : (
+                      <>
+                        <span>Join</span>
+                        <Send className="w-3 h-3" />
+                      </>
+                    )}
                   </button>
                 </div>
+                {errorMessage && (
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-rose-500 pl-1 animate-in fade-in duration-200">
+                    <AlertCircle className="w-3 h-3 shrink-0" />
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
               </form>
             )}
           </div>

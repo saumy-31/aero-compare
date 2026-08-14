@@ -1,5 +1,5 @@
-import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { Suspense, lazy, useEffect, useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { ShieldCheck, Compass, Zap, Globe } from 'lucide-react';
 
@@ -28,6 +28,37 @@ const Terms = lazy(() => import('./pages/Terms').then(m => ({ default: m.Terms }
 const Privacy = lazy(() => import('./pages/Privacy').then(m => ({ default: m.Privacy })));
 const Cookies = lazy(() => import('./pages/Cookies').then(m => ({ default: m.Cookies })));
 const NotFound = lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })));
+
+// --- FLIGHT NAVIGATION GUARD ---
+// Reloads when returning to / or /flights from any blog post, travel guide, or destination
+const FlightNavigationGuard: React.FC = () => {
+  const location = useLocation();
+  const previousPathRef = useRef<string>(location.pathname);
+
+  useEffect(() => {
+    const currentPath = location.pathname;
+    const previousPath = previousPathRef.current;
+
+    const isFromContentRoute =
+      previousPath.startsWith('/blog') || 
+      previousPath.startsWith('/destinations') ||
+      previousPath.startsWith('/travel-guides');
+
+    const isFlightOrHomeRoute = 
+      currentPath === '/' || 
+      currentPath === '/flights';
+
+    // If coming from any content guide back to Home or Flights, do a fresh load
+    if (isFromContentRoute && isFlightOrHomeRoute) {
+      window.location.replace(currentPath);
+      return;
+    }
+
+    previousPathRef.current = currentPath;
+  }, [location.pathname]);
+
+  return null;
+};
 
 const PageLoader = () => (
   <div className="min-h-[60vh] flex items-center justify-center bg-[#F8FAFC]">
@@ -104,6 +135,7 @@ const App = () => {
   return (
     <HelmetProvider>
       <Router>
+        <FlightNavigationGuard />
         {/* Automatic Viewport Scroll-To-Top on Route Change */}
         <ScrollToTop />
         <Analytics />
