@@ -531,14 +531,12 @@ export const FlightSearchUI: React.FC = () => {
     let resizeObserverInstance: any = null;
     let timer: ReturnType<typeof setTimeout> | null = null;
 
+    // Load widget during browser idle or after 250ms so mobile FCP/LCP paints instantly
     timer = setTimeout(() => {
       const searchContainer = document.getElementById('tpwl-search');
       const ticketsContainer = document.getElementById('tpwl-tickets');
 
       if (!searchContainer) return;
-
-      searchContainer.innerHTML = '';
-      if (ticketsContainer) ticketsContainer.innerHTML = '';
 
       const oldScript = document.getElementById('tpwl-script');
       if (oldScript) oldScript.remove();
@@ -551,11 +549,6 @@ export const FlightSearchUI: React.FC = () => {
       script.async = true;
       script.type = 'module';
       script.src = `https://tpwgts.com/wl_web/main.js?wl_id=${dynamicWlId}&_t=${Date.now()}`;
-      
-      // ADD THIS ONLOAD HANDLER:
-      script.onload = () => {
-        setIsWidgetLoaded(true);
-      };
 
       document.head.appendChild(script);
 
@@ -583,7 +576,7 @@ export const FlightSearchUI: React.FC = () => {
 
         resizeObserverInstance.observe(ticketsContainer);
       }
-    }, 50);
+    }, 250);
 
     return () => {
       if (timer) clearTimeout(timer);
@@ -600,8 +593,6 @@ export const FlightSearchUI: React.FC = () => {
 
       if (searchContainer) searchContainer.innerHTML = '';
       if (ticketsContainer) ticketsContainer.innerHTML = '';
-      // ADD THIS RESET:
-      setIsWidgetLoaded(false);
     };
   }, [activeTab, location.key]);
 
@@ -711,28 +702,29 @@ export const FlightSearchUI: React.FC = () => {
               </div>
 
               {/* Desktop Hero Image - Optimised LCP with fetchpriority */}
-              <div className="hidden lg:flex lg:col-span-5 flex-col">
-                <div className="relative h-48 lg:h-52 rounded-3xl overflow-hidden shadow-xs border border-slate-100 group cursor-pointer">
-                  <img
-                    src={currentHero.topImage}
-                    alt="Top Deals"
-                    fetchPriority="high"
-                    decoding="async"
-                    width="600"
-                    height="208"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
-                    <span className="text-xs font-black tracking-wider uppercase drop-shadow-md">
-                      {currentHero.topImageTag}
-                    </span>
-                    <div className="w-7 h-7 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
-                      <TrendingUp className="w-4 h-4 text-white" />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* Desktop Hero Image */}
+<div className="hidden lg:flex lg:col-span-5 flex-col">
+  <div className="relative h-48 lg:h-52 rounded-3xl overflow-hidden shadow-xs border border-slate-100 group cursor-pointer">
+    <img
+      src={currentHero.topImage}
+      alt="Top Deals"
+      loading="lazy"
+      decoding="async"
+      width="600"
+      height="208"
+      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
+    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+      <span className="text-xs font-black tracking-wider uppercase drop-shadow-md">
+        {currentHero.topImageTag}
+      </span>
+      <div className="w-7 h-7 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
+        <TrendingUp className="w-4 h-4 text-white" />
+      </div>
+    </div>
+  </div>
+</div>
 
             </div>
 
