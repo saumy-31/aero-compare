@@ -12,6 +12,7 @@ import {
   Sparkles, 
   ChevronRight, 
   ChevronLeft, 
+  ChevronDown,
   Palmtree, 
   Globe2, 
   Heart 
@@ -25,9 +26,11 @@ export const Destinations: React.FC = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isSearchFocused, setIsSearchFocused] = useState<boolean>(false);
+  const [selectedLetter, setSelectedLetter] = useState<string>('All');
   const [activeStyle, setActiveStyle] = useState<string>(() => {
     return sessionStorage.getItem('destinations_active_style') || 'All';
   });
+  const [styleVisibleCount, setStyleVisibleCount] = useState<number>(12);
   const [savedIds, setSavedIds] = useState<string[]>([]);
   
   const searchRef = useRef<HTMLDivElement>(null);
@@ -39,8 +42,6 @@ export const Destinations: React.FC = () => {
     const savedY = sessionStorage.getItem('destinations_scroll_pos');
     if (savedY) {
       const targetY = parseInt(savedY, 10);
-      
-      // Attempt immediate scroll and backup interval check while images load
       window.scrollTo(0, targetY);
       
       const checkAndScroll = setInterval(() => {
@@ -137,7 +138,7 @@ export const Destinations: React.FC = () => {
     return allDestinations.slice(5, 11);
   }, [allDestinations]);
 
-  // Section 4: Travel Styles Filter
+  // Section 4: Travel Styles Filter (Returns ALL matching items)
   const styleCategories = [
     { label: 'All', icon: <Compass className="w-3.5 h-3.5" /> },
     { label: 'Beach', icon: <Sun className="w-3.5 h-3.5" /> },
@@ -148,11 +149,15 @@ export const Destinations: React.FC = () => {
   ];
 
   const filteredByStyle = useMemo(() => {
-    if (activeStyle === 'All') return allDestinations.slice(0, 6);
+    if (activeStyle === 'All') return allDestinations;
     return allDestinations.filter(d => 
       Boolean(d.tripType && d.tripType.toLowerCase().includes(activeStyle.toLowerCase()))
-    ).slice(0, 6);
+    );
   }, [activeStyle, allDestinations]);
+
+  const visibleStyleDestinations = useMemo(() => {
+    return filteredByStyle.slice(0, styleVisibleCount);
+  }, [filteredByStyle, styleVisibleCount]);
 
   // Section 5: Budget Destinations
   const budgetDestinations = useMemo(() => {
@@ -185,9 +190,10 @@ export const Destinations: React.FC = () => {
     ).slice(0, 3);
   }, [allDestinations]);
 
-  // Section 9: Country/City Directory Hierarchy
-  const countryDirectory = useMemo(() => {
+  // Section 9: Country/City Directory with Alphabet Filter
+  const { groupedDirectory, availableLetters, totalCountriesCount, totalCitiesCount } = useMemo(() => {
     const map: { [country: string]: Array<{ city: string; id: string }> } = {};
+    
     allDestinations.forEach(d => {
       if (!map[d.country]) {
         map[d.country] = [];
@@ -196,8 +202,23 @@ export const Destinations: React.FC = () => {
         map[d.country].push({ city: d.city, id: d.id });
       }
     });
-    return Object.entries(map).sort((a, b) => a[0].localeCompare(b[0])).slice(0, 12);
-  }, [allDestinations]);
+
+    const sortedEntries = Object.entries(map).sort((a, b) => a[0].localeCompare(b[0]));
+    const letters = Array.from(new Set(sortedEntries.map(([country]) => country[0].toUpperCase()))).sort();
+    
+    const filtered = selectedLetter === 'All'
+      ? sortedEntries
+      : sortedEntries.filter(([country]) => country[0].toUpperCase() === selectedLetter);
+
+    const totalCities = sortedEntries.reduce((acc, [, cities]) => acc + cities.length, 0);
+
+    return {
+      groupedDirectory: filtered,
+      availableLetters: letters,
+      totalCountriesCount: sortedEntries.length,
+      totalCitiesCount: totalCities
+    };
+  }, [allDestinations, selectedLetter]);
 
   const destinationsJsonLd = {
     "@context": "https://schema.org",
@@ -338,7 +359,6 @@ export const Destinations: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
-            {/* Primary Large Lead (7 cols) */}
             {popularDestinations[0] && (
               <article
                 onClick={() => handleDestinationClick(popularDestinations[0].id)}
@@ -386,7 +406,6 @@ export const Destinations: React.FC = () => {
               </article>
             )}
 
-            {/* 4 Medium Secondary Cards (5 cols / 2x2 grid) */}
             <div className="md:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {popularDestinations.slice(1, 5).map((dest) => (
                 <article
@@ -397,8 +416,8 @@ export const Destinations: React.FC = () => {
                   <img 
                     src={dest.image} 
                     alt={dest.city} 
-                    loading="lazy"
-                    decoding="async"
+                    loading="lazy" 
+                    decoding="async" 
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out brightness-[0.88]" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
@@ -498,7 +517,7 @@ export const Destinations: React.FC = () => {
         </section>
 
         {/* ========================================================================= */}
-        {/* 4. TRAVEL BY STYLE                                                        */}
+        {/* 4. TRAVEL BY STYLE (Shows ALL items with Load More)                       */}
         {/* ========================================================================= */}
         <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-slate-200/80 pb-3">
@@ -506,9 +525,14 @@ export const Destinations: React.FC = () => {
               <span className="text-[10px] font-black uppercase tracking-widest text-blue-600 block">
                 CUSTOM EXPEDITIONS
               </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-                Find your kind of trip
-              </h2>
+              <div className="flex items-baseline gap-2">
+                <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                  Find your kind of trip
+                </h2>
+                <span className="text-xs font-bold text-slate-400">
+                  ({filteredByStyle.length} places)
+                </span>
+              </div>
             </div>
             {/* Category Filter Chips */}
             <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
@@ -516,7 +540,10 @@ export const Destinations: React.FC = () => {
                 <button
                   key={cat.label}
                   type="button"
-                  onClick={() => setActiveStyle(cat.label)}
+                  onClick={() => {
+                    setActiveStyle(cat.label);
+                    setStyleVisibleCount(12);
+                  }}
                   className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-extrabold transition-all cursor-pointer whitespace-nowrap ${
                     activeStyle === cat.label
                       ? 'bg-blue-600 text-white shadow-sm shadow-blue-600/20'
@@ -531,7 +558,7 @@ export const Destinations: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filteredByStyle.map((dest) => (
+            {visibleStyleDestinations.map((dest) => (
               <article
                 key={dest.id}
                 onClick={() => handleDestinationClick(dest.id)}
@@ -566,6 +593,20 @@ export const Destinations: React.FC = () => {
               </article>
             ))}
           </div>
+
+          {/* Load More Button for Style Section */}
+          {styleVisibleCount < filteredByStyle.length && (
+            <div className="pt-4 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setStyleVisibleCount(prev => prev + 12)}
+                className="px-6 py-3 bg-white border border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 text-slate-800 font-black text-xs uppercase tracking-wider rounded-2xl transition-all shadow-2xs flex items-center gap-2 cursor-pointer active:scale-95"
+              >
+                <span>View More {activeStyle} Destinations</span>
+                <ChevronDown className="w-4 h-4 text-blue-600" />
+              </button>
+            </div>
+          )}
         </section>
 
         {/* ========================================================================= */}
@@ -627,7 +668,7 @@ export const Destinations: React.FC = () => {
         </section>
 
         {/* ========================================================================= */}
-        {/* 6. BEACH DESTINATIONS (Panoramic View)                                    */}
+        {/* 6. BEACH DESTINATIONS                                                     */}
         {/* ========================================================================= */}
         <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="flex items-center justify-between border-b border-slate-200/80 pb-3">
@@ -802,112 +843,10 @@ export const Destinations: React.FC = () => {
         </section>
 
         {/* ========================================================================= */}
-        {/* 9. EXPLORE BY COUNTRY / CITY DIRECTORY                                    */}
-        {/* ========================================================================= */}
-        <section className="py-12 sm:py-16 bg-white border-y border-slate-200/80">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-            <div className="border-b border-slate-100 pb-3">
-              <span className="text-[10px] font-black uppercase tracking-widest text-blue-600 block">
-                GLOBAL INDEX
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-                Explore destinations by country
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              {countryDirectory.map(([country, cities]) => (
-                <div key={country} className="space-y-2.5">
-                  <h3 className="text-xs font-black uppercase tracking-wider text-slate-900 flex items-center gap-1.5 border-b border-slate-100 pb-1.5">
-                    <Globe2 className="w-3.5 h-3.5 text-blue-600" />
-                    <span className="truncate">{country}</span>
-                  </h3>
-                  <ul className="space-y-1.5 text-xs font-semibold text-slate-600">
-                    {cities.map((c) => (
-                      <li key={c.id}>
-                        <button
-                          type="button"
-                          onClick={() => handleDestinationClick(c.id)}
-                          className="hover:text-blue-600 transition-colors text-left truncate w-full cursor-pointer"
-                        >
-                          {c.city}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+       
 
         {/* ========================================================================= */}
-        {/* 10. DESTINATION GUIDES                                                    */}
-        {/* ========================================================================= */}
-        <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <div className="flex items-center justify-between border-b border-slate-200/80 pb-3">
-            <div>
-              <span className="text-[10px] font-black uppercase tracking-widest text-blue-600 block">
-                PRACTICAL KNOWLEDGE
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-                Travel guides for the places you love
-              </h2>
-            </div>
-            <button
-              type="button"
-              onClick={() => navigate('/blog')}
-              className="text-xs font-black text-blue-600 hover:text-blue-700 uppercase tracking-wider inline-flex items-center gap-1 cursor-pointer"
-            >
-              <span>View All Guides</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {allDestinations.slice(0, 3).map((dest) => (
-              <article
-                key={dest.id}
-                onClick={() => handleDestinationClick(dest.id)}
-                className="bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-2xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer group select-none"
-              >
-                <div className="relative h-48 overflow-hidden bg-slate-100">
-                  <img 
-                    src={dest.image} 
-                    alt={dest.city} 
-                    loading="lazy" 
-                    decoding="async" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" 
-                  />
-                  <div className="absolute top-3.5 left-3.5">
-                    <span className="px-3 py-1 rounded-xl bg-white/95 backdrop-blur-md text-[10px] font-black uppercase tracking-wider text-slate-800 shadow-xs">
-                      {dest.city} Guide
-                    </span>
-                  </div>
-                </div>
-                <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
-                  <div className="space-y-1.5">
-                    <h3 className="text-base font-black text-slate-900 group-hover:text-blue-600 transition-colors">
-                      {dest.city} Travel Guide & Practical Tips
-                    </h3>
-                    <p className="text-xs text-slate-500 font-medium line-clamp-2 leading-relaxed">
-                      {dest.description}
-                    </p>
-                  </div>
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-400">
-                    <span>{dest.bestSeason || 'Apr–Oct'}</span>
-                    <span className="text-blue-600 font-black inline-flex items-center gap-1">
-                      Explore guide &rarr;
-                    </span>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* ========================================================================= */}
-        {/* 11. FINAL CTA                                                             */}
+        {/* 10. FINAL CTA                                                             */}
         {/* ========================================================================= */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-12">
           <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-800 rounded-[32px] sm:rounded-[44px] p-8 sm:p-14 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
