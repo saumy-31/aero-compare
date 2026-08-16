@@ -3686,54 +3686,1235 @@ export const MOCK_DESTINATIONS: Destination[] = [
     'Dressing modestly (covering shoulders and knees) is highly recommended, especially when visiting temples, ashrams, and wandering the local streets.'
   ]
 },
-
 {
-  id: 'los-angeles-id',
-  city: 'Los Angeles',
-  country: 'USA',
-  airportCode: 'LAX',
-
-  image: `https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da${cropParams}`,
-
-  description: 'A sprawling Southern California city famous for Hollywood, sunny beaches, iconic attractions, diverse neighborhoods and scenic drives.',
-
-  budget: 'Moderate',
-  tripType: 'City',
-  bestSeason: 'March to May',
-  dailyBudget: 140,
-
-  attractions: [
-
-    { name: 'Santa Monica Pier', duration: '2-3 hours', bestTime: '5:00 PM (Sunset)', entryFee: 'Free' },
-
-    { name: 'Hollywood Walk of Fame', duration: '1-2 hours', bestTime: '10:00 AM', entryFee: 'Free' },
-
-    { name: 'Griffith Observatory', duration: '2-3 hours', bestTime: '5:00 PM (Sunset & city views)', entryFee: 'Free' },
-
-    { name: 'Getty Center', duration: '3-4 hours', bestTime: '10:00 AM', entryFee: 'Free (reservation may be required)' },
-
-    { name: 'Venice Beach', duration: '2-4 hours', bestTime: '4:00 PM (Beach & boardwalk)', entryFee: 'Free' },
-
-    { name: 'Universal Studios Hollywood', duration: 'Full Day', bestTime: '9:00 AM (Opening)', entryFee: 'Paid admission' }
-
-  ],
-
-  travelTips: [
-
-    'Transportation: Los Angeles is spread out, so a rental car can be useful for exploring multiple neighborhoods and attractions.',
-
-    'Traffic: Avoid peak rush hours when possible; travel times between attractions can vary significantly because of traffic.',
-
-    'Parking: Always check parking signs carefully, especially around beaches, downtown areas and residential neighborhoods.',
-
-    'Weather: Los Angeles generally has mild weather, but evenings can become cool, so carry a light jacket.',
-
-    'Neighborhoods: Explore different areas such as Santa Monica, Venice, Hollywood, Downtown LA and Beverly Hills to experience different sides of the city.',
-
-    'Best Food: Try Korean BBQ, tacos, In-N-Out Burger and the diverse food options across Los Angeles neighborhoods.'
-
-  ]
-
+  id: 'cardiff-gb',
+city: 'Cardiff, Wales',
+country: 'United Kingdom',
+airportCode: 'CWL',
+image: `https://images.unsplash.com/photo-1631125315683-b50db62a94ff?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+description: 'The lively capital of Wales combines an impressive medieval castle, a historic waterfront, Victorian arcades, and a thriving cultural scene with easy access to beautiful Welsh countryside.',
+budget: 'Moderate',
+tripType: 'Culture',
+bestSeason: 'May to September',
+dailyBudget: 85,
+attractions: [
+  { name: 'Cardiff Castle', duration: '2 hours', bestTime: 'Morning', entryFee: '~$20 (£16)' },
+  { name: 'Cardiff Bay & Mermaid Quay', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+  { name: 'Principality Stadium', duration: '1.5 hours', bestTime: 'Morning', entryFee: '~$20 (£16)' },
+  { name: 'National Museum Cardiff', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+  { name: 'Bute Park', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Free' },
+  { name: 'St Fagans National Museum of History', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' }
+],
+travelTips: [
+  'Cardiff city centre is compact and easy to explore on foot, with many major attractions, shopping streets, restaurants, and historic arcades located within walking distance of each other.',
+  'Cardiff Airport (CWL) is the city’s main international airport. It is located west of the city centre, with train, bus, and taxi connections available for reaching central Cardiff.',
+  'Use Cardiff Central railway station for convenient connections to other Welsh destinations and major UK cities including London, Bristol, and Birmingham.',
+  'Cardiff Bay is especially enjoyable in the afternoon and evening, when the waterfront comes alive with restaurants, cafés, cultural attractions, and views across the harbour.',
+  'If you are visiting Cardiff Castle, allow enough time to explore both the castle grounds and the impressive interiors rather than treating it as a quick photo stop.',
+  'The weather in Wales can change quickly, so carrying a lightweight waterproof jacket is a good idea even during the warmer months.',
+  'Football and rugby matches can make accommodation and transport considerably busier around the Principality Stadium, so check the local event calendar before booking your trip.',
+  'For a quieter experience, explore Bute Park early in the morning and consider taking a walk along the River Taff before the city becomes busy.',
+  'Cardiff makes an excellent base for exploring South Wales, with easy day-trip opportunities to places such as the Brecon Beacons, coastal towns, and historic Welsh castles.'
+]
 },
+// --- 1. BERLIN, GERMANY ---
+  {
+    id: 'berlin-de',
+    city: 'Berlin',
+    country: 'Germany',
+    airportCode: 'BER',
+    image: `https://images.unsplash.com/photo-1560969184-10fe8719e047${cropParams}`,
+    description: 'Germany’s vibrant capital, known for its turbulent history, world-renowned club culture, landmark monuments, and thriving art scene.',
+    budget: 'Moderate',
+    tripType: 'City',
+    bestSeason: 'May to September',
+    dailyBudget: 110,
+    attractions: [
+      { name: 'Brandenburg Gate', duration: '1 hour', bestTime: 'Sunset / Evening', entryFee: 'Free' },
+      { name: 'Reichstag Building & Glass Dome', duration: '2 hours', bestTime: 'Morning (Pre-booking required)', entryFee: 'Free' },
+      { name: 'East Side Gallery', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+      { name: 'Museum Island (Pergamonmuseum)', duration: '3-4 hours', bestTime: 'Morning', entryFee: '€19' },
+      { name: 'Checkpoint Charlie', duration: '45 mins', bestTime: 'Midday', entryFee: 'Free' },
+      { name: 'Memorial to the Murdered Jews of Europe', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' }
+    ],
+    travelTips: [
+      'Public Transit: Buy a 24-hour BVG transit pass (Zones AB). Make sure to stamp/validate it before boarding your first train.',
+      'Nightlife Etiquette: Berlin clubs (like Berghain and Tresor) enforce notoriously strict, unpredictable door policies. Dress down in black, do not arrive in large groups, and do not take photos.',
+      'Payment: Despite being a tech capital, many traditional bakeries, bars, and Spätis (convenience kiosks) remain cash-only.',
+      'Sunday Flea Markets: Visit Mauerpark on Sundays for legendary open-air karaoke, street food, and vintage thrifting.',
+      'Local Food: You must try authentic Currywurst at Curry 36 and a traditional Döner Kebab at Mustafa’s Gemüse Kebap.',
+      'Summer Vibes: In summer, do as the locals do and grab a beer from a Späti to relax along the Spree river or at Tempelhofer Feld.'
+    ]
+  },
+
+  // --- 2. MUNICH, GERMANY ---
+  {
+    id: 'munich-de',
+    city: 'Munich',
+    country: 'Germany',
+    airportCode: 'MUC',
+    image: `https://images.unsplash.com/photo-1595867818082-083862f3d630${cropParams}`,
+    description: 'The proud capital of Bavaria, famous for centuries-old beer halls, Neuschwanstein Castle day trips, baroque palaces, and lively park surfing.',
+    budget: 'Luxury',
+    tripType: 'Culture',
+    bestSeason: 'June to October',
+    dailyBudget: 150,
+    attractions: [
+      { name: 'Marienplatz & New Town Hall (Glockenspiel)', duration: '1.5 hours', bestTime: '11:00 AM (for the chime show)', entryFee: 'Free' },
+      { name: 'English Garden & Eisbachwelle Surfers', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+      { name: 'Nymphenburg Palace', duration: '2-3 hours', bestTime: 'Morning', entryFee: '€15' },
+      { name: 'BMW Museum & Welt', duration: '2 hours', bestTime: 'Morning', entryFee: '€10' },
+      { name: 'Hofbräuhaus München', duration: '2 hours', bestTime: 'Evening', entryFee: 'Pay per meal/beer' },
+      { name: 'Neuschwanstein Castle (Day Trip)', duration: 'Full Day', bestTime: '7:30 AM departure', entryFee: '€17.50 (Plus train)' }
+    ],
+    travelTips: [
+      'Beer Garden Etiquette: You are allowed to bring your own picnic food to traditional Bavarian beer gardens, as long as you buy your drinks from the stalls.',
+      'Neuschwanstein Booking: If taking the day trip to Neuschwanstein Castle in Füssen, book tickets directly online months ahead; ticket windows sell out immediately.',
+      'Transit from Airport: The S-Bahn (S1 and S8 lines) runs directly between Munich Airport and the city center in about 40 minutes.',
+      'Bavarian Breakfast: Try Weißwurst (traditional white veal sausage) paired with sweet mustard and a pretzel before noon.',
+      'Sundays: Retail stores and supermarkets are strictly closed on Sundays. Only restaurants and major train station shops stay open.',
+      'River Surfing: Watch skilled locals surf the standing wave on the Eisbach River inside the English Garden—it is mesmerizing.'
+    ]
+  },
+
+  // --- 3. FLORENCE, ITALY ---
+  {
+    id: 'florence-it',
+    city: 'Florence',
+    country: 'Italy',
+    airportCode: 'FLR',
+    image: `https://images.unsplash.com/photo-1543429776-2782fc8e1acd${cropParams}`,
+    description: 'The birthplace of the Renaissance, renowned for masterpieces of art, terracotta-domed architecture, Tuscan wine, and romantic bridges.',
+    budget: 'Moderate',
+    tripType: 'Culture',
+    bestSeason: 'April to June, September to October',
+    dailyBudget: 135,
+    attractions: [
+      { name: 'Duomo (Cathedral of Santa Maria del Fiore)', duration: '2 hours', bestTime: 'Morning (Climb Brunelleschi’s Dome)', entryFee: '€30 (Full Pass)' },
+      { name: 'Uffizi Gallery', duration: '3-4 hours', bestTime: 'Early Morning (Mandatory reservation)', entryFee: '€25' },
+      { name: 'Galleria dell’Accademia (Michelangelo’s David)', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: '€16' },
+      { name: 'Ponte Vecchio', duration: '45 mins', bestTime: 'Sunset', entryFee: 'Free' },
+      { name: 'Piazzale Michelangelo', duration: '1.5 hours', bestTime: 'Golden Hour / Sunset', entryFee: 'Free' },
+      { name: 'Boboli Gardens', duration: '2 hours', bestTime: 'Late Afternoon', entryFee: '€10' }
+    ],
+    travelTips: [
+      'Sunset Point: Walk up to Piazzale Michelangelo with a bottle of Chianti wine for the most iconic sunset panorama over the Florence skyline.',
+      'Pre-booking: The Uffizi, Accademia, and Duomo dome climbs sell out weeks in advance. Never expect to buy tickets on the day.',
+      'Local Delicacy: Try the famous Bistecca alla Fiorentina (T-bone steak, ordered rare) and grab a €7 panino at All’Antico Vinaio.',
+      'Walkability: Florence is compact and pedestrian-only in the center. Avoid taxis or rental cars, as the ZTL (restricted driving zone) fines are massive.',
+      'Leather Goods: When shopping at the San Lorenzo leather market, look for the official "Vera Pelle" genuine Italian leather stamps.',
+      'Coffee Rules: Stand at the bar counter to drink your espresso or cappuccino for €1.50 instead of paying a 300% table service markup.'
+    ]
+  },
+
+  // --- 4. ATHENS, GREECE ---
+  {
+    id: 'athens-gr',
+    city: 'Athens',
+    country: 'Greece',
+    airportCode: 'ATH',
+    image: `https://images.unsplash.com/photo-1603565816030-6b389eeb23cb${cropParams}`,
+    description: 'The historic heart of ancient civilization, dominated by 5th-century BC landmarks, vibrant rooftop dining, and lively Mediterranean alleyways.',
+    budget: 'Budget',
+    tripType: 'Culture',
+    bestSeason: 'April to June, September to November',
+    dailyBudget: 85,
+    attractions: [
+      { name: 'The Acropolis & Parthenon', duration: '2-3 hours', bestTime: '8:00 AM (Beat summer heat & cruise crowds)', entryFee: '€20' },
+      { name: 'Acropolis Museum', duration: '2 hours', bestTime: 'Midday (Air-conditioned comfort)', entryFee: '€15' },
+      { name: 'Plaka & Anafiotika Neighborhoods', duration: '2 hours', bestTime: 'Late Afternoon', entryFee: 'Free' },
+      { name: 'Ancient Agora of Athens', duration: '2 hours', bestTime: 'Morning', entryFee: '€10' },
+      { name: 'Panathenaic Stadium (Kallimarmaro)', duration: '1 hour', bestTime: 'Morning', entryFee: '€10' },
+      { name: 'Mount Lycabettus', duration: '1.5 hours', bestTime: 'Sunset (Take the funicular)', entryFee: 'Free (Funicular €10)' }
+    ],
+    travelTips: [
+      'Acropolis Pass: Consider the €30 combined archaeological ticket which includes the Acropolis, Ancient Agora, Roman Agora, and Temple of Olympian Zeus.',
+      'Heat Management: In July and August, temperatures regularly surpass 38°C (100°F). Plan all outdoor sightseeing before 11:00 AM or after 6:00 PM.',
+      'Rooftop Views: Book a dinner table at a rooftop tavern in Monastiraki or Psiri to see the Parthenon illuminated at night.',
+      'Public Transit: The Athens Metro connects directly from Athens International Airport (Line 3) straight into Syntagma and Monastiraki squares.',
+      'Island Port: If you are taking a ferry to the Greek islands, take the Green Metro Line 1 directly to the Port of Piraeus.',
+      'Street Food: Grab an authentic Gyros or Souvlaki wrap on pita bread from local spots for under €4.'
+    ]
+  },
+
+  // --- 5. SEVILLE, SPAIN ---
+  {
+    id: 'seville-es',
+    city: 'Seville',
+    country: 'Spain',
+    airportCode: 'SVQ',
+    image: `https://images.unsplash.com/photo-1688404808661-92f72f2ea258?q=80&w=876&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'The soul of Andalusia, renowned for fiery flamenco performances, grand Moorish palaces, sun-drenched plazas, and orange-tree-lined avenues.',
+    budget: 'Moderate',
+    tripType: 'Culture',
+    bestSeason: 'March to May, October to November',
+    dailyBudget: 95,
+    attractions: [
+      { name: 'Royal Alcázar of Seville', duration: '3 hours', bestTime: '9:00 AM', entryFee: '€13.50' },
+      { name: 'Plaza de España', duration: '2 hours', bestTime: 'Late Afternoon / Golden Hour', entryFee: 'Free' },
+      { name: 'Seville Cathedral & La Giralda Tower', duration: '2 hours', bestTime: 'Morning', entryFee: '€12' },
+      { name: 'Barrio Santa Cruz (Jewish Quarter)', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+      { name: 'Setas de Sevilla (Metropol Parasol)', duration: '1 hour', bestTime: 'Sunset (Rooftop walkway)', entryFee: '€15' },
+      { name: 'Flamenco Show at Casa de la Memoria', duration: '1 hour', bestTime: '7:30 PM Show', entryFee: '€22' }
+    ],
+    travelTips: [
+      'Summer Scorcher: Seville is Europe’s hottest major city in summer, with temperatures often passing 42°C (108°F). Avoid visiting in July and August.',
+      'Flamenco Integrity: Avoid touristy "dinner and flamenco" packages. Instead, book an authentic performance at a dedicated "Peña" or cultural center.',
+      'Tapas Crawl: Seville is the tapas capital of Spain. Never eat a full meal in one place; order one drink and one tapa, then hop to the next bar.',
+      'Local Schedule: The afternoon siesta is very real here. Many independent boutiques and smaller sites close between 2:00 PM and 5:30 PM.',
+      'Game of Thrones: The Royal Alcázar served as the Water Gardens of Dorne in the HBO show; book skip-the-line tickets online.',
+      'Orange Trees: The thousands of bitter Seville orange trees lining the streets produce fruit used for British marmalade, but they are too sour to eat raw.'
+    ]
+  },
+
+  // --- 6. CANCUN & RIVIERA MAYA, MEXICO ---
+  {
+    id: 'cancun-mx',
+    city: 'Cancún',
+    country: 'Mexico',
+    airportCode: 'CUN',
+    image: `https://images.unsplash.com/photo-1510097467424-192d713fd8b2${cropParams}`,
+    description: 'The Caribbean crown of Mexico, offering turquoise waters, all-inclusive luxury resorts, ancient Mayan ruins, and mystical freshwater cenotes.',
+    budget: 'Moderate',
+    tripType: 'Beach',
+    bestSeason: 'December to April',
+    dailyBudget: 130,
+    attractions: [
+      { name: 'Chichén Itzá Ruins (Day Trip)', duration: 'Full Day', bestTime: '8:00 AM (Arrive at opening)', entryFee: '614 MXN (~$35)' },
+      { name: 'Ik Kil Cenote', duration: '2 hours', bestTime: 'Midday (After Chichén Itzá)', entryFee: '200 MXN' },
+      { name: 'Isla Mujeres Catamaran Tour', duration: 'Full Day', bestTime: 'Morning Departure', entryFee: '$60 - $90' },
+      { name: 'Tulum Archaeological Ruins', duration: '2 hours', bestTime: 'Early Morning', entryFee: '95 MXN' },
+      { name: 'Xcaret Eco-Archaeological Park', duration: 'Full Day', bestTime: 'Morning to Night Show', entryFee: '$110+' },
+      { name: 'Playa Delfines Viewpoint', duration: '1 hour', bestTime: 'Sunrise / Morning', entryFee: 'Free' }
+    ],
+    travelTips: [
+      'Airport Taxi Trap: Cancun Airport has a notorious corridor nicknamed the "Shark Tank" filled with aggressive timeshare sellers and pirate cabs. Pre-book official private airport transfers online before landing.',
+      'Sargassum Seaweed: Keep track of local Sargassum forecasts; summer months can bring seaweed accumulation to Caribbean beaches.',
+      'Cenote Etiquette: You must shower thoroughly before swimming in cenotes and refrain from wearing chemical sunscreen to protect the fragile underground aquifer.',
+      'Tipping: Because Cancun caters heavily to US tourism, a 15% to 20% tip is standard in tourist zones.',
+      'Payment: Carry Mexican Pesos (MXN) for street food, tolls, and local ADO buses; paying in USD often yields poor conversion rates.',
+      'Local Transit: Take the inexpensive R-1 or R-2 public bus to travel up and down the Hotel Zone for only 12 MXN per ride.'
+    ]
+  },
+
+  // --- 7. MENDOZA, ARGENTINA ---
+  {
+    id: 'mendoza-ar',
+    city: 'Mendoza',
+    country: 'Argentina',
+    airportCode: 'MDZ',
+    image: `https://images.unsplash.com/photo-1616039407041-5ce631b57879?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'The wine capital of South America, situated in the dramatic foothills of the Andes Mountains, world-famous for its Malbec vineyards.',
+    budget: 'Budget',
+    tripType: 'Nature',
+    bestSeason: 'October to April (Harvest in Feb-March)',
+    dailyBudget: 60,
+    attractions: [
+      { name: 'Uco Valley Winery Tour', duration: 'Full Day', bestTime: '10:00 AM (Multi-course wine lunch)', entryFee: '~$70 - $120' },
+      { name: 'Luján de Cuyo Bike & Wine', duration: 'Half Day', bestTime: 'Morning', entryFee: 'Bike Rental ~$25' },
+      { name: 'General San Martín Park', duration: '2 hours', bestTime: 'Late Afternoon', entryFee: 'Free' },
+      { name: 'Aconcagua Provincial Park (Day Trip)', duration: 'Full Day', bestTime: 'Early Morning', entryFee: 'ARS 5,000' },
+      { name: 'Plaza Independencia', duration: '1 hour', bestTime: 'Evening', entryFee: 'Free' },
+      { name: 'Termas de Cacheuta Thermal Baths', duration: '4 hours', bestTime: 'Morning', entryFee: '~$25' }
+    ],
+    travelTips: [
+      'Winery Reservations: Mendoza’s best "bodegas" require advance reservations weeks ahead for tasting flights and multi-course paired lunches.',
+      'Transport: Wine regions (Maipú, Luján de Cuyo, Uco Valley) are spread out. Hire a dedicated "remís" (private driver) or join an organized tour rather than driving.',
+      'Blue Dollar Economy: Take advantage of the informal "Blue Dollar" exchange rate by sending money via Western Union to make luxury wine tours remarkably affordable.',
+      'Siesta Time: Mendoza takes its afternoon rest very seriously; almost the entire downtown closes between 1:30 PM and 5:00 PM.',
+      'Altitude: Wine regions like Uco Valley sit at over 1,200m elevation. The sun is intense and alcohol hits faster; drink lots of water.',
+      'Harvest Festival: The "Fiesta Nacional de la Vendimia" in early March is one of the world\'s largest wine festivals—book months in advance.'
+    ]
+  },
+
+  // --- 8. SAO PAULO, BRAZIL ---
+  {
+    id: 'sao-paulo-br',
+    city: 'São Paulo',
+    country: 'Brazil',
+    airportCode: 'GRU',
+    image: `https://images.unsplash.com/photo-1543059080-f9b1272213d5${cropParams}`,
+    description: 'A sprawling megalopolis celebrated as Latin America’s gastronomic powerhouse, cultural epicenter, and financial capital.',
+    budget: 'Moderate',
+    tripType: 'City',
+    bestSeason: 'March to May, September to November',
+    dailyBudget: 90,
+    attractions: [
+      { name: 'Avenida Paulista', duration: '2-3 hours', bestTime: 'Sunday (Pedestrian-only street)', entryFee: 'Free' },
+      { name: 'MASP (São Paulo Museum of Art)', duration: '2 hours', bestTime: 'Tuesday (Free entry)', entryFee: 'R$ 60' },
+      { name: 'Ibirapuera Park', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+      { name: 'Liberdade (Japanese District)', duration: '2 hours', bestTime: 'Sunday (Street Food Fair)', entryFee: 'Free' },
+      { name: 'Municipal Market (Mercadão)', duration: '1.5 hours', bestTime: 'Lunchtime', entryFee: 'Free (Food costs extra)' },
+      { name: 'Beco do Batman (Graffiti Alleys)', duration: '1 hour', bestTime: 'Afternoon', entryFee: 'Free' }
+    ],
+    travelTips: [
+      'Food Capital: São Paulo has some of the world’s best dining, from Michelin-starred fine dining (D.O.M., Maní) to traditional Pizza Paulistana (often considered superior to Italian pizza).',
+      'Japanese Influence: São Paulo has the largest Japanese diaspora outside Japan. Visit Liberdade for authentic ramen and Japanese street food.',
+      'Safety: Avoid walking with your phone in your hand along Avenida Paulista or near Praça da Sé, as motorbike snatch-and-grab theft is common.',
+      'Traffic: São Paulo’s traffic is legendary. Rely on the clean, safe, and efficient Metro system during weekday rush hours.',
+      'Sundays on Paulista: On Sundays, Avenida Paulista is completely closed to motor vehicles, turning into an enormous public festival with buskers and food stalls.',
+      'Airport Distance: GRU Airport is far from the city. Use the Express Airport train (Expresso Aeroporto) or allow up to 2 hours for an Uber in heavy traffic.'
+    ]
+  },
+
+  // --- 9. SEATTLE, USA ---
+  {
+    id: 'seattle-us',
+    city: 'Seattle',
+    country: 'USA',
+    airportCode: 'SEA',
+    image: `https://images.unsplash.com/photo-1502175353174-a7a70e73b362${cropParams}`,
+    description: 'The Emerald City of the Pacific Northwest, surrounded by evergreen forests, Puget Sound waterways, coffee culture, and tech innovation.',
+    budget: 'Luxury',
+    tripType: 'City',
+    bestSeason: 'June to September',
+    dailyBudget: 180,
+    attractions: [
+      { name: 'Space Needle', duration: '1.5 hours', bestTime: 'Sunset', entryFee: '$35 - $39' },
+      { name: 'Pike Place Market', duration: '2-3 hours', bestTime: '9:00 AM (Watch fish throwers)', entryFee: 'Free' },
+      { name: 'Chihuly Garden and Glass', duration: '1.5 hours', bestTime: 'Morning', entryFee: '$32' },
+      { name: 'Museum of Pop Culture (MoPOP)', duration: '2.5 hours', bestTime: 'Afternoon', entryFee: '$30' },
+      { name: 'Bainbridge Island Ferry', duration: 'Half Day', bestTime: 'Clear Afternoon', entryFee: '$9.85 (Passenger return)' },
+      { name: 'Mount Rainier National Park (Day Trip)', duration: 'Full Day', bestTime: '7:00 AM departure', entryFee: '$30 per vehicle' }
+    ],
+    travelTips: [
+      'No Umbrellas: Real Seattleites rarely use umbrellas; the rain is usually a gentle mist. Wear a high-quality hooded waterproof jacket instead.',
+      'Coffee Scene: Skip the original Starbucks at Pike Place (the line is hours long) and explore local independent roasters like Espresso Vivace, Victrola, or Monorail Espresso.',
+      'Public Transit: Take the Sound Transit Link Light Rail directly from SEA Airport to downtown Westlake Station for only $3.',
+      'Best View: Head to Kerry Park on Queen Anne Hill for the postcard view of the Space Needle with Mount Rainier towering in the background.',
+      'Seafood: Try fresh Dungeness crab, Alaskan wild salmon, and Pacific Northwest chowder served in sourdough bread bowls.',
+      'Ferries: Riding the Washington State Ferry to Bainbridge Island offers the best skyline views of Seattle from the water.'
+    ]
+  },
+
+  // --- 10. MAUI, USA ---
+  {
+    id: 'maui-us',
+    city: 'Maui',
+    country: 'USA',
+    airportCode: 'OGG',
+    image: `https://images.unsplash.com/photo-1542259009477-d625272157b7${cropParams}`,
+    description: 'Hawaii’s valley isle, famous for world-class beaches, the scenic Road to Hana, sacred Haleakalā volcano sunrises, and humpback whale watching.',
+    budget: 'Luxury',
+    tripType: 'Beach',
+    bestSeason: 'April to May, September to November',
+    dailyBudget: 260,
+    attractions: [
+      { name: 'Haleakalā National Park Sunrise', duration: '4 hours', bestTime: '4:30 AM (Reservation mandatory)', entryFee: '$30/car + $1 reservation' },
+      { name: 'The Road to Hana', duration: 'Full Day', bestTime: '6:30 AM start', entryFee: 'Free (Wai’anapanapa $10)' },
+      { name: 'Molokini Crater Snorkel Boat Tour', duration: '4 hours', bestTime: 'Morning (Calmest water)', entryFee: '$120 - $160' },
+      { name: 'Ka’anapali Beach & Black Rock', duration: 'Half Day', bestTime: 'Sunset (Cliff dive ceremony)', entryFee: 'Free' },
+      { name: 'Waiʻanapanapa Black Sand Beach', duration: '2 hours', bestTime: 'Midday', entryFee: '$10 reservation per vehicle' },
+      { name: 'Whale Watching Tour (Dec - April)', duration: '2 hours', bestTime: 'Morning', entryFee: '$65+' }
+    ],
+    travelTips: [
+      'Car Rental: A rental car is 100% essential on Maui. Book it as soon as you purchase your flights, as island inventory sells out.',
+      'Reef-Safe Sunscreen: Hawaii law strictly bans chemical sunscreens (oxybenzone and octinoxate). Only mineral (zinc oxide / titanium dioxide) sunscreens are legal.',
+      'Haleakalā Sunrise: You MUST make a sunrise reservation online via recreation.gov up to 60 days ahead. Dress in heavy winter clothing; the summit drops below freezing.',
+      'Road to Hana: Download an offline GPS audio tour app (like Shaka Guide) before starting, as there is zero cellular service along the scenic jungle highway.',
+      'Respect the Land: Never take lava rocks, sand, or coral from the island (Pele\'s curse), and keep a minimum 10-foot distance from protected Hawaiian sea turtles (Honu).',
+      'Food Trucks: Eat at local food trucks for delicious garlic shrimp, poke bowls, and shaved ice with coconut syrup.'
+    ]
+  },
+
+  // --- 11. DOHA, QATAR ---
+  {
+    id: 'doha-qa',
+    city: 'Doha',
+    country: 'Qatar',
+    airportCode: 'DOH',
+    image: `https://images.unsplash.com/photo-1669300884869-e6e11c67c031?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'A gleaming Arabian Gulf capital blending cutting-edge futuristic architecture, world-renowned Islamic art, and historic waterfront souqs.',
+    budget: 'Luxury',
+    tripType: 'Luxury',
+    bestSeason: 'November to March',
+    dailyBudget: 180,
+    attractions: [
+      { name: 'Museum of Islamic Art (MIA)', duration: '2-3 hours', bestTime: 'Morning', entryFee: 'QAR 50' },
+      { name: 'Souq Waqif', duration: '3 hours', bestTime: 'Evening (When markets come alive)', entryFee: 'Free' },
+      { name: 'National Museum of Qatar', duration: '2.5 hours', bestTime: 'Afternoon', entryFee: 'QAR 50' },
+      { name: 'Katara Cultural Village', duration: '2 hours', bestTime: 'Late Afternoon', entryFee: 'Free' },
+      { name: 'The Pearl-Qatar', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+      { name: 'Inland Sea (Khor Al Adaid) Desert Safari', duration: '5 hours', bestTime: 'Afternoon / Sunset Tour', entryFee: '~$70+' }
+    ],
+    travelTips: [
+      'Free Transit Tour: If you have a layover over 6 hours with Qatar Airways at Hamad International Airport, book an official Discover Qatar city transit tour.',
+      'Dress Code: Qatar is culturally conservative. Shoulders and knees must be covered in malls, government buildings, and markets. Revealing clothing is not permitted.',
+      'Metro: The Doha Metro is brand-new, ultra-modern, driverless, and one of the cleanest in the world. Gold Club and standard carriages operate with a contactless travel card.',
+      'Alcohol Regulations: Alcohol is strictly forbidden in public areas and cannot be brought through customs. It is only sold in licensed international hotel bars.',
+      'Falcon Souq: Located right inside Souq Waqif, you can visit the dedicated falcon hospital and shops to see how prized falcons are trained.',
+      'Summer Weather: Avoid outdoor activities from June to September, when temperatures exceed 45°C (113°F).'
+    ]
+  },
+
+  // --- 12. MUMBAI, INDIA ---
+  {
+    id: 'mumbai-in',
+    city: 'Mumbai',
+    country: 'India',
+    airportCode: 'BOM',
+    image: `https://images.unsplash.com/photo-1569758267239-d08deb78bb1a?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'India’s financial heartbeat and home of Bollywood, a high-energy coastal metropolis of Victorian Gothic architecture and iconic street flavors.',
+    budget: 'Moderate',
+    tripType: 'City',
+    bestSeason: 'November to February',
+    dailyBudget: 60,
+    attractions: [
+      { name: 'Gateway of India', duration: '1 hour', bestTime: 'Sunrise / Early Morning', entryFee: 'Free' },
+      { name: 'Marine Drive (Queen’s Necklace)', duration: '2 hours', bestTime: 'Sunset to Night', entryFee: 'Free' },
+      { name: 'Elephanta Caves (UNESCO)', duration: 'Half Day', bestTime: 'Morning Ferry from Gateway', entryFee: '₹600 (Foreigners) + ₹260 Ferry' },
+      { name: 'Chhatrapati Shivaji Maharaj Terminus (CSMT)', duration: '1 hour', bestTime: 'Evening (Illuminated)', entryFee: 'Free' },
+      { name: 'Dhobi Ghat', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free to view from bridge' },
+      { name: 'Bandra Bandstand & Linking Road', duration: '2-3 hours', bestTime: 'Evening', entryFee: 'Free' }
+    ],
+    travelTips: [
+      'Local Trains: Avoid the Mumbai suburban local train system during peak rush hours (8:30-11:00 AM and 5:30-8:30 PM), as crowds are intense.',
+      'Iconic Street Food: You must try authentic Mumbai Vada Pav, Pav Bhaji at Sardar Refreshments, and Pani Puri at Elco in Bandra.',
+      'Taxis: The black-and-yellow (Kaali Peeli) taxis run strictly on the meter in South Mumbai. For convenience and AC, use Uber or Ola.',
+      'Heritage Walking: Explore the Fort and Kala Ghoda art precincts on foot to appreciate the world’s second-largest collection of Art Deco and Victorian Gothic buildings.',
+      'Monsoon Season: The monsoon (June to September) brings dramatic, torrential rains that flood low-lying streets. Carry waterproof gear.',
+      'Drinking Water: Stick strictly to sealed bottled water or filtered water in established restaurants.'
+    ]
+  },
+
+  // --- 13. CEBU, PHILIPPINES ---
+  {
+    id: 'cebu-ph',
+    city: 'Cebu',
+    country: 'Philippines',
+    airportCode: 'CEB',
+    image: `https://images.unsplash.com/photo-1495443942462-81f29560f7e0?q=80&w=873&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'The Queen City of the South, renowned as the adventure gateway to turquoise waterfalls, whale shark encounters, sardine runs, and tropical beaches.',
+    budget: 'Moderate',
+    tripType: 'Adventure',
+    bestSeason: 'December to May',
+    dailyBudget: 75,
+    attractions: [
+      { name: 'Kawasan Falls Canyoneering (Badian)', duration: 'Full Day', bestTime: 'Early Morning', entryFee: '₱2,100 (Tour with guide)' },
+      { name: 'Moalboal Sardine Run & Sea Turtles', duration: '3 hours', bestTime: 'Morning', entryFee: '₱100 Environmental Fee' },
+      { name: 'Temple of Leah', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: '₱100' },
+      { name: 'Sirao Garden (Little Amsterdam)', duration: '1.5 hours', bestTime: 'Morning', entryFee: '₱100' },
+      { name: 'Basilica Minore del Santo Niño & Magellan’s Cross', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+      { name: 'Oslob Whale Shark Snorkeling', duration: '2 hours', bestTime: '6:00 AM', entryFee: '₱1,000' }
+    ],
+    travelTips: [
+      'Kawasan Canyoneering: Canyoneering at Kawasan Falls involves jumping from 10m to 15m cliffs into river canyons. Helmets, life jackets, and a licensed guide are mandatory.',
+      'Transit Across Island: Traveling from Cebu City to southern adventure hubs like Moalboal or Oslob takes 3 to 4 hours by bus from the South Bus Terminal.',
+      'Cebu Lechon: Cebu is famous for having the best roasted pig (Lechon) in the world. Try Rico’s Lechon or House of Lechon.',
+      'Airport Location: Mactan-Cebu International Airport (CEB) is located on Mactan Island, not in Cebu City proper. Allow 1-2 hours for city traffic during rush hours.',
+      'Moalboal Shore Snorkel: You do not need an expensive boat tour for the famous million-sardine run in Moalboal; it is located just 20 meters off Panagsama Beach.',
+      'Cash Economy: ATMs in rural beach towns often run out of cash. Withdraw sufficient Philippine Pesos (PHP) in Cebu City before heading south.'
+    ]
+  },
+
+  // --- 14. CHIANG MAI, THAILAND ---
+  {
+    id: 'chiang-mai-th',
+    city: 'Chiang Mai',
+    country: 'Thailand',
+    airportCode: 'CNX',
+    image: `https://images.unsplash.com/photo-1512553353614-82a7370096dc${cropParams}`,
+    description: 'The cultural capital of northern Thailand, nestled among misty mountains with hundreds of ancient Buddhist temples and ethical elephant sanctuaries.',
+    budget: 'Budget',
+    tripType: 'Culture',
+    bestSeason: 'November to February',
+    dailyBudget: 40,
+    attractions: [
+      { name: 'Wat Phra That Doi Suthep', duration: '2-3 hours', bestTime: 'Sunrise or Late Afternoon', entryFee: '30 THB' },
+      { name: 'Ethical Elephant Nature Park', duration: 'Full Day', bestTime: 'Full Day Tour (Book months ahead)', entryFee: '~2,500 - 3,500 THB' },
+      { name: 'Sunday Walking Street Night Market', duration: '3 hours', bestTime: '6:00 PM to 10:00 PM', entryFee: 'Free' },
+      { name: 'Wat Chedi Luang', duration: '1 hour', bestTime: 'Morning', entryFee: '50 THB' },
+      { name: 'Wat Pha Lat (Hidden Jungle Temple)', duration: '1.5 hours', bestTime: 'Early Morning', entryFee: 'Free' },
+      { name: 'Doi Inthanon National Park (Highest Peak)', duration: 'Full Day', bestTime: '7:00 AM Departure', entryFee: '300 THB' }
+    ],
+    travelTips: [
+      'Ethical Sanctuaries: Never visit elephant venues that offer riding, shows, or bullhooks. Choose genuine observation and rescue sanctuaries like Elephant Nature Park.',
+      'Burning Season Warning: Avoid visiting between late February and mid-April. Agricultural burning creates severe smoke pollution that blankets the northern valleys.',
+      'Local Dish: You cannot leave without eating Khao Soi—a rich, creamy coconut curry noodle soup topped with crispy fried noodles (costs under $2).',
+      'Red Songthaews: Wave down the red shared pick-up trucks ("Songthaew") for cheap 30-40 THB trips anywhere inside the old city perimeter.',
+      'Monk Chat: Many temples (like Wat Chedi Luang) offer informal "Monk Chats" where you can sit with novice monks to ask about Buddhism and help them practice English.',
+      'Dress Code: Modest dress covering shoulders and knees is strictly enforced at all temples.'
+    ]
+  },
+
+  // --- 15. LUXOR, EGYPT ---
+  {
+    id: 'luxor-eg',
+    city: 'Luxor',
+    country: 'Egypt',
+    airportCode: 'LXR',
+    image: `https://images.unsplash.com/photo-1632944398987-494eebe663be?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'The world’s greatest open-air museum, home to the magnificent Valley of the Kings, Karnak Temple, and ancient Pharaoh tombs along the Nile.',
+    budget: 'Budget',
+    tripType: 'Culture',
+    bestSeason: 'October to April',
+    dailyBudget: 50,
+    attractions: [
+      { name: 'Valley of the Kings (King Tut Tomb)', duration: '3-4 hours', bestTime: '6:00 AM (Opening)', entryFee: '600 EGP (Standard) + Tut extra' },
+      { name: 'Karnak Temple Complex', duration: '3 hours', bestTime: 'Morning or Sound & Light Show', entryFee: '450 EGP' },
+      { name: 'Luxor Temple', duration: '2 hours', bestTime: 'Night (Stunning illumination)', entryFee: '400 EGP' },
+      { name: 'Temple of Hatshepsut', duration: '2 hours', bestTime: 'Early Morning', entryFee: '360 EGP' },
+      { name: 'Sunrise Hot Air Balloon Ride', duration: '2 hours', bestTime: '4:30 AM (Sunrise)', entryFee: '~$50 - $80 USD' },
+      { name: 'Colossi of Memnon', duration: '30 mins', bestTime: 'Morning', entryFee: 'Free' }
+    ],
+    travelTips: [
+      'Early Starts: Luxor gets brutally hot. Start your sightseeing on the West Bank right when tombs open at 6:00 AM to beat tour buses and scorching sun.',
+      'Hot Air Balloon: A sunrise hot air balloon over the Valley of the Kings is world-renowned and one of the most affordable balloon flights on earth.',
+      'Tomb Tickets: Standard Valley of the Kings tickets include entry to 3 tombs. Famous tombs like King Tutankhamun and Seti I require separate add-on tickets.',
+      'Nile Ferry: Cross between the East Bank and West Bank using the local public ferry for just 10 EGP instead of paying 100+ EGP for private motorboats.',
+      'Haggling & Touts: Expect intense sales pitches from carriage drivers ("calèche") and souvenir vendors. A firm, polite "La, Shukran" (No, thank you) is required.',
+      'Nile Cruise: Taking a multi-day Nile cruise between Luxor and Aswan is the classic way to explore southern Egypt’s temple complexes.'
+    ]
+  },
+
+  // --- 16. MAURITIUS ---
+  {
+    id: 'mauritius-mu',
+    city: 'Mauritius',
+    country: 'Mauritius',
+    airportCode: 'MRU',
+    image: `https://images.unsplash.com/photo-1513415277900-a62401e19be4?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'An idyllic Indian Ocean island celebrated for volcanic mountain backdrops, coral reefs, luxury beachfronts, and the Chamarel Seven Colored Earths.',
+    budget: 'Luxury',
+    tripType: 'Beach',
+    bestSeason: 'May to December',
+    dailyBudget: 175,
+    attractions: [
+      { name: 'Le Morne Brabant (UNESCO Mountain Hike)', duration: '4 hours', bestTime: '6:30 AM', entryFee: 'Free (Guide recommended)' },
+      { name: 'Underwater Waterfall Helicopter View', duration: '45 mins', bestTime: 'Midday (Optimal light)', entryFee: '~$250+ USD' },
+      { name: 'Chamarel Seven Coloured Earths', duration: '2 hours', bestTime: 'Morning', entryFee: '550 MUR' },
+      { name: 'Île aux Cerfs Day Trip', duration: 'Full Day', bestTime: 'Morning Catamaran', entryFee: '~$50 (Speedboat/Tour)' },
+      { name: 'Black River Gorges National Park', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+      { name: 'Sir Seewoosagur Ramgoolam Botanic Garden', duration: '1.5 hours', bestTime: 'Morning', entryFee: '300 MUR' }
+    ],
+    travelTips: [
+      'Underwater Waterfall: The famous "underwater waterfall" off Le Morne is an optical illusion caused by sand and silt runoff. It can only be seen from a helicopter flight.',
+      'Driving: You drive on the left side of the road in Mauritius. Renting a car is the best and cheapest way to see the island at your own pace.',
+      'Street Food: You must try "Dholl Puri" (thin flatbread stuffed with yellow split peas and served with curries and chutneys) at street stalls for under $1.',
+      'Wind Conditions: The east coast can be very windy between June and August. Stay on the north or west coasts (Trou aux Biches, Flic en Flac) for calmer seas.',
+      'Reef Safety: Wear water shoes at certain public beaches to protect your feet from stonefish and sharp coral.',
+      'Local Rum: Visit the Rhumerie de Chamarel to taste high-grade agricultural rum distilled from fresh sugarcane.'
+    ]
+  },
+
+  // --- 17. SERENGETI & KILIMANJARO, TANZANIA ---
+  {
+    id: 'serengeti-tz',
+    city: 'Serengeti & Kilimanjaro',
+    country: 'Tanzania',
+    airportCode: 'JRO',
+    image: `https://images.unsplash.com/photo-1711062752040-8587e1a3b8e8?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'The ultimate African safari frontier, world-renowned for the Great Wildebeest Migration, Ngorongoro Crater, and the snow-capped peak of Mount Kilimanjaro.',
+    budget: 'Luxury',
+    tripType: 'Adventure',
+    bestSeason: 'June to October (Dry Season / River Crossings)',
+    dailyBudget: 350,
+    attractions: [
+      { name: 'Serengeti National Park Game Drive', duration: 'Full Day', bestTime: 'Sunrise & Late Afternoon', entryFee: '$82.60/day Park Fee' },
+      { name: 'Ngorongoro Crater Safari', duration: 'Full Day', bestTime: 'Early Morning descent', entryFee: '$70.80 Park + $295 vehicle fee' },
+      { name: 'The Great Migration Mara River Crossing', duration: 'Full Day', bestTime: 'July to October', entryFee: 'Included in Safari' },
+      { name: 'Mount Kilimanjaro Base Camp / Day Hike', duration: 'Full Day', bestTime: 'Early Morning', entryFee: '$70+ Park Entry' },
+      { name: 'Hot Air Balloon Safari over Serengeti', duration: '3 hours', bestTime: '5:00 AM (Sunrise)', entryFee: '~$550 - $600 USD' },
+      { name: 'Traditional Maasai Boma Village Visit', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: '~$20 - $30 Donation' }
+    ],
+    travelTips: [
+      'Safari Booking: Always book with a reputable, licensed tour operator. Budget camping safaris start around $200/day, while luxury tented lodges exceed $800/day.',
+      'Vaccinations & Health: Yellow fever vaccination proof is required if arriving from endemic countries. Malaria prophylactic medication is essential.',
+      'Clothing: Pack neutral-colored clothing (khaki, beige, olive). Avoid bright blue and black clothing, as they attract biting tsetse flies.',
+      'Tipping: Tipping your safari guide and camp staff is customary and expected ($20-$30 per day per vehicle for the head guide).',
+      'Plastics Ban: Tanzania enforces a strict total ban on single-use plastic bags. Do not pack duty-free bags in your luggage.',
+      'Dust: Safari tracks are extremely dusty. Bring dustproof bags for camera gear and pack eye drops and a buff/bandana.'
+    ]
+  },
+
+  // --- 18. CAIRNS & GREAT BARRIER REEF, AUSTRALIA ---
+  {
+    id: 'cairns-au',
+    city: 'Cairns',
+    country: 'Australia',
+    airportCode: 'CNS',
+    image: `https://images.unsplash.com/photo-1688337707006-64d5a1f6582c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'The tropical gateway to the UNESCO Great Barrier Reef and the ancient Daintree Rainforest, packed with coral reef expeditions and rainforest adventures.',
+    budget: 'Moderate',
+    tripType: 'Beach',
+    bestSeason: 'May to October (Dry Season)',
+    dailyBudget: 140,
+    attractions: [
+      { name: 'Great Barrier Reef Outer Reef Snorkel & Scuba', duration: 'Full Day', bestTime: 'Morning departure', entryFee: '~$180 - $250 AUD' },
+      { name: 'Kuranda Scenic Railway & Skyrail Cableway', duration: 'Full Day', bestTime: 'Morning', entryFee: '$125 AUD' },
+      { name: 'Daintree Rainforest & Cape Tribulation', duration: 'Full Day', bestTime: '7:30 AM departure', entryFee: 'Tour / Ferry fee' },
+      { name: 'Cairns Esplanade Lagoon', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+      { name: 'Mossman Gorge', duration: '3 hours', bestTime: 'Morning', entryFee: '$14 AUD (Shuttle)' },
+      { name: 'Fitzroy Island Day Trip', duration: 'Full Day', bestTime: 'Morning Ferry', entryFee: '$95 AUD (Ferry return)' }
+    ],
+    travelTips: [
+      'Marine Stingers: Box jellyfish and Irukandji stingers are present in ocean waters from November to May. You must wear a full-body Lycra stinger suit when swimming in open water.',
+      'Crocodile Safety: Never swim in rivers, estuaries, or unfenced beaches in Tropical North Queensland; saltwater crocodiles are present. Swim only in the Cairns Esplanade Lagoon or stinger enclosures.',
+      'Reef Motion Sickness: The boat ride to the Outer Great Barrier Reef crosses open ocean and can be rough. Take seasickness tablets before boarding.',
+      'Sun Protection: The tropical UV index is extreme. Wear SPF 50+ reef-safe sunscreen and a rash vest.',
+      'Daintree Rainforest: The Daintree is the world’s oldest continuously surviving tropical rainforest (over 180 million years old). Rent a car or take a guided tour.',
+      'Tipping: Tipping is not required in Australia, though 10% is appreciated for exceptional restaurant service.'
+    ]
+  },
+
+  // --- 19. BELFAST, NORTHERN IRELAND ---
+  {
+    id: 'belfast-gb',
+    city: 'Belfast',
+    country: 'United Kingdom',
+    airportCode: 'BFS',
+    image: `https://images.unsplash.com/photo-1593255136145-da399169fadd?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'A resilient and historic city famous as the birthplace of the RMS Titanic, featuring legendary black cab political mural tours, and the Giant’s Causeway coastline.',
+    budget: 'Moderate',
+    tripType: 'City',
+    bestSeason: 'May to September',
+    dailyBudget: 120,
+    attractions: [
+      { name: 'Titanic Belfast', duration: '3 hours', bestTime: 'Morning (Book online)', entryFee: '£24.95' },
+      { name: 'Black Cab Political Murals & Peace Wall Tour', duration: '1.5 hours', bestTime: 'Morning', entryFee: '£40 - £50 (Per cab)' },
+      { name: 'Giant’s Causeway (Day Trip)', duration: 'Full Day', bestTime: 'Morning Tour', entryFee: '£14 (Free to walk stones)' },
+      { name: 'St. George’s Market', duration: '2 hours', bestTime: 'Friday - Sunday mornings', entryFee: 'Free' },
+      { name: 'Belfast City Hall', duration: '1.5 hours', bestTime: 'Morning (Free guided tour)', entryFee: 'Free' },
+      { name: 'The Crown Liquor Saloon', duration: '1.5 hours', bestTime: 'Evening (Sit in a private booth)', entryFee: 'Free (Drinks extra)' }
+    ],
+    travelTips: [
+      'Currency: Northern Ireland is part of the UK and uses the British Pound Sterling (GBP), not the Euro used in the Republic of Ireland.',
+      'Black Cab Tours: Booking a certified Black Taxi Tour is the best, most respectful way to understand the complex history of "The Troubles" and see the Peace Wall murals.',
+      'Game of Thrones: Northern Ireland was the primary filming location for Westeros (The Dark Hedges, Ballintoy Harbour). Book a themed day tour if you are a fan.',
+      'Historic Pubs: Have a pint of Guinness at the Crown Liquor Saloon, a Victorian-era gin palace with original stained glass and carved wooden snugs.',
+      'Weather: It rains frequently year-round. Pack a sturdy, windproof raincoat rather than an umbrella.',
+      'St. George’s Market: Visit on the weekend for live music, local crafts, and fresh Ulster Fry breakfasts.'
+    ]
+  },
+
+  // --- 20. FIJI (NADI & MAMANUCA ISLANDS) ---
+  {
+    id: 'fiji-fj',
+    city: 'Fiji',
+    country: 'Fiji',
+    airportCode: 'NAN',
+    image: `https://images.unsplash.com/photo-1530736822234-c8562cb0a710?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'A South Pacific wonderland of 330 tropical islands, renowned for warm hospitality ("Bula!"), turquoise lagoons, and world-class scuba diving.',
+    budget: 'Luxury',
+    tripType: 'Beach',
+    bestSeason: 'May to October (Dry Season)',
+    dailyBudget: 220,
+    attractions: [
+      { name: 'Mamanuca & Yasawa Islands Island Hopping', duration: 'Full Day', bestTime: 'Morning departure', entryFee: '~$100 - $160 USD' },
+      { name: 'Cloud 9 Floating Bar & Pizzeria', duration: '5 hours', bestTime: 'Morning Boat Transfer', entryFee: '$110 USD (Includes bar credit)' },
+      { name: 'Sri Siva Subramaniya Temple (Nadi)', duration: '1 hour', bestTime: 'Morning', entryFee: 'FJD 5' },
+      { name: 'Garden of the Sleeping Giant', duration: '2 hours', bestTime: 'Morning', entryFee: 'FJD 25' },
+      { name: 'Sawa-i-Lau Limestone Caves', duration: '3 hours', bestTime: 'Morning (During high tide)', entryFee: 'FJD 35' },
+      { name: 'Traditional Kava Ceremony & Village Visit', duration: '2 hours', bestTime: 'Evening', entryFee: 'Village donation' }
+    ],
+    travelTips: [
+      'Fiji Time: "Fiji Time" is real—life moves at a relaxed, unhurried pace. Embrace the slow tempo without frustration.',
+      'Village Protocol: When visiting traditional Fijian villages, dress modestly (wear a sulu/sarong), remove hats and sunglasses, and never touch anyone’s head.',
+      'Kava Ceremony: If invited to a Kava ceremony, clap once before receiving the coconut bowl ("Bilo"), drink the kava in one gulp, and clap three times after saying "Bula!".',
+      'Island Transfers: Nadi (on the main island Viti Levu) is primarily a transit hub. Head out to the Mamanuca or Yasawa Islands via the South Sea Cruises catamaran ferry from Port Denarau.',
+      'Currency: The local currency is the Fijian Dollar (FJD). Credit cards are accepted at major resorts, but carry cash for village visits and craft markets.',
+      'Sundays: Sundays are strictly dedicated to family and church across Fiji; most shops and independent businesses are closed.'
+    ]
+  },
+  // --- 1. AMALFI COAST, ITALY ---
+  {
+    id: 'amalfi-coast-it',
+    city: 'Amalfi Coast',
+    country: 'Italy',
+    airportCode: 'NAP',
+    image: `https://images.unsplash.com/photo-1533105079780-92b9be482077${cropParams}`,
+    description: 'A dramatic 50-kilometer stretch of mountainous coastline featuring pastel-colored cliffside fishing villages, terraced lemon groves, and azure waters.',
+    budget: 'Luxury',
+    tripType: 'Beach',
+    bestSeason: 'May to September',
+    dailyBudget: 220,
+    attractions: [
+      { name: 'Positano Village & Spiaggia Grande', duration: 'Half Day', bestTime: 'Morning', entryFee: 'Free (Sunbeds €35+)' },
+      { name: 'Path of the Gods (Sentiero degli Dei)', duration: '4 hours', bestTime: '8:00 AM (Early Morning Hike)', entryFee: 'Free' },
+      { name: 'Amalfi Cathedral (Duomo di Amalfi)', duration: '1 hour', bestTime: 'Morning', entryFee: '€3' },
+      { name: 'Ravello (Villa Rufolo & Cimbrone)', duration: '3 hours', bestTime: 'Afternoon', entryFee: '€8 - €10 each' },
+      { name: 'Capri Island Day Cruise', duration: 'Full Day', bestTime: 'Morning Departure', entryFee: '€50+ (Ferry / Tour)' },
+      { name: 'Fiordo di Furore', duration: '1.5 hours', bestTime: 'Midday', entryFee: 'Free' }
+    ],
+    travelTips: [
+      'Transport: Avoid driving a rental car along the narrow, cliffside SS163 road. Rely on Sita buses or scenic passenger ferries between towns.',
+      'Luggage: The villages consist of thousands of steep stone stairs. Pack light or budget for luggage porter services at ferry docks.',
+      'Lemon Specialties: Try authentic Delizia al Limone pastries and sip ice-cold Limoncello made from local IGP Sfusato lemons.',
+      'Accommodation: Staying in smaller towns like Minori, Maiori, or Praiano is significantly cheaper than staying directly in Positano.',
+      'Peak Crowds: In July and August, traffic jams are severe and ferries sell out. Book transport tickets in advance.',
+      'Footwear: Wear sturdy, slip-resistant walking shoes; cobblestones and cliff trails are demanding.'
+    ]
+  },
+
+  // --- 2. NICE, FRANCE ---
+  {
+    id: 'nice-fr',
+    city: 'Nice',
+    country: 'France',
+    airportCode: 'NCE',
+    image: `https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1600&q=80${cropParams}`,
+    description: 'The capital of the French Riviera, renowned for its sweeping pebble beaches along the Baie des Anges, Belle Époque architecture, and vibrant Provençal markets.',
+    budget: 'Luxury',
+    tripType: 'Beach',
+    bestSeason: 'May to October',
+    dailyBudget: 160,
+    attractions: [
+      { name: 'Promenade des Anglais', duration: '2 hours', bestTime: 'Sunset', entryFee: 'Free' },
+      { name: 'Castle Hill (Colline du Château)', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+      { name: 'Old Town (Vieux Nice)', duration: '3 hours', bestTime: 'Morning Market Hours', entryFee: 'Free' },
+      { name: 'Cours Saleya Flower & Food Market', duration: '1.5 hours', bestTime: '8:30 AM (Closed Mondays)', entryFee: 'Free' },
+      { name: 'Marc Chagall National Museum', duration: '2 hours', bestTime: 'Afternoon', entryFee: '€10' },
+      { name: 'Monaco & Monte Carlo (Day Trip)', duration: 'Half Day', bestTime: 'Afternoon', entryFee: '€4.20 (Train ticket)' }
+    ],
+    travelTips: [
+      'Beach Pebbles: The beaches in Nice consist of smooth grey pebbles ("galets"). Bring rubber water shoes and a padded mat for comfort.',
+      'Public Transit: The Lignes d’Azur tram network runs directly from Nice Côte d\'Azur Airport to the city center for only €1.70.',
+      'Day Trips: Nice is the ultimate Riviera base. Take local TER trains to Monaco (20 mins), Cannes (30 mins), and Villefranche-sur-Mer (10 mins).',
+      'Local Street Food: Try "Socca," a traditional crispy chickpea flour pancake baked in wood-fired ovens, and a classic Pan Bagnat sandwich.',
+      'Museum Pass: If visiting multiple art museums, buy the 24-hour French Riviera Pass for discounted admissions.',
+      'Midday Canon: Don’t be alarmed by the loud cannon boom at exactly 12:00 PM; it is a centuries-old daily tradition.'
+    ]
+  },
+
+  // --- 3. KRABI, THAILAND ---
+  {
+    id: 'krabi-th',
+    city: 'Krabi',
+    country: 'Thailand',
+    airportCode: 'KBV',
+    image: `https://images.unsplash.com/photo-1552465011-b4e21bf6e79a${cropParams}`,
+    description: 'A coastal southern Thailand province characterized by towering limestone karsts, emerald lagoons, world-class rock climbing, and mangrove forests.',
+    budget: 'Budget',
+    tripType: 'Beach',
+    bestSeason: 'November to April',
+    dailyBudget: 55,
+    attractions: [
+      { name: 'Railay Beach & Phra Nang Cave', duration: 'Full Day', bestTime: 'Morning (Access via longtail boat)', entryFee: '100 THB (Boat fare)' },
+      { name: 'Four Islands Tour (Koh Poda, Chicken Island)', duration: 'Full Day', bestTime: '8:30 AM Departure', entryFee: '1,000 THB + 400 THB Park Fee' },
+      { name: 'Tiger Cave Temple (Wat Tham Suea)', duration: '3 hours', bestTime: 'Sunrise (Climb 1,260 steps)', entryFee: 'Free' },
+      { name: 'Emerald Pool (Sa Morakot) & Hot Springs', duration: 'Half Day', bestTime: 'Morning', entryFee: '400 THB (Park Entry)' },
+      { name: 'Hong Islands Speedboat Tour', duration: 'Full Day', bestTime: 'Morning', entryFee: '1,200 THB + Park Fee' },
+      { name: 'Ao Nang Night Market', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' }
+    ],
+    travelTips: [
+      'Railay Access: Railay Beach is completely cut off from the mainland by high limestone cliffs. It is accessible solely by traditional longtail boats from Ao Nang.',
+      'Climbing Mecca: Tonsai and Railay East are among the world\'s premier rock climbing locations. Gear rental and guides are widely available.',
+      'National Park Fees: Keep cash ready; major island hopping tours require a separate 400 THB foreigner conservation fee collected on arrival.',
+      'Temple Modesty: When climbing the 1,260 stairs to the Tiger Cave Temple summit, ensure shoulders and knees are covered and watch out for aggressive monkeys.',
+      'Monsoon Season: From May to October, rough seas can cause longtail boat cancellations. Always check maritime weather flags.',
+      'Local Cuisine: Sample fiery southern Thai curries like Gaeng Som (sour curry) and Massaman Curry at local Ao Nang eateries.'
+    ]
+  },
+
+  // --- 4. PERHENTIAN ISLANDS, MALAYSIA ---
+  {
+    id: 'perhentian-islands-my',
+    city: 'Perhentian Islands',
+    country: 'Malaysia',
+    airportCode: 'TGG',
+    image: `https://images.unsplash.com/photo-1686986468304-e553fc1e2e16?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'A secluded pair of tropical islands off northeastern Malaysia known for crystal-clear coral waters, sea turtle nesting beaches, and laid-back beach life.',
+    budget: 'Budget',
+    tripType: 'Beach',
+    bestSeason: 'March to October (Strictly closed during Monsoon)',
+    dailyBudget: 50,
+    attractions: [
+      { name: 'Turtle Beach Snorkeling', duration: '3 hours', bestTime: 'Morning', entryFee: '30 - 50 MYR (Boat trip)' },
+      { name: 'Shark Point Reef Snorkel', duration: '2 hours', bestTime: 'Morning', entryFee: 'Included in Snorkel Tour' },
+      { name: 'Long Beach Fire Shows (Perhentian Kecil)', duration: '2-3 hours', bestTime: 'Night', entryFee: 'Free' },
+      { name: 'Coral Bay Sunsets', duration: '1.5 hours', bestTime: 'Sunset', entryFee: 'Free' },
+      { name: 'Perhentian Windmill Viewpoint Hike', duration: '2 hours', bestTime: 'Late Afternoon', entryFee: 'Free' },
+      { name: 'Romantic Beach Day Trip', duration: 'Half Day', bestTime: 'Morning', entryFee: 'Water Taxi ~20 MYR' }
+    ],
+    travelTips: [
+      'Seasonal Closure: The islands are effectively shut down from November to February during the northeast monsoon due to violent seas.',
+      'Kecil vs. Besar: Perhentian Kecil is popular with backpackers, nightlife, and budget stays; Perhentian Besar offers quieter, upscale family resorts.',
+      'Cash Is Mandatory: There are no working ATMs on the islands. Bring enough Malaysian Ringgit (MYR) in cash to cover your entire stay.',
+      'Water Taxis: Small wooden water taxis are the only way to hop between beaches. Negotiate and confirm prices before getting in.',
+      'Wildlife Protection: Do not touch the sea turtles, clownfish, or harmless blacktip reef sharks while snorkeling.',
+      'Electricity: Some budget guesthouses only run generators during specific night hours; verify electricity policies with your accommodation.'
+    ]
+  },
+
+  // --- 5. SALZBURG, AUSTRIA ---
+  {
+    id: 'salzburg-at',
+    city: 'Salzburg',
+    country: 'Austria',
+    airportCode: 'SZG',
+    image: `https://images.unsplash.com/photo-1535653831895-6eeaaa50953c?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'The elegant birthplace of Wolfgang Amadeus Mozart, crowned by the medieval Hohensalzburg Fortress and famous Sound of Music filming sites.',
+    budget: 'Moderate',
+    tripType: 'Culture',
+    bestSeason: 'May to October, December (Christmas Markets)',
+    dailyBudget: 120,
+    attractions: [
+      { name: 'Hohensalzburg Fortress', duration: '2-3 hours', bestTime: 'Morning (Take Festungsbahn funicular)', entryFee: '€14' },
+      { name: 'Mirabell Palace & Gardens', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Free' },
+      { name: 'Mozart’s Birthplace (Getreidegasse)', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: '€12' },
+      { name: 'Salzburg Cathedral (Dom zu Salzburg)', duration: '1 hour', bestTime: 'Morning', entryFee: '€5' },
+      { name: 'Hellbrunn Palace & Trick Fountains', duration: '2 hours', bestTime: 'Midday', entryFee: '€13.50' },
+      { name: 'Original Sound of Music Tour', duration: '4 hours', bestTime: 'Morning Departure', entryFee: '€50 - €60' }
+    ],
+    travelTips: [
+      'Salzburg Card: Highly recommended. It provides free admission to all major city museums and unlimited public transit (including the fortress funicular).',
+      'Getreidegasse Shopping: Stroll through Getreidegasse to admire the traditional wrought-iron guild signs above every historic shopfront.',
+      'Mozartkugeln: Buy genuine Fürst Mozartkugeln (marzipan and pistachio chocolates wrapped in silver-and-blue foil) from original confectioneries.',
+      'Classical Concerts: Experience a live Mozart concert inside the Golden Hall at the top of Hohensalzburg Fortress.',
+      'Bavarian Border: Salzburg is located right on the German border; train day-trips to Lake Königssee and Berchtesgaden are very straightforward.',
+      'Christmas Season: If visiting in December, Salzburg hosts one of Europe’s oldest and most picturesque advent markets.'
+    ]
+  },
+
+  // --- 6. MONTEGO BAY & OCHO RIOS, JAMAICA ---
+  {
+    id: 'jamaica-jm',
+    city: 'Montego Bay',
+    country: 'Jamaica',
+    airportCode: 'MBJ',
+    image: `https://images.unsplash.com/photo-1662505475505-cc7396a70a0c?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'The energetic Caribbean pulse of reggae music, offering world-famous limestone waterfalls, bamboo river rafting, and white sand coastlines.',
+    budget: 'Luxury',
+    tripType: 'Beach',
+    bestSeason: 'December to April',
+    dailyBudget: 190,
+    attractions: [
+      { name: 'Dunn’s River Falls (Ocho Rios)', duration: '3 hours', bestTime: 'Morning (Before cruise ship crowds)', entryFee: '$25 USD' },
+      { name: 'Martha Brae Bamboo River Rafting', duration: '2 hours', bestTime: 'Morning', entryFee: '$90 USD (Per 2-person raft)' },
+      { name: 'Doctor’s Cave Beach', duration: 'Half Day', bestTime: 'Daytime', entryFee: '$8 USD' },
+      { name: 'Rose Hall Great House (Haunted Tour)', duration: '1.5 hours', bestTime: 'Night Tour', entryFee: '$30 USD' },
+      { name: 'Blue Hole & Secret Falls', duration: '2.5 hours', bestTime: 'Morning', entryFee: '$20 USD' },
+      { name: 'Luminous Lagoon (Glistening Waters)', duration: '1.5 hours', bestTime: 'Night', entryFee: '$25 USD' }
+    ],
+    travelTips: [
+      'Water Shoes Mandatory: Climbing Dunn’s River Falls requires sturdy rubber water shoes to avoid slipping on wet travertine rocks.',
+      'Currency: The US Dollar is widely accepted everywhere in resort areas, but having Jamaican Dollars (JMD) is beneficial for local fruit stands.',
+      'Jerk Cuisine: You must stop at Scotchies in Montego Bay for authentic Jamaican jerk chicken and pork smoked over pimento wood.',
+      'Transport: Use official JUTA (Jamaica Union of Travellers Association) licensed tourist taxis with red license plates for safe transportation.',
+      'Tipping: Standard tipping in Jamaica is 10% to 15% for drivers, tour guides, and restaurant staff.',
+      'Safety: Stick to established tourist corridors and organized excursions, avoiding unlit neighborhood streets after dark.'
+    ]
+  },
+
+  // --- 7. HAVANA, CUBA ---
+  {
+    id: 'havana-cu',
+    city: 'Havana',
+    country: 'Cuba',
+    airportCode: 'HAV',
+    image: `https://images.unsplash.com/photo-1500759285222-a95626b934cb${cropParams}`,
+    description: 'A timeless Caribbean time capsule defined by colorful 1950s classic cars, historic Spanish plazas, lively salsa music, and iconic cigars.',
+    budget: 'Budget',
+    tripType: 'Culture',
+    bestSeason: 'November to April',
+    dailyBudget: 60,
+    attractions: [
+      { name: 'Old Havana (Habana Vieja)', duration: '3-4 hours', bestTime: 'Morning', entryFee: 'Free' },
+      { name: 'Vintage Classic Convertible Tour', duration: '1-2 hours', bestTime: 'Late Afternoon', entryFee: '~$30 - $40 USD' },
+      { name: 'The Malecón Seafront Walk', duration: '2 hours', bestTime: 'Sunset', entryFee: 'Free' },
+      { name: 'El Capitolio Nacional', duration: '1.5 hours', bestTime: 'Morning', entryFee: '~$10 USD' },
+      { name: 'Castillo de la Real Fuerza & Morro Castle', duration: '2 hours', bestTime: '9:00 PM (Cannon firing ceremony)', entryFee: '~$5 USD' },
+      { name: 'Fusterlandia (Mosaic Art Village)', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: 'Free' }
+    ],
+    travelTips: [
+      'US Travel Restrictions: US citizens must travel under approved categories like "Support for the Cuban People" and cannot stay in military-owned hotels.',
+      'Cash Is Essential: Foreign credit cards issued by US banks do not work in Cuba. Bring plenty of cash (Euros or USD) to exchange into Cuban Pesos (CUP).',
+      'Private Stays: Stay in a "Casa Particular" (licensed private homestay) and dine at "Paladares" (family-run private restaurants) for authentic hospitality.',
+      'Internet Access: Connectivity relies on prepaid ETECSA scratch cards (NAUTA) used at designated Wi-Fi parks and hotels.',
+      'Cocktail History: Savor a classic Mojito at La Bodeguita del Medio and a Daiquiri at El Floridita, famous haunts of Ernest Hemingway.',
+      'Cigars: Buy authentic Habanos cigars only from official government stores (La Casa del Habano) to avoid counterfeit street products.'
+    ]
+  },
+
+  // --- 8. SAN JUAN, PUERTO RICO ---
+  {
+    id: 'san-juan-pr',
+    city: 'San Juan',
+    country: 'Puerto Rico',
+    airportCode: 'SJU',
+    image: `https://images.unsplash.com/photo-1717263209162-ea0cda01ff70?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'A vibrant Caribbean crossroads of Spanish colonial heritage, formidable coastal fortresses, tropical rainforests, and world-class rum.',
+    budget: 'Moderate',
+    tripType: 'Culture',
+    bestSeason: 'December to April',
+    dailyBudget: 140,
+    attractions: [
+      { name: 'Castillo San Felipe del Morro (El Morro)', duration: '2-3 hours', bestTime: 'Morning', entryFee: '$10 USD (Covers both forts)' },
+      { name: 'Old San Juan Cobblestone Streets', duration: '3 hours', bestTime: 'Late Afternoon', entryFee: 'Free' },
+      { name: 'Castillo San Cristóbal', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Included with El Morro' },
+      { name: 'El Yunque National Forest (Day Trip)', duration: 'Full Day', bestTime: '7:30 AM Departure', entryFee: 'Free ($2 online booking)' },
+      { name: 'Casa Bacardí Rum Tour', duration: '2 hours', bestTime: 'Afternoon', entryFee: '$30 - $75 USD' },
+      { name: 'Condado Beach & Ocean Park', duration: 'Half Day', bestTime: 'Daytime', entryFee: 'Free' }
+    ],
+    travelTips: [
+      'No Passport for US Citizens: Puerto Rico is a US territory; US citizens do not need a passport and use US Dollars (USD).',
+      'Free Trolley: A free open-air trolley runs around Old San Juan connecting the major historical forts and plazas.',
+      'Local Cuisine: Try "Mofongo"—a delicious mashed green plantain dish filled with garlic shrimp, pork, or chicken.',
+      'Bioluminescent Bays: Book a night kayak tour to Mosquito Bay in Vieques or Laguna Grande in Fajardo to witness glowing bioluminescent plankton.',
+      'Rainforest Driving: If visiting El Yunque Rainforest, rent a car and book your timed entry permit online via recreation.gov.',
+      'Calle San Sebastián: The nightlife in Old San Juan centers around Calle San Sebastián, filled with lively bars, salsa music, and street food.'
+    ]
+  },
+
+  // --- 9. SAN DIEGO, USA ---
+  {
+    id: 'san-diego-us',
+    city: 'San Diego',
+    country: 'USA',
+    airportCode: 'SAN',
+    image: `https://images.unsplash.com/photo-1519954352454-2d5a7353e277?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'Southern California’s coastal jewel, celebrated for year-round idyllic weather, world-class surf breaks, craft breweries, and Spanish colonial parks.',
+    budget: 'Moderate',
+    tripType: 'Beach',
+    bestSeason: 'June to October',
+    dailyBudget: 160,
+    attractions: [
+      { name: 'Balboa Park & Botanical Building', duration: '3-4 hours', bestTime: 'Morning', entryFee: 'Free (Museums separate)' },
+      { name: 'La Jolla Cove (Sea Lions & Snorkel)', duration: '2-3 hours', bestTime: 'Morning', entryFee: 'Free' },
+      { name: 'San Diego Zoo', duration: 'Full Day', bestTime: '9:00 AM (Opening)', entryFee: '$72 USD' },
+      { name: 'Coronado Island & Hotel del Coronado', duration: 'Half Day', bestTime: 'Sunset', entryFee: 'Free (Ferry $7)' },
+      { name: 'USS Midway Aircraft Carrier Museum', duration: '3 hours', bestTime: 'Morning', entryFee: '$31 USD' },
+      { name: 'Gaslamp Quarter', duration: '2-3 hours', bestTime: 'Evening', entryFee: 'Free' }
+    ],
+    travelTips: [
+      'La Jolla Wildlife: Watch sea lions and harbor seals at La Jolla Cove, but maintain the legal 10-foot distance at all times.',
+      'Cali-Baja Tacos: San Diego has world-class Mexican food. Try fresh fish tacos at coastal stands and a California Burrito (stuffed with french fries).',
+      'Airport Proximity: San Diego International Airport is located just 10 minutes from downtown, making rideshares fast and cheap.',
+      'May Gray & June Gloom: Late spring often brings overcast marine layer fog that clears up by early afternoon; plan beach sessions accordingly.',
+      'Trolley System: The MTS San Diego Trolley Blue Line connects downtown directly to the Mexican border at San Ysidro.',
+      'Craft Beer Hub: San Diego is known as the craft beer capital of America. Explore local breweries in North Park and Miramar.'
+    ]
+  },
+
+  // --- 10. PHILADELPHIA, USA ---
+  {
+    id: 'philadelphia-us',
+    city: 'Philadelphia',
+    country: 'USA',
+    airportCode: 'PHL',
+    image: `https://images.unsplash.com/photo-1513635269975-59663e0ac1ad${cropParams}`,
+    description: 'The historic cradle of American independence, renowned for the Liberty Bell, world-class art collections, and lively public food markets.',
+    budget: 'Moderate',
+    tripType: 'City',
+    bestSeason: 'April to June, September to November',
+    dailyBudget: 135,
+    attractions: [
+      { name: 'Independence Hall & Liberty Bell', duration: '2 hours', bestTime: 'Morning (Book timed entry)', entryFee: 'Free ($1 reservation)' },
+      { name: 'Philadelphia Museum of Art ("Rocky Steps")', duration: '3 hours', bestTime: 'Morning', entryFee: '$30 USD' },
+      { name: 'Reading Terminal Market', duration: '2 hours', bestTime: '11:30 AM (Lunchtime)', entryFee: 'Free' },
+      { name: 'Eastern State Penitentiary', duration: '2 hours', bestTime: 'Afternoon', entryFee: '$19 USD' },
+      { name: 'The Barnes Foundation', duration: '2 hours', bestTime: 'Morning', entryFee: '$25 USD' },
+      { name: 'Elfreth’s Alley (Oldest Residential Street)', duration: '45 mins', bestTime: 'Late Afternoon', entryFee: 'Free' }
+    ],
+    travelTips: [
+      'Philly Cheesesteak Etiquette: When ordering a classic cheesesteak, specify your cheese and onion preference (e.g., "Whiz with" means Cheez Whiz with fried onions).',
+      'Walkable Historic Center: Center City and the Old City historic district are laid out on a grid and extremely easy to navigate on foot.',
+      'Reading Terminal: Visit the historic indoor food market to try authentic Pennsylvania Dutch (Amish) warm apple fritters and roast pork sandwiches.',
+      'Rocky Statue: The famous bronze Rocky statue is located at the base of the Art Museum steps; lines for photos can be long in midday.',
+      'SEPTA Transit: Take the SEPTA Airport Line train directly from PHL Airport to Jefferson or 30th Street Station for $6.75.',
+      'Mural Arts: Philadelphia is home to over 4,000 public murals. Consider taking an official guided walking or trolley mural tour.'
+    ]
+  },
+
+  // --- 11. BOGOTÁ, COLOMBIA ---
+  {
+    id: 'bogota-co',
+    city: 'Bogotá',
+    country: 'Colombia',
+    airportCode: 'BOG',
+    image: `https://images.unsplash.com/photo-1583417319070-4a69db38a482${cropParams}`,
+    description: 'Colombia’s high-altitude mountain capital, combining rich pre-Columbian gold artifacts, vibrant street murals, and Andean cable car vistas.',
+    budget: 'Budget',
+    tripType: 'City',
+    bestSeason: 'December to March',
+    dailyBudget: 55,
+    attractions: [
+      { name: 'Monserrate Sanctuary Viewpoint', duration: '2-3 hours', bestTime: 'Morning or Sunset (Cable Car / Funicular)', entryFee: 'COP 27,000 Return' },
+      { name: 'Museo del Oro (Gold Museum)', duration: '2 hours', bestTime: 'Morning (Closed Mondays)', entryFee: 'COP 5,000' },
+      { name: 'La Candelaria Historic District', duration: '3 hours', bestTime: 'Morning (Graffiti Tour)', entryFee: 'Free (Tip the guide)' },
+      { name: 'Plaza de Bolívar', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+      { name: 'Botero Museum', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+      { name: 'Salt Cathedral of Zipaquirá (Day Trip)', duration: 'Half Day', bestTime: 'Morning', entryFee: 'COP 98,000' }
+    ],
+    travelTips: [
+      'High Altitude: Bogotá sits at 2,640 meters (8,660 feet). Take it easy on day one, drink plenty of water, and avoid heavy alcohol.',
+      'Chilly Weather: Unlike tropical Colombia, Bogotá is cool and rainy year-round (14-19°C / 57-66°F). Always pack a warm jacket and umbrella.',
+      'Ciclovía Sundays: On Sundays, over 120 km of city roads are closed to cars for cyclists, runners, and walkers from 7:00 AM to 2:00 PM.',
+      'Safety: Practice "No dar papaya" (don’t flash expensive items or phones on the street). Stick to registered Ubers rather than hailing cabs.',
+      'Local Soup: Try "Ajiaco," a hearty traditional soup made with three types of Andean potatoes, chicken, corn, capers, and heavy cream.',
+      'Street Art: Join the famous Bogotá Graffiti Tour in La Candelaria to understand the political and social meanings behind the city’s murals.'
+    ]
+  },
+
+  // --- 12. GALAPAGOS ISLANDS, ECUADOR ---
+  {
+    id: 'galapagos-ec',
+    city: 'Galápagos Islands',
+    country: 'Ecuador',
+    airportCode: 'GPS',
+    image: `https://images.unsplash.com/photo-1706957614198-8d2e5f0ed6ea?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'A living laboratory of evolution 1,000 km off Ecuador’s coast, famous for fearless giant tortoises, marine iguanas, and pristine underwater habitats.',
+    budget: 'Luxury',
+    tripType: 'Nature',
+    bestSeason: 'December to May (Warm & Calm seas)',
+    dailyBudget: 280,
+    attractions: [
+      { name: 'Charles Darwin Research Station (Santa Cruz)', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free ($10 guided)' },
+      { name: 'Tortuga Bay Beach & Marine Iguanas', duration: '3-4 hours', bestTime: 'Early Morning Hike', entryFee: 'Free' },
+      { name: 'Los Túneles Lava Formations (Isabela Island)', duration: 'Full Day', bestTime: 'Morning Snorkel Tour', entryFee: '$140 - $180 USD' },
+      { name: 'Bartolomé Island Pinnacle Rock', duration: 'Full Day', bestTime: 'Morning Day Cruise', entryFee: '$200 - $250 USD' },
+      { name: 'El Chato Giant Tortoise Reserve', duration: '2 hours', bestTime: 'Afternoon', entryFee: '$10 USD' },
+      { name: 'Kicker Rock (San Cristóbal) Shark Snorkel', duration: 'Full Day', bestTime: 'Morning Boat Tour', entryFee: '$150 - $200 USD' }
+    ],
+    travelTips: [
+      'Entry Fees: You must pay a $20 Transit Control Card (TCT) at Quito/Guayaquil airport and a mandatory $200 cash National Park entrance fee on arrival.',
+      'Land vs. Cruise: Island hopping by public speedboats (Santa Cruz, Isabela, San Cristóbal) is far more affordable than multi-day luxury cruise yachts.',
+      'Strict Biosecurity: Luggage is inspected for biological materials and seeds. Never touch, feed, or approach wildlife closer than 2 meters (6 feet).',
+      'Currency: Ecuador uses the US Dollar (USD). Carry plenty of cash; ATMs on Santa Cruz and San Cristóbal frequently run out of money.',
+      'Motion Sickness: The 2-hour inter-island speedboat ferries cross open oceanic swells and can be notoriously rough; pack seasickness medication.',
+      'Wetsuits: The Humboldt Current brings cold water between June and November. Rent a 3mm-5mm wetsuit for comfortable snorkeling.'
+    ]
+  },
+
+  // --- 13. JOHANNESBURG, SOUTH AFRICA ---
+  {
+    id: 'johannesburg-za',
+    city: 'Johannesburg',
+    country: 'South Africa',
+    airportCode: 'JNB',
+    image: `https://images.unsplash.com/photo-1577948000111-9c970dfe3743?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'South Africa’s vibrant commercial powerhouse, rich in gold mining history, anti-apartheid struggle heritage, and modern art precincts.',
+    budget: 'Moderate',
+    tripType: 'Culture',
+    bestSeason: 'March to May, September to November',
+    dailyBudget: 80,
+    attractions: [
+      { name: 'Apartheid Museum', duration: '3-4 hours', bestTime: 'Morning', entryFee: 'R 150' },
+      { name: 'Soweto & Vilakazi Street Tour', duration: 'Half Day', bestTime: 'Morning Tour', entryFee: 'R 400 - R 600' },
+      { name: 'Nelson Mandela Sanctuary (Mandela House)', duration: '1 hour', bestTime: 'Afternoon', entryFee: 'R 60' },
+      { name: 'Constitution Hill Human Rights Precinct', duration: '2 hours', bestTime: 'Morning', entryFee: 'R 100' },
+      { name: 'Maboneng Precinct (Arts & Markets)', duration: '2-3 hours', bestTime: 'Sunday (Market on Main)', entryFee: 'Free' },
+      { name: 'Cradle of Humankind & Sterkfontein Caves', duration: 'Half Day', bestTime: 'Morning', entryFee: 'R 175' }
+    ],
+    travelTips: [
+      'Gautrain Transit: Take the high-speed Gautrain directly from OR Tambo Airport to safe northern hubs like Sandton and Rosebank in 15 minutes.',
+      'Safety: Do not walk alone on downtown streets or in unfamiliar neighborhoods after dark. Always book Uber door-to-door.',
+      'Vilakazi Street: Soweto’s Vilakazi Street is the only street in the world that was once home to two Nobel Peace Prize laureates: Nelson Mandela and Desmond Tutu.',
+      'Local Cuisine: Try a traditional "Kota" (hollowed quarter-loaf of bread filled with chips, sausage, cheese, and egg) in Soweto.',
+      'Neighborhoods: Base yourself in secure, leafy northern suburbs like Rosebank, Melrose Arch, or Sandton.',
+      'Load Shedding: Download the "EskomSePush" app to track scheduled electrical load-shedding schedules during your stay.'
+    ]
+  },
+
+  // --- 14. SACRED VALLEY & MARAS, PERU ---
+  {
+    id: 'sacred-valley-pe',
+    city: 'Sacred Valley (Urubamba)',
+    country: 'Peru',
+    airportCode: 'CUZ',
+    image: `https://images.unsplash.com/photo-1725149570748-adee857ce8b7?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'The ancient heart of the Incan Empire, featuring thousands of terraced salt evaporation pans, circular agricultural laboratories, and traditional weaving villages.',
+    budget: 'Moderate',
+    tripType: 'Culture',
+    bestSeason: 'May to September (Dry Season)',
+    dailyBudget: 75,
+    attractions: [
+      { name: 'Maras Salt Mines (Salineras de Maras)', duration: '2 hours', bestTime: 'Morning', entryFee: '20 PEN' },
+      { name: 'Moray Incan Agricultural Terraces', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Included in Boleto Turístico' },
+      { name: 'Pisac Ruins & Sunday Artisan Market', duration: '3 hours', bestTime: 'Sunday Morning', entryFee: 'Included in Boleto Turístico' },
+      { name: 'Ollantaytambo Fortress', duration: '2.5 hours', bestTime: 'Late Afternoon', entryFee: 'Included in Boleto Turístico' },
+      { name: 'Chinchero Traditional Weaving Demonstrations', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Free / Included in Pass' },
+      { name: 'Urubamba River Rafting', duration: 'Half Day', bestTime: 'Morning Tour', entryFee: '$45 - $60 USD' }
+    ],
+    travelTips: [
+      'Acclimatization Base: The Sacred Valley (2,870m) is significantly lower in elevation than Cusco (3,400m). Head straight here from the airport to minimize altitude sickness.',
+      'Boleto Turístico: Buy the 10-Day Cusco Tourist Ticket (130 PEN) which covers Moray, Pisac, Ollantaytambo, Chinchero, and numerous sites in Cusco.',
+      'Maras Salt: Purchase edible pink mountain salt harvested directly from the natural subterranean springs at Maras.',
+      'Train to Machu Picchu: Ollantaytambo station in the Sacred Valley is the primary railway departure hub for trains to Aguas Calientes / Machu Picchu.',
+      'Private Driver: Hiring a private driver for a full-day tour from Cusco through Chinchero, Moray, Maras, and Ollantaytambo costs roughly 200-250 PEN ($60 USD).',
+      'Local Delicacy: Stop at roadside restaurants in Urubamba or Lamay to try roasted guinea pig (Cuy Chactado) and fresh giant Andean corn with cheese.'
+    ]
+  },
+
+  // --- 15. BORDEAUX, FRANCE ---
+  {
+    id: 'bordeaux-fr',
+    city: 'Bordeaux',
+    country: 'France',
+    airportCode: 'BOD',
+    image: `https://images.unsplash.com/photo-1555881400-74d7acaacd8b${cropParams}`,
+    description: 'The wine capital of the world, adorned with classical 18th-century limestone architecture, scenic Garonne riverfronts, and prestigious grand cru vineyards.',
+    budget: 'Moderate',
+    tripType: 'Culture',
+    bestSeason: 'May to October (Harvest in Sept-Oct)',
+    dailyBudget: 135,
+    attractions: [
+      { name: 'Place de la Bourse & Miroir d’eau', duration: '1.5 hours', bestTime: 'Sunset to Night', entryFee: 'Free' },
+      { name: 'La Cité du Vin (Interactive Wine Museum)', duration: '3 hours', bestTime: 'Morning (Includes rooftop tasting)', entryFee: '€22' },
+      { name: 'Saint-Émilion Medieval Village (Day Trip)', duration: 'Full Day', bestTime: 'Morning (35 min train)', entryFee: 'Free (Wine tours extra)' },
+      { name: 'Rue Sainte-Catherine (Longest Pedestrian Street)', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+      { name: 'Bassins des Lumières (Digital Art in Submarine Base)', duration: '2 hours', bestTime: 'Morning', entryFee: '€15' },
+      { name: 'Porte Cailhau', duration: '45 mins', bestTime: 'Morning', entryFee: '€5' }
+    ],
+    travelTips: [
+      'High-Speed TGV: The TGV train from Paris Montparnasse reaches Bordeaux in just 2 hours, making it an easy add-on to a French itinerary.',
+      'Wine Tasting Logistics: Prestigious châteaux in the Médoc and Saint-Émilion require reservations weeks in advance. Do not expect to drop in unannounced.',
+      'Local Pastry: You must taste a fresh "Canelé"—a small French pastry flavored with rum and vanilla, with a soft custard center and dark, caramelized crust.',
+      'Water Mirror: The Miroir d\'eau in front of Place de la Bourse is the world\'s largest reflecting pool; visit at dusk for stunning illuminated reflections.',
+      'Tramway: Bordeaux’s modern tram system is ground-level powered (no overhead wires to ruin views) and very simple to use with contactless cards.',
+      'Bordeaux CityPass: If planning to visit La Cité du Vin and Bassins des Lumières, the CityPass includes public transit and admission.'
+    ]
+  },
+
+  // --- 16. ANTALYA, TURKEY ---
+  {
+    id: 'antalya-tr',
+    city: 'Antalya',
+    country: 'Turkey',
+    airportCode: 'AYT',
+    image: `https://images.unsplash.com/photo-1524231757912-21f4fe3a7200${cropParams}`,
+    description: 'The capital of the Turkish Riviera, blending a cliffside Ottoman old town with turquoise Mediterranean beaches and Greco-Roman ruins.',
+    budget: 'Budget',
+    tripType: 'Beach',
+    bestSeason: 'April to June, September to October',
+    dailyBudget: 55,
+    attractions: [
+      { name: 'Kaleiçi (Historic Old Town & Hadrian’s Gate)', duration: '3 hours', bestTime: 'Morning / Late Afternoon', entryFee: 'Free' },
+      { name: 'Düden Waterfalls (Lower Waterfall Sea View)', duration: '1.5 hours', bestTime: 'Sunset', entryFee: 'Free' },
+      { name: 'Konyaaltı Beach', duration: '3 hours', bestTime: 'Daytime', entryFee: 'Free' },
+      { name: 'Aspendos Ancient Roman Theatre (Day Trip)', duration: '2 hours', bestTime: 'Morning', entryFee: '340 TRY' },
+      { name: 'Perge Ancient Archaeological City', duration: '2.5 hours', bestTime: 'Morning', entryFee: '250 TRY' },
+      { name: 'Antalya Archaeological Museum', duration: '2 hours', bestTime: 'Midday', entryFee: '340 TRY' }
+    ],
+    travelTips: [
+      'Stay in Kaleiçi: Book a boutique restored Ottoman mansion inside Kaleiçi old town to walk to restaurants, Roman ruins, and the ancient harbor.',
+      'Tram Network: The Nostalgic Tram and the modern Antray light rail connect the airport, bus terminal, museums, and beach easily.',
+      'Summer Heat: July and August regularly see temperatures above 40°C (104°F) with high humidity. Spring and Autumn offer ideal conditions.',
+      'Museum Pass: Buy the Museum Pass Türkiye or Mediterranean Pass if visiting Aspendos, Perge, Termessos, and local archaeological museums.',
+      'Beaches: Konyaaltı is a long pebble beach with mountain backdrops; Lara Beach to the east features soft golden sand and luxury all-inclusive resorts.',
+      'Bargaining: Haggling is expected in souvenir shops inside Kaleiçi, but prices in modern grocery stores and restaurants are fixed.'
+    ]
+  },
+
+  // --- 17. RIYADH, SAUDI ARABIA ---
+  {
+    id: 'riyadh-sa',
+    city: 'Riyadh',
+    country: 'Saudi Arabia',
+    airportCode: 'RUH',
+    image: `https://images.unsplash.com/photo-1663900108404-a05e8bf82cda?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'Saudi Arabia’s booming capital, combining ancient mud-brick UNESCO castles with hyper-modern skyscrapers, luxury dining, and desert landscapes.',
+    budget: 'Luxury',
+    tripType: 'Culture',
+    bestSeason: 'November to March',
+    dailyBudget: 175,
+    attractions: [
+      { name: 'Diriyah & At-Turaif (UNESCO Mud-Brick City)', duration: '3 hours', bestTime: 'Evening (Book Diriyah Pass)', entryFee: '50 - 100 SAR (Redeemable for food)' },
+      { name: 'Kingdom Centre Sky Bridge', duration: '1.5 hours', bestTime: 'Sunset / Night', entryFee: '69 SAR' },
+      { name: 'Edge of the World (Jebel Fihrayn)', duration: 'Full Day', bestTime: 'Afternoon 4x4 Tour', entryFee: 'Tour pricing (~$80 USD)' },
+      { name: 'Al Masmak Fortress', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Free' },
+      { name: 'National Museum of Saudi Arabia', duration: '2.5 hours', bestTime: 'Morning', entryFee: '10 SAR' },
+      { name: 'Boulevard City & World', duration: '3 hours', bestTime: 'Night (Winter Season only)', entryFee: 'Varies by season' }
+    ],
+    travelTips: [
+      'Tourist eVisa: Most nationalities can obtain a 1-year multiple-entry tourist eVisa online instantly via the official visitsaudi platform.',
+      'Dress Etiquette: While abayas are no longer mandatory for foreign women, modest dress (covering shoulders and knees) is required in public spaces.',
+      'Extreme Desert Heat: Avoid summer travel (May to September), when daily temperatures consistently exceed 45°C (113°F).',
+      'Rideshare Apps: Riyadh is heavily car-dependent. Download Uber or Careem for reliable transportation across the sprawling metropolis.',
+      'Edge of the World: Reaching the cliffs of Jebel Fihrayn requires a sturdy 4x4 vehicle with GPS; joining an organized tour is strongly advised.',
+      'Alcohol Law: Alcohol is strictly prohibited across the Kingdom of Saudi Arabia.'
+    ]
+  },
+
+  // --- 18. VARANASI, INDIA ---
+  {
+    id: 'varanasi-in',
+    city: 'Varanasi',
+    country: 'India',
+    airportCode: 'VNS',
+    image: `https://images.unsplash.com/photo-1627938823193-fd13c1c867dd?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+    description: 'One of the world’s oldest continuously inhabited cities and the spiritual capital of India, famous for sacred Ganges River ghats and hypnotic evening aarti.',
+    budget: 'Budget',
+    tripType: 'Culture',
+    bestSeason: 'October to March',
+    dailyBudget: 35,
+    attractions: [
+      { name: 'Dashashwamedh Ghat Evening Ganga Aarti', duration: '2 hours', bestTime: '6:00 PM (Arrive early for boat view)', entryFee: 'Free' },
+      { name: 'Sunrise Ganges Boat Ride (Assi to Manikarnika)', duration: '2 hours', bestTime: '5:30 AM', entryFee: '₹300 - ₹500 (Rowboat)' },
+      { name: 'Kashi Vishwanath Temple (Golden Temple)', duration: '2 hours', bestTime: 'Early Morning (Carry passport)', entryFee: 'Free' },
+      { name: 'Sarnath (Where Buddha Gave First Sermon)', duration: '3 hours', bestTime: 'Morning', entryFee: '₹300 (Foreigners)' },
+      { name: 'Manikarnika & Harishchandra Ghats (Cremation Ghats)', duration: '1 hour', bestTime: 'View respectfully from boat', entryFee: 'Free' },
+      { name: 'Varanasi Silk Weaving Workshops', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' }
+    ],
+    travelTips: [
+      'Ghat Photography Etiquette: It is strictly forbidden to photograph cremation ceremonies at Manikarnika and Harishchandra Ghats. Always show respect.',
+      'Temple Security: Security at Kashi Vishwanath Temple is extremely tight. Mobile phones, electronic watches, and leather belts are prohibited inside; use official lockers.',
+      'Explore on Foot: The narrow maze of ancient alleys ("Galies") behind the ghats cannot accommodate vehicles. Rely on walking and small cycle-rickshaws.',
+      'Local Delicacies: Try Banarasi Paan, Malaiyo (winter saffron milk foam), Tamatar Chaat, and creamy Lassi served in traditional clay cups (kulhad).',
+      'Boat Scams: Agree on the total price, duration, and whether the fee is per person or for the entire boat BEFORE boarding any Ganges boat.',
+      'Silk Shopping: Varanasi is renowned for pure Banarasi silk sarees. Buy from government-certified weavers to avoid synthetic fakes.'
+    ]
+  },
+
+  // --- 19. AGRA, INDIA ---
+  {
+    id: 'agra-in',
+    city: 'Agra',
+    country: 'India',
+    airportCode: 'AGR',
+    image: `https://images.unsplash.com/photo-1564507592333-c60657eea523${cropParams}`,
+    description: 'Home to the magnificent Taj Mahal, Agra Fort, and ancient Mughal architecture that defined an imperial era.',
+    budget: 'Budget',
+    tripType: 'Culture',
+    bestSeason: 'October to March',
+    dailyBudget: 45,
+    attractions: [
+      { name: 'Taj Mahal', duration: '3 hours', bestTime: '5:45 AM (Sunrise - Closed Fridays)', entryFee: '₹1,100 (Foreigners) + ₹200 Mausoleum' },
+      { name: 'Agra Fort (UNESCO)', duration: '2.5 hours', bestTime: 'Morning / Afternoon', entryFee: '₹650 (Foreigners)' },
+      { name: 'Mehtab Bagh (Moonlight Garden Sunset)', duration: '1.5 hours', bestTime: 'Sunset (Opposite view of Taj)', entryFee: '₹300 (Foreigners)' },
+      { name: 'Tomb of I’timād-ud-Daulah ("Baby Taj")', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: '₹310 (Foreigners)' },
+      { name: 'Fatehpur Sikri (Day Trip)', duration: 'Half Day', bestTime: 'Morning', entryFee: '₹610 (Foreigners)' },
+      { name: 'Kinari Bazaar (Old City Markets)', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' }
+    ],
+    travelTips: [
+      'Friday Closure: The Taj Mahal is strictly CLOSED to tourists every Friday for prayers. Plan your itinerary dates accordingly.',
+      'Sunrise Arrival: Arrive at the East or West gate 30 minutes before sunrise to clear security early and see the changing morning light on the white marble without massive crowds.',
+      'Express Train Access: The Gatimaan Express and Vande Bharat trains connect New Delhi to Agra Cantonment in just 90 to 100 minutes.',
+      'Prohibited Items: Tripods, drones, camera gimbals, food, external phone power banks, and books are confiscated at Taj Mahal security checkpoints.',
+      'Local Sweet: Try "Petha"—a translucent soft candy made from ash gourd, available in flavors like saffron (Kesar) and coconut at Panchhi Petha stores.',
+      'Marble Inlay Workshops: Be wary of rickshaw drivers insisting on taking you to "government-sponsored" marble showrooms, which pay hefty commissions.'
+    ]
+  },
+
+  // --- 20. KOLKATA, INDIA ---
+  {
+    id: 'kolkata-in',
+    city: 'Kolkata',
+    country: 'India',
+    airportCode: 'CCU',
+    image: `https://images.unsplash.com/photo-1558431382-27e303142255${cropParams}`,
+    description: 'India’s intellectual and cultural capital, celebrated for monumental British colonial architecture, historic yellow Ambassador cabs, and legendary Bengali sweets.',
+    budget: 'Budget',
+    tripType: 'Culture',
+    bestSeason: 'October to February (Durga Puja in Autumn)',
+    dailyBudget: 40,
+    attractions: [
+      { name: 'Victoria Memorial Hall & Gardens', duration: '2-3 hours', bestTime: 'Morning', entryFee: '₹500 (Foreigners)' },
+      { name: 'Howrah Bridge & Mullick Ghat Flower Market', duration: '2 hours', bestTime: '6:00 AM (Flower Market rush)', entryFee: 'Free' },
+      { name: 'Dakshineswar Kali Temple & Belur Math', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+      { name: 'Kumartuli (Clay Idol Sculptors Colony)', duration: '2 hours', bestTime: 'Late Afternoon', entryFee: 'Free' },
+      { name: 'Indian Museum (Oldest Museum in India)', duration: '2-3 hours', bestTime: 'Morning', entryFee: '₹500 (Foreigners)' },
+      { name: 'Park Street Dining & Historic Flurys Bakery', duration: '2 hours', bestTime: 'Evening', entryFee: 'Pay per meal' }
+    ],
+    travelTips: [
+      'Durga Puja Festival: If visiting during autumn for Durga Puja (September/October), the entire city turns into the world\'s largest open-air art installation with thousands of themed pandals.',
+      'Historic Tram & Metro: Ride the historic Kolkata Tram (Asia’s oldest operating electric tram) and use the Kolkata Metro (which includes an underwater tunnel beneath the Hooghly River).',
+      'Street Food Capital: You must try the original Kolkata Kathi Rolls at Kusum Rolls on Park Street, spicy Phuchka (pani puri), and Mughlai Parathas.',
+      'Iconic Sweets: Sample authentic Bengali sweets like fresh spongy Rasgulla, Mishti Doi (sweetened clay-pot yogurt), and Sandesh at century-old shops like K.C. Das.',
+      'Yellow Cabs: The iconic yellow Ambassador taxis run on meters or via pre-paid booths at Howrah Railway Station and CCU Airport. Ride-hailing apps (Uber, Ola) are widely available.',
+      'Flower Market Photo Walk: Visit the Mullick Ghat Flower Market right beneath the Howrah Bridge around 6:00 AM for an incredible visual feast of orange and yellow marigold mountains.'
+    ]
+  },
+
 
 ];

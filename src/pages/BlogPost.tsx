@@ -175,7 +175,7 @@ export const BlogPost: React.FC = () => {
             alt={post.title} 
             fetchPriority="high"
             loading="eager"
-            decoding="async"
+            decoding="async" 
             width="1200"
             height="650"
             className="w-full h-full object-cover brightness-[0.88] contrast-[1.05]" 
@@ -184,7 +184,7 @@ export const BlogPost: React.FC = () => {
           
           <button 
             type="button"
-            onClick={() => navigate('/blog', { state: { fromPost: true } })} 
+            onClick={() => navigate(-1)} 
             className="absolute top-24 left-4 md:left-8 z-30 flex items-center px-4 py-2 bg-white/90 hover:bg-white backdrop-blur-md rounded-full text-slate-900 font-extrabold text-xs transition-all shadow-md hover:scale-105 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 mr-2 text-slate-900" /> All Guides
@@ -269,7 +269,7 @@ export const BlogPost: React.FC = () => {
                   </p>
                   <button 
                     type="button"
-                    onClick={() => navigate('/blog')} 
+                    onClick={() => navigate(-1)} 
                     className="text-[#2563EB] font-bold hover:text-blue-700 text-xs border-b border-blue-600/40 pb-0.5 inline-flex items-center gap-1 cursor-pointer pt-2"
                   >
                     View all articles <ArrowUpRight className="w-3.5 h-3.5" />
