@@ -333,32 +333,28 @@ export const FlightSearchUI: React.FC = () => {
         id: 'paris', 
         city: 'Paris', 
         country: 'France', 
-        price: 160,
-        currency: 'USD',
+        priceUsd: '$160', 
         image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80&auto=format&fit=crop'
       },
       { 
         id: 'tokyo', 
         city: 'Tokyo', 
         country: 'Japan', 
-        price: 150,
-        currency: 'USD',
+        priceUsd: '$150', 
         image: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=600&auto=format&fit=crop&q=75' 
       },
       { 
         id: 'dubai', 
         city: 'Dubai', 
         country: 'UAE', 
-        price: 250,
-        currency: 'USD',
+        priceUsd: '$250', 
         image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&auto=format&fit=crop&q=75' 
       },
       { 
         id: 'bali', 
         city: 'Bali', 
         country: 'Indonesia', 
-        price: 65,
-        currency: 'USD',
+        priceUsd: '$65', 
         image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&auto=format&fit=crop&q=75' 
       },
     ];
