@@ -1,9 +1,9 @@
-import React, { useMemo, useRef, useEffect, useState } from 'react';
+import React, { useMemo, useRef, useEffect, useState, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { 
   Search, Clock, ArrowRight, ArrowUpRight,
   Sparkles, BookOpen, CheckCircle2,
-  MapPin, Mail, ChevronLeft, ChevronRight, Pause, Play
+  MapPin, Mail, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { MOCK_BLOG_POSTS } from '../data/mockBlogPosts';
 import { SEO } from '../components/seo/SEO';
@@ -20,14 +20,36 @@ export const Blog: React.FC = () => {
   const [newsletterEmail, setNewsletterEmail] = useState<string>('');
   const [newsletterStatus, setNewsletterStatus] = useState<'idle' | 'success'>('idle');
 
-  // Hero Carousel State for "All" view
-  const [activeHeroIndex, setActiveHeroIndex] = useState<number>(0);
-  const [isHeroPaused, setIsHeroPaused] = useState<boolean>(false);
+  // Top Editorial Hero Carousel State
+  const [heroIndex, setHeroIndex] = useState<number>(0);
 
   // Category horizontal scroll controls
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState<boolean>(false);
   const [showRightArrow, setShowRightArrow] = useState<boolean>(false);
+
+  // 5 Featured articles for top hero carousel
+  const heroSlides = useMemo(() => {
+    const featured = MOCK_BLOG_POSTS.filter(post => (post as any).featured);
+    return featured.length >= 3 ? featured.slice(0, 5) : MOCK_BLOG_POSTS.slice(0, 5);
+  }, []);
+
+  const totalHeroSlides = heroSlides.length;
+
+  // Uninterrupted 3-Second Automatic Slider
+  const nextHeroSlide = useCallback(() => {
+    setHeroIndex((prev) => (prev + 1) % totalHeroSlides);
+  }, [totalHeroSlides]);
+
+  const prevHeroSlide = useCallback(() => {
+    setHeroIndex((prev) => (prev - 1 + totalHeroSlides) % totalHeroSlides);
+  }, [totalHeroSlides]);
+
+  useEffect(() => {
+    if (totalHeroSlides <= 1) return;
+    const interval = setInterval(nextHeroSlide, 3000);
+    return () => clearInterval(interval);
+  }, [nextHeroSlide, totalHeroSlides]);
 
   // Extract unique categories dynamically from immutable master data
   const categories = useMemo(() => {
@@ -40,19 +62,6 @@ export const Blog: React.FC = () => {
       )
     ];
   }, []);
-
-  // 4 Featured articles for hero slider in "All" view
-  const heroFeaturedPosts = useMemo(() => MOCK_BLOG_POSTS.slice(0, 4), []);
-
-  useEffect(() => {
-    if (isHeroPaused || heroFeaturedPosts.length === 0) return;
-
-    const timer = setInterval(() => {
-      setActiveHeroIndex((prev) => (prev + 1) % heroFeaturedPosts.length);
-    }, 5000);
-
-    return () => clearInterval(timer);
-  }, [isHeroPaused, heroFeaturedPosts.length]);
 
   const updateScrollButtons = () => {
     if (scrollContainerRef.current) {
@@ -122,15 +131,15 @@ export const Blog: React.FC = () => {
     });
   }, [selectedCategory, searchQuery]);
 
-  // "All" view editorial slices (evaluated purely from master data)
-  const activeHeroPost = heroFeaturedPosts[activeHeroIndex] || MOCK_BLOG_POSTS[0];
-  const picksPosts = MOCK_BLOG_POSTS.slice(4, 8);
+  // Editorial slices for "All" view
+  const currentHeroPost = heroSlides[heroIndex] || MOCK_BLOG_POSTS[0];
+  const picksPosts = MOCK_BLOG_POSTS.slice(0, 4);
   const destinationSpotlightPost = 
-    MOCK_BLOG_POSTS.find(p => p.category === 'Destination Guides' && !heroFeaturedPosts.some(h => h.id === p.id)) || 
-    MOCK_BLOG_POSTS[8] || MOCK_BLOG_POSTS[0];
-  const playbookLeadPosts = MOCK_BLOG_POSTS.slice(8, 10);
-  const playbookCompactPosts = MOCK_BLOG_POSTS.slice(10, 13);
-  const defaultArchivePosts = MOCK_BLOG_POSTS.slice(13);
+    MOCK_BLOG_POSTS.find(p => p.category === 'Destination Guides') || 
+    MOCK_BLOG_POSTS[4] || MOCK_BLOG_POSTS[0];
+  const playbookLeadPosts = MOCK_BLOG_POSTS.slice(5, 7);
+  const playbookCompactPosts = MOCK_BLOG_POSTS.slice(7, 10);
+  const defaultArchivePosts = MOCK_BLOG_POSTS.slice(10);
 
   const handleArticleClick = (slug: string) => {
     navigate(`/blog/${slug}`);
@@ -158,12 +167,139 @@ export const Blog: React.FC = () => {
           -ms-overflow-style: none !important;
           scrollbar-width: none !important;
         }
+        @keyframes heroProgress {
+          from { width: 0%; }
+          to { width: 100%; }
+        }
+        .animate-hero-progress {
+          animation: heroProgress 3000ms linear infinite;
+        }
       `}</style>
 
       <div className="min-h-screen bg-[#F4F6F9] text-slate-900 font-sans selection:bg-blue-600 selection:text-white pb-20">
         
-        {/* HEADER BAR */}
-        <section className="bg-white border-b border-slate-200/80 pt-6 pb-6 px-4 sm:px-6 lg:px-8">
+        {/* ========================================================================= */}
+        {/* 1. TOP EDITORIAL HERO CAROUSEL (Non-pausing 3-Second Slider)              */}
+        {/* ========================================================================= */}
+        <section className="pt-4 sm:pt-6 max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative w-full rounded-[28px] sm:rounded-[36px] overflow-hidden bg-slate-950 shadow-2xl h-[520px] sm:h-[580px] lg:h-[620px] select-none group">
+            
+            {/* Background Slides */}
+            {heroSlides.map((slide, idx) => (
+              <div 
+                key={slide.id || idx}
+                onClick={() => handleArticleClick(slide.slug)}
+                className={`absolute inset-0 transition-opacity duration-700 ease-in-out cursor-pointer ${
+                  idx === heroIndex ? 'opacity-100 z-10' : 'opacity-0 pointer-events-none z-0'
+                }`}
+              >
+                <img 
+                  src={slide.image} 
+                  alt={slide.title} 
+                  fetchPriority={idx === 0 ? "high" : "auto"}
+                  loading={idx === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                  className="w-full h-full object-cover brightness-[0.85] contrast-[1.05] scale-105 group-hover:scale-100 transition-transform duration-1000 ease-out" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-950/20 to-transparent hidden sm:block" />
+              </div>
+            ))}
+
+            {/* Editorial Floating Overlay Card */}
+            <div className="absolute bottom-16 sm:bottom-20 left-4 sm:left-10 lg:left-14 right-4 sm:right-auto z-20 max-w-xl">
+              <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-8 lg:p-10 border border-white/40 shadow-2xl space-y-4">
+                
+                {/* Category & Read Time */}
+                <div className="flex items-center gap-2.5">
+                  <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest border border-blue-100">
+                    {currentHeroPost?.category || 'Travel Guide'}
+                  </span>
+                  {currentHeroPost?.readTime && (
+                    <span className="text-[11px] font-bold text-slate-400 flex items-center gap-1">
+                      <Clock className="w-3 h-3 text-slate-400" />
+                      {currentHeroPost.readTime}
+                    </span>
+                  )}
+                </div>
+
+                {/* Large Title */}
+                <h2 
+                  onClick={() => handleArticleClick(currentHeroPost?.slug)}
+                  className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight leading-tight hover:text-blue-600 transition-colors cursor-pointer line-clamp-2"
+                >
+                  {currentHeroPost?.title}
+                </h2>
+
+                {/* Excerpt */}
+                <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed line-clamp-2 sm:line-clamp-3">
+                  {currentHeroPost?.excerpt}
+                </p>
+
+                {/* Read Article Button */}
+                <div className="pt-2">
+                  <button
+                    type="button"
+                    onClick={() => handleArticleClick(currentHeroPost?.slug)}
+                    className="px-6 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-black text-xs uppercase tracking-wider transition-all shadow-md shadow-blue-600/25 flex items-center gap-2 cursor-pointer active:scale-95"
+                  >
+                    <span>Read Article</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+            {/* Subtle Manual Arrows */}
+            <div className="absolute top-6 right-6 z-30 flex items-center gap-2">
+              <button
+                type="button"
+                onClick={prevHeroSlide}
+                aria-label="Previous featured article"
+                className="w-10 h-10 rounded-full bg-slate-900/60 hover:bg-white hover:text-slate-900 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all cursor-pointer shadow-md"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                type="button"
+                onClick={nextHeroSlide}
+                aria-label="Next featured article"
+                className="w-10 h-10 rounded-full bg-slate-900/60 hover:bg-white hover:text-slate-900 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all cursor-pointer shadow-md"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Bottom Animated Indicators & Progress Bar */}
+            <div className="absolute bottom-6 left-0 right-0 z-30 flex items-center justify-center gap-2 px-6">
+              {heroSlides.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setHeroIndex(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={`relative h-2 rounded-full overflow-hidden transition-all duration-300 cursor-pointer ${
+                    idx === heroIndex ? 'w-12 bg-white/40' : 'w-2.5 bg-white/30 hover:bg-white/60'
+                  }`}
+                >
+                  {idx === heroIndex && (
+                    <div 
+                      key={heroIndex} 
+                      className="h-full bg-blue-500 rounded-full animate-hero-progress"
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
+
+          </div>
+        </section>
+
+        {/* ========================================================================= */}
+        {/* 2. THE FLYSAVA JOURNAL (Search & Category Filters)                        */}
+        {/* ========================================================================= */}
+        <section className="bg-white border-y border-slate-200/80 mt-10 pt-6 pb-6 px-4 sm:px-6 lg:px-8">
           <div className="max-w-[1360px] mx-auto space-y-5">
             
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -172,9 +308,9 @@ export const Blog: React.FC = () => {
                   <BookOpen className="w-3.5 h-3.5" />
                   <span>The FlySava Journal</span>
                 </div>
-                <h1 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+                <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
                   Travel smarter, fly cheaper.
-                </h1>
+                </h2>
               </div>
 
               {/* Search Bar */}
@@ -244,13 +380,13 @@ export const Blog: React.FC = () => {
           </div>
         </section>
 
-        {/* MAIN BODY */}
+        {/* ========================================================================= */}
+        {/* 3. MAIN CONTENT BODY                                                      */}
+        {/* ========================================================================= */}
         <main className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:mt-10 space-y-12 sm:space-y-16">
           
           {isFiltering ? (
-            /* ========================================================================= */
-            /* PURE FILTERED VIEW: key forces React to completely discard old DOM tree   */
-            /* ========================================================================= */
+            /* ================= FILTERED VIEW ================= */
             <section key={`filtered-section-${selectedCategory}-${searchQuery}`} className="space-y-6">
               <div className="flex items-center justify-between border-b border-slate-200 pb-3">
                 <h2 className="text-xl font-black text-slate-900 tracking-tight">
@@ -328,141 +464,9 @@ export const Blog: React.FC = () => {
               )}
             </section>
           ) : (
-            /* ========================================================================= */
-            /* "ALL" VIEW: Preserves all 5 editorial layout tiers                        */
-            /* ========================================================================= */
+            /* ================= "ALL" VIEW EDITORIAL SECTIONS ================= */
             <>
-              {/* SECTION 1: HERO AUTO-SCROLL SLIDER */}
-              {activeHeroPost && (
-                <section className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-slate-200/80 pb-2">
-                    <div className="flex items-center gap-3">
-                      <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">
-                        FEATURED STORIES
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => setIsHeroPaused(!isHeroPaused)}
-                        className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-400 hover:text-slate-600 transition-colors cursor-pointer bg-slate-100 px-2 py-0.5 rounded-md"
-                        title={isHeroPaused ? "Resume auto-scroll" : "Pause auto-scroll"}
-                      >
-                        {isHeroPaused ? <Play className="w-2.5 h-2.5 text-blue-600" /> : <Pause className="w-2.5 h-2.5" />}
-                        <span>{isHeroPaused ? 'Paused' : 'Auto'}</span>
-                      </button>
-                    </div>
-                    
-                    <div className="flex items-center gap-1.5">
-                      {heroFeaturedPosts.map((_, i) => (
-                        <button
-                          key={i}
-                          type="button"
-                          onClick={() => setActiveHeroIndex(i)}
-                          className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                            activeHeroIndex === i ? 'w-6 bg-blue-600' : 'w-2 bg-slate-200 hover:bg-slate-300'
-                          }`}
-                          aria-label={`Go to slide ${i + 1}`}
-                        />
-                      ))}
-                    </div>
-                  </div>
-
-                  <div 
-                    className="grid grid-cols-1 lg:grid-cols-12 gap-6"
-                    onMouseEnter={() => setIsHeroPaused(true)}
-                    onMouseLeave={() => setIsHeroPaused(false)}
-                  >
-                    <div 
-                      onClick={() => handleArticleClick(activeHeroPost.slug)}
-                      className="lg:col-span-7 relative bg-slate-900 rounded-[32px] overflow-hidden group cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 min-h-[390px] sm:min-h-[460px] flex flex-col justify-end p-6 sm:p-10 border border-slate-200/80"
-                    >
-                      <img 
-                        key={activeHeroPost.id}
-                        src={activeHeroPost.image} 
-                        alt={activeHeroPost.title} 
-                        fetchPriority="high"
-                        decoding="async" 
-                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out opacity-90" 
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
-
-                      <div className="relative z-10 space-y-3">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-blue-600 text-white text-[10px] font-black uppercase tracking-wider shadow-sm">
-                          <Sparkles className="w-3 h-3" />
-                          <span>{activeHeroPost.category}</span>
-                        </div>
-
-                        <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight leading-[1.15] group-hover:text-blue-200 transition-colors">
-                          {activeHeroPost.title}
-                        </h2>
-
-                        <p className="text-xs sm:text-sm text-slate-200 font-medium line-clamp-2 max-w-xl leading-relaxed">
-                          {activeHeroPost.excerpt}
-                        </p>
-
-                        <div className="pt-3 border-t border-white/20 flex items-center justify-between text-xs font-extrabold text-slate-300">
-                          <span className="flex items-center gap-1.5">
-                            <Clock className="w-3.5 h-3.5 text-blue-400" />
-                            {activeHeroPost.readTime}
-                          </span>
-                          <span className="inline-flex items-center gap-1 text-white bg-white/20 hover:bg-white/30 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/20 transition-colors">
-                            <span>Read Deep Dive</span>
-                            <ArrowUpRight className="w-3.5 h-3.5" />
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="lg:col-span-5 flex flex-col justify-between gap-3 sm:gap-4">
-                      {heroFeaturedPosts.map((post, idx) => {
-                        const isActive = activeHeroIndex === idx;
-                        return (
-                          <div
-                            key={post.id || idx}
-                            onClick={() => {
-                              setActiveHeroIndex(idx);
-                              handleArticleClick(post.slug);
-                            }}
-                            onMouseEnter={() => setActiveHeroIndex(idx)}
-                            className={`rounded-2xl sm:rounded-[24px] border p-3.5 sm:p-4 transition-all duration-300 cursor-pointer flex gap-4 items-center group select-none flex-1 ${
-                              isActive 
-                                ? 'bg-blue-50/60 border-blue-500 shadow-md ring-2 ring-blue-500/10'
-                                : 'bg-white border-slate-200/80 hover:border-blue-300 hover:shadow-sm opacity-85 hover:opacity-100'
-                            }`}
-                          >
-                            <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-slate-100 shrink-0">
-                              <img 
-                                src={post.image} 
-                                alt={post.title} 
-                                loading="lazy" 
-                                decoding="async" 
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ease-out" 
-                              />
-                              {isActive && (
-                                <div className="absolute inset-0 bg-blue-600/15 border-2 border-blue-600 rounded-2xl" />
-                              )}
-                            </div>
-                            
-                            <div className="flex-1 min-w-0 space-y-1">
-                              <span className={`text-[10px] font-black uppercase tracking-wider block ${isActive ? 'text-blue-600' : 'text-slate-500'}`}>
-                                {post.category}
-                              </span>
-                              <h3 className={`text-xs sm:text-sm font-black transition-colors line-clamp-2 leading-snug ${isActive ? 'text-blue-700' : 'text-slate-900 group-hover:text-blue-600'}`}>
-                                {post.title}
-                              </h3>
-                              <div className="flex items-center gap-2 text-[11px] font-bold text-slate-400 pt-0.5">
-                                <Clock className="w-3 h-3 text-slate-400" />
-                                <span>{post.readTime}</span>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </section>
-              )}
-
-              {/* SECTION 2: FLYSAVA PICKS */}
+              {/* SECTION 1: FLYSAVA PICKS */}
               <section className="space-y-4">
                 <div className="flex items-center justify-between border-b border-slate-200/80 pb-2">
                   <div>
@@ -509,7 +513,7 @@ export const Blog: React.FC = () => {
                 </div>
               </section>
 
-              {/* SECTION 3: DESTINATION SPOTLIGHT */}
+              {/* SECTION 2: DESTINATION SPOTLIGHT */}
               {destinationSpotlightPost && (
                 <section className="space-y-4">
                   <div className="flex items-center justify-between border-b border-slate-200/80 pb-2">
@@ -560,7 +564,7 @@ export const Blog: React.FC = () => {
                 </section>
               )}
 
-              {/* SECTION 4: TRAVEL PLAYBOOK */}
+              {/* SECTION 3: TRAVEL PLAYBOOK */}
               <section className="space-y-4">
                 <div className="flex items-center justify-between border-b border-slate-200/80 pb-2">
                   <div>
@@ -648,7 +652,7 @@ export const Blog: React.FC = () => {
                 </div>
               </section>
 
-              {/* SECTION 5: LATEST STORIES / ARCHIVE */}
+              {/* SECTION 4: THE ARCHIVE */}
               <section className="space-y-4">
                 <div className="flex items-center justify-between border-b border-slate-200/80 pb-2">
                   <div>
@@ -716,7 +720,7 @@ export const Blog: React.FC = () => {
             </>
           )}
 
-          {/* SECTION 6: NEWSLETTER */}
+          {/* SECTION 5: NEWSLETTER */}
           <section className="relative rounded-[32px] sm:rounded-[40px] bg-slate-900 border border-slate-800 p-8 sm:p-12 overflow-hidden text-white shadow-xl">
             <div className="absolute -right-16 -bottom-16 w-80 h-80 rounded-full bg-blue-600/20 blur-3xl pointer-events-none" />
             

@@ -13,6 +13,7 @@ import {
   ChevronRight, 
   ChevronLeft, 
   ChevronDown,
+  ChevronUp,
   Palmtree, 
   Globe2, 
   Heart 
@@ -26,11 +27,28 @@ export const Destinations: React.FC = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isSearchFocused, setIsSearchFocused] = useState<boolean>(false);
-  const [selectedLetter, setSelectedLetter] = useState<string>('All');
+  
+  // Persist selected letter tab across back navigation
+  const [selectedLetter, setSelectedLetter] = useState<string>(() => {
+    return sessionStorage.getItem('destinations_selected_letter') || 'All';
+  });
+  
+  // Persisted state so "Show More" and expanded accordions don't collapse on back navigation
+  const [expandedCountry, setExpandedCountry] = useState<string | null>(() => {
+    return sessionStorage.getItem('destinations_expanded_country') || null;
+  });
+  const [directoryVisibleCount, setDirectoryVisibleCount] = useState<number>(() => {
+    const saved = sessionStorage.getItem('destinations_directory_count');
+    return saved ? parseInt(saved, 10) : 16;
+  });
   const [activeStyle, setActiveStyle] = useState<string>(() => {
     return sessionStorage.getItem('destinations_active_style') || 'All';
   });
-  const [styleVisibleCount, setStyleVisibleCount] = useState<number>(12);
+  const [styleVisibleCount, setStyleVisibleCount] = useState<number>(() => {
+    const saved = sessionStorage.getItem('destinations_style_count');
+    return saved ? parseInt(saved, 10) : 12;
+  });
+  
   const [savedIds, setSavedIds] = useState<string[]>([]);
   
   const searchRef = useRef<HTMLDivElement>(null);
@@ -51,7 +69,7 @@ export const Destinations: React.FC = () => {
         }
       }, 50);
       
-      const timeout = setTimeout(() => clearInterval(checkAndScroll), 800);
+      const timeout = setTimeout(() => clearInterval(checkAndScroll), 1200);
       return () => {
         clearInterval(checkAndScroll);
         clearTimeout(timeout);
@@ -76,14 +94,28 @@ export const Destinations: React.FC = () => {
     };
   }, []);
 
-  // Save active filter style
+  // Persist selected letter, view counts, and UI state
   useEffect(() => {
+    sessionStorage.setItem('destinations_selected_letter', selectedLetter);
     sessionStorage.setItem('destinations_active_style', activeStyle);
-  }, [activeStyle]);
+    sessionStorage.setItem('destinations_style_count', styleVisibleCount.toString());
+    sessionStorage.setItem('destinations_directory_count', directoryVisibleCount.toString());
+    if (expandedCountry) {
+      sessionStorage.setItem('destinations_expanded_country', expandedCountry);
+    } else {
+      sessionStorage.removeItem('destinations_expanded_country');
+    }
+  }, [selectedLetter, activeStyle, styleVisibleCount, directoryVisibleCount, expandedCountry]);
 
-  // Navigate to destination detail after saving exact scroll position
+  // Navigate to destination detail after saving exact state
   const handleDestinationClick = (id: string) => {
     sessionStorage.setItem('destinations_scroll_pos', window.scrollY.toString());
+    sessionStorage.setItem('destinations_selected_letter', selectedLetter);
+    sessionStorage.setItem('destinations_directory_count', directoryVisibleCount.toString());
+    sessionStorage.setItem('destinations_style_count', styleVisibleCount.toString());
+    if (expandedCountry) {
+      sessionStorage.setItem('destinations_expanded_country', expandedCountry);
+    }
     navigate(`/destinations/${id}`);
   };
 
@@ -112,6 +144,10 @@ export const Destinations: React.FC = () => {
     }
   };
 
+  const toggleCountryExpand = (country: string) => {
+    setExpandedCountry(prev => prev === country ? null : country);
+  };
+
   // Valid master destination dataset
   const allDestinations = useMemo(() => {
     return MOCK_DESTINATIONS.filter(d => d && d.id && d.city && d.country);
@@ -125,7 +161,7 @@ export const Destinations: React.FC = () => {
       d.city.toLowerCase().includes(query) || 
       d.country.toLowerCase().includes(query) ||
       Boolean(d.tripType && d.tripType.toLowerCase().includes(query))
-    ).slice(0, 6);
+    ).slice(0, 8);
   }, [searchQuery, allDestinations]);
 
   // Section 2: Popular Destinations
@@ -138,7 +174,7 @@ export const Destinations: React.FC = () => {
     return allDestinations.slice(5, 11);
   }, [allDestinations]);
 
-  // Section 4: Travel Styles Filter (Returns ALL matching items)
+  // Section 4: Travel Styles Filter
   const styleCategories = [
     { label: 'All', icon: <Compass className="w-3.5 h-3.5" /> },
     { label: 'Beach', icon: <Sun className="w-3.5 h-3.5" /> },
@@ -220,6 +256,10 @@ export const Destinations: React.FC = () => {
     };
   }, [allDestinations, selectedLetter]);
 
+  const visibleCountries = useMemo(() => {
+    return groupedDirectory.slice(0, directoryVisibleCount);
+  }, [groupedDirectory, directoryVisibleCount]);
+
   const destinationsJsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -252,19 +292,24 @@ export const Destinations: React.FC = () => {
         {/* ========================================================================= */}
         {/* 1. HERO — COMPACT DESTINATION DISCOVERY                                    */}
         {/* ========================================================================= */}
-        <header className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6">
-          <div className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden bg-slate-950 p-6 sm:p-12 text-center flex flex-col items-center justify-center min-h-[300px] sm:min-h-[360px] shadow-xl border border-slate-800">
-            <img 
-              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80" 
-              alt="Destination Discovery Hub" 
-              fetchPriority="high"
-              loading="eager"
-              decoding="async"
-              className="absolute inset-0 w-full h-full object-cover brightness-[0.75] contrast-[1.08] scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+        <header className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 z-30">
+          <div className="relative rounded-[28px] sm:rounded-[36px] bg-slate-950 p-6 sm:p-12 text-center flex flex-col items-center justify-center min-h-[300px] sm:min-h-[360px] shadow-xl border border-slate-800">
+            
+            {/* Background image container */}
+            <div className="absolute inset-0 rounded-[28px] sm:rounded-[36px] overflow-hidden pointer-events-none">
+              <img 
+                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80" 
+                alt="Destination Discovery Hub" 
+                fetchPriority="high"
+                loading="eager"
+                decoding="async"
+                className="w-full h-full object-cover brightness-[0.75] contrast-[1.08] scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+            </div>
 
-            <div className="relative z-10 max-w-2xl space-y-3">
+            {/* Content Container */}
+            <div className="relative z-10 max-w-2xl w-full space-y-3">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-blue-600/90 text-white backdrop-blur-md border border-blue-400/30 shadow-xs">
                 <Sparkles className="w-3 h-3 text-amber-300" /> Destination Discovery Hub
               </span>
@@ -303,37 +348,46 @@ export const Destinations: React.FC = () => {
                   )}
                 </div>
 
-                {/* Instant Search Dropdown Results */}
-                {isSearchFocused && searchResults.length > 0 && (
-                  <div className="absolute left-0 right-0 top-full mt-2 bg-white rounded-2xl border border-slate-200 shadow-2xl overflow-hidden z-50 text-left">
-                    <div className="p-2 space-y-1">
-                      {searchResults.map((dest) => (
-                        <div
-                          key={dest.id}
-                          onClick={() => handleDestinationClick(dest.id)}
-                          className="p-3 hover:bg-blue-50/80 rounded-xl cursor-pointer transition-all flex items-center justify-between group"
-                        >
-                          <div className="flex items-center gap-3">
-                            <img 
-                              src={dest.image} 
-                              alt={dest.city} 
-                              className="w-10 h-10 rounded-lg object-cover" 
-                            />
-                            <div>
-                              <h4 className="text-xs sm:text-sm font-black text-slate-900 group-hover:text-blue-600 transition-colors">
-                                {dest.city}
-                              </h4>
-                              <span className="text-[11px] text-slate-400 font-bold flex items-center gap-1">
-                                <MapPin className="w-3 h-3 text-blue-500" /> {dest.country} &bull; {dest.tripType}
-                              </span>
+                {/* Search Dropdown with Results */}
+                {isSearchFocused && searchQuery.trim().length > 0 && (
+                  <div className="absolute left-0 right-0 top-full mt-2 bg-white rounded-2xl border border-slate-200 shadow-2xl overflow-hidden z-50 text-left max-h-[380px] overflow-y-auto">
+                    {searchResults.length > 0 ? (
+                      <div className="p-2 space-y-1">
+                        {searchResults.map((dest) => (
+                          <div
+                            key={dest.id}
+                            onClick={() => {
+                              setIsSearchFocused(false);
+                              handleDestinationClick(dest.id);
+                            }}
+                            className="p-3 hover:bg-blue-50/80 rounded-xl cursor-pointer transition-all flex items-center justify-between group"
+                          >
+                            <div className="flex items-center gap-3">
+                              <img 
+                                src={dest.image} 
+                                alt={dest.city} 
+                                className="w-10 h-10 rounded-lg object-cover" 
+                              />
+                              <div>
+                                <h4 className="text-xs sm:text-sm font-black text-slate-900 group-hover:text-blue-600 transition-colors">
+                                  {dest.city}
+                                </h4>
+                                <span className="text-[11px] text-slate-400 font-bold flex items-center gap-1">
+                                  <MapPin className="w-3 h-3 text-blue-500" /> {dest.country} {dest.tripType ? `• ${dest.tripType}` : ''}
+                                </span>
+                              </div>
                             </div>
+                            <span className="text-[11px] font-black text-blue-600 inline-flex items-center gap-1">
+                              Explore <ArrowRight className="w-3 h-3" />
+                            </span>
                           </div>
-                          <span className="text-[11px] font-black text-blue-600 inline-flex items-center gap-1">
-                            Explore <ArrowRight className="w-3 h-3" />
-                          </span>
-                        </div>
-                      ))}
-                    </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="p-6 text-center text-xs text-slate-500 font-bold">
+                        No destinations found for "{searchQuery}"
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -359,6 +413,7 @@ export const Destinations: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
+            {/* Primary Large Lead (7 cols) */}
             {popularDestinations[0] && (
               <article
                 onClick={() => handleDestinationClick(popularDestinations[0].id)}
@@ -406,6 +461,7 @@ export const Destinations: React.FC = () => {
               </article>
             )}
 
+            {/* 4 Medium Secondary Cards (5 cols / 2x2 grid) */}
             <div className="md:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {popularDestinations.slice(1, 5).map((dest) => (
                 <article
@@ -417,7 +473,7 @@ export const Destinations: React.FC = () => {
                     src={dest.image} 
                     alt={dest.city} 
                     loading="lazy" 
-                    decoding="async" 
+                    decoding="async"
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out brightness-[0.88]" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
@@ -517,7 +573,7 @@ export const Destinations: React.FC = () => {
         </section>
 
         {/* ========================================================================= */}
-        {/* 4. TRAVEL BY STYLE (Shows ALL items with Load More)                       */}
+        {/* 4. TRAVEL BY STYLE                                                        */}
         {/* ========================================================================= */}
         <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-slate-200/80 pb-3">
@@ -529,9 +585,7 @@ export const Destinations: React.FC = () => {
                 <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
                   Find your kind of trip
                 </h2>
-                <span className="text-xs font-bold text-slate-400">
-                  ({filteredByStyle.length} places)
-                </span>
+                
               </div>
             </div>
             {/* Category Filter Chips */}
@@ -843,7 +897,149 @@ export const Destinations: React.FC = () => {
         </section>
 
         {/* ========================================================================= */}
-       
+        {/* 9. INTERACTIVE ACCORDION A–Z COUNTRY DIRECTORY                            */}
+        {/* ========================================================================= */}
+        <section className="py-14 sm:py-20 bg-white border-y border-slate-200/80">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-100 pb-5">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-blue-50 text-blue-600 border border-blue-100 mb-2">
+                  <Globe2 className="w-3.5 h-3.5" /> Global Atlas
+                </div>
+                <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+                  Explore destinations by country
+                </h2>
+              </div>
+              
+            </div>
+
+            {/* A–Z Filter Bar */}
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedLetter('All');
+                  setDirectoryVisibleCount(16);
+                }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer select-none ${
+                  selectedLetter === 'All'
+                    ? 'bg-blue-600 text-white shadow-sm shadow-blue-600/20'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
+                }`}
+              >
+                All
+              </button>
+              {availableLetters.map(letter => (
+                <button
+                  key={letter}
+                  type="button"
+                  onClick={() => {
+                    setSelectedLetter(letter);
+                    setDirectoryVisibleCount(16);
+                  }}
+                  className={`w-8 h-8 rounded-xl text-xs font-black transition-all cursor-pointer select-none shrink-0 flex items-center justify-center ${
+                    selectedLetter === letter
+                      ? 'bg-blue-600 text-white shadow-sm shadow-blue-600/20'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
+                  }`}
+                >
+                  {letter}
+                </button>
+              ))}
+            </div>
+
+            {/* Compact Click-to-Expand Accordion Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 items-start">
+              {visibleCountries.map(([country, cities]) => {
+                const isExpanded = expandedCountry === country;
+
+                return (
+                  <div
+                    key={country}
+                    className={`rounded-2xl transition-all duration-200 border ${
+                      isExpanded
+                        ? 'bg-white border-blue-300 shadow-md ring-1 ring-blue-500/20'
+                        : 'bg-[#F8FAFC] border-slate-200/80 hover:border-slate-300 hover:bg-white'
+                    }`}
+                  >
+                    {/* Clean Clickable Header */}
+                    <button
+                      type="button"
+                      onClick={() => toggleCountryExpand(country)}
+                      className="w-full p-4 flex items-center justify-between text-left cursor-pointer select-none group"
+                    >
+                      <div className="flex items-center gap-2 truncate pr-2">
+                        <Globe2 className={`w-4 h-4 shrink-0 transition-colors ${isExpanded ? 'text-blue-600' : 'text-slate-400 group-hover:text-blue-600'}`} />
+                        <span className="text-xs sm:text-sm font-black text-slate-900 truncate">
+                          {country}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center gap-2 shrink-0">
+                        <span className="text-[10px] font-black text-slate-500 bg-white px-2 py-0.5 rounded-md border border-slate-200/60 shadow-2xs">
+                          {cities.length}
+                        </span>
+                        <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 ${isExpanded ? 'rotate-180 text-blue-600' : ''}`} />
+                      </div>
+                    </button>
+
+                    {/* Expandable City Pills Container */}
+                    {isExpanded && (
+                      <div className="px-4 pb-4 pt-1 border-t border-slate-100/80 space-y-2">
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block pt-1">
+                          Cities & Destinations:
+                        </span>
+                        <div className="flex flex-wrap gap-1.5">
+                          {cities.map((c) => (
+                            <button
+                              key={c.id}
+                              type="button"
+                              onClick={() => handleDestinationClick(c.id)}
+                              className="px-2.5 py-1.5 rounded-lg bg-blue-50/70 hover:bg-blue-600 hover:text-white border border-blue-100 text-slate-800 text-xs font-bold transition-all inline-flex items-center gap-1 cursor-pointer"
+                            >
+                              <span>{c.city}</span>
+                              <ChevronRight className="w-3 h-3 opacity-60" />
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Show More / Show Less Button for Countries */}
+            {groupedDirectory.length > 16 && (
+              <div className="pt-4 flex justify-center gap-3">
+                {directoryVisibleCount < groupedDirectory.length ? (
+                  <button
+                    type="button"
+                    onClick={() => setDirectoryVisibleCount(prev => prev + 24)}
+                    className="px-6 py-3 bg-white border border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 text-slate-800 font-black text-xs uppercase tracking-wider rounded-2xl transition-all shadow-2xs flex items-center gap-2 cursor-pointer active:scale-95"
+                  >
+                    <span>Show More Countries ({groupedDirectory.length - directoryVisibleCount} remaining)</span>
+                    <ChevronDown className="w-4 h-4 text-blue-600" />
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDirectoryVisibleCount(16);
+                      window.scrollTo({ top: window.scrollY - 300, behavior: 'smooth' });
+                    }}
+                    className="px-6 py-3 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-600 font-black text-xs uppercase tracking-wider rounded-2xl transition-all shadow-2xs flex items-center gap-2 cursor-pointer active:scale-95"
+                  >
+                    <span>Show Less</span>
+                    <ChevronUp className="w-4 h-4 text-slate-400" />
+                  </button>
+                )}
+              </div>
+            )}
+
+          </div>
+        </section>
 
         {/* ========================================================================= */}
         {/* 10. FINAL CTA                                                             */}

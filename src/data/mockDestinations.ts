@@ -12,6 +12,12 @@ export interface Destination {
   airportCode: string;
   image: string;
   description: string;
+
+  // SEO fields - optional so existing destinations don't break
+  seoTitle?: string;
+  seoDescription?: string;
+  keywords?: string[];
+
   budget: 'Budget' | 'Moderate' | 'Luxury';
   tripType: 'Beach' | 'Adventure' | 'City' | 'Culture' | 'Nature' | 'Luxury';
   bestSeason: string;
@@ -19,7 +25,6 @@ export interface Destination {
   attractions: Attraction[];
   travelTips: string[];
 }
-
 const cropParams = '?auto=format&fit=crop&w=800&h=600&q=80';
 
 export const MOCK_DESTINATIONS: Destination[] = [
@@ -3409,7 +3414,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
 {
   id: 'denver-us',
   city: 'Denver',
-  country: 'United States',
+  country: 'USA',
   airportCode: 'DEN',
   image: `https://images.unsplash.com/photo-1602800458591-eddda28a498b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
   description: 'Known as the Mile High City, Denver offers a seamless blend of outdoor adventure, a thriving craft brewery culture, and stunning Rocky Mountain vistas.',
@@ -3465,7 +3470,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
 {
   id: 'new-orleans-us',
   city: 'New Orleans',
-  country: 'United States',
+  country: 'USA',
   airportCode: 'MSY',
   image: `https://images.unsplash.com/photo-1646508262290-a617e1c042a0?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
   description: 'A vibrant melting pot of French, African, and American cultures, famous for its round-the-clock nightlife, historic French Quarter, live jazz, and incredible Creole cuisine.',
@@ -3493,7 +3498,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
 {
   id: 'nashville-us',
   city: 'Nashville',
-  country: 'United States',
+  country: 'USA',
   airportCode: 'BNA',
   image: `https://images.unsplash.com/photo-1556033681-83abea291a96?q=80&w=964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
   description: 'Known as Music City, Nashville is the vibrant heart of country music, famous for its neon-lit honky-tonks, historic recording studios, and legendary Southern hot chicken.',
@@ -3521,7 +3526,7 @@ export const MOCK_DESTINATIONS: Destination[] = [
 {
   id: 'austin-us',
   city: 'Austin, Texas',
-  country: 'United States',
+  country: 'USA',
   airportCode: 'AUS',
   image: `https://images.unsplash.com/photo-1531218150217-54595bc2b934?auto=format&fit=crop&w=1600&q=80${cropParams}`,
   description: 'Known as the Live Music Capital of the World, Austin offers a vibrant mix of legendary music venues, world-class barbecue, and beautiful outdoor spaces.',
@@ -4915,6 +4920,9595 @@ travelTips: [
       'Flower Market Photo Walk: Visit the Mullick Ghat Flower Market right beneath the Howrah Bridge around 6:00 AM for an incredible visual feast of orange and yellow marigold mountains.'
     ]
   },
+  
+{
+  id: 'algiers-dz',
+  city: 'Algiers',
+  country: 'Algeria',
+  airportCode: 'ALG',
+  image: `https://images.unsplash.com/photo-1652614706616-a49396a2ee29?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+  description: 'Known as Algiers the White, Algeria’s Mediterranean capital combines a historic Ottoman-era Casbah, French colonial architecture, coastal views, vibrant markets, and centuries of Mediterranean, Arab, and Berber heritage.',
 
+  seoTitle: 'Algiers Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Algiers, Algeria with a guide to the historic Casbah, Mediterranean coast, Martyrs Memorial, museums, local culture, attractions and travel tips.',
+
+  keywords: [
+    'Algiers travel guide',
+    'things to do in Algiers',
+    'Algiers attractions',
+    'Algiers tourism',
+    'Algiers Casbah',
+    'Casbah of Algiers',
+    'Algiers Algeria',
+    'best places to visit in Algiers',
+    'Algiers itinerary',
+    'Algeria travel guide'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'April to June, September to October',
+  dailyBudget: 45,
+
+  attractions: [
+    {
+      name: 'Casbah of Algiers',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Martyrs Memorial',
+      duration: '1 hour',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Notre Dame d’Afrique',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Bardo National Museum of Prehistory and Ethnography',
+      duration: '1.5–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Jardin d’Essai du Hamma',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Tipaza Roman Ruins',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'The Casbah is a historic UNESCO-listed area with narrow streets and complex lanes. Consider using a knowledgeable local guide when exploring it.',
+    'Algiers has a Mediterranean climate, with hot, dry summers and milder, wetter winters.',
+    'French and Arabic are widely used, while Tamazight is also an official language of Algeria.',
+    'The Algerian dinar is the local currency, and travelers should plan ahead for payment options outside major hotels and tourist businesses.',
+    'Dress respectfully, particularly when visiting religious and historic areas.',
+    'If planning trips beyond Algiers, check transportation arrangements and local conditions before traveling.',
+    'Travel advisories currently recommend increased caution in Algeria, with some border and remote areas subject to stronger warnings because of terrorism and kidnapping risks. Check the latest official advice before traveling.'
+  ]
+},
+{
+  id: 'andorra-la-vella-ad',
+  city: 'Andorra la Vella',
+  country: 'Andorra',
+  airportCode: 'LEU',
+  image: `https://images.unsplash.com/photo-1599840798493-f876222b0f7b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Nestled high in the Pyrenees, Andorra la Vella is the capital of the tiny principality of Andorra, combining mountain scenery, historic streets, shopping, thermal experiences, and easy access to hiking and winter sports.',
+
+  seoTitle: 'Andorra la Vella Travel Guide: Things to Do & Attractions',
+
+  seoDescription: 'Explore Andorra la Vella with a guide to the historic centre, shopping, mountain activities, cultural attractions, thermal experiences, and travel tips.',
+
+  keywords: [
+    'Andorra la Vella travel guide',
+    'Andorra travel guide',
+    'things to do in Andorra la Vella',
+    'Andorra la Vella attractions',
+    'Andorra tourism',
+    'Andorra travel tips',
+    'Andorra itinerary',
+    'best places to visit in Andorra',
+    'Andorra mountains',
+    'Andorra shopping'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Adventure',
+  bestSeason: 'December to March, May to October',
+  dailyBudget: 90,
+
+  attractions: [
+    {
+      name: 'Historic Centre of Andorra la Vella',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Casa de la Vall',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Avinguda Meritxell',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'La Comella Viewpoint',
+      duration: '1 hour',
+      bestTime: 'Sunset',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Caldea Thermal Spa',
+      duration: '2–3 hours',
+      bestTime: 'Evening',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'La Margineda Bridge',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Andorra does not have an international airport. The nearest airport is Andorra–La Seu d’Urgell (LEU) in Spain, while Barcelona and Toulouse are major alternative gateways.',
+    'Andorra la Vella sits at around 1,050 metres above sea level, so temperatures can be noticeably cooler than in nearby lowland cities.',
+    'Winter is ideal for skiing and snow activities, while late spring through early autumn is excellent for hiking, cycling, and exploring the mountains.',
+    'Andorra la Vella is well known for shopping, particularly along Avinguda Meritxell and the central commercial areas.',
+    'The country is mountainous, so comfortable walking shoes are recommended even if you are mainly visiting the capital.',
+    'Public buses provide useful connections around Andorra, while buses from nearby Spanish and French cities are a common way to reach the country.',
+    'Consider combining Andorra la Vella with nearby mountain villages and nature areas rather than spending the entire trip in the capital.'
+  ]
+},
+{
+  id: 'luanda-ao',
+  city: 'Luanda',
+  country: 'Angola',
+  airportCode: 'LAD',
+  image: `https://images.unsplash.com/photo-1562859422-29f5c0f4b24d?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Angola’s vibrant Atlantic capital blends Portuguese colonial architecture, historic fortresses, waterfront promenades, beaches, lively markets, and a growing modern city scene.',
+
+  seoTitle: 'Luanda Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Luanda, Angola with a guide to the best attractions, historic sites, beaches, waterfront areas, museums, local culture, and travel tips.',
+
+  keywords: [
+    'Luanda travel guide',
+    'things to do in Luanda',
+    'Luanda attractions',
+    'Luanda tourism',
+    'Luanda Angola',
+    'Fortress of São Miguel',
+    'Ilha de Luanda',
+    'Luanda beaches',
+    'Luanda itinerary',
+    'Angola travel guide'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'May to October',
+  dailyBudget: 75,
+
+  attractions: [
+    {
+      name: 'Fortress of São Miguel',
+      duration: '1.5 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Ilha de Luanda',
+      duration: '2–3 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Marginal de Luanda',
+      duration: '1–2 hours',
+      bestTime: 'Sunset',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Dr. António Agostinho Neto Memorial',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'National Museum of Slavery',
+      duration: '1–1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Church of Our Lady of Remedies',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Luanda is Angola’s main international gateway, with Quatro de Fevereiro International Airport (LAD) located close to the city centre.',
+    'The dry season from May to October is generally a comfortable period for exploring Luanda and planning trips around the country.',
+    'Portuguese is the official language of Angola, so learning a few basic Portuguese phrases can be useful.',
+    'Luanda can be expensive compared with many other African cities, particularly for accommodation and transportation.',
+    'Use increased caution with valuables and avoid displaying expensive phones, cameras, or jewellery in crowded areas.',
+    'Traffic can be heavy, especially during peak hours, so allow additional time when travelling across the metropolitan area.',
+    'When visiting historic and religious sites, dress respectfully and follow local photography rules.',
+    'If travelling outside Luanda, check current road conditions, transportation arrangements, and local security information before setting out.'
+  ]
+},
+{
+  id: 'manama-bh',
+  city: 'Manama',
+  country: 'Bahrain',
+  airportCode: 'BAH',
+  image: `https://images.unsplash.com/photo-1548755212-2b46ee259868?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Bahrain’s vibrant capital blends ancient Gulf heritage with modern skyscrapers, traditional souqs, waterfront promenades, museums, shopping districts, and a lively dining scene.',
+
+  seoTitle: 'Manama Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Manama, Bahrain with a guide to the best attractions, Bahrain Fort, traditional souqs, museums, mosques, shopping, food and travel tips.',
+
+  keywords: [
+    'Manama travel guide',
+    'things to do in Manama',
+    'Manama attractions',
+    'Manama tourism',
+    'Bahrain travel guide',
+    'Bahrain attractions',
+    'Manama Souq',
+    'Bahrain Fort',
+    'Manama itinerary',
+    'Bahrain travel tips'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'November to March',
+  dailyBudget: 85,
+
+  attractions: [
+    {
+      name: 'Bahrain Fort',
+      duration: '1.5–2 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Manama Souq',
+      duration: '2 hours',
+      bestTime: 'Evening',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Bahrain National Museum',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Al Fateh Grand Mosque',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Bab Al Bahrain',
+      duration: '1 hour',
+      bestTime: 'Evening',
+      entryFee: 'Free'
+    },
+    {
+      name: 'The Avenues Bahrain',
+      duration: '2–3 hours',
+      bestTime: 'Evening',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Bahrain International Airport (BAH) is the main gateway to the country and is located on Muharraq Island.',
+    'The cooler months from November to March are generally more comfortable for sightseeing and outdoor activities.',
+    'Manama is a good base for exploring Bahrain because many major cultural, historical, shopping, and dining attractions are within easy reach.',
+    'Dress respectfully when visiting mosques and religious sites, with shoulders and knees covered.',
+    'Bahrain is known for both traditional souqs and modern shopping malls, so visitors can experience very different sides of the country in the same trip.',
+    'Taxis and ride-hailing services are useful for getting around, while renting a car can be convenient for exploring attractions outside central Manama.',
+    'Try local Bahraini dishes and traditional sweets while exploring the city’s markets and restaurants.',
+    'Check current entry, visa, and local travel requirements before your trip.'
+  ]
+},
+{
+  id: 'dhaka-bd',
+  city: 'Dhaka',
+  country: 'Bangladesh',
+  airportCode: 'DAC',
+  image: `https://images.unsplash.com/photo-1564034503-e7c9edcb420c?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Bangladesh’s energetic capital is a fascinating mix of historic architecture, bustling markets, river life, religious landmarks, museums, street food, and modern urban culture.',
+
+  seoTitle: 'Dhaka Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Dhaka, Bangladesh with a guide to historic landmarks, mosques, museums, markets, riverfront experiences, local food and essential travel tips.',
+
+  keywords: [
+    'Dhaka travel guide',
+    'things to do in Dhaka',
+    'Dhaka attractions',
+    'Dhaka tourism',
+    'Bangladesh travel guide',
+    'Dhaka itinerary',
+    'best places to visit in Dhaka',
+    'Dhaka Old City',
+    'Dhaka travel tips',
+    'Bangladesh tourism'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'November to February',
+  dailyBudget: 35,
+
+  attractions: [
+    {
+      name: 'Lalbagh Fort',
+      duration: '1.5–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Ahsan Manzil',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'National Parliament House',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Dhakeshwari National Temple',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Sadarghat River Port',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Bangladesh National Museum',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Hazrat Shahjalal International Airport (DAC) is the main international gateway to Dhaka.',
+    'November through February is generally more comfortable for exploring Dhaka because temperatures are lower and conditions are typically drier.',
+    'Traffic can be extremely congested, so allow plenty of extra time when traveling across the city.',
+    'Rickshaws are an iconic part of Dhaka’s streetscape and can be useful for short journeys, although traffic conditions vary considerably.',
+    'The Old Dhaka area is particularly interesting for travelers interested in history, architecture, markets, mosques, temples, and local food.',
+    'Dress respectfully when visiting religious sites and follow local customs regarding photography.',
+    'Bangladeshi cuisine is an important part of the travel experience, with biryani, fish dishes, bhorta, sweets, and street food among the highlights.',
+    'If you plan to visit destinations outside Dhaka, allow additional travel time because road conditions and traffic can make journeys much longer than expected.',
+    'Check current local conditions and travel advisories before traveling, particularly during periods of political demonstrations or severe weather.'
+  ]
+},
+{
+  id: 'minsk-by',
+  city: 'Minsk',
+  country: 'Belarus',
+  airportCode: 'MSQ',
+  image: `https://images.unsplash.com/photo-1591509352193-c3e6676f71c2?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Belarus’s capital combines grand Soviet-era architecture, historic neighborhoods, spacious parks, museums, monuments, and broad avenues with a surprisingly green and organized city centre.',
+
+  seoTitle: 'Minsk Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Minsk, Belarus with a guide to major landmarks, museums, historic sites, parks, architecture, local culture and essential travel information.',
+
+  keywords: [
+    'Minsk travel guide',
+    'things to do in Minsk',
+    'Minsk attractions',
+    'Minsk tourism',
+    'Belarus travel guide',
+    'Minsk Belarus',
+    'Minsk itinerary',
+    'best places to visit in Minsk',
+    'Minsk travel tips',
+    'Belarus tourism'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'May to September',
+  dailyBudget: 45,
+
+  attractions: [
+    {
+      name: 'Independence Square',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'National Library of Belarus',
+      duration: '1.5 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Upper Town',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Victory Square',
+      duration: '45 minutes',
+      bestTime: 'Evening',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Great Patriotic War Museum',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Gorky Park',
+      duration: '1.5 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Minsk National Airport (MSQ) is the main international airport serving the Belarusian capital.',
+    'Belarus has a continental climate, with cold winters and warmer summers. May through September is generally more comfortable for outdoor sightseeing.',
+    'Minsk has an extensive public transportation network, including metro, buses, and trolleybuses.',
+    'The historic Upper Town is one of the best areas for exploring Minsk on foot.',
+    'Belarusian and Russian are the main languages used in the country, so having offline translation tools can be useful.',
+    'Carry your passport and required identification documents while traveling, as authorities can request identification.',
+    'Border crossings and transportation connections with neighboring countries can change or close with little notice.',
+    'Check current visa, entry, border, and transportation requirements before planning your trip.',
+    'Belarus currently has significant travel risks. The U.S. Department of State advises against all travel because of unrest and other risks, including the possibility of arbitrary detention and limited consular assistance.',
+    'Because the security and transportation situation can change quickly, verify the latest official travel advisory before making any travel plans.'
+  ]
+},
+{
+  id: 'san-jose-cr',
+  city: 'San José',
+  country: 'Costa Rica',
+  airportCode: 'SJO',
+  image: `https://images.unsplash.com/photo-1682963847132-1923d1e7928a?q=80&w=1033&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Costa Rica’s lively capital is the country’s cultural and urban gateway, combining museums, historic architecture, local markets, restaurants, coffee culture, and easy access to the country’s spectacular volcanoes and rainforests.',
+
+  seoTitle: 'San José Costa Rica Travel Guide: Things to Do & Attractions',
+
+  seoDescription: 'Explore San José, Costa Rica with a guide to the best attractions, museums, markets, food, culture, day trips, and travel tips.',
+
+  keywords: [
+    'San José Costa Rica travel guide',
+    'things to do in San José Costa Rica',
+    'San José Costa Rica attractions',
+    'San José tourism',
+    'Costa Rica travel guide',
+    'San José itinerary',
+    'best places to visit in San José',
+    'San José Costa Rica travel tips',
+    'Costa Rica vacation',
+    'Costa Rica tourism'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'December to April',
+  dailyBudget: 75,
+
+  attractions: [
+    {
+      name: 'National Theatre of Costa Rica',
+      duration: '1–1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'National Museum of Costa Rica',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Central Market',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Pre-Columbian Gold Museum',
+      duration: '1.5–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Metropolitan Cathedral',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'La Sabana Metropolitan Park',
+      duration: '1–2 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Juan Santamaría International Airport (SJO) is the main international gateway for travelers visiting the San José area.',
+    'December through April is generally the drier season and is popular for sightseeing and outdoor activities.',
+    'San José is an excellent starting point for trips to Arenal, Monteverde, Manuel Antonio, Guanacaste, and other parts of Costa Rica.',
+    'Costa Rica uses the colón, although U.S. dollars are widely accepted in many tourist areas.',
+    'Use registered taxis or reputable ride-hailing services and keep valuables secure in crowded areas.',
+    'Costa Rican food is worth exploring, including gallo pinto, casado, fresh fruit, coffee, and traditional snacks.',
+    'The city is at relatively high elevation, so evenings can feel cooler than visitors might expect from a tropical country.',
+    'If your main goal is beaches or wildlife, consider spending only a short time in San José and continuing to another region.',
+    'Costa Rica has extensive natural areas, so pack comfortable walking shoes, sunscreen, insect repellent, and light rain protection.'
+  ]
+},
+{
+  id: 'paphos-cy',
+  city: 'Paphos',
+  country: 'Cyprus',
+  airportCode: 'PFO',
+  image: `https://images.unsplash.com/photo-1622615820991-1075551c86f8?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Set along the southwestern coast of Cyprus, Paphos combines Mediterranean beaches with ancient archaeological sites, historic harbour views, traditional villages, and a relaxed atmosphere.',
+
+  seoTitle: 'Paphos Cyprus Travel Guide: Things to Do & Attractions',
+
+  seoDescription: 'Discover Paphos, Cyprus with a guide to ancient ruins, beaches, the harbour, Tombs of the Kings, local villages, culture and travel tips.',
+
+  keywords: [
+    'Paphos travel guide',
+    'things to do in Paphos',
+    'Paphos attractions',
+    'Paphos Cyprus',
+    'Paphos tourism',
+    'Paphos beaches',
+    'Tombs of the Kings',
+    'Paphos Archaeological Park',
+    'Paphos itinerary',
+    'Cyprus travel guide'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'April to June, September to October',
+  dailyBudget: 85,
+
+  attractions: [
+    {
+      name: 'Paphos Archaeological Park',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Tombs of the Kings',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Paphos Harbour',
+      duration: '1–2 hours',
+      bestTime: 'Sunset',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Paphos Castle',
+      duration: '45 minutes',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Petra tou Romiou',
+      duration: '1 hour',
+      bestTime: 'Sunset',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Coral Bay',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Paphos International Airport (PFO) is one of the main international gateways to Cyprus and is particularly convenient for western Cyprus.',
+    'Spring and autumn offer a good combination of warm weather and more manageable crowds.',
+    'Paphos is particularly strong for travelers interested in combining archaeology, beaches, food, and relaxed coastal experiences.',
+    'Wear comfortable shoes when exploring archaeological sites because some areas involve uneven stone surfaces.',
+    'A rental car can be useful if you want to explore villages, mountain areas, wineries, and beaches outside Paphos.',
+    'Respect signs and barriers around archaeological sites and avoid climbing on protected ruins.',
+    'Try traditional Cypriot dishes such as halloumi, souvlaki, meze, and local seafood.',
+    'The coastal promenade is especially pleasant around sunset and connects several popular areas around the harbour.',
+    'Check current entry requirements and local transportation information before traveling.'
+  ]
+},
+{
+  id: 'ndjamena-td',
+  city: "N'Djamena",
+  country: 'Chad',
+  airportCode: 'NDJ',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjGbLw4zcSse7XQFRlt3RBhvQCnVWWvhml2EMq7DZRAODL2u1MAF8pZQc&s=10${cropParams}`,
+
+  description: 'Chad’s capital sits along the Chari River and offers a fascinating introduction to Central African culture, with traditional markets, museums, riverside scenery, local crafts, and access to some of the country’s extraordinary desert and wildlife landscapes.',
+
+  seoTitle: "N'Djamena Travel Guide: Things to Do, Attractions & Travel Tips",
+
+  seoDescription: "Explore N'Djamena, Chad with a guide to local markets, museums, cultural attractions, riverside experiences and essential travel information.",
+
+  keywords: [
+    "N'Djamena travel guide",
+    "things to do in N'Djamena",
+    "N'Djamena attractions",
+    'N’Djamena tourism',
+    'Chad travel guide',
+    'N’Djamena Chad',
+    'N’Djamena itinerary',
+    'Chad tourism',
+    'N’Djamena travel tips',
+    'places to visit in Chad'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'November to February',
+  dailyBudget: 45,
+
+  attractions: [
+    {
+      name: 'N’Djamena Grand Mosque',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'National Museum of Chad',
+      duration: '1.5–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'N’Djamena Central Market',
+      duration: '1.5–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Chari River',
+      duration: '1–2 hours',
+      bestTime: 'Sunset',
+      entryFee: 'Free'
+    },
+    {
+      name: 'N’Djamena Cultural Centre',
+      duration: '1–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Local Craft Markets',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'N’Djamena International Airport (NDJ) is the main international gateway to Chad.',
+    'The cooler dry season from November to February is generally more comfortable for exploring N’Djamena.',
+    'French and Arabic are the official languages, while numerous local languages are spoken throughout the country.',
+    'Dress conservatively and respectfully, particularly when visiting religious and cultural sites.',
+    'The Chari River forms an important part of the city’s geography and offers a different perspective on N’Djamena.',
+    'Markets can be busy and crowded, so keep valuables secure and avoid displaying expensive belongings.',
+    'Travel outside N’Djamena requires careful planning because distances are large and road conditions can vary considerably.',
+    'Chad has significant security risks, including terrorism, kidnapping, armed conflict, and civil unrest. Check the latest official travel advisories before considering travel.',
+    'Some regions of Chad are subject to much stronger travel warnings than N’Djamena, particularly areas near international borders and conflict-affected regions.',
+    'Verify current entry requirements, transportation availability, security conditions, and local regulations before traveling.'
+  ]
+},
+{
+  id: 'roseau-dm',
+  city: 'Roseau',
+  country: 'Dominica',
+  airportCode: 'DOM',
+  image: `https://images.unsplash.com/photo-1649703196751-9019ead6b2f4?q=80&w=1021&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Dominica’s compact capital sits between lush volcanic mountains and the Caribbean Sea, offering colorful streets, historic buildings, local markets, botanical gardens, and easy access to some of the Caribbean’s most spectacular rainforest landscapes.',
+
+  seoTitle: 'Roseau Dominica Travel Guide: Things to Do & Attractions',
+
+  seoDescription: 'Explore Roseau, Dominica with a guide to rainforest adventures, waterfalls, hot springs, local markets, historic attractions and travel tips.',
+
+  keywords: [
+    'Roseau Dominica travel guide',
+    'things to do in Roseau',
+    'Roseau attractions',
+    'Dominica travel guide',
+    'Dominica tourism',
+    'Roseau Dominica',
+    'Dominica rainforest',
+    'Dominica waterfalls',
+    'Dominica hiking',
+    'Dominica travel tips'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'February to April',
+  dailyBudget: 80,
+
+  attractions: [
+    {
+      name: 'Dominica Botanic Gardens',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Roseau Market',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Morne Bruce',
+      duration: '1 hour',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Trafalgar Falls',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Boiling Lake',
+      duration: 'Full day',
+      bestTime: 'Early Morning',
+      entryFee: 'Guide recommended'
+    },
+    {
+      name: 'Champagne Reef',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Douglas–Charles Airport (DOM) is Dominica’s main international airport and is located on the northeastern side of the island.',
+    'Dominica is known as the Nature Island of the Caribbean, so hiking, waterfalls, hot springs, diving and rainforest experiences are major reasons to visit.',
+    'The drier months from February to April generally provide favorable conditions for outdoor activities.',
+    'Rain can occur throughout the year, so pack a lightweight waterproof jacket even when the forecast looks favorable.',
+    'Many of Dominica’s best natural attractions involve hiking, uneven trails, or steep terrain, so proper walking shoes are recommended.',
+    'Roseau is compact enough to explore on foot, while taxis, rental cars and guided tours are useful for reaching attractions outside the capital.',
+    'The island is mountainous, and journeys that appear short on a map can take considerably longer because of winding roads.',
+    'Respect protected natural areas and follow local guidance when swimming, hiking, diving or visiting geothermal sites.',
+    'Check current weather and local conditions before planning mountain hikes or boat excursions.'
+  ]
+},
+{
+  id: 'punta-cana-do',
+  city: 'Punta Cana',
+  country: 'Dominican Republic',
+  airportCode: 'PUJ',
+  image: `https://images.unsplash.com/photo-1635450695849-bde4bea19b5f?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Punta Cana is one of the Caribbean’s most popular beach destinations, known for long stretches of white sand, turquoise water, palm-lined coastlines, all-inclusive resorts, water sports, golf, and easy access to tropical nature.',
+
+  seoTitle: 'Punta Cana Travel Guide: Best Beaches, Things to Do & Tips',
+
+  seoDescription: 'Discover Punta Cana with a guide to the best beaches, water activities, resorts, excursions, attractions and practical travel tips for the Dominican Republic.',
+
+  keywords: [
+    'Punta Cana travel guide',
+    'things to do in Punta Cana',
+    'Punta Cana beaches',
+    'Punta Cana attractions',
+    'Dominican Republic travel guide',
+    'Punta Cana resorts',
+    'Punta Cana tourism',
+    'Punta Cana itinerary',
+    'Punta Cana vacation',
+    'Dominican Republic beaches'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'December to April',
+  dailyBudget: 110,
+
+  attractions: [
+    {
+      name: 'Bávaro Beach',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Macao Beach',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Indigenous Eyes Ecological Park',
+      duration: '3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Hoyo Azul',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Saona Island',
+      duration: 'Full day',
+      bestTime: 'Early Morning',
+      entryFee: 'Tour dependent'
+    },
+    {
+      name: 'Scape Park',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    }
+  ],
+
+  travelTips: [
+    'Punta Cana International Airport (PUJ) is one of the main gateways to the Dominican Republic and is particularly convenient for the eastern resort area.',
+    'December through April is generally one of the most popular periods to visit because of warm weather and lower rainfall.',
+    'The Dominican Republic uses the Dominican peso, although U.S. dollars are widely accepted in many tourist areas.',
+    'All-inclusive resorts can provide good value for travelers who plan to spend most of their vacation at the resort.',
+    'If you want a more local experience, explore beyond the resort areas and include Dominican restaurants, markets and cultural attractions in your itinerary.',
+    'Use licensed transportation or reputable tour operators for excursions and airport transfers.',
+    'The Caribbean sun can be intense, so bring sunscreen, sunglasses, a hat and plenty of water.',
+    'Boat excursions to Saona Island and other coastal destinations can be affected by sea and weather conditions.',
+    'Punta Cana is primarily a resort and beach destination, while Santo Domingo offers a much stronger historic and cultural experience.',
+    'Check current entry, passport, transportation and local travel requirements before your trip.'
+  ]
+},
+{
+  id: 'djibouti-city-dj',
+  city: 'Djibouti City',
+  country: 'Djibouti',
+  airportCode: 'JIB',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH8NO49x-8V-S2dG7v8hdEFzC8arP5VgnUK_W9LTeXO5XLcHAwqCvW9cU&s=10${cropParams}`,
+
+  description: 'Djibouti City is a fascinating gateway to the Horn of Africa, combining a busy port, colorful markets, French and African influences, coastal landscapes, and easy access to some of the region’s most extraordinary volcanic and marine environments.',
+
+  seoTitle: 'Djibouti City Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Djibouti City with a guide to local markets, beaches, historic sites, Lake Assal, volcanic landscapes, marine experiences and practical travel tips.',
+
+  keywords: [
+    'Djibouti City travel guide',
+    'things to do in Djibouti City',
+    'Djibouti attractions',
+    'Djibouti tourism',
+    'Djibouti travel guide',
+    'Djibouti City',
+    'Lake Assal Djibouti',
+    'Djibouti beaches',
+    'Djibouti itinerary',
+    'Djibouti travel tips'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Adventure',
+  bestSeason: 'November to February',
+  dailyBudget: 70,
+
+  attractions: [
+    {
+      name: 'Place Menelik',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Hamoudi Mosque',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Central Market',
+      duration: '1.5–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Heron Beach',
+      duration: '2 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Lake Assal',
+      duration: 'Full day',
+      bestTime: 'Early Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Goubet al-Kharab',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Djibouti–Ambouli International Airport (JIB) is the main international gateway to Djibouti City.',
+    'The cooler months from November to February are generally more comfortable for exploring the country and taking outdoor excursions.',
+    'Djibouti has an extremely hot and arid climate, so carry plenty of water, sunscreen, sunglasses, and lightweight clothing.',
+    'French and Arabic are official languages, while Somali and Afar are also widely spoken.',
+    'Djibouti City is relatively compact, but organized tours or private transportation are useful for reaching attractions outside the capital.',
+    'Lake Assal is one of the country’s most remarkable natural attractions and lies well outside Djibouti City, so plan a full-day excursion.',
+    'Respect local customs and dress modestly, particularly when visiting mosques, markets, and residential neighborhoods.',
+    'The Red Sea coast offers opportunities for snorkeling, diving, fishing, and marine excursions depending on local conditions.',
+    'Remote desert and volcanic areas can be extremely hot and isolated, so organized excursions with experienced local operators are recommended.',
+    'Check current security conditions, entry requirements, transportation availability, and official travel advisories before traveling.'
+  ]
+},
+{
+  id: 'asmara-er',
+  city: 'Asmara',
+  country: 'Eritrea',
+  airportCode: 'ASM',
+  image: `https://wmf.imgix.net/images/6a_30_asmara_city_photo_by_david_stanley_-_wikimedia_commons.jpg?auto=format,compress&fit=max&w=4040${cropParams}`,
+
+  description: 'Eritrea’s atmospheric capital is known for its remarkable Italian-modernist architecture, wide boulevards, historic cafés, lively markets, and distinctive highland setting.',
+
+  seoTitle: 'Asmara Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Asmara, Eritrea with a guide to Italian-modernist architecture, historic landmarks, markets, cafés, museums and essential travel tips.',
+
+  keywords: [
+    'Asmara travel guide',
+    'things to do in Asmara',
+    'Asmara attractions',
+    'Asmara Eritrea',
+    'Eritrea travel guide',
+    'Asmara tourism',
+    'Asmara architecture',
+    'Asmara itinerary',
+    'Asmara travel tips',
+    'Eritrea tourism'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'October to February',
+  dailyBudget: 45,
+
+  attractions: [
+    {
+      name: 'Fiat Tagliero Building',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Cathedral of Asmara',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'National Museum of Eritrea',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Al Khulafa Al Rashedin Mosque',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Medeber Market',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Cinema Impero',
+      duration: '45 minutes',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Asmara International Airport (ASM) is the main airport serving Eritrea’s capital.',
+    'Asmara sits at high elevation, giving it a cooler climate than many other cities in the region.',
+    'The city is particularly interesting for travelers interested in architecture, history, coffee culture, and local markets.',
+    'Italian influence can still be seen throughout the city in its architecture, cafés, food, and historic buildings.',
+    'Dress respectfully when visiting religious sites.',
+    'Photography around government buildings, military facilities, airports, and other sensitive locations may be restricted.',
+    'Travel outside Asmara can require additional permits and careful planning.',
+    'Check current visa requirements, transportation conditions, local regulations, and security advisories before traveling.'
+  ]
+},
+{
+  id: 'tallinn-ee',
+  city: 'Tallinn',
+  country: 'Estonia',
+  airportCode: 'TLL',
+  image: `https://images.unsplash.com/photo-1709862366377-54b16f3e51f9?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Estonia’s compact capital combines one of Europe’s best-preserved medieval Old Towns with modern design, creative neighborhoods, coastal scenery, excellent cafés, museums, and a strong digital culture.',
+
+  seoTitle: 'Tallinn Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Discover Tallinn, Estonia with a guide to the medieval Old Town, Kadriorg, museums, coastal neighborhoods, food, culture and practical travel tips.',
+
+  keywords: [
+    'Tallinn travel guide',
+    'things to do in Tallinn',
+    'Tallinn attractions',
+    'Tallinn Estonia',
+    'Estonia travel guide',
+    'Tallinn Old Town',
+    'Tallinn tourism',
+    'Tallinn itinerary',
+    'Tallinn travel tips',
+    'best places to visit in Tallinn'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'May to September',
+
+  dailyBudget: 80,
+
+  attractions: [
+    {
+      name: 'Tallinn Old Town',
+      duration: '3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Toompea Hill',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Kadriorg Palace & Park',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Kumu Art Museum',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Alexander Nevsky Cathedral',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Kalamaja',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Lennart Meri Tallinn Airport (TLL) is only around 4 kilometres from the city centre. :contentReference[oaicite:2]{index=2}',
+    'Summer is popular for its long daylight hours and outdoor events, while spring and autumn generally bring fewer visitors.',
+    'Tallinn’s historic centre is highly walkable, so comfortable shoes are recommended.',
+    'The Old Town is a UNESCO World Heritage Site and one of the best-preserved medieval urban areas in Northern Europe. :contentReference[oaicite:3]{index=3}',
+    'Public transportation makes it easy to explore areas outside the historic centre.',
+    'Kalamaja is a good choice for creative spaces, cafés, restaurants, and a more contemporary side of Tallinn.',
+    'Estonian cuisine includes rye bread, fish, seasonal produce, dairy products, and modern Nordic-inspired dishes.',
+    'Consider buying a Tallinn Card if you plan to visit several museums and attractions.',
+    'Check current entry requirements and seasonal opening hours before traveling.'
+  ]
+},
+{
+  id: 'mbabane-sz',
+  city: 'Mbabane',
+  country: 'Eswatini',
+  airportCode: 'SHO',
+  image: `https://images.unsplash.com/photo-1754693202839-d4cc26fca108?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Eswatini’s cool highland capital is surrounded by green mountains and valleys, offering a relaxed introduction to the kingdom’s landscapes, culture, crafts, markets, and outdoor adventures.',
+
+  seoTitle: 'Mbabane Eswatini Travel Guide: Things to Do & Attractions',
+
+  seoDescription: 'Explore Mbabane and the surrounding highlands of Eswatini with a guide to nature, markets, cultural attractions, hiking and travel tips.',
+
+  keywords: [
+    'Mbabane travel guide',
+    'things to do in Mbabane',
+    'Mbabane attractions',
+    'Eswatini travel guide',
+    'Eswatini tourism',
+    'Mbabane Eswatini',
+    'Eswatini attractions',
+    'Mbabane itinerary',
+    'Eswatini travel tips',
+    'Eswatini mountains'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'May to September',
+  dailyBudget: 65,
+
+  attractions: [
+    {
+      name: 'Mbabane Market',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Malolotja Nature Reserve',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Sibebe Rock',
+      duration: '3–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Ngwenya Glass',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Mantenga Cultural Village',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Mlilwane Wildlife Sanctuary',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    }
+  ],
+
+  travelTips: [
+    'King Mswati III International Airport (SHO) is Eswatini’s principal international airport and is located in the Lubombo region, roughly 50 kilometres from Manzini. :contentReference[oaicite:5]{index=5}',
+    'The airport provides connections to regional destinations including Johannesburg and other southern African cities. :contentReference[oaicite:6]{index=6}',
+    'The dry winter months from May to September are generally excellent for hiking, wildlife viewing, and outdoor activities.',
+    'Eswatini is a relatively small country, making it possible to combine Mbabane with wildlife reserves, cultural villages, and mountain areas.',
+    'A rental car is useful for exploring beyond Mbabane, particularly if visiting nature reserves.',
+    'Respect local customs and ask permission before photographing people or cultural ceremonies.',
+    'Try local dishes and visit craft markets to experience Eswatini’s traditional arts and food culture.',
+    'Mountain weather can change quickly, so bring layers even when daytime temperatures are warm.',
+    'Check current road conditions, entry requirements, and local travel information before traveling.'
+  ]
+},
+{
+  id: 'addis-ababa-et',
+  city: 'Addis Ababa',
+  country: 'Ethiopia',
+  airportCode: 'ADD',
+  image: `https://images.unsplash.com/photo-1724001079027-800ed9a8ee4d?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Ethiopia’s high-altitude capital is the country’s cultural and diplomatic heart, combining fascinating museums, historic churches, lively markets, Ethiopian coffee culture, modern neighborhoods, and dramatic mountain scenery.',
+
+  seoTitle: 'Addis Ababa Travel Guide: Things to Do & Attractions',
+
+  seoDescription: 'Explore Addis Ababa with a guide to museums, churches, markets, Ethiopian coffee culture, Entoto Mountain, local food and essential travel tips.',
+
+  keywords: [
+    'Addis Ababa travel guide',
+    'things to do in Addis Ababa',
+    'Addis Ababa attractions',
+    'Ethiopia travel guide',
+    'Addis Ababa tourism',
+    'Addis Ababa Ethiopia',
+    'Ethiopian coffee',
+    'Entoto Mountain',
+    'Addis Ababa itinerary',
+    'Ethiopia travel tips'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'October to February',
+  dailyBudget: 50,
+
+  attractions: [
+    {
+      name: 'National Museum of Ethiopia',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Holy Trinity Cathedral',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Merkato',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Entoto Mountain',
+      duration: '3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Unity Park',
+      duration: '3 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Ethiopian Coffee Experience',
+      duration: '1.5 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Addis Ababa Bole International Airport (ADD) is the main international gateway and a major connecting hub for travel across Africa. :contentReference[oaicite:8]{index=8}',
+    'Addis Ababa sits at high altitude, so visitors may need some time to adjust, particularly during their first day.',
+    'October through February is generally a comfortable period for exploring the capital and planning trips around Ethiopia.',
+    'Ethiopian coffee is an important part of the country’s culture, and a traditional coffee ceremony is worth experiencing.',
+    'Merkato is one of the city’s largest markets and offers a glimpse into everyday commerce and local life.',
+    'Use reputable taxis or ride-hailing services and take normal precautions with valuables in crowded areas.',
+    'Ethiopia has an enormous cultural and historical heritage, so consider extending your trip beyond Addis Ababa to destinations such as Lalibela, Gondar, Axum, or the Simien Mountains.',
+    'The country has diverse climates and elevations, so pack according to the regions included in your itinerary.',
+    'Check current security conditions, entry requirements, domestic transportation schedules, and travel advisories before traveling.'
+  ]
+},
+{
+  id: 'libreville-ga',
+  city: 'Libreville',
+  country: 'Gabon',
+  airportCode: 'LBV',
+  image: `https://images.unsplash.com/photo-1594612622464-ab6f730893f6?q=80&w=2082&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Gabon’s coastal capital combines Atlantic beaches, tropical greenery, lively markets, French-influenced architecture, local culture, and easy access to the country’s extraordinary rainforest and wildlife experiences.',
+
+  seoTitle: 'Libreville Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Libreville, Gabon with a guide to beaches, markets, museums, cultural attractions, local food, nearby nature and essential travel tips.',
+
+  keywords: [
+    'Libreville travel guide',
+    'things to do in Libreville',
+    'Libreville attractions',
+    'Libreville tourism',
+    'Gabon travel guide',
+    'Libreville Gabon',
+    'Libreville beaches',
+    'Gabon tourism',
+    'Libreville itinerary',
+    'Libreville travel tips'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'June to September',
+  dailyBudget: 70,
+
+  attractions: [
+    {
+      name: 'Pointe-Denis Beach',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'L’Église Saint-Michel de Nkembo',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'National Museum of Arts and Traditions of Gabon',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Marché Mont-Bouët',
+      duration: '1.5–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Arboretum de Sibang',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Libreville Seafront',
+      duration: '1–2 hours',
+      bestTime: 'Sunset',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Léon-Mba International Airport (LBV) is the main international gateway to Libreville and Gabon.',
+    'The June to September dry season is generally more comfortable for exploring Libreville and planning wildlife excursions.',
+    'Gabon is heavily forested, so the country is particularly attractive to travelers interested in wildlife, rainforests, beaches, and nature.',
+    'French is the official language, while several local languages are also spoken throughout the country.',
+    'Libreville can be more expensive than some other destinations in Central Africa, particularly for hotels and transportation.',
+    'Use reputable taxis, private transfers, or trusted local tour operators when traveling around the city and beyond.',
+    'Markets can become crowded, so keep valuables secure and avoid displaying expensive electronics.',
+    'If visiting national parks or rainforest areas, arrange transportation and guides in advance because infrastructure outside major cities can be limited.',
+    'Pack lightweight clothing, comfortable walking shoes, insect repellent, sunscreen, and rain protection.',
+    'Check current entry requirements, transportation conditions, health information, and travel advisories before traveling.'
+  ]
+},
+{
+  id: 'banjul-gm',
+  city: 'Banjul',
+  country: 'Gambia',
+  airportCode: 'BJL',
+  image: `https://images.unsplash.com/photo-1751502776559-2ee0612ec54a?q=80&w=1033&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'The Gambia’s compact capital sits on an island at the mouth of the Gambia River, offering a mix of West African culture, colorful markets, colonial-era landmarks, river views, nearby beaches, and easy access to the country’s coastal resorts.',
+
+  seoTitle: 'Banjul Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Banjul, The Gambia with a guide to historic landmarks, markets, museums, beaches, river experiences, local culture and practical travel tips.',
+
+  keywords: [
+    'Banjul travel guide',
+    'things to do in Banjul',
+    'Banjul attractions',
+    'Banjul tourism',
+    'Gambia travel guide',
+    'The Gambia travel',
+    'Banjul Gambia',
+    'Gambia beaches',
+    'Banjul itinerary',
+    'Gambia travel tips'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'November to April',
+  dailyBudget: 45,
+
+  attractions: [
+    {
+      name: 'Arch 22',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Albert Market',
+      duration: '1.5–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'National Museum of The Gambia',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Kunta Kinteh Island',
+      duration: 'Full day',
+      bestTime: 'Morning',
+      entryFee: 'Tour dependent'
+    },
+    {
+      name: 'Banjul Ferry Terminal',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Bijilo Forest Park',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    }
+  ],
+
+  travelTips: [
+    'Banjul International Airport (BJL) is the main international airport serving The Gambia and is located near the coastal resort areas.',
+    'November through April is generally the most popular period to visit because it falls within the dry season.',
+    'Banjul itself is relatively compact, while many hotels and beaches are located outside the capital along the coast.',
+    'English is the official language and is widely used in tourism, while several local languages are spoken throughout the country.',
+    'The Gambia River is central to the country’s geography and provides opportunities for boat trips and wildlife experiences.',
+    'Albert Market is a lively place to experience local commerce, crafts, clothing, food, and everyday life, but keep valuables secure in crowded areas.',
+    'If visiting wildlife areas or taking river excursions, use established local guides and tour operators.',
+    'The tropical climate can be hot and humid, so carry water, sunscreen, insect repellent, and lightweight clothing.',
+    'Dress respectfully when visiting religious and cultural sites.',
+    'Check current entry requirements, transportation conditions, health information, and travel advisories before traveling.'
+  ]
+},
+{
+  id: 'st-georges-gd',
+  city: "St. George's",
+  country: 'Grenada',
+  airportCode: 'GND',
+  image: `https://images.unsplash.com/photo-1617246610501-d11b4829436b?q=80&w=1092&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Grenada’s picturesque capital curves around a natural horseshoe-shaped harbor, combining colorful waterfront buildings, historic forts, Caribbean markets, tropical gardens, and easy access to beautiful beaches and marine adventures.',
+
+  seoTitle: "St. George's Grenada Travel Guide: Things to Do & Attractions",
+
+  seoDescription: "Explore St. George's, Grenada with a guide to the best beaches, historic forts, markets, waterfront attractions, local food and Caribbean travel tips.",
+
+  keywords: [
+    "St. George's Grenada travel guide",
+    "things to do in St. George's Grenada",
+    'Grenada travel guide',
+    'St. George’s attractions',
+    'Grenada tourism',
+    'Grenada beaches',
+    'Grand Anse Beach',
+    "St. George's Grenada",
+    'Grenada itinerary',
+    'Grenada travel tips'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'December to April',
+  dailyBudget: 100,
+
+  attractions: [
+    {
+      name: 'Grand Anse Beach',
+      duration: '2–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Fort George',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Sendall Tunnel',
+      duration: '30 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'St. George’s Market Square',
+      duration: '1–1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Underwater Sculpture Park',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Tour dependent'
+    },
+    {
+      name: 'Annandale Falls',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    }
+  ],
+
+  travelTips: [
+    'Maurice Bishop International Airport (GND) is the main international gateway to Grenada and is located south of St. George’s.',
+    'December through April is the popular dry season and generally offers excellent conditions for beaches and outdoor activities.',
+    'Grand Anse is one of Grenada’s most famous beaches and is located only a short drive from St. George’s.',
+    'Grenada is known as the Spice Island, so look for locally grown nutmeg, cocoa, cinnamon, cloves and other spices in markets and shops.',
+    'The capital has steep roads and hills, so comfortable walking shoes are recommended.',
+    'Taxis and minibuses are useful for getting around, while rental cars can be convenient for exploring more remote parts of the island.',
+    'Snorkeling and diving are major activities, particularly around Grenada’s coral reefs and underwater sculpture park.',
+    'The Caribbean sun can be strong, so bring sunscreen, water, sunglasses and appropriate beach clothing.',
+    'Respect local customs and ask permission before photographing people or private property.',
+    'Check current entry requirements, weather conditions, transportation options and local travel information before your trip.'
+  ]
+},
+{
+  id: 'guatemala-city-gt',
+  city: 'Guatemala City',
+  country: 'Guatemala',
+  airportCode: 'GUA',
+  image: `https://images.unsplash.com/photo-1561429137-38135953567b?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Guatemala’s vibrant capital combines historic neighborhoods, colorful markets, museums, colonial architecture, modern cafés, and easy access to the country’s volcanoes, highlands, lakes, and ancient Maya sites.',
+
+  seoTitle: 'Guatemala City Travel Guide: Things to Do, Attractions & Tips',
+
+  seoDescription: 'Explore Guatemala City with a guide to historic landmarks, museums, markets, local culture, food, nearby attractions and essential travel tips.',
+
+  keywords: [
+    'Guatemala City travel guide',
+    'things to do in Guatemala City',
+    'Guatemala City attractions',
+    'Guatemala travel guide',
+    'Guatemala tourism',
+    'Guatemala City itinerary',
+    'Guatemala City travel tips',
+    'Guatemala museums',
+    'Guatemala culture',
+    'Guatemala vacation'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'November to April',
+  dailyBudget: 50,
+
+  attractions: [
+    {
+      name: 'National Palace of Culture',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Museo Nacional de Arqueología y Etnología',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Central Market',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Plaza de la Constitución',
+      duration: '1 hour',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Kaminaljuyu Archaeological Park',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Zona 4',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'La Aurora International Airport (GUA) is the main international airport serving Guatemala City.',
+    'November through April is generally the dry season and is a popular period for exploring Guatemala.',
+    'Guatemala City is an excellent starting point for trips to Antigua, Lake Atitlán, Tikal, Semuc Champey and other regions.',
+    'Use reputable transportation services and take normal precautions with valuables, particularly in crowded areas.',
+    'The city is spread across several zones, and travel times can vary considerably because of traffic.',
+    'Spanish is the main language used in the city, while numerous Maya languages are spoken throughout Guatemala.',
+    'Try traditional Guatemalan dishes such as pepián, tamales, kak-ik and local coffee.',
+    'If you have limited time, consider using Guatemala City primarily as your arrival point before continuing to Antigua or other major destinations.',
+    'Weather can vary significantly between Guatemala City and higher or lower-altitude destinations, so pack layers.',
+    'Check current entry requirements, transportation conditions, local safety information and travel advisories before traveling.'
+  ]
+},
+{
+  id: 'conakry-gn',
+  city: 'Conakry',
+  country: 'Guinea',
+  airportCode: 'CKY',
+  image: `https://images.unsplash.com/photo-1512944049881-3a92e7eb8a47?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Guinea’s coastal capital stretches along the Atlantic Ocean and offers a lively mix of West African culture, colorful markets, music, historic landmarks, waterfront scenery, and access to the country’s tropical landscapes.',
+
+  seoTitle: 'Conakry Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Conakry, Guinea with a guide to markets, museums, cultural attractions, islands, beaches, local food and practical travel tips.',
+
+  keywords: [
+    'Conakry travel guide',
+    'things to do in Conakry',
+    'Conakry attractions',
+    'Conakry tourism',
+    'Guinea travel guide',
+    'Conakry Guinea',
+    'Conakry itinerary',
+    'Guinea tourism',
+    'Conakry travel tips',
+    'places to visit in Guinea'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'November to February',
+  dailyBudget: 45,
+
+  attractions: [
+    {
+      name: 'Sandervalia National Museum',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Madina Market',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Grand Mosque of Conakry',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Îles de Los',
+      duration: 'Full day',
+      bestTime: 'Morning',
+      entryFee: 'Tour dependent'
+    },
+    {
+      name: 'Faga-Faga Fougou Espace Culturel',
+      duration: '1.5 hours',
+      bestTime: 'Evening',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Conakry Botanical Garden',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Ahmed Sékou Touré International Airport (CKY) is the main international gateway to Guinea and is located near Conakry.',
+    'The dry season from November to February is generally more comfortable for exploring the capital and planning excursions.',
+    'Conakry is a densely populated peninsula, and traffic can be extremely heavy, so allow extra time for journeys.',
+    'French is the official language, while Susu, Pular, Maninka and other local languages are widely spoken.',
+    'Madina Market is one of the busiest commercial areas in the city and offers an authentic look at everyday local life.',
+    'The Îles de Los provide an opportunity to experience beaches and tropical island scenery away from the urban centre.',
+    'Dress respectfully when visiting religious sites and ask permission before photographing people.',
+    'Use reputable transportation and keep valuables secure in crowded markets and busy public areas.',
+    'If traveling outside Conakry, arrange transportation and accommodation in advance because infrastructure can be limited in some areas.',
+    'Check current entry requirements, local security conditions, health information, transportation availability and travel advisories before traveling.'
+  ]
+},
+{
+  id: 'bissau-gw',
+  city: 'Bissau',
+  country: 'Guinea-Bissau',
+  airportCode: 'OXB',
+  image: `https://images.unsplash.com/photo-1623930376524-ead3734be423?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Guinea-Bissau’s relaxed capital sits along the Geba River and offers Portuguese colonial architecture, colorful markets, lively streets, traditional culture, and access to the country’s remarkable Atlantic islands and natural landscapes.',
+
+  seoTitle: 'Bissau Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Bissau, Guinea-Bissau with a guide to historic landmarks, markets, colonial architecture, local culture, food and travel tips.',
+
+  keywords: [
+    'Bissau travel guide',
+    'things to do in Bissau',
+    'Bissau attractions',
+    'Bissau tourism',
+    'Guinea-Bissau travel guide',
+    'Bissau Guinea-Bissau',
+    'Guinea-Bissau tourism',
+    'Bissau itinerary',
+    'Bissau travel tips',
+    'places to visit in Guinea-Bissau'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'November to April',
+  dailyBudget: 40,
+
+  attractions: [
+    {
+      name: 'Bissau Velho',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Amílcar Cabral Mausoleum',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Fortaleza de São José da Amura',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Bandim Market',
+      duration: '1.5–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Bissau Port',
+      duration: '1 hour',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Presidential Palace Area',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Osvaldo Vieira International Airport (OXB) is the main international airport serving Bissau.',
+    'November through April is generally the drier period and is more comfortable for exploring the capital and planning trips around the country.',
+    'Portuguese is the official language, while Guinea-Bissau Creole and several African languages are also widely spoken.',
+    'Bissau Velho is the historic heart of the capital and is best explored during daylight hours.',
+    'Bandim Market provides an authentic look at local commerce, food, clothing, crafts, and everyday life.',
+    'The Bijagós Archipelago is one of the country’s biggest attractions, but reaching the islands requires additional planning and transportation.',
+    'Road conditions outside Bissau can be challenging, particularly during the rainy season, so allow plenty of time for longer journeys.',
+    'Dress respectfully when visiting religious, cultural, and residential areas.',
+    'Keep valuables secure in busy markets and crowded areas and use reputable transportation when possible.',
+    'Check current entry requirements, transportation availability, security conditions, health information, and travel advisories before traveling.'
+  ]
+},
+{
+  id: 'georgetown-gy',
+  city: 'Georgetown',
+  country: 'Guyana',
+  airportCode: 'GEO',
+  image: `https://images.unsplash.com/photo-1564858523844-73ee8233a3a2?q=80&w=1194&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Guyana’s colorful capital sits along the Atlantic coast and combines British colonial architecture, wooden stilt houses, lively markets, riverside scenery, diverse cuisine, and access to the country’s extraordinary rainforest and wildlife.',
+
+  seoTitle: 'Georgetown Guyana Travel Guide: Things to Do & Attractions',
+
+  seoDescription: 'Explore Georgetown, Guyana with a guide to historic wooden architecture, markets, museums, botanical gardens, local culture and essential travel tips.',
+
+  keywords: [
+    'Georgetown Guyana travel guide',
+    'things to do in Georgetown Guyana',
+    'Georgetown Guyana attractions',
+    'Guyana travel guide',
+    'Guyana tourism',
+    'Georgetown Guyana',
+    'Georgetown itinerary',
+    'Guyana travel tips',
+    'Guyana rainforest',
+    'places to visit in Guyana'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'February to April, August to September',
+  dailyBudget: 65,
+
+  attractions: [
+    {
+      name: 'St. George’s Cathedral',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Stabroek Market',
+      duration: '1.5–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Guyana National Museum',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Botanical Gardens',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Promenade Gardens',
+      duration: '1 hour',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Walter Roth Museum of Anthropology',
+      duration: '1.5 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Cheddi Jagan International Airport (GEO) is the main international gateway to Guyana and is located outside central Georgetown.',
+    'Guyana has a tropical climate, with weather varying considerably between the coast and interior rainforest regions.',
+    'Georgetown is largely flat and is known for its drainage canals and historic wooden architecture.',
+    'English is the official language, making Guyana particularly accessible for English-speaking travelers.',
+    'Guyana has a diverse food culture influenced by African, Indian, Amerindian, European, Chinese and Caribbean traditions.',
+    'Use reputable taxis, transfers, or established tour operators when traveling around Georgetown and beyond.',
+    'If you plan to visit Guyana’s rainforest or interior regions, arrange flights, accommodation, guides, and transportation in advance.',
+    'Kaieteur Falls is one of Guyana’s most famous attractions and is generally visited as an organized day trip from Georgetown.',
+    'Keep valuables secure in busy markets and crowded areas, particularly around Stabroek Market.',
+    'Pack insect repellent, sunscreen, lightweight clothing, and rain protection when exploring Guyana’s tropical environment.',
+    'Check current entry requirements, transportation availability, health information, local conditions, and travel advisories before traveling.'
+  ]
+},
+{
+  id: 'honolulu-us',
+  city: 'Honolulu, Hawaii',
+  country: 'USA',
+  airportCode: 'HNL',
+  image: `https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80${cropParams}`,
+
+  description: 'Honolulu is the vibrant gateway to Hawaii, combining world-famous beaches, volcanic landscapes, Polynesian culture, scenic hikes, historic landmarks, and the relaxed island lifestyle of Oahu.',
+
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'April to June, September to November',
+  dailyBudget: 150,
+
+  attractions: [
+    {
+      name: 'Waikiki Beach',
+      duration: '2–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Diamond Head',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Pearl Harbor',
+      duration: '3–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Hanauma Bay',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Iolani Palace',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Manoa Falls',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Daniel K. Inouye International Airport (HNL) is the main airport serving Honolulu and the island of Oahu.',
+    'April to June and September to November can offer a good balance of weather, crowds, and accommodation prices.',
+    'Waikiki is convenient for first-time visitors, with easy access to beaches, restaurants, shopping, and tours.',
+    'Renting a car can be useful for exploring areas outside Honolulu, although parking in Waikiki can be expensive.',
+    'Book popular attractions and activities in advance, particularly Pearl Harbor, Diamond Head, and Hanauma Bay.',
+    'Hawaii has strong cultural traditions, so respect sacred places, local communities, wildlife, and protected natural areas.',
+    'Ocean conditions can change quickly. Pay attention to lifeguard warnings and posted swimming restrictions.',
+    'The cost of food and accommodation can be high, so travelers should budget carefully for transportation, meals, and activities.',
+    'Bring reef-safe sunscreen, comfortable walking shoes, swimwear, and light layers.',
+    'Check current entry requirements, attraction reservations, weather conditions, and local travel information before your trip.'
+  ],
+
+  keywords: [
+    'Honolulu travel guide',
+    'Hawaii travel guide',
+    'things to do in Honolulu',
+    'Honolulu attractions',
+    'Hawaii vacation',
+    'Oahu travel guide',
+    'Waikiki Beach',
+    'Diamond Head Hawaii',
+    'Pearl Harbor',
+    'Hawaii travel tips'
+  ]
+},
+{
+  id: 'tegucigalpa-hn',
+  city: 'Tegucigalpa',
+  country: 'Honduras',
+  airportCode: 'TGU',
+  image: `https://images.unsplash.com/photo-1697343734561-1ed65fea6652?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Honduras’s mountainous capital is a lively mix of historic churches, colonial streets, colorful markets, museums, viewpoints, and surrounding highland landscapes, offering a different side of the country beyond its famous Caribbean islands and beaches.',
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'December to April',
+  dailyBudget: 45,
+
+  attractions: [
+    {
+      name: 'Basilica of Suyapa',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Parque Central',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'National Palace of Honduras',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Museum for National Identity',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'El Picacho',
+      duration: '2 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Iglesia de San Francisco',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Toncontín International Airport (TGU) serves Tegucigalpa, while Palmerola International Airport (XPL) is an important international gateway for travelers visiting central Honduras.',
+    'December through April is generally the drier period and is popular for exploring Honduras.',
+    'Tegucigalpa is built across mountainous terrain, so expect steep roads and allow extra time for journeys.',
+    'Spanish is the official language, while several Indigenous and Caribbean languages are also spoken in different parts of Honduras.',
+    'Use reputable taxis, ride-hailing services, or organized transfers rather than accepting transportation from unknown individuals.',
+    'El Picacho provides panoramic views over Tegucigalpa and is particularly enjoyable later in the day.',
+    'Honduras has much more to offer beyond its capital, including Roatán, Utila, Copán Ruinas, Pico Bonito, and Caribbean beaches.',
+    'If continuing to the Bay Islands, check domestic flight and ferry schedules in advance.',
+    'Keep valuables secure in busy public areas and avoid displaying expensive electronics.',
+    'Check current entry requirements, transportation conditions, local safety information, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Tegucigalpa travel guide',
+    'things to do in Tegucigalpa',
+    'Tegucigalpa attractions',
+    'Honduras travel guide',
+    'Honduras tourism',
+    'Tegucigalpa Honduras',
+    'Tegucigalpa itinerary',
+    'Honduras travel tips',
+    'places to visit in Honduras',
+    'Honduras vacation'
+  ]
+},
+{
+  id: 'kuwait-city-kw',
+  city: 'Kuwait City',
+  country: 'Kuwait',
+  airportCode: 'KWI',
+  image: `https://images.unsplash.com/photo-1558634742-56096b49522b?q=80&w=966&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Kuwait City blends modern Gulf architecture, waterfront promenades, traditional markets, grand mosques, museums, and a distinctive desert-meets-coast atmosphere.',
+
+  budget: 'Luxury',
+  tripType: 'City',
+  bestSeason: 'November to March',
+  dailyBudget: 120,
+
+  attractions: [
+    {
+      name: 'Kuwait Towers',
+      duration: '1.5 hours',
+      bestTime: 'Sunset',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Souq Al-Mubarakiya',
+      duration: '2 hours',
+      bestTime: 'Evening',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Grand Mosque of Kuwait',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'The Avenues',
+      duration: '3 hours',
+      bestTime: 'Evening',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Al Shaheed Park',
+      duration: '2 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Marina Beach',
+      duration: '2 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Kuwait International Airport (KWI) is the country’s main and only international airport. :contentReference[oaicite:1]{index=1}',
+    'November to March is generally the most comfortable period for sightseeing because summer temperatures can be extremely high.',
+    'Kuwait City is modern and spread out, so taxis and ride-hailing services are useful for getting around.',
+    'Dress respectfully, particularly when visiting mosques and traditional areas.',
+    'Souq Al-Mubarakiya is a good place to experience traditional Kuwaiti food, spices, perfumes, clothing, and handicrafts.',
+    'Alcohol is prohibited in Kuwait, so do not expect it to be available in hotels or restaurants.',
+    'Friday is the main weekly day of worship, and opening hours for some businesses and attractions can differ.',
+    'Carry water and protect yourself from the sun when spending time outdoors.',
+    'Check current entry requirements, local regulations, attraction opening hours, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Kuwait City travel guide',
+    'things to do in Kuwait City',
+    'Kuwait travel guide',
+    'Kuwait City attractions',
+    'Kuwait tourism',
+    'Kuwait City itinerary',
+    'Kuwait travel tips',
+    'Kuwait Towers',
+    'Souq Al Mubarakiya',
+    'Kuwait vacation'
+  ]
+},
+{
+  id: 'almaty-kz',
+  city: 'Almaty',
+  country: 'Kazakhstan',
+  airportCode: 'ALA',
+  image: `https://images.unsplash.com/photo-1659651117607-d2b397cf100f?q=80&w=923&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Kazakhstan’s largest city sits beneath the spectacular Tian Shan Mountains and combines leafy boulevards, Soviet-era architecture, lively cafés, local markets, museums, and easy access to alpine lakes and mountain adventures.',
+
+  budget: 'Moderate',
+  tripType: 'Adventure',
+  bestSeason: 'May to October',
+  dailyBudget: 65,
+
+  attractions: [
+    {
+      name: 'Medeu Skating Rink',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Shymbulak Mountain Resort',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Kok-Tobe',
+      duration: '2–3 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Green Bazaar',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Panfilov Park',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Ascension Cathedral',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Almaty International Airport (ALA) is one of Kazakhstan’s major airports and serves the country’s largest city. :contentReference[oaicite:2]{index=2}',
+    'May to October is ideal for hiking and outdoor exploration, while winter is popular for skiing around Shymbulak.',
+    'Almaty is surrounded by the Tian Shan Mountains, making it an excellent base for combining city sightseeing with nature.',
+    'Public transportation, taxis, and ride-hailing services make getting around the city relatively easy.',
+    'Try local specialties such as beshbarmak, plov, baursak, and traditional Kazakh dairy products.',
+    'The Green Bazaar is a good place to experience local food, produce, spices, dried fruits, and regional products.',
+    'Mountain weather can change quickly, so bring layers and suitable footwear for outdoor excursions.',
+    'Popular mountain attractions can become busy during weekends and holidays.',
+    'Consider adding Big Almaty Lake or nearby mountain destinations to a longer Kazakhstan itinerary.',
+    'Check current entry requirements, transportation schedules, weather conditions, and local travel information before traveling.'
+  ],
+
+  keywords: [
+    'Almaty travel guide',
+    'things to do in Almaty',
+    'Almaty attractions',
+    'Kazakhstan travel guide',
+    'Kazakhstan tourism',
+    'Almaty itinerary',
+    'Almaty travel tips',
+    'Almaty mountains',
+    'Shymbulak',
+    'Almaty vacation'
+  ]
+},
+{
+  id: 'pristina-xk',
+  city: 'Pristina',
+  country: 'Kosovo',
+  airportCode: 'PRN',
+  image: `https://images.unsplash.com/photo-1687869545075-d8a613c04647?q=80&w=753&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Kosovo’s lively capital combines Ottoman-era heritage, modern cafés, historic mosques, colorful markets, contemporary culture, and easy access to the dramatic mountains and historic towns of the wider country.',
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'May to September',
+  dailyBudget: 50,
+
+  attractions: [
+    {
+      name: 'Newborn Monument',
+      duration: '30 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Mother Teresa Square',
+      duration: '1 hour',
+      bestTime: 'Evening',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Pristina National Library',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Ethnological Museum',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Pristina Bazaar Area',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Gračanica Monastery',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Pristina International Airport (PRN) is Kosovo’s main international airport and the primary gateway for visitors.',
+    'May to September is generally the best period for comfortable sightseeing and outdoor activities.',
+    'Pristina is relatively compact and many central attractions can be explored on foot.',
+    'Kosovo uses the euro as its official currency.',
+    'Try local specialties such as flija, burek, grilled meats, fresh salads, and traditional Balkan coffee.',
+    'Prizren is one of the country’s most popular destinations and can easily be added to a longer Kosovo itinerary.',
+    'The Rugova Valley and surrounding mountains are excellent options for hiking and nature experiences during warmer months.',
+    'Dress respectfully when visiting mosques, monasteries, and other religious sites.',
+    'Carry identification when traveling outside the capital and check local transportation schedules in advance.',
+    'Check current entry requirements, border conditions, transportation availability, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Pristina travel guide',
+    'things to do in Pristina',
+    'Pristina attractions',
+    'Kosovo travel guide',
+    'Kosovo tourism',
+    'Pristina Kosovo',
+    'Pristina itinerary',
+    'Kosovo travel tips',
+    'places to visit in Kosovo',
+    'Kosovo vacation'
+  ]
+},
+{
+  id: 'luxembourg-city-lu',
+  city: 'Luxembourg City',
+  country: 'Luxembourg',
+  airportCode: 'LUX',
+  image: `https://images.unsplash.com/photo-1592770733110-738f7769188c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Luxembourg City combines dramatic cliff-top views, medieval fortifications, elegant squares, historic old quarters, European institutions, and peaceful green spaces in one of Europe’s most compact capitals.',
+
+  budget: 'Luxury',
+  tripType: 'Culture',
+  bestSeason: 'May to September',
+  dailyBudget: 140,
+
+  attractions: [
+    {
+      name: 'Old Quarter',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Bock Casemates',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Grand Ducal Palace',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Chemin de la Corniche',
+      duration: '1 hour',
+      bestTime: 'Sunset',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Notre-Dame Cathedral',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Pfaffenthal',
+      duration: '1.5 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Luxembourg Airport (LUX) is the country’s main international airport.',
+    'May to September is ideal for exploring the city on foot and enjoying its parks and viewpoints.',
+    'Luxembourg City is compact and many major attractions can be reached by walking or public transportation.',
+    'Public transportation within Luxembourg is free, making it particularly convenient for visitors.',
+    'The Old Quarter and fortress areas are among the city’s highlights and are best explored at a relaxed pace.',
+    'Luxembourg is one of Europe’s more expensive destinations, so accommodation and dining should be included carefully in your budget.',
+    'The country has three official languages: Luxembourgish, French and German, while English is widely understood.',
+    'Consider taking day trips to castles and villages outside Luxembourg City.',
+    'Comfortable shoes are recommended because parts of the historic city have steep streets and cobblestones.',
+    'Check current attraction opening hours and seasonal events before traveling.'
+  ],
+
+  keywords: [
+    'Luxembourg City travel guide',
+    'things to do in Luxembourg',
+    'Luxembourg attractions',
+    'Luxembourg travel guide',
+    'Luxembourg tourism',
+    'Luxembourg City itinerary',
+    'Luxembourg travel tips',
+    'Luxembourg Old Town',
+    'Bock Casemates',
+    'Luxembourg vacation'
+  ]
+},
+{
+  id: 'vilnius-lt',
+  city: 'Vilnius',
+  country: 'Lithuania',
+  airportCode: 'VNO',
+  image: `https://images.unsplash.com/photo-1549891472-991e6bc75d1e?q=80&w=873&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Lithuania’s capital blends a beautifully preserved medieval Old Town with baroque churches, leafy parks, creative neighborhoods, modern cafés, and a fascinating mix of Baltic and European history.',
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'May to September',
+  dailyBudget: 55,
+
+  attractions: [
+    {
+      name: 'Vilnius Old Town',
+      duration: '3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Gediminas Castle Tower',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Gate of Dawn',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Užupis',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Palace of the Grand Dukes',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Three Crosses Hill',
+      duration: '1.5 hours',
+      bestTime: 'Sunset',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Vilnius Airport (VNO) is Lithuania’s largest civil airport and is located close to the city centre.',
+    'May to September is a great period for sightseeing, outdoor cafés, parks and longer daylight hours.',
+    'Vilnius Old Town is highly walkable and is best explored slowly rather than by rushing between attractions.',
+    'Lithuania uses the euro.',
+    'Užupis is known for its creative atmosphere, galleries, cafés and distinctive local character.',
+    'Public transportation is useful for attractions outside the historic centre.',
+    'Lithuanian cuisine includes hearty potato dishes, rye bread, soups, smoked meats and distinctive desserts.',
+    'Summer days are long, while winter brings short daylight hours and colder weather.',
+    'Consider combining Vilnius with Kaunas or the Curonian Spit for a longer Lithuania itinerary.',
+    'Check current attraction hours, transport schedules and seasonal events before traveling.'
+  ],
+
+  keywords: [
+    'Vilnius travel guide',
+    'things to do in Vilnius',
+    'Vilnius attractions',
+    'Lithuania travel guide',
+    'Lithuania tourism',
+    'Vilnius Old Town',
+    'Vilnius itinerary',
+    'Vilnius travel tips',
+    'places to visit in Lithuania',
+    'Lithuania vacation'
+  ]
+},
+{
+  id: 'monrovia-lr',
+  city: 'Monrovia',
+  country: 'Liberia',
+  airportCode: 'ROB',
+  image: `https://images.unsplash.com/photo-1723593638247-0dfd1c759997?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Liberia’s coastal capital offers Atlantic beaches, lively markets, historic landmarks, colorful neighborhoods, local cuisine, and a fascinating introduction to West African culture and history.',
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'November to April',
+  dailyBudget: 50,
+
+  attractions: [
+    {
+      name: 'National Museum of Liberia',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Ducor Hill',
+      duration: '1 hour',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Waterside Market',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Providence Island',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'ELWA Beach',
+      duration: '2–3 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Ce Ce Beach',
+      duration: '2–3 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Roberts International Airport (ROB) is Liberia’s primary international aviation gateway and is located in Robertsfield, outside Monrovia.',
+    'James Spriggs Payne Airport (MLW) is located within Monrovia and also serves the capital.',
+    'November to April is generally the drier period and is more comfortable for sightseeing.',
+    'English is Liberia’s official language, while Liberian English and numerous local languages are widely spoken.',
+    'Monrovia has a tropical climate, so lightweight clothing, sunscreen and rain protection are useful.',
+    'Use reputable taxis, private transfers or established tour operators when getting around.',
+    'Keep valuables secure in crowded markets and busy public areas.',
+    'Liberia has beautiful Atlantic beaches, but swimming conditions can vary and local advice should be followed.',
+    'If traveling outside Monrovia, arrange transportation and accommodation in advance.',
+    'Check current entry requirements, health information, security conditions and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Monrovia travel guide',
+    'things to do in Monrovia',
+    'Monrovia attractions',
+    'Liberia travel guide',
+    'Liberia tourism',
+    'Monrovia Liberia',
+    'Monrovia itinerary',
+    'Liberia travel tips',
+    'Liberia beaches',
+    'places to visit in Liberia'
+  ]
+},
+{
+  id: 'riga-lv',
+  city: 'Riga',
+  country: 'Latvia',
+  airportCode: 'RIX',
+  image: `https://images.unsplash.com/photo-1614887259709-fe2c3aa56022?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Latvia’s elegant capital combines a UNESCO-listed historic centre, striking Art Nouveau architecture, lively markets, riverside parks, cozy cafés, and a vibrant Baltic cultural scene.',
+
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'May to September',
+  dailyBudget: 70,
+
+  attractions: [
+    {
+      name: 'Riga Old Town',
+      duration: '3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'House of the Black Heads',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Riga Central Market',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Freedom Monument',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Art Nouveau District',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Bastejkalna Park',
+      duration: '1 hour',
+      bestTime: 'Evening',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Riga Airport (RIX) is Latvia’s main international airport and an important gateway to the Baltic region.',
+    'May to September offers long daylight hours and comfortable conditions for exploring Riga.',
+    'Riga’s Old Town is compact and easy to explore on foot.',
+    'Latvia uses the euro.',
+    'The Central Market is one of the best places to experience local food and everyday life.',
+    'Riga is particularly famous for its Art Nouveau architecture, with many impressive buildings concentrated around the city centre.',
+    'Public transportation is convenient for reaching neighborhoods outside the historic centre.',
+    'Try Latvian specialties such as rye bread, grey peas, smoked fish and potato-based dishes.',
+    'Winter can be cold and dark but gives Riga a distinctive festive atmosphere around Christmas.',
+    'Consider adding Jurmala or the Gauja National Park to a longer Latvia itinerary.',
+    'Check current attraction opening hours, public transportation schedules and seasonal events before traveling.'
+  ],
+
+  keywords: [
+    'Riga travel guide',
+    'things to do in Riga',
+    'Riga attractions',
+    'Latvia travel guide',
+    'Latvia tourism',
+    'Riga Old Town',
+    'Riga itinerary',
+    'Riga travel tips',
+    'Riga Art Nouveau',
+    'places to visit in Latvia'
+  ]
+},
+{
+  id: 'bamako-ml',
+  city: 'Bamako',
+  country: 'Mali',
+  airportCode: 'BKO',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTZ6sSrpQDe3JYshJJLO3Vgrn43VdP9w4kSI4taldBPQ&s=10${cropParams}`,
+
+  description: 'Mali’s capital sits along the Niger River and offers a fascinating introduction to West African culture, traditional markets, local crafts, music, museums, and the country’s rich artistic heritage.',
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'November to February',
+  dailyBudget: 45,
+
+  attractions: [
+    {
+      name: 'National Museum of Mali',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Bamako Grand Mosque',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Marché de Medina',
+      duration: '1.5–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Bamako Artisan Market',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Niger River',
+      duration: '1–2 hours',
+      bestTime: 'Sunset',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Point G Hill',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Modibo Keita International Airport (BKO) is the main international airport serving Bamako.',
+    'November to February is generally more comfortable for exploring because temperatures are lower than during the hottest months.',
+    'Bamako is located along the Niger River, which plays an important role in the city’s culture and daily life.',
+    'French is the official language, while Bambara and several other local languages are widely spoken.',
+    'Markets and artisan areas are good places to discover traditional textiles, jewelry, woodwork, and other locally made crafts.',
+    'Use reputable transportation and established local guides when exploring outside the main urban areas.',
+    'Mali has significant security risks, and conditions can vary considerably by region.',
+    'Check the latest official travel advisories, security conditions, entry requirements, and transportation availability before traveling.',
+    'Avoid traveling to areas subject to current security warnings even if they appear in general tourism information.',
+    'Carry water, sun protection, and lightweight clothing because Bamako can become extremely hot.'
+  ],
+
+  keywords: [
+    'Bamako travel guide',
+    'things to do in Bamako',
+    'Bamako attractions',
+    'Mali travel guide',
+    'Mali tourism',
+    'Bamako Mali',
+    'Bamako itinerary',
+    'Mali travel tips',
+    'places to visit in Mali',
+    'Bamako culture'
+  ]
+},
+{
+  id: 'valletta-mt',
+  city: 'Valletta',
+  country: 'Malta',
+  airportCode: 'MLA',
+  image: `https://images.unsplash.com/photo-1669294841689-0ceb34ad40c1?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Malta’s historic capital is a compact Mediterranean city filled with honey-colored limestone buildings, grand churches, ancient fortifications, waterfront views, museums, cafés, and centuries of European and Mediterranean history.',
+
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'April to June, September to October',
+  dailyBudget: 100,
+
+  attractions: [
+    {
+      name: 'St. John’s Co-Cathedral',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Upper Barrakka Gardens',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Grandmaster’s Palace',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Valletta Waterfront',
+      duration: '1.5 hours',
+      bestTime: 'Evening',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Fort St. Elmo',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'National Archaeology Museum',
+      duration: '1.5 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Paid'
+    }
+  ],
+
+  travelTips: [
+    'Malta International Airport (MLA) is the country’s only airport for commercial passenger flights and the main gateway to Malta.',
+    'April to June and September to October offer a good combination of pleasant weather and fewer crowds than the peak summer months.',
+    'Valletta is compact and highly walkable, although some streets are steep and feature stairs.',
+    'Malta uses the euro.',
+    'English and Maltese are both official languages, making Malta particularly accessible for English-speaking visitors.',
+    'Public buses connect Valletta with many parts of Malta, while ferries are useful for traveling between Valletta and the Three Cities or Sliema.',
+    'Malta has a rich history spanning prehistoric civilizations, the Phoenicians, Romans, Knights of St. John, and the British period.',
+    'Summer can be extremely hot and busy, particularly around popular beaches and historic attractions.',
+    'Consider taking day trips to Mdina, Gozo, the Three Cities, and the Blue Grotto.',
+    'Check attraction opening hours, ferry schedules, seasonal events, and current entry requirements before traveling.'
+  ],
+
+  keywords: [
+    'Valletta travel guide',
+    'things to do in Valletta',
+    'Valletta attractions',
+    'Malta travel guide',
+    'Malta tourism',
+    'Valletta Malta',
+    'Valletta itinerary',
+    'Malta travel tips',
+    'Malta vacation',
+    'places to visit in Malta'
+  ]
+},
+{
+  id: 'ulaanbaatar-mn',
+  city: 'Ulaanbaatar',
+  country: 'Mongolia',
+  airportCode: 'UBN',
+  image: `https://images.unsplash.com/photo-1589654615616-6756a5653100?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Mongolia’s capital is the gateway to a vast land of endless steppe, ancient Buddhist traditions, nomadic culture, dramatic mountains, and some of the world’s most extraordinary wilderness experiences.',
+
+  budget: 'Budget',
+  tripType: 'Adventure',
+  bestSeason: 'June to September',
+  dailyBudget: 55,
+
+  attractions: [
+    {
+      name: 'Gandan Monastery',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Sükhbaatar Square',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'National Museum of Mongolia',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Zaisan Memorial',
+      duration: '1.5 hours',
+      bestTime: 'Sunset',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Bogd Khan Mountain',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Naran Tuul Market',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Chinggis Khaan International Airport (UBN) is Mongolia’s main international airport and the primary gateway to Ulaanbaatar.',
+    'June to September is generally the best period for exploring Mongolia, with warmer temperatures and better conditions for outdoor adventures.',
+    'Ulaanbaatar is an excellent starting point for trips into the Mongolian steppe, Gobi Desert, national parks, and traditional nomadic areas.',
+    'Mongolian weather can change rapidly, so pack layers even during summer.',
+    'Outside Ulaanbaatar, distances are enormous and infrastructure can be limited, so organized tours or experienced local guides are highly recommended.',
+    'Staying in a traditional ger camp is one of the best ways to experience Mongolia’s nomadic culture.',
+    'Try traditional dishes such as buuz, khuushuur and tsuivan, while also sampling Mongolia’s distinctive dairy products.',
+    'Cash can still be useful outside major cities, although cards are increasingly accepted in Ulaanbaatar.',
+    'Winter in Mongolia is extremely cold, while the summer months provide much more comfortable conditions for most travelers.',
+    'Check current entry requirements, transportation options, weather conditions, and local travel information before traveling.'
+  ],
+
+  keywords: [
+    'Ulaanbaatar travel guide',
+    'Mongolia travel guide',
+    'things to do in Ulaanbaatar',
+    'Ulaanbaatar attractions',
+    'Mongolia tourism',
+    'Mongolia itinerary',
+    'Mongolia travel tips',
+    'Mongolian steppe',
+    'Gobi Desert Mongolia',
+    'Mongolia adventure travel'
+  ]
+},
+
+{
+  id: 'maputo-mz',
+  city: 'Maputo',
+  country: 'Mozambique',
+  airportCode: 'MPM',
+  image: `https://images.unsplash.com/photo-1526998758291-f87c4c1a8fff?q=80&w=875&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Mozambique’s coastal capital combines Portuguese-influenced architecture, palm-lined avenues, colorful markets, Indian Ocean beaches, lively cafés, and a distinctive blend of African, Portuguese, and South Asian influences.',
+
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'May to October',
+  dailyBudget: 65,
+
+  attractions: [
+    {
+      name: 'Maputo Central Market',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Maputo Fortress',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'FEIMA Arts and Crafts Market',
+      duration: '1.5 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Maputo Elephant Reserve',
+      duration: 'Full day',
+      bestTime: 'Early Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Maputo Waterfront',
+      duration: '2 hours',
+      bestTime: 'Sunset',
+      entryFee: 'Free'
+    },
+    {
+      name: 'National Art Museum',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Maputo International Airport (MPM) is the main international gateway to Mozambique and serves the capital.',
+    'May to October is generally the dry season and is a popular period for exploring Mozambique.',
+    'Maputo has a strong Portuguese influence visible in its architecture, food, language, and historic neighborhoods.',
+    'Portuguese is the official language, while numerous local languages are spoken throughout the country.',
+    'Seafood is a major part of Mozambican cuisine, with prawns, crab, fish, and peri-peri dishes particularly popular.',
+    'Maputo is a useful starting point for exploring southern Mozambique, including beaches and wildlife areas.',
+    'For trips outside the capital, arrange transportation and accommodation in advance because distances can be significant.',
+    'Mozambique has some of Africa’s most spectacular beaches and marine destinations, including the Bazaruto and Quirimbas archipelagos.',
+    'Use reputable transportation and keep valuables secure, particularly in crowded markets and busy public areas.',
+    'Check current entry requirements, regional security conditions, transportation availability, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Maputo travel guide',
+    'things to do in Maputo',
+    'Maputo attractions',
+    'Mozambique travel guide',
+    'Mozambique tourism',
+    'Maputo Mozambique',
+    'Maputo itinerary',
+    'Mozambique travel tips',
+    'Mozambique beaches',
+    'places to visit in Mozambique'
+  ]
+},
+{
+  id: 'palikir-fm',
+  city: 'Palikir',
+  country: 'Micronesia',
+  airportCode: 'PNI',
+  image: `https://images.unsplash.com/photo-1553602932-f93f674a9aaa?q=80&w=1242&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Palikir is the capital of the Federated States of Micronesia, located on the lush island of Pohnpei. The surrounding island is known for tropical rainforests, waterfalls, coral reefs, traditional culture, and spectacular Pacific landscapes.',
+
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'December to April',
+  dailyBudget: 100,
+
+  attractions: [
+    {
+      name: 'Nan Madol',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Pahn Takai Waterfall',
+      duration: '3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Sokehs Ridge',
+      duration: '3–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Pohnpei Botanical Garden',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Kolonia Town',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Pohnpei Coral Reefs',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Tour dependent'
+    }
+  ],
+
+  travelTips: [
+    'Pohnpei International Airport (PNI) is the main airport serving Pohnpei and the capital region.',
+    'Pohnpei has a tropical climate and receives substantial rainfall throughout the year, keeping its forests exceptionally lush.',
+    'December to April is generally a popular period for visiting, although rain is possible year-round.',
+    'Palikir is relatively small, so many visitors combine the capital with excursions around the island.',
+    'Nan Madol is one of Pohnpei’s most remarkable archaeological sites and is best visited with a knowledgeable local guide.',
+    'Roads around Pohnpei make a rental car or local transportation useful for reaching attractions outside Palikir.',
+    'The island offers excellent opportunities for snorkeling, diving, hiking, waterfalls, and wildlife experiences.',
+    'Respect local customs and ask permission before photographing people or entering culturally significant areas.',
+    'Bring insect repellent, rain protection, reef-safe sunscreen, and sturdy shoes for outdoor activities.',
+    'Check current flight schedules, entry requirements, weather conditions, and local travel information before traveling.'
+  ],
+
+  keywords: [
+    'Palikir travel guide',
+    'Micronesia travel guide',
+    'things to do in Palikir',
+    'Micronesia tourism',
+    'Pohnpei travel',
+    'Nan Madol',
+    'Pohnpei attractions',
+    'Micronesia vacation',
+    'Micronesia travel tips',
+    'Pohnpei itinerary'
+  ]
+},
+{
+  id: 'chisinau-md',
+  city: 'Chișinău',
+  country: 'Moldova',
+  airportCode: 'RMO',
+  image: `https://images.unsplash.com/photo-1629045951387-6d86eb2aad3d?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Moldova’s relaxed capital combines leafy boulevards, Soviet-era architecture, historic churches, lively parks, local markets, cafés, and easy access to one of Eastern Europe’s most interesting wine regions.',
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'May to September',
+  dailyBudget: 45,
+
+  attractions: [
+    {
+      name: 'Cathedral Park',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Nativity Cathedral',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Triumphal Arch',
+      duration: '30 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'National Museum of History of Moldova',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Central Market',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Mileștii Mici Winery',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Tour dependent'
+    }
+  ],
+
+  travelTips: [
+    'Chișinău International Airport (RMO) is Moldova’s main international airport and the primary gateway to the country.',
+    'May to September is generally a comfortable period for sightseeing, outdoor cafés, and countryside excursions.',
+    'Chișinău is relatively affordable compared with many European capitals, particularly for food and accommodation.',
+    'Moldovan cuisine includes dishes such as mămăligă, plăcinte, zeamă, and a variety of locally produced cheeses and wines.',
+    'Moldova has a strong wine culture, and vineyard tours are one of the country’s most popular experiences.',
+    'Public transportation is inexpensive, while taxis and ride-hailing services are useful for getting around the capital.',
+    'The city has many parks and green spaces, making walking an enjoyable way to explore central Chișinău.',
+    'Consider taking a day trip to wineries such as Cricova or Mileștii Mici.',
+    'Temperatures can vary significantly between seasons, so pack according to the time of year.',
+    'Check current entry requirements, transportation schedules, border conditions, and travel information before traveling.'
+  ],
+
+  keywords: [
+    'Chisinau travel guide',
+    'Chișinău travel guide',
+    'things to do in Chisinau',
+    'Moldova travel guide',
+    'Moldova tourism',
+    'Chisinau attractions',
+    'Moldova wine tours',
+    'Chisinau itinerary',
+    'Moldova travel tips',
+    'places to visit in Moldova'
+  ]
+},
+{
+  id: 'majuro-mh',
+  city: 'Majuro',
+  country: 'Marshall Islands',
+  airportCode: 'MAJ',
+  image: `https://images.unsplash.com/photo-1553709708-8a9a224b1814?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Majuro is the capital of the Marshall Islands, a narrow coral atoll surrounded by the Pacific Ocean and known for turquoise waters, tropical beaches, traditional island culture, and exceptional marine scenery.',
+
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'December to April',
+  dailyBudget: 100,
+
+  attractions: [
+    {
+      name: 'Laura Beach',
+      duration: '3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Alele Museum and Public Library',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Uliga Beach',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Majuro Atoll',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Tour dependent'
+    },
+    {
+      name: 'Local Handicraft Markets',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Majuro Lagoon',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Tour dependent'
+    }
+  ],
+
+  travelTips: [
+    'Amata Kabua International Airport (MAJ) is the main international airport serving Majuro and the Marshall Islands.',
+    'December to April is generally a popular period for visiting, although tropical weather can occur throughout the year.',
+    'Majuro is a narrow atoll, so distances can be deceptively short but traffic can make journeys take longer.',
+    'The Marshall Islands uses the U.S. dollar as its currency.',
+    'English and Marshallese are official languages.',
+    'The lagoon offers opportunities for snorkeling, diving, boating, and other marine activities.',
+    'Respect local customs and traditional community practices when visiting villages and residential areas.',
+    'Bring reef-safe sunscreen, insect repellent, lightweight clothing, and rain protection.',
+    'Accommodation and supplies can be more expensive because the islands are geographically remote.',
+    'Check current flight schedules, entry requirements, weather conditions, and local travel information before traveling.'
+  ],
+
+  keywords: [
+    'Majuro travel guide',
+    'Marshall Islands travel guide',
+    'things to do in Majuro',
+    'Marshall Islands tourism',
+    'Majuro attractions',
+    'Majuro vacation',
+    'Marshall Islands beaches',
+    'Majuro itinerary',
+    'Marshall Islands travel tips',
+    'Majuro lagoon'
+  ]
+},
+{
+  id: 'antananarivo-mg',
+  city: 'Antananarivo',
+  country: 'Madagascar',
+  airportCode: 'TNR',
+  image: `https://images.unsplash.com/photo-1624272909636-4995421e37e7?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Madagascar’s highland capital is a fascinating introduction to the island, combining royal history, colorful markets, traditional Malagasy architecture, lively neighborhoods, and access to the country’s extraordinary wildlife and landscapes.',
+
+  budget: 'Budget',
+  tripType: 'Nature',
+  bestSeason: 'April to October',
+  dailyBudget: 50,
+
+  attractions: [
+    {
+      name: 'Rova of Antananarivo',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Analakely Market',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Ambohimanga',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Tsimbazaza Zoo',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Andafiavaratra Palace',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Lemurs’ Park',
+      duration: '3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    }
+  ],
+
+  travelTips: [
+    'Ivato International Airport (TNR) is Madagascar’s main international gateway and serves Antananarivo.',
+    'April to October is generally the drier season and is popular for exploring Madagascar.',
+    'Madagascar is one of the world’s most biodiverse destinations, with many species found nowhere else on Earth.',
+    'Malagasy and French are the country’s official languages.',
+    'Antananarivo is built across hills, so comfortable walking shoes are recommended.',
+    'Markets are excellent places to experience local food, crafts, textiles, spices, and everyday life.',
+    'For wildlife experiences outside the capital, plan transportation and guided tours in advance because distances can be considerable.',
+    'Madagascar has many distinct regions, including rainforests, beaches, deserts, mountains, and national parks.',
+    'Bring insect repellent, sunscreen, comfortable shoes, and lightweight clothing for outdoor excursions.',
+    'Check current entry requirements, transportation conditions, health information, weather, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Antananarivo travel guide',
+    'Madagascar travel guide',
+    'things to do in Antananarivo',
+    'Antananarivo attractions',
+    'Madagascar tourism',
+    'Madagascar wildlife',
+    'Madagascar itinerary',
+    'Madagascar travel tips',
+    'Madagascar vacation',
+    'places to visit in Madagascar'
+  ]
+},
+{
+  id: 'lilongwe-mw',
+  city: 'Lilongwe',
+  country: 'Malawi',
+  airportCode: 'LLW',
+  image: `https://images.unsplash.com/photo-1663506501703-94e951c561ea?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Malawi’s relaxed capital is surrounded by greenery and offers a peaceful introduction to the country, with wildlife areas, local markets, cultural attractions, and easy access to Malawi’s famous lake and highland landscapes.',
+
+  budget: 'Budget',
+  tripType: 'Nature',
+  bestSeason: 'May to October',
+  dailyBudget: 50,
+
+  attractions: [
+    {
+      name: 'Lilongwe Wildlife Centre',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Kumbali Cultural Village',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Old Town Market',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Parliament Building Area',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Nature Sanctuary',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Kamuzu Mausoleum',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Lilongwe International Airport (LLW) is the main international airport serving Malawi’s capital.',
+    'May to October is the dry season and is generally the best period for wildlife viewing and outdoor activities.',
+    'Lilongwe is divided broadly into an Old Town and a newer City Centre, with attractions spread across different areas.',
+    'English is the official language, while Chichewa is widely spoken throughout Malawi.',
+    'Malawi is known as the "Warm Heart of Africa" because of its welcoming culture and friendly communities.',
+    'The country is famous for Lake Malawi, which offers beaches, snorkeling, diving, kayaking, and other water activities.',
+    'Wildlife destinations such as Liwonde National Park and Majete Wildlife Reserve can be combined with a longer Malawi itinerary.',
+    'Use reputable transportation and established tour operators when traveling outside Lilongwe.',
+    'Carry insect repellent, sunscreen, comfortable walking shoes, and lightweight clothing.',
+    'Check current entry requirements, transportation schedules, weather conditions, health information, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Lilongwe travel guide',
+    'Malawi travel guide',
+    'things to do in Lilongwe',
+    'Lilongwe attractions',
+    'Malawi tourism',
+    'Malawi wildlife',
+    'Lilongwe itinerary',
+    'Malawi travel tips',
+    'Lake Malawi',
+    'places to visit in Malawi'
+  ]
+},
+{
+  id: 'lagos-ng',
+  city: 'Lagos',
+  country: 'Nigeria',
+  airportCode: 'LOS',
+  image: `https://images.unsplash.com/photo-1618828665011-0abd973f7bb8?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Nigeria’s energetic coastal megacity combines vibrant music and arts, historic neighborhoods, bustling markets, Atlantic beaches, modern restaurants, and one of West Africa’s most dynamic urban cultures.',
+
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'November to February',
+  dailyBudget: 65,
+
+  attractions: [
+    {
+      name: 'Lekki Conservation Centre',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Nike Art Gallery',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'National Museum Lagos',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Tarkwa Bay Beach',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Makoko',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Tour dependent'
+    },
+    {
+      name: 'Freedom Park',
+      duration: '1.5 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Paid'
+    }
+  ],
+
+  travelTips: [
+    'Murtala Muhammed International Airport (LOS) is the main international gateway to Lagos and one of Nigeria’s major aviation hubs.',
+    'November to February is generally a more comfortable period for visiting because conditions are typically drier.',
+    'Lagos is a huge and busy city, so traffic can significantly increase travel times between attractions.',
+    'English is Nigeria’s official language, while Yoruba, Igbo, Hausa, and many other Nigerian languages are widely spoken.',
+    'Lagos has a major food scene, with Nigerian dishes such as jollof rice, suya, pounded yam, pepper soup, and seafood widely available.',
+    'Use reputable ride-hailing services, taxis, or organized transfers when moving around the city.',
+    'Lekki and Victoria Island offer many restaurants, hotels, entertainment venues, and coastal attractions.',
+    'Lagos has a vibrant contemporary art, fashion, music, and film scene and is an excellent destination for travelers interested in modern African culture.',
+    'Keep valuables secure in crowded areas and follow local advice regarding transportation and neighborhoods.',
+    'Check current entry requirements, local security conditions, weather, transportation options, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Lagos travel guide',
+    'things to do in Lagos Nigeria',
+    'Lagos attractions',
+    'Nigeria travel guide',
+    'Nigeria tourism',
+    'Lagos Nigeria',
+    'Lagos itinerary',
+    'Lagos travel tips',
+    'Lagos beaches',
+    'places to visit in Nigeria'
+  ]
+},
+{
+  id: 'alofi-nu',
+  city: 'Alofi',
+  country: 'Niue',
+  airportCode: 'IUE',
+  image: `https://images.unsplash.com/photo-1637595823309-62c331c4c4ec?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Alofi is the laid-back capital of Niue, a remote Pacific island known for dramatic limestone cliffs, crystal-clear waters, coral reefs, sea caves, tropical forests, and exceptional opportunities for snorkeling and whale watching.',
+
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'May to October',
+  dailyBudget: 100,
+
+  attractions: [
+    {
+      name: 'Alofi Bay',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Talava Arches',
+      duration: '3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Limahi Sea Track',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Matapa Chasm',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Hio Beach',
+      duration: '2–3 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Limu Pools',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Hanan International Airport (IUE) is Niue’s main airport and the primary gateway to the island.',
+    'May to October is generally a popular period for outdoor activities, although Niue can be visited throughout the year.',
+    'Niue is a small island, so renting a car is one of the most convenient ways to explore its coastline and natural attractions.',
+    'English and Niuean are the main languages used on the island.',
+    'Niue is famous for its clear waters, coral reefs, sea caves, and dramatic coastal cliffs.',
+    'Whale watching is particularly popular during the migration season, but sightings are never guaranteed.',
+    'Swimming conditions can change quickly around the island, so follow local warnings and use caution around exposed coastal areas.',
+    'Bring reef-safe sunscreen, insect repellent, comfortable walking shoes, swimwear, and rain protection.',
+    'Supplies and accommodation options are limited compared with larger Pacific destinations, so booking ahead is recommended.',
+    'Respect the island’s local customs, protected natural areas, and marine environment.',
+    'Check current flight schedules, entry requirements, weather conditions, and local travel information before traveling.'
+  ],
+
+  keywords: [
+    'Alofi travel guide',
+    'Niue travel guide',
+    'things to do in Alofi',
+    'Niue tourism',
+    'Niue attractions',
+    'Niue vacation',
+    'Niue beaches',
+    'Niue snorkeling',
+    'Niue travel tips',
+    'places to visit in Niue'
+  ]
+},
+{
+  id: 'windhoek-na',
+  city: 'Windhoek',
+  country: 'Namibia',
+  airportCode: 'WDH',
+  image: `https://images.unsplash.com/photo-1586100810957-e4a1fed8c645?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Namibia’s relaxed highland capital is the gateway to one of Africa’s most spectacular landscapes, from the vast Namib Desert and towering dunes to dramatic canyons, wildlife reserves, and remote coastal scenery.',
+
+  budget: 'Moderate',
+  tripType: 'Adventure',
+  bestSeason: 'May to October',
+  dailyBudget: 75,
+
+  attractions: [
+    {
+      name: 'Christ Church',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Independence Memorial Museum',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Tintenpalast',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Namibia Craft Centre',
+      duration: '1.5 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Daan Viljoen Game Reserve',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'National Botanic Garden of Namibia',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Hosea Kutako International Airport (WDH) is the main international airport serving Windhoek.',
+    'May to October is generally the dry season and one of the best periods for wildlife viewing and outdoor travel.',
+    'Windhoek is an important starting point for road trips to Sossusvlei, Etosha National Park, Swakopmund, and the Skeleton Coast.',
+    'Namibia is a large country with long distances between major attractions, so allow plenty of time for road travel.',
+    'Renting a suitable vehicle is popular for exploring Namibia, although guided tours are a convenient alternative.',
+    'English is the official language, while Afrikaans, German, Oshiwambo and other languages are also widely spoken.',
+    'Namibia has excellent stargazing opportunities because of its low population density and limited light pollution.',
+    'Carry plenty of water when traveling through remote areas and avoid driving long distances after dark where wildlife may be present on roads.',
+    'Temperatures can vary significantly between day and night, so pack layers.',
+    'Check current entry requirements, road conditions, weather, park regulations, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Windhoek travel guide',
+    'Namibia travel guide',
+    'things to do in Windhoek',
+    'Windhoek attractions',
+    'Namibia tourism',
+    'Namibia safari',
+    'Namibia itinerary',
+    'Namibia travel tips',
+    'Sossusvlei Namibia',
+    'Etosha National Park'
+  ]
+},
+{
+  id: 'yaren-nr',
+  city: 'Yaren',
+  country: 'Nauru',
+  airportCode: 'INU',
+  image: `https://images.unsplash.com/photo-1553947315-42cee3c8c771?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Yaren is the unofficial capital district of Nauru, a tiny Pacific island nation surrounded by turquoise waters and coral reefs, offering a unique glimpse into remote island life, coastal landscapes, and Micronesian culture.',
+
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'May to October',
+  dailyBudget: 100,
+
+  attractions: [
+    {
+      name: 'Anibare Bay',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Buada Lagoon',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Command Ridge',
+      duration: '1.5 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Nauru Parliament House',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Japanese WWII Relics',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Nauru Coastal Road',
+      duration: '2–3 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Nauru International Airport (INU) is the country’s main airport and is located in Yaren District.',
+    'Nauru does not have an official capital; Yaren is commonly described as the de facto capital because major government offices are located there.',
+    'The island is extremely small, making it possible to explore many areas by car or local transportation.',
+    'English and Nauruan are widely used.',
+    'Nauru has a tropical climate with warm temperatures throughout the year.',
+    'Bring sunscreen, insect repellent, lightweight clothing, comfortable shoes, and rain protection.',
+    'Accommodation and transportation options are limited compared with larger Pacific destinations, so planning ahead is important.',
+    'The island has a fascinating history connected to phosphate mining and World War II.',
+    'Respect local communities and avoid entering restricted mining or industrial areas.',
+    'Check current flight schedules, entry requirements, accommodation availability, weather conditions, and travel information before traveling.'
+  ],
+
+  keywords: [
+    'Yaren travel guide',
+    'Nauru travel guide',
+    'things to do in Nauru',
+    'Nauru tourism',
+    'Nauru attractions',
+    'Nauru vacation',
+    'Nauru travel tips',
+    'Yaren Nauru',
+    'Nauru itinerary',
+    'places to visit in Nauru'
+  ]
+},
+{
+  id: 'panama-city-pa',
+  city: 'Panama City',
+  country: 'Panama',
+  airportCode: 'PTY',
+  image: `https://images.pexels.com/photos/5864401/pexels-photo-5864401.jpeg${cropParams}`,
+  description: 'Panama is a dynamic Central American destination where modern city life meets tropical beaches, lush rainforests, Caribbean and Pacific coastlines, colonial neighborhoods, and the world-famous Panama Canal.',
+
+  seoTitle: 'Panama Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Panama with a guide to Panama City, the Panama Canal, Casco Viejo, San Blas Islands, Bocas del Toro, tropical beaches, nature and travel tips.',
+
+  keywords: [
+    'Panama travel guide',
+    'things to do in Panama',
+    'Panama City travel guide',
+    'Panama attractions',
+    'Panama Canal',
+    'Casco Viejo Panama',
+    'San Blas Islands',
+    'Bocas del Toro',
+    'Panama tourism',
+    'Panama itinerary'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Adventure',
+  bestSeason: 'December to April',
+  dailyBudget: 85,
+
+  attractions: [
+    {
+      name: 'Panama Canal',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Casco Viejo',
+      duration: '2–3 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Amador Causeway',
+      duration: '2 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Metropolitan Natural Park',
+      duration: '2–3 hours',
+      bestTime: 'Early Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'San Blas Islands',
+      duration: '1–2 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Bocas del Toro',
+      duration: '2–3 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Panama City is the country’s capital and main international gateway.',
+    'Tocumen International Airport (PTY) is Panama’s principal international airport.',
+    'Spanish is the official language, while English is also widely understood in many tourist and business areas.',
+    'The Panamanian balboa (PAB) is the official currency, while US dollars are used alongside it throughout the country.',
+    'Panama is famous for the Panama Canal, one of the world’s most important engineering and shipping landmarks.',
+    'Casco Viejo is the historic heart of Panama City, with colonial architecture, plazas, restaurants, and rooftop views.',
+    'December to April is generally the drier period and is popular for sightseeing and beach trips.',
+    'San Blas and Bocas del Toro offer some of Panama’s best island and Caribbean experiences.',
+    'Panama has both Pacific and Caribbean coastlines, making it possible to experience very different landscapes on the same trip.',
+    'Avoid demonstrations and large crowds, and check local conditions before traveling to remote areas.',
+    'Parts of the Darién Region and Mosquito Gulf are currently Level 4: Do Not Travel, so avoid those areas and check the latest official advisory before planning travel beyond the main tourist routes.'
+  ]
+},
+{
+  id: 'saint-denis-re',
+  city: 'Saint-Denis',
+  country: 'Réunion',
+  airportCode: 'RUN',
+  image: `https://images.pexels.com/photos/16854207/pexels-photo-16854207.png${cropParams}`,
+  description: 'Réunion is a spectacular French island in the Indian Ocean known for volcanic landscapes, dramatic mountains, tropical forests, waterfalls, black-sand beaches, Creole culture, and the spectacular Piton de la Fournaise.',
+
+  seoTitle: 'Réunion Travel Guide: Volcanoes, Mountains, Beaches & Travel Tips',
+
+  seoDescription: 'Explore Réunion with a guide to Saint-Denis, Piton de la Fournaise, Cirque de Mafate, Cilaos, waterfalls, beaches, hiking and travel tips.',
+
+  keywords: [
+    'Réunion travel guide',
+    'things to do in Réunion',
+    'Réunion Island travel guide',
+    'Saint-Denis Réunion',
+    'Piton de la Fournaise',
+    'Cirque de Mafate',
+    'Cilaos Réunion',
+    'Réunion hiking',
+    'Réunion beaches',
+    'Réunion tourism'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Adventure',
+  bestSeason: 'May to October',
+  dailyBudget: 130,
+
+  attractions: [
+    {
+      name: 'Piton de la Fournaise',
+      duration: 'Full Day',
+      bestTime: 'Early Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Saint-Denis',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Cirque de Mafate',
+      duration: '1–2 days',
+      bestTime: 'Early Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Cilaos',
+      duration: 'Full Day',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Piton des Neiges',
+      duration: '1–2 days',
+      bestTime: 'Early Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Cascade de Grand Galet',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Réunion is a French overseas department and region in the Indian Ocean and uses the euro.',
+    'Roland Garros Airport (RUN) near Saint-Denis is the main international airport.',
+    'French is the official language, while Réunion Creole is widely spoken in everyday life.',
+    'Réunion is one of the best destinations in the Indian Ocean for hiking, canyoning, volcano experiences, and mountain scenery.',
+    'Piton de la Fournaise is one of the world’s most active volcanoes. Check volcanic alerts and trail conditions before visiting.',
+    'The island has a tropical climate, but conditions vary significantly between the coast and high mountains.',
+    'May to October is generally a popular period for hiking because conditions are often cooler and drier.',
+    'A rental car is highly recommended for exploring different parts of the island.',
+    'Mountain weather can change quickly, so carry waterproof and warm layers when hiking.',
+    'Réunion has both tropical beaches and dramatic volcanic terrain, making it easy to combine relaxation with adventure.',
+    'Check current weather, volcanic conditions, road closures, and official travel information before outdoor activities.'
+  ]
+},
+{
+  id: 'koror-pw',
+  city: 'Koror',
+  country: 'Palau',
+  airportCode: 'ROR',
+  image: `https://images.unsplash.com/photo-1690649416378-1335211d5864?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Koror is the gateway to Palau’s extraordinary marine world, surrounded by turquoise lagoons, limestone islands, coral reefs, hidden beaches, and some of the Pacific’s most spectacular diving and snorkeling sites.',
+
+  budget: 'Luxury',
+  tripType: 'Nature',
+  bestSeason: 'December to April',
+  dailyBudget: 180,
+
+  attractions: [
+    {
+      name: 'Rock Islands Southern Lagoon',
+      duration: 'Full day',
+      bestTime: 'Morning',
+      entryFee: 'Tour dependent'
+    },
+    {
+      name: 'Jellyfish Lake',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Permit/Tour dependent'
+    },
+    {
+      name: 'Palau International Coral Reef Center',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Milky Way Lagoon',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Tour dependent'
+    },
+    {
+      name: 'German Channel',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Tour dependent'
+    },
+    {
+      name: 'Long Beach',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Tour dependent'
+    }
+  ],
+
+  travelTips: [
+    'Roman Tmetuchl International Airport (ROR) is Palau’s main international airport and gateway to Koror.',
+    'December to April is generally a popular period for diving, snorkeling, and outdoor activities.',
+    'Palau is one of the world’s premier destinations for diving and marine wildlife.',
+    'Most major attractions outside Koror require organized boat tours or other marine transportation.',
+    'Permits and conservation fees may apply to certain marine attractions, so check requirements before booking tours.',
+    'The Rock Islands are a UNESCO World Heritage Site and should be explored responsibly.',
+    'Protect the marine environment by avoiding touching coral, disturbing wildlife, or leaving waste behind.',
+    'Bring reef-safe sunscreen, waterproof bags, snorkeling equipment if needed, and protection from the tropical sun.',
+    'Palau is relatively remote, so accommodation and tours can be expensive compared with many Southeast Asian destinations.',
+    'Check current entry requirements, marine regulations, weather conditions, flight schedules, and local travel information before traveling.'
+  ],
+
+  keywords: [
+    'Koror travel guide',
+    'Palau travel guide',
+    'things to do in Koror',
+    'Palau tourism',
+    'Palau diving',
+    'Palau snorkeling',
+    'Rock Islands Palau',
+    'Jellyfish Lake',
+    'Palau itinerary',
+    'Palau travel tips'
+  ]
+},
+{
+  id: 'port-moresby-pg',
+  city: 'Port Moresby',
+  country: 'Papua New Guinea',
+  airportCode: 'POM',
+  image: `https://images.unsplash.com/photo-1615608178738-37d47d27c13d?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Papua New Guinea’s coastal capital is the gateway to one of the world’s most culturally and naturally diverse countries, offering tropical landscapes, traditional cultures, coastal scenery, museums, and access to remarkable wildlife and adventure experiences.',
+
+  budget: 'Moderate',
+  tripType: 'Adventure',
+  bestSeason: 'May to October',
+  dailyBudget: 90,
+
+  attractions: [
+    {
+      name: 'National Museum and Art Gallery',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Port Moresby Nature Park',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Paga Hill',
+      duration: '1.5 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Ela Beach',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Parliament House',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Adventure Park PNG',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    }
+  ],
+
+  travelTips: [
+    'Jacksons International Airport (POM) is the main international airport serving Port Moresby and Papua New Guinea.',
+    'May to October is generally the drier period and is more comfortable for outdoor activities.',
+    'Port Moresby is the main gateway for travelers continuing to other regions of Papua New Guinea.',
+    'English is one of Papua New Guinea’s official languages, alongside Tok Pisin and Hiri Motu.',
+    'Papua New Guinea has extraordinary cultural diversity, with hundreds of distinct languages and communities.',
+    'Use reputable transportation, hotels, and established tour operators when exploring Port Moresby.',
+    'For trips outside the capital, arrange transportation, accommodation, and guides in advance because infrastructure can be limited.',
+    'Papua New Guinea is particularly popular for trekking, diving, birdwatching, wildlife, and cultural experiences.',
+    'Respect local customs and ask permission before photographing people or entering culturally significant areas.',
+    'Check current entry requirements, security conditions, health information, transportation options, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Port Moresby travel guide',
+    'Papua New Guinea travel guide',
+    'things to do in Port Moresby',
+    'Port Moresby attractions',
+    'Papua New Guinea tourism',
+    'Papua New Guinea adventure',
+    'Port Moresby itinerary',
+    'Papua New Guinea travel tips',
+    'PNG travel',
+    'places to visit in Papua New Guinea'
+  ]
+},
+{
+  id: 'asuncion-py',
+  city: 'Asunción',
+  country: 'Paraguay',
+  airportCode: 'ASU',
+  image: `https://images.unsplash.com/photo-1585318822320-300abf39f65d?q=80&w=775&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Paraguay’s riverside capital combines colonial heritage, leafy plazas, historic buildings, lively markets, local food, and a relaxed South American atmosphere that makes it an appealing base for discovering the country.',
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'May to September',
+  dailyBudget: 45,
+
+  attractions: [
+    {
+      name: 'Palacio de los López',
+      duration: '1 hour',
+      bestTime: 'Evening',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Panteón Nacional de los Héroes',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Casa de la Independencia',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Mercado 4',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Costanera de Asunción',
+      duration: '2 hours',
+      bestTime: 'Sunset',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Museo del Barro',
+      duration: '1.5 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Silvio Pettirossi International Airport (ASU) is the main international airport serving Asunción.',
+    'May to September is generally the cooler and drier period and is comfortable for sightseeing.',
+    'Asunción is relatively affordable compared with many major South American capitals.',
+    'Spanish and Guaraní are Paraguay’s official languages, and both are widely used.',
+    'Try traditional Paraguayan foods such as sopa paraguaya, chipa, mbejú, and grilled meats.',
+    'The Costanera area is particularly pleasant around sunset and offers views toward the Paraguay River.',
+    'Taxis and ride-hailing services are convenient for getting around the city.',
+    'Mercado 4 is a lively traditional market where travelers can experience local food, commerce, and everyday life.',
+    'Consider combining Asunción with destinations such as Encarnación, the Jesuit missions, or the natural landscapes of the Chaco.',
+    'Check current entry requirements, weather conditions, transportation schedules, and local travel information before traveling.'
+  ],
+
+  keywords: [
+    'Asuncion travel guide',
+    'Asunción travel guide',
+    'things to do in Asuncion',
+    'Asuncion attractions',
+    'Paraguay travel guide',
+    'Paraguay tourism',
+    'Asuncion itinerary',
+    'Paraguay travel tips',
+    'places to visit in Paraguay',
+    'Asuncion vacation'
+  ]
+},
+{
+  id: 'moscow-ru',
+  city: 'Moscow',
+  country: 'Russia',
+  airportCode: 'SVO',
+  image: `https://images.unsplash.com/photo-1513326738677-b964603b136d?auto=format&fit=crop&w=1600&q=80${cropParams}`,
+
+  description: 'Russia’s vast capital combines centuries of history with grand architecture, world-famous landmarks, extensive museums, elegant parks, and a fascinating blend of imperial heritage and modern city life.',
+
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'May to September',
+  dailyBudget: 80,
+
+  attractions: [
+    {
+      name: 'Red Square',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'The Kremlin',
+      duration: '3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Saint Basil’s Cathedral',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Tretyakov Gallery',
+      duration: '2–3 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Gorky Park',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Moscow Metro',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    }
+  ],
+
+  travelTips: [
+    'Sheremetyevo International Airport (SVO) is one of Moscow’s major international airports.',
+    'May to September generally offers the most comfortable conditions for sightseeing, while winter provides a very different experience with snow and shorter daylight hours.',
+    'Moscow is enormous, so plan attractions by neighborhood to avoid spending too much time traveling across the city.',
+    'The Moscow Metro is not only an important transportation system but is also famous for its elaborate historic stations.',
+    'Russian is the primary language, and English may be limited outside major tourist hotels and international businesses.',
+    'Moscow has extensive public transportation, including metro, buses, and rail connections.',
+    'The city has many museums, theaters, historic buildings, parks, and cultural attractions, so allow several days if you want a deeper experience.',
+    'Carry identification and keep important travel documents secure.',
+    'International payment options and banking services can be affected by current sanctions and financial restrictions.',
+    'Check current entry requirements, flight availability, payment restrictions, local regulations, and official travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Moscow travel guide',
+    'Russia travel guide',
+    'things to do in Moscow',
+    'Moscow attractions',
+    'Russia tourism',
+    'Moscow itinerary',
+    'Moscow travel tips',
+    'Red Square',
+    'Kremlin Moscow',
+    'places to visit in Russia'
+  ]
+},
+{
+  id: 'kigali-rw',
+  city: 'Kigali',
+  country: 'Rwanda',
+  airportCode: 'KGL',
+  image: `https://images.unsplash.com/photo-1687986261123-b17f08f2796c?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Rwanda’s clean and remarkably green capital is a gateway to the country’s mountain landscapes, wildlife experiences, vibrant contemporary culture, and famous gorilla trekking adventures.',
+
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'June to September, December to February',
+  dailyBudget: 70,
+
+  attractions: [
+    {
+      name: 'Kigali Genocide Memorial',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Kimironko Market',
+      duration: '1.5–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Kigali City Tower',
+      duration: '1 hour',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Inema Arts Center',
+      duration: '1.5 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Nyamirambo Neighborhood',
+      duration: '2–3 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Tour dependent'
+    },
+    {
+      name: 'Mount Kigali',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Kigali International Airport (KGL) is Rwanda’s main international airport and the primary gateway to the country.',
+    'June to September is generally one of the best periods for gorilla trekking and outdoor activities because it falls within a drier season.',
+    'Kigali is known for its cleanliness, greenery, organized streets, and relatively easy-to-navigate city center.',
+    'Kinyarwanda, English, French, and Swahili are widely used in Rwanda.',
+    'The Kigali Genocide Memorial is an important place of remembrance and should be visited respectfully.',
+    'Rwanda is one of Africa’s leading destinations for mountain gorilla trekking, particularly in Volcanoes National Park.',
+    'Gorilla trekking permits are limited and expensive, so they should be arranged well in advance.',
+    'Kigali can also serve as a starting point for trips to Lake Kivu, Nyungwe National Park, and Akagera National Park.',
+    'Plastic bags are restricted in Rwanda, so travelers should be prepared to follow local environmental regulations.',
+    'Pack comfortable walking shoes, lightweight clothing, rain protection, and insect repellent.',
+    'Check current entry requirements, park regulations, permit availability, weather conditions, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Kigali travel guide',
+    'Rwanda travel guide',
+    'things to do in Kigali',
+    'Kigali attractions',
+    'Rwanda tourism',
+    'Rwanda gorilla trekking',
+    'Kigali itinerary',
+    'Rwanda travel tips',
+    'Volcanoes National Park',
+    'places to visit in Rwanda'
+  ]
+},
+{
+  id: 'brazzaville-cg',
+  city: 'Brazzaville',
+  country: 'Republic of the Congo',
+  airportCode: 'BZV',
+  image: `https://images.unsplash.com/photo-1633960721714-48d0a9edb9cb?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Brazzaville, the capital of the Republic of the Congo, sits along the Congo River and offers a fascinating mix of Central African culture, riverside scenery, colorful markets, historic landmarks, local art, and access to the country’s tropical forests.',
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'June to September',
+  dailyBudget: 50,
+
+  attractions: [
+    {
+      name: 'Basilique Sainte-Anne du Congo',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Poto-Poto Market',
+      duration: '1.5–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Pierre Savorgnan de Brazza Memorial',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Congo River Waterfront',
+      duration: '2 hours',
+      bestTime: 'Sunset',
+      entryFee: 'Free'
+    },
+    {
+      name: 'National Museum of the Republic of Congo',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Djoué River',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Maya-Maya Airport (BZV) is the main international airport serving Brazzaville and the Republic of the Congo.',
+    'June to September is generally the drier period and can be more comfortable for exploring the capital and planning outdoor activities.',
+    'Brazzaville sits directly across the Congo River from Kinshasa in the Democratic Republic of the Congo.',
+    'French is the official language, while Lingala and other local languages are also widely spoken.',
+    'The city has a strong contemporary art and music scene, making it an interesting destination for travelers interested in Central African culture.',
+    'Poto-Poto is one of the city’s well-known neighborhoods and is associated with local art, markets, and everyday life.',
+    'Use reputable taxis, private transfers, or established tour operators when traveling around Brazzaville.',
+    'If traveling outside the capital, arrange transportation and accommodation in advance because infrastructure can be limited in some areas.',
+    'The Congo Basin rainforest offers exceptional wildlife and nature experiences, but trips into remote areas should be organized with experienced local operators.',
+    'Keep valuables secure in busy markets and crowded public areas.',
+    'Check current entry requirements, local security conditions, health information, transportation availability, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Brazzaville travel guide',
+    'Republic of Congo travel guide',
+    'things to do in Brazzaville',
+    'Brazzaville attractions',
+    'Congo tourism',
+    'Republic of Congo tourism',
+    'Brazzaville itinerary',
+    'Brazzaville travel tips',
+    'Congo River',
+    'places to visit in Republic of Congo'
+  ]
+},
+{
+  id: 'paramaribo-sr',
+  city: 'Paramaribo',
+  country: 'Suriname',
+  airportCode: 'PBM',
+  image: `https://images.unsplash.com/photo-1660758899283-3900e1d04f81?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Suriname’s multicultural capital blends Dutch colonial architecture, tropical greenery, lively markets, diverse cuisine, riverside scenery, and a fascinating mix of South American, Caribbean, Asian, African, and Indigenous influences.',
+
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'February to April, August to November',
+  dailyBudget: 60,
+
+  attractions: [
+    {
+      name: 'Historic Inner City of Paramaribo',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Fort Zeelandia',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Saint Peter and Paul Cathedral',
+      duration: '45 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Waterkant',
+      duration: '1.5 hours',
+      bestTime: 'Sunset',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Central Market',
+      duration: '1.5–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Palmentuin',
+      duration: '1 hour',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Johan Adolf Pengel International Airport (PBM) is Suriname’s main international airport and the primary gateway to Paramaribo. :contentReference[oaicite:3]{index=3}',
+    'Paramaribo’s historic inner city is recognized for its distinctive Dutch colonial architecture and multicultural heritage.',
+    'Dutch is the official language, while Sranan Tongo, Hindi, Javanese, Maroon languages, and other languages are also spoken.',
+    'Suriname has one of the most culturally diverse populations in South America, reflected strongly in its food, festivals, architecture, and religious traditions.',
+    'Try local specialties such as pom, roti, peanut soup, bakabana, and Surinamese-Javanese dishes.',
+    'Paramaribo is relatively relaxed, but traffic and road conditions can vary outside the central areas.',
+    'The country is heavily forested, and trips into the interior can offer exceptional rainforest and wildlife experiences.',
+    'Organize transportation and accommodation in advance if traveling into remote rainforest regions.',
+    'Carry insect repellent, sunscreen, lightweight clothing, and rain protection because of the tropical climate.',
+    'Check current entry requirements, transportation schedules, weather conditions, and travel information before traveling.'
+  ],
+
+  keywords: [
+    'Paramaribo travel guide',
+    'Suriname travel guide',
+    'things to do in Paramaribo',
+    'Paramaribo attractions',
+    'Suriname tourism',
+    'Paramaribo itinerary',
+    'Suriname travel tips',
+    'Suriname rainforest',
+    'Paramaribo vacation',
+    'places to visit in Suriname'
+  ]
+},
+{
+  id: 'dakar-sn',
+  city: 'Dakar',
+  country: 'Senegal',
+  airportCode: 'DSS',
+  image: `https://images.unsplash.com/photo-1721013244188-5c4f4593ee72?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Senegal’s vibrant coastal capital blends West African culture, Atlantic beaches, colorful markets, historic landmarks, contemporary art, and a lively music and food scene.',
+
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'November to May',
+  dailyBudget: 60,
+
+  attractions: [
+    { name: 'Gorée Island', duration: 'Half day', bestTime: 'Morning', entryFee: 'Ferry + site fees' },
+    { name: 'African Renaissance Monument', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Marché Sandaga', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'IFAN Museum of African Arts', duration: '2 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Lac Rose', duration: 'Half day', bestTime: 'Morning', entryFee: 'Tour dependent' },
+    { name: 'Ngor Beach', duration: '2–3 hours', bestTime: 'Afternoon', entryFee: 'Free' }
+  ],
+
+  travelTips: [
+    'Blaise Diagne International Airport (DSS) is Senegal’s main international airport and is located outside central Dakar.',
+    'November to May is generally a comfortable period for exploring Senegal.',
+    'French is the official language, while Wolof and other local languages are widely spoken.',
+    'Gorée Island is one of Dakar’s most important cultural and historical excursions.',
+    'Try Senegalese dishes such as thieboudienne, yassa, mafé, and bissap.',
+    'Use reputable taxis, ride-hailing services, or organized transfers when moving around Dakar.',
+    'Markets can be busy, so keep valuables secure and be prepared for persistent vendors.',
+    'Senegal can be combined with beach destinations, wildlife reserves, and cultural sites outside Dakar.',
+    'Carry sunscreen, lightweight clothing, comfortable shoes, and some rain protection.',
+    'Check current entry requirements, weather conditions, ferry schedules, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Dakar travel guide',
+    'Senegal travel guide',
+    'things to do in Dakar',
+    'Dakar attractions',
+    'Senegal tourism',
+    'Dakar itinerary',
+    'Gorée Island',
+    'Senegal travel tips',
+    'Dakar beaches',
+    'places to visit in Senegal'
+  ]
+},
+{
+  id: 'belgrade-rs',
+  city: 'Belgrade',
+  country: 'Serbia',
+  airportCode: 'BEG',
+  image: `https://images.unsplash.com/photo-1632343084107-353ad9e95e37?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Serbia’s energetic capital sits where the Sava and Danube rivers meet, combining historic fortresses, Orthodox churches, riverside promenades, lively cafés, nightlife, and a distinctive Balkan atmosphere.',
+
+  budget: 'Budget',
+  tripType: 'City',
+  bestSeason: 'May to September',
+  dailyBudget: 55,
+
+  attractions: [
+    { name: 'Belgrade Fortress', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Knez Mihailova Street', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Church of Saint Sava', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Skadarlija', duration: '2 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Nikola Tesla Museum', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Ada Ciganlija', duration: '3 hours', bestTime: 'Afternoon', entryFee: 'Varies' }
+  ],
+
+  travelTips: [
+    'Belgrade Nikola Tesla Airport (BEG) is the main international airport serving Belgrade.',
+    'May to September is ideal for enjoying outdoor cafés, parks, riverside areas, and nightlife.',
+    'Belgrade is relatively affordable compared with many Western European capitals.',
+    'Serbian is the official language, while English is commonly understood in tourist areas.',
+    'The city has an extensive public transportation network and taxis are widely available.',
+    'Try Serbian specialties such as ćevapi, pljeskavica, burek, kajmak, and rakija.',
+    'The confluence of the Sava and Danube is one of Belgrade’s defining geographic features.',
+    'Skadarlija is particularly atmospheric in the evening and is known for traditional restaurants and music.',
+    'Consider adding Novi Sad, Niš, or Serbia’s mountain regions to a longer trip.',
+    'Check current entry requirements, transport schedules, weather, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Belgrade travel guide',
+    'Serbia travel guide',
+    'things to do in Belgrade',
+    'Belgrade attractions',
+    'Serbia tourism',
+    'Belgrade itinerary',
+    'Belgrade nightlife',
+    'Serbia travel tips',
+    'Belgrade vacation',
+    'places to visit in Serbia'
+  ]
+},
+{
+  id: 'basseterre-kn',
+  city: 'Basseterre',
+  country: 'Saint Kitts and Nevis',
+  airportCode: 'SKB',
+  image: `https://images.unsplash.com/photo-1645402180516-04de478b1e7b?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Basseterre is the colorful capital of Saint Kitts and Nevis, offering Caribbean beaches, historic sugar plantations, volcanic landscapes, colonial architecture, and a relaxed island atmosphere.',
+
+  budget: 'Luxury',
+  tripType: 'Beach',
+  bestSeason: 'December to April',
+  dailyBudget: 150,
+
+  attractions: [
+    { name: 'Brimstone Hill Fortress', duration: '2 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Basseterre Historic Area', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'South Friars Bay', duration: '3 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Mount Liamuiga', duration: 'Full day', bestTime: 'Early Morning', entryFee: 'Guide dependent' },
+    { name: 'Romney Manor', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Pinney’s Beach, Nevis', duration: '3 hours', bestTime: 'Afternoon', entryFee: 'Free' }
+  ],
+
+  travelTips: [
+    'Robert L. Bradshaw International Airport (SKB) is the main international gateway for Saint Kitts and Nevis.',
+    'December to April is generally the most popular period because of the drier weather.',
+    'Basseterre is compact and many central attractions can be explored on foot.',
+    'English is the official language.',
+    'The Eastern Caribbean dollar is widely used.',
+    'Ferry services connect Saint Kitts and Nevis, making island-hopping relatively convenient.',
+    'Brimstone Hill Fortress is one of the country’s most important historic attractions.',
+    'The islands offer snorkeling, diving, hiking, sailing, and beach experiences.',
+    'Accommodation can become expensive during peak winter periods, so book early.',
+    'Check current entry requirements, ferry schedules, weather conditions, and local travel information before traveling.'
+  ],
+
+  keywords: [
+    'Basseterre travel guide',
+    'Saint Kitts travel guide',
+    'Saint Kitts and Nevis tourism',
+    'things to do in Basseterre',
+    'Saint Kitts attractions',
+    'Saint Kitts beaches',
+    'Saint Kitts itinerary',
+    'Nevis travel',
+    'Caribbean vacation',
+    'Saint Kitts travel tips'
+  ]
+},
+{
+  id: 'castries-lc',
+  city: 'Castries',
+  country: 'Saint Lucia',
+  airportCode: 'UVF',
+  image: `https://images.unsplash.com/photo-1738079003703-c452210314f5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Saint Lucia’s capital is a lively Caribbean port surrounded by lush mountains, tropical scenery, colorful markets, and easy access to the island’s famous beaches and volcanic landscapes.',
+
+  budget: 'Luxury',
+  tripType: 'Beach',
+  bestSeason: 'December to April',
+  dailyBudget: 160,
+
+  attractions: [
+    { name: 'Castries Market', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Morne Fortune', duration: '2 hours', bestTime: 'Morning', entryFee: 'Varies' },
+    { name: 'Vigie Beach', duration: '3 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Pigeon Island National Park', duration: 'Half day', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'The Pitons', duration: 'Full day', bestTime: 'Morning', entryFee: 'Tour dependent' },
+    { name: 'Sulphur Springs Park', duration: '2 hours', bestTime: 'Morning', entryFee: 'Paid' }
+  ],
+
+  travelTips: [
+    'Hewanorra International Airport (UVF) is Saint Lucia’s main international airport.',
+    'December to April is generally the driest and most popular period for visiting.',
+    'Saint Lucia is mountainous, so journeys between different parts of the island can take longer than expected.',
+    'English is the official language, while Saint Lucian Creole French is also widely spoken.',
+    'The island is famous for the Pitons, volcanic landscapes, beaches, rainforests, and luxury resorts.',
+    'Castries Market is a good place to experience local food, crafts, spices, and everyday island life.',
+    'Consider renting a car or using organized transfers for exploring areas outside Castries.',
+    'Try local dishes such as green fig and saltfish, cocoa tea, roti, and fresh seafood.',
+    'Bring reef-safe sunscreen, comfortable shoes, swimwear, and rain protection.',
+    'Check current entry requirements, attraction schedules, weather conditions, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Castries travel guide',
+    'Saint Lucia travel guide',
+    'things to do in Castries',
+    'Saint Lucia attractions',
+    'Saint Lucia tourism',
+    'Saint Lucia beaches',
+    'Pitons Saint Lucia',
+    'Saint Lucia itinerary',
+    'Caribbean vacation',
+    'Saint Lucia travel tips'
+  ]
+},
+{
+  id: 'kingstown-vc',
+  city: 'Kingstown',
+  country: 'Saint Vincent and the Grenadines',
+  airportCode: 'SVD',
+  image: `https://images.unsplash.com/photo-1605287920853-8233b5395077?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Kingstown is the lively capital of Saint Vincent and the Grenadines, surrounded by volcanic hills and Caribbean waters, with historic churches, colorful markets, tropical gardens, and access to beautiful island escapes.',
+
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'December to May',
+  dailyBudget: 100,
+
+  attractions: [
+    { name: 'St. George’s Cathedral', duration: '45 minutes', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Kingstown Market', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Fort Charlotte', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Botanical Gardens', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Vermont Nature Trail', duration: '2–3 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Bequia Island', duration: 'Full day', bestTime: 'Morning', entryFee: 'Ferry dependent' }
+  ],
+
+  travelTips: [
+    'Argyle International Airport (SVD) is the main international gateway to Saint Vincent and the Grenadines.',
+    'December to May is generally a popular period because of the drier conditions.',
+    'Kingstown is compact and many central attractions are walkable.',
+    'English is the official language.',
+    'The Eastern Caribbean dollar is widely used.',
+    'Island-hopping is a major part of the Saint Vincent and Grenadines experience.',
+    'Bequia, Mustique, Canouan, and the Tobago Cays are popular additions to longer trips.',
+    'Boat schedules can be affected by weather, so leave flexibility in your itinerary.',
+    'The islands offer excellent snorkeling, sailing, diving, hiking, and beach experiences.',
+    'Check ferry and flight schedules, weather conditions, entry requirements, and local travel information before traveling.'
+  ],
+
+  keywords: [
+    'Kingstown travel guide',
+    'Saint Vincent and the Grenadines travel guide',
+    'things to do in Kingstown',
+    'Saint Vincent tourism',
+    'Saint Vincent beaches',
+    'Tobago Cays',
+    'Bequia travel',
+    'Saint Vincent itinerary',
+    'Caribbean vacation',
+    'Saint Vincent travel tips'
+  ]
+},
+{
+  id: 'apia-ws',
+  city: 'Apia',
+  country: 'Samoa',
+  airportCode: 'APW',
+  image: `https://images.unsplash.com/photo-1625224588813-cc8d5055493f?q=80&w=865&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Apia is Samoa’s relaxed Pacific capital, surrounded by lush mountains and tropical coastline and offering waterfalls, traditional villages, cultural experiences, markets, and beautiful beaches.',
+
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'May to October',
+  dailyBudget: 90,
+
+  attractions: [
+    { name: 'Robert Louis Stevenson Museum', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Apia Market', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Palolo Deep Marine Reserve', duration: '3 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Papaseea Sliding Rocks', duration: '2 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Piula Cave Pool', duration: '2 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'To Sua Ocean Trench', duration: '2 hours', bestTime: 'Morning', entryFee: 'Paid' }
+  ],
+
+  travelTips: [
+    'Faleolo International Airport (APW) is Samoa’s primary international gateway and is approximately 40 km from Apia.',
+    'May to October is generally a popular period for outdoor activities and exploring the islands.',
+    'Samoa has a strong traditional culture, and visitors should respect village customs and local etiquette.',
+    'Samoan and English are widely used.',
+    'The Samoan tala is the local currency.',
+    'Many beaches, villages, and natural attractions are outside Apia, so renting a car or arranging tours can be useful.',
+    'Samoa is known for waterfalls, volcanic landscapes, coral reefs, natural swimming pools, and traditional villages.',
+    'Dress modestly when visiting villages and communities, particularly away from tourist beaches.',
+    'Sunday is an important day of rest and worship, so some businesses and activities may have limited availability.',
+    'Check current flight schedules, entry requirements, weather conditions, attraction hours, and local travel information before traveling.'
+  ],
+
+  keywords: [
+    'Apia travel guide',
+    'Samoa travel guide',
+    'things to do in Apia',
+    'Samoa tourism',
+    'Samoa attractions',
+    'Samoa beaches',
+    'Samoa itinerary',
+    'Samoa travel tips',
+    'To Sua Ocean Trench',
+    'places to visit in Samoa'
+  ]
+},
+
+{
+  id: 'dushanbe-tj',
+  city: 'Dushanbe',
+  country: 'Tajikistan',
+  airportCode: 'DYU',
+  image: `https://images.unsplash.com/photo-1707663154646-06390356b683?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Tajikistan’s elegant capital is surrounded by dramatic mountains and offers grand avenues, traditional markets, museums, parks, and a gateway to some of Central Asia’s most spectacular mountain landscapes.',
+
+  budget: 'Budget',
+  tripType: 'Adventure',
+  bestSeason: 'May to October',
+  dailyBudget: 45,
+
+  attractions: [
+    { name: 'Rudaki Park', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'National Museum of Tajikistan', duration: '2 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Dushanbe Flagpole', duration: '1 hour', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Hissar Fortress', duration: 'Half day', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Mehrgon Market', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Navruz Palace', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: 'Varies' }
+  ],
+
+  travelTips: [
+    'Dushanbe International Airport (DYU) is the main international airport serving Tajikistan’s capital.',
+    'May to October is generally the best period for exploring the city and surrounding mountains.',
+    'Tajikistan is highly mountainous, making it an excellent destination for hiking and adventure travel.',
+    'Tajik is the official language, while Russian is also widely used.',
+    'Dushanbe is relatively affordable compared with many European and major Asian capitals.',
+    'Markets are good places to experience local produce, dried fruits, spices, textiles, and traditional foods.',
+    'Mountain journeys can take much longer than expected because of road conditions and terrain.',
+    'Consider adding the Pamir Mountains and Fann Mountains to a longer Tajikistan itinerary.',
+    'Bring layers and suitable footwear for mountain excursions because weather can change quickly.',
+    'Check current entry requirements, road conditions, weather, permits, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Dushanbe travel guide',
+    'Tajikistan travel guide',
+    'things to do in Dushanbe',
+    'Dushanbe attractions',
+    'Tajikistan tourism',
+    'Tajikistan mountains',
+    'Dushanbe itinerary',
+    'Tajikistan travel tips',
+    'Pamir Mountains',
+    'places to visit in Tajikistan'
+  ]
+},
+{
+  id: 'dili-tl',
+  city: 'Dili',
+  country: 'Timor-Leste',
+  airportCode: 'DIL',
+  image: `https://images.unsplash.com/photo-1717551582495-2d20feb8d730?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Timor-Leste’s coastal capital combines tropical beaches, rugged mountains, Portuguese heritage, vibrant local markets, historic landmarks, and access to some of Southeast Asia’s lesser-known diving and marine experiences.',
+
+  budget: 'Budget',
+  tripType: 'Adventure',
+  bestSeason: 'May to November',
+  dailyBudget: 55,
+
+  attractions: [
+    { name: 'Cristo Rei of Dili', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Dili Waterfront', duration: '2 hours', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'Santa Cruz Cemetery', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Timor Plaza', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Tais Market', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Dare Memorial Museum', duration: '1 hour', bestTime: 'Morning', entryFee: 'Varies' }
+  ],
+
+  travelTips: [
+    'Presidente Nicolau Lobato International Airport (DIL) is the main international gateway to Dili and Timor-Leste. :contentReference[oaicite:3]{index=3}',
+    'May to November is generally the drier period and is popular for outdoor activities.',
+    'Timor-Leste is known for mountainous scenery, beaches, coral reefs, and diving.',
+    'Tetum and Portuguese are official languages, while Indonesian and English are also used.',
+    'Dili is relatively compact, but transportation is useful for reaching attractions outside the city.',
+    'Local markets are good places to find traditional tais textiles and local food.',
+    'Diving and snorkeling are particularly popular along parts of the coast.',
+    'Road conditions outside Dili can vary, so allow extra time for longer journeys.',
+    'Respect local customs, religious sites, and traditional communities.',
+    'Check current flight schedules, entry requirements, weather, and local travel information before traveling.'
+  ],
+
+  keywords: [
+    'Dili travel guide',
+    'Timor-Leste travel guide',
+    'things to do in Dili',
+    'Dili attractions',
+    'Timor-Leste tourism',
+    'Timor-Leste beaches',
+    'Dili itinerary',
+    'Timor-Leste travel tips',
+    'Timor-Leste diving',
+    'places to visit in Timor-Leste'
+  ]
+},
+{
+  id: 'lome-tg',
+  city: 'Lomé',
+  country: 'Togo',
+  airportCode: 'LFW',
+  image: `https://images.unsplash.com/photo-1580470846411-b0e734c5ffd6?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Togo’s coastal capital offers colorful markets, palm-lined beaches, traditional crafts, vibrant West African culture, lively neighborhoods, and a relaxed Atlantic atmosphere.',
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'November to February',
+  dailyBudget: 45,
+
+  attractions: [
+    { name: 'Grand Marché', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Lomé Cathedral', duration: '45 minutes', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'National Museum of Togo', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Akodessewa Fetish Market', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Lomé Beach', duration: '2–3 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Independence Monument', duration: '45 minutes', bestTime: 'Morning', entryFee: 'Free' }
+  ],
+
+  travelTips: [
+    'Gnassingbé Eyadéma International Airport (LFW) is Lomé’s main international airport. :contentReference[oaicite:4]{index=4}',
+    'November to February is generally a comfortable period for exploring Lomé.',
+    'French is the official language, while Ewe, Mina, and other local languages are widely spoken.',
+    'Lomé has a strong market and artisan culture, particularly around textiles, crafts, food, and traditional products.',
+    'Try Togolese dishes such as pâte, grilled fish, akoumé, and local sauces.',
+    'Use reputable taxis or established transportation services when getting around.',
+    'The city combines a busy urban center with Atlantic beaches and palm-lined coastal areas.',
+    'Markets can become crowded, so keep valuables secure.',
+    'Carry sunscreen, lightweight clothing, comfortable shoes, and rain protection.',
+    'Check current entry requirements, local conditions, transportation, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Lome travel guide',
+    'Lomé travel guide',
+    'Togo travel guide',
+    'things to do in Lome',
+    'Lome attractions',
+    'Togo tourism',
+    'Lome itinerary',
+    'Togo travel tips',
+    'Lome beaches',
+    'places to visit in Togo'
+  ]
+},
+
+{
+  id: 'nukualofa-to',
+  city: "Nuku'alofa",
+  country: 'Tonga',
+  airportCode: 'TBU',
+  image: `https://images.unsplash.com/photo-1673407613168-0a1e260d7803?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Tonga’s peaceful capital offers a glimpse into Polynesian culture, royal heritage, tropical coastlines, traditional markets, and spectacular marine experiences including seasonal whale watching.',
+
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'June to October',
+  dailyBudget: 100,
+
+  attractions: [
+    { name: 'Royal Palace', duration: '45 minutes', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Talamahu Market', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Royal Tombs', duration: '45 minutes', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Ha amonga ' + 'a Maui Trilithon', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Mapu’a’a Vaea Blowholes', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Whale Watching', duration: 'Half day', bestTime: 'Morning', entryFee: 'Tour dependent' }
+  ],
+
+  travelTips: [
+    'Fua amotu International Airport (TBU) is the primary international airport serving Nuku alofa and Tongatapu.',
+    'June to October is particularly popular for whale watching and outdoor activities.',
+    'Tonga has a strong Polynesian culture, and visitors should respect village customs and local traditions.',
+    'Tongan and English are widely used.',
+    'The Tongan paʻanga is the local currency.',
+    'Whale watching is seasonal and sightings are not guaranteed.',
+    'Sunday is an important day of worship, and many businesses and activities operate differently.',
+    'Renting a car can be useful for exploring Tongatapu beyond Nuku alofa.',
+    'Bring reef-safe sunscreen, swimwear, insect repellent, and lightweight clothing.',
+    'Check current flight schedules, entry requirements, whale-watching regulations, weather, and local travel information before traveling.'
+  ],
+
+  keywords: [
+    "Nuku'alofa travel guide",
+    'Tonga travel guide',
+    'things to do in Nuku\'alofa',
+    'Tonga tourism',
+    'Tonga beaches',
+    'Tonga whale watching',
+    'Tonga attractions',
+    'Tonga itinerary',
+    'Tonga travel tips',
+    'places to visit in Tonga'
+  ]
+},
+{
+  id: 'port-of-spain-tt',
+  city: 'Port of Spain',
+  country: 'Trinidad and Tobago',
+  airportCode: 'POS',
+  image: `https://images.unsplash.com/photo-1625180724897-8afd02c6d526?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Trinidad and Tobago’s energetic capital combines Caribbean culture, Carnival traditions, historic architecture, lively food markets, green hills, and easy access to beaches and wildlife.',
+
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'January to May',
+  dailyBudget: 85,
+
+  attractions: [
+    { name: 'Queen’s Park Savannah', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Royal Botanic Gardens', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'National Museum and Art Gallery', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Varies' },
+    { name: 'Brian Lara Promenade', duration: '1 hour', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Maracas Beach', duration: 'Half day', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Caroni Bird Sanctuary', duration: '3 hours', bestTime: 'Afternoon', entryFee: 'Tour dependent' }
+  ],
+
+  travelTips: [
+    'Piarco International Airport (POS) is the main international airport serving Port of Spain. :contentReference[oaicite:8]{index=8}',
+    'January to May is a popular period for visiting, especially around Trinidad’s famous Carnival season.',
+    'Port of Spain has a diverse food culture influenced by African, Indian, European, Chinese, and Caribbean traditions.',
+    'English is the official language.',
+    'Try local specialties such as doubles, roti, bake and shark, pelau, and callaloo.',
+    'The Northern Range offers hiking, waterfalls, and birdwatching close to the capital.',
+    'Maracas Bay is one of the most popular beach excursions from Port of Spain.',
+    'Carnival is extremely popular, so accommodation and transportation should be booked well in advance.',
+    'Use reputable transportation and follow local advice when exploring unfamiliar areas.',
+    'Check current entry requirements, event schedules, weather conditions, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Port of Spain travel guide',
+    'Trinidad and Tobago travel guide',
+    'things to do in Port of Spain',
+    'Port of Spain attractions',
+    'Trinidad tourism',
+    'Trinidad Carnival',
+    'Port of Spain itinerary',
+    'Trinidad travel tips',
+    'Maracas Beach',
+    'places to visit in Trinidad and Tobago'
+  ]
+},
+{
+  id: 'tunis-tn',
+  city: 'Tunis',
+  country: 'Tunisia',
+  airportCode: 'TUN',
+  image: `https://images.unsplash.com/photo-1594495293394-d1073510bf22?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Tunisia’s capital combines a fascinating historic medina, French colonial architecture, lively markets, ancient ruins, Mediterranean culture, and easy access to some of North Africa’s most impressive archaeological sites.',
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'March to May, September to November',
+  dailyBudget: 50,
+
+  attractions: [
+    { name: 'Medina of Tunis', duration: '3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Bardo National Museum', duration: '2–3 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Carthage Archaeological Site', duration: '3 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Sidi Bou Said', duration: '2–3 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Avenue Habib Bourguiba', duration: '1.5 hours', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Zitouna Mosque', duration: '1 hour', bestTime: 'Morning', entryFee: 'Varies' }
+  ],
+
+  travelTips: [
+    'Tunis-Carthage International Airport (TUN) is the main airport serving Tunis. :contentReference[oaicite:10]{index=10}',
+    'March to May and September to November are generally comfortable periods for sightseeing.',
+    'The Medina of Tunis is a UNESCO World Heritage area and is best explored slowly on foot.',
+    'Arabic is the official language, while French is widely used.',
+    'Tunis is a good base for visiting Carthage, Sidi Bou Said, and other historic destinations around the capital.',
+    'Try Tunisian specialties such as couscous, brik, harissa-based dishes, and fresh seafood.',
+    'The souks of the Medina are excellent for traditional crafts, textiles, spices, perfumes, and souvenirs.',
+    'Summer can be very hot, especially when visiting archaeological sites with limited shade.',
+    'Dress respectfully when visiting religious sites.',
+    'Check current entry requirements, attraction opening hours, weather conditions, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Tunis travel guide',
+    'Tunisia travel guide',
+    'things to do in Tunis',
+    'Tunis attractions',
+    'Tunisia tourism',
+    'Carthage Tunisia',
+    'Sidi Bou Said',
+    'Tunis itinerary',
+    'Tunisia travel tips',
+    'places to visit in Tunisia'
+  ]
+},
+{
+  id: 'kampala-ug',
+  city: 'Kampala',
+  country: 'Uganda',
+  airportCode: 'EBB',
+  image: `https://images.unsplash.com/photo-1675756261486-09bd1e0f6c8a?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Uganda’s energetic capital is the gateway to the country’s remarkable wildlife, lush landscapes, tropical lakes, and mountain adventures, while offering lively markets, cultural experiences, and a taste of East African city life.',
+
+  budget: 'Budget',
+  tripType: 'Nature',
+  bestSeason: 'June to September, December to February',
+  dailyBudget: 50,
+
+  attractions: [
+    { name: 'Uganda Museum', duration: '2 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Kasubi Tombs', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Gaddafi National Mosque', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: 'Paid' },
+    { name: 'Ndere Cultural Centre', duration: '2–3 hours', bestTime: 'Evening', entryFee: 'Paid' },
+    { name: 'Craft Village', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Lake Victoria', duration: 'Half day', bestTime: 'Morning', entryFee: 'Varies' }
+  ],
+
+  travelTips: [
+    'Entebbe International Airport (EBB) is Uganda’s main international gateway and is located near Entebbe, rather than central Kampala.',
+    'June to September and December to February are generally popular periods for wildlife and outdoor activities.',
+    'Kampala is busy and traffic can be heavy, so allow extra time when traveling across the city.',
+    'English and Swahili are official languages, while Luganda and many other local languages are widely spoken.',
+    'Uganda is famous for gorilla trekking, chimpanzee experiences, national parks, and exceptional birdwatching.',
+    'Gorilla trekking permits should be arranged well in advance because availability is limited.',
+    'Use reputable taxis, ride-hailing services, or established tour operators.',
+    'Try local dishes such as matoke, rolex, posho, and Ugandan grilled meats.',
+    'Carry insect repellent, sunscreen, comfortable walking shoes, and lightweight rain protection.',
+    'Check current entry requirements, park permits, health information, weather conditions, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Kampala travel guide',
+    'Uganda travel guide',
+    'things to do in Kampala',
+    'Kampala attractions',
+    'Uganda tourism',
+    'Uganda safari',
+    'Uganda gorilla trekking',
+    'Kampala itinerary',
+    'Uganda travel tips',
+    'places to visit in Uganda'
+  ]
+},
+{
+  id: 'kyiv-ua',
+  city: 'Kyiv',
+  country: 'Ukraine',
+  airportCode: 'KBP',
+  image: `https://images.unsplash.com/photo-1639341267320-2d062b250c0d?q=80&w=929&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Ukraine’s historic capital is known for golden-domed churches, grand boulevards, centuries of Eastern European history, distinctive architecture, museums, parks, and a vibrant cultural identity.',
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'May to September',
+  dailyBudget: 50,
+
+  attractions: [
+    { name: 'Saint Sophia Cathedral', duration: '2 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Kyiv Pechersk Lavra', duration: '3 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Maidan Nezalezhnosti', duration: '1 hour', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Andriyivskyi Descent', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Free' },
+    { name: 'Golden Gate', duration: '1 hour', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'National Art Museum of Ukraine', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Paid' }
+  ],
+
+  travelTips: [
+    'Kyiv Boryspil International Airport (KBP) is Ukraine’s major international airport, but civilian passenger flights are currently affected by the closure of Ukrainian airspace.',
+    'Do not assume that flights to Kyiv are operating simply because the airport remains listed in aviation databases.',
+    'May to September is normally a pleasant period for sightseeing, although current conditions should always be checked.',
+    'Ukrainian is the official language.',
+    'Kyiv has an extensive metro and public transportation network.',
+    'Ukraine has a rich architectural and cultural heritage, including historic churches, museums, monuments, and public squares.',
+    'Current security conditions can vary significantly by region.',
+    'Follow official local instructions and avoid restricted or dangerous areas.',
+    'Travel planning should account for possible changes to transportation, curfews, infrastructure, and access.',
+    'Check current government travel advisories, airport status, security conditions, and transportation information immediately before any trip.'
+  ],
+
+  keywords: [
+    'Kyiv travel guide',
+    'Ukraine travel guide',
+    'things to do in Kyiv',
+    'Kyiv attractions',
+    'Ukraine tourism',
+    'Kyiv itinerary',
+    'Kyiv travel tips',
+    'Kyiv sightseeing',
+    'Ukraine culture',
+    'places to visit in Ukraine'
+  ]
+},
+{
+  id: 'montevideo-uy',
+  city: 'Montevideo',
+  country: 'Uruguay',
+  airportCode: 'MVD',
+  image: `https://images.unsplash.com/photo-1676164539863-612beb931dfb?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Uruguay’s relaxed capital combines historic neighborhoods, Atlantic beaches, waterfront promenades, colorful markets, elegant architecture, excellent food, and a laid-back South American atmosphere.',
+
+  budget: 'Moderate',
+  tripType: 'City',
+  bestSeason: 'October to April',
+  dailyBudget: 65,
+
+  attractions: [
+    { name: 'Ciudad Vieja', duration: '2–3 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Mercado del Puerto', duration: '1.5 hours', bestTime: 'Lunch', entryFee: 'Free' },
+    { name: 'Rambla de Montevideo', duration: '2 hours', bestTime: 'Sunset', entryFee: 'Free' },
+    { name: 'Plaza Independencia', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Teatro Solís', duration: '1.5 hours', bestTime: 'Afternoon', entryFee: 'Paid' },
+    { name: 'Pocitos Beach', duration: '3 hours', bestTime: 'Afternoon', entryFee: 'Free' }
+  ],
+
+  travelTips: [
+    'Carrasco International Airport (MVD) is the main international airport serving Montevideo.',
+    'October to April is popular for enjoying the city’s beaches, waterfront, and outdoor spaces.',
+    'Montevideo is relatively relaxed compared with many larger South American capitals.',
+    'Spanish is the official language.',
+    'Uruguay is famous for beef, asado, mate, chivitos, and excellent local wines.',
+    'The Rambla is one of the city’s defining features and is ideal for walking, cycling, and sunset views.',
+    'Ciudad Vieja is best explored on foot and contains many historic buildings, plazas, cafés, and galleries.',
+    'Punta del Este and Colonia del Sacramento are popular additions to a longer Uruguay itinerary.',
+    'Summer is the busiest period along the coast, so accommodation prices can increase.',
+    'Check current entry requirements, weather conditions, transport schedules, and local travel information before traveling.'
+  ],
+
+  keywords: [
+    'Montevideo travel guide',
+    'Uruguay travel guide',
+    'things to do in Montevideo',
+    'Montevideo attractions',
+    'Uruguay tourism',
+    'Montevideo beaches',
+    'Montevideo itinerary',
+    'Uruguay travel tips',
+    'Montevideo vacation',
+    'places to visit in Uruguay'
+  ]
+},
+{
+  id: 'tashkent-uz',
+  city: 'Tashkent',
+  country: 'Uzbekistan',
+  airportCode: 'TAS',
+  image: `https://images.unsplash.com/photo-1622021109028-8ba1d5374161?q=80&w=726&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Uzbekistan’s modern capital combines grand avenues, Islamic architecture, lively bazaars, Soviet-era landmarks, museums, and excellent transport connections to the legendary Silk Road cities of Samarkand, Bukhara, and Khiva.',
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'April to May, September to October',
+  dailyBudget: 45,
+
+  attractions: [
+    { name: 'Chorsu Bazaar', duration: '2 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Hazrati Imam Complex', duration: '2 hours', bestTime: 'Morning', entryFee: 'Varies' },
+    { name: 'Amir Timur Square', duration: '1 hour', bestTime: 'Evening', entryFee: 'Free' },
+    { name: 'Tashkent Metro', duration: '2 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'State Museum of History of Uzbekistan', duration: '2 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Minor Mosque', duration: '1 hour', bestTime: 'Afternoon', entryFee: 'Free' }
+  ],
+
+  travelTips: [
+    'Islam Karimov Tashkent International Airport (TAS) is Uzbekistan’s main international gateway.',
+    'April to May and September to October are generally comfortable periods for exploring Uzbekistan.',
+    'Tashkent is an excellent starting point for visiting the historic Silk Road cities of Samarkand, Bukhara, and Khiva.',
+    'Uzbek is the official language, while Russian is also widely used.',
+    'The Uzbek soums is the local currency.',
+    'The Tashkent Metro is both practical transportation and an attraction because of its distinctive station architecture.',
+    'Uzbek cuisine includes plov, samsa, lagman, shashlik, and a wide variety of fresh breads and pastries.',
+    'High-speed trains make it relatively convenient to connect Tashkent with other major Uzbek destinations.',
+    'Summer can become extremely hot, so spring and autumn are generally more comfortable for sightseeing.',
+    'Check current entry requirements, train schedules, weather conditions, attraction opening hours, and travel information before traveling.'
+  ],
+
+  keywords: [
+    'Tashkent travel guide',
+    'Uzbekistan travel guide',
+    'things to do in Tashkent',
+    'Tashkent attractions',
+    'Uzbekistan tourism',
+    'Silk Road Uzbekistan',
+    'Tashkent itinerary',
+    'Uzbekistan travel tips',
+    'Samarkand Bukhara Khiva',
+    'places to visit in Uzbekistan'
+  ]
+},
+{
+  id: 'port-vila-vu',
+  city: 'Port Vila',
+  country: 'Vanuatu',
+  airportCode: 'VLI',
+  image: `https://images.unsplash.com/photo-1552643450-44f3e5c7d875?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Vanuatu’s tropical capital is a gateway to turquoise lagoons, volcanic landscapes, coral reefs, waterfalls, traditional Melanesian culture, and some of the South Pacific’s most memorable island adventures.',
+
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'May to October',
+  dailyBudget: 100,
+
+  attractions: [
+    { name: 'Mele Cascades', duration: '3 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Port Vila Market', duration: '1.5 hours', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Iririki Island', duration: 'Half day', bestTime: 'Morning', entryFee: 'Varies' },
+    { name: 'Blue Lagoon', duration: '3 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Ekasup Cultural Village', duration: '2–3 hours', bestTime: 'Afternoon', entryFee: 'Paid' },
+    { name: 'Hideaway Island', duration: 'Half day', bestTime: 'Morning', entryFee: 'Tour dependent' }
+  ],
+
+  travelTips: [
+    'Bauerfield International Airport (VLI) is the main international airport serving Port Vila and Efate.',
+    'May to October is generally the drier period and is popular for outdoor activities.',
+    'Vanuatu is known for diving, snorkeling, beaches, waterfalls, volcanoes, and traditional Melanesian culture.',
+    'Bislama, English, and French are the country’s official languages.',
+    'Port Vila is a convenient base for exploring Efate and arranging trips to other islands.',
+    'Respect local village customs and ask permission before photographing people or participating in cultural activities.',
+    'Marine conditions can change quickly, so follow local advice when swimming, snorkeling, or diving.',
+    'Bring reef-safe sunscreen, insect repellent, comfortable shoes, swimwear, and rain protection.',
+    'Island transportation can be limited, so arrange transfers and tours in advance.',
+    'Check current flight schedules, entry requirements, weather conditions, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Port Vila travel guide',
+    'Vanuatu travel guide',
+    'things to do in Port Vila',
+    'Vanuatu tourism',
+    'Port Vila attractions',
+    'Vanuatu beaches',
+    'Vanuatu diving',
+    'Port Vila itinerary',
+    'Vanuatu travel tips',
+    'places to visit in Vanuatu'
+  ]
+},
+{
+  id: 'caracas-ve',
+  city: 'Caracas',
+  country: 'Venezuela',
+  airportCode: 'CCS',
+  image: `https://images.unsplash.com/photo-1722271551043-fef6d612097d?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Venezuela’s capital sits in a dramatic valley beneath Ávila Mountain and combines museums, historic squares, lively cultural spaces, modern neighborhoods, and access to the country’s spectacular natural landscapes.',
+
+  budget: 'Budget',
+  tripType: 'City',
+  bestSeason: 'December to April',
+  dailyBudget: 55,
+
+  attractions: [
+    { name: 'Avila National Park', duration: 'Half day', bestTime: 'Morning', entryFee: 'Varies' },
+    { name: 'Plaza Bolívar', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'National Pantheon of Venezuela', duration: '1 hour', bestTime: 'Morning', entryFee: 'Free' },
+    { name: 'Museum of Contemporary Art', duration: '2 hours', bestTime: 'Afternoon', entryFee: 'Paid' },
+    { name: 'Teleférico de Caracas', duration: '3 hours', bestTime: 'Morning', entryFee: 'Paid' },
+    { name: 'Ciudad Universitaria de Caracas', duration: '2 hours', bestTime: 'Morning', entryFee: 'Varies' }
+  ],
+
+  travelTips: [
+    'Simón Bolívar International Airport (CCS) is Venezuela’s main international airport and serves Caracas.',
+    'December to April is generally a popular period for exploring Caracas and outdoor areas.',
+    'Caracas sits in a valley surrounded by mountains, giving the city a distinctive landscape.',
+    'Spanish is the official language.',
+    'Use reputable transportation and avoid accepting rides or services from unknown individuals.',
+    'The city has significant cultural attractions, museums, parks, and historic areas.',
+    'Ávila National Park offers hiking and panoramic views over Caracas and the Caribbean coast.',
+    'Cash availability, payment systems, transportation, and other services can vary, so plan accordingly.',
+    'Venezuela has important security considerations, and conditions can change quickly.',
+    'Check current entry requirements, airport operations, local security conditions, currency and payment information, and official travel advisories immediately before traveling.'
+  ],
+
+  keywords: [
+    'Caracas travel guide',
+    'Venezuela travel guide',
+    'things to do in Caracas',
+    'Caracas attractions',
+    'Venezuela tourism',
+    'Caracas itinerary',
+    'Venezuela travel tips',
+    'Avila National Park',
+    'Caracas Venezuela',
+    'places to visit in Venezuela'
+  ]
+},
+{
+  id: 'lusaka-zm',
+  city: 'Lusaka',
+  country: 'Zambia',
+  airportCode: 'LUN',
+  image: `https://images.unsplash.com/photo-1643580018337-5af73fe3c21a?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D${cropParams}`,
+
+  description: 'Zambia’s capital is a relaxed gateway to spectacular African wildlife, national parks, waterfalls, cultural experiences, and the legendary Victoria Falls region.',
+
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'May to October',
+  dailyBudget: 65,
+
+  attractions: [
+    {
+      name: 'Lusaka National Museum',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Lusaka National Park',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'Kabwata Cultural Village',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Lusaka City Market',
+      duration: '1.5 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Munda Wanga Environmental Park',
+      duration: '3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Paid'
+    },
+    {
+      name: 'East Park Mall',
+      duration: '1.5 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Kenneth Kaunda International Airport (LUN) is Zambia’s main international gateway and is located in Lusaka.',
+    'May to October is generally the dry season and one of the best periods for wildlife viewing.',
+    'Lusaka is a major starting point for trips to Zambia’s national parks and other regions.',
+    'English is the official language, while Bemba, Nyanja, Tonga, Lozi, and other local languages are widely spoken.',
+    'Zambia is famous for its wildlife, safari experiences, rivers, waterfalls, and Victoria Falls.',
+    'South Luangwa, Lower Zambezi, and Kafue are among the country’s major safari destinations.',
+    'Victoria Falls is located near Livingstone, which has its own international airport, Harry Mwaanga Nkumbula International Airport.',
+    'Use reputable safari operators and transportation providers when traveling outside Lusaka.',
+    'Carry insect repellent, sunscreen, comfortable walking shoes, and lightweight clothing for outdoor activities.',
+    'Check current entry requirements, park fees, weather conditions, road conditions, and travel advisories before traveling.'
+  ],
+
+  keywords: [
+    'Lusaka travel guide',
+    'Zambia travel guide',
+    'things to do in Lusaka',
+    'Lusaka attractions',
+    'Zambia tourism',
+    'Zambia safari',
+    'Victoria Falls Zambia',
+    'Lusaka itinerary',
+    'Zambia travel tips',
+    'places to visit in Zambia'
+  ]
+},
+{
+  id: 'st-johns-ag',
+  city: 'St. John\'s',
+  country: 'Antigua and Barbuda',
+  airportCode: 'ANU',
+  image: `https://images.pexels.com/photos/16968907/pexels-photo-16968907.jpeg${cropParams}`,
+  description: 'Antigua and Barbuda is a Caribbean twin-island destination known for beautiful beaches, turquoise waters, sailing, historic English Harbour, Nelson’s Dockyard, colorful local culture, and the quieter natural beauty of Barbuda.',
+
+  seoTitle: 'Antigua and Barbuda Travel Guide: Beaches, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Antigua and Barbuda with a guide to the best beaches, Nelson’s Dockyard, English Harbour, Shirley Heights, Barbuda, local food, attractions and practical travel tips.',
+
+  keywords: [
+    'Antigua and Barbuda travel guide',
+    'things to do in Antigua',
+    'Antigua attractions',
+    'Antigua tourism',
+    'Barbuda travel guide',
+    'best places to visit in Antigua',
+    'Antigua beaches',
+    'Nelson’s Dockyard',
+    'English Harbour Antigua',
+    'Shirley Heights Antigua',
+    'Caribbean travel guide'
+  ],
+
+  budget: 'Luxury',
+  tripType: 'Beach',
+  bestSeason: 'December to April',
+  dailyBudget: 180,
+
+  attractions: [
+    {
+      name: 'Nelson’s Dockyard',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Shirley Heights',
+      duration: '2 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Dickenson Bay',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Half Moon Bay',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'St. John’s',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Barbuda',
+      duration: 'Full Day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Antigua is known for its many beaches, and exploring different parts of the coastline is one of the best ways to experience the island.',
+    'English Harbour and Nelson’s Dockyard are highlights for travelers interested in history, sailing, and scenic harbor views.',
+    'Visit Shirley Heights in the late afternoon for panoramic views over English Harbour and the surrounding coastline.',
+    'Barbuda offers a quieter experience with long beaches, natural landscapes, and important wildlife areas.',
+    'Antigua and Barbuda has a tropical climate, with December to April generally being a popular period for drier weather.',
+    'The Eastern Caribbean dollar (XCD) is the official currency, while US dollars are also commonly accepted in many tourist areas.',
+    'Antigua drives on the left side of the road, so take extra care if renting a car.',
+    'Try local Caribbean dishes and fresh seafood rather than relying only on resort restaurants.',
+    'If planning boat trips or excursions to Barbuda, check schedules and weather conditions in advance.',
+    'Travelers should check the latest official entry requirements and travel advice before visiting.'
+  ]
+},
+{
+  id: 'bridgetown-bb',
+  city: 'Bridgetown',
+  country: 'Barbados',
+  airportCode: 'BGI',
+  image: `https://images.pexels.com/photos/32115331/pexels-photo-32115331.jpeg${cropParams}`,
+  description: 'Barbados blends beautiful Caribbean beaches with a rich Bajan culture, historic Bridgetown, lively food traditions, rum heritage, coastal landscapes, and a relaxed island atmosphere.',
+
+  seoTitle: 'Barbados Travel Guide: Beaches, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Barbados with a guide to Bridgetown, Carlisle Bay, Harrison’s Cave, Bathsheba, Oistins, historic sites, beaches, local food and travel tips.',
+
+  keywords: [
+    'Barbados travel guide',
+    'things to do in Barbados',
+    'Barbados attractions',
+    'Barbados tourism',
+    'Bridgetown travel guide',
+    'best places to visit in Barbados',
+    'Barbados beaches',
+    'Carlisle Bay Barbados',
+    'Bathsheba Barbados',
+    'Oistins Barbados',
+    'Barbados vacation',
+    'Caribbean travel guide'
+  ],
+
+  budget: 'Luxury',
+  tripType: 'Beach',
+  bestSeason: 'December to April',
+  dailyBudget: 160,
+
+  attractions: [
+    {
+      name: 'Historic Bridgetown and Its Garrison',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Carlisle Bay',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Bathsheba',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Harrison’s Cave',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Oistins',
+      duration: '2–3 hours',
+      bestTime: 'Evening',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Barbados Museum & Historical Society',
+      duration: '1.5–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Bridgetown and its Garrison is a UNESCO World Heritage Site and an excellent starting point for exploring Barbados’ history and culture.',
+    'Carlisle Bay is popular for swimming, snorkeling, and seeing marine life in relatively calm waters.',
+    'Visit Bathsheba on the east coast for dramatic Atlantic scenery, rock formations, and a completely different side of Barbados.',
+    'Oistins is known for its lively food scene and the popular Friday night Fish Fry.',
+    'Barbados is the birthplace of rum, so consider visiting a rum heritage site or distillery during your trip.',
+    'English is the official language, while Bajan is commonly spoken in everyday conversation.',
+    'The Barbadian dollar (BBD) is the local currency, and major tourist areas generally accept international cards.',
+    'Barbados drives on the left side of the road, so take extra care if renting a car.',
+    'December to April is generally the drier and more popular travel period, while the wetter season runs through much of June to November. :contentReference[oaicite:1]{index=1}',
+    'If traveling during the wetter months, check the latest weather and official travel information before planning outdoor activities.'
+  ]
+},
+{
+  id: 'cotonou-bj',
+  city: 'Cotonou',
+  country: 'Benin',
+  airportCode: 'COO',
+  image: `https://images.pexels.com/photos/8655016/pexels-photo-8655016.jpeg${cropParams}`,
+  description: 'Benin’s largest city and economic center, Cotonou combines Atlantic beaches, lively markets, West African culture, vibrant street life, local cuisine, and easy access to historic destinations across southern Benin.',
+
+  seoTitle: 'Cotonou Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Cotonou, Benin with a guide to markets, beaches, local culture, museums, nearby attractions, food, transportation and practical travel tips.',
+
+  keywords: [
+    'Cotonou travel guide',
+    'things to do in Cotonou',
+    'Cotonou attractions',
+    'Cotonou tourism',
+    'Benin travel guide',
+    'best places to visit in Cotonou',
+    'Cotonou beaches',
+    'Cotonou market',
+    'Benin tourism',
+    'West Africa travel'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'November to February',
+  dailyBudget: 45,
+
+  attractions: [
+    {
+      name: 'Dantokpa Market',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Fidjrossè Beach',
+      duration: '2–3 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Cotonou Cathedral',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Artisanal Center of Cotonou',
+      duration: '1–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Ganvié Floating Village',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Ouidah',
+      duration: 'Full day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Cotonou is the main commercial and transportation hub of Benin and a practical base for exploring southern parts of the country.',
+    'Dantokpa Market offers an intense introduction to local commerce, food, crafts, and everyday life.',
+    'Ganvié, a village built on Lake Nokoué, makes an interesting day trip from Cotonou.',
+    'Ouidah is worth visiting for its history, cultural heritage, museums, and connection to the history of the transatlantic slave trade.',
+    'French is the official language, while Fon, Yoruba, and other local languages are widely spoken.',
+    'The West African CFA franc (XOF) is the local currency.',
+    'Keep valuables secure in crowded markets and busy public areas.',
+    'Travel conditions can vary outside major cities, so check current local conditions before traveling to remote areas.'
+  ]
+},
+
+{
+  id: 'paro-bt',
+  city: 'Paro',
+  country: 'Bhutan',
+  airportCode: 'PBH',
+  image: `https://images.pexels.com/photos/37908899/pexels-photo-37908899.jpeg${cropParams}`,
+  description: 'Paro is Bhutan’s historic gateway, surrounded by Himalayan mountains and known for its traditional architecture, ancient monasteries, peaceful valleys, and access to the iconic Tiger’s Nest Monastery.',
+
+  seoTitle: 'Paro Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Paro, Bhutan with a guide to Tiger’s Nest Monastery, Paro Dzong, traditional architecture, Himalayan landscapes, local culture and travel tips.',
+
+  keywords: [
+    'Paro travel guide',
+    'things to do in Paro',
+    'Paro Bhutan attractions',
+    'Bhutan travel guide',
+    'Tiger Nest Monastery',
+    'Paro Taktsang',
+    'Paro Dzong',
+    'Bhutan tourism',
+    'best places to visit in Bhutan',
+    'Bhutan itinerary'
+  ],
+
+  budget: 'Luxury',
+  tripType: 'Culture',
+  bestSeason: 'March to May, September to November',
+  dailyBudget: 200,
+
+  attractions: [
+    {
+      name: 'Paro Taktsang (Tiger’s Nest Monastery)',
+      duration: '5–7 hours',
+      bestTime: 'Early Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Rinpung Dzong',
+      duration: '1.5–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'National Museum of Bhutan',
+      duration: '1–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Kyichu Lhakhang',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Paro Valley',
+      duration: '2–3 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Drukgyel Dzong',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Paro is home to Bhutan’s main international airport and is the most common starting point for international visitors.',
+    'The hike to Tiger’s Nest is challenging for some travelers, so allow several hours and wear comfortable walking shoes.',
+    'Bhutan has a strong Buddhist cultural tradition. Dress respectfully when visiting monasteries, temples, and dzongs.',
+    'The Bhutanese ngultrum (BTN) is the local currency and is pegged to the Indian rupee.',
+    'Bhutan uses a regulated tourism system, and travelers should check the latest visa, entry, and Sustainable Development Fee requirements before booking.',
+    'Spring and autumn generally offer excellent conditions for sightseeing and mountain views.',
+    'Weather can change quickly in the mountains, so carry layers even during warmer months.',
+    'Photography rules can vary inside religious buildings, so follow local instructions.'
+  ]
+},
+
+{
+  id: 'la-paz-bo',
+  city: 'La Paz',
+  country: 'Bolivia',
+  airportCode: 'LPB',
+  image: `https://images.unsplash.com/photo-1526392060635-9d6019884377?q=80&w=1600&auto=format&fit=crop${cropParams}`,
+  description: 'La Paz is Bolivia’s dramatic high-altitude capital, surrounded by the Andes and known for steep streets, colorful markets, Indigenous culture, historic neighborhoods, cable cars, and spectacular mountain scenery.',
+
+  seoTitle: 'La Paz Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore La Paz, Bolivia with a guide to the Witches’ Market, Mi Teleférico, Moon Valley, historic streets, Indigenous culture, attractions and travel tips.',
+
+  keywords: [
+    'La Paz travel guide',
+    'things to do in La Paz Bolivia',
+    'La Paz attractions',
+    'La Paz Bolivia tourism',
+    'Bolivia travel guide',
+    'Witches Market La Paz',
+    'Mi Teleferico',
+    'Valle de la Luna',
+    'best places to visit in La Paz',
+    'Bolivia itinerary'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Adventure',
+  bestSeason: 'May to October',
+  dailyBudget: 45,
+
+  attractions: [
+    {
+      name: 'Mi Teleférico',
+      duration: '2–3 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Witches’ Market',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Plaza Murillo',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Valle de la Luna',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Mercado Rodríguez',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Valle de las Ánimas',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'La Paz sits at a very high elevation, so give yourself time to acclimatize before doing strenuous activities.',
+    'Mi Teleférico is one of the best ways to see the city and travel between different areas while avoiding some of the steep roads.',
+    'The Witches’ Market offers an interesting look at traditional Andean beliefs and local crafts.',
+    'La Paz has a strong Indigenous cultural identity, which is reflected in its markets, festivals, food, clothing, and architecture.',
+    'The Bolivian boliviano (BOB) is the local currency.',
+    'Temperatures can change quickly because of the altitude, so carry layers even on sunny days.',
+    'Use extra caution with valuables in crowded markets and tourist areas.',
+    'If visiting high-altitude destinations such as Lake Titicaca or Uyuni after La Paz, plan your route so your body has time to adjust.',
+    'Check current transportation conditions and official travel advice before traveling to remote areas.'
+  ]
+},
+{
+  id: 'sarajevo-ba',
+  city: 'Sarajevo',
+  country: 'Bosnia and Herzegovina',
+  airportCode: 'SJJ',
+  image: `https://images.pexels.com/photos/33794258/pexels-photo-33794258.jpeg${cropParams}`,
+  description: 'Sarajevo is a captivating Balkan capital where Ottoman-era streets, Austro-Hungarian architecture, mountain landscapes, lively markets, and diverse cultural traditions come together.',
+
+  seoTitle: 'Sarajevo Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Sarajevo, Bosnia and Herzegovina with a guide to Baščaršija, Latin Bridge, Sarajevo Tunnel, Yellow Fortress, local food, history and travel tips.',
+
+  keywords: [
+    'Sarajevo travel guide',
+    'things to do in Sarajevo',
+    'Sarajevo attractions',
+    'Bosnia and Herzegovina travel guide',
+    'Baščaršija Sarajevo',
+    'Latin Bridge Sarajevo',
+    'Sarajevo tourism',
+    'best places to visit in Sarajevo',
+    'Sarajevo itinerary',
+    'Balkan travel guide'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'May to June, September to October',
+  dailyBudget: 50,
+
+  attractions: [
+    {
+      name: 'Baščaršija Old Bazaar',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Latin Bridge',
+      duration: '30 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Yellow Fortress',
+      duration: '1 hour',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Sarajevo Tunnel Museum',
+      duration: '1–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Gazi Husrev-beg Mosque',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Trebević Mountain',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Baščaršija is the historic heart of Sarajevo and is best explored on foot.',
+    'Sarajevo combines Ottoman, Austro-Hungarian, and modern influences, making its architecture and neighborhoods particularly interesting.',
+    'Try local specialties such as ćevapi, burek, and Bosnian coffee.',
+    'The convertible mark (BAM) is the local currency.',
+    'The city is surrounded by mountains, so bring comfortable walking shoes if you plan to explore viewpoints and trails.',
+    'Respect local customs when visiting mosques and religious sites.',
+    'Bosnia and Herzegovina still has some areas where landmines may be present. Stay on marked paths and follow local safety guidance when hiking outside established areas.',
+    'Check current transportation and travel information before traveling to remote parts of the country.'
+  ]
+},
+
+{
+  id: 'gaborone-bw',
+  city: 'Gaborone',
+  country: 'Botswana',
+  airportCode: 'GBE',
+  image: `https://images.pexels.com/photos/5715513/pexels-photo-5715513.jpeg${cropParams}`,
+  description: 'Botswana is a premier African safari destination known for the Okavango Delta, Chobe National Park, vast wilderness, incredible wildlife, and a strong tradition of conservation.',
+
+  seoTitle: 'Botswana Travel Guide: Safari, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Botswana with a guide to the Okavango Delta, Chobe National Park, Makgadikgadi Pans, wildlife, safari experiences and practical travel tips.',
+
+  keywords: [
+    'Botswana travel guide',
+    'Botswana safari',
+    'things to do in Botswana',
+    'Botswana attractions',
+    'Okavango Delta',
+    'Chobe National Park',
+    'Botswana tourism',
+    'African safari',
+    'Botswana wildlife',
+    'best places to visit in Botswana'
+  ],
+
+  budget: 'Luxury',
+  tripType: 'Adventure',
+  bestSeason: 'May to October',
+  dailyBudget: 300,
+
+  attractions: [
+    {
+      name: 'Okavango Delta',
+      duration: '2–3 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Chobe National Park',
+      duration: '1–2 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Moremi Game Reserve',
+      duration: '1–2 days',
+      bestTime: 'Early Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Makgadikgadi Pans',
+      duration: 'Full Day',
+      bestTime: 'Early Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Central Kalahari Game Reserve',
+      duration: '2–3 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Gaborone',
+      duration: '1 day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Botswana is primarily a wildlife and wilderness destination, with safari experiences forming the main focus of many trips.',
+    'The Okavango Delta is famous for its waterways, wildlife, and traditional mokoro canoe experiences.',
+    'Chobe National Park is particularly well known for large elephant populations and river-based wildlife viewing.',
+    'The Botswana pula (BWP) is the local currency.',
+    'Safari accommodation ranges from campsites to high-end luxury lodges, so costs can vary significantly.',
+    'The dry season from May to October is popular for wildlife viewing because animals tend to gather around available water sources.',
+    'Follow your guide’s instructions around wildlife and never approach wild animals independently.',
+    'Malaria precautions may be recommended for some areas. Consult a qualified travel-health professional before visiting.',
+    'Remote safari areas have limited connectivity and services, so prepare for an experience focused on nature rather than city conveniences.'
+  ]
+},
+
+{
+  id: 'bandar-seri-begawan-bn',
+  city: 'Bandar Seri Begawan',
+  country: 'Brunei',
+  airportCode: 'BWN',
+  image: `https://images.pexels.com/photos/35851017/pexels-photo-35851017.jpeg${cropParams}`,
+  description: 'Bandar Seri Begawan is Brunei’s peaceful capital, known for grand Islamic architecture, the Kampong Ayer water village, royal heritage, tropical rainforest, and a relaxed Southeast Asian atmosphere.',
+
+  seoTitle: 'Brunei Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Brunei with a guide to Bandar Seri Begawan, Sultan Omar Ali Saifuddien Mosque, Kampong Ayer, Royal Regalia Museum, Ulu Temburong and travel tips.',
+
+  keywords: [
+    'Brunei travel guide',
+    'things to do in Brunei',
+    'Bandar Seri Begawan travel guide',
+    'Brunei attractions',
+    'Kampong Ayer',
+    'Sultan Omar Ali Saifuddien Mosque',
+    'Brunei tourism',
+    'Ulu Temburong National Park',
+    'best places to visit in Brunei',
+    'Brunei itinerary'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'January to May',
+  dailyBudget: 90,
+
+  attractions: [
+    {
+      name: 'Sultan Omar Ali Saifuddien Mosque',
+      duration: '1 hour',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Kampong Ayer',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Royal Regalia Museum',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Jame’ Asr Hassanil Bolkiah Mosque',
+      duration: '1 hour',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Ulu Temburong National Park',
+      duration: 'Full Day',
+      bestTime: 'Early Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Tasek Lama Recreational Park',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Bandar Seri Begawan is the main gateway for exploring Brunei and is known for its peaceful atmosphere and impressive Islamic architecture.',
+    'Kampong Ayer is one of Brunei’s most distinctive attractions and is best explored by boat.',
+    'Dress modestly when visiting mosques and religious sites.',
+    'Brunei uses the Brunei dollar (BND), which is interchangeable at par with the Singapore dollar under the currency interchangeability agreement.',
+    'Alcohol sales are restricted in Brunei, and travelers should understand and respect local laws and customs.',
+    'Brunei has a tropical climate with high humidity and rainfall throughout the year.',
+    'Ulu Temburong National Park offers rainforest adventures, but access generally requires organized transportation and arrangements.',
+    'Friday prayer periods can affect opening hours and access to some attractions, so plan sightseeing accordingly.'
+  ]
+},
+
+{
+  id: 'ouagadougou-bf',
+  city: 'Ouagadougou',
+  country: 'Burkina Faso',
+  airportCode: 'OUA',
+  image: `https://images.pexels.com/photos/26974534/pexels-photo-26974534.jpeg${cropParams}`,
+  description: 'Ouagadougou is Burkina Faso’s capital and cultural center, known for West African arts, traditional crafts, lively markets, music, festivals, and a strong local cultural identity.',
+
+  seoTitle: 'Ouagadougou Travel Guide: Attractions, Culture & Travel Tips',
+
+  seoDescription: 'Explore Ouagadougou, Burkina Faso with a guide to local markets, museums, crafts, cultural attractions, food and important travel information.',
+
+  keywords: [
+    'Ouagadougou travel guide',
+    'things to do in Ouagadougou',
+    'Ouagadougou attractions',
+    'Burkina Faso travel guide',
+    'Ouagadougou tourism',
+    'Burkina Faso culture',
+    'Ouagadougou markets',
+    'West Africa travel',
+    'Burkina Faso attractions',
+    'Ouagadougou itinerary'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'November to February',
+  dailyBudget: 40,
+
+  attractions: [
+    {
+      name: 'National Museum of Burkina Faso',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Village Artisanal de Ouagadougou',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Grand Mosque of Ouagadougou',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Bangr-Weogo Urban Park',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Moro-Naba Palace',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Laongo Sculpture Symposium',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Burkina Faso has a rich tradition of music, dance, sculpture, textiles, and other forms of West African art.',
+    'French is the official language, while Mooré and several other local languages are widely spoken.',
+    'The West African CFA franc (XOF) is the local currency.',
+    'Ouagadougou can be very hot, particularly during the dry season, so plan outdoor activities for cooler parts of the day.',
+    'Dress respectfully and ask permission before photographing people, markets, or cultural ceremonies.',
+    'Current security conditions in Burkina Faso can be extremely challenging, particularly outside limited areas. Check the latest official travel advisories before considering travel.',
+    'Avoid traveling independently into remote or border areas without reliable local guidance and current security information.',
+    'Travelers should confirm entry requirements, transportation availability, and security conditions before making plans.'
+  ]
+},
+
+{
+  id: 'bujumbura-bi',
+  city: 'Bujumbura',
+  country: 'Burundi',
+  airportCode: 'BJM',
+  image: `https://images.pexels.com/photos/30817106/pexels-photo-30817106.jpeg${cropParams}`,
+  description: 'Bujumbura is Burundi’s lakeside city on the shores of Lake Tanganyika, known for tropical scenery, beaches, local markets, nearby nature, and views toward the surrounding hills.',
+
+  seoTitle: 'Bujumbura Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Bujumbura, Burundi with a guide to Lake Tanganyika, beaches, local markets, Rusizi National Park, cultural attractions and practical travel tips.',
+
+  keywords: [
+    'Bujumbura travel guide',
+    'things to do in Bujumbura',
+    'Bujumbura attractions',
+    'Burundi travel guide',
+    'Bujumbura tourism',
+    'Lake Tanganyika Burundi',
+    'Rusizi National Park',
+    'Burundi attractions',
+    'best places to visit in Burundi',
+    'Bujumbura itinerary'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Nature',
+  bestSeason: 'June to September',
+  dailyBudget: 45,
+
+  attractions: [
+    {
+      name: 'Lake Tanganyika',
+      duration: '2–3 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Rusizi National Park',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Saga Beach',
+      duration: '2–3 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Livingstone-Stanley Monument',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Bujumbura Central Market',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Kiganda Royal Grounds',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Bujumbura sits on the northeastern shore of Lake Tanganyika and offers a warmer, more tropical atmosphere than many inland parts of Burundi.',
+    'Lake Tanganyika is one of the city’s main natural attractions, with beaches and opportunities for lakeside activities.',
+    'Rusizi National Park is located near Bujumbura and is known for wetlands and wildlife.',
+    'Kirundi and French are widely used in Burundi, with English also used in some tourism and business settings.',
+    'The Burundian franc (BIF) is the local currency.',
+    'Carry sufficient local currency when traveling outside major hotels and established businesses.',
+    'Burundi’s security situation can change quickly. Check the latest official travel advisories and local conditions before traveling.',
+    'Avoid isolated areas and remote travel unless reliable local arrangements and current security information are available.',
+    'Weather can be warm and humid around Lake Tanganyika, so carry sun protection and stay hydrated.'
+  ]
+},
+{
+  id: 'yaounde-cm',
+  city: 'Yaoundé',
+  country: 'Cameroon',
+  airportCode: 'NSI',
+  image: `https://images.pexels.com/photos/17290979/pexels-photo-17290979.jpeg${cropParams}`,
+  description: 'Cameroon’s capital, Yaoundé, is a green and hilly city known for its museums, markets, cultural heritage, nearby nature, and role as a gateway to exploring one of Central Africa’s most diverse countries.',
+
+  seoTitle: 'Yaoundé Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Yaoundé, Cameroon with a guide to museums, markets, cultural attractions, Mfoundi Market, Mount Fébé, local food and practical travel tips.',
+
+  keywords: [
+    'Yaoundé travel guide',
+    'things to do in Yaoundé',
+    'Yaoundé attractions',
+    'Cameroon travel guide',
+    'Yaoundé tourism',
+    'Cameroon attractions',
+    'best places to visit in Yaoundé',
+    'Mount Fébé',
+    'Cameroon culture',
+    'Central Africa travel'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'November to February',
+  dailyBudget: 50,
+
+  attractions: [
+    {
+      name: 'National Museum of Cameroon',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Mfoundi Market',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Basilica of Our Lady of Victories',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Mount Fébé',
+      duration: '2–3 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Mvog-Betsi Zoo',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Blackitude Museum',
+      duration: '1–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Yaoundé is Cameroon’s political capital and an important center for culture, government, and business.',
+    'French and English are the official languages, while numerous local languages are also spoken.',
+    'The Central African CFA franc (XAF) is the local currency.',
+    'Cameroon has different climates across its regions, so check conditions for each area if traveling beyond Yaoundé.',
+    'Try local dishes such as ndolé, grilled fish, plantains, and other Cameroonian specialties.',
+    'Keep valuables secure in busy markets and crowded areas.',
+    'If traveling outside major cities, check current transportation and security conditions before departure.',
+    'Check the latest official travel advisories before traveling, particularly for border and remote regions.'
+  ]
+},
+
+{
+  id: 'george-town-ky',
+  city: 'George Town',
+  country: 'Cayman Islands',
+  airportCode: 'GCM',
+  image: `https://images.pexels.com/photos/29259548/pexels-photo-29259548.png${cropParams}`,
+  description: 'The Cayman Islands offer a polished Caribbean escape known for crystal-clear waters, Seven Mile Beach, exceptional snorkeling and diving, marine life, and the relaxed atmosphere of George Town.',
+
+  seoTitle: 'Cayman Islands Travel Guide: Beaches, Attractions & Travel Tips',
+
+  seoDescription: 'Explore the Cayman Islands with a guide to George Town, Seven Mile Beach, Stingray City, snorkeling, diving, Grand Cayman attractions and travel tips.',
+
+  keywords: [
+    'Cayman Islands travel guide',
+    'things to do in Cayman Islands',
+    'Grand Cayman travel guide',
+    'George Town Cayman Islands',
+    'Seven Mile Beach',
+    'Stingray City',
+    'Cayman Islands attractions',
+    'Cayman Islands tourism',
+    'Grand Cayman beaches',
+    'Caribbean travel guide'
+  ],
+
+  budget: 'Luxury',
+  tripType: 'Beach',
+  bestSeason: 'December to April',
+  dailyBudget: 220,
+
+  attractions: [
+    {
+      name: 'Seven Mile Beach',
+      duration: '3–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Stingray City',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'George Town',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Cayman Crystal Caves',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Queen Elizabeth II Botanic Park',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Smith Barcadere',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Grand Cayman is the largest of the three Cayman Islands and the main base for most visitors.',
+    'Seven Mile Beach is one of the island’s best-known beaches and is popular for swimming and relaxing.',
+    'Stingray City offers the opportunity to see southern stingrays in shallow Caribbean waters through organized excursions.',
+    'The Cayman Islands are known for excellent diving and snorkeling, with clear water and abundant marine life.',
+    'The Cayman Islands dollar (KYD) is the local currency, while US dollars are widely accepted.',
+    'The Cayman Islands drive on the left side of the road.',
+    'Sun protection is essential in the tropical climate, especially during long days outdoors.',
+    'The islands can become more expensive during peak travel periods, so compare accommodation and activity options in advance.'
+  ]
+},
+
+{
+  id: 'bangui-cf',
+  city: 'Bangui',
+  country: 'Central African Republic',
+  airportCode: 'BGF',
+  image: `https://images.pexels.com/photos/17290980/pexels-photo-17290980.jpeg${cropParams}`,
+  description: 'Bangui is the capital of the Central African Republic, located along the Ubangi River and known for its riverside setting, local markets, cultural life, and access to the landscapes of Central Africa.',
+
+  seoTitle: 'Bangui Travel Guide: Attractions, Culture & Travel Tips',
+
+  seoDescription: 'Explore Bangui, Central African Republic with a guide to the Ubangi River, local markets, cultural attractions, city landmarks and important travel information.',
+
+  keywords: [
+    'Bangui travel guide',
+    'things to do in Bangui',
+    'Bangui attractions',
+    'Central African Republic travel guide',
+    'Bangui tourism',
+    'Central African Republic attractions',
+    'Ubangi River',
+    'Bangui markets',
+    'Central Africa travel',
+    'Bangui itinerary'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'December to February',
+  dailyBudget: 40,
+
+  attractions: [
+    {
+      name: 'Ubangi River',
+      duration: '2 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Boganda National Museum',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Bangui Central Market',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Notre-Dame of Bangui',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'K-Cinq Market',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Boali Waterfalls',
+      duration: 'Full Day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Bangui is located on the banks of the Ubangi River and serves as the country’s main urban and cultural center.',
+    'French is the official language, while Sango is widely spoken and serves as an important national language.',
+    'The Central African CFA franc (XAF) is the local currency.',
+    'Bangui has a tropical climate with a pronounced wet season, so check weather conditions when planning outdoor activities.',
+    'Travel outside Bangui requires careful planning and reliable local arrangements.',
+    'Security conditions in the Central African Republic can be extremely challenging and can change quickly.',
+    'Check the latest official travel advisories before considering travel to the country.',
+    'Avoid remote areas, border regions, and independent travel without reliable local security information.'
+  ]
+},
+
+{
+  id: 'abidjan-ci',
+  city: 'Abidjan',
+  country: 'Côte d’Ivoire',
+  airportCode: 'ABJ',
+  image: `https://images.pexels.com/photos/7381781/pexels-photo-7381781.jpeg${cropParams}`,
+  description: 'Abidjan is Côte d’Ivoire’s energetic economic capital, known for modern skylines, vibrant neighborhoods, West African cuisine, lively markets, contemporary culture, and nearby coastal escapes.',
+
+  seoTitle: 'Abidjan Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Abidjan, Côte d’Ivoire with a guide to Plateau, Treichville, Cocody, Banco National Park, local food, markets, culture and travel tips.',
+
+  keywords: [
+    'Abidjan travel guide',
+    'things to do in Abidjan',
+    'Abidjan attractions',
+    'Côte d’Ivoire travel guide',
+    'Ivory Coast travel guide',
+    'Abidjan tourism',
+    'Cocody Abidjan',
+    'Treichville Abidjan',
+    'Banco National Park',
+    'West Africa travel'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'November to March',
+  dailyBudget: 70,
+
+  attractions: [
+    {
+      name: 'Plateau District',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'St. Paul’s Cathedral',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Treichville Market',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Cocody',
+      duration: '2–3 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Banco National Park',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Abidjan National Museum',
+      duration: '1–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Abidjan is Côte d’Ivoire’s largest city and economic center, with a diverse mix of modern districts and traditional neighborhoods.',
+    'French is the official language, while many local languages are spoken throughout the country.',
+    'The West African CFA franc (XOF) is the local currency.',
+    'Try Ivorian specialties such as attiéké, alloco, grilled fish, and various local sauces.',
+    'Abidjan is a large and busy city, so allow extra time for traffic when planning sightseeing.',
+    'The city has a tropical climate, with wetter periods during parts of the year.',
+    'Keep valuables secure in crowded markets and busy public areas.',
+    'If planning excursions outside Abidjan, check current transportation and security conditions before traveling.'
+  ]
+},
+
+{
+  id: 'willemstad-cw',
+  city: 'Willemstad',
+  country: 'Curaçao',
+  airportCode: 'CUR',
+  image: `https://images.pexels.com/photos/34872010/pexels-photo-34872010.jpeg${cropParams}`,
+  description: 'Curaçao is a colorful Caribbean island known for Willemstad’s Dutch colonial architecture, turquoise coves, coral reefs, vibrant culture, excellent diving, and a distinctive blend of European and Caribbean influences.',
+
+  seoTitle: 'Curaçao Travel Guide: Beaches, Willemstad, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Curaçao with a guide to Willemstad, Handelskade, Playa Kenepa, Christoffel National Park, snorkeling, diving, local food and travel tips.',
+
+  keywords: [
+    'Curaçao travel guide',
+    'things to do in Curaçao',
+    'Curaçao attractions',
+    'Willemstad travel guide',
+    'Curaçao beaches',
+    'Handelskade Willemstad',
+    'Playa Kenepa',
+    'Christoffel National Park',
+    'Curaçao tourism',
+    'Caribbean travel guide'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'February to June',
+  dailyBudget: 120,
+
+  attractions: [
+    {
+      name: 'Willemstad Historic Centre',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Handelskade',
+      duration: '1 hour',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Playa Kenepa',
+      duration: '3–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Christoffel National Park',
+      duration: 'Half day',
+      bestTime: 'Early Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Klein Curaçao',
+      duration: 'Full Day',
+      bestTime: 'Early Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Curaçao Sea Aquarium',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Willemstad’s historic center is known for its colorful Dutch Caribbean architecture and is a UNESCO World Heritage Site.',
+    'Curaçao has numerous small coves and beaches, making a rental car useful for exploring beyond Willemstad.',
+    'The island is popular for snorkeling and diving because of its clear water and coral reefs.',
+    'Papiamentu, Dutch, and English are widely spoken, with Spanish also commonly understood.',
+    'The Caribbean guilder (Cg) is the local currency, while major cards are widely accepted in tourist areas.',
+    'Curaçao has a relatively dry climate compared with many other Caribbean islands, but conditions can still vary by season.',
+    'Use reef-safe sunscreen and avoid touching coral or marine wildlife when snorkeling or diving.',
+    'Klein Curaçao is an excellent day trip for beaches and snorkeling, but boat journeys can be several hours long.',
+    'Renting a car is useful if you want to visit beaches and attractions spread across the island.'
+  ]
+},
+
+
+{
+  id: 'san-salvador-sv',
+  city: 'San Salvador',
+  country: 'El Salvador',
+  airportCode: 'SAL',
+  image: `https://images.pexels.com/photos/38023550/pexels-photo-38023550.jpeg${cropParams}`,
+  description: 'San Salvador is the lively capital of El Salvador, surrounded by volcanoes and known for historic plazas, museums, vibrant food culture, nearby volcanoes, and easy access to Pacific surf towns.',
+
+  seoTitle: 'San Salvador Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore San Salvador, El Salvador with a guide to historic sites, museums, volcanoes, local food, markets, nearby attractions and practical travel tips.',
+
+  keywords: [
+    'San Salvador travel guide',
+    'things to do in San Salvador',
+    'San Salvador attractions',
+    'El Salvador travel guide',
+    'El Salvador tourism',
+    'San Salvador volcano',
+    'Santa Ana Volcano',
+    'Ruta de las Flores',
+    'best places to visit in El Salvador',
+    'San Salvador itinerary'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Adventure',
+  bestSeason: 'November to April',
+  dailyBudget: 55,
+
+  attractions: [
+    {
+      name: 'National Palace of El Salvador',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Metropolitan Cathedral of San Salvador',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Monument to the Divine Savior of the World',
+      duration: '1 hour',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'National Museum of Anthropology David J. Guzmán',
+      duration: '1.5–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'San Salvador Volcano',
+      duration: 'Half day',
+      bestTime: 'Early Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Lake Ilopango',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'San Salvador is the country’s main urban center and a convenient base for exploring volcanoes, archaeological sites, and the Pacific coast.',
+    'Spanish is the official language, while English is understood in some tourist and business settings.',
+    'The US dollar is the official currency, and Bitcoin was previously recognized as legal tender; check current payment rules before traveling.',
+    'El Salvador is known for pupusas, one of the country’s most famous traditional foods.',
+    'The dry season from November to April is generally favorable for sightseeing and outdoor activities.',
+    'Volcano hikes can be physically demanding, so check trail conditions and use authorized guides where appropriate.',
+    'Use reputable transportation and take normal precautions with valuables in busy areas.',
+    'If traveling outside San Salvador, check current local conditions and official travel advice before departure.'
+  ]
+},
+
+{
+  id: 'malabo-gq',
+  city: 'Malabo',
+  country: 'Equatorial Guinea',
+  airportCode: 'SSG',
+  image: `https://images.pexels.com/photos/36705138/pexels-photo-36705138.jpeg${cropParams}`,
+  description: 'Malabo is the historic capital of Equatorial Guinea on Bioko Island, combining Spanish colonial architecture, tropical landscapes, volcanic scenery, coastal views, and access to some of Central Africa’s distinctive wildlife.',
+
+  seoTitle: 'Malabo Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Malabo, Equatorial Guinea with a guide to colonial architecture, Malabo National Park, Pico Basilé, beaches, cultural attractions and travel tips.',
+
+  keywords: [
+    'Malabo travel guide',
+    'things to do in Malabo',
+    'Malabo attractions',
+    'Equatorial Guinea travel guide',
+    'Equatorial Guinea tourism',
+    'Bioko Island',
+    'Pico Basilé',
+    'Malabo National Park',
+    'best places to visit in Equatorial Guinea',
+    'Malabo itinerary'
+  ],
+
+  budget: 'Luxury',
+  tripType: 'Nature',
+  bestSeason: 'December to February',
+  dailyBudget: 150,
+
+  attractions: [
+    {
+      name: 'Malabo Old Town',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Santa Isabel Cathedral',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Pico Basilé',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Malabo National Park',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Playa de Arena Blanca',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Moka Valley',
+      duration: 'Full Day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Malabo is located on Bioko Island and has a distinctive mix of Spanish colonial heritage and tropical Central African landscapes.',
+    'Spanish is the official language most widely used, with French and Portuguese also recognized as official languages.',
+    'The Central African CFA franc (XAF) is the local currency.',
+    'Bioko Island has a humid tropical climate with substantial rainfall, so check conditions before planning outdoor activities.',
+    'Pico Basilé offers impressive mountain scenery but weather can change quickly at higher elevations.',
+    'Travelers should arrange accommodation, transportation, and permits in advance because tourism infrastructure can be limited.',
+    'Photography of government buildings, military facilities, and other sensitive locations may be restricted, so ask before taking photographs.',
+    'Entry requirements can be more complex than in many other destinations. Confirm visa, documentation, and current travel rules before booking.',
+    'Check the latest official travel advisories and local conditions before traveling within Equatorial Guinea.'
+  ]
+},
+
+{
+  id: 'cayenne-gf',
+  city: 'Cayenne',
+  country: 'French Guiana',
+  airportCode: 'CAY',
+  image: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm08QurR78aztFCgQ-ZUT-hIsytDwYHdoMV3I-Bury40j_1NMUttr31hbG&s=10${cropParams}`,
+  description: 'French Guiana is a fascinating corner of South America known for French and Creole culture, tropical rainforest, diverse wildlife, coastal landscapes, and the Guiana Space Centre at Kourou.',
+
+  seoTitle: 'French Guiana Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore French Guiana with a guide to Cayenne, Kourou, Guiana Space Centre, Îles du Salut, rainforest, local culture, attractions and travel tips.',
+
+  keywords: [
+    'French Guiana travel guide',
+    'things to do in French Guiana',
+    'Cayenne travel guide',
+    'French Guiana attractions',
+    'French Guiana tourism',
+    'Guiana Space Centre',
+    'Kourou French Guiana',
+    'Îles du Salut',
+    'French Guiana rainforest',
+    'South America travel guide'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'August to November',
+  dailyBudget: 100,
+
+  attractions: [
+    {
+      name: 'Cayenne',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Guiana Space Centre',
+      duration: '3–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Îles du Salut',
+      duration: 'Full Day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Devil’s Island',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Cayenne Market',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Roura & Kaw Nature Reserve',
+      duration: 'Full Day',
+      bestTime: 'Early Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'French Guiana is an overseas department and region of France, so the euro is the local currency.',
+    'French is the official language, while Creole and several Indigenous and Maroon languages are also spoken.',
+    'Cayenne is the main urban center, while Kourou is an important base for exploring the space centre and nearby attractions.',
+    'The Guiana Space Centre is one of the region’s most distinctive attractions. Check the official schedule and visitor requirements before planning a visit.',
+    'French Guiana has a tropical climate with high humidity and rainfall throughout much of the year.',
+    'Mosquito protection is important when exploring rainforest and outdoor areas.',
+    'Public transportation is limited outside major towns, so organized excursions or a rental car can be useful.',
+    'Check current entry requirements and official travel advice before traveling.'
+  ]
+},
+
+{
+  id: 'stanley-fk',
+  city: 'Stanley',
+  country: 'Falkland Islands',
+  airportCode: 'PSY',
+  image: `https://images.pexels.com/photos/31307996/pexels-photo-31307996.jpeg${cropParams}`,
+  description: 'The Falkland Islands offer a remote South Atlantic escape known for rugged coastlines, windswept landscapes, historic Stanley, abundant seabirds, penguin colonies, and remarkable wildlife encounters.',
+
+  seoTitle: 'Falkland Islands Travel Guide: Wildlife, Stanley & Travel Tips',
+
+  seoDescription: 'Explore the Falkland Islands with a guide to Stanley, penguin colonies, wildlife, historic sites, rugged landscapes, beaches and practical travel tips.',
+
+  keywords: [
+    'Falkland Islands travel guide',
+    'things to do in Falkland Islands',
+    'Stanley Falkland Islands',
+    'Falkland Islands wildlife',
+    'Falkland Islands penguins',
+    'Falkland Islands tourism',
+    'Falkland Islands attractions',
+    'South Atlantic travel',
+    'Falkland Islands itinerary',
+    'Stanley travel guide'
+  ],
+
+  budget: 'Luxury',
+  tripType: 'Nature',
+  bestSeason: 'November to March',
+  dailyBudget: 250,
+
+  attractions: [
+    {
+      name: 'Stanley',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Gypsy Cove',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Volunteer Point',
+      duration: 'Full Day',
+      bestTime: 'Early Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: '1982 Liberation Memorial',
+      duration: '30 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Christ Church Cathedral',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'West Falkland',
+      duration: '1–2 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Stanley is the main settlement and the usual base for visitors exploring the Falkland Islands.',
+    'The islands are particularly famous for penguins, including king, gentoo, and rockhopper penguins.',
+    'Wildlife excursions often involve long drives or small aircraft, so allow flexibility in your schedule.',
+    'The climate is cool, windy, and changeable. Pack waterproof and windproof layers even during summer.',
+    'The Falkland Islands pound (FKP) is the local currency, while British pounds are also commonly accepted.',
+    'Flights and accommodation can be limited, so booking well in advance is recommended.',
+    'Stay on designated paths and follow wildlife-viewing guidelines to avoid disturbing animals.',
+    'Mobile connectivity and services can be limited outside Stanley.',
+    'Check current flight schedules, entry requirements, and official travel advice before traveling.'
+  ]
+},
+
+{
+  id: 'torshavn-fo',
+  city: 'Tórshavn',
+  country: 'Faroe Islands',
+  airportCode: 'FAE',
+  image: `https://images.pexels.com/photos/23525819/pexels-photo-23525819.jpeg${cropParams}`,
+  description: 'The Faroe Islands are a dramatic North Atlantic destination of green mountains, sea cliffs, waterfalls, tiny villages, winding roads, and traditional Nordic culture centered around the capital Tórshavn.',
+
+  seoTitle: 'Faroe Islands Travel Guide: Things to Do, Nature & Travel Tips',
+
+  seoDescription: 'Explore the Faroe Islands with a guide to Tórshavn, Saksun, Gjógv, Múlafossur Waterfall, dramatic cliffs, hiking, villages and travel tips.',
+
+  keywords: [
+    'Faroe Islands travel guide',
+    'things to do in Faroe Islands',
+    'Faroe Islands attractions',
+    'Torshavn travel guide',
+    'Faroe Islands hiking',
+    'Múlafossur Waterfall',
+    'Saksun Faroe Islands',
+    'Gjogv Faroe Islands',
+    'Faroe Islands tourism',
+    'Nordic travel guide'
+  ],
+
+  budget: 'Luxury',
+  tripType: 'Adventure',
+  bestSeason: 'May to September',
+  dailyBudget: 180,
+
+  attractions: [
+    {
+      name: 'Tórshavn',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Múlafossur Waterfall',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Saksun',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Gjógv',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Mykines',
+      duration: 'Full Day',
+      bestTime: 'Early Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Kirkjubøur',
+      duration: '1–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Tórshavn is the capital and a convenient base for exploring the surrounding islands and villages.',
+    'The Faroe Islands are famous for dramatic landscapes, hiking trails, seabird colonies, waterfalls, and small coastal settlements.',
+    'Weather can change extremely quickly, even during summer. Always carry waterproof and warm layers.',
+    'Hiking conditions can become difficult in fog, wind, or rain, so check local conditions before setting out.',
+    'The Faroese króna is used alongside the Danish krone, and cards are widely accepted.',
+    'A rental car is useful for exploring the islands, while ferries, buses, and tunnels connect many destinations.',
+    'Some roads and hiking routes require extra care, particularly around cliffs and exposed coastal areas.',
+    'Summer offers long daylight hours and is the most popular period for hiking and wildlife experiences.',
+    'Check tunnel tolls, ferry schedules, road conditions, and weather before setting out.'
+  ]
+},
+
+{
+  id: 'accra-gh',
+  city: 'Accra',
+  country: 'Ghana',
+  airportCode: 'ACC',
+  image: `https://images.pexels.com/photos/12044802/pexels-photo-12044802.jpeg${cropParams}`,
+  description: 'Accra is Ghana’s energetic coastal capital, known for vibrant markets, contemporary art, historic landmarks, Atlantic beaches, lively nightlife, and a rich blend of traditional and modern West African culture.',
+
+  seoTitle: 'Accra Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Accra, Ghana with a guide to Independence Square, Kwame Nkrumah Memorial Park, Makola Market, Labadi Beach, local food, culture and travel tips.',
+
+  keywords: [
+    'Accra travel guide',
+    'things to do in Accra',
+    'Accra attractions',
+    'Ghana travel guide',
+    'Accra tourism',
+    'Kwame Nkrumah Memorial Park',
+    'Makola Market',
+    'Labadi Beach',
+    'best places to visit in Accra',
+    'Ghana itinerary'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'November to March',
+  dailyBudget: 70,
+
+  attractions: [
+    {
+      name: 'Kwame Nkrumah Memorial Park',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Independence Square',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Makola Market',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Labadi Beach',
+      duration: '2–3 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Jamestown',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'W.E.B. Du Bois Memorial Centre',
+      duration: '1–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Accra is Ghana’s main international gateway and a useful base for exploring the country.',
+    'English is the official language, while Twi, Ga, Ewe, and other Ghanaian languages are widely spoken.',
+    'The Ghanaian cedi (GHS) is the local currency.',
+    'Try local dishes such as jollof rice, waakye, banku, grilled fish, and kelewele.',
+    'Accra can be hot and humid, so stay hydrated and use sun protection.',
+    'Traffic can be heavy, particularly during weekday rush hours, so allow extra time for journeys.',
+    'Keep valuables secure in crowded markets and busy public areas.',
+    'If visiting coastal areas or traveling outside Accra, check current local conditions and official travel advice.'
+  ]
+},
+
+{
+  id: 'gibraltar-gi',
+  city: 'Gibraltar',
+  country: 'Gibraltar',
+  airportCode: 'GIB',
+  image: `https://images.pexels.com/photos/12073658/pexels-photo-12073658.jpeg${cropParams}`,
+  description: 'Gibraltar is a compact Mediterranean destination dominated by the Rock of Gibraltar, offering dramatic sea views, historic tunnels, Mediterranean wildlife, British heritage, and views across the Strait of Gibraltar.',
+
+  seoTitle: 'Gibraltar Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Gibraltar with a guide to the Rock of Gibraltar, Upper Rock Nature Reserve, Europa Point, St Michael’s Cave, monkeys, beaches and travel tips.',
+
+  keywords: [
+    'Gibraltar travel guide',
+    'things to do in Gibraltar',
+    'Gibraltar attractions',
+    'Rock of Gibraltar',
+    'Upper Rock Nature Reserve',
+    'St Michael’s Cave',
+    'Europa Point',
+    'Gibraltar tourism',
+    'Gibraltar itinerary',
+    'Gibraltar travel tips'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Adventure',
+  bestSeason: 'April to June, September to October',
+  dailyBudget: 110,
+
+  attractions: [
+    {
+      name: 'Rock of Gibraltar',
+      duration: '3–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'St Michael’s Cave',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Included with Rock ticket'
+    },
+    {
+      name: 'Europa Point',
+      duration: '1 hour',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Great Siege Tunnels',
+      duration: '1 hour',
+      bestTime: 'Afternoon',
+      entryFee: 'Included with Rock ticket'
+    },
+    {
+      name: 'Catalan Bay',
+      duration: '1–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Gibraltar Nature Reserve',
+      duration: '3–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Gibraltar is a British Overseas Territory located at the entrance to the Mediterranean.',
+    'English is the official language, while Spanish is also widely spoken.',
+    'The Gibraltar pound (GIP) is the local currency and is interchangeable with the British pound.',
+    'The Barbary macaques on the Rock are wild animals. Do not feed or approach them.',
+    'The Rock involves steep paths and uneven terrain, so comfortable footwear is recommended.',
+    'Weather can be warm and sunny but strong winds are possible around exposed viewpoints.',
+    'Check current border and entry requirements if traveling between Gibraltar and Spain.',
+    'The airport is very close to the town center, making Gibraltar convenient for a short city break.'
+  ]
+},
+
+{
+  id: 'nuuk-gl',
+  city: 'Nuuk',
+  country: 'Greenland',
+  airportCode: 'GOH',
+  image: `https://images.pexels.com/photos/33348862/pexels-photo-33348862.jpeg${cropParams}`,
+  description: 'Greenland offers an extraordinary Arctic experience of enormous icebergs, dramatic fjords, colorful coastal settlements, Arctic wildlife, Indigenous Greenlandic culture, and vast landscapes unlike anywhere else.',
+
+  seoTitle: 'Greenland Travel Guide: Things to Do, Nature & Travel Tips',
+
+  seoDescription: 'Explore Greenland with a guide to Nuuk, Ilulissat Icefjord, Arctic wildlife, Northern Lights, Greenlandic culture, hiking and practical travel tips.',
+
+  keywords: [
+    'Greenland travel guide',
+    'things to do in Greenland',
+    'Nuuk travel guide',
+    'Ilulissat Icefjord',
+    'Greenland tourism',
+    'Greenland Northern Lights',
+    'Greenland wildlife',
+    'Arctic travel',
+    'Greenland hiking',
+    'Greenland itinerary'
+  ],
+
+  budget: 'Luxury',
+  tripType: 'Adventure',
+  bestSeason: 'June to September',
+  dailyBudget: 250,
+
+  attractions: [
+    {
+      name: 'Ilulissat Icefjord',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Nuuk',
+      duration: '1–2 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Greenland National Museum',
+      duration: '1–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Sermermiut Valley',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Nuuk Fjord',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Disko Bay',
+      duration: '1–2 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Greenland is an autonomous territory within the Kingdom of Denmark and is geographically part of North America.',
+    'Greenlandic is the official language, while Danish is also widely used.',
+    'The Danish krone (DKK) is the local currency.',
+    'Summer is ideal for hiking, boat trips, and experiencing the Midnight Sun in northern areas.',
+    'Winter offers opportunities for Northern Lights viewing, dog sledding, and other Arctic experiences.',
+    'Weather can change quickly, so pack warm, waterproof, and windproof layers regardless of season.',
+    'Transportation between settlements is often by plane or boat because there are no roads connecting most towns.',
+    'Wildlife should always be observed from a safe distance and according to local guidance.',
+    'Travel can be expensive because of Greenland’s remote location and limited infrastructure, so book transportation and accommodation early.'
+  ]
+},
+
+{
+  id: 'st-georges-gd',
+  city: 'St. George’s',
+  country: 'Grenada',
+  airportCode: 'GND',
+  image: `https://images.pexels.com/photos/12145125/pexels-photo-12145125.jpeg${cropParams}`,
+  description: 'Grenada is a lush Caribbean island known for colorful St. George’s, tropical beaches, spice plantations, waterfalls, rainforest landscapes, diving, and a rich food and cultural heritage.',
+
+  seoTitle: 'Grenada Travel Guide: Beaches, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Grenada with a guide to St. George’s, Grand Anse Beach, Grand Etang National Park, Annandale Falls, spice plantations, diving and travel tips.',
+
+  keywords: [
+    'Grenada travel guide',
+    'things to do in Grenada',
+    'Grenada attractions',
+    'St George’s Grenada',
+    'Grand Anse Beach',
+    'Grand Etang National Park',
+    'Grenada tourism',
+    'Grenada beaches',
+    'Caribbean travel guide',
+    'Grenada itinerary'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'December to April',
+  dailyBudget: 120,
+
+  attractions: [
+    {
+      name: 'Grand Anse Beach',
+      duration: '3–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'St. George’s',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Grand Etang National Park',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Annandale Falls',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Fort George',
+      duration: '1 hour',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Underwater Sculpture Park',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Grenada is known as the Spice Island because of its production of nutmeg, cocoa, cinnamon, cloves, and other spices.',
+    'St. George’s is one of the Caribbean’s most scenic capitals, with colorful buildings and a picturesque harbor.',
+    'Grand Anse Beach is one of the island’s most popular beaches and is ideal for swimming and relaxing.',
+    'The Eastern Caribbean dollar (XCD) is the local currency, while US dollars are commonly accepted in tourist areas.',
+    'Grenada drives on the left side of the road.',
+    'The island has a tropical climate, with December to April generally being the drier and more popular travel period.',
+    'Try local dishes such as oil down, fresh seafood, and Caribbean-style grilled foods.',
+    'Mosquito protection and sun protection are useful when spending time outdoors.',
+    'Check local weather and official travel advice before planning boat trips or hikes.'
+  ]
+},
+
+{
+  id: 'basse-terre-gp',
+  city: 'Basse-Terre',
+  country: 'Guadeloupe',
+  airportCode: 'PTP',
+  image: `https://images.pexels.com/photos/38129343/pexels-photo-38129343.jpeg${cropParams}`,
+  description: 'Guadeloupe is a French Caribbean archipelago combining tropical beaches, rainforest-covered mountains, Creole culture, volcanic landscapes, colorful towns, and excellent food across its distinctive islands.',
+
+  seoTitle: 'Guadeloupe Travel Guide: Beaches, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Guadeloupe with a guide to Basse-Terre, Grande-Terre, La Soufrière, Carbet Falls, beaches, Creole culture, food and travel tips.',
+
+  keywords: [
+    'Guadeloupe travel guide',
+    'things to do in Guadeloupe',
+    'Guadeloupe attractions',
+    'Basse-Terre Guadeloupe',
+    'Grande-Terre Guadeloupe',
+    'La Soufrière',
+    'Guadeloupe beaches',
+    'Guadeloupe tourism',
+    'French Caribbean travel',
+    'Guadeloupe itinerary'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'December to April',
+  dailyBudget: 130,
+
+  attractions: [
+    {
+      name: 'La Soufrière Volcano',
+      duration: 'Half day',
+      bestTime: 'Early Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Carbet Falls',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Pointe-à-Pitre',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Grande Anse Beach',
+      duration: '3–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Guadeloupe National Park',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Memorial ACTe',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Guadeloupe is an overseas department and region of France and uses the euro.',
+    'French is the official language, while Guadeloupean Creole is also widely spoken.',
+    'The archipelago has two main wings: mountainous Basse-Terre and flatter, more beach-focused Grande-Terre.',
+    'A rental car is useful for exploring beaches, waterfalls, villages, and national park areas.',
+    'La Soufrière is an active volcano, so check current trail conditions and restrictions before hiking.',
+    'Guadeloupe has a tropical climate with a wetter season and a generally drier period from around December to April.',
+    'Try Creole dishes, fresh seafood, accras, bokit, and local rum-based specialties.',
+    'The euro (EUR) is the local currency and cards are widely accepted in established businesses.',
+    'Check local weather and official guidance before planning hikes or boat excursions.'
+  ]
+},
+
+{
+  id: 'st-peter-port-gg',
+  city: 'St. Peter Port',
+  country: 'Guernsey',
+  airportCode: 'GCI',
+  image: `https://images.pexels.com/photos/870752/pexels-photo-870752.jpeg${cropParams}`,
+  description: 'Guernsey is a picturesque Channel Island known for rugged coastal cliffs, sandy coves, historic forts, charming St. Peter Port, scenic walking routes, and a distinctive blend of British and French influences.',
+
+  seoTitle: 'Guernsey Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Guernsey with a guide to St. Peter Port, coastal walks, Castle Cornet, beaches, Victor Hugo’s Hauteville House, gardens and travel tips.',
+
+  keywords: [
+    'Guernsey travel guide',
+    'things to do in Guernsey',
+    'St Peter Port travel guide',
+    'Guernsey attractions',
+    'Guernsey tourism',
+    'Castle Cornet',
+    'Guernsey beaches',
+    'Guernsey coastal walks',
+    'Hauteville House',
+    'Channel Islands travel'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'May to September',
+  dailyBudget: 120,
+
+  attractions: [
+    {
+      name: 'St. Peter Port',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Castle Cornet',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Hauteville House',
+      duration: '1–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Cobo Bay',
+      duration: '2–3 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'German Occupation Museum',
+      duration: '1.5–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Petit Bot Bay',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Guernsey is a self-governing Crown Dependency and is not part of the United Kingdom.',
+    'English is the main language, while Guernésiais is the traditional local language.',
+    'The Guernsey pound (GGP) is used alongside British pounds, and British currency is widely accepted.',
+    'Guernsey is known for coastal walking routes, so comfortable shoes are useful for exploring the island.',
+    'The island drives on the left side of the road.',
+    'Weather can change quickly, particularly along exposed coastal areas, so carry a light waterproof layer.',
+    'May to September generally offers the best conditions for walking, beaches, and outdoor activities.',
+    'Ferry and flight schedules can vary seasonally, so check connections when planning island-hopping trips.',
+    'Respect cliff-edge safety signs and stay on marked paths during coastal walks.'
+  ]
+},
+{
+  id: 'douglas-im',
+  city: 'Douglas',
+  country: 'Isle of Man',
+  airportCode: 'IOM',
+  image: `https://images.pexels.com/photos/16709931/pexels-photo-16709931.jpeg${cropParams}`,
+  description: 'Douglas is the charming capital of the Isle of Man, surrounded by dramatic coastlines, historic castles, Victorian architecture, scenic walking routes, and a unique blend of Manx heritage and British island culture.',
+
+  seoTitle: 'Isle of Man Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore the Isle of Man with a guide to Douglas, Snaefell Mountain, Peel Castle, Castletown, coastal walks, Manx heritage and practical travel tips.',
+
+  keywords: [
+    'Isle of Man travel guide',
+    'things to do in Isle of Man',
+    'Douglas Isle of Man',
+    'Isle of Man attractions',
+    'Isle of Man tourism',
+    'Peel Castle',
+    'Snaefell Mountain',
+    'Castletown Isle of Man',
+    'Isle of Man coastal walks',
+    'Isle of Man itinerary'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'May to September',
+  dailyBudget: 110,
+
+  attractions: [
+    {
+      name: 'Douglas',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Snaefell Mountain',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Peel Castle',
+      duration: '1.5–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Laxey Wheel',
+      duration: '1–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Castletown',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Port Erin',
+      duration: '2 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Douglas is the capital and main urban center of the Isle of Man.',
+    'Ronaldsway Airport (IOM) is the island’s only airport and is located in the south of the island.',
+    'The Isle of Man is a self-governing Crown Dependency and is not part of the United Kingdom.',
+    'English is the main language, while Manx Gaelic is the traditional local language.',
+    'The Manx pound is used alongside British pounds, and British currency is widely accepted.',
+    'The island drives on the left side of the road.',
+    'The Isle of Man is known for scenic coastal walks, historic sites, and mountain landscapes.',
+    'Weather can change quickly, particularly around exposed coastal and mountain areas, so carry a waterproof layer.',
+    'May to September is generally a good period for hiking, sightseeing, and outdoor activities.',
+    'The island can also be reached by ferry from the UK and Ireland, making it useful for travelers combining multiple destinations.'
+  ]
+},
+
+{
+  id: 'tel-aviv-il',
+  city: 'Tel Aviv',
+  country: 'Israel',
+  airportCode: 'TLV',
+  image: `https://images.pexels.com/photos/17291323/pexels-photo-17291323.jpeg${cropParams}`,
+  description: 'Tel Aviv is Israel’s vibrant Mediterranean city, known for its beaches, Bauhaus architecture, lively markets, modern cafés, nightlife, contemporary culture, and the historic streets of nearby Jaffa.',
+
+  seoTitle: 'Israel Travel Guide: Tel Aviv, Jerusalem, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Israel with a guide to Tel Aviv, Jaffa, Jerusalem, the Dead Sea, historic sites, Mediterranean beaches, local food and practical travel tips.',
+
+  keywords: [
+    'Israel travel guide',
+    'things to do in Israel',
+    'Tel Aviv travel guide',
+    'Israel attractions',
+    'Tel Aviv attractions',
+    'Jaffa Israel',
+    'Jerusalem travel guide',
+    'Dead Sea Israel',
+    'Israel tourism',
+    'Israel itinerary'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'March to May, September to November',
+  dailyBudget: 140,
+
+  attractions: [
+    {
+      name: 'Jaffa Old City',
+      duration: '2–3 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Tel Aviv Beaches',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Carmel Market',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Jerusalem Old City',
+      duration: 'Full Day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Dead Sea',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Masada',
+      duration: '3–4 hours',
+      bestTime: 'Early Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Tel Aviv is one of Israel’s main cultural and commercial centers and a major base for exploring the Mediterranean coast.',
+    'Ben Gurion International Airport (TLV) is the main international gateway to Israel.',
+    'Hebrew and Arabic are widely used, while English is common in tourist areas.',
+    'The Israeli new shekel (ILS) is the local currency.',
+    'Tel Aviv is known for its beaches, nightlife, cafés, food markets, and Bauhaus architecture.',
+    'Jaffa offers a historic contrast to modern Tel Aviv, with narrow streets, galleries, markets, and Mediterranean views.',
+    'Jerusalem, the Dead Sea, and Masada can be visited as longer day trips or separate stops depending on your itinerary.',
+    'Israel has diverse climates, so conditions can vary significantly between the Mediterranean coast, Jerusalem, and the desert regions.',
+    'Respect local religious customs when visiting sacred sites and dress appropriately.',
+    'Security conditions can change quickly. Check the latest official travel advisories, entry requirements, and local transportation information before traveling.'
+  ]
+},
+
+{
+  id: 'st-helier-je',
+  city: 'St. Helier',
+  country: 'Jersey',
+  airportCode: 'JER',
+  image: `https://images.pexels.com/photos/29975346/pexels-photo-29975346.jpeg${cropParams}`,
+  description: 'Jersey is a charming Channel Island known for dramatic coastlines, sandy beaches, medieval castles, wartime history, scenic countryside, and a distinctive blend of British and French influences.',
+
+  seoTitle: 'Jersey Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Jersey with a guide to St. Helier, Mont Orgueil Castle, Jersey War Tunnels, La Corbière Lighthouse, beaches, coastal walks and travel tips.',
+
+  keywords: [
+    'Jersey travel guide',
+    'things to do in Jersey',
+    'St Helier travel guide',
+    'Jersey attractions',
+    'Jersey tourism',
+    'Mont Orgueil Castle',
+    'Jersey War Tunnels',
+    'La Corbière Lighthouse',
+    'Jersey beaches',
+    'Channel Islands travel guide'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'May to September',
+  dailyBudget: 120,
+
+  attractions: [
+    {
+      name: 'St. Helier',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Mont Orgueil Castle',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Jersey War Tunnels',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'La Corbière Lighthouse',
+      duration: '1–2 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Elizabeth Castle',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'St. Ouen’s Bay',
+      duration: '2–3 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'St. Helier is Jersey’s capital and the main center for shopping, restaurants, culture, and accommodation.',
+    'Jersey Airport (JER) is the island’s main airport, while regular ferry services also connect Jersey with the UK and nearby France.',
+    'Jersey is a self-governing Crown Dependency and is not part of the United Kingdom.',
+    'English is the main language, while French and the traditional Jersey Norman language Jèrriais are also part of the island’s heritage.',
+    'The Jersey pound is used alongside British pounds, and British currency is widely accepted.',
+    'Jersey drives on the left side of the road.',
+    'The island has an extensive coastline with beaches, cliffs, bays, and scenic walking routes. :contentReference[oaicite:0]{index=0}',
+    'Jersey has a fascinating wartime history, including German occupation during World War II and numerous surviving bunkers and tunnels. :contentReference[oaicite:1]{index=1}',
+    'Mont Orgueil Castle, Elizabeth Castle, and La Corbière Lighthouse are among the island’s notable landmarks. :contentReference[oaicite:2]{index=2}',
+    'Weather can change quickly, particularly along exposed coastal areas, so carry a light waterproof layer.',
+    'May to September is generally a good period for beaches, coastal walks, sightseeing, and outdoor activities.'
+  ]
+},
+{
+  id: 'tarawa-ki',
+  city: 'Tarawa',
+  country: 'Kiribati',
+  airportCode: 'TRW',
+  image: `https://images.pexels.com/photos/18885701/pexels-photo-18885701.jpeg${cropParams}`,
+  description: 'Kiribati is a remote Pacific island nation spread across coral atolls, known for turquoise lagoons, palm-lined beaches, World War II history, traditional island culture, and extraordinary ocean landscapes.',
+
+  seoTitle: 'Kiribati Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Kiribati with a guide to Tarawa, Bonriki, Betio, beaches, World War II sites, island culture, marine life and practical travel tips.',
+
+  keywords: [
+    'Kiribati travel guide',
+    'things to do in Kiribati',
+    'Tarawa travel guide',
+    'Kiribati attractions',
+    'Kiribati tourism',
+    'Tarawa attractions',
+    'Kiribati beaches',
+    'Bonriki International Airport',
+    'Betio Kiribati',
+    'Pacific Islands travel'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Beach',
+  bestSeason: 'April to October',
+  dailyBudget: 70,
+
+  attractions: [
+    {
+      name: 'South Tarawa',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Betio',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Bonriki',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Bairiki National Stadium',
+      duration: '1 hour',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'World War II Sites',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Kiritimati Island',
+      duration: '2–3 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Tarawa is the capital and one of the main population centers of Kiribati.',
+    'Bonriki International Airport (TRW) is the main international gateway serving Tarawa. Kiribati currently has two international airports, with the other located on Kiritimati Island.',
+    'English and Gilbertese (I-Kiribati) are the official languages.',
+    'The Australian dollar (AUD) is the official currency.',
+    'Kiribati is spread across a huge area of the Pacific Ocean, so travel between islands can require careful planning.',
+    'The climate is tropical and warm throughout the year, with rainfall varying between island groups.',
+    'Respect local customs, especially when visiting villages and participating in community or cultural activities.',
+    'Bring reef-safe sunscreen, insect repellent, and lightweight clothing for the tropical environment.',
+    'Tarawa has important World War II history, particularly around Betio, where numerous wartime sites remain.',
+    'Check current flight schedules carefully because international connections to Kiribati are limited. Kiribati Tourism lists Fiji Airways connections through Nadi as well as services to other Pacific destinations.'
+  ]
+},
+
+{
+  id: 'bishkek-kg',
+  city: 'Bishkek',
+  country: 'Kyrgyzstan',
+  airportCode: 'FRU',
+  image: `https://images.pexels.com/photos/16993087/pexels-photo-16993087.jpeg${cropParams}`,
+  description: 'Kyrgyzstan is a spectacular Central Asian destination known for snow-capped Tian Shan mountains, alpine lakes, vast valleys, nomadic traditions, dramatic landscapes, and the lively capital of Bishkek.',
+
+  seoTitle: 'Kyrgyzstan Travel Guide: Mountains, Lakes, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Kyrgyzstan with a guide to Bishkek, Issyk-Kul Lake, Ala Archa National Park, Song-Kul, nomadic culture, mountain adventures and travel tips.',
+
+  keywords: [
+    'Kyrgyzstan travel guide',
+    'things to do in Kyrgyzstan',
+    'Bishkek travel guide',
+    'Kyrgyzstan attractions',
+    'Issyk Kul Lake',
+    'Ala Archa National Park',
+    'Song Kul',
+    'Kyrgyzstan tourism',
+    'Kyrgyzstan hiking',
+    'Central Asia travel guide'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Adventure',
+  bestSeason: 'June to September',
+  dailyBudget: 55,
+
+  attractions: [
+    {
+      name: 'Bishkek',
+      duration: '1–2 days',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Ala Archa National Park',
+      duration: 'Half day',
+      bestTime: 'Early Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Issyk-Kul Lake',
+      duration: '1–2 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Song-Kul Lake',
+      duration: '1–2 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Burana Tower',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Osh',
+      duration: '1–2 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Bishkek is the main international gateway for many visitors, with Manas International Airport (FRU) located about 25 km from the city center. :contentReference[oaicite:0]{index=0}',
+    'Kyrgyzstan is one of Central Asia’s best destinations for hiking, trekking, horseback riding, and mountain adventures.',
+    'Kyrgyz and Russian are widely used, while English is more common in tourist businesses and among younger travelers.',
+    'The Kyrgyz som (KGS) is the local currency.',
+    'Summer is popular for hiking, mountain travel, and staying in traditional yurts around high-altitude lakes.',
+    'Weather can change quickly in the mountains, so carry warm and waterproof layers even during summer.',
+    'Ala Archa National Park is one of the easiest mountain escapes from Bishkek.',
+    'Issyk-Kul is one of the country’s most famous destinations and offers beaches, mountain scenery, and outdoor activities.',
+    'When visiting remote mountain areas, use experienced local guides and check road and weather conditions before departure.',
+    'Kyrgyzstan is well suited to a slower road-trip style of travel, but mountain routes can take considerably longer than expected.'
+  ]
+},
+
+{
+  id: 'maseru-ls',
+  city: 'Maseru',
+  country: 'Lesotho',
+  airportCode: 'MSU',
+  image: `https://images.pexels.com/photos/28451781/pexels-photo-28451781.jpeg${cropParams}`,
+  description: 'Lesotho is a mountainous kingdom surrounded by South Africa, known for dramatic highlands, traditional Basotho culture, waterfalls, mountain villages, scenic roads, and outdoor adventures.',
+
+  seoTitle: 'Lesotho Travel Guide: Mountains, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Lesotho with a guide to Maseru, Maletsunyane Falls, Thaba-Bosiu, Maloti Mountains, Basotho culture, outdoor adventures and travel tips.',
+
+  keywords: [
+    'Lesotho travel guide',
+    'things to do in Lesotho',
+    'Maseru travel guide',
+    'Lesotho attractions',
+    'Lesotho tourism',
+    'Maletsunyane Falls',
+    'Thaba Bosiu',
+    'Maloti Mountains',
+    'Basotho culture',
+    'Lesotho itinerary'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Adventure',
+  bestSeason: 'October to April',
+  dailyBudget: 55,
+
+  attractions: [
+    {
+      name: 'Maseru',
+      duration: '1–2 days',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Thaba-Bosiu Cultural Village',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Maletsunyane Falls',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Maloti Mountains',
+      duration: '1–2 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Mokhotlong',
+      duration: '1 day',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Sani Pass',
+      duration: 'Full Day',
+      bestTime: 'Early Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Maseru is the capital and main urban center of Lesotho.',
+    'Moshoeshoe I International Airport (MSU) is the main airport serving Maseru.',
+    'Lesotho is known as the Kingdom in the Sky because of its high-altitude terrain.',
+    'Sesotho and English are the official languages.',
+    'The Lesotho loti (LSL) is the local currency and is pegged to the South African rand, which is also widely accepted.',
+    'Lesotho is particularly rewarding for hiking, horseback riding, mountain scenery, and road trips.',
+    'Mountain weather can change quickly, so carry warm and waterproof layers even during summer.',
+    'Crime can be a concern in some areas, so keep valuables secure and use reliable transportation.',
+    'The U.S. State Department currently advises increased caution in Lesotho due to crime and health concerns.',
+    'Check current road, weather, health, and travel conditions before heading into remote mountain areas.'
+  ]
+},
+
+{
+  id: 'vaduz-li',
+  city: 'Vaduz',
+  country: 'Liechtenstein',
+  airportCode: 'ZRH',
+  image: `https://images.pexels.com/photos/5742914/pexels-photo-5742914.jpeg{cropParams}`,
+  description: 'Liechtenstein is a tiny Alpine principality between Switzerland and Austria, known for mountain scenery, Vaduz Castle, hiking trails, picturesque villages, museums, and a distinctive European heritage.',
+
+  seoTitle: 'Liechtenstein Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Liechtenstein with a guide to Vaduz, Vaduz Castle, Malbun, Alpine hiking, museums, mountain villages and practical travel tips.',
+
+  keywords: [
+    'Liechtenstein travel guide',
+    'things to do in Liechtenstein',
+    'Vaduz travel guide',
+    'Liechtenstein attractions',
+    'Liechtenstein tourism',
+    'Vaduz Castle',
+    'Malbun Liechtenstein',
+    'Liechtenstein hiking',
+    'best places to visit in Liechtenstein',
+    'Alps travel guide'
+  ],
+
+  budget: 'Luxury',
+  tripType: 'Nature',
+  bestSeason: 'May to October',
+  dailyBudget: 150,
+
+  attractions: [
+    {
+      name: 'Vaduz',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Vaduz Castle',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Liechtenstein National Museum',
+      duration: '1.5–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Kunstmuseum Liechtenstein',
+      duration: '1–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Malbun',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Fürstensteig Trail',
+      duration: 'Half day',
+      bestTime: 'Early Morning',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Vaduz is the capital and political center of Liechtenstein.',
+    'Liechtenstein does not have its own commercial airport. Zurich Airport (ZRH) in Switzerland is the nearest major international airport and is commonly used by visitors.',
+    'Liechtenstein is a landlocked country located between Switzerland and Austria.',
+    'German is the official language, while English is widely understood in tourist areas.',
+    'The Swiss franc (CHF) is the official currency.',
+    'Liechtenstein is part of the Schengen Area even though it is not a member of the European Union.',
+    'The country is excellent for hiking, cycling, mountain scenery, and short Alpine getaways.',
+    'Malbun is the country’s main mountain resort and is popular for outdoor activities in both summer and winter.',
+    'Mountain conditions can change quickly, so check weather forecasts and trail conditions before hiking.',
+    'The U.S. State Department currently rates Liechtenstein Level 1, meaning travelers should exercise normal precautions.'
+  ]
+},
+
+{
+  id: 'macau-mo',
+  city: 'Macau',
+  country: 'Macau',
+  airportCode: 'MFM',
+  image: `https://images.pexels.com/photos/38347637/pexels-photo-38347637.jpeg${cropParams}`,
+  description: 'Macau is a fascinating blend of Portuguese and Chinese heritage, famous for historic streets, ornate temples, grand casinos, waterfront views, and one of Asia’s most distinctive food cultures.',
+
+  seoTitle: 'Macau Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Macau with a guide to Senado Square, Ruins of St. Paul’s, A-Ma Temple, Cotai, Macau Tower, local food and practical travel tips.',
+
+  keywords: [
+    'Macau travel guide',
+    'things to do in Macau',
+    'Macau attractions',
+    'Macau tourism',
+    'Ruins of St Paul',
+    'Senado Square',
+    'A-Ma Temple',
+    'Macau Tower',
+    'Cotai Macau',
+    'Macau itinerary'
+  ],
+
+  budget: 'Luxury',
+  tripType: 'Culture',
+  bestSeason: 'October to December',
+  dailyBudget: 150,
+
+  attractions: [
+    {
+      name: 'Ruins of St. Paul’s',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Senado Square',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'A-Ma Temple',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Macau Tower',
+      duration: '2 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Taipa Village',
+      duration: '2–3 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Cotai Strip',
+      duration: '2–3 hours',
+      bestTime: 'Evening',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Macau is a Special Administrative Region of China with a distinctive Portuguese-Chinese cultural heritage.',
+    'Macau International Airport (MFM) is the territory’s main airport.',
+    'Cantonese is widely spoken, while Mandarin and Portuguese are also official languages. English is common in tourist areas.',
+    'The Macanese pataca (MOP) is the official currency, while Hong Kong dollars are widely accepted.',
+    'Macau is famous for both its historic center and large entertainment and resort complexes in Cotai.',
+    'Try local specialties such as Portuguese egg tarts, pork chop buns, Macanese seafood, and other fusion dishes.',
+    'October to December generally offers comfortable conditions for walking and sightseeing.',
+    'Macau can be reached easily from Hong Kong by ferry or bridge, making it convenient to combine the two destinations.',
+    'Check current entry requirements and local regulations before traveling.'
+  ]
+},
+
+{
+  id: 'fort-de-france-mq',
+  city: 'Fort-de-France',
+  country: 'Martinique',
+  airportCode: 'FDF',
+  image: `https://images.pexels.com/photos/5769684/pexels-photo-5769684.jpeg${cropParams}`,
+  description: 'Martinique is a French Caribbean island known for beautiful beaches, volcanic landscapes, Creole culture, colorful Fort-de-France, rum heritage, lush rainforest, and a distinctive blend of French and Caribbean influences.',
+
+  seoTitle: 'Martinique Travel Guide: Beaches, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Martinique with a guide to Fort-de-France, Mount Pelée, Les Salines, Anse Noire, rum distilleries, Creole culture and travel tips.',
+
+  keywords: [
+    'Martinique travel guide',
+    'things to do in Martinique',
+    'Martinique attractions',
+    'Fort-de-France travel guide',
+    'Martinique beaches',
+    'Mount Pelée',
+    'Les Salines Martinique',
+    'Martinique tourism',
+    'French Caribbean',
+    'Martinique itinerary'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'December to April',
+  dailyBudget: 130,
+
+  attractions: [
+    {
+      name: 'Fort-de-France',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Les Salines Beach',
+      duration: '3–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Mount Pelée',
+      duration: 'Half day',
+      bestTime: 'Early Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Jardin de Balata',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Anse Noire',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Saint-Pierre',
+      duration: '2–3 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Martinique is an overseas territorial collectivity of France and uses the euro.',
+    'Martinique Aimé Césaire International Airport (FDF) is the main airport serving the island.',
+    'French is the official language, while Martinican Creole is also widely spoken.',
+    'Martinique combines Caribbean beaches with mountainous rainforest and volcanic landscapes.',
+    'Mount Pelée is an active volcano, so check current hiking conditions before attempting the trail.',
+    'December to April is generally a popular period for drier weather and beach activities.',
+    'Try local specialties such as accras, colombo, fresh seafood, and French-Caribbean pastries.',
+    'Renting a car is useful for exploring beaches, villages, gardens, and mountain areas across the island.',
+    'The island is known for its rum production, and several distilleries offer tours and tastings.',
+    'Check current weather, road conditions, and official travel information before outdoor activities.'
+  ]
+},
+
+{
+  id: 'mamoudzou-yt',
+  city: 'Mamoudzou',
+  country: 'Mayotte',
+  airportCode: 'DZA',
+  image: `https://images.pexels.com/photos/20588627/pexels-photo-20588627.jpeg${cropParams}`,
+  description: 'Mayotte is a French island territory in the Indian Ocean known for its turquoise lagoon, coral reefs, tropical landscapes, marine wildlife, Creole and Comorian culture, and distinctive island atmosphere.',
+
+  seoTitle: 'Mayotte Travel Guide: Beaches, Lagoon, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Mayotte with a guide to Mamoudzou, the world-famous lagoon, Mount Choungui, marine life, beaches, markets, culture and practical travel tips.',
+
+  keywords: [
+    'Mayotte travel guide',
+    'things to do in Mayotte',
+    'Mamoudzou travel guide',
+    'Mayotte attractions',
+    'Mayotte tourism',
+    'Mayotte lagoon',
+    'Mount Choungui',
+    'Mayotte beaches',
+    'Mayotte diving',
+    'Indian Ocean travel guide'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'May to October',
+  dailyBudget: 120,
+
+  attractions: [
+    {
+      name: 'Mamoudzou',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Mayotte Lagoon',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Mount Choungui',
+      duration: '3–4 hours',
+      bestTime: 'Early Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Saziley Nature Reserve',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Moya Beach',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Mamoudzou Market',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Mayotte is an overseas department and region of France in the Indian Ocean and uses the euro.',
+    'Dzaoudzi–Pamandzi International Airport (DZA) is the main airport serving Mayotte.',
+    'French is the official language, while Shimaore and Kibushi are also widely spoken.',
+    'The Mayotte lagoon is one of the island’s biggest attractions, with opportunities for snorkeling, diving, and boat trips.',
+    'Mayotte has a tropical climate with a warmer and wetter season and a generally drier period from May to October.',
+    'Marine wildlife includes dolphins, sea turtles, whales, and diverse coral-reef species.',
+    'Use reef-safe sunscreen and avoid touching coral or marine animals.',
+    'Roads can be busy around Mamoudzou, so allow extra time for journeys.',
+    'Some outdoor areas are remote, so use reputable local guides and organized excursions where appropriate.',
+    'Check current weather, ferry schedules, local conditions, and official travel information before traveling.'
+  ]
+},
+
+{
+  id: 'noumea-nc',
+  city: 'Nouméa',
+  country: 'New Caledonia',
+  airportCode: 'NOU',
+  image: `https://images.pexels.com/photos/28431009/pexels-photo-28431009.jpeg${cropParams}`,
+  description: 'Nouméa is the vibrant capital of New Caledonia, known for turquoise lagoons, French-inspired cafés, beautiful beaches, Melanesian culture, island excursions, and easy access to the South Pacific’s spectacular natural landscapes.',
+
+  seoTitle: 'New Caledonia Travel Guide: Beaches, Nouméa & Travel Tips',
+
+  seoDescription: 'Explore New Caledonia with a guide to Nouméa, Anse Vata Beach, Baie des Citrons, Îlot Maître, cultural attractions, lagoons and practical travel tips.',
+
+  keywords: [
+    'New Caledonia travel guide',
+    'things to do in New Caledonia',
+    'Nouméa travel guide',
+    'New Caledonia attractions',
+    'Nouméa attractions',
+    'New Caledonia beaches',
+    'Anse Vata Beach',
+    'Baie des Citrons',
+    'New Caledonia tourism',
+    'South Pacific travel guide'
+  ],
+
+  budget: 'Luxury',
+  tripType: 'Beach',
+  bestSeason: 'September to November',
+  dailyBudget: 180,
+
+  attractions: [
+    {
+      name: 'Anse Vata Beach',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Baie des Citrons',
+      duration: '2 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Tjibaou Cultural Centre',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Nouméa City Centre',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Îlot Maître',
+      duration: 'Full Day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Blue River National Park',
+      duration: 'Full Day',
+      bestTime: 'Early Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Nouméa is the capital and main tourism hub of New Caledonia.',
+    'La Tontouta International Airport (NOU) is the main international gateway, located outside central Nouméa.',
+    'French is the official language, while Kanak languages are also spoken across New Caledonia.',
+    'The Pacific franc (XPF) is the local currency.',
+    'New Caledonia is famous for its enormous lagoon, coral reefs, beaches, and marine life.',
+    'September to November generally offers comfortable conditions for outdoor activities and sightseeing.',
+    'French-Caribbean and Melanesian influences can be seen in the island’s food, architecture, markets, and culture.',
+    'New Caledonia is currently Level 2: Exercise Increased Caution due to crime, with additional caution advised outside Nouméa at night. Check current conditions before traveling.',
+    'Weather and sea conditions can affect island excursions, so confirm boat schedules before departure.'
+  ]
+},
+
+{
+  id: 'managua-ni',
+  city: 'Managua',
+  country: 'Nicaragua',
+  airportCode: 'MGA',
+  image: `https://images.pexels.com/photos/5274756/pexels-photo-5274756.jpeg${cropParams}`,
+  description: 'Nicaragua is a diverse Central American destination known for volcanic landscapes, colonial cities, Pacific beaches, freshwater lakes, tropical nature, and the colorful culture of Managua, Granada, and León.',
+
+  seoTitle: 'Nicaragua Travel Guide: Volcanoes, Beaches, Cities & Travel Tips',
+
+  seoDescription: 'Explore Nicaragua with a guide to Managua, Granada, León, Ometepe Island, volcanoes, Pacific beaches, colonial architecture and travel tips.',
+
+  keywords: [
+    'Nicaragua travel guide',
+    'things to do in Nicaragua',
+    'Managua travel guide',
+    'Nicaragua attractions',
+    'Granada Nicaragua',
+    'Leon Nicaragua',
+    'Ometepe Island',
+    'Nicaragua volcanoes',
+    'Nicaragua beaches',
+    'Central America travel guide'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Adventure',
+  bestSeason: 'November to April',
+  dailyBudget: 55,
+
+  attractions: [
+    {
+      name: 'Managua',
+      duration: '1 day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Granada',
+      duration: '1–2 days',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'León',
+      duration: '1–2 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Ometepe Island',
+      duration: '2–3 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Masaya Volcano',
+      duration: 'Half day',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'San Juan del Sur',
+      duration: '1–2 days',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Managua is the capital and main international gateway to Nicaragua.',
+    'Augusto C. Sandino International Airport (MGA) serves Managua and is the country’s main international airport.',
+    'Spanish is the official language, while English and Indigenous languages are also spoken in some regions.',
+    'The Nicaraguan córdoba (NIO) is the local currency.',
+    'Nicaragua is known for volcano boarding, surfing, hiking, colonial cities, lakes, and tropical landscapes.',
+    'The dry season from November to April is generally popular for sightseeing and outdoor activities.',
+    'Granada and León are excellent choices for travelers interested in colonial architecture, culture, and history.',
+    'Ometepe Island offers hiking, beaches, wildlife, and views around its two volcanic peaks.',
+    'Nicaragua is currently Level 3: Reconsider Travel due to crime, health, wrongful detention, and arbitrary enforcement of local laws. Check the latest official advisory before traveling.',
+    'Use reputable transportation and keep valuables secure, particularly in busy urban and tourist areas.'
+  ]
+},
+
+{
+  id: 'skopje-mk',
+  city: 'Skopje',
+  country: 'North Macedonia',
+  airportCode: 'SKP',
+  image: `https://images.pexels.com/photos/34556257/pexels-photo-34556257.jpeg${cropParams}`,
+  description: 'North Macedonia is a fascinating Balkan destination known for historic towns, Ottoman-era architecture, mountain landscapes, Lake Ohrid, ancient heritage, and the lively capital of Skopje.',
+
+  seoTitle: 'North Macedonia Travel Guide: Skopje, Lake Ohrid & Travel Tips',
+
+  seoDescription: 'Explore North Macedonia with a guide to Skopje, Lake Ohrid, Matka Canyon, Old Bazaar, historic monasteries, mountains and practical travel tips.',
+
+  keywords: [
+    'North Macedonia travel guide',
+    'things to do in North Macedonia',
+    'Skopje travel guide',
+    'North Macedonia attractions',
+    'Lake Ohrid',
+    'Matka Canyon',
+    'Old Bazaar Skopje',
+    'North Macedonia tourism',
+    'Balkan travel guide',
+    'North Macedonia itinerary'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'May to June, September to October',
+  dailyBudget: 55,
+
+  attractions: [
+    {
+      name: 'Old Bazaar Skopje',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Stone Bridge',
+      duration: '30 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Matka Canyon',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Lake Ohrid',
+      duration: '1–2 days',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Ohrid Old Town',
+      duration: '3–4 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Mavrovo National Park',
+      duration: 'Full Day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Skopje is the capital and main urban center of North Macedonia.',
+    'Skopje International Airport (SKP) is the main international airport.',
+    'Macedonian is the official language, while Albanian is also widely used.',
+    'The Macedonian denar (MKD) is the local currency.',
+    'Lake Ohrid is one of the country’s most famous destinations and is ideal for combining history, nature, and lakeside relaxation.',
+    'Matka Canyon is an easy nature escape from Skopje, offering hiking, cliffs, caves, and boat trips.',
+    'Spring and autumn are excellent seasons for walking and sightseeing, while summer is popular around Lake Ohrid.',
+    'Try traditional dishes such as tavče gravče, ajvar, shopska salad, and grilled meats.',
+    'North Macedonia is currently Level 1: Exercise Normal Precautions.',
+    'Mountain weather can change quickly, so check conditions before hiking in remote areas.'
+  ]
+},
+
+{
+  id: 'saipan-mp',
+  city: 'Saipan',
+  country: 'Northern Mariana Islands',
+  airportCode: 'SPN',
+  image: `https://images.pexels.com/photos/12198111/pexels-photo-12198111.jpeg${cropParams}`,
+  description: 'The Northern Mariana Islands are a tropical Pacific destination known for turquoise waters, coral reefs, World War II history, dramatic cliffs, tropical beaches, and the relaxed island atmosphere of Saipan.',
+
+  seoTitle: 'Northern Mariana Islands Travel Guide: Saipan, Beaches & Travel Tips',
+
+  seoDescription: 'Explore the Northern Mariana Islands with a guide to Saipan, Managaha Island, The Grotto, Banzai Cliff, World War II sites, beaches and travel tips.',
+
+  keywords: [
+    'Northern Mariana Islands travel guide',
+    'Saipan travel guide',
+    'things to do in Saipan',
+    'Northern Mariana Islands attractions',
+    'Saipan beaches',
+    'Managaha Island',
+    'The Grotto Saipan',
+    'Banzai Cliff',
+    'Northern Mariana Islands tourism',
+    'Pacific Islands travel guide'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'December to June',
+  dailyBudget: 130,
+
+  attractions: [
+    {
+      name: 'Managaha Island',
+      duration: 'Full Day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'The Grotto',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Banzai Cliff',
+      duration: '1 hour',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'American Memorial Park',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Micro Beach',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Mount Tapochau',
+      duration: '1–2 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Saipan is the largest island and the main tourism hub of the Northern Mariana Islands.',
+    'Saipan International Airport (SPN) is the main airport serving the islands.',
+    'The Northern Mariana Islands are a U.S. commonwealth in the western Pacific.',
+    'English is widely used, while Chamorro and Carolinian are also important local languages.',
+    'The US dollar (USD) is the local currency.',
+    'The islands are known for snorkeling, diving, beaches, World War II history, and tropical landscapes.',
+    'The Grotto is a popular diving and snorkeling location, but conditions can be challenging and should be assessed locally.',
+    'December to June is generally a popular period for outdoor activities, although tropical weather can occur year-round.',
+    'Respect memorials and historic sites, particularly those connected to World War II.',
+    'Check current weather, marine conditions, flight schedules, and local travel information before planning island excursions.'
+  ]
+},
+{
+  id: 'jamestown-sh',
+  city: 'Jamestown',
+  country: 'Saint Helena',
+  airportCode: 'HLE',
+  image: `https://images.pexels.com/photos/38014819/pexels-photo-38014819.jpeg${cropParams}`,
+  description: 'Saint Helena is a remote South Atlantic island known for dramatic volcanic landscapes, rugged coastlines, historic Jamestown, Napoleon’s exile, hiking trails, and remarkable isolation.',
+
+  seoTitle: 'Saint Helena Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Saint Helena with a guide to Jamestown, Longwood House, Diana’s Peak, Napoleon’s history, hiking trails, coastal scenery and travel tips.',
+
+  keywords: [
+    'Saint Helena travel guide',
+    'things to do in Saint Helena',
+    'Jamestown Saint Helena',
+    'Saint Helena attractions',
+    'Saint Helena tourism',
+    'Longwood House',
+    'Diana’s Peak',
+    'Napoleon Saint Helena',
+    'Saint Helena hiking',
+    'South Atlantic travel'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Adventure',
+  bestSeason: 'March to May, September to November',
+  dailyBudget: 100,
+
+  attractions: [
+    {
+      name: 'Jamestown',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Longwood House',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Diana’s Peak',
+      duration: '3–4 hours',
+      bestTime: 'Early Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Jacob’s Ladder',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Napoleon’s Tomb',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Jonathan the Tortoise',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Saint Helena is a British Overseas Territory in the South Atlantic Ocean.',
+    'Saint Helena Airport (HLE) provides air access to the island.',
+    'English is the main language and the Saint Helena pound is used alongside British pounds.',
+    'The island is famous for its connection with Napoleon Bonaparte, who was exiled here from 1815 until his death in 1821.',
+    'Saint Helena is excellent for hiking, birdwatching, wildlife, history, and dramatic coastal scenery.',
+    'The island is remote, so flights and accommodation should be booked well in advance.',
+    'Weather can change quickly in the highlands, so carry layers and waterproof clothing.',
+    'Roads are narrow and winding in many areas, so allow extra time when traveling around the island.',
+    'Respect protected natural areas and follow local guidance when hiking.'
+  ]
+},
+
+{
+  id: 'saint-pierre-pm',
+  city: 'Saint-Pierre',
+  country: 'Saint-Pierre and Miquelon',
+  airportCode: 'FSP',
+  image: `https://images.pexels.com/photos/24454807/pexels-photo-24454807.jpeg${cropParams}`,
+  description: 'Saint-Pierre and Miquelon is a small French archipelago near Newfoundland known for colorful coastal towns, French culture, rugged Atlantic scenery, seafood, hiking, and a unique North American setting.',
+
+  seoTitle: 'Saint-Pierre and Miquelon Travel Guide: Things to Do & Travel Tips',
+
+  seoDescription: 'Explore Saint-Pierre and Miquelon with a guide to Saint-Pierre, Miquelon-Langlade, museums, coastal landscapes, local food, hiking and travel tips.',
+
+  keywords: [
+    'Saint-Pierre and Miquelon travel guide',
+    'things to do in Saint-Pierre and Miquelon',
+    'Saint-Pierre travel guide',
+    'Miquelon travel',
+    'Saint-Pierre attractions',
+    'Saint-Pierre and Miquelon tourism',
+    'Miquelon-Langlade',
+    'French islands near Canada',
+    'North Atlantic travel',
+    'Saint-Pierre itinerary'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'June to September',
+  dailyBudget: 110,
+
+  attractions: [
+    {
+      name: 'Saint-Pierre',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Miquelon-Langlade',
+      duration: 'Full Day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Musée de l’Arche',
+      duration: '1–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Île aux Marins',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Cap de Miquelon',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Langlade Coastal Trails',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Saint-Pierre and Miquelon is a French overseas collectivity located just off the coast of Newfoundland, Canada.',
+    'Saint-Pierre Airport (FSP) serves the island of Saint-Pierre, while Miquelon Airport serves Miquelon.',
+    'French is the official language and the euro is the local currency.',
+    'The islands have a cool maritime climate, with mild summers and cold winters.',
+    'June to September is generally the most comfortable period for hiking and sightseeing.',
+    'Seafood is an important part of the local food culture.',
+    'The islands are remote, so check flight and ferry schedules carefully before planning your trip.',
+    'Weather can change quickly, particularly along the coast, so pack warm and waterproof layers.',
+    'Saint-Pierre and Miquelon is a good choice for travelers looking for a quiet destination with French culture and North Atlantic scenery.'
+  ]
+},
+
+{
+  id: 'san-marino-sm',
+  city: 'San Marino',
+  country: 'San Marino',
+  airportCode: 'RMI',
+  image: `https://images.pexels.com/photos/33308341/pexels-photo-33308341.jpeg${cropParams}`,
+  description: 'San Marino is one of Europe’s smallest countries, perched on Mount Titano and known for medieval towers, historic streets, panoramic views, charming squares, and centuries of independent heritage.',
+
+  seoTitle: 'San Marino Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore San Marino with a guide to the historic center, Guaita Tower, Cesta Tower, Palazzo Pubblico, Mount Titano and travel tips.',
+
+  keywords: [
+    'San Marino travel guide',
+    'things to do in San Marino',
+    'San Marino attractions',
+    'San Marino tourism',
+    'Guaita Tower',
+    'Cesta Tower',
+    'Mount Titano',
+    'San Marino old town',
+    'San Marino itinerary',
+    'Europe travel guide'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'April to June, September to October',
+  dailyBudget: 90,
+
+  attractions: [
+    {
+      name: 'Guaita Tower',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Cesta Tower',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Piazza della Libertà',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Palazzo Pubblico',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Basilica of San Marino',
+      duration: '1 hour',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Mount Titano',
+      duration: '2–3 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'San Marino is a microstate completely surrounded by Italy and is one of the world’s oldest surviving republics.',
+    'San Marino does not have its own commercial airport. Federico Fellini International Airport (RMI) in Rimini, Italy, is one of the closest airports.',
+    'Italian is the official language and the euro is the official currency.',
+    'The historic center and Mount Titano are UNESCO World Heritage-listed.',
+    'The three towers of San Marino are among the country’s most recognizable landmarks.',
+    'The historic center is largely pedestrian-friendly, but streets can be steep and uneven.',
+    'Spring and autumn are excellent for comfortable sightseeing and walking.',
+    'San Marino is easy to combine with a trip to northern or central Italy.',
+    'Check current travel requirements and transportation connections before visiting.'
+  ]
+},
+
+{
+  id: 'sao-tome-st',
+  city: 'São Tomé',
+  country: 'São Tomé and Príncipe',
+  airportCode: 'TMS',
+  image: `https://images.pexels.com/photos/2213443/pexels-photo-2213443.jpeg${cropParams}`,
+  description: 'São Tomé and Príncipe is a tropical island nation in the Gulf of Guinea known for volcanic peaks, rainforest, cocoa plantations, secluded beaches, colonial architecture, and rich biodiversity.',
+
+  seoTitle: 'São Tomé and Príncipe Travel Guide: Beaches, Nature & Travel Tips',
+
+  seoDescription: 'Explore São Tomé and Príncipe with a guide to São Tomé, beaches, cocoa plantations, rainforest, Pico de São Tomé, Príncipe Island and travel tips.',
+
+  keywords: [
+    'São Tomé and Príncipe travel guide',
+    'things to do in São Tomé',
+    'São Tomé travel guide',
+    'São Tomé attractions',
+    'Príncipe Island',
+    'São Tomé beaches',
+    'São Tomé tourism',
+    'Pico de São Tomé',
+    'São Tomé cocoa plantations',
+    'Gulf of Guinea travel'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Nature',
+  bestSeason: 'June to September',
+  dailyBudget: 90,
+
+  attractions: [
+    {
+      name: 'São Tomé City',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Pico de São Tomé',
+      duration: 'Full Day',
+      bestTime: 'Early Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Roça Agostinho Neto',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Praia Piscina',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Príncipe Island',
+      duration: '2–3 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Ossobó Natural Park',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'São Tomé is the capital and main gateway to São Tomé and Príncipe.',
+    'São Tomé International Airport (TMS) is the main airport on São Tomé Island.',
+    'Portuguese is the official language, while Forro and other local languages are also spoken.',
+    'The dobra (STN) is the local currency.',
+    'The islands are known for rainforest, cocoa plantations, volcanic landscapes, beaches, and exceptional biodiversity.',
+    'June to September is generally a popular period for exploring the islands because conditions are often drier.',
+    'Medical facilities are limited, and the current U.S. advisory is Level 3: Reconsider Travel due to unrest and health risks.',
+    'Travel insurance with medical evacuation coverage is strongly recommended.',
+    'Cash is important because card acceptance can be limited outside major hotels and businesses.',
+    'Check current flight schedules, health requirements, weather, and official travel advice before traveling.'
+  ]
+},
+
+{
+  id: 'freetown-sl',
+  city: 'Freetown',
+  country: 'Sierra Leone',
+  airportCode: 'FNA',
+  image: `https://images.pexels.com/photos/36607738/pexels-photo-36607738.jpeg${cropParams}`,
+  description: 'Freetown is Sierra Leone’s vibrant coastal capital, known for tropical beaches, mountainous scenery, lively markets, historic sites, local music, and a welcoming West African culture.',
+
+  seoTitle: 'Freetown Travel Guide: Beaches, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Freetown, Sierra Leone with a guide to Tacugama Chimpanzee Sanctuary, Lumley Beach, Cotton Tree, historic sites, markets and travel tips.',
+
+  keywords: [
+    'Freetown travel guide',
+    'things to do in Freetown',
+    'Freetown attractions',
+    'Sierra Leone travel guide',
+    'Sierra Leone tourism',
+    'Lumley Beach',
+    'Tacugama Chimpanzee Sanctuary',
+    'Freetown beaches',
+    'Sierra Leone attractions',
+    'West Africa travel guide'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Nature',
+  bestSeason: 'November to April',
+  dailyBudget: 65,
+
+  attractions: [
+    {
+      name: 'Lumley Beach',
+      duration: '2–3 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Tacugama Chimpanzee Sanctuary',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Cotton Tree',
+      duration: '30 minutes',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'National Museum of Sierra Leone',
+      duration: '1–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Aberdeen',
+      duration: '2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Tokeh Beach',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Freetown is Sierra Leone’s capital and main cultural and commercial center.',
+    'Freetown International Airport (FNA) is located on the mainland near Lungi, across the estuary from Freetown.',
+    'English is the official language, while Krio is widely used in everyday communication.',
+    'The Sierra Leonean leone (SLE) is the local currency.',
+    'Sierra Leone is known for beautiful Atlantic beaches, tropical landscapes, and wildlife experiences.',
+    'November to April is generally a popular period for visiting because it is the drier season.',
+    'The current U.S. travel advisory is Level 2: Exercise Increased Caution due to crime, unrest, and inadequate health infrastructure.',
+    'Avoid demonstrations and large gatherings and take extra care at night.',
+    'Medical facilities can be limited, so comprehensive travel insurance is recommended.',
+    'Use reputable transportation and check current local conditions before traveling outside Freetown.'
+  ]
+},
+
+{
+  id: 'philipsburg-sx',
+  city: 'Philipsburg',
+  country: 'Sint Maarten',
+  airportCode: 'SXM',
+  image: `https://images.pexels.com/photos/4389536/pexels-photo-4389536.jpeg${cropParams}`,
+  description: 'Sint Maarten is a lively Caribbean destination known for turquoise beaches, cruise ports, vibrant nightlife, duty-free shopping, French-Dutch culture, and spectacular views around its island coastline.',
+
+  seoTitle: 'Sint Maarten Travel Guide: Beaches, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Sint Maarten with a guide to Philipsburg, Maho Beach, Great Bay, Orient Bay, Fort Amsterdam, shopping and travel tips.',
+
+  keywords: [
+    'Sint Maarten travel guide',
+    'things to do in Sint Maarten',
+    'Philipsburg travel guide',
+    'Sint Maarten attractions',
+    'Maho Beach',
+    'Great Bay Beach',
+    'Fort Amsterdam Sint Maarten',
+    'Sint Maarten tourism',
+    'Caribbean travel guide',
+    'Sint Maarten itinerary'
+  ],
+
+  budget: 'Luxury',
+  tripType: 'Beach',
+  bestSeason: 'December to April',
+  dailyBudget: 160,
+
+  attractions: [
+    {
+      name: 'Maho Beach',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Great Bay Beach',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Philipsburg',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Fort Amsterdam',
+      duration: '1 hour',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Orient Bay',
+      duration: '3–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Loterie Farm',
+      duration: '3–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Philipsburg is the capital of the Dutch side of the island of Saint Martin.',
+    'Princess Juliana International Airport (SXM) is the main international airport serving Sint Maarten.',
+    'Dutch and English are official languages, while French and local Caribbean dialects are also commonly heard.',
+    'The Netherlands Antillean guilder is being replaced by the Caribbean guilder, so check current currency arrangements before traveling. US dollars are widely accepted.',
+    'Sint Maarten shares the island with the French collectivity of Saint-Martin, making it easy to experience two cultures in one trip.',
+    'Maho Beach is famous for its proximity to the airport runway and aircraft viewing.',
+    'December to April is generally the most popular period for beach holidays.',
+    'The island drives on the right side of the road.',
+    'The current U.S. travel advisory is Level 1: Exercise Normal Precautions.',
+    'Use normal precautions with valuables in crowded tourist and nightlife areas.'
+  ]
+},
+
+{
+  id: 'bratislava-sk',
+  city: 'Bratislava',
+  country: 'Slovakia',
+  airportCode: 'BTS',
+  image: `https://images.pexels.com/photos/21625704/pexels-photo-21625704.jpeg${cropParams}`,
+  description: 'Bratislava is Slovakia’s charming capital on the Danube, known for its medieval old town, hilltop castle, colorful streets, riverside views, cafés, and easy access to Central Europe.',
+
+  seoTitle: 'Slovakia Travel Guide: Bratislava, Mountains & Travel Tips',
+
+  seoDescription: 'Explore Slovakia with a guide to Bratislava, Bratislava Castle, High Tatras, Spiš Castle, historic towns, nature and practical travel tips.',
+
+  keywords: [
+    'Slovakia travel guide',
+    'things to do in Slovakia',
+    'Bratislava travel guide',
+    'Slovakia attractions',
+    'Bratislava Castle',
+    'High Tatras',
+    'Spiš Castle',
+    'Slovakia tourism',
+    'Slovakia hiking',
+    'Central Europe travel guide'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Culture',
+  bestSeason: 'May to June, September to October',
+  dailyBudget: 75,
+
+  attractions: [
+    {
+      name: 'Bratislava Old Town',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Bratislava Castle',
+      duration: '1.5–2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Devín Castle',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'High Tatras',
+      duration: '1–2 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Spiš Castle',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Košice Old Town',
+      duration: '2–3 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'Bratislava is Slovakia’s capital and lies on the Danube close to Austria and Hungary.',
+    'Bratislava Airport (BTS) is the country’s main international airport, while Vienna Airport is also commonly used because of its proximity.',
+    'Slovak is the official language, while English and German are widely understood in tourist areas.',
+    'The euro (EUR) is the local currency.',
+    'Slovakia combines historic cities with mountain landscapes, castles, caves, and national parks.',
+    'The High Tatras are particularly popular for hiking in summer and winter sports during the colder months.',
+    'Spring and autumn are excellent for city sightseeing and hiking, while December is popular for Christmas markets.',
+    'Try local dishes such as bryndzové halušky, kapustnica, and Slovak pastries.',
+    'Slovakia is currently Level 1: Exercise Normal Precautions.',
+    'Check mountain weather and trail conditions before hiking in the High Tatras.'
+  ]
+},
+
+{
+  id: 'atafu-tk',
+  city: 'Atafu',
+  country: 'Tokelau',
+  airportCode: 'N/A',
+  image: `https://images.pexels.com/photos/5784899/pexels-photo-5784899.jpeg${cropParams}`,
+  description: 'Tokelau is a remote Polynesian territory in the South Pacific known for pristine atolls, turquoise lagoons, traditional island communities, coral reefs, and an untouched tropical environment.',
+
+  seoTitle: 'Tokelau Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Tokelau with a guide to Atafu, Nukunonu, Fakaofo, lagoons, coral reefs, traditional Polynesian culture and practical travel tips.',
+
+  keywords: [
+    'Tokelau travel guide',
+    'things to do in Tokelau',
+    'Tokelau attractions',
+    'Tokelau tourism',
+    'Atafu Tokelau',
+    'Nukunonu Tokelau',
+    'Fakaofo Tokelau',
+    'Tokelau islands',
+    'South Pacific travel',
+    'Tokelau itinerary'
+  ],
+
+  budget: 'Budget',
+  tripType: 'Beach',
+  bestSeason: 'April to October',
+  dailyBudget: 70,
+
+  attractions: [
+    {
+      name: 'Atafu Atoll',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Nukunonu Atoll',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Fakaofo Atoll',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Tokelau Lagoons',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Local Villages',
+      duration: '1–2 hours',
+      bestTime: 'Afternoon',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Coral Reefs',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Tokelau is a remote territory of New Zealand consisting of three main atolls: Atafu, Nukunonu, and Fakaofo.',
+    'Tokelau has no airport. Access is primarily by boat from Samoa, so transportation requires careful advance planning.',
+    'Tokelauan and English are widely used.',
+    'The New Zealand dollar (NZD) is the local currency.',
+    'Tokelau is a very remote destination with limited tourism infrastructure and accommodation.',
+    'The islands are best suited to travelers interested in traditional Polynesian culture, marine life, quiet beaches, and remote island experiences.',
+    'Weather is tropical throughout the year, with conditions influenced by the South Pacific climate.',
+    'Respect village customs and local community rules when visiting the atolls.',
+    'Boat schedules can be limited and weather-dependent, so allow flexibility in your itinerary.',
+    'Bring essential supplies and medications because shopping and medical facilities are limited.'
+  ]
+},
+
+{
+  id: 'ashgabat-tm',
+  city: 'Ashgabat',
+  country: 'Turkmenistan',
+  airportCode: 'ASB',
+  image: `https://images.pexels.com/photos/28707997/pexels-photo-28707997.jpeg${cropParams}`,
+  description: 'Turkmenistan is a fascinating Central Asian destination known for monumental Ashgabat, ancient Silk Road sites, vast deserts, archaeological ruins, and distinctive Turkmen traditions.',
+
+  seoTitle: 'Turkmenistan Travel Guide: Ashgabat, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Turkmenistan with a guide to Ashgabat, Darvaza Gas Crater, ancient Merv, Köýtendag, Silk Road heritage and practical travel tips.',
+
+  keywords: [
+    'Turkmenistan travel guide',
+    'things to do in Turkmenistan',
+    'Ashgabat travel guide',
+    'Turkmenistan attractions',
+    'Ashgabat attractions',
+    'Darvaza Gas Crater',
+    'Ancient Merv',
+    'Turkmenistan tourism',
+    'Silk Road Turkmenistan',
+    'Turkmenistan itinerary'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Culture',
+  bestSeason: 'April to May, September to October',
+  dailyBudget: 100,
+
+  attractions: [
+    {
+      name: 'Ashgabat',
+      duration: '1–2 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'National Museum of Turkmenistan',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Darvaza Gas Crater',
+      duration: 'Full Day',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Ancient Merv',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Köýtendag Mountains',
+      duration: '1–2 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Yangykala Canyon',
+      duration: 'Full Day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Ashgabat is the capital and main cultural center of Turkmenistan.',
+    'Ashgabat International Airport (ASB) is the main international airport.',
+    'Turkmen is the official language, while Russian is also commonly understood.',
+    'The Turkmenistan manat (TMT) is the local currency.',
+    'Turkmenistan is famous for its Silk Road heritage, desert landscapes, archaeological sites, and unusual modern architecture.',
+    'The Darvaza Gas Crater is one of the country’s most recognizable attractions and is located in the Karakum Desert.',
+    'Independent tourism can involve significant planning, and visa and tour requirements should be checked well before departure.',
+    'Photography can be restricted around government buildings and other sensitive locations, so follow local instructions.',
+    'The climate is strongly continental, with very hot summers and cold winters.',
+    'Turkmenistan is currently Level 1: Exercise Normal Precautions according to the U.S. State Department.',
+    'Check current visa requirements, entry rules, transportation arrangements, and local regulations before traveling.'
+  ]
+},
+
+{
+  id: 'providenciales-tc',
+  city: 'Providenciales',
+  country: 'Turks and Caicos Islands',
+  airportCode: 'PLS',
+  image: `https://images.pexels.com/photos/9400834/pexels-photo-9400834.jpeg${cropParams}`,
+  description: 'The Turks and Caicos Islands are a Caribbean paradise known for powder-soft beaches, crystal-clear turquoise water, coral reefs, luxury resorts, marine life, and some of the region’s best snorkeling and diving.',
+
+  seoTitle: 'Turks and Caicos Travel Guide: Beaches, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Turks and Caicos with a guide to Providenciales, Grace Bay Beach, Chalk Sound, snorkeling, diving, Grand Turk and practical travel tips.',
+
+  keywords: [
+    'Turks and Caicos travel guide',
+    'things to do in Turks and Caicos',
+    'Providenciales travel guide',
+    'Turks and Caicos attractions',
+    'Grace Bay Beach',
+    'Chalk Sound',
+    'Grand Turk',
+    'Turks and Caicos beaches',
+    'Turks and Caicos tourism',
+    'Caribbean travel guide'
+  ],
+
+  budget: 'Luxury',
+  tripType: 'Beach',
+  bestSeason: 'December to April',
+  dailyBudget: 220,
+
+  attractions: [
+    {
+      name: 'Grace Bay Beach',
+      duration: '3–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Chalk Sound National Park',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Smith’s Reef',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Grand Turk',
+      duration: '1–2 days',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Princess Alexandra National Park',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Little Water Cay',
+      duration: 'Half day',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Providenciales is the main tourism hub and the most visited island in the Turks and Caicos Islands.',
+    'Providenciales International Airport (PLS) is the main international gateway.',
+    'English is the official language and the US dollar (USD) is the local currency.',
+    'Grace Bay is famous for its clear turquoise water, white sand, and extensive reef system.',
+    'Turks and Caicos is particularly popular for snorkeling, diving, boating, and whale watching.',
+    'December to April is generally the most popular period because of favorable weather and lower rainfall.',
+    'The islands drive on the left side of the road, although most vehicles are left-hand-drive.',
+    'The current U.S. travel advisory is Level 2: Exercise Increased Caution due to crime. :contentReference[oaicite:1]{index=1}',
+    'Petty crime can occur in popular tourist areas, so keep valuables secure and avoid leaving belongings unattended on beaches.',
+    'Check weather and marine conditions before boat trips, snorkeling, or diving excursions.'
+  ]
+},
+
+{
+  id: 'charlotte-amalie-vi',
+  city: 'Charlotte Amalie',
+  country: 'United States Virgin Islands',
+  airportCode: 'STT',
+  image: `https://images.pexels.com/photos/15304264/pexels-photo-15304264.jpeg${cropParams}`,
+  description: 'The United States Virgin Islands are a Caribbean getaway known for turquoise waters, white-sand beaches, coral reefs, sailing, historic towns, and beautiful tropical landscapes across St. Thomas, St. John, and St. Croix.',
+
+  seoTitle: 'U.S. Virgin Islands Travel Guide: Beaches, Attractions & Travel Tips',
+
+  seoDescription: 'Explore the U.S. Virgin Islands with a guide to St. Thomas, St. John, St. Croix, Charlotte Amalie, Magen’s Bay, Virgin Islands National Park and travel tips.',
+
+  keywords: [
+    'US Virgin Islands travel guide',
+    'United States Virgin Islands travel',
+    'things to do in US Virgin Islands',
+    'St Thomas travel guide',
+    'St John USVI',
+    'St Croix travel guide',
+    'Charlotte Amalie',
+    'Magens Bay',
+    'Virgin Islands National Park',
+    'US Virgin Islands beaches'
+  ],
+
+  budget: 'Moderate',
+  tripType: 'Beach',
+  bestSeason: 'December to April',
+  dailyBudget: 150,
+
+  attractions: [
+    {
+      name: 'Charlotte Amalie',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Magens Bay Beach',
+      duration: '3–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Virgin Islands National Park',
+      duration: 'Full Day',
+      bestTime: 'Early Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Trunk Bay',
+      duration: '3–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Coral World Ocean Park',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Christiansted',
+      duration: '2–3 hours',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    }
+  ],
+
+  travelTips: [
+    'The U.S. Virgin Islands consist primarily of St. Thomas, St. John, and St. Croix.',
+    'Cyril E. King Airport (STT) is the main airport serving St. Thomas and is one of the main gateways to the islands.',
+    'English is the main language and the US dollar (USD) is the local currency.',
+    'The islands are popular for beaches, snorkeling, diving, sailing, hiking, and island-hopping.',
+    'St. John is especially known for Virgin Islands National Park and protected beaches.',
+    'St. Thomas offers shopping, restaurants, beaches, viewpoints, and easy access to boat excursions.',
+    'St. Croix has a more relaxed atmosphere with historic towns, beaches, and cultural attractions.',
+    'December to April is generally the most popular period because of favorable Caribbean weather.',
+    'The islands drive on the left side of the road even though most vehicles are left-hand-drive.',
+    'Hurricane season runs from June through November, so check the latest weather information when planning a trip.',
+    'Check current ferry schedules and transportation arrangements before traveling between the islands.'
+  ]
+},
+
+{
+  id: 'vatican-city-va',
+  city: 'Vatican City',
+  country: 'Vatican City',
+  airportCode: 'FCO',
+  image: `https://images.pexels.com/photos/12839801/pexels-photo-12839801.jpeg${cropParams}`,
+  description: 'Vatican City is the world’s smallest independent state and the spiritual center of the Catholic Church, home to St. Peter’s Basilica, the Vatican Museums, the Sistine Chapel, and some of the world’s most important Renaissance art and architecture.',
+
+  seoTitle: 'Vatican City Travel Guide: Things to Do, Attractions & Travel Tips',
+
+  seoDescription: 'Explore Vatican City with a guide to St. Peter’s Basilica, Vatican Museums, Sistine Chapel, St. Peter’s Square, Vatican Gardens and practical travel tips.',
+
+  keywords: [
+    'Vatican City travel guide',
+    'things to do in Vatican City',
+    'Vatican City attractions',
+    'Vatican Museums',
+    'Sistine Chapel',
+    'St Peter’s Basilica',
+    'St Peter’s Square',
+    'Vatican City tourism',
+    'Vatican City itinerary',
+    'Rome Vatican travel guide'
+  ],
+
+  budget: 'Luxury',
+  tripType: 'Culture',
+  bestSeason: 'March to May, September to October',
+  dailyBudget: 100,
+
+  attractions: [
+    {
+      name: 'St. Peter’s Basilica',
+      duration: '2–3 hours',
+      bestTime: 'Early Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Vatican Museums',
+      duration: '3–4 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Sistine Chapel',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Included with Vatican Museums'
+    },
+    {
+      name: 'St. Peter’s Square',
+      duration: '1 hour',
+      bestTime: 'Morning',
+      entryFee: 'Free'
+    },
+    {
+      name: 'Vatican Gardens',
+      duration: '2 hours',
+      bestTime: 'Morning',
+      entryFee: 'Varies'
+    },
+    {
+      name: 'Castel Sant’Angelo',
+      duration: '2 hours',
+      bestTime: 'Late Afternoon',
+      entryFee: 'Varies'
+    }
+  ],
+
+  travelTips: [
+    'Vatican City is an independent city-state completely surrounded by Rome, Italy.',
+    'Vatican City does not have its own commercial airport. Rome Fiumicino Airport (FCO) is the main international airport used by visitors.',
+    'Italian is widely used, while Latin is the official language of the Holy See. English is common in tourist areas.',
+    'The euro (EUR) is the official currency.',
+    'St. Peter’s Basilica is generally free to enter, while the Vatican Museums and Sistine Chapel require tickets.',
+    'Book Vatican Museums tickets in advance, especially during peak travel periods.',
+    'Dress respectfully when visiting churches and religious sites. Shoulders and knees should generally be covered.',
+    'Large bags, tripods, and certain items may not be permitted inside attractions, so check the latest visitor rules before entering.',
+    'The Vatican Museums can become extremely crowded. Visiting early in the day can make the experience more comfortable.',
+    'Vatican City is easily combined with a Rome itinerary because it is located within the city of Rome.',
+    'Check current opening hours, ticket requirements, security rules, and official visitor information before your visit.'
+  ]
+},
 
 ];

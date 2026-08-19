@@ -5,11 +5,18 @@ import { MOCK_BLOG_POSTS } from '../../data/mockBlogPosts';
 import { SEO } from '../seo/SEO';
 import { 
   Plane, Building, Car, Smartphone,
-  Tag, Zap, Heart, TrendingUp,
-  FileCheck, Luggage, ChevronDown, ArrowUpRight, ArrowRight,
-  Award, ShieldCheck, Wifi, Sparkles, Fuel, Navigation, Globe,
-  Users, Briefcase, CheckCircle2, Clock, Search
+  Tag, Zap, Luggage, FileCheck, Award, ShieldCheck, Wifi, Fuel, Navigation,
+  Users, Briefcase, Sparkles, Globe
 } from 'lucide-react';
+
+import { FlightHero } from './FlightHero';
+import { FlightTrustHighlights } from './FlightTrustHighlights';
+import { FlightDestinations } from './FlightDestinations';
+import { FlightBlogSection } from './FlightBlogSection';
+import { HotelSections } from './HotelSections';
+import { CarSections } from './CarSections';
+import { EsimSections } from './EsimSections';
+import { FlightFAQ, FAQItem } from './FlightFAQ';
 
 // Code-split widget components to reduce initial JS payload
 const HotelSearchWidget = lazy(() => import('./HotelSearchWidget').then(m => ({ default: m.HotelSearchWidget })));
@@ -18,11 +25,6 @@ const EsimWidget = lazy(() => import('./EsimWidget').then(m => ({ default: m.Esi
 
 declare const window: any;
 declare const document: any;
-
-interface FAQItem {
-  question: string;
-  answer: React.ReactNode;
-}
 
 // Flight FAQs
 const flightFaqs: FAQItem[] = [
@@ -164,7 +166,6 @@ export const FlightSearchUI: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'flights' | 'hotels' | 'cars' | 'esim'>(activeTabFromUrl);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [selectedTrustIndex, setSelectedTrustIndex] = useState<number | null>(null);
-  // ADD THIS LINE FOR INSTANT MOBILE LCP:
   const [isWidgetLoaded, setIsWidgetLoaded] = useState(false);
 
   useEffect(() => {
@@ -531,7 +532,6 @@ export const FlightSearchUI: React.FC = () => {
     let resizeObserverInstance: any = null;
     let timer: ReturnType<typeof setTimeout> | null = null;
 
-    // Load widget during browser idle or after 250ms so mobile FCP/LCP paints instantly
     timer = setTimeout(() => {
       const searchContainer = document.getElementById('tpwl-search');
       const ticketsContainer = document.getElementById('tpwl-tickets');
@@ -657,76 +657,13 @@ export const FlightSearchUI: React.FC = () => {
         <div className="max-w-[1360px] mx-auto px-2.5 sm:px-6 pt-2.5 sm:pt-6">
           <div className="bg-white rounded-2xl sm:rounded-[36px] border border-slate-200/80 shadow-[0_12px_40px_-12px_rgba(15,23,42,0.06)] p-4 sm:p-8 lg:p-8 space-y-3.5 sm:space-y-6 overflow-visible">
             
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-3.5 lg:gap-8 items-center">
-              
-              {/* Heading & Service Tabs */}
-              <div className="lg:col-span-7 flex flex-col items-center justify-center text-center lg:items-start lg:text-left space-y-3 sm:space-y-4">
-                <h1 className="text-xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-[1.15] text-center lg:text-left">
-                  {currentHero.headlinePrefix}
-                  <span className="text-blue-600 inline-block">{currentHero.headlineHighlight}</span>
-                </h1>
-
-                {/* Service Tabs */}
-                <div className="grid grid-cols-4 gap-1.5 sm:gap-3 max-w-md w-full pt-1" role="tablist">
-  {tabs.map((tab) => {
-    const Icon = tab.icon;
-    const isActive = activeTab === tab.id;
-
-    return (
-      <button
-        key={tab.id}
-        type="button"
-        role="tab"
-        aria-selected={isActive}
-        aria-label={`Switch to ${tab.label} search`}
-        onClick={() => handleTabChange(tab.id)}
-        className={`relative group h-16 sm:h-20 rounded-[20px] sm:rounded-[22px] flex flex-col items-center justify-center text-center px-1 gap-1 transition-all duration-200 cursor-pointer select-none ${
-          isActive
-            ? 'bg-[#2563EB] text-white shadow-lg shadow-blue-600/30 ring-2 ring-blue-600/20 scale-[1.02]'
-            : 'bg-slate-50/90 border border-slate-200/80 text-slate-700 hover:bg-slate-100/80 hover:border-slate-300 hover:scale-[1.01]'
-        }`}
-      >
-        <div className={`p-1.5 sm:p-2 rounded-xl transition-all duration-200 flex items-center justify-center ${
-          isActive ? 'bg-white/20 text-white' : 'bg-white text-slate-700 border border-slate-200/60 group-hover:text-blue-600'
-        }`}>
-          <Icon className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
-        </div>
-
-        <span className="tracking-tight font-black text-[10px] sm:text-xs leading-tight text-center w-full truncate">
-          {tab.label}
-        </span>
-      </button>
-    );
-  })}
-</div>
-              </div>
-
-              {/* Desktop Hero Image - Optimised LCP with fetchpriority */}
-              {/* Desktop Hero Image */}
-<div className="hidden lg:flex lg:col-span-5 flex-col">
-  <div className="relative h-48 lg:h-52 rounded-3xl overflow-hidden shadow-xs border border-slate-100 group cursor-pointer">
-    <img
-      src={currentHero.topImage}
-      alt="Top Deals"
-      loading="lazy"
-      decoding="async"
-      width="600"
-      height="208"
-      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-    />
-    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
-    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
-      <span className="text-xs font-black tracking-wider uppercase drop-shadow-md">
-        {currentHero.topImageTag}
-      </span>
-      <div className="w-7 h-7 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
-        <TrendingUp className="w-4 h-4 text-white" />
-      </div>
-    </div>
-  </div>
-</div>
-
-            </div>
+            {/* Extracted Hero Section */}
+            <FlightHero
+              currentHero={currentHero}
+              tabs={tabs}
+              activeTab={activeTab}
+              onTabChange={handleTabChange}
+            />
 
             {/* DYNAMIC PER-TAB WIDGET VIEWPORT CONTAINER */}
             <div 
@@ -742,15 +679,15 @@ export const FlightSearchUI: React.FC = () => {
               }`}
             >
               <Suspense fallback={<WidgetSkeleton />}>
-  {activeTab === 'flights' && (
-    <div className="w-full min-h-[90px] relative">
-      <div id="tpwl-search" className="w-full min-h-[90px]" />
-    </div>
-  )}
-  {activeTab === 'hotels' && <HotelSearchWidget />}
-  {activeTab === 'cars' && <CarRentalWidget />}
-  {activeTab === 'esim' && <EsimWidget />}
-</Suspense>
+                {activeTab === 'flights' && (
+                  <div className="w-full min-h-[90px] relative">
+                    <div id="tpwl-search" className="w-full min-h-[90px]" />
+                  </div>
+                )}
+                {activeTab === 'hotels' && <HotelSearchWidget />}
+                {activeTab === 'cars' && <CarRentalWidget />}
+                {activeTab === 'esim' && <EsimWidget />}
+              </Suspense>
             </div>
 
           </div>
@@ -764,718 +701,63 @@ export const FlightSearchUI: React.FC = () => {
         )}
 
         {/* TRUST / BENEFITS STRIP */}
-        <div className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-4 sm:mt-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
-            {currentTrustHighlights.map((item, i) => {
-              const Icon = item.icon;
-              const isSelected = selectedTrustIndex === i;
-
-              return (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() =>
-                    setSelectedTrustIndex(isSelected ? null : i)
-                  }
-                  className={`
-                    group
-                    flex items-center justify-center gap-2
-                    px-3 py-2.5 sm:py-3.5
-                    rounded-2xl
-                    border
-                    text-slate-800
-                    cursor-pointer
-                    select-none
-                    transition-all duration-200
-                    focus:outline-none
-                    ${
-                      isSelected
-                        ? 'bg-blue-50 border-blue-600 shadow-md shadow-blue-600/10 -translate-y-0.5'
-                        : 'bg-white border-slate-200/80 shadow-2xs hover:border-blue-300 hover:bg-blue-50/40 hover:-translate-y-0.5 hover:shadow-sm'
-                    }
-                  `}
-                >
-                  <Icon
-                    className={`
-                      w-4 h-4 shrink-0 transition-colors duration-200
-                      ${
-                        isSelected
-                          ? 'text-blue-600'
-                          : 'text-blue-600 group-hover:text-blue-600'
-                      }
-                    `}
-                  />
-
-                  <span className="text-xs font-black tracking-tight truncate">
-                    {item.label}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
+        <FlightTrustHighlights
+          highlights={currentTrustHighlights}
+          selectedIndex={selectedTrustIndex}
+          onSelectIndex={setSelectedTrustIndex}
+        />
 
         {/* FLIGHTS SECTION */}
         {activeTab === 'flights' && (
           <>
-            <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-10 sm:mt-14 space-y-6">
-              <div className="flex items-end justify-between border-b border-slate-200/60 pb-3">
-                <div>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">
-                    POPULAR RIGHT NOW
-                  </span>
-                  <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-0.5">
-                    Explore popular flight destinations
-                  </h2>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => navigate('/destinations')}
-                  className="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
-                >
-                  <span>View all destinations</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                </button>
-              </div>
-
-              <div className="flex overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-visible pb-2 sm:pb-0">
-                {popularDestinations.map((dest, index) => (
-                  <div
-                    key={dest.id}
-                    onClick={() => navigate(`/destinations/${dest.id}`)}
-                    className="w-[82vw] shrink-0 snap-start sm:w-auto sm:shrink group relative h-80 rounded-3xl overflow-hidden bg-slate-900 border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer flex flex-col justify-between p-5"
-                  >
-                    <img
-                      src={dest.image}
-                      alt={dest.city}
-                      loading={index === 0 ? "eager" : "lazy"}
-                      decoding="async"
-                      width="600"
-                      height="320"
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-95"
-                    />
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/15 to-transparent" />
-
-                    <div className="relative z-10 flex items-center justify-end">
-                      <button 
-  type="button" 
-  aria-label="Save to favorites"
-  onClick={(e) => {
-    e.stopPropagation();
-  }}
-  className="w-9 h-9 rounded-full bg-slate-950/25 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-rose-500 transition-all duration-200 cursor-pointer"
->
-  <Heart className="w-4 h-4" aria-hidden="true" />
-</button>
-                    </div>
-
-                    <div className="relative z-10 space-y-1.5">
-                      <div>
-                        <h3 className="text-2xl font-black text-white tracking-tight leading-none group-hover:text-blue-300 transition-colors">
-                          {dest.city}
-                        </h3>
-                        <p className="text-xs font-semibold text-slate-200 mt-1 drop-shadow-xs">
-                          {dest.country}
-                        </p>
-                      </div>
-
-                      <div className="pt-2 border-t border-white/20 flex items-center justify-between">
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-200">
-                          From {dest.priceUsd}
-                        </span>
-                        <div className="flex items-center gap-1 bg-white/15 backdrop-blur-md px-2.5 py-1 rounded-xl border border-white/20">
-                          <ArrowUpRight className="w-3.5 h-3.5 text-white" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-
-                <div
-                  onClick={() => navigate('/destinations')}
-                  className="w-[50vw] sm:hidden shrink-0 snap-start h-80 rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
-                >
-                  <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3 shadow-md shadow-blue-600/20 group-hover:scale-110 transition-transform">
-                    <ArrowRight className="w-6 h-6" />
-                  </div>
-                  <span className="text-sm font-black text-slate-900 leading-tight">
-                    View All
-                  </span>
-                  <span className="text-[11px] font-bold text-blue-600 mt-0.5">
-                    Destinations &rarr;
-                  </span>
-                </div>
-              </div>
-            </section>
-
-            <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-12 sm:mt-16 space-y-6">
-              <div className="border-b border-slate-200/60 pb-3 flex items-end justify-between">
-                <div>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">TRAVEL GUIDES</span>
-                  <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-0.5">Flight booking tips & inspiration</h2>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => navigate('/blog')}
-                  className="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
-                >
-                  <span>View all articles</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                </button>
-              </div>
-
-              <div className="flex items-stretch overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible pb-2 sm:pb-0">
-                {flightBlogArticles.map((article, idx) => (
-                  <div 
-                    key={idx} 
-                    onClick={() => navigate(`/blog/${article.slug}`)} 
-                    className="w-[82vw] shrink-0 snap-start sm:w-auto sm:shrink group flex flex-col bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden cursor-pointer"
-                  >
-                    <div className="relative h-48 overflow-hidden bg-slate-100 shrink-0">
-                      <img src={article.image} alt={article.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
-                      <div className="absolute top-4 left-4">
-                        <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md text-[10px] font-black uppercase tracking-wider text-slate-800 border border-white/20 shadow-sm">
-                          <Clock className="w-3 h-3 text-blue-600" /> {article.readTime}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="p-5 flex flex-col justify-between flex-1">
-                      <h3 className="text-lg font-black text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">{article.title}</h3>
-                      <div className="pt-4 mt-2 flex items-center justify-between border-t border-slate-100 text-xs font-extrabold text-blue-600">
-                        <span>Read article</span>
-                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </div>
-                  </div>
-                ))}
-
-                <div
-                  onClick={() => navigate('/blog')}
-                  className="w-[50vw] sm:hidden shrink-0 snap-start self-stretch rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
-                >
-                  <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3 shadow-md shadow-blue-600/20 group-hover:scale-110 transition-transform">
-                    <ArrowRight className="w-6 h-6" />
-                  </div>
-                  <span className="text-sm font-black text-slate-900 leading-tight">
-                    View All
-                  </span>
-                  <span className="text-[11px] font-bold text-blue-600 mt-0.5">
-                    Articles &rarr;
-                  </span>
-                </div>
-              </div>
-            </section>
+            <FlightDestinations
+              destinations={popularDestinations}
+              onNavigate={navigate}
+            />
+            <FlightBlogSection
+              articles={flightBlogArticles}
+              onNavigate={navigate}
+            />
           </>
         )}
 
         {/* HOTELS SECTION */}
         {activeTab === 'hotels' && (
-          <>
-            <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-10 sm:mt-14 space-y-6">
-              <div className="flex items-end justify-between border-b border-slate-200/60 pb-3">
-                <div>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">
-                    POPULAR HOTEL DESTINATIONS
-                  </span>
-                  <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-0.5">
-                    Explore stays in top destinations
-                  </h2>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => navigate('/destinations')}
-                  className="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
-                >
-                  <span>Explore all destinations</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                </button>
-              </div>
-
-              <div className="flex overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-visible pb-2 sm:pb-0">
-                {popularStays.map((stay) => (
-                  <div
-                    key={stay.id}
-                    onClick={() => navigate(`/destinations/${stay.id}`)}
-                    className="w-[82vw] shrink-0 snap-start sm:w-auto sm:shrink group relative h-80 rounded-3xl overflow-hidden bg-slate-900 border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer flex flex-col justify-between p-5"
-                  >
-                    <img
-                      src={stay.image}
-                      alt={stay.city}
-                      loading="lazy"
-                      decoding="async"
-                      width="600"
-                      height="320"
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-95"
-                    />
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
-
-                    <div className="relative z-10 flex items-center justify-end">
-                      <button 
-                        type="button" 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                        }}
-                        className="w-9 h-9 rounded-full bg-slate-950/25 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-rose-500 transition-all duration-200 cursor-pointer"
-                      >
-                        <Heart className="w-4 h-4" />
-                      </button>
-                    </div>
-
-                    <div className="relative z-10 space-y-1.5">
-                      <div>
-                        <h3 className="text-2xl font-black text-white tracking-tight leading-none group-hover:text-blue-300 transition-colors">
-                          {stay.city}
-                        </h3>
-                        <p className="text-xs font-semibold text-slate-200 mt-1 drop-shadow-xs">
-                          {stay.country}
-                        </p>
-                      </div>
-
-                      <div className="pt-2 border-t border-white/20 flex items-center justify-between">
-                        <span className="text-[11px] font-semibold text-slate-200 truncate pr-2">
-                          {stay.description}
-                        </span>
-                        <div className="flex items-center gap-1 bg-white/15 backdrop-blur-md px-2 py-1 rounded-xl border border-white/20 shrink-0">
-                          <ArrowUpRight className="w-3.5 h-3.5 text-white" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-
-                <div
-                  onClick={() => navigate('/destinations')}
-                  className="w-[50vw] sm:hidden shrink-0 snap-start h-80 rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
-                >
-                  <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3 shadow-md shadow-blue-600/20 group-hover:scale-110 transition-transform">
-                    <ArrowRight className="w-6 h-6" />
-                  </div>
-                  <span className="text-sm font-black text-slate-900 leading-tight">
-                    View All
-                  </span>
-                  <span className="text-[11px] font-bold text-blue-600 mt-0.5">
-                    Destinations &rarr;
-                  </span>
-                </div>
-              </div>
-            </section>
-
-            <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-12 sm:mt-16 space-y-6">
-              <div className="border-b border-slate-200/60 pb-3 flex items-end justify-between">
-                <div>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">HOTEL GUIDES</span>
-                  <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-0.5">Where to stay & accommodation tips</h2>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => navigate('/blog')}
-                  className="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
-                >
-                  <span>View all articles</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                </button>
-              </div>
-
-              <div className="flex items-stretch overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible pb-2 sm:pb-0">
-                {hotelBlogArticles.map((article, idx) => (
-                  <div 
-                    key={idx} 
-                    onClick={() => navigate(`/blog/${article.slug}`)} 
-                    className="w-[82vw] shrink-0 snap-start sm:w-auto sm:shrink group flex flex-col bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden cursor-pointer"
-                  >
-                    <div className="relative h-48 overflow-hidden bg-slate-100 shrink-0">
-                      <img src={article.image} alt={article.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
-                      <div className="absolute top-4 left-4">
-                        <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md text-[10px] font-black uppercase tracking-wider text-slate-800 border border-white/20 shadow-sm">
-                          <Clock className="w-3 h-3 text-blue-600" /> {article.readTime}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="p-5 flex flex-col justify-between flex-1">
-                      <h3 className="text-lg font-black text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">{article.title}</h3>
-                      <div className="pt-4 mt-2 flex items-center justify-between border-t border-slate-100 text-xs font-extrabold text-blue-600">
-                        <span>Read article</span>
-                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </div>
-                  </div>
-                ))}
-
-                <div
-                  onClick={() => navigate('/blog')}
-                  className="w-[50vw] sm:hidden shrink-0 snap-start self-stretch rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
-                >
-                  <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3 shadow-md shadow-blue-600/20 group-hover:scale-110 transition-transform">
-                    <ArrowRight className="w-6 h-6" />
-                  </div>
-                  <span className="text-sm font-black text-slate-900 leading-tight">
-                    View All
-                  </span>
-                  <span className="text-[11px] font-bold text-blue-600 mt-0.5">
-                    Articles &rarr;
-                  </span>
-                </div>
-              </div>
-            </section>
-          </>
+          <HotelSections
+            stays={popularStays}
+            articles={hotelBlogArticles}
+            onNavigate={navigate}
+          />
         )}
 
         {/* CARS SECTION */}
         {activeTab === 'cars' && (
-          <>
-            <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-10 sm:mt-14 space-y-6">
-              <div className="border-b border-slate-200/60 pb-3">
-                <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">FLEET CATEGORIES</span>
-                <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-0.5">Explore Car Rental Options</h2>
-              </div>
-
-              <div className="flex overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-visible pb-2 sm:pb-0">
-                {vehicleCategories.map((cat, idx) => (
-                  <div 
-                    key={idx} 
-                    onClick={scrollToCarRentalWidget}
-                    className="w-[82vw] shrink-0 snap-start sm:w-auto sm:shrink relative rounded-3xl bg-white border border-slate-200/80 shadow-2xs overflow-hidden flex flex-col hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg transition-all duration-300 cursor-pointer select-none group"
-                  >
-                    <div className="relative h-44 overflow-hidden bg-slate-100 shrink-0">
-                      <img src={cat.image} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" alt={cat.title} />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent" />
-                      <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
-                        <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-lg bg-white/20 backdrop-blur-md text-white border border-white/20 shadow-sm">
-                          {cat.badge}
-                        </span>
-                        <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/20 shadow-sm">
-                          <cat.icon className="w-4 h-4" />
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                      <div>
-                        <h3 className="text-lg font-black text-slate-900 group-hover:text-blue-600 transition-colors">{cat.title}</h3>
-                        <p className="text-xs font-medium text-slate-500 mt-1 leading-relaxed">{cat.description}</p>
-                      </div>
-
-                      <div className="pt-3 border-t border-slate-100 flex items-center gap-1.5 text-xs font-bold text-slate-700">
-                        <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
-                        <span>{cat.highlight}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-12 sm:mt-16 space-y-6">
-              <div className="flex items-end justify-between border-b border-slate-200/60 pb-3">
-                <div>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">
-                    POPULAR DESTINATIONS
-                  </span>
-                  <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-0.5">
-                    Where will you drive next?
-                  </h2>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => navigate('/destinations')}
-                  className="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
-                >
-                  <span>View all destinations</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                </button>
-              </div>
-
-              <div className="flex overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-visible pb-2 sm:pb-0">
-                {carDestinations.map((dest) => (
-                  <div
-                    key={dest.id}
-                    onClick={() => navigate(`/destinations/${dest.id}`)}
-                    className="w-[82vw] shrink-0 snap-start sm:w-auto sm:shrink group relative h-80 rounded-3xl overflow-hidden bg-slate-900 border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer flex flex-col justify-end p-5"
-                  >
-                    <img
-                      src={dest.image}
-                      alt={dest.city}
-                      loading="lazy"
-                      decoding="async"
-                      width="600"
-                      height="320"
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-95"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
-
-                    <div className="relative z-10 space-y-1.5">
-                      <div>
-                        <h3 className="text-2xl font-black text-white tracking-tight leading-none group-hover:text-blue-300 transition-colors">
-                          {dest.city}
-                        </h3>
-                        <p className="text-xs font-semibold text-slate-200 mt-1 drop-shadow-xs">
-                          {dest.country}
-                        </p>
-                      </div>
-
-                      <div className="pt-2 border-t border-white/20 flex items-center justify-between">
-                        <span className="text-[11px] font-semibold text-slate-200 truncate pr-2">
-                          {dest.description}
-                        </span>
-                        <div className="flex items-center gap-1 bg-white/15 backdrop-blur-md px-2 py-1 rounded-xl border border-white/20 shrink-0">
-                          <ArrowUpRight className="w-3.5 h-3.5 text-white" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-
-                <div
-                  onClick={() => navigate('/destinations')}
-                  className="w-[50vw] sm:hidden shrink-0 snap-start h-80 rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
-                >
-                  <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3 shadow-md shadow-blue-600/20 group-hover:scale-110 transition-transform">
-                    <ArrowRight className="w-6 h-6" />
-                  </div>
-                  <span className="text-sm font-black text-slate-900 leading-tight">
-                    View All
-                  </span>
-                  <span className="text-[11px] font-bold text-blue-600 mt-0.5">
-                    Destinations &rarr;
-                  </span>
-                </div>
-              </div>
-            </section>
-
-            <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-12 sm:mt-16 space-y-6">
-              <div className="border-b border-slate-200/60 pb-3 flex items-end justify-between">
-                <div>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">ROAD TRIP INSPIRATION</span>
-                  <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-0.5">Make the journey part of the adventure</h2>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => navigate('/blog')}
-                  className="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
-                >
-                  <span>View all articles</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                </button>
-              </div>
-
-              <div className="flex items-stretch overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible pb-2 sm:pb-0">
-                {roadTripArticles.map((article, idx) => (
-                  <div 
-                    key={idx} 
-                    onClick={() => navigate(`/blog/${article.slug}`)} 
-                    className="w-[82vw] shrink-0 snap-start sm:w-auto sm:shrink group flex flex-col bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden cursor-pointer"
-                  >
-                    <div className="relative h-48 overflow-hidden bg-slate-100 shrink-0">
-                      <img src={article.image} alt={article.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
-                      <div className="absolute top-4 left-4">
-                        <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md text-[10px] font-black uppercase tracking-wider text-slate-800 border border-white/20 shadow-sm">
-                          <Clock className="w-3 h-3 text-blue-600" /> {article.readTime}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="p-5 flex flex-col justify-between flex-1">
-                      <h3 className="text-lg font-black text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">{article.title}</h3>
-                      <div className="pt-4 mt-2 flex items-center justify-between border-t border-slate-100 text-xs font-extrabold text-blue-600">
-                        <span>Read article</span>
-                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </div>
-                  </div>
-                ))}
-
-                <div
-                  onClick={() => navigate('/blog')}
-                  className="w-[50vw] sm:hidden shrink-0 snap-start self-stretch rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
-                >
-                  <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3 shadow-md shadow-blue-600/20 group-hover:scale-110 transition-transform">
-                    <ArrowRight className="w-6 h-6" />
-                  </div>
-                  <span className="text-sm font-black text-slate-900 leading-tight">
-                    View All
-                  </span>
-                  <span className="text-[11px] font-bold text-blue-600 mt-0.5">
-                    Articles &rarr;
-                  </span>
-                </div>
-              </div>
-            </section>
-          </>
+          <CarSections
+            categories={vehicleCategories}
+            destinations={carDestinations}
+            articles={roadTripArticles}
+            onScrollToWidget={scrollToCarRentalWidget}
+            onNavigate={navigate}
+          />
         )}
 
         {/* ESIM SECTION */}
         {activeTab === 'esim' && (
-          <>
-            <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-10 sm:mt-14 space-y-4">
-              <div className="border-b border-slate-200/60 pb-3">
-                <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">Quick Select</span>
-                <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-0.5">Popular eSIM Destinations</h2>
-              </div>
-
-              <div className="flex overflow-x-auto scrollbar-hide gap-2.5 pt-1 sm:flex-wrap pb-2 sm:pb-0">
-                {esimPopularDestinations.map((dest) => (
-                  <button
-                    key={dest.name}
-                    type="button"
-                    onClick={() => handleEsimPopularClick(dest.url)}
-                    className="shrink-0 sm:shrink inline-flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-extrabold transition-all duration-200 border cursor-pointer select-none bg-white border-slate-200/80 hover:border-blue-600 hover:bg-blue-50/50 text-slate-800 shadow-2xs"
-                  >
-                    <span>{dest.name}</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
-                  </button>
-                ))}
-              </div>
-            </section>
-
-            <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-12 sm:mt-16 space-y-6">
-              <div className="border-b border-slate-200/60 pb-3">
-                <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">
-                  TRAVEL CONNECTIVITY
-                </span>
-                <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-0.5">
-                  Stay connected wherever you go
-                </h2>
-              </div>
-
-              <div className="flex overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-visible pb-2 sm:pb-0">
-                {esimConnectivityFeatures.map((item, idx) => {
-                  const Icon = item.icon;
-                  return (
-                    <div 
-                      key={idx} 
-                      className="w-[82vw] shrink-0 snap-start sm:w-auto sm:shrink p-6 rounded-3xl bg-white border border-slate-200/80 shadow-2xs hover:shadow-md hover:border-blue-200 transition-all duration-300 flex flex-col space-y-4"
-                    >
-                      <div className="w-10 h-10 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0">
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      
-                      <div className="space-y-1.5 flex-1">
-                        <h3 className="text-base font-black text-slate-900 tracking-tight">
-                          {item.title}
-                        </h3>
-                        <p className="text-xs font-medium text-slate-500 leading-relaxed">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
-
-            <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-12 sm:mt-16 space-y-6">
-              <div className="border-b border-slate-200/60 pb-3 flex items-end justify-between">
-                <div>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">CONNECTIVITY GUIDES</span>
-                  <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-0.5">Mobile data tips & guides</h2>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => navigate('/blog')}
-                  className="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-600 hover:text-blue-700 transition-colors group cursor-pointer shrink-0"
-                >
-                  <span>View all articles</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                </button>
-              </div>
-
-              <div className="flex items-stretch overflow-x-auto scrollbar-hide gap-5 snap-x snap-mandatory sm:grid sm:grid-cols-2 md:grid-cols-3 sm:overflow-visible pb-2 sm:pb-0">
-                {esimBlogArticles.map((article, idx) => (
-                  <div 
-                    key={idx} 
-                    onClick={() => navigate(`/blog/${article.slug}`)} 
-                    className="w-[82vw] shrink-0 snap-start sm:w-auto sm:shrink group flex flex-col bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden cursor-pointer"
-                  >
-                    <div className="relative h-48 overflow-hidden bg-slate-100 shrink-0">
-                      <img src={article.image} alt={article.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
-                      <div className="absolute top-4 left-4">
-                        <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-md text-[10px] font-black uppercase tracking-wider text-slate-800 border border-white/20 shadow-sm">
-                          <Clock className="w-3 h-3 text-blue-600" /> {article.readTime}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="p-5 flex flex-col justify-between flex-1">
-                      <h3 className="text-lg font-black text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">{article.title}</h3>
-                      <div className="pt-4 mt-2 flex items-center justify-between border-t border-slate-100 text-xs font-extrabold text-blue-600">
-                        <span>Read article</span>
-                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </div>
-                  </div>
-                ))}
-
-                <div
-                  onClick={() => navigate('/blog')}
-                  className="w-[50vw] sm:hidden shrink-0 snap-start self-stretch rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 hover:border-blue-500 transition-all cursor-pointer flex flex-col items-center justify-center text-center p-5 group active:scale-95"
-                >
-                  <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-3 shadow-md shadow-blue-600/20 group-hover:scale-110 transition-transform">
-                    <ArrowRight className="w-6 h-6" />
-                  </div>
-                  <span className="text-sm font-black text-slate-900 leading-tight">
-                    View All
-                  </span>
-                  <span className="text-[11px] font-bold text-blue-600 mt-0.5">
-                    Articles &rarr;
-                  </span>
-                </div>
-              </div>
-            </section>
-          </>
+          <EsimSections
+            popularDestinations={esimPopularDestinations}
+            connectivityFeatures={esimConnectivityFeatures}
+            articles={esimBlogArticles}
+            onEsimPopularClick={handleEsimPopularClick}
+            onNavigate={navigate}
+          />
         )}
 
-        {/* FAQ ACCORDION */}
-        <section className="max-w-[1360px] mx-auto px-2.5 sm:px-6 mt-12 sm:mt-16">
-          <div className="bg-white rounded-3xl border border-slate-200/80 shadow-2xs p-5 sm:p-7 max-w-4xl mx-auto space-y-5">
-            
-            <div className="text-center space-y-0.5">
-              <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">
-                FREQUENTLY ASKED QUESTIONS
-              </span>
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                Frequently Asked Questions
-              </h2>
-            </div>
-
-            <div className="space-y-2.5">
-              {currentFaqs.map((faq, index) => {
-                const isOpen = openFaqIndex === index;
-                return (
-                  <div 
-                    key={index} 
-                    className={`border rounded-2xl overflow-hidden transition-all duration-200 ${
-                      isOpen 
-                        ? 'border-blue-600/60 bg-blue-50/20' 
-                        : 'border-slate-200/80 bg-white hover:border-slate-300'
-                    }`}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setOpenFaqIndex(isOpen ? null : index)}
-                      className="w-full px-5 py-3.5 flex items-center justify-between text-left font-extrabold text-xs sm:text-sm text-slate-900 cursor-pointer select-none gap-4"
-                    >
-                      <span>{faq.question}</span>
-                      <ChevronDown 
-                        className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-300 ${
-                          isOpen ? 'rotate-180 text-blue-600' : ''
-                        }`} 
-                      />
-                    </button>
-
-                    {isOpen && (
-                      <div className="px-5 pb-3.5 text-xs sm:text-sm font-medium text-slate-600 leading-relaxed border-t border-slate-100 pt-2.5">
-                        {faq.answer}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-
-          </div>
-        </section>
+        {/* FAQ ACCORDION COMPONENT */}
+        <FlightFAQ
+          faqs={currentFaqs}
+          openIndex={openFaqIndex}
+          onToggleIndex={setOpenFaqIndex}
+        />
 
       </div>
     </>
