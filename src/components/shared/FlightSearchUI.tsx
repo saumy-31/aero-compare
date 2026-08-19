@@ -17,6 +17,7 @@ import { HotelSections } from './HotelSections';
 import { CarSections } from './CarSections';
 import { EsimSections } from './EsimSections';
 import { FlightFAQ, FAQItem } from './FlightFAQ';
+import { preloadWidgetsOnIdle } from './widgetScriptLoader';
 
 // Code-split widget components to reduce initial JS payload
 const HotelSearchWidget = lazy(() => import('./HotelSearchWidget').then(m => ({ default: m.HotelSearchWidget })));
@@ -167,6 +168,11 @@ export const FlightSearchUI: React.FC = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [selectedTrustIndex, setSelectedTrustIndex] = useState<number | null>(null);
   const [isWidgetLoaded, setIsWidgetLoaded] = useState(false);
+
+  // Trigger non-blocking idle preload for hotel, car, and esim chunks + vendor scripts
+  useEffect(() => {
+    preloadWidgetsOnIdle();
+  }, []);
 
   useEffect(() => {
     setActiveTab(activeTabFromUrl);
@@ -327,28 +333,32 @@ export const FlightSearchUI: React.FC = () => {
         id: 'paris', 
         city: 'Paris', 
         country: 'France', 
-        priceUsd: '$160', 
+        price: 160,
+        currency: 'USD',
         image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80&auto=format&fit=crop'
       },
       { 
         id: 'tokyo', 
         city: 'Tokyo', 
         country: 'Japan', 
-        priceUsd: '$150', 
+        price: 150,
+        currency: 'USD',
         image: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=600&auto=format&fit=crop&q=75' 
       },
       { 
         id: 'dubai', 
         city: 'Dubai', 
         country: 'UAE', 
-        priceUsd: '$250', 
+        price: 250,
+        currency: 'USD',
         image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&auto=format&fit=crop&q=75' 
       },
       { 
         id: 'bali', 
         city: 'Bali', 
         country: 'Indonesia', 
-        priceUsd: '$65', 
+        price: 65,
+        currency: 'USD',
         image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&auto=format&fit=crop&q=75' 
       },
     ];

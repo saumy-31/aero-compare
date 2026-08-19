@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { loadScriptOnce, HOTEL_SDK_URL } from './widgetScriptLoader';
 
 // Scoped CSS styles fixing button clipping & matching FlySava mobile hero design
 const hotelWidgetStyles = `
@@ -81,7 +82,7 @@ const hotelWidgetStyles = `
     display: none !important;
   }
 
-  /* Primary Search Button */
+  /* Primary Search Button - Fixed clipping, gap & text alignment */
   #hotel-search-widget .search-button,
   #hotel-search-widget button[type="submit"],
   #hotel-search-widget [class*="search-button"],
@@ -89,7 +90,7 @@ const hotelWidgetStyles = `
     height: 50px !important;
     min-height: 50px !important;
     width: auto !important;
-    min-width: 160px !important;
+    min-width: 170px !important;
     max-width: none !important;
     border-radius: 12px !important;
     background: #2563eb !important;
@@ -98,17 +99,27 @@ const hotelWidgetStyles = `
     font-size: 14px !important;
     font-weight: 800 !important;
     border: none !important;
-    padding: 0 28px !important;
+    padding: 0 24px !important;
     box-shadow: 0 8px 20px -3px rgba(37, 99, 235, 0.3) !important;
     cursor: pointer !important;
     transition: all 0.2s ease !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 8px !important;
+    gap: 10px !important;
     white-space: nowrap !important;
     flex-shrink: 0 !important;
     box-sizing: border-box !important;
+    overflow: visible !important;
+    text-align: center !important;
+  }
+
+  #hotel-search-widget .search-button > *,
+  #hotel-search-widget button[type="submit"] > *,
+  #hotel-search-widget [class*="search-button"] > * {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
   }
 
   #hotel-search-widget .search-button:hover,
@@ -131,6 +142,9 @@ const hotelWidgetStyles = `
     width: 18px !important;
     height: 18px !important;
     flex-shrink: 0 !important;
+    margin: 0 !important;
+    position: relative !important;
+    top: 0 !important;
   }
 
   /* Mobile Responsive Adjustment (< 768px) */
@@ -205,11 +219,10 @@ export const HotelSearchWidget: React.FC = () => {
 
     if (isWidgetRendered.current) return;
 
-    const scriptId = 'liteapi-components-sdk';
-    let script = document.getElementById(scriptId) as HTMLScriptElement | null;
+    let isSubscribed = true;
 
     const initWidget = () => {
-      if (isWidgetRendered.current) return;
+      if (!isSubscribed || isWidgetRendered.current || !widgetContainerRef.current) return;
 
       try {
         const LiteAPI = (window as any).LiteAPI;
@@ -222,9 +235,7 @@ export const HotelSearchWidget: React.FC = () => {
             (window as any).__LITEAPI_INITIALIZED__ = true;
           }
 
-          if (widgetContainerRef.current) {
-            widgetContainerRef.current.innerHTML = '';
-          }
+          widgetContainerRef.current.innerHTML = '';
 
           LiteAPI.SearchBar.create({
             selector: '#hotel-search-widget',
@@ -233,52 +244,38 @@ export const HotelSearchWidget: React.FC = () => {
 
           isWidgetRendered.current = true;
 
-          if (widgetContainerRef.current) {
-            const observer = new MutationObserver(() => {
-              if (window.innerWidth < 768) {
-                removeCombinedDateBox();
-              }
-            });
+          const observer = new MutationObserver(() => {
+            if (window.innerWidth < 768) {
+              removeCombinedDateBox();
+            }
+          });
 
-            observer.observe(widgetContainerRef.current, {
-              childList: true,
-              subtree: true,
-            });
+          observer.observe(widgetContainerRef.current, {
+            childList: true,
+            subtree: true,
+          });
 
-            setTimeout(() => {
-              if (window.innerWidth < 768) {
-                removeCombinedDateBox();
-              }
-            }, 300);
-          }
+          setTimeout(() => {
+            if (window.innerWidth < 768) {
+              removeCombinedDateBox();
+            }
+          }, 300);
         }
       } catch (error) {
         console.error('Failed to initialize LiteAPI Hotel Search Widget:', error);
       }
     };
 
-    const handleLoad = () => {
-      initWidget();
-    };
-
-    if (!script) {
-      script = document.createElement('script');
-      script.id = scriptId;
-      script.src = 'https://components.liteapi.travel/v1.0/sdk.umd.js';
-      script.async = true;
-      script.addEventListener('load', handleLoad);
-      document.body.appendChild(script);
-    } else {
-      if ((window as any).LiteAPI) {
+    loadScriptOnce(HOTEL_SDK_URL, 'liteapi-components-sdk')
+      .then(() => {
         initWidget();
-      } else {
-        script.addEventListener('load', handleLoad);
-      }
-    }
+      })
+      .catch((err) => {
+        console.error('Error loading LiteAPI script:', err);
+      });
 
     return () => {
-      script?.removeEventListener('load', handleLoad);
-
+      isSubscribed = false;
       if (widgetContainerRef.current) {
         widgetContainerRef.current.innerHTML = '';
       }

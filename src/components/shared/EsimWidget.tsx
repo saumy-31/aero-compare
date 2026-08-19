@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { ShieldCheck } from 'lucide-react';
+import { ESIM_WIDGET_URL } from './widgetScriptLoader';
 
 const esimWidgetStyles = `
   #tp-esim-widget,
@@ -135,8 +136,7 @@ export const EsimWidget: React.FC = () => {
     const script = document.createElement('script');
     script.async = true;
     script.charset = 'utf-8';
-    script.src =
-      'https://tpwgts.com/content?trs=418605&shmarker=633257&locale=en&powered_by=false&color_button=%232563Eb&color_focused=%232563Eb&secondary=%23FFFFFF&dark=%2311100f&light=%23FFFFFF&special=%23C4C4C4&border_radius=14&plain=true&no_labels=&promo_id=8588&campaign_id=541';
+    script.src = ESIM_WIDGET_URL;
 
     container.appendChild(script);
     isRendered.current = true;

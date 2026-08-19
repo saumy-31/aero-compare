@@ -1,8 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ShieldCheck } from 'lucide-react';
-
-const WIDGET_SRC =
-  'https://tpwgts.com/content?trs=418605&shmarker=633257&locale=en&powered_by=false&border_radius=12&plain=true&show_logo=false&color_background=transparent&color_button=%232563eb&promo_id=4362&campaign_id=143';
+import { loadScriptOnce, CAR_WIDGET_URL } from './widgetScriptLoader';
 
 const AutoEuropeLogo = () => (
   <img 
@@ -21,31 +19,8 @@ const AutoEuropeLogo = () => (
 export const CarRentalWidget: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isRendered = useRef<boolean>(false);
-  const [isVisible, setIsVisible] = useState(false);
 
-  // 1. Intersection Observer to defer script loading until visible
   useEffect(() => {
-    const target = containerRef.current;
-    if (!target) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: '200px' }
-    );
-
-    observer.observe(target);
-    return () => observer.disconnect();
-  }, []);
-
-  // 2. Inject CSS height constraints and Widget Script
-  useEffect(() => {
-    if (!isVisible) return;
-
     const styleId = 'car-widget-iframe-height-fix';
     let styleTag = document.getElementById(styleId) as HTMLStyleElement | null;
 
@@ -81,15 +56,15 @@ export const CarRentalWidget: React.FC = () => {
     `;
 
     if (isRendered.current) return;
-
     const container = containerRef.current;
     if (!container) return;
 
     container.innerHTML = '';
 
+    // Direct script instantiation inside the container
     const script = document.createElement('script');
     script.async = true;
-    script.src = WIDGET_SRC;
+    script.src = CAR_WIDGET_URL;
     script.charset = 'utf-8';
 
     container.appendChild(script);
@@ -101,7 +76,7 @@ export const CarRentalWidget: React.FC = () => {
       }
       isRendered.current = false;
     };
-  }, [isVisible]);
+  }, []);
 
   return (
     <div className="w-full space-y-3.5 bg-transparent border-0 shadow-none overflow-visible">
@@ -110,13 +85,7 @@ export const CarRentalWidget: React.FC = () => {
         id="tpwl-car-widget-container"
         ref={containerRef}
         className="w-full min-h-[220px] sm:min-h-[200px] flex items-center justify-center bg-transparent p-0 border-0 shadow-none overflow-visible"
-      >
-        {!isVisible && (
-          <div className="w-full h-48 bg-slate-100/60 rounded-2xl animate-pulse flex items-center justify-center text-slate-400 text-xs font-semibold">
-            Loading Car Search Engine...
-          </div>
-        )}
-      </div>
+      />
 
       {/* ATTRIBUTION STRIP */}
       <div className="flex items-center justify-between px-1 text-xs text-slate-400 border-t border-slate-100 pt-3">
