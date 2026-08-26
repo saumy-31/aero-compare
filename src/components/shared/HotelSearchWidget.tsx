@@ -230,8 +230,8 @@ export const HotelSearchWidget: React.FC = () => {
         if (LiteAPI) {
           if (!(window as any).__LITEAPI_INITIALIZED__) {
             LiteAPI.init({
-              domain: 'flysava.nuitee.link',
-            });
+  domain: 'flysava.deals',
+});
             (window as any).__LITEAPI_INITIALIZED__ = true;
           }
 

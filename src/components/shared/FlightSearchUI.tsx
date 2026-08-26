@@ -78,14 +78,14 @@ const hotelFaqs: FAQItem[] = [
     answer: (
       <span>
         You can check your hotel reservation, view your booking details, or manage your reservation through FlySava's{' '}
-        <a
-          href="https://flysava.nuitee.link/manage-bookings?language=en&currency=INR&from=Lz9sYW5ndWFnZT1lbiZjdXJyZW5jeT1JTlI="
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:text-blue-700 underline font-extrabold transition-colors"
-        >
-          Manage Booking page
-        </a>
+       <a
+  href="https://flysava.deals/manage-bookings?placeId=ChIJ1Qb35NA3dkgR0BrZSvPnBi4&name=London+Luton+Airport+(LTN),+Airport+Way,+Luton,+UK&checkin=2026-08-29&checkout=2026-08-30&rooms=1&adults=2&occupancies=W3siYWR1bHRzIjoyLCJjaGlsZHJlbiI6W119XQ==&sorting=1&language=en&currency=INR&from=L2hvdGVscz9wbGFjZUlkPUNoSUoxUWIzNU5BM2RrZ1IwQnJaU3ZQbkJpNCZuYW1lPUxvbmRvbitMdXRvbitBaXJwb3J0KyhMVE4pLCtBaXJwb3J0K1dheSwrTHV0b24sK1VLJmNoZWNraW49MjAyNi0wOC0yOSZjaGVja291dD0yMDI2LTA4LTMwJnJvb21zPTEmYWR1bHRzPTImb2NjdXBhbmNpZXM9VzNzaVlXUjFiSFJ6SWpveUxDSmphR2xzWkhKbGJpSTZXMTE5WFE9PSZzb3J0aW5nPTEmbGFuZ3VhZ2U9ZW4mY3VycmVuY3k9SU5S"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-blue-600 hover:text-blue-700 underline font-extrabold transition-colors"
+>
+  Manage Booking page
+</a>
         .
       </span>
     )

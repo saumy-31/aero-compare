@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Plane, Instagram, Linkedin, Send, Check, Loader2, AlertCircle } from 'lucide-react';
 
-const MANAGE_BOOKING_URL = 'https://flysava.nuitee.link/manage-bookings?language=en&currency=INR&from=Lz9sYW5ndWFnZT1lbiZjdXJyZW5jeT1JTlI=';
+const MANAGE_BOOKING_URL = 'https://flysava.deals/manage-bookings?placeId=ChIJ1Qb35NA3dkgR0BrZSvPnBi4&name=London+Luton+Airport+(LTN),+Airport+Way,+Luton,+UK&checkin=2026-08-29&checkout=2026-08-30&rooms=1&adults=2&occupancies=W3siYWR1bHRzIjoyLCJjaGlsZHJlbiI6W119XQ==&sorting=1&language=en&currency=INR&from=L2hvdGVscz9wbGFjZUlkPUNoSUoxUWIzNU5BM2RrZ1IwQnJaU3ZQbkJpNCZuYW1lPUxvbmRvbitMdXRvbitBaXJwb3J0KyhMVE4pLCtBaXJwb3J0K1dheSwrTHV0b24sK1VLJmNoZWNraW49MjAyNi0wOC0yOSZjaGVja291dD0yMDI2LTA4LTMwJnJvb21zPTEmYWR1bHRzPTImb2NjdXBhbmNpZXM9VzNzaVlXUjFiSFJ6SWpveUxDSmphR2xzWkhKbGJpSTZXMTE5WFE9PSZzb3J0aW5nPTEmbGFuZ3VhZ2U9ZW4mY3VycmVuY3k9SU5S';
 
 // Custom Modern X Logo SVG Component
 const XLogo = () => (
