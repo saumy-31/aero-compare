@@ -44,6 +44,10 @@ const flightFaqs: FAQItem[] = [
   {
     question: "Does FlySava charge extra to compare flights?",
     answer: "No. FlySava is completely free to use. We don't charge any hidden fees or extra markups to compare flights, hotels, or rental cars."
+  },
+    {
+    question: "Can I use FlySava to find travel eSIMs?",
+    answer: "Yes. FlySava helps you discover and compare travel eSIM options for destinations around the world, making it easier to stay connected while you travel."
   }
 ];
 
