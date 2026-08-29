@@ -30,24 +30,20 @@ declare const document: any;
 // Flight FAQs
 const flightFaqs: FAQItem[] = [
   {
-    question: "How does FlySava find cheap flight deals?",
-    answer: "FlySava aggregates real-time flight data from hundreds of major airlines, low-cost carriers, and travel providers worldwide. We display direct and connecting routes side-by-side with transparent pricing so you can lock in the best fare."
+    question: "What is FlySava?",
+    answer: "FlySava is a comprehensive travel discovery and comparison platform. We help you find the best deals on flights, hotels, car rentals, and travel eSIMs all in one place."
   },
   {
-    question: "Are there any hidden fees when booking flights through FlySava?",
-    answer: "No. FlySava is committed to 100% price transparency. What you see is the final price provided by our travel partners, including mandatory taxes and standard fees."
+    question: "How does FlySava compare flight prices?",
+    answer: "We aggregate real-time flight data from hundreds of major airlines, low-cost carriers, and travel providers worldwide to display the best direct and connecting routes side-by-side."
   },
   {
-    question: "When is the best time to book cheap flights?",
-    answer: "Generally, booking 2 to 6 weeks in advance for domestic routes and 2 to 4 months in advance for international flights yields the best fares. Mid-week departures (Tuesdays and Wednesdays) also tend to offer lower rates."
+    question: "Can I book hotels and car rentals through FlySava?",
+    answer: "Yes. In addition to flights, you can search and compare rates for millions of hotels worldwide and rent cars from trusted global suppliers directly through our platform."
   },
   {
-    question: "Can I compare flights from multiple airlines on FlySava?",
-    answer: "Yes. Our search engine scans multiple global carriers simultaneously, allowing you to easily compare flight times, layovers, ticket classes, and total prices in one place."
-  },
-  {
-    question: "Can I find both direct and connecting flights on FlySava?",
-    answer: "Absolutely. Search results clearly highlight nonstop routes alongside multi-stop itineraries, giving you full flexibility to prioritize either speed or cost."
+    question: "Does FlySava charge extra to compare flights?",
+    answer: "No. FlySava is completely free to use. We don't charge any hidden fees or extra markups to compare flights, hotels, or rental cars."
   }
 ];
 
