@@ -30,24 +30,34 @@ declare const document: any;
 // Flight FAQs
 const flightFaqs: FAQItem[] = [
   {
-    question: "What is FlySava?",
-    answer: "FlySava is a comprehensive travel discovery and comparison platform. We help you find the best deals on flights, hotels, car rentals, and travel eSIMs all in one place."
+    question: "How can I find cheap flights on FlySava?",
+    answer:
+      "Enter your destination and travel dates on FlySava to compare available flight options from airlines and travel providers. You can compare fares, routes, and schedules to find an option that fits your trip and budget."
   },
   {
     question: "How does FlySava compare flight prices?",
-    answer: "We aggregate real-time flight data from hundreds of major airlines, low-cost carriers, and travel providers worldwide to display the best direct and connecting routes side-by-side."
+    answer:
+      "FlySava brings together flight options from airlines and travel providers, allowing you to compare fares, routes, schedules, and other available options side-by-side in one place."
   },
   {
-    question: "Can I book hotels and car rentals through FlySava?",
-    answer: "Yes. In addition to flights, you can search and compare rates for millions of hotels worldwide and rent cars from trusted global suppliers directly through our platform."
+    question: "When is the best time to book a flight?",
+    answer:
+      "There is no single best time for every flight. Prices can vary depending on the destination, travel dates, demand, and airline. Comparing different dates and booking options can help you find a better fare."
+  },
+  {
+    question: "What is FlySava?",
+    answer:
+      "FlySava is a global travel platform that helps travelers search and compare flights, hotels, car rentals, and travel eSIMs, along with discovering destinations and travel information."
+  },
+  {
+    question: "What travel options can I find on FlySava?",
+    answer:
+      "FlySava brings flights, hotels, car rentals, and travel eSIMs together in one platform. You can also explore destinations, travel guides, and flight status information."
   },
   {
     question: "Does FlySava charge extra to compare flights?",
-    answer: "No. FlySava is completely free to use. We don't charge any hidden fees or extra markups to compare flights, hotels, or rental cars."
-  },
-    {
-    question: "Can I use FlySava to find travel eSIMs?",
-    answer: "Yes. FlySava helps you discover and compare travel eSIM options for destinations around the world, making it easier to stay connected while you travel."
+    answer:
+      "No. Searching and comparing flight options on FlySava is free. When you choose an option, you may be redirected to the relevant airline or travel provider to complete your booking."
   }
 ];
 
