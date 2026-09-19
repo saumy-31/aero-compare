@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { loadScriptOnce, HOTEL_SDK_URL } from './widgetScriptLoader';
+import { loadScriptOnce, HOTEL_SDK_URL } from '../../../shared/utils/widgetScriptLoader';
 
 // Scoped CSS styles fixing button clipping & matching FlySava mobile hero design
 const hotelWidgetStyles = `

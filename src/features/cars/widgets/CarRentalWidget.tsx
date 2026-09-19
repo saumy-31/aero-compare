@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { ShieldCheck } from 'lucide-react';
-import { loadScriptOnce, CAR_WIDGET_URL } from './widgetScriptLoader';
+import { loadScriptOnce, CAR_WIDGET_URL } from '../../../shared/utils/widgetScriptLoader';
 
 const AutoEuropeLogo = () => (
   <img 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useMemo, lazy, Suspense } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
-import { getWhiteLabelIdByHostname } from '../../config/regions';
-import { MOCK_BLOG_POSTS } from '../../data/mockBlogPosts';
-import { SEO } from '../seo/SEO';
+import { getWhiteLabelIdByHostname } from '../../../config/regions';
+import { MOCK_BLOG_POSTS } from '../../../data/mockBlogPosts';
+import { SEO } from '../../../components/seo/SEO';
 import { 
   Plane, Building, Car, Smartphone,
   Tag, Zap, Luggage, FileCheck, Award, ShieldCheck, Wifi, Fuel, Navigation,
@@ -13,16 +13,16 @@ import { FlightHero } from './FlightHero';
 import { FlightTrustHighlights } from './FlightTrustHighlights';
 import { FlightDestinations } from './FlightDestinations';
 import { FlightBlogSection } from './FlightBlogSection';
-import { HotelSections } from './HotelSections';
-import { CarSections } from './CarSections';
-import { EsimSections } from './EsimSections';
+import { HotelSections } from '../../hotels/components/HotelSections';
+import { CarSections } from '../../cars/components/CarSections';
+import { EsimSections } from '../../esim/components/EsimSections';
 import { FlightFAQ, FAQItem } from './FlightFAQ';
-import { preloadWidgetsOnIdle } from './widgetScriptLoader';
+import { preloadWidgetsOnIdle } from '../../../shared/utils/widgetScriptLoader';
 
 // Code-split widget components to reduce initial JS payload
-const HotelSearchWidget = lazy(() => import('./HotelSearchWidget').then(m => ({ default: m.HotelSearchWidget })));
-const CarRentalWidget = lazy(() => import('./CarRentalWidget').then(m => ({ default: m.CarRentalWidget })));
-const EsimWidget = lazy(() => import('./EsimWidget').then(m => ({ default: m.EsimWidget })));
+const HotelSearchWidget = lazy(() => import('../../hotels/widgets/HotelSearchWidget').then(m => ({ default: m.HotelSearchWidget })));
+const CarRentalWidget = lazy(() => import('../../cars/widgets/CarRentalWidget').then(m => ({ default: m.CarRentalWidget })));
+const EsimWidget = lazy(() => import('../../esim/widgets/EsimWidget').then(m => ({ default: m.EsimWidget })));
 
 declare const window: any;
 declare const document: any;
@@ -88,14 +88,14 @@ const hotelFaqs: FAQItem[] = [
     answer: (
       <span>
         You can check your hotel reservation, view your booking details, or manage your reservation through FlySava's{' '}
-       <a
-  href="https://flysava.deals/manage-bookings?placeId=ChIJ1Qb35NA3dkgR0BrZSvPnBi4&name=London+Luton+Airport+(LTN),+Airport+Way,+Luton,+UK&checkin=2026-08-29&checkout=2026-08-30&rooms=1&adults=2&occupancies=W3siYWR1bHRzIjoyLCJjaGlsZHJlbiI6W119XQ==&sorting=1&language=en&currency=INR&from=L2hvdGVscz9wbGFjZUlkPUNoSUoxUWIzNU5BM2RrZ1IwQnJaU3ZQbkJpNCZuYW1lPUxvbmRvbitMdXRvbitBaXJwb3J0KyhMVE4pLCtBaXJwb3J0K1dheSwrTHV0b24sK1VLJmNoZWNraW49MjAyNi0wOC0yOSZjaGVja291dD0yMDI2LTA4LTMwJnJvb21zPTEmYWR1bHRzPTImb2NjdXBhbmNpZXM9VzNzaVlXUjFiSFJ6SWpveUxDSmphR2xzWkhKbGJpSTZXMTE5WFE9PSZzb3J0aW5nPTEmbGFuZ3VhZ2U9ZW4mY3VycmVuY3k9SU5S"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="text-blue-600 hover:text-blue-700 underline font-extrabold transition-colors"
->
-  Manage Booking page
-</a>
+        <a
+          href="https://flysava.deals/manage-bookings?placeId=ChIJ1Qb35NA3dkgR0BrZSvPnBi4&name=London+Luton+Airport+(LTN),+Airport+Way,+Luton,+UK&checkin=2026-08-29&checkout=2026-08-30&rooms=1&adults=2&occupancies=W3siYWR1bHRzIjoyLCJjaGlsZHJlbiI6W119XQ==&sorting=1&language=en&currency=INR&from=L2hvdGVscz9wbGFjZUlkPUNoSUoxUWIzNU5BM2RrZ1IwQnJaU3ZQbkJpNCZuYW1lPUxvbmRvbitMdXRvbitBaXJwb3J0KyhMVE4pLCtBaXJwb3J0K1dheSwrTHV0b24sK1VLJmNoZWNraW49MjAyNi0wOC0yOSZjaGVja291dD0yMDI2LTA4LTMwJnJvb21zPTEmYWR1bHRzPTImb2NjdXBhbmNpZXM9VzNzaVlXUjFiSFJ6SWpveUxDSmphR2xzWkhKbGJpSTZXMTE5WFE9PSZzb3J0aW5nPTEmbGFuZ3VhZ2U9ZW4mY3VycmVuY3k9SU5S"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:text-blue-700 underline font-extrabold transition-colors"
+        >
+          Manage Booking page
+        </a>
         .
       </span>
     )
@@ -163,11 +163,11 @@ export const FlightSearchUI: React.FC = () => {
   const [searchParams] = useSearchParams();
 
   const activeTabFromUrl = useMemo(() => {
-    const path = location.pathname.replace('/', '');
+    const path = location.pathname.replace('/', '').toLowerCase();
     if (['hotels', 'cars', 'esim', 'flights'].includes(path)) {
       return path as 'flights' | 'hotels' | 'cars' | 'esim';
     }
-    const tabParam = searchParams.get('tab');
+    const tabParam = searchParams.get('tab')?.toLowerCase();
     if (tabParam && ['flights', 'hotels', 'cars', 'esim'].includes(tabParam)) {
       return tabParam as 'flights' | 'hotels' | 'cars' | 'esim';
     }
@@ -177,7 +177,6 @@ export const FlightSearchUI: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'flights' | 'hotels' | 'cars' | 'esim'>(activeTabFromUrl);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [selectedTrustIndex, setSelectedTrustIndex] = useState<number | null>(null);
-  const [isWidgetLoaded, setIsWidgetLoaded] = useState(false);
 
   // Trigger non-blocking idle preload for hotel, car, and esim chunks + vendor scripts
   useEffect(() => {
@@ -372,33 +371,33 @@ export const FlightSearchUI: React.FC = () => {
 
   const popularStays = useMemo(() => {
     return [
-      {
-        id: 'maldives',
-        city: 'Maldives',
-        country: 'Indian Ocean',
-        description: 'Beach resorts & private villas',
-        image: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&auto=format&fit=crop&q=75',
+      { 
+        id: 'maldives', 
+        city: 'Maldives', 
+        country: 'Indian Ocean', 
+        description: 'Beach resorts & private villas', 
+        image: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&auto=format&fit=crop&q=75' 
       },
-      {
-        id: 'santorini',
-        city: 'Santorini',
-        country: 'Greece',
-        description: 'Luxury stays & sunset views',
-        image: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&auto=format&fit=crop&q=75',
+      { 
+        id: 'santorini', 
+        city: 'Santorini', 
+        country: 'Greece', 
+        description: 'Luxury stays & sunset views', 
+        image: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&auto=format&fit=crop&q=75' 
       },
-      {
-        id: 'singapore',
-        city: 'Singapore',
-        country: 'Southeast Asia',
-        description: 'Premium city hotels',
-        image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&auto=format&fit=crop&q=75',
+      { 
+        id: 'singapore', 
+        city: 'Singapore', 
+        country: 'Southeast Asia', 
+        description: 'Premium city hotels', 
+        image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&auto=format&fit=crop&q=75' 
       },
-      {
-        id: 'swiss-alps-ch',
-        city: 'Swiss Alps',
-        country: 'Switzerland',
-        description: 'Mountain resorts & scenic escapes',
-        image: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=600&auto=format&fit=crop&q=75',
+      { 
+        id: 'swiss-alps-ch', 
+        city: 'Swiss Alps', 
+        country: 'Switzerland', 
+        description: 'Mountain resorts & scenic escapes', 
+        image: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=600&auto=format&fit=crop&q=75' 
       },
     ];
   }, []);

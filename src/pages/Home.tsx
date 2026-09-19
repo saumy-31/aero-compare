@@ -1,7 +1,16 @@
-import React from 'react';
+
 import { Globe, Luggage, FileText, DollarSign, Sparkles } from 'lucide-react';
 import { SEO } from '../components/seo/SEO';
-import { FlightSearchUI } from '../components/shared/FlightSearchUI';
+// Feature Components
+import { FlightHero } from '../features/flights/components/FlightHero';
+import { FlightSearchUI } from '../features/flights/components/FlightSearchUI';
+import { FlightTrustHighlights } from '../features/flights/components/FlightTrustHighlights';
+import { FlightDestinations } from '../features/flights/components/FlightDestinations';
+import { FlightBlogSection } from '../features/flights/components/FlightBlogSection';
+import { FlightFAQ } from '../features/flights/components/FlightFAQ';
+import { HotelSections } from '../features/hotels/components/HotelSections';
+import { CarSections } from '../features/cars/components/CarSections';
+import { EsimSections } from '../features/esim/components/EsimSections';
 
 export const Home = () => {
   const homeJsonLd = {

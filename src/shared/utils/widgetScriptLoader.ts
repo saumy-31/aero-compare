@@ -52,9 +52,7 @@ export function preloadWidgetsOnIdle(): void {
 
   const runPreload = () => {
     // 1. Preload dynamic React component chunks
-    import('./HotelSearchWidget').catch(() => {});
-    import('./CarRentalWidget').catch(() => {});
-    import('./EsimWidget').catch(() => {});
+  
 
     // 2. Pre-warm vendor scripts in the browser cache
     loadScriptOnce(HOTEL_SDK_URL, 'liteapi-components-sdk').catch(() => {});

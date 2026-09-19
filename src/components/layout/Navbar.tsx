@@ -68,15 +68,12 @@ export const Navbar: React.FC = () => {
 
   const handleHomeClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (typeof window !== 'undefined') {
-      window.location.href = '/';
-    }
+    window.location.href = '/';
   };
 
   const handleServiceClick = (path: string) => {
     setIsSidebarOpen(false);
     if (path === '/flights') {
-      sessionStorage.setItem('reload-flight-widget', '1');
       window.location.href = '/flights';
       return;
     }
@@ -125,21 +122,21 @@ export const Navbar: React.FC = () => {
                     : location.pathname.startsWith(link.path));
 
                 if (link.name === 'Home') {
-                  return (
-                    <a
-                      key={link.name}
-                      href="/"
-                      onClick={handleHomeClick}
-                      className={`relative flex items-center px-5 py-2 text-xs font-semibold tracking-wide uppercase rounded-full transition-all duration-200 cursor-pointer ${
-                        isActive
-                          ? 'text-blue-600 bg-white shadow-xs font-black'
-                          : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
-                      }`}
-                    >
-                      {link.name}
-                    </a>
-                  );
-                }
+  return (
+    <a
+      key={link.name}
+      href="/"
+      onClick={handleHomeClick}
+      className={`relative flex items-center px-5 py-2 text-xs font-semibold tracking-wide uppercase rounded-full transition-all duration-200 cursor-pointer ${
+        isActive
+          ? 'text-blue-600 bg-white shadow-xs font-black'
+          : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+      }`}
+    >
+      {link.name}
+    </a>
+  );
+}
 
                 {/* DESKTOP NAV LINK - EXTERNAL */}
 if (link.isExternal) {

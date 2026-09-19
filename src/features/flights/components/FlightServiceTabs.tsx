@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { LucideIcon } from 'lucide-react';
 
 export interface TabItem {
@@ -19,20 +20,32 @@ export const FlightServiceTabs: React.FC<FlightServiceTabsProps> = ({
   onTabChange,
 }) => {
   return (
-    <div className="grid grid-cols-4 gap-1.5 sm:gap-3 max-w-md w-full pt-1" role="tablist">
+    <nav className="grid grid-cols-4 gap-1.5 sm:gap-3 max-w-md w-full pt-1" aria-label="Travel Services">
       {tabs.map((tab) => {
         const Icon = tab.icon;
         const isActive = activeTab === tab.id;
+        const targetPath = `/${tab.id}`;
 
         return (
-          <button
+          <Link
             key={tab.id}
-            type="button"
-            role="tab"
-            aria-selected={isActive}
+            to={targetPath}
+            aria-current={isActive ? 'page' : undefined}
             aria-label={`Switch to ${tab.label} search`}
-            onClick={() => onTabChange(tab.id)}
-            className={`relative group h-16 sm:h-20 rounded-[20px] sm:rounded-[22px] flex flex-col items-center justify-center text-center px-1 gap-1 transition-all duration-200 cursor-pointer select-none ${
+            onClick={(e) => {
+              if (tab.id === 'flights') {
+                e.preventDefault();
+                window.location.href = '/flights';
+                return;
+              }
+              if (tab.id === 'cars' && isActive) {
+                e.preventDefault();
+                onTabChange(tab.id);
+                return;
+              }
+              onTabChange(tab.id);
+            }}
+            className={`relative group h-16 sm:h-20 rounded-[20px] sm:rounded-[22px] flex flex-col items-center justify-center text-center px-1 gap-1 transition-all duration-200 cursor-pointer select-none no-underline ${
               isActive
                 ? 'bg-[#2563EB] text-white shadow-lg shadow-blue-600/30 ring-2 ring-blue-600/20 scale-[1.02]'
                 : 'bg-slate-50/90 border border-slate-200/80 text-slate-700 hover:bg-slate-100/80 hover:border-slate-300 hover:scale-[1.01]'
@@ -51,9 +64,11 @@ export const FlightServiceTabs: React.FC<FlightServiceTabsProps> = ({
             <span className="tracking-tight font-black text-[10px] sm:text-xs leading-tight text-center w-full truncate">
               {tab.label}
             </span>
-          </button>
+          </Link>
         );
       })}
-    </div>
+    </nav>
   );
 };
+
+export default FlightServiceTabs;
