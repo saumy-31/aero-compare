@@ -1,11 +1,12 @@
 import React, { useMemo, useRef, useEffect, useState, useCallback } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { 
   Search, Clock, ArrowRight,
   Sparkles, BookOpen, CheckCircle2,
   Mail, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { MOCK_BLOG_POSTS } from '../data/mockBlogPosts';
+import { ALL_DESTINATION_CLUSTERS } from '../data/mockDestinationClusters';
 import { SEO } from '../components/seo/SEO';
 
 export const Blog: React.FC = () => {
@@ -62,6 +63,15 @@ export const Blog: React.FC = () => {
         )
       )
     ];
+  }, []);
+
+  // Show the 3 curated featured hubs manually defined
+  const featuredHubs = useMemo(() => {
+    return [
+      ALL_DESTINATION_CLUSTERS.japan,
+      ALL_DESTINATION_CLUSTERS.thailand,
+      ALL_DESTINATION_CLUSTERS.uae,
+    ].filter(Boolean);
   }, []);
 
   const updateScrollButtons = () => {
@@ -222,7 +232,7 @@ export const Blog: React.FC = () => {
                   </span>
                   {currentHeroPost?.readTime && (
                     <span className="text-[11px] font-bold text-slate-400 flex items-center gap-1">
-                      <Clock className="w-3 h-3 text-slate-400" />
+                      <Clock className="w-3 text-slate-400" />
                       {currentHeroPost.readTime}
                     </span>
                   )}
@@ -377,7 +387,7 @@ export const Blog: React.FC = () => {
 
                 <div className="relative z-10 max-w-2xl space-y-3">
                   <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white/20 backdrop-blur-md border border-white/20 text-white text-[10px] font-black uppercase tracking-wider">
-                    <Sparkles className="w-3 h-3 text-blue-400" />
+                    <Sparkles className="w-3 text-blue-400" />
                     <span>{featuredEditorialPost.category}</span>
                   </div>
 
@@ -459,6 +469,91 @@ export const Blog: React.FC = () => {
               ))}
             </div>
           </section>
+
+          {/* ========================================================================= */}
+          {/* 4.5 EXPLORE DESTINATIONS (PREMIUM CINEMATIC EDITORIAL HUBS)               */}
+          {/* ========================================================================= */}
+          {featuredHubs.length > 0 && (
+            <section className="space-y-5">
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-slate-200/80 pb-3">
+                <div>
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-wider mb-1">
+                    <span>Curated Hubs</span>
+                  </div>
+                  <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                    Explore Destinations
+                  </h2>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-bold text-slate-400">
+                    3 Featured Hubs
+                  </span>
+                  <Link
+                    to="/blog/destinations"
+                    className="inline-flex items-center gap-1 text-xs font-black text-blue-600 hover:text-blue-700 uppercase tracking-wider transition-all group"
+                  >
+                    <span>Browse All Destinations</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* 3 Premium Cinematic Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                {featuredHubs.map((dest) => (
+                  <div
+                    key={dest.slug}
+                    onClick={() => navigate(`/blog/destinations/${dest.slug}`)}
+                    className="relative h-[380px] sm:h-[420px] rounded-[32px] overflow-hidden group cursor-pointer shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 bg-slate-950 flex flex-col justify-between p-6 sm:p-7 select-none border border-slate-200/50"
+                  >
+                    {/* Background Imagery with Depth Zoom */}
+                    <img
+                      src={dest.image}
+                      alt={dest.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out brightness-[0.78] contrast-[1.08]"
+                    />
+
+                    {/* Rich Double Gradient for Premium Editorial Legibility */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-transparent to-transparent z-10" />
+
+                    {/* Top Pill Bar: Country Tag & Explore Button */}
+                    <div className="relative z-20 flex items-center justify-between">
+                      <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black uppercase tracking-widest text-white border border-white/20 shadow-xs">
+                        {dest.country}
+                      </span>
+                      <div className="w-8 h-8 rounded-full bg-white/15 backdrop-blur-md text-white flex items-center justify-center border border-white/20 group-hover:bg-blue-600 group-hover:border-blue-500 transition-all duration-300">
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                      </div>
+                    </div>
+
+                    {/* Bottom Metadata & Editorial Tagline */}
+                    <div className="relative z-20 space-y-2.5">
+                      <div>
+                        <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-400 drop-shadow-sm block">
+                          Editorial Cluster
+                        </span>
+                        <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight drop-shadow-md group-hover:text-blue-200 transition-colors">
+                          {dest.name}
+                        </h3>
+                      </div>
+
+                      <p className="text-xs text-slate-200/90 font-medium line-clamp-2 leading-relaxed drop-shadow-sm">
+                        {dest.tagline || dest.description}
+                      </p>
+
+                      <div className="pt-2 flex items-center gap-1.5 text-xs font-black text-white group-hover:text-blue-300 transition-colors">
+                        <span>Enter Hub</span>
+                        <span className="text-blue-400 group-hover:translate-x-1 transition-transform">&rarr;</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* ========================================================================= */}
           {/* 5. LATEST STORIES & GUIDES (FILTER TARGET SECTION)                         */}
@@ -599,7 +694,7 @@ export const Blog: React.FC = () => {
                           {post.category}
                         </span>
                         <span className="text-[10px] font-bold text-slate-400 flex items-center gap-1">
-                          <Clock className="w-3 h-3 text-slate-400" /> {post.readTime}
+                          <Clock className="w-3 text-slate-400" /> {post.readTime}
                         </span>
                       </div>
 
@@ -650,21 +745,21 @@ export const Blog: React.FC = () => {
 
               {newsletterStatus === 'success' ? (
                 <div className="p-4 rounded-2xl bg-blue-600/20 border border-blue-500/40 text-blue-300 text-xs font-bold inline-flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-blue-400" />
+                  <CheckCircle2 className="w-4 text-blue-400" />
                   <span>You're on the list! Watch your inbox for secret travel hacks.</span>
                 </div>
               ) : (
                 <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-2.5 max-w-md mx-auto pt-2">
-                  <input
-                    type="email"
+                  <input 
+                    type="email" 
                     required
-                    placeholder="Enter your email address"
+                    placeholder="Enter your email address" 
                     value={newsletterEmail}
                     onChange={(e) => setNewsletterEmail(e.target.value)}
-                    className="flex-1 px-4 py-3.5 bg-slate-800/80 border border-slate-700 rounded-2xl text-xs sm:text-sm text-white placeholder:text-slate-500 outline-none focus:border-blue-500 transition-all font-medium"
+                    className="flex-1 px-4 py-3.5 bg-slate-800/80 border border-slate-700 rounded-2xl text-xs sm:text-sm text-white placeholder:text-slate-500 outline-none focus:border-blue-500 transition-all font-medium" 
                   />
-                  <button
-                    type="submit"
+                  <button 
+                    type="submit" 
                     className="px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-black text-xs uppercase tracking-wider rounded-2xl transition-all shadow-lg shadow-blue-600/30 cursor-pointer active:scale-95 shrink-0"
                   >
                     Join Free

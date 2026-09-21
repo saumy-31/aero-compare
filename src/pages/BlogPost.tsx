@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Calendar, Clock, ArrowLeft, Mail, ChevronRight, ChevronLeft, Sparkles, ArrowUpRight } from 'lucide-react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { Calendar, Clock, ArrowLeft, Mail, ChevronRight, ChevronLeft, Sparkles, ArrowUpRight, Compass } from 'lucide-react';
 import { MOCK_BLOG_POSTS } from '../data/mockBlogPosts';
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import { SEO } from '../components/seo/SEO';
@@ -29,6 +29,41 @@ export const BlogPost: React.FC = () => {
     window.scrollTo(0, 0); 
   }, [slug]);
 
+  // Backward-compatible multi-destination resolution (supports destinations: string[] & legacy destination: string)
+  const postDestinations = useMemo(() => {
+    if (!post) return [];
+    if (Array.isArray(post.destinations) && post.destinations.length > 0) {
+      return post.destinations;
+    }
+    if (post.destination) {
+      return [post.destination];
+    }
+    return [];
+  }, [post]);
+
+  // Primary destination slug for canonical breadcrumbs (uses first destination when multi-tagged)
+  const primaryDestination = postDestinations[0] || null;
+  const primaryDestinationSlug = useMemo(() => {
+    return primaryDestination ? primaryDestination.toLowerCase().trim().replace(/\s+/g, '-') : null;
+  }, [primaryDestination]);
+
+  // Destination cluster articles: finds posts sharing at least one destination (excluding current post)
+  const relatedDestinationPosts = useMemo(() => {
+    if (postDestinations.length === 0) return [];
+    
+    const targetSet = new Set(postDestinations.map(d => d.toLowerCase().trim()));
+
+    return allPosts
+      .filter((p) => {
+        if (p.slug === post?.slug) return false;
+        const pDests = Array.isArray(p.destinations) && p.destinations.length > 0 
+          ? p.destinations 
+          : (p.destination ? [p.destination] : []);
+        return pDests.some(d => targetSet.has(d.toLowerCase().trim()));
+      })
+      .slice(0, 4);
+  }, [allPosts, postDestinations, post?.slug]);
+
   // INVALID SLUG: Return noindex, nofollow and skip JSON-LD schema generation
   if (!post) {
     return (
@@ -42,7 +77,7 @@ export const BlogPost: React.FC = () => {
           <div className="text-center p-8 bg-white rounded-3xl border border-[#E5E7EB] shadow-xl max-w-md">
             <h1 className="text-2xl font-black mb-4">Article not found.</h1>
             <button 
-              type="button"
+              type="button" 
               onClick={() => navigate('/blog')}
               className="px-6 py-2.5 bg-[#2563EB] hover:bg-blue-700 text-white text-xs font-black rounded-xl transition-all shadow-md shadow-blue-600/20 cursor-pointer"
             >
@@ -96,7 +131,7 @@ export const BlogPost: React.FC = () => {
   const canonicalUrl = `https://flysava.com/blog/${post.slug}`;
   const authorName = post.author || "FlySava Editorial Team";
 
-  // Dynamic Article Schema combining BlogPosting and BreadcrumbList via @graph
+  // Dynamic Article Schema combining BlogPosting and Destination-aware BreadcrumbList
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -135,15 +170,30 @@ export const BlogPost: React.FC = () => {
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Blog",
+            "name": "Travel Guides",
             "item": "https://flysava.com/blog"
           },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": post.title,
-            "item": canonicalUrl
-          }
+          ...(primaryDestination && primaryDestinationSlug ? [
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": primaryDestination,
+              "item": `https://flysava.com/blog/destinations/${primaryDestinationSlug}`
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": post.title,
+              "item": canonicalUrl
+            }
+          ] : [
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": post.title,
+              "item": canonicalUrl
+            }
+          ])
         ]
       }
     ]
@@ -201,9 +251,29 @@ export const BlogPost: React.FC = () => {
               
               {/* Header Details */}
               <header className="mb-10 border-b border-[#E5E7EB] pb-8">
-                <span className="inline-block bg-blue-50 text-[#2563EB] px-3.5 py-1 rounded-full text-[11px] font-black uppercase tracking-widest mb-4 border border-blue-200/60 shadow-2xs">
-                  {post.category}
-                </span>
+                
+                {/* Category + Multi-Destination Hub Badges */}
+                <div className="flex flex-wrap items-center gap-2 mb-4">
+                  <span className="inline-block bg-blue-50 text-[#2563EB] px-3.5 py-1 rounded-full text-[11px] font-black uppercase tracking-widest border border-blue-200/60 shadow-2xs">
+                    {post.category}
+                  </span>
+
+                  {postDestinations.map((destName) => {
+                    const slugKey = destName.toLowerCase().trim().replace(/\s+/g, '-');
+                    return (
+                      <Link
+                        key={destName}
+                        to={`/blog/destinations/${slugKey}`}
+                        className="inline-flex items-center gap-1.5 bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-blue-600 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-widest border border-slate-200/80 transition-colors"
+                        title={`View all ${destName} guides`}
+                      >
+                        <Compass className="w-3 h-3 text-blue-600" />
+                        <span>{destName} Hub</span>
+                        <ChevronRight className="w-3 h-3 text-slate-400" />
+                      </Link>
+                    );
+                  })}
+                </div>
 
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-6 leading-[1.12] tracking-tight text-slate-900">
                   {post.title}
@@ -276,6 +346,55 @@ export const BlogPost: React.FC = () => {
                   </button>
                 </div>
               </div>
+
+              {/* Destination Content Cluster: More From These Destinations */}
+              {postDestinations.length > 0 && relatedDestinationPosts.length > 0 && (
+                <div className="mt-12 pt-8 border-t border-slate-200/80 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-[10px] font-black text-[#2563EB] uppercase tracking-widest block">
+                        DESTINATION CLUSTER
+                      </span>
+                      <h3 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
+                        More from {postDestinations.join(' & ')}
+                      </h3>
+                    </div>
+                    {primaryDestinationSlug && (
+                      <Link
+                        to={`/blog/destinations/${primaryDestinationSlug}`}
+                        className="text-xs font-bold text-blue-600 hover:text-blue-700 hover:underline"
+                      >
+                        View {primaryDestination} Hub &rarr;
+                      </Link>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                    {relatedDestinationPosts.map((related) => (
+                      <div
+                        key={related.slug}
+                        onClick={() => navigate(`/blog/${related.slug}`)}
+                        className="p-4 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/80 hover:border-blue-300 hover:shadow-md transition-all cursor-pointer group flex items-center gap-3.5 select-none"
+                      >
+                        <img
+                          src={related.image}
+                          alt={related.title}
+                          loading="lazy"
+                          className="w-16 h-16 rounded-xl object-cover shrink-0"
+                        />
+                        <div className="min-w-0 flex-1">
+                          <span className="text-[9px] font-extrabold text-blue-600 uppercase tracking-wider block mb-0.5">
+                            {related.category}
+                          </span>
+                          <h4 className="text-xs font-black text-slate-900 group-hover:text-blue-600 line-clamp-2 leading-snug transition-colors">
+                            {related.title}
+                          </h4>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
             </div>
 

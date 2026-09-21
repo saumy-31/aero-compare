@@ -2,7 +2,6 @@ import React, { Suspense, lazy, useEffect, useRef } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 // Direct Eager Imports for Core Pages
-// Direct Eager Imports for Core Pages
 import { Home } from '../pages/Home';
 import { FlightsPage } from '../pages/FlightsPage';
 
@@ -12,6 +11,7 @@ const Careers = lazy(() => import('../pages/Careers').then(m => ({ default: m.Ca
 const Destinations = lazy(() => import('../pages/Destinations').then(m => ({ default: m.Destinations })));
 const FlightStatus = lazy(() => import('../pages/FlightStatus').then(m => ({ default: m.FlightStatus })));
 const Blog = lazy(() => import('../pages/Blog').then(m => ({ default: m.Blog })));
+const DestinationHub = lazy(() => import('../pages/DestinationHub').then(m => ({ default: m.DestinationHub })));
 const BlogPost = lazy(() => import('../pages/BlogPost').then(m => ({ default: m.BlogPost })));
 const TravelGuide = lazy(() => import('../pages/TravelGuide').then(m => ({ default: m.TravelGuide })));
 const Contact = lazy(() => import('../pages/Contact').then(m => ({ default: m.Contact })));
@@ -20,6 +20,8 @@ const Terms = lazy(() => import('../pages/Terms').then(m => ({ default: m.Terms 
 const Privacy = lazy(() => import('../pages/Privacy').then(m => ({ default: m.Privacy })));
 const Cookies = lazy(() => import('../pages/Cookies').then(m => ({ default: m.Cookies })));
 const NotFound = lazy(() => import('../pages/NotFound').then(m => ({ default: m.NotFound })));
+const DestinationDirectory = lazy(() => import('../pages/DestinationDirectory').then(m => ({ default: m.DestinationDirectory })));
+
 // --- FLIGHT NAVIGATION GUARD ---
 // Reloads when returning to / or /flights from any blog post, travel guide, or destination
 const FlightNavigationGuard: React.FC = () => {
@@ -78,13 +80,22 @@ const AppRoutes = () => {
           <Route path="/destinations/:id" element={<TravelGuide />} />
           
           <Route path="/blog" element={<Blog />} />
+          {/* Specific destination cluster route MUST be placed before generic /blog/:slug */}
+          <Route path="/blog/destinations/:destinationSlug" element={<DestinationHub />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+
           <Route path="/contact" element={<Contact />} />
           <Route path="/press" element={<Press />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/cookies" element={<Cookies />} />
           <Route path="*" element={<NotFound />} />
+
+          <Route path="/blog" element={<Blog />} />
+          {/* Destination Directory (Static route MUST precede dynamic :destinationSlug) */}
+          <Route path="/blog/destinations" element={<DestinationDirectory />} />
+          <Route path="/blog/destinations/:destinationSlug" element={<DestinationHub />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
       </Suspense>
     </>

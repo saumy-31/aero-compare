@@ -18,15 +18,13 @@ export const Footer: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleServiceClick = (e: React.MouseEvent, path: string) => {
-    e.preventDefault();
-
+  const handleProductNavigation = (e: React.MouseEvent, path: string) => {
     if (path === '/flights') {
+      e.preventDefault();
       window.location.href = '/flights';
       return;
     }
 
-    navigate(path);
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   };
 
@@ -137,34 +135,50 @@ export const Footer: React.FC = () => {
           {/* 4 LINK COLUMNS (6 Cols) */}
           <div className="lg:col-span-6 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-4">
             
-            {/* Services */}
+            {/* Primary Products Column */}
             <div className="space-y-3.5">
-              <h4 className="text-[11px] font-bold uppercase tracking-widest text-slate-900">Services</h4>
+              <h4 className="text-[11px] font-bold uppercase tracking-widest text-slate-900">Products</h4>
               <ul className="space-y-2.5 text-[13px] text-slate-500 font-normal leading-relaxed">
                 <li>
-                  <a href="/flights" onClick={(e) => handleServiceClick(e, '/flights')} className="inline-block hover:text-[#2563EB] transition-colors cursor-pointer">
+                  <Link 
+                    to="/flights" 
+                    onClick={(e) => handleProductNavigation(e, '/flights')} 
+                    className="inline-block hover:text-[#2563EB] transition-colors cursor-pointer"
+                  >
                     Flights
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/hotels" onClick={(e) => handleServiceClick(e, '/hotels')} className="inline-block hover:text-[#2563EB] transition-colors cursor-pointer">
+                  <Link 
+                    to="/hotels" 
+                    onClick={(e) => handleProductNavigation(e, '/hotels')} 
+                    className="inline-block hover:text-[#2563EB] transition-colors cursor-pointer"
+                  >
                     Hotels
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/cars" onClick={(e) => handleServiceClick(e, '/cars')} className="inline-block hover:text-[#2563EB] transition-colors cursor-pointer">
-                    Car Rental
-                  </a>
+                  <Link 
+                    to="/cars" 
+                    onClick={(e) => handleProductNavigation(e, '/cars')} 
+                    className="inline-block hover:text-[#2563EB] transition-colors cursor-pointer"
+                  >
+                    Car Rentals
+                  </Link>
                 </li>
                 <li>
-                  <a href="/esim" onClick={(e) => handleServiceClick(e, '/esim')} className="inline-block hover:text-[#2563EB] transition-colors cursor-pointer">
+                  <Link 
+                    to="/esim" 
+                    onClick={(e) => handleProductNavigation(e, '/esim')} 
+                    className="inline-block hover:text-[#2563EB] transition-colors cursor-pointer"
+                  >
                     eSIM
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
 
-            {/* Explore */}
+            {/* Explore Column */}
             <div className="space-y-3.5">
               <h4 className="text-[11px] font-bold uppercase tracking-widest text-slate-900">Explore</h4>
               <ul className="space-y-2.5 text-[13px] text-slate-500 font-normal leading-relaxed">
@@ -186,8 +200,8 @@ export const Footer: React.FC = () => {
                 <li>
                   <a 
                     href={MANAGE_BOOKING_URL} 
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target="_blank" 
+                    rel="noopener noreferrer" 
                     className="inline-block hover:text-[#2563EB] transition-colors"
                   >
                     Manage Booking
@@ -196,7 +210,7 @@ export const Footer: React.FC = () => {
               </ul>
             </div>
 
-            {/* Company */}
+            {/* Company Column */}
             <div className="space-y-3.5">
               <h4 className="text-[11px] font-bold uppercase tracking-widest text-slate-900">Company</h4>
               <ul className="space-y-2.5 text-[13px] text-slate-500 font-normal leading-relaxed">
@@ -223,7 +237,7 @@ export const Footer: React.FC = () => {
               </ul>
             </div>
 
-            {/* Legal */}
+            {/* Legal Column */}
             <div className="space-y-3.5">
               <h4 className="text-[11px] font-bold uppercase tracking-widest text-slate-900">Legal</h4>
               <ul className="space-y-2.5 text-[13px] text-slate-500 font-normal leading-relaxed">

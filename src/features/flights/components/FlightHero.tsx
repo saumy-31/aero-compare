@@ -29,7 +29,7 @@ export const FlightHero: React.FC<FlightHeroProps> = ({
           <span className="text-blue-600 inline-block">{currentHero.headlineHighlight}</span>
         </h1>
 
-        {/* Service Tabs */}
+        {/* Crawlable Service Tabs */}
         <FlightServiceTabs tabs={tabs} activeTab={activeTab} onTabChange={onTabChange} />
       </div>
 
@@ -59,3 +59,5 @@ export const FlightHero: React.FC<FlightHeroProps> = ({
     </div>
   );
 };
+
+export default FlightHero;

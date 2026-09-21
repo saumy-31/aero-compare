@@ -1,16 +1,5 @@
-
-import { Globe, Luggage, FileText, DollarSign, Sparkles } from 'lucide-react';
 import { SEO } from '../components/seo/SEO';
-// Feature Components
-import { FlightHero } from '../features/flights/components/FlightHero';
 import { FlightSearchUI } from '../features/flights/components/FlightSearchUI';
-import { FlightTrustHighlights } from '../features/flights/components/FlightTrustHighlights';
-import { FlightDestinations } from '../features/flights/components/FlightDestinations';
-import { FlightBlogSection } from '../features/flights/components/FlightBlogSection';
-import { FlightFAQ } from '../features/flights/components/FlightFAQ';
-import { HotelSections } from '../features/hotels/components/HotelSections';
-import { CarSections } from '../features/cars/components/CarSections';
-import { EsimSections } from '../features/esim/components/EsimSections';
 
 export const Home = () => {
   const homeJsonLd = {
@@ -28,35 +17,47 @@ export const Home = () => {
         "url": "https://flysava.com",
         "potentialAction": {
           "@type": "SearchAction",
-          "target": "https://flysava.com/?q={search_term_string}",
+          "target": "https://flysava.com/flights?q={search_term_string}",
           "query-input": "required name=search_term_string"
         }
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://flysava.com/#main-nav",
+        "name": "FlySava Products",
+        "itemListElement": [
+          {
+            "@type": "SiteNavigationElement",
+            "position": 1,
+            "name": "Flights",
+            "url": "https://flysava.com/flights",
+            "description": "Compare cheap flight deals from 100s of airlines and travel sites."
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 2,
+            "name": "Hotels",
+            "url": "https://flysava.com/hotels",
+            "description": "Compare hotel rates across 2M+ stays worldwide."
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 3,
+            "name": "Car Rentals",
+            "url": "https://flysava.com/cars",
+            "description": "Compare car rental prices from leading suppliers worldwide."
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 4,
+            "name": "eSIM",
+            "url": "https://flysava.com/esim",
+            "description": "Prepaid travel eSIM mobile data plans for 200+ countries."
+          }
+        ]
       }
     ]
   };
-
-  const benefits = [
-    {
-      icon: Globe,
-      title: "Compare 100+ Travel Sites",
-      desc: "Search major airlines, regional carriers, and online travel agencies simultaneously in real time."
-    },
-    {
-      icon: Luggage,
-      title: "Baggage Info",
-      desc: "Clear visibility into cabin and checked baggage allowances before you confirm your booking."
-    },
-    {
-      icon: FileText,
-      title: "Visa Requirements",
-      desc: "Stay informed with instant layover and destination visa guidelines for your trip."
-    },
-    {
-      icon: DollarSign,
-      title: "Final Price, No Hidden Fees",
-      desc: "100% transparent pricing directly from airlines and verified travel partners."
-    }
-  ];
 
   return (
     <>
@@ -68,13 +69,11 @@ export const Home = () => {
       />
 
       <div className="bg-[#F8FAFC] text-[#111827] font-sans selection:bg-blue-100 selection:text-blue-900 min-h-screen">
-        
         {/* ================= 1. HERO + SEARCH ENGINE WIDGET ================= */}
         <FlightSearchUI />
-
-        
-
       </div>
     </>
   );
 };
+
+export default Home;

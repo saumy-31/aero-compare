@@ -30,34 +30,24 @@ declare const document: any;
 // Flight FAQs
 const flightFaqs: FAQItem[] = [
   {
-    question: "How can I find cheap flights on FlySava?",
+    question: "How can I find the cheapest flight tickets on FlySava?",
     answer:
-      "Enter your destination and travel dates on FlySava to compare available flight options from airlines and travel providers. You can compare fares, routes, and schedules to find an option that fits your trip and budget."
+      "Enter your departure city, destination, and dates to search hundreds of airlines and online travel agencies simultaneously. To get the best flight deals, stay flexible with your travel dates, compare nearby airports, and book at least 3 to 6 weeks in advance."
   },
   {
-    question: "How does FlySava compare flight prices?",
+    question: "How does FlySava's flight comparison work?",
     answer:
-      "FlySava brings together flight options from airlines and travel providers, allowing you to compare fares, routes, schedules, and other available options side-by-side in one place."
+      "FlySava aggregates real-time airfares from major airlines, low-cost budget carriers, and booking sites. You can filter by price, nonstop routes, baggage allowances, and departure times to secure the lowest rate."
   },
   {
-    question: "When is the best time to book a flight?",
+    question: "Are there any hidden fees when booking airline tickets?",
     answer:
-      "There is no single best time for every flight. Prices can vary depending on the destination, travel dates, demand, and airline. Comparing different dates and booking options can help you find a better fare."
+      "No. FlySava is completely free to use. We display transparent airfare pricing, and when you select a deal, you are transferred directly to the airline or partner provider to finish your booking."
   },
   {
-    question: "What is FlySava?",
+    question: "When is the best time to book cheap domestic and international flights?",
     answer:
-      "FlySava is a global travel platform that helps travelers search and compare flights, hotels, car rentals, and travel eSIMs, along with discovering destinations and travel information."
-  },
-  {
-    question: "What travel options can I find on FlySava?",
-    answer:
-      "FlySava brings flights, hotels, car rentals, and travel eSIMs together in one platform. You can also explore destinations, travel guides, and flight status information."
-  },
-  {
-    question: "Does FlySava charge extra to compare flights?",
-    answer:
-      "No. Searching and comparing flight options on FlySava is free. When you choose an option, you may be redirected to the relevant airline or travel provider to complete your booking."
+      "Airfare fluctuates based on seasonal demand, route frequency, and seat availability. Comparing midweek travel (Tuesdays and Wednesdays) and tracking price trends often reveals cheaper flight tickets than weekend departures."
   }
 ];
 
@@ -248,20 +238,20 @@ export const FlightSearchUI: React.FC = () => {
       case 'flights':
       default:
         return {
-          title: "Compare Cheap Flights & Airline Deals | FlySava",
-          description: "Compare flight options from airlines and travel providers worldwide. Search direct and connecting flights and compare routes, schedules, and fares in one place.",
+          title: "FlySava: Cheap Flights, Airline Tickets & Flight Deals",
+          description: "Compare cheap flights from 100s of airlines and travel booking sites. Find discount airfare, compare flight routes, and book tickets with zero extra fees.",
           canonicalUrl: "/flights",
           jsonLd: {
             "@context": "https://schema.org",
-            "@type": "Service",
+            "@type": "WebSite",
             "name": "FlySava Flight Search & Comparison",
-            "serviceType": "Flight Comparison",
-            "provider": {
-              "@type": "Organization",
-              "name": "FlySava",
-              "url": "https://flysava.com"
+            "url": "https://flysava.com",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://flysava.com/flights?q={search_term_string}",
+              "query-input": "required name=search_term_string"
             },
-            "description": "Search and compare flight options, routes, schedules, and fares from airlines and travel providers worldwide."
+            "description": "Compare and book cheap flight deals, discount airline tickets, and travel options from airlines and online travel providers worldwide."
           }
         };
     }
@@ -280,8 +270,8 @@ export const FlightSearchUI: React.FC = () => {
   const heroContent = useMemo(
     () => ({
       flights: {
-        headlinePrefix: 'Compare flight deals from ',
-        headlineHighlight: '100s of sites.',
+        headlinePrefix: 'Compare cheap flights from ',
+        headlineHighlight: '100s of travel sites.',
         topImage: 'https://images.pexels.com/photos/13342472/pexels-photo-13342472.jpeg?auto=format&fit=crop&w=600&q=75',
         topImageTag: 'TOP DEALS TODAY',
       },
