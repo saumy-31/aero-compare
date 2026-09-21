@@ -361,10 +361,11 @@ export const Blog: React.FC = () => {
           </section>
 
           {/* ========================================================================= */}
-          {/* 3. FEATURED STORY (ALWAYS VISIBLE)                                        */}
+         {/* ========================================================================= */}
+          {/* 3. FEATURED STORY (RESPONSIVE COMPACT MOBILE + CINEMATIC DESKTOP)        */}
           {/* ========================================================================= */}
           {featuredEditorialPost && (
-            <section className="space-y-4">
+            <section className="space-y-3.5 sm:space-y-4">
               <div className="flex items-center justify-between border-b border-slate-200/80 pb-2">
                 <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">
                   FEATURED ESSAY
@@ -374,35 +375,36 @@ export const Blog: React.FC = () => {
 
               <div 
                 onClick={() => handleArticleClick(featuredEditorialPost.slug)}
-                className="relative bg-slate-950 rounded-[32px] sm:rounded-[40px] overflow-hidden group cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 min-h-[300px] sm:min-h-[350px] flex flex-col justify-end p-6 sm:p-10 border border-slate-200/80"
+                className="relative bg-slate-950 rounded-[24px] sm:rounded-[36px] overflow-hidden group cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 min-h-[260px] sm:min-h-[340px] flex flex-col justify-end p-4 sm:p-8 lg:p-10 border border-slate-200/80 select-none"
               >
+                {/* Background Image */}
                 <img 
                   src={featuredEditorialPost.image} 
                   alt={featuredEditorialPost.title} 
                   loading="lazy" 
                   decoding="async" 
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-85" 
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-85 brightness-90" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/60 to-transparent" />
+                
+                {/* Combined Gradients: Bottom-up for mobile, left-to-right for desktop */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-transparent sm:hidden" />
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/60 to-transparent hidden sm:block" />
 
-                <div className="relative z-10 max-w-2xl space-y-3">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white/20 backdrop-blur-md border border-white/20 text-white text-[10px] font-black uppercase tracking-wider">
-                    <Sparkles className="w-3 text-blue-400" />
+                {/* Content Container */}
+                <div className="relative z-10 max-w-2xl space-y-2 sm:space-y-3">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-lg sm:rounded-xl bg-white/20 backdrop-blur-md border border-white/20 text-white text-[9px] sm:text-[10px] font-black uppercase tracking-wider">
+                    <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-blue-400" />
                     <span>{featuredEditorialPost.category}</span>
                   </div>
 
-                  <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight leading-tight group-hover:text-blue-300 transition-colors">
+                  <h2 className="text-base sm:text-2xl lg:text-3xl font-black text-white tracking-tight leading-snug sm:leading-tight group-hover:text-blue-300 transition-colors line-clamp-3">
                     {featuredEditorialPost.title}
                   </h2>
 
-                  <p className="text-xs sm:text-sm text-slate-300 font-medium line-clamp-2 leading-relaxed">
-                    {featuredEditorialPost.excerpt}
-                  </p>
-
-                  <div className="pt-2">
+                  <div className="pt-1 sm:pt-2">
                     <button
                       type="button"
-                      className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-black uppercase tracking-wider inline-flex items-center gap-2 shadow-md shadow-blue-600/30 transition-all cursor-pointer group-hover:scale-102"
+                      className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-[11px] sm:text-xs font-black uppercase tracking-wider inline-flex items-center gap-1.5 sm:gap-2 shadow-md shadow-blue-600/30 transition-all cursor-pointer group-hover:scale-102 active:scale-95"
                     >
                       <span>Read Full Story</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -413,140 +415,82 @@ export const Blog: React.FC = () => {
             </section>
           )}
 
-          {/* ========================================================================= */}
-          {/* 4. TRAVEL PLAYBOOK (ALWAYS VISIBLE)                                       */}
-          {/* ========================================================================= */}
-          <section className="space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-200/80 pb-2">
-              <div>
-                <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">
-                  STRATEGIES & TACTICS
-                </span>
-                <h2 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
-                  Travel Playbook
-                </h2>
-              </div>
-              <span className="text-[11px] font-bold text-slate-400">Practical Wisdom</span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {playbookArticles.map((post) => (
-                <article
-                  key={post.id || post.slug}
-                  onClick={() => handleArticleClick(post.slug)}
-                  className="bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer group"
-                >
-                  <div className="relative h-44 overflow-hidden bg-slate-100">
-                    <img 
-                      src={post.image} 
-                      alt={post.title} 
-                      loading="lazy" 
-                      decoding="async" 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" 
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className="px-2.5 py-1 rounded-xl bg-white/95 backdrop-blur-md text-[9px] font-black uppercase tracking-wider text-slate-800 shadow-xs border border-white/40">
-                        {post.category}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
-                    <h3 className="text-sm sm:text-base font-black text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-2 leading-snug">
-                      {post.title}
-                    </h3>
-                    <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-400">
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5 text-blue-600" />
-                        {post.readTime}
-                      </span>
-                      <span className="text-blue-600 font-black text-xs inline-flex items-center gap-1">
-                        Read &rarr;
-                      </span>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
+          
 
           {/* ========================================================================= */}
-          {/* 4.5 EXPLORE DESTINATIONS (PREMIUM CINEMATIC EDITORIAL HUBS)               */}
+          {/* 4.5 EXPLORE DESTINATIONS (RESPONSIVE COMPACT MOBILE + CINEMATIC DESKTOP) */}
           {/* ========================================================================= */}
           {featuredHubs.length > 0 && (
-            <section className="space-y-5">
-              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-slate-200/80 pb-3">
+            <section className="space-y-4 sm:space-y-5">
+              <div className="flex items-center justify-between border-b border-slate-200/80 pb-3">
                 <div>
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-wider mb-1">
+                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 text-[9px] sm:text-[10px] font-black uppercase tracking-wider mb-1">
                     <span>Curated Hubs</span>
                   </div>
-                  <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                  <h2 className="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">
                     Explore Destinations
                   </h2>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-xs font-bold text-slate-400">
-                    3 Featured Hubs
-                  </span>
-                  <Link
-                    to="/blog/destinations"
-                    className="inline-flex items-center gap-1 text-xs font-black text-blue-600 hover:text-blue-700 uppercase tracking-wider transition-all group"
-                  >
-                    <span>Browse All Destinations</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
+
+                <Link
+                  to="/blog/destinations"
+                  className="inline-flex items-center gap-1 text-xs font-black text-blue-600 hover:text-blue-700 uppercase tracking-wider transition-all group shrink-0"
+                >
+                  <span className="hidden xs:inline">Browse All</span>
+                  <span className="xs:hidden">All</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </div>
 
-              {/* 3 Premium Cinematic Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {/* Grid: Compact Landscape on Mobile (h-56), Tall Cinematic on Desktop (md:h-[400px]) */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-5">
                 {featuredHubs.map((dest) => (
                   <div
                     key={dest.slug}
                     onClick={() => navigate(`/blog/destinations/${dest.slug}`)}
-                    className="relative h-[380px] sm:h-[420px] rounded-[32px] overflow-hidden group cursor-pointer shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 bg-slate-950 flex flex-col justify-between p-6 sm:p-7 select-none border border-slate-200/50"
+                    className="relative h-56 sm:h-64 md:h-[400px] rounded-2xl sm:rounded-[28px] overflow-hidden group cursor-pointer shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-slate-950 flex flex-col justify-between p-4 sm:p-6 select-none border border-slate-200/60"
                   >
-                    {/* Background Imagery with Depth Zoom */}
+                    {/* Background Imagery */}
                     <img
                       src={dest.image}
                       alt={dest.name}
                       loading="lazy"
                       decoding="async"
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out brightness-[0.78] contrast-[1.08]"
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out brightness-[0.78] contrast-[1.05]"
                     />
 
-                    {/* Rich Double Gradient for Premium Editorial Legibility */}
+                    {/* Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent z-10" />
-                    <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-transparent to-transparent z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-transparent to-transparent z-10" />
 
-                    {/* Top Pill Bar: Country Tag & Explore Button */}
+                    {/* Top Pill Tag */}
                     <div className="relative z-20 flex items-center justify-between">
-                      <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black uppercase tracking-widest text-white border border-white/20 shadow-xs">
+                      <span className="px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-white border border-white/20">
                         {dest.country}
                       </span>
-                      <div className="w-8 h-8 rounded-full bg-white/15 backdrop-blur-md text-white flex items-center justify-center border border-white/20 group-hover:bg-blue-600 group-hover:border-blue-500 transition-all duration-300">
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/15 backdrop-blur-md text-white flex items-center justify-center border border-white/20 group-hover:bg-blue-600 group-hover:border-blue-500 transition-all">
                         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                       </div>
                     </div>
 
-                    {/* Bottom Metadata & Editorial Tagline */}
-                    <div className="relative z-20 space-y-2.5">
+                    {/* Bottom Info */}
+                    <div className="relative z-20 space-y-1 sm:space-y-2">
                       <div>
-                        <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-400 drop-shadow-sm block">
+                        <span className="text-[9px] font-extrabold uppercase tracking-widest text-blue-400 drop-shadow-sm block">
                           Editorial Cluster
                         </span>
-                        <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight drop-shadow-md group-hover:text-blue-200 transition-colors">
+                        <h3 className="text-lg sm:text-2xl font-black text-white leading-tight drop-shadow-sm group-hover:text-blue-200 transition-colors">
                           {dest.name}
                         </h3>
                       </div>
 
-                      <p className="text-xs text-slate-200/90 font-medium line-clamp-2 leading-relaxed drop-shadow-sm">
+                      <p className="text-[11px] sm:text-xs text-slate-200/90 font-medium line-clamp-1 sm:line-clamp-2 leading-relaxed drop-shadow-sm">
                         {dest.tagline || dest.description}
                       </p>
 
-                      <div className="pt-2 flex items-center gap-1.5 text-xs font-black text-white group-hover:text-blue-300 transition-colors">
+                      <div className="pt-0.5 flex items-center gap-1 text-[11px] sm:text-xs font-black text-blue-400 group-hover:text-blue-300 transition-colors">
                         <span>Enter Hub</span>
-                        <span className="text-blue-400 group-hover:translate-x-1 transition-transform">&rarr;</span>
+                        <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
                       </div>
                     </div>
                   </div>
