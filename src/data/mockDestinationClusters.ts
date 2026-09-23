@@ -208,7 +208,7 @@ export const ALL_DESTINATION_CLUSTERS: Record<string, DestinationCluster> = {
     country: 'Qatar',
     tagline: 'Islamic Art, Dune Safaris & Contemporary Corniches',
     description: 'Navigate Doha and beyond with curated dispatches on Souq Waqif strolls, National Museum architecture, desert dune bashing, and Hamad Airport stopovers.',
-    image: 'https://images.unsplash.com/photo-1568322445389-f64ac2515020?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.pexels.com/photos/35158210/pexels-photo-35158210.jpeg',
     seoTitle: 'Qatar Travel Guides: Doha, Museum Walks & Transit Stopovers | FlySava',
     seoDescription: 'Plan your Qatar stopover or vacation with FlySava. Curated Doha itineraries, luxury hotel reviews, transit visa tips, and flight hacks.'
   },
