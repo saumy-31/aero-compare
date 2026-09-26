@@ -311,7 +311,151 @@ export const ALL_DESTINATION_CLUSTERS: Record<string, DestinationCluster> = {
     image: 'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1200&q=80',
     seoTitle: 'Brazil Travel Guides: Rio, Iguazu Falls & Coastal Escapes | FlySava',
     seoDescription: 'Explore Brazil with FlySava through in-depth Rio city guides, domestic aviation tips, rainforest excursions, and regional travel wisdom.'
-  }
+  },
+  china: {
+  slug: 'china',
+  name: 'China',
+  country: 'China',
+  tagline: 'Ancient Cities, Mountain Landscapes & Modern China',
+  description: 'Explore China through detailed travel guides covering Beijing landmarks, Shanghai city life, historic towns, regional food, high-speed rail journeys, and practical tips for navigating one of the world’s most diverse countries.',
+  image: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1200&q=80',
+  seoTitle: 'China Travel Guides: Beijing, Shanghai, Food & Rail Travel | FlySava',
+  seoDescription: 'Curated China travel guides by FlySava. Discover Beijing history, Shanghai neighborhoods, regional food, high-speed rail routes, and practical travel tips.'
+},
+
+austria: {
+  slug: 'austria',
+  name: 'Austria',
+  country: 'Austria',
+  tagline: 'Alpine Landscapes, Imperial Cities & Classical Culture',
+  description: 'Discover Austria through detailed travel guides covering Vienna architecture, Salzburg’s historic streets, Alpine villages, scenic train journeys, Austrian food, seasonal travel, and practical tips for exploring the country.',
+  image: 'https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1200&q=80',
+  seoTitle: 'Austria Travel Guides: Vienna, Salzburg, Alps & Food | FlySava',
+  seoDescription: 'Curated Austria travel guides by FlySava. Explore Vienna culture, Salzburg, Alpine landscapes, scenic rail journeys, Austrian food, and practical travel tips.'
+},
+
+norway: {
+  slug: 'norway',
+  name: 'Norway',
+  country: 'Norway',
+  tagline: 'Fjords, Arctic Landscapes & Scenic Road Journeys',
+  description: 'Explore Norway with travel guides covering Oslo city life, dramatic fjords, Lofoten landscapes, northern lights, scenic rail routes, road trips, Norwegian food, and practical seasonal travel advice.',
+  image: 'https://images.pexels.com/photos/17241175/pexels-photo-17241175.jpeg',
+  seoTitle: 'Norway Travel Guides: Fjords, Oslo, Lofoten & Northern Lights | FlySava',
+  seoDescription: 'Curated Norway travel guides by FlySava. Discover Oslo, Norwegian fjords, Lofoten, northern lights, scenic routes, food, and practical travel tips.'
+},
+
+philippines: {
+  slug: 'philippines',
+  name: 'Philippines',
+  country: 'Philippines',
+  tagline: 'Tropical Islands, Coastal Adventures & Local Life',
+  description: 'Discover the Philippines through detailed guides covering Manila, Palawan, Cebu, Boracay, island-hopping routes, Filipino food, beaches, local transportation, and practical tips for exploring the islands.',
+  image: 'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=80',
+  seoTitle: 'Philippines Travel Guides: Islands, Beaches, Food & Itineraries | FlySava',
+  seoDescription: 'Curated Philippines travel guides by FlySava. Explore Manila, Palawan, Cebu, island-hopping routes, Filipino food, beaches, and practical travel tips.'
+},
+
+nepal: {
+  slug: 'nepal',
+  name: 'Nepal',
+  country: 'Nepal',
+  tagline: 'Himalayan Trails, Ancient Cities & Mountain Culture',
+  description: 'Explore Nepal with travel guides covering Kathmandu heritage, Pokhara lakeside life, Himalayan trekking routes, mountain villages, Nepali food, spiritual sites, and practical tips for traveling through the country.',
+  image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80',
+  seoTitle: 'Nepal Travel Guides: Kathmandu, Pokhara, Trekking & Food | FlySava',
+  seoDescription: 'Curated Nepal travel guides by FlySava. Discover Kathmandu heritage, Pokhara, Himalayan trekking, mountain villages, Nepali food, and practical travel advice.'
+},
+
+
+
+peru: {
+  slug: 'peru',
+  name: 'Peru',
+  country: 'Peru',
+  tagline: 'Andean Landscapes, Ancient Cities & Pacific Flavors',
+  description: 'Explore Peru with detailed travel guides covering Lima food culture, Cusco streets, Machu Picchu planning, Sacred Valley journeys, Andean landscapes, Peruvian cuisine, and practical travel tips.',
+  image: 'https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1200&q=80',
+  seoTitle: 'Peru Travel Guides: Lima, Cusco, Machu Picchu & Food | FlySava',
+  seoDescription: 'Curated Peru travel guides by FlySava. Discover Lima, Cusco, Machu Picchu, the Sacred Valley, Peruvian cuisine, and practical itinerary tips.'
+},
+
+croatia: {
+  slug: 'croatia',
+  name: 'Croatia',
+  country: 'Croatia',
+  tagline: 'Adriatic Coastlines, Historic Cities & Island Escapes',
+  description: 'Discover Croatia through travel guides covering Dubrovnik walls, Split old streets, Zagreb city life, Adriatic islands, coastal road trips, Croatian food, and practical tips for exploring the country.',
+  image: 'https://images.pexels.com/photos/27651093/pexels-photo-27651093.jpeg',
+  seoTitle: 'Croatia Travel Guides: Dubrovnik, Split, Islands & Food | FlySava',
+  seoDescription: 'Curated Croatia travel guides by FlySava. Explore Dubrovnik, Split, Zagreb, Adriatic islands, coastal routes, Croatian food, and practical travel tips.'
+},
+albania: {
+  slug: 'albania',
+  name: 'Albania',
+  country: 'Albania',
+  tagline: 'Adriatic Beaches, Mountain Towns & Balkan Adventures',
+  description: 'Discover Albania through travel guides covering Tirana city life, Riviera beaches, Berat and Gjirokastër, Albanian Alps, local food, road trips, and practical tips for exploring the country.',
+  image: 'https://images.pexels.com/photos/20739912/pexels-photo-20739912.jpeg',
+  seoTitle: 'Albania Travel Guides: Riviera, Tirana, Mountains & Food | FlySava',
+  seoDescription: 'Curated Albania travel guides by FlySava. Explore Tirana, the Albanian Riviera, Berat, Gjirokastër, mountain landscapes, local food, and practical travel tips.'
+},
+
+argentina: {
+  slug: 'argentina',
+  name: 'Argentina',
+  country: 'Argentina',
+  tagline: 'Buenos Aires Streets, Patagonia & Wild Landscapes',
+  description: 'Discover Argentina through travel guides covering Buenos Aires neighborhoods, Patagonia, Iguazú Falls, Mendoza wine country, Argentine food, road trips, and practical tips for exploring the country.',
+  image: 'https://images.pexels.com/photos/13609326/pexels-photo-13609326.jpeg',
+  seoTitle: 'Argentina Travel Guides: Buenos Aires, Patagonia & Food | FlySava',
+  seoDescription: 'Curated Argentina travel guides by FlySava. Explore Buenos Aires, Patagonia, Iguazú Falls, Mendoza, Argentine food, scenic routes, and practical travel tips.'
+},
+
+belgium: {
+  slug: 'belgium',
+  name: 'Belgium',
+  country: 'Belgium',
+  tagline: 'Medieval Cities, Belgian Chocolate & European Charm',
+  description: 'Discover Belgium through travel guides covering Brussels, Bruges, Ghent, Antwerp, Belgian chocolate and beer culture, historic streets, local food, and practical tips for exploring the country.',
+  image: 'https://images.pexels.com/photos/19713205/pexels-photo-19713205.jpeg',
+  seoTitle: 'Belgium Travel Guides: Brussels, Bruges, Ghent & Food | FlySava',
+  seoDescription: 'Curated Belgium travel guides by FlySava. Explore Brussels, Bruges, Ghent, Antwerp, Belgian chocolate, local food, historic cities, and practical travel tips.'
+},
+
+colombia: {
+  slug: 'colombia',
+  name: 'Colombia',
+  country: 'Colombia',
+  tagline: 'Caribbean Coastlines, Coffee Country & Colorful Cities',
+  description: 'Discover Colombia through travel guides covering Bogotá, Medellín, Cartagena, the Caribbean coast, coffee regions, Colombian food, nature escapes, and practical tips for exploring the country.',
+  image: 'https://images.pexels.com/photos/16637471/pexels-photo-16637471.jpeg',
+  seoTitle: 'Colombia Travel Guides: Bogotá, Medellín, Cartagena & Food | FlySava',
+  seoDescription: 'Curated Colombia travel guides by FlySava. Explore Bogotá, Medellín, Cartagena, coffee country, Caribbean beaches, Colombian food, and practical travel tips.'
+},
+
+denmark: {
+  slug: 'denmark',
+  name: 'Denmark',
+  country: 'Denmark',
+  tagline: 'Copenhagen Design, Coastal Towns & Nordic Living',
+  description: 'Discover Denmark through travel guides covering Copenhagen, colorful harbor districts, coastal towns, Danish food, design culture, cycling, castles, and practical tips for exploring the country.',
+  image: 'https://images.pexels.com/photos/14252683/pexels-photo-14252683.jpeg',
+  seoTitle: 'Denmark Travel Guides: Copenhagen, Castles, Food & Coast | FlySava',
+  seoDescription: 'Curated Denmark travel guides by FlySava. Explore Copenhagen, Danish castles, coastal towns, cycling culture, local food, design, and practical travel tips.'
+},
+
+finland: {
+  slug: 'finland',
+  name: 'Finland',
+  country: 'Finland',
+  tagline: 'Northern Lights, Forests, Lakes & Nordic Calm',
+  description: 'Discover Finland through travel guides covering Helsinki, Lapland, Finnish lakes, northern lights, saunas, national parks, Finnish food, and practical tips for exploring the country.',
+  image: 'https://images.pexels.com/photos/3693623/pexels-photo-3693623.jpeg',
+  seoTitle: 'Finland Travel Guides: Helsinki, Lapland, Lakes & Northern Lights | FlySava',
+  seoDescription: 'Curated Finland travel guides by FlySava. Explore Helsinki, Lapland, Finnish lakes, northern lights, saunas, local food, and practical travel tips.'
+},
+
 };
 
 export const MOCK_DESTINATION_CLUSTERS: DestinationCluster[] = Object.values(ALL_DESTINATION_CLUSTERS);
