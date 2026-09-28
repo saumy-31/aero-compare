@@ -456,6 +456,62 @@ finland: {
   seoDescription: 'Curated Finland travel guides by FlySava. Explore Helsinki, Lapland, Finnish lakes, northern lights, saunas, local food, and practical travel tips.'
 },
 
+georgia: {
+  slug: 'georgia',
+  name: 'Georgia',
+  country: 'Georgia',
+  tagline: 'Caucasus Mountains, Ancient Towns & Georgian Flavors',
+  description: 'Discover Georgia through travel guides covering Tbilisi, the Caucasus Mountains, Batumi, ancient towns, Georgian cuisine, wine regions, road trips, and practical tips for exploring the country.',
+  image: 'https://images.pexels.com/photos/34890727/pexels-photo-34890727.jpeg',
+  seoTitle: 'Georgia Travel Guides: Tbilisi, Mountains, Food & Wine | FlySava',
+  seoDescription: 'Curated Georgia travel guides by FlySava. Explore Tbilisi, the Caucasus Mountains, Batumi, historic towns, Georgian food, wine regions, and practical travel tips.'
+},
+
+
+hungary: {
+  slug: 'hungary',
+  name: 'Hungary',
+  country: 'Hungary',
+  tagline: 'Budapest Baths, Danube Views & Central European Charm',
+  description: 'Discover Hungary through travel guides covering Budapest, the Danube, thermal baths, historic towns, Hungarian food, Lake Balaton, countryside escapes, and practical tips for exploring the country.',
+  image: 'https://images.pexels.com/photos/1642125/pexels-photo-1642125.jpeg',
+  seoTitle: 'Hungary Travel Guides: Budapest, Food, Baths & Danube | FlySava',
+  seoDescription: 'Curated Hungary travel guides by FlySava. Explore Budapest, thermal baths, the Danube, Hungarian cuisine, Lake Balaton, historic towns, and practical travel tips.'
+},
+
+iceland: {
+  slug: 'iceland',
+  name: 'Iceland',
+  country: 'Iceland',
+  tagline: 'Volcanoes, Glaciers, Waterfalls & Wild Landscapes',
+  description: 'Discover Iceland through travel guides covering Reykjavik, the Golden Circle, waterfalls, glaciers, volcanoes, hot springs, the Ring Road, northern lights, and practical tips for exploring the country.',
+  image: 'https://images.pexels.com/photos/315998/pexels-photo-315998.jpeg',
+  seoTitle: 'Iceland Travel Guides: Waterfalls, Glaciers, Volcanoes & More | FlySava',
+  seoDescription: 'Curated Iceland travel guides by FlySava. Explore Reykjavik, the Golden Circle, waterfalls, glaciers, volcanoes, hot springs, northern lights, and practical travel tips.'
+},
+
+jordan: {
+  slug: 'jordan',
+  name: 'Jordan',
+  country: 'Jordan',
+  tagline: 'Ancient Cities, Desert Landscapes & Dead Sea Escapes',
+  description: 'Discover Jordan through travel guides covering Amman, Petra, Wadi Rum, the Dead Sea, Aqaba, ancient sites, Jordanian food, desert experiences, and practical tips for exploring the country.',
+  image: 'https://images.pexels.com/photos/1631661/pexels-photo-1631661.jpeg',
+  seoTitle: 'Jordan Travel Guides: Petra, Wadi Rum, Amman & Dead Sea | FlySava',
+  seoDescription: 'Curated Jordan travel guides by FlySava. Explore Petra, Amman, Wadi Rum, the Dead Sea, Aqaba, Jordanian food, ancient sites, and practical travel tips.'
+},
+
+luxembourg: {
+  slug: 'luxembourg',
+  name: 'Luxembourg',
+  country: 'Luxembourg',
+  tagline: 'Castle Towns, Green Valleys & European Elegance',
+  description: 'Discover Luxembourg through travel guides covering Luxembourg City, medieval castles, the Moselle Valley, Ardennes landscapes, local food, scenic villages, and practical tips for exploring the country.',
+  image: 'https://images.pexels.com/photos/18671957/pexels-photo-18671957.jpeg',
+  seoTitle: 'Luxembourg Travel Guides: City, Castles, Valleys & Food | FlySava',
+  seoDescription: 'Curated Luxembourg travel guides by FlySava. Explore Luxembourg City, medieval castles, the Moselle Valley, green landscapes, local food, and practical travel tips.'
+},
+
 };
 
 export const MOCK_DESTINATION_CLUSTERS: DestinationCluster[] = Object.values(ALL_DESTINATION_CLUSTERS);
