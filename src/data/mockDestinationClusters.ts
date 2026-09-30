@@ -511,6 +511,27 @@ luxembourg: {
   seoTitle: 'Luxembourg Travel Guides: City, Castles, Valleys & Food | FlySava',
   seoDescription: 'Curated Luxembourg travel guides by FlySava. Explore Luxembourg City, medieval castles, the Moselle Valley, green landscapes, local food, and practical travel tips.'
 },
+russia: {
+  slug: 'russia',
+  name: 'Russia',
+  country: 'Russia',
+  tagline: 'Historic Cities, Vast Landscapes & Russian Culture',
+  description: 'Discover Russia through travel guides covering Moscow, St. Petersburg, historic cities, cultural landmarks, vast landscapes, local cuisine, and practical tips for exploring the country.',
+  image: 'https://images.pexels.com/photos/20166184/pexels-photo-20166184.jpeg',
+  seoTitle: 'Russia Travel Guides: Moscow, St. Petersburg, Culture & History | FlySava',
+  seoDescription: 'Curated Russia travel guides by FlySava. Explore Moscow, St. Petersburg, historic landmarks, Russian culture, local food, diverse landscapes, and practical travel tips.'
+},
+sweden: {
+  slug: 'sweden',
+  name: 'Sweden',
+  country: 'Sweden',
+  tagline: 'Scandinavian Cities, Islands, Forests & Fika',
+  description: 'Discover Sweden through travel guides covering Stockholm, Gothenburg, Swedish islands, forests, northern landscapes, local food, fika culture, and practical tips for exploring the country.',
+  image: 'https://images.pexels.com/photos/208755/pexels-photo-208755.jpeg',
+  seoTitle: 'Sweden Travel Guides: Stockholm, Nature, Food & Fika | FlySava',
+  seoDescription: 'Curated Sweden travel guides by FlySava. Explore Stockholm, Gothenburg, Swedish islands, forests, northern landscapes, local food, fika culture, and practical travel tips.'
+},
+
 
 };
 
