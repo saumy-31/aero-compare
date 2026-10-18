@@ -656,7 +656,7 @@ export const Destinations: React.FC = () => {
                 onClick={() => setStyleVisibleCount(prev => prev + 12)}
                 className="px-6 py-3 bg-white border border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 text-slate-800 font-black text-xs uppercase tracking-wider rounded-2xl transition-all shadow-2xs flex items-center gap-2 cursor-pointer active:scale-95"
               >
-                <span>View More {activeStyle} Destinations</span>
+                <span>View More Destinations</span>
                 <ChevronDown className="w-4 h-4 text-blue-600" />
               </button>
             </div>
